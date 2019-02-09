@@ -1,0 +1,66 @@
+html {
+  width: 100%;
+}
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  max-width: 100%;
+  background: color(bg);
+}
+
+a {
+  text-decoration: none;
+  color: color(secondary);
+}
+
+.display-1 {
+  font-family: "IBM Plex Sans";
+  font-weight: bold;
+  font-size: 46px;
+  text-align: left;
+  color: #9b9b9b;
+}
+
+$container-elements: (
+  h1,h2,h3,h4,h5,h6, p, a, button, ul, 
+ ) !default;
+
+@each $element in $container-elements {
+        #{$element} {
+          margin: 0.25rem;
+        };
+      }
+ 
+$container-padding: 0.25rem 0.5rem;
+$container-margin: 0.25rem auto;
+
+.container {
+  padding: $container-padding;
+  margin:  $container-margin;
+  @each $key, $value in $container-max-widths {
+    @include breakpoints($key) {
+      &.container {
+        max-width: $value;
+      }
+    }
+  }
+}
+
+// Container Fluid
+.container-fluid {
+   margin:  $container-margin;
+  @each $breakpoint, $value in $breakpoints {
+    @include breakpoints($breakpoint) {
+      @each $element in $container-elements {
+          @each $key, $value in $container-max-widths {
+    @include breakpoints($key) {
+      &.container-fluid {
+        max-width: $value;
+      }
+    }
+  }
+      }
+    }
+  }
+}
+
