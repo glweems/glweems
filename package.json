@@ -9,8 +9,11 @@
     "now": "npm run build"
   },
   "dependencies": {
-    "vue": "^2.5.22",
-    "vue-router": "^3.0.1"
+    "animate.css": "^3.7.0",
+    "get-gravatar": "^3.0.0",
+    "vue": "^2.6.6",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.6.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",
@@ -18,10 +21,46 @@
     "@vue/cli-service": "^3.4.0",
     "@vue/eslint-config-prettier": "^4.0.1",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
+    "eslint": "^5.14.1",
     "eslint-plugin-vue": "^5.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
-  }
+    "vue-gravatar": "^1.3.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "@vue/prettier",
+      "eslint:recommended",
+      "plugin:vue/recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint",
+      "rules": [
+        {
+          "vue/max-attributes-per-line": [
+            "error",
+            {
+              "singleline": 2,
+              "multiline": {
+                "max": 4,
+                "allowFirstLine": false
+              }
+            }
+          ]
+        }
+      ],
+      "postcss": {
+        "autoprefixer": {}
+      }
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
