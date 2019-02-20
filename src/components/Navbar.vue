@@ -1,35 +1,34 @@
 <template>
-  <div>
-    <nav class="navbar container-fluid">
-      <router-link to="/" class="navbar-brand">@glweems</router-link>
-      <svg
-        width="33.387"
-        height="22.679"
-        viewBox="0 0 33.387 22.679"
-        class="menu-button"
-        @click="toggleMenu"
-      >
-        <g transform="translate(128.5 23.811)">
-          <line class="a" x2="33.387" transform="translate(-128.5 -21.811)"></line>
-          <line class="a" x2="26" transform="translate(-121.5 -12.469)"></line>
-          <line class="a" x2="33.387" transform="translate(-128.5 -3.132)"></line>
-        </g>
-      </svg>
-      <transition
-        enter-active-class="animated slideInRight faster"
-        leave-active-class="animated slideOutRight faster"
-      >
-        <nav v-if="isOpen" :class="[isOpen ? dropdown.activeClass : 'hidden']">
-          <a
-            v-for="link in links"
-            :key="link.name"
-            class="nav-link"
-            @click="goToPage(link.path)"
-          >{{ link.name }}</a>
-        </nav>
-      </transition>
-    </nav>
-  </div>
+  <nav class="navbar container-fluid">
+    <router-link to="/" class="navbar-brand">@glweems</router-link>
+    <svg
+      width="33.387"
+      height="22.679"
+      viewBox="0 0 33.387 22.679"
+      class="menu-button"
+      @click="toggleMenu"
+    >
+      <g transform="translate(128.5 23.811)">
+        <line class="a" x2="33.387" transform="translate(-128.5 -21.811)"></line>
+        <line class="a" x2="26" transform="translate(-121.5 -12.469)"></line>
+        <line class="a" x2="33.387" transform="translate(-128.5 -3.132)"></line>
+      </g>
+    </svg>
+
+    <transition
+      enter-active-class="animated slideInDown faster"
+      leave-active-class="bounceRight-leave"
+    >
+      <nav :class="[isOpen ? dropdown.activeClass : 'hidden']">
+        <a
+          v-for="link in links"
+          :key="link.name"
+          class="nav-link"
+          @click="goToPage(link.path)"
+        >{{ link.name }}</a>
+      </nav>
+    </transition>
+  </nav>
 </template>
 
 <script>
@@ -96,7 +95,7 @@ export default {
   background: color(bg);
   grid-column: 1 / span 2;
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   justify-content: flex-end;
   text-align: right;
   text-transform: uppercase;
