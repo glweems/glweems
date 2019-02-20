@@ -16,10 +16,10 @@
     </svg>
 
     <transition
-      enter-active-class="animated slideInDown faster"
-      leave-active-class="bounceRight-leave"
+      enter-active-class="animated slideInRight faster"
+      leave-active-class="animated slideOutRight faster"
     >
-      <nav :class="[isOpen ? dropdown.activeClass : 'hidden']">
+      <nav v-if="isOpen" :class="[isOpen ? dropdown.activeClass : 'hidden']">
         <a
           v-for="link in links"
           :key="link.name"
@@ -95,7 +95,7 @@ export default {
   background: color(bg);
   grid-column: 1 / span 2;
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   justify-content: flex-end;
   text-align: right;
   text-transform: uppercase;

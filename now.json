@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "alias": ["glweems.com"],
+  "alias": ["glweems.com", "www.glweems.com"],
   "builds": [
     {
       "src": "package.json",
