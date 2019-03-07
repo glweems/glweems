@@ -1,0 +1,19 @@
+@import "../../node_modules/normalize.scss/normalize.scss";
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:600,800,900,700i|Roboto");
+
+$font-family-base: "Roboto", sans-serif;
+$font-family-heading: "IBM Plex Sans", sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 a,
+button {
+  font-family: $font-family-base;
+}
+
+a {
+  text-decoration: none;
+}
