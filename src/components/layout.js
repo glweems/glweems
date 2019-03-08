@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
-import { Main, StickyFooter } from "../Theme";
+import { StickyLogo, Main, StickyFooter } from "../Theme";
 import Navigation from "./navigation";
 import "../scss/index.scss";
 
@@ -19,11 +19,11 @@ const Layout = ({ children }) => (
     render={data => (
       <>
         <Navigation />
-        <Main>{children}</Main>
-        <StickyFooter>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-        </StickyFooter>
+        <Main>
+          <StickyLogo>glweems</StickyLogo>
+          {children}
+        </Main>
+        <StickyFooter>© {new Date().getFullYear()}, Built with</StickyFooter>
       </>
     )}
   />

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "name": "glweems-gatsby-template",
+  "name": "glweems",
   "public": true,
-  "alias": ["coin-market.now.sh"],
+  "alias": ["glweems.now.sh"],
   "builds": [
     {
       "src": "package.json",

@@ -14,9 +14,9 @@ export const Main = styled.main`
   padding-top: 2rem;
   /* height: 100vh; */
   /* padding-bottom: 2rem; */
-  margin-bottom: 10rem;
+  /* margin-bottom: 10rem; */
   width: 100%;
-  /* overflow: hidden; */
+  overflow: hidden;
   background: ${Theme.colors.bg};
 `;
 
@@ -40,13 +40,22 @@ const Svg = styled.svg`
   }
 `;
 
+export const StickyLogo = styled.span`
+  position: fixed;
+  top: 0;
+  left: 2rem;
+  padding: 0.5rem 0.7rem 0.7rem 0.7rem;
+  font-weight: bolder;
+  font-style: italic;
+  color: ${Theme.colors.bg};
+  background: ${Theme.colors.dark};
+`;
+
 export const HamburgerButton = () => (
   <Svg width="28.231" height="18.218" viewBox="0 0 28.231 18.218">
-    <g transform="translate(-329.5 -19.391)">
-      <line x2="28.231" transform="translate(329.5 28.5)" />
-      <line x2="28.104" transform="translate(329.626 20.891)" />
-      <line x2="28.104" transform="translate(329.626 36.109)" />
-    </g>
+    <line x2="28.231" transform="translate(329.5 28.5)" />
+    <line x2="28.104" transform="translate(329.626 20.891)" />
+    <line x2="28.104" transform="translate(329.626 36.109)" />
   </Svg>
 );
 

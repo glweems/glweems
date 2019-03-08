@@ -3,110 +3,92 @@ import { Link } from "gatsby";
 import styled from "styled-components";
 import Theme, { HamburgerButton } from "../Theme";
 
-const Navbar = styled.div`
-  width: 100%;
-  background: ${Theme.colors.red};
-  // * Flex
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  // * Position
+const Button = styled.button`
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 1rem;
+  right: 2rem;
   z-index: 1000;
-`;
-
-const StyledButton = styled.button`
-  background: transparent;
-  color: transparent;
+  color: ${Theme.colors.bg};
   border: none;
-  margin: 0;
-  margin-right: 1rem;
-  padding: 0;
-`;
-
-const NavItem = styled.span`
-  font-display: ${Theme.headingFont};
-  font-weight: bold;
-  font-size: 3rem;
-  &:hover {
-    color: ${Theme.colors.red};
+  vertical-align: middle;
+  ::before {
+    content: "MENU";
   }
+  background: ${Theme.colors.dark};
 `;
 
-const Nav = styled.nav`
-  text-align: right;
-  *:not(:last-child) {
-    font-display: ${Theme.headingFont};
-    margin-right: 1rem;
-  }
-`;
-
-const Brand = styled.span`
-  padding: 1rem 0;
-  margin-left: 1rem;
-  font-weight: bold;
-  font-style: italic;
-`;
-
-const Sidebar = styled.nav`
-  height: 100vh;
-  // * Flex
+const Sidebar = styled.div`
+  height: 100%;
+  max-height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: right;
-  font-family: ${Theme.headingFont};
-  padding-right: 1rem;
-  transition: all 1s ease-in-out;
+  background: ${Theme.colors.bg};
+  z-index: 900;
+`;
+
+const NavLinks = styled.nav`
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+`;
+
+const NavItem = styled.span`
+  font-size: 3rem;
+  font-weight: bolder;
+  * {
+    color: ${Theme.colors.dark};
+    :hover {
+      color: ${Theme.colors.red};
+      text-decoration: underline;
+    }
+  }
+  text-transform: uppercase;
+  text-decoration: none;
 `;
 
 class Navigation extends Component {
-  // ! Constructor
   constructor(props) {
     super(props);
-    this.state = { isToggleOn: true };
+    this.state = { isToggleOn: false };
     this.handleClick = this.handleClick.bind(this);
   }
-  // ! Toggle
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
     console.log(`Toggle is: ${this.state.isToggleOn}`);
   }
-  // ! Render
+
   render() {
-    const ToggleButton = () => (
-      <StyledButton onClick={this.handleClick}>
-        <HamburgerButton />
-      </StyledButton>
-    );
-    return this.state.isToggleOn ? (
-      <Navbar>
-        <Brand>glweems</Brand>
-        <ToggleButton />
-      </Navbar>
+    const ToggleButton = () => <Button onClick={this.handleClick} />;
+
+    return !this.state.isToggleOn ? (
+      <ToggleButton />
     ) : (
       <>
-        <Navbar>
-          <Brand>glweems</Brand>
-          <ToggleButton />
-        </Navbar>
+        <ToggleButton /> />
         <Sidebar>
-          <NavItem>
-            <Link to="/">Home</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/portfolio">Home</Link>
-          </NavItem>
-          <NavItem>Contact</NavItem>
+          <NavLinks>
+            <NavItem>
+              <Link to="/">Home</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/portfolio/">designs</Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/">contact</Link>
+            </NavItem>
+          </NavLinks>
         </Sidebar>
       </>
     );
   }
 }
-
 export default Navigation;

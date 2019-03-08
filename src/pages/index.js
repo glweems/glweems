@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
-
+import { Avitar } from "../components/small-components";
 import Layout from "../components/layout";
 import Hello from "../components/hello";
 import Image from "../components/image";
@@ -10,8 +10,7 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
     <Hello />
-    <Image />
-    <Link to="/page-2/">Go to page 2</Link>
+    <Avitar />
   </Layout>
 );
 

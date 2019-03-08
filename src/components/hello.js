@@ -1,65 +1,51 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import styled from "styled-components";
 import Theme from "../Theme";
 
-const StyledHello = styled.div``;
+const Div = styled.div`
+  width: 100%;
+  /* background: pink; */
+`;
 
 const Split = styled.div`
   // * Grid
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 2fr 6fr;
-  grid-template-rows: 1fr;
+  height: 80vh;
+  display: flex;
   .half {
-    height: 100%;
-    max-width: 100%;
-    min-width: 100%;
+    /* height: 100%; */
+    width: 50%;
   }
   .half:first-child {
-    background: ${Theme.colors.dark};
+    background: ${Theme.colors.red};
   }
 `;
 
-const Content = styled.div`
-  min-width: 100vw;
-  position: relative;
-  top: 45%;
-  align-content: center;
-  right: 0%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  * {
-    margin: 0;
-    padding: 0;
-  }
-`;
 const Msg = styled.h1`
   margin: 0;
   line-height: 0.75;
   font-size: 10rem;
   font-style: italic;
-  text-align: center;
+  position: relative;
+  text-align: left;
+  top: 30%;
+  left: 5rem;
 `;
 
 export default class Hello extends Component {
   render() {
     return (
-      <StyledHello>
+      <Div>
         <Split>
           <div className="half">
-            <Content>
-              <Msg>
-                HE
-                <br />
-                LLO
-              </Msg>
-            </Content>
+            <Msg>
+              He
+              <br />
+              llo
+            </Msg>
           </div>
           <div className="half" />
         </Split>
-      </StyledHello>
+      </Div>
     );
   }
 }
