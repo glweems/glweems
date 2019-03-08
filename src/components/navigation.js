@@ -1,137 +1,110 @@
 import React, { Component } from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
+import Theme, { HamburgerButton } from "../Theme";
 
-const Theme = {
-  HeadingFont: `"IBM Plex Sans", sans-serif;`
-};
-
-const StyledButton = styled.button`
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  text-align: center;
-  vertical-align: middle;
-  transform: translx ate3d(-100vw, 0, 0);
-  z-index: 1000;
-`;
-
-const Stripe = styled.div`
-  opacity: 0.95;
-  background: #ff5851;
-  height: 100vh;
-  width: 30vw;
-  position: fixed;
-  top: 0px;
-  right: 0px;
-`;
-
-const StyledSidebar = styled.div`
-  background: #bada55;
-  height: 100vh;
-  width: 80vw;
+const Navbar = styled.div`
+  width: 100%;
+  background: ${Theme.colors.red};
+  // * Flex
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // * Position
   position: fixed;
   top: 0px;
   left: 0px;
-  margin: auto 0;
-  z-index: 900;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  ul {
-    list-style-type: none;
-    height: 50%;
-    width: 80%;
-    background: white;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    li {
-      padding: 1rem;
-    }
-    a {
-      font-size: 2.4rem;
-      font-family: ${Theme.HeadingFont};
-      font-weight: 900;
-      line-height: 0.3;
-      color: black;
-      .msk {
-        display: flex;
-        flex-direction: column;
-        margin-left: 0;
-        min-height: 100%;
-        /* padding: 0 40px; */
-        z-index: 10;
-        display: inline-block;
-        span {
-          opacity: 0.9;
-          position: relative;
-          display: block;
-          width: 100%;
-          max-height: 9px;
-          :hover {
-            background: #ff5851;
-          }
-        }
-      }
-    }
+  z-index: 1000;
+`;
+
+const StyledButton = styled.button`
+  background: transparent;
+  color: transparent;
+  border: none;
+  margin: 0;
+  margin-right: 1rem;
+  padding: 0;
+`;
+
+const NavItem = styled.span`
+  font-display: ${Theme.headingFont};
+  font-weight: bold;
+  font-size: 3rem;
+  &:hover {
+    color: ${Theme.colors.red};
   }
 `;
 
-const Sidebar = () => (
-  <StyledSidebar>
-    <ul>
-      <li>
-        <a href="/">
-          <span class="msk">
-            <span>Home</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="/">
-          <span class="msk">
-            <span>Home</span>
-          </span>
-        </a>
-      </li>
-      <li>
-        <a href="/">
-          <span class="msk">
-            <span>Home</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </StyledSidebar>
-);
+const Nav = styled.nav`
+  text-align: right;
+  *:not(:last-child) {
+    font-display: ${Theme.headingFont};
+    margin-right: 1rem;
+  }
+`;
+
+const Brand = styled.span`
+  padding: 1rem 0;
+  margin-left: 1rem;
+  font-weight: bold;
+  font-style: italic;
+`;
+
+const Sidebar = styled.nav`
+  height: 100vh;
+  // * Flex
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: right;
+  font-family: ${Theme.headingFont};
+  padding-right: 1rem;
+  transition: all 1s ease-in-out;
+`;
 
 class Navigation extends Component {
+  // ! Constructor
   constructor(props) {
     super(props);
     this.state = { isToggleOn: true };
     this.handleClick = this.handleClick.bind(this);
   }
+  // ! Toggle
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
     }));
     console.log(`Toggle is: ${this.state.isToggleOn}`);
   }
-
+  // ! Render
   render() {
     const ToggleButton = () => (
-      <StyledButton onClick={this.handleClick}>Click</StyledButton>
+      <StyledButton onClick={this.handleClick}>
+        <HamburgerButton />
+      </StyledButton>
     );
-
-    return !this.state.isToggleOn ? (
-      <ToggleButton />
-    ) : (
-      <React.Fragment>
+    return this.state.isToggleOn ? (
+      <Navbar>
+        <Brand>glweems</Brand>
         <ToggleButton />
-        <Sidebar />
-        <Stripe />
-      </React.Fragment>
+      </Navbar>
+    ) : (
+      <>
+        <Navbar>
+          <Brand>glweems</Brand>
+          <ToggleButton />
+        </Navbar>
+        <Sidebar>
+          <NavItem>
+            <Link to="/">Home</Link>
+          </NavItem>
+          <NavItem>
+            <Link to="/portfolio">Home</Link>
+          </NavItem>
+          <NavItem>Contact</NavItem>
+        </Sidebar>
+      </>
     );
   }
 }

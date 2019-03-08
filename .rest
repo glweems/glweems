@@ -1,0 +1,14 @@
+@github = https://api.github.com
+
+
+###
+# GitHub User
+{{github}}/users/glweems
+
+
+###
+# Repos
+{{github}}/users/glweems/repos
+
+###
+# Pinned Repos
