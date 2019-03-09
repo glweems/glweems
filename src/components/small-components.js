@@ -50,14 +50,14 @@ export class StickyLogo extends Component {
     super(props);
 
     this.state = {
-      show: true,
-      scroll: window.scrollY
+      show: true
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    this.setState({ scroll: window.scrollY });
   }
 
   componentWillUnmount() {

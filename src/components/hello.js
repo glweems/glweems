@@ -33,7 +33,6 @@ export default class Hello extends Component {
 
     this.state = {
       grow: true,
-      scroll: window.scrollY,
       width: 50
     };
     this.handleScroll = this.handleScroll.bind(this);
@@ -41,6 +40,7 @@ export default class Hello extends Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    this.setState({ scroll: window.scrollY });
   }
 
   componentWillUnmount() {
