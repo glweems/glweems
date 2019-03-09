@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
-import Theme, { HamburgerButton } from "../Theme";
+import Theme from "../Theme";
 
 const Button = styled.button`
   position: fixed;
@@ -59,6 +59,7 @@ class Navigation extends Component {
     this.state = { isToggleOn: false };
     this.handleClick = this.handleClick.bind(this);
   }
+
   handleClick() {
     this.setState(state => ({
       isToggleOn: !state.isToggleOn
