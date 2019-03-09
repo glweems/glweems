@@ -10,19 +10,8 @@ export const Theme = {
   }
 };
 
-export const Main = styled.main`
-  padding-top: 2rem;
-  /* height: 100vh; */
-  /* padding-bottom: 2rem; */
-  /* margin-bottom: 10rem; */
-  width: 100%;
-  overflow: hidden;
-  background: ${Theme.colors.bg};
-`;
-
 export const StickyFooter = styled.footer`
   background: ${Theme.colors.dark};
-  position: fixed;
   width: 100%;
   padding: 5rem 0;
   bottom: 0;
@@ -38,17 +27,6 @@ const Svg = styled.svg`
     stroke: #fff;
     stroke-width: 3px;
   }
-`;
-
-export const StickyLogo = styled.span`
-  position: fixed;
-  top: 0;
-  left: 2rem;
-  padding: 0.5rem 0.7rem 0.7rem 0.7rem;
-  font-weight: bolder;
-  font-style: italic;
-  color: ${Theme.colors.bg};
-  background: ${Theme.colors.dark};
 `;
 
 export const HamburgerButton = () => (
