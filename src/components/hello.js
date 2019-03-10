@@ -10,8 +10,20 @@ const Div = styled.div`
 const Split = styled.div`
   height: 80vh;
   display: flex;
+  transition: 100ms all ease-in-out;
   div:first-child {
     background: ${Theme.colors.red};
+  }
+  .w50 {
+    width: 50%;
+  }
+  .w100 {
+    width: 100%;
+  }
+`;
+
+const Transition = styled.div`
+  * {
     transition: 0.25s all ease-in-out;
   }
 `;
@@ -79,15 +91,17 @@ export default class Hello extends Component {
   render() {
     return (
       <Div>
-        <Split>
-          <div className={`${this.state.splitDisplay}`}>
-            <Msg>
-              He
-              <br />
-              llo
-            </Msg>
-          </div>
-        </Split>
+        <Transition>
+          <Split>
+            <div className={`${this.state.splitDisplay}`}>
+              <Msg>
+                He
+                <br />
+                llo
+              </Msg>
+            </div>
+          </Split>
+        </Transition>
       </Div>
     );
   }
