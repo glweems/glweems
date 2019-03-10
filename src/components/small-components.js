@@ -32,6 +32,16 @@ export const Avitar = () => (
   />
 );
 
+const Transition = styled.div`
+  transition: 20ms all ease-in-out;
+  * {
+    transition: 20ms all ease-in-out;
+  }
+  .hidden {
+    transform: translate(0, -2rem);
+  }
+`;
+
 export const Logo = styled.span`
   position: fixed;
   top: 0;
@@ -42,7 +52,6 @@ export const Logo = styled.span`
   color: ${Theme.colors.bg};
   background: ${Theme.colors.dark};
   z-index: 2000;
-  transition: all 1s ease-in-out;
 `;
 
 export class StickyLogo extends Component {
@@ -72,7 +81,9 @@ export class StickyLogo extends Component {
   }
 
   render = () => (
-    <Logo className={this.state.show ? "logo" : "logo hidden"}>glweems</Logo>
+    <Transition>
+      <Logo className={this.state.show ? "logo" : "logo hidden"}>glweems</Logo>
+    </Transition>
   );
 }
 
