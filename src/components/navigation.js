@@ -32,6 +32,13 @@ const Sidebar = styled.div`
   z-index: 900;
 `;
 
+const SidebarTransition = styled.div`
+  transition: 1s all ease-in-out;
+  * {
+    transition: 1s all ease-in-out;
+  }
+`;
+
 const NavLinks = styled.nav`
   width: 90%;
   margin: 0 auto;
@@ -69,12 +76,8 @@ class Navigation extends Component {
 
   render() {
     const ToggleButton = () => <Button onClick={this.handleClick} />;
-
-    return !this.state.isToggleOn ? (
-      <ToggleButton />
-    ) : (
-      <>
-        <ToggleButton /> />
+    const IsSideBarOpen = () =>
+      this.state.isToggleOn ? (
         <Sidebar>
           <NavLinks>
             <NavItem>
@@ -88,6 +91,15 @@ class Navigation extends Component {
             </NavItem>
           </NavLinks>
         </Sidebar>
+      ) : (
+        ""
+      );
+    return (
+      <>
+        <ToggleButton />
+        <SidebarTransition>
+          <IsSideBarOpen />
+        </SidebarTransition>
       </>
     );
   }
