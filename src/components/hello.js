@@ -10,10 +10,10 @@ const Div = styled.div`
 const Split = styled.div`
   height: 80vh;
   display: flex;
-  .half:first-child {
+  div:first-child {
     background: ${Theme.colors.red};
+    transition: 0.25s all ease-in-out;
   }
-  transition: 1s all ease-in-out;
 `;
 
 const Msg = styled.h1`
@@ -33,14 +33,19 @@ export default class Hello extends Component {
 
     this.state = {
       grow: true,
-      width: 50
+      scrollY: 0,
+      splitDisplay: "w50"
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
-    this.setState({ scroll: window.scrollY });
+    this.setState({
+      scroll: window.scrollY,
+      transitionStartDown: window.innerWidth / 9,
+      transitionStartUp: window.innerWidth - window.innerWidth / 4
+    });
   }
 
   componentWillUnmount() {
@@ -48,28 +53,34 @@ export default class Hello extends Component {
   }
 
   handleScroll(event) {
+    const {
+      grow,
+      splitDisplay,
+      scrollY,
+      transitionStartDown,
+      transitionStartUp
+    } = this.state;
+
     this.setState({
-      grow: this.state.scroll > window.scrollY,
-      scroll: window.scrollY
+      grow: this.state.scrollY <= window.scrollY,
+      splitDisplay:
+        grow && scrollY >= transitionStartDown
+          ? "w100"
+          : !grow && transitionStartUp >= window.scrollY
+          ? "w50"
+          : splitDisplay
     });
-    if (!this.setState.scroll > window.screenY) {
-      this.setState({
-        width: this.state.width + window.scrollY / window.innerHeight,
-        scroll: window.scrollY
-      });
-    } else {
-      this.setState({
-        width: this.state.width - 1,
-        scroll: window.scrollY
-      });
-    }
+    this.setState({
+      scrollY: window.scrollY
+    });
+    console.log(this.state);
   }
 
   render() {
     return (
       <Div>
         <Split>
-          <div className="half" style={{ width: `${this.state.width}%` }}>
+          <div className={`${this.state.splitDisplay}`}>
             <Msg>
               He
               <br />
