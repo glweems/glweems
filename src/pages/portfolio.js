@@ -1,43 +1,108 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React from "react";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-import styled from "styled-components";
-import { designs } from "../Data";
 
-const DesignWrapper = styled.div`
-  width: 90%;
-  margin: 0 auto;
-  img {
-    max-width: 100%;
-  }
-`;
-const PortfolioItem = props => (
-  <DesignWrapper>
-    <p>{props.title}</p>
-    <img src={require(`../images/designs/${props.src}`)} alt={props.title} />
-  </DesignWrapper>
-);
-
-PortfolioItem.propTypes = {
-  title: PropTypes.string.isRequired,
-  desc: PropTypes.string.isRequired,
-  src: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired
+const Designs = ({ data }) => {
+  return (
+    <>
+      {designs.map((design, index) => (
+        <div key={index}>
+          <p>{design.title}</p>
+          <Img fluid={data[design.src].childImageSharp.fluid} />
+        </div>
+      ))}
+    </>
+  );
 };
 
-export default class Portfolio extends Component {
-  render() {
-    // const numbers = [1, 2, 3, 4, 5];
-    const Designs = designs.map((design, index) => (
-      <PortfolioItem key={index} {...design} />
-    ));
-    return (
-      <Layout>
-        <SEO title="portfolio" />
+export default ({ data }) => (
+  <Layout>
+    <SEO title="Portfolio" keywords={[`graphic`, `design`, `illustration`]} />
+    <Designs data={data} />
+  </Layout>
+);
 
-        {Designs}
-      </Layout>
-    );
+export const query = graphql`
+  query PortfolioQuery {
+    OrganicVsGeometric: file(
+      relativePath: { eq: "designs/organic-vs-geometric.jpg" }
+    ) {
+      name
+      childImageSharp {
+        fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    PrismBranding: file(relativePath: { eq: "designs/prism-branding.jpg" }) {
+      name
+      childImageSharp {
+        fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    PeaceRun: file(relativePath: { eq: "designs/peace-run-all.jpg" }) {
+      name
+      childImageSharp {
+        fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    LadyTigers1: file(relativePath: { eq: "designs/lady-tigers-1.jpg" }) {
+      name
+      childImageSharp {
+        fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    LadyTigers2: file(relativePath: { eq: "designs/lady-tigers-2.jpg" }) {
+      name
+      childImageSharp {
+        fluid(maxWidth: 512) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
   }
-}
+`;
+
+const designs = [
+  {
+    title: "Organic VS Geometric",
+    link: "https://www.behance.net/gallery/50768561/Organic-VS-Geometric",
+    src: "OrganicVsGeometric",
+    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+  },
+  {
+    title: "Company Artwork",
+    link: "https://www.behance.net/gallery/59400101/Company-Artwork",
+    src: "PrismBranding",
+    desc: ""
+  },
+  {
+    title: "Blanton Fun-Run T-Shirt Design.",
+    link:
+      "https://www.behance.net/gallery/47274017/Peace-and-Love-Fun-Run-T-Shirt-Design",
+    src: "PeaceRun",
+    desc: ""
+  },
+  {
+    title: "McMath Athletics T-Shirt Design",
+    link:
+      "https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design",
+    src: "LadyTigers1",
+    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+  },
+  {
+    title: "McMath Athletics T-Shirt Design",
+    link:
+      "https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design",
+    src: "LadyTigers2",
+    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+  }
+];
