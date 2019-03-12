@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { StaticQuery, graphql } from "gatsby";
-import styled from "styled-components";
-import { Theme, StickyFooter } from "../Theme";
-import { StickyLogo } from "../components/small-components";
-import Navigation from "./navigation";
-import "../scss/index.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StaticQuery, graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import styled from 'styled-components';
+import Theme from 'src/Theme';
+import Navigation from '@/navigation';
+import 'scss/index.scss';
+import { Error } from '@/error';
 
 const Main = styled.main`
   padding-top: 2rem;
@@ -25,21 +26,25 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
-      <>
+    render={() => (
+      <Error>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+          <title>My Title</title>
+          <link rel="canonical" href="http://mysite.com/example" />
+        </Helmet>
         <Navigation />
-        <Main>
-          <StickyLogo />
-          {children}
-        </Main>
-        <StickyFooter>© {new Date().getFullYear()}, Built with</StickyFooter>
-      </>
+        <Main>{children}</Main>
+        {/* <StickyFooter>© {new Date().getFullYear()}, Built with</StickyFooter> */}
+      </Error>
     )}
   />
 );
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

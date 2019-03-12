@@ -1,21 +1,19 @@
-import React from "react";
-import { graphql } from "gatsby";
-import Img from "gatsby-image";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import React from 'react';
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import Layout from '@/layout';
+import SEO from '@/seo';
 
-const Designs = ({ data }) => {
-  return (
-    <>
-      {designs.map((design, index) => (
-        <div key={index}>
-          <p>{design.title}</p>
-          <Img fluid={data[design.src].childImageSharp.fluid} />
-        </div>
-      ))}
-    </>
-  );
-};
+const Designs = ({ data }) => (
+  <>
+    {designs.map((design, index) => (
+      <div key={index}>
+        <p>{design.title}</p>
+        <Img fluid={data[design.src].childImageSharp.fluid} />
+      </div>
+    ))}
+  </>
+);
 
 export default ({ data }) => (
   <Layout>
@@ -23,6 +21,25 @@ export default ({ data }) => (
     <Designs data={data} />
   </Layout>
 );
+
+// export default class Portfolio extends Component {
+//   constructor(props) {
+//     super(data);
+//     this.data = data;
+//   }
+
+//   render() {
+//     return (
+//       <Layout>
+//         <SEO
+//           title="Portfolio"
+//           keywords={[`graphic`, `design`, `illustration`]}
+//         />
+//         <Designs data={data} />
+//       </Layout>
+//     );
+//   }
+// }
 
 export const query = graphql`
   query PortfolioQuery {
@@ -73,36 +90,36 @@ export const query = graphql`
 
 const designs = [
   {
-    title: "Organic VS Geometric",
-    link: "https://www.behance.net/gallery/50768561/Organic-VS-Geometric",
-    src: "OrganicVsGeometric",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+    title: 'Organic VS Geometric',
+    link: 'https://www.behance.net/gallery/50768561/Organic-VS-Geometric',
+    src: 'OrganicVsGeometric',
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
   },
   {
-    title: "Company Artwork",
-    link: "https://www.behance.net/gallery/59400101/Company-Artwork",
-    src: "PrismBranding",
-    desc: ""
+    title: 'Company Artwork',
+    link: 'https://www.behance.net/gallery/59400101/Company-Artwork',
+    src: 'PrismBranding',
+    desc: '',
   },
   {
-    title: "Blanton Fun-Run T-Shirt Design.",
+    title: 'Blanton Fun-Run T-Shirt Design.',
     link:
-      "https://www.behance.net/gallery/47274017/Peace-and-Love-Fun-Run-T-Shirt-Design",
-    src: "PeaceRun",
-    desc: ""
+      'https://www.behance.net/gallery/47274017/Peace-and-Love-Fun-Run-T-Shirt-Design',
+    src: 'PeaceRun',
+    desc: '',
   },
   {
-    title: "McMath Athletics T-Shirt Design",
+    title: 'McMath Athletics T-Shirt Design',
     link:
-      "https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design",
-    src: "LadyTigers1",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
+      'https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design',
+    src: 'LadyTigers1',
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
   },
   {
-    title: "McMath Athletics T-Shirt Design",
+    title: 'McMath Athletics T-Shirt Design',
     link:
-      "https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design",
-    src: "LadyTigers2",
-    desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit."
-  }
+      'https://www.behance.net/gallery/48973673/McMath-Athletics-T-Shirt-Design',
+    src: 'LadyTigers2',
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+  },
 ];

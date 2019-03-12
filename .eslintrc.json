@@ -1,9 +1,15 @@
 {
-  "parser": "babel-eslint",
-  "extends": ["wesbos"],
-  "settings": {
-    "react": {
-      "version": "latest"
+    "parser": "babel-eslint",
+    "extends": [
+        "wesbos"
+    ],
+    "rules": {
+        "import/no-unresolved": false,
+        "no-nested-ternary": 0
+    },
+    "settings": {
+        "react": {
+            "version": "latest"
+        }
     }
-  }
 }

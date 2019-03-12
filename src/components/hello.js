@@ -1,14 +1,15 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import Theme from "../Theme";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import Theme from 'src/Theme';
 
 const Div = styled.div`
   width: 100%;
   margin-top: -2rem;
+  z-index: 801;
 `;
 
 const Split = styled.div`
-  height: 80vh;
+  height: 100vh;
   display: flex;
   transition: 100ms all ease-in-out;
   div:first-child {
@@ -46,54 +47,54 @@ export default class Hello extends Component {
     this.state = {
       grow: true,
       scrollY: 0,
-      splitDisplay: "w50"
+      splitDisplay: 'w50',
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
     this.setState({
-      scroll: window.scrollY,
+      // scroll: window.scrollY,
       transitionStartDown: window.innerWidth / 9,
-      transitionStartUp: window.innerWidth - window.innerWidth / 4
+      transitionStartUp: window.innerWidth - window.innerWidth / 4,
     });
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(event) {
+  handleScroll() {
     const {
       grow,
       splitDisplay,
       scrollY,
       transitionStartDown,
-      transitionStartUp
+      transitionStartUp,
     } = this.state;
 
     this.setState({
-      grow: this.state.scrollY <= window.scrollY,
+      grow: scrollY <= window.scrollY,
       splitDisplay:
         grow && scrollY >= transitionStartDown
-          ? "w100"
+          ? 'w100'
           : !grow && transitionStartUp >= window.scrollY
-          ? "w50"
-          : splitDisplay
+          ? 'w50'
+          : splitDisplay,
     });
     this.setState({
-      scrollY: window.scrollY
+      scrollY: window.scrollY,
     });
-    console.log(this.state);
   }
 
   render() {
+    const { splitDisplay } = this.state;
     return (
       <Div>
         <Transition>
           <Split>
-            <div className={`${this.state.splitDisplay}`}>
+            <div className={`${splitDisplay}`}>
               <Msg>
                 He
                 <br />

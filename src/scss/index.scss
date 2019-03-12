@@ -17,12 +17,17 @@ a {
   padding: none;
   margin: none;
 }
-
-.hidden {
-  opacity: 0;
-  display: disabled;
-  // transition: 2s linear all !important;
+a {
+  color: white;
+  :visited {
+    color: white;
+  }
 }
+// .hidden {
+//   opacity: 0;
+//   display: disabled;
+//   // transition: 2s linear all !important;
+// }
 
 // .logo {
 //   position: fixed;

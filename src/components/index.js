@@ -1,14 +1,30 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-import { StaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
-import { Theme } from "../Theme";
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import Theme from 'src/Theme';
+
+export const Container = styled.div`
+  width: 90%;
+  margin: 0 auto;
+`;
 
 const ImgDiv = styled.div`
   padding: 1rem;
   img {
     border-radius: 2rem;
   }
+`;
+
+export const StickyFooter = styled.footer`
+  background: ${Theme.colors.dark};
+  width: 100%;
+  padding: 5rem 0;
+  bottom: 0;
+  right: 0;
+  text-align: center;
+  margin-top: -3rem;
+  z-index: -1;
 `;
 
 export const Avitar = () => (
@@ -59,32 +75,36 @@ export class StickyLogo extends Component {
     super(props);
 
     this.state = {
-      show: true
+      show: true,
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll);
     this.setState({ scroll: window.scrollY });
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll);
   }
 
-  handleScroll(event) {
+  handleScroll() {
+    const { scroll } = this.state;
     this.setState({
-      show: this.state.scroll > window.scrollY,
-      scroll: window.scrollY
+      show: scroll > window.scrollY,
+      scroll: window.scrollY,
     });
   }
 
-  render = () => (
-    <Transition>
-      <Logo className={this.state.show ? "logo" : "logo hidden"}>glweems</Logo>
-    </Transition>
-  );
+  render = () => {
+    const { show } = this.state;
+    return (
+      <Transition>
+        <Logo className={show ? 'logo' : 'logo hidden'}>glweems</Logo>
+      </Transition>
+    );
+  };
 }
 
 export default { Avitar, StickyLogo };

@@ -1,22 +1,19 @@
-// import * as Sentry from '@sentry/browser';
-// import packageJson from './package.json';
-
-console.log('packageJson.version');
-// Sentry.init({});
-
-// const RELEASE = '0.1.0';
-
-// if (process.env.NODE_ENV === 'production') {
-//   Sentry.init({
-//     dsn: 'https://0c4da3a90ae54fb286dc83cd6daff483@sentry.io/1408965',
-//     release: RELEASE,
-//   });
-// }
 const path = require('path');
+require('dotenv').config();
+const Sentry = require('@sentry/browser');
+const packageJson = require('./package.json');
+
+Sentry.init({});
+if (process.env.NODE_ENV === 'production') {
+  Sentry.init({
+    dsn: process.env.SENTRY_TOKEN,
+    release: packageJson.version,
+  });
+}
 
 module.exports = {
   siteMetadata: {
-    title: 'Designer / Developerr',
+    title: 'Developer',
     description:
       'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
     author: '@glweems',
@@ -26,32 +23,44 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        '@': path.join(__dirname, 'src'),
-        pages: path.join(__dirname, 'src/pages'),
-      },
-    },
-    'gatsby-plugin-sharp',
-    {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'GitHub',
         fieldName: 'github',
+        // Url to query from
         url: 'https://api.github.com/graphql',
         // HTTP headers
         headers: {
+          // Learn about environment variables: https://gatsby.dev/env-vars
           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
         },
         // Additional options to pass to node-fetch
         fetchOptions: {},
       },
     },
-    // ! SENTRY
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src/'),
+        '@': path.join(__dirname, 'src/components/'),
+        pages: path.join(__dirname, 'src/pages/'),
+        scss: path.join(__dirname, 'src/scss/'),
+      },
+    },
+    'gatsby-plugin-sharp',
+    {
+      resolve: 'gatsby-plugin-root-import',
+      options: {
+        src: path.join(__dirname, 'src/'),
+        '@': path.join(__dirname, 'src/components/'),
+        pages: path.join(__dirname, 'src/pages/'),
+        scss: path.join(__dirname, 'src/scss/'),
+      },
+    },
     {
       resolve: 'gatsby-plugin-sentry',
       options: {
-        dsn: 'https://0c4da3a90ae54fb286dc83cd6daff483@sentry.io/1408965',
+        dsn: process.env.SENTRY_TOKEN,
         environment: process.env.NODE_ENV,
         enabled: (() =>
           ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
