@@ -25,7 +25,7 @@ class Navigation extends Component {
     return (
       <div>
         <Navbar toggle={this.handleClick} />
-        <Sidebar open={this.state.isToggleOn} />
+        <Sidebar open={isToggleOn} />
       </div>
     );
   }

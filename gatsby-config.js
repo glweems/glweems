@@ -1,15 +1,15 @@
 const path = require('path');
 require('dotenv').config();
-const Sentry = require('@sentry/browser');
-const packageJson = require('./package.json');
+// const Sentry = require('@sentry/browser');
+// const packageJson = require('./package.json');
 
-Sentry.init({});
-if (process.env.NODE_ENV === 'production') {
-  Sentry.init({
-    dsn: process.env.SENTRY_TOKEN,
-    release: packageJson.version,
-  });
-}
+// Sentry.init({});
+// if (process.env.NODE_ENV === 'production') {
+//   Sentry.init({
+//     dsn: process.env.SENTRY_TOKEN,
+//     release: packageJson.version,
+//   });
+// }
 
 module.exports = {
   siteMetadata: {
@@ -55,15 +55,6 @@ module.exports = {
         '@': path.join(__dirname, 'src/components/'),
         pages: path.join(__dirname, 'src/pages/'),
         scss: path.join(__dirname, 'src/scss/'),
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-sentry',
-      options: {
-        dsn: process.env.SENTRY_TOKEN,
-        environment: process.env.NODE_ENV,
-        enabled: (() =>
-          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     {
