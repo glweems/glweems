@@ -1,8 +1,7 @@
 {
   "name": "glweems",
-  "private": true,
   "description": "Personal Portfolio Website",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Garrett Weems <gwgraphicdesign@gmail.com>",
   "dependencies": {
     "@sentry/browser": "^4.6.4",
@@ -19,6 +18,7 @@
     "gatsby-source-filesystem": "^2.0.23",
     "gatsby-source-graphql": "^2.0.14",
     "gatsby-transformer-sharp": "^2.1.15",
+    "graphql": "^14.1.1",
     "node-sass": "^4.11.0",
     "normalize.scss": "^0.1.0",
     "prop-types": "^15.7.2",
@@ -41,6 +41,7 @@
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.5.0",
+    "gatsby-cli": "^2.4.15",
     "gatsby-plugin-eslint": "^2.0.4",
     "gatsby-plugin-root-import": "^2.0.5",
     "prettier": "^1.16.4"
@@ -63,7 +64,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/glweems/glweems"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"

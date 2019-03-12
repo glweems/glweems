@@ -5,28 +5,27 @@ import { Link } from 'gatsby';
 import Theme from 'src/Theme';
 
 const StyledSidebar = styled.div`
-  height: 30%;
+  height: 100vh;
   max-height: 100vh;
   width: 100%;
   margin: 0 auto;
   position: fixed;
-  top: 100%;
+  top: 0;
   left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   background: ${Theme.colors.bg};
   z-index: 900;
-  /* transform: translate(0, -100%); */
 `;
 
 const Transition = styled.div`
   .active {
-    transition: 500ms all ease-in-out;
-    /* transform: unset; */
+    transition: 250ms all ease-in-out;
   }
   .hidden {
-    transition: 500ms all ease-in-out;
+    transition: 250ms transform ease-in-out;
+    transform: translate(0, -100%);
   }
 `;
 
@@ -55,7 +54,7 @@ export default function Sidebar(props) {
   const { open } = props;
   return (
     <Transition>
-      <StyledSidebar className={open ? 'sidebar ' : 'sidebar '}>
+      <StyledSidebar className={open ? 'sidebar active' : 'sidebar hidden'}>
         <NavLinks>
           <NavItem>
             <Link to="/">Home</Link>

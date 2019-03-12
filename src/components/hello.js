@@ -27,6 +27,10 @@ const Transition = styled.div`
   * {
     transition: 0.25s all ease-in-out;
   }
+  .not-ready {
+    height: 0px;
+    transform: translate(0, -100%);
+  }
 `;
 
 const Msg = styled.h1`
@@ -38,6 +42,14 @@ const Msg = styled.h1`
   text-align: center;
   top: 30%;
   left: 50%;
+`;
+
+const Loading = styled.div`
+  background: ${Theme.colors.dark};
+  height: 100vh;
+  position: relative;
+  top: 0;
+  left: 0;
 `;
 
 export default class Hello extends Component {
@@ -53,12 +65,17 @@ export default class Hello extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-    this.setState({
-      // scroll: window.scrollY,
-      transitionStartDown: window.innerWidth / 9,
-      transitionStartUp: window.innerWidth - window.innerWidth / 4,
-    });
+    this.setState({ ready: false });
+    setTimeout(() => {
+      window.addEventListener('scroll', this.handleScroll);
+      this.setState({
+        // scroll: window.scrollY,
+        ready: !this.state.ready,
+        transitionStartDown: window.innerWidth / 9,
+        transitionStartUp: window.innerWidth - window.innerWidth / 4,
+      });
+      console.log('ready');
+    }, 500);
   }
 
   componentWillUnmount() {
@@ -89,10 +106,11 @@ export default class Hello extends Component {
   }
 
   render() {
-    const { splitDisplay } = this.state;
+    const { splitDisplay, ready } = this.state;
     return (
       <Div>
         <Transition>
+          <Loading className={ready ? 'not-ready' : 'ready'} />
           <Split>
             <div className={`${splitDisplay}`}>
               <Msg>

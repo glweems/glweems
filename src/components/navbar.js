@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Theme from 'src/Theme';
 
@@ -12,13 +13,23 @@ const Button = styled.button`
   background: ${Theme.colors.dark};
 `;
 
+const Transition = styled.div`
+  * {
+    transition: 300ms all ease-in-out;
+  }
+  .hidden {
+    transition: 300ms all ease-in-out;
+    transform: translate(0, -100%);
+  }
+`;
+
 const StyledNavbar = styled.div`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   margin: 0 auto;
-  padding: 0.25rem 0;
+  padding: 0.5rem 0;
   z-index: 1000;
   display: flex;
   flex-direction: row;
@@ -42,6 +53,10 @@ const Brand = styled.div`
 `;
 
 export default class Navbar extends Component {
+  static propTypes = {
+    toggle: PropTypes.any.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -71,14 +86,14 @@ export default class Navbar extends Component {
     const { show } = this.state;
     const { toggle } = this.props;
     return (
-      <div>
+      <Transition>
         <StyledNavbar className={show ? 'navbar' : 'navbar hidden'}>
           <Brand className="brand">
             <a href="/">glweems</a>
           </Brand>
           <Button onClick={toggle} />
         </StyledNavbar>
-      </div>
+      </Transition>
     );
   };
 }

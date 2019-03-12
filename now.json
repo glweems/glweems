@@ -2,7 +2,9 @@
   "version": 2,
   "name": "glweems",
   "public": true,
-  "alias": ["glweems.now.sh"],
+  "alias": [
+    "glweems.now.sh"
+  ],
   "builds": [
     {
       "src": "package.json",
@@ -11,5 +13,10 @@
         "distDir": "public"
       }
     }
-  ]
+  ],
+  "env": {
+    "SENTRY_TOKEN": "@sentry_token",
+    "BEHANCE_TOKEN": "@behance_token",
+    "GITHUB_TOKEN": "@github_token"
+  }
 }
