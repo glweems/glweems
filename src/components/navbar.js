@@ -61,6 +61,7 @@ export default class Navbar extends Component {
     super(props);
     this.state = {
       show: true,
+      scrollPos: 0,
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -75,10 +76,10 @@ export default class Navbar extends Component {
   }
 
   handleScroll() {
-    const { scroll } = this.state;
+    const { scrollPos } = this.state;
     this.setState({
-      show: scroll > window.scrollY,
-      scroll: window.scrollY,
+      scrollPos: document.body.getBoundingClientRect().top,
+      show: document.body.getBoundingClientRect().top > scrollPos,
     });
   }
 

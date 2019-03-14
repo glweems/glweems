@@ -15,31 +15,14 @@ const Designs = ({ data }) => (
   </>
 );
 
-export default ({ data }) => (
+export const Portfolio = ({ data }) => (
   <Layout>
     <SEO title="Portfolio" keywords={[`graphic`, `design`, `illustration`]} />
     <Designs data={data} />
   </Layout>
 );
 
-// export default class Portfolio extends Component {
-//   constructor(props) {
-//     super(data);
-//     this.data = data;
-//   }
-
-//   render() {
-//     return (
-//       <Layout>
-//         <SEO
-//           title="Portfolio"
-//           keywords={[`graphic`, `design`, `illustration`]}
-//         />
-//         <Designs data={data} />
-//       </Layout>
-//     );
-//   }
-// }
+export default Portfolio;
 
 export const query = graphql`
   query PortfolioQuery {
@@ -93,7 +76,7 @@ const designs = [
     title: 'Organic VS Geometric',
     link: 'https://www.behance.net/gallery/50768561/Organic-VS-Geometric',
     src: 'OrganicVsGeometric',
-    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.',
+    desc: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit.'
   },
   {
     title: 'Company Artwork',

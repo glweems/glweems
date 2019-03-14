@@ -63,7 +63,7 @@ export default function Sidebar(props) {
             <Link to="/portfolio/">designs</Link>
           </NavItem>
           <NavItem>
-            <Link to="/">contact</Link>
+            <Link to="/graphicdesign/">Graphic Design</Link>
           </NavItem>
         </NavLinks>
       </StyledSidebar>

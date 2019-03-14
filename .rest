@@ -1,14 +1,11 @@
-@github = https://api.github.com
+@behance = http://behance.net/v2/
+@behance_api = ?api_key=T6FV1NZy5WqTYRiLbdjY1TEvwV7GwtAq
+###
+GET {{behance}}users/glweems/collections
+    {{behance_api}}
+# Content-Type: application/json
 
 
 ###
-# GitHub User
-{{github}}/users/glweems
-
-
-###
-# Repos
-{{github}}/users/glweems/repos
-
-###
-# Pinned Repos
+GET http://behance.net/v2/users/glweems
+    ?api_key=T6FV1NZy5WqTYRiLbdjY1TEvwV7GwtAq
