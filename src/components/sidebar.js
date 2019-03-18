@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
@@ -29,7 +29,7 @@ const Transition = styled.div`
   }
 `;
 
-const NavLinks = styled.nav`
+const Nav = styled.nav`
   width: 90%;
   margin: 0 auto;
   display: flex;
@@ -50,26 +50,28 @@ const NavItem = styled.span`
   text-decoration: none;
 `;
 
-export default function Sidebar(props) {
-  const { open } = props;
-  return (
-    <Transition>
-      <StyledSidebar className={open ? 'sidebar active' : 'sidebar hidden'}>
-        <NavLinks>
-          <NavItem>
-            <Link to="/">Home</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/portfolio/">designs</Link>
-          </NavItem>
-          <NavItem>
-            <Link to="/graphicdesign/">Graphic Design</Link>
-          </NavItem>
-        </NavLinks>
-      </StyledSidebar>
-    </Transition>
-  );
+export default class Sidebar extends Component {
+  render() {
+    const { open, links } = this.props;
+
+    const NavLinks = links.map(({ name, to }) => (
+      <NavItem key={name}>
+        <Link to={to}>{name}</Link>
+      </NavItem>
+    ));
+    return (
+      <Transition>
+        <StyledSidebar className={open ? 'sidebar active' : 'sidebar hidden'}>
+          <Nav>{NavLinks}</Nav>
+        </StyledSidebar>
+      </Transition>
+    );
+  }
 }
 Sidebar.propTypes = {
   open: PropTypes.bool,
+  links: PropTypes.shape({
+    name: PropTypes.string,
+    to: PropTypes.string,
+  }),
 };

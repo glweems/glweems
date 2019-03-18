@@ -27,7 +27,22 @@ export const designs = [
   },
 ];
 
-export default { designs };
+export const sidebarLinks = [
+  {
+    name: 'Home',
+    to: '/',
+  },
+  {
+    name: 'Graphic Design',
+    to: 'graphicdesign/',
+  },
+  {
+    name: 'About',
+    to: '/',
+  },
+];
+
+export default { designs, sidebarLinks };
 // {
 //   title: "",
 //   link: "",

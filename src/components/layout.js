@@ -6,6 +6,7 @@ import Theme from 'src/Theme';
 import Navigation from '@/navigation';
 import 'scss/index.scss';
 import { Error } from '@/error';
+import { sidebarLinks } from 'src/Data';
 
 const Main = styled.main`
   padding-top: 2rem;
@@ -27,7 +28,7 @@ const Layout = ({ children }) => (
     `}
     render={() => (
       <Error>
-        <Navigation />
+        <Navigation links={sidebarLinks} />
         <Main>{children}</Main>
         {/* <StickyFooter>© {new Date().getFullYear()}, Built with</StickyFooter> */}
       </Error>
