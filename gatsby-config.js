@@ -1,16 +1,6 @@
 /* eslint-disable prettier/prettier */
 require('dotenv').config();
 const path = require('path');
-const Sentry = require('@sentry/browser');
-const packageJson = require('./package.json');
-
-Sentry.init({});
-if (process.env.NODE_ENV === 'production') {
-  Sentry.init({
-    dsn: process.env.SENTRY_TOKEN,
-    release: packageJson.version,
-  });
-}
 
 module.exports = {
   siteMetadata: {
