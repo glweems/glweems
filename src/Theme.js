@@ -28,6 +28,8 @@ for (const key in ScreenSizes) {
       `@media screen and (min-width: ${ScreenSizes[key]}) { ${styles} }`;
 }
 
+// const Container = () => Object.keys(ScreenSizes).map(key => {});
+
 export const Container = styled.div`
 width: 100%;
 margin: 0 auto;

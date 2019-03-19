@@ -5,7 +5,9 @@
     ],
     "rules": {
         "import/no-unresolved": false,
-        "no-nested-ternary": 0
+        "no-nested-ternary": 0,
+        "camelcase": 0,
+        "undefined": 0
     },
     "settings": {
         "react": {

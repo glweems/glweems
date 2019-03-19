@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import Theme from 'src/Theme';
-import Navigation from '@/navigation';
+import Navigation from '@/navigation/index';
 import 'scss/index.scss';
 import { Error } from '@/error';
 import { sidebarLinks } from 'src/Data';

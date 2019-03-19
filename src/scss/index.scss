@@ -23,21 +23,17 @@ a {
     color: white;
   }
 }
-// .hidden {
-//   opacity: 0;
-//   display: disabled;
-//   // transition: 2s linear all !important;
-// }
 
-// .logo {
-//   position: fixed;
-//   top: 0;
-//   left: 2rem;
-//   padding: 0.5rem 0.7rem 0.7rem 0.7rem;
-//   font-weight: bolder;
-//   font-style: italic;
-//   // color: ${Theme.colors.bg};
-//   // background: ${Theme.colors.dark};
-//   z-index: 2000;
-//   transition: 2s linear all;
-// }
+
+.projects-grid {
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  justify-items: center;
+  gap: 1rem;
+  margin: 0 auto;
+}
+
+
+

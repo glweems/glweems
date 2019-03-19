@@ -9,7 +9,7 @@ const Div = styled.div`
 `;
 
 const Split = styled.div`
-  height: 100vh;
+  height: 50rem;
   display: flex;
   transition: 100ms all ease-in-out;
   div:first-child {
