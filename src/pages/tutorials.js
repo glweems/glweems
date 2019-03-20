@@ -1,13 +1,48 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Link, graphql } from 'gatsby';
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import { Container } from '../Theme';
 import Layout from '@/layout';
 import SEO from '@/seo';
-import Theme, { MQ, Container } from '../Theme';
 
-export default class TutorialsPage extends Component {
-  render() {
-    return <p>hi</p>;
-  }
+export default function TutorialsPage({
+  data: {
+    allMarkdownRemark: { edges },
+  },
+}) {
+  const myPosts = edges.map(edge => edge.node.frontmatter);
+
+  const Links = () =>
+    myPosts.map((post, index) => (
+      <Link key={index} to={post.path}>
+        {post.title}
+      </Link>
+    ));
+
+  return (
+    <Layout>
+      <SEO title="Tutorials" />
+      <Container>
+        <h1>Graphic Design Page</h1>
+        <Link to="/">Go back to the homepage</Link>
+        <Links />
+      </Container>
+    </Layout>
+  );
 }
+
+export const tutorialsQuery = graphql`
+  query {
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+            path
+            date
+          }
+        }
+      }
+    }
+  }
+`;

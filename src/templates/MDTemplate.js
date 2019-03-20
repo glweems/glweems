@@ -1,18 +1,23 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { Container } from '../Theme';
+import Layout from '@/layout';
+import SEO from '@/seo';
 
 export default function MDTempalte({ data }) {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   return (
-    <Container>
-      <div className="blog-post">
-        {/* <h1>{frontmatter.title}</h1> */}
-        {/* <h2>{frontmatter.date}</h2> */}
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </div>
-    </Container>
+    <Layout>
+      <SEO title={frontmatter.title} />
+      <Container>
+        <h1>Graphic Design Page</h1>
+        <Link to="/">Go back to the homepage</Link>
+        <div className="blog-post">
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </div>
+      </Container>
+    </Layout>
   );
 }
 

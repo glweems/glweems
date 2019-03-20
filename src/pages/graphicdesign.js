@@ -28,7 +28,6 @@ const StyledProject = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background: #bada55;
   align-content: flex-start;
   align-items: flex-start;
   img {
@@ -46,7 +45,7 @@ const Project = ({ name, description, covers: { size_808 } }) => (
       <img src={size_808} alt={name} />
     </div>
     <p>{name}</p>
-    <p>{description}</p>
+    {/* <p>{description}</p> */}
   </StyledProject>
 );
 
