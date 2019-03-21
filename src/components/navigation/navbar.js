@@ -1,8 +1,9 @@
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Theme from 'src/Theme';
+import Theme, { Container } from 'src/Theme';
 
 const Button = styled.button`
   color: ${Theme.colors.bg};
@@ -14,89 +15,93 @@ const Button = styled.button`
   background: ${Theme.colors.dark};
 `;
 
-const Transition = styled.div`
-  * {
-    transition: 300ms all ease-in-out;
-  }
-  .hidden {
-    transition: 300ms all ease-in-out;
-    transform: translate(0, -100%);
-  }
-`;
-
-const Navbar = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
+const FlexContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+`;
+
+const Navbar = styled.div`
+  z-index: 1000;
+  align-items: center;
   font-family: ${Theme.fontFamily.header};
   font-size: 1.25rem;
-  font-weight: 700;
   color: ${Theme.colors.bg};
   background: ${Theme.colors.dark};
   padding: ${Theme.padding};
-  div {
-    flex: 1 1 auto;
-  }
 `;
 
 const Brand = styled.div`
   * {
     color: white;
     text-transform: uppercase;
+    font-weight: 900;
+    font-style: italic;
+    text-decoration: none;
   }
 `;
 
-export default class extends Component {
+const NavItem = styled.a`
+  width: 100%;
+  font-size: 3rem;
+  font-weight: bolder;
+  * {
+    color: ${Theme.colors.light};
+    margin-bottom: 1rem;
+    :hover {
+      color: ${Theme.colors.red};
+      text-decoration: underline;
+    }
+  }
+  text-transform: uppercase;
+  text-decoration: none;
+`;
+
+const StyledDropdown = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-align: right;
+  z-index: 900;
+`;
+
+class Dropdown extends Component {
   static propTypes = {
-    toggle: PropTypes.any.isRequired,
+    open: PropTypes.bool,
+    links: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        to: PropTypes.string,
+      })
+    ),
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: true,
-      scrollPos: 0,
-    };
-    this.handleScroll = this.handleScroll.bind(this);
-  }
+  render() {
+    const { open, links } = this.props;
+    const NavLinks = links.map(({ name, to }) => (
+      <NavItem key={name}>
+        <Link to={to}>{name}</Link>
+      </NavItem>
+    ));
 
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
+    return open ? <StyledDropdown>{NavLinks}</StyledDropdown> : <></>;
   }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
-  }
-
-  handleScroll() {
-    const { scrollPos } = this.state;
-    // eslint-disable-next-line no-unused-expressions
-    window.scrollY > 10
-      ? this.setState({
-          scrollPos: document.body.getBoundingClientRect().top,
-          show: document.body.getBoundingClientRect().top > scrollPos,
-        })
-      : this.setState({ show: true });
-  }
-
-  render = () => {
-    const { show } = this.state;
-    const { toggle } = this.props;
-    return (
-      <Transition>
-        <Navbar className={show ? 'navbar' : 'navbar hidden'}>
-          <Brand className="brand">
-            <Link to="/">glweems</Link>
-          </Brand>
-          <Button onClick={toggle} />
-        </Navbar>
-      </Transition>
-    );
-  };
 }
+
+export default props => (
+  <Navbar>
+    <Container>
+      <FlexContainer>
+        <Brand className="brand">
+          <Link to="/">glweems.com</Link>
+        </Brand>
+        <Button onClick={props.toggle} />
+      </FlexContainer>
+      <Dropdown links={props.links} open={props.open} />
+    </Container>
+  </Navbar>
+);

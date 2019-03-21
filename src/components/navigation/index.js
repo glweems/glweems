@@ -29,8 +29,9 @@ export default class extends Component {
     const { links } = this.props;
     return (
       <Container>
-        <Navbar toggle={this.handleClick} />
-        <Sidebar links={links} open={isToggleOn} />
+        <Navbar toggle={this.handleClick} links={links} open={isToggleOn}>
+          <Sidebar links={links} open={isToggleOn} />
+        </Navbar>
       </Container>
     );
   }

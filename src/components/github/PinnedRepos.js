@@ -1,7 +1,6 @@
 import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
-import '~/@primer/css/core/index.scss';
 import Repository from './Repository';
 
 const RepoGrid = styled.div`

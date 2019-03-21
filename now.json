@@ -15,8 +15,8 @@
     }
   ],
   "env": {
-    "SENTRY_TOKEN": "@sentry_token",
-    "BEHANCE_TOKEN": "@behance_token",
-    "GITHUB_TOKEN": "@github_token"
+    "SENTRY_TOKEN": "@sentry-token",
+    "BEHANCE_TOKEN": "@behance-token",
+    "GITHUB_TOKEN": "@github-token"
   }
 }

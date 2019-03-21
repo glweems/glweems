@@ -5,13 +5,6 @@ import { Link } from 'gatsby';
 import Theme from 'src/Theme';
 
 const StyledSidebar = styled.div`
-  height: 100vh;
-  max-height: 100vh;
-  width: 100%;
-  margin: 0 auto;
-  position: fixed;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,10 +15,12 @@ const StyledSidebar = styled.div`
 const Transition = styled.div`
   .active {
     transition: 250ms all ease-in-out;
+    /* transform: translate(0, -110%); */
   }
   .hidden {
     transition: 250ms transform ease-in-out;
-    transform: translate(0, -100%);
+    transform: translate(0, -200%);
+    /* visibility: hidden; */
   }
 `;
 
@@ -50,7 +45,7 @@ const NavItem = styled.span`
   text-decoration: none;
 `;
 
-export default class Sidebar extends Component {
+export default class extends Component {
   static propTypes = {
     open: PropTypes.bool,
     links: PropTypes.arrayOf(

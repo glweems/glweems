@@ -44,13 +44,13 @@ const Msg = styled.h1`
   left: 50%;
 `;
 
-const Loading = styled.div`
-  background: ${Theme.colors.dark};
-  height: 100vh;
-  position: relative;
-  top: 0;
-  left: 0;
-`;
+// const Loading = styled.div`
+//   background: ${Theme.colors.dark};
+//   height: 100vh;
+//   position: relative;
+//   top: 0;
+//   left: 0;
+// `;
 
 export default class Hello extends Component {
   constructor(props) {
@@ -69,7 +69,7 @@ export default class Hello extends Component {
     setTimeout(() => {
       window.addEventListener('scroll', this.handleScroll);
       this.setState({
-        // scroll: window.scrollY,
+        scroll: window.scrollY,
         ready: !this.state.ready,
         transitionStartDown: window.innerWidth / 9,
         transitionStartUp: window.innerWidth - window.innerWidth / 4,
@@ -110,7 +110,7 @@ export default class Hello extends Component {
     return (
       <Div>
         <Transition>
-          <Loading className={ready ? 'not-ready' : 'ready'} />
+          {/* <Loading className={ready ? 'not-ready' : 'ready'} /> */}
           <Split>
             <div className={`${splitDisplay}`}>
               <Msg>

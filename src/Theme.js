@@ -29,7 +29,8 @@ export const ThemeProvider = styled.div`
   h5,
   h6 {
     font-family: 'Source Sans Pro';
-    font-weight: bold;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -50,10 +51,9 @@ for (const key in ScreenSizes) {
       `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`;
 }
 
-// const maxWidth = width => `max-width: ${width - width / 10}px;`;
-
 export const Container = styled.div`
-  width: 100%;
+  max-width: 100%;
+  overflow: scroll;
   margin: 0 auto;
   padding: ${Theme.padding};
   ${MQ.laptopL(`max-width: 1140px`)}

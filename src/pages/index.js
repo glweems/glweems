@@ -10,8 +10,8 @@ export default () => (
       title="Home"
       keywords={[`glweems`, `garrett`, `weems`, `portfolio`, `developer`]}
     />
-    <Hello />
     <Container>
+      {/* <Hello /> */}
       <About />
       <PinnedRepos />
     </Container>

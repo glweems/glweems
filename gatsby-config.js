@@ -1,19 +1,19 @@
-/* eslint-disable prettier/prettier */
-require('dotenv').config();
 const path = require('path');
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` });
 
 module.exports = {
   siteMetadata: {
     title: 'Glweems',
     description:
       'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@glweems'
+    author: '@glweems',
   },
   plugins: [
-    'gatsby-plugin-sass',
-    'gatsby-plugin-react-helmet',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+    `gatsby-plugin-sass`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -23,12 +23,17 @@ module.exports = {
         background_color: '#bada55',
         theme_color: '#bada55',
         display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png'
-      }
+        icon: 'src/images/gatsby-icon.png',
+      },
     },
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: { fonts: [`roboto`, `source sans pro`] }
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          { family: `Roboto` },
+          { family: `Source Sans Pro`, variants: [`400`, `700`, `700i`] },
+        ],
+      },
     },
     {
       resolve: 'gatsby-plugin-root-import',
@@ -39,15 +44,15 @@ module.exports = {
         pages: path.join(__dirname, 'src/pages/'),
         scss: path.join(__dirname, 'src/scss/'),
         'my-components': path.join(__dirname, 'src/components/index.js'),
-      }
+      },
     },
     {
       resolve: 'gatsby-source-filesystem',
-      options: { name: 'image', path: `./src/images` }
+      options: { name: 'image', path: `./src/images` },
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' }
+      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' },
     },
     `gatsby-transformer-remark`,
     {
@@ -56,12 +61,12 @@ module.exports = {
         typeName: 'GitHub',
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
-        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
-      }
+        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
+      },
     },
     {
       resolve: `gatsby-source-behance`,
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN }
-    }
-  ]
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
+    },
+  ],
 };
