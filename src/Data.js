@@ -1,7 +1,7 @@
 export const sidebarLinks = [
   { name: 'About', to: '/' },
   { name: 'Tutorials', to: '/tutorials' },
-  { name: 'Design', to: 'graphicdesign/' },
+  { name: 'Design', to: 'design/' },
   { name: 'Home', to: '/' },
 ];
 

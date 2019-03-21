@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { graphql, Link } from 'gatsby';
-import { Container } from '../Theme';
+// import Container from '@/container';
 import Layout from '@/layout';
 import SEO from '@/seo';
 
@@ -21,11 +22,9 @@ export default function TutorialsPage({
   return (
     <Layout>
       <SEO title="Tutorials" />
-      <Container>
-        <h1>Graphic Design Page</h1>
-        <Link to="/">Go back to the homepage</Link>
+      <div>
         <Links />
-      </Container>
+      </div>
     </Layout>
   );
 }
@@ -46,3 +45,6 @@ export const tutorialsQuery = graphql`
     }
   }
 `;
+TutorialsPage.propTypes = {
+  data: PropTypes.object,
+};

@@ -11,6 +11,7 @@
     "dotenv": "^6.2.0",
     "gatsby": "^2.1.39",
     "gatsby-image": "^2.0.34",
+    "gatsby-plugin-google-fonts": "0.0.4",
     "gatsby-plugin-manifest": "^2.0.24",
     "gatsby-plugin-offline": "^2.0.25",
     "gatsby-plugin-react-helmet": "^3.0.10",
@@ -37,6 +38,7 @@
     "react-dom": "^16.8.4",
     "react-helmet": "^5.2.0",
     "react-router-dom": "^4.4.0",
+    "reactstrap": "^7.1.0",
     "rimraf": "^2.6.3",
     "styled-components": "^4.1.3"
   },

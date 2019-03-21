@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
   siteMetadata: {
-    title: 'Developer',
+    title: 'Glweems',
     description:
       'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
     author: '@glweems'
@@ -27,27 +27,27 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: { fonts: [`roboto`, `source sans pro`] }
+    },
+    {
       resolve: 'gatsby-plugin-root-import',
       options: {
+        '~': path.join(__dirname, './node_modules/'),
         src: path.join(__dirname, 'src/'),
         '@': path.join(__dirname, 'src/components/'),
         pages: path.join(__dirname, 'src/pages/'),
-        scss: path.join(__dirname, 'src/scss/')
+        scss: path.join(__dirname, 'src/scss/'),
+        'my-components': path.join(__dirname, 'src/components/index.js'),
       }
     },
     {
       resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'image',
-        path: `./src/images`
-      }
+      options: { name: 'image', path: `./src/images` }
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/md`,
-        name: 'markdown-pages',
-      },
+      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' }
     },
     `gatsby-transformer-remark`,
     {
@@ -56,24 +56,12 @@ module.exports = {
         typeName: 'GitHub',
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
-        headers: {
-          Authorization: `bearer ${process.env.GITHUB_TOKEN}`
-        },
+        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
       }
     },
     {
       resolve: `gatsby-source-behance`,
-      options: {
-        username: 'glweems',
-        apiKey: process.env.BEHANCE_TOKEN
-      }
-    },
-    {
-      resolve: `gatsby-plugin-remote-images`,
-      options: {
-        nodeType: 'BehanceProjects',
-        imagePath: 'node.covers.size_808',
-      },
-    },
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN }
+    }
   ]
 };

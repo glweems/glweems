@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Theme from 'src/Theme';
@@ -23,36 +24,35 @@ const Transition = styled.div`
   }
 `;
 
-const StyledNavbar = styled.div`
-  position: fixed;
+const Navbar = styled.div`
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  margin: 0 auto;
-  padding: 0.5rem 0;
   z-index: 1000;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-content: center;
-  font-weight: bolder;
-  font-style: italic;
+  align-items: center;
+  font-family: ${Theme.fontFamily.header};
+  font-size: 1.25rem;
+  font-weight: 700;
   color: ${Theme.colors.bg};
   background: ${Theme.colors.dark};
-  *:first-child {
-    margin-left: 1rem;
-  }
-  *:last-child {
-    margin-right: 1rem;
+  padding: ${Theme.padding};
+  div {
+    flex: 1 1 auto;
   }
 `;
 
 const Brand = styled.div`
-  color: white;
-  text-transform: uppercase;
+  * {
+    color: white;
+    text-transform: uppercase;
+  }
 `;
 
-export default class Navbar extends Component {
+export default class extends Component {
   static propTypes = {
     toggle: PropTypes.any.isRequired,
   };
@@ -90,12 +90,12 @@ export default class Navbar extends Component {
     const { toggle } = this.props;
     return (
       <Transition>
-        <StyledNavbar className={show ? 'navbar' : 'navbar hidden'}>
+        <Navbar className={show ? 'navbar' : 'navbar hidden'}>
           <Brand className="brand">
-            <a href="/">glweems</a>
+            <Link to="/">glweems</Link>
           </Brand>
           <Button onClick={toggle} />
-        </StyledNavbar>
+        </Navbar>
       </Transition>
     );
   };

@@ -7,6 +7,12 @@
       "@/*": [
         "src/components/*"
       ],
+      "~": [
+        "./node_modules/*"
+      ],
+      "my-components": [
+        "src/components/index.js"
+      ],
       "src/*": [
         "src/*"
       ],

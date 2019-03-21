@@ -1,18 +1,17 @@
-import React from 'react';
+import Navigation from '@/navigation';
+import { Container } from 'reactstrap';
+import { graphql, StaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
-import Theme from 'src/Theme';
-import Navigation from '@/navigation/index';
-import 'scss/index.scss';
-import { Error } from '@/error';
+import React from 'react';
 import { sidebarLinks } from 'src/Data';
+import Theme, { ThemeProvider } from 'src/Theme';
+import styled from 'styled-components';
 
 const Main = styled.main`
-  padding-top: 2rem;
+  margin-top: 5rem;
   width: 100%;
   overflow: hidden;
-  background: ${Theme.colors.bg};
+  background: ${Theme.colors.light};
 `;
 
 const Layout = ({ children }) => (
@@ -27,11 +26,12 @@ const Layout = ({ children }) => (
       }
     `}
     render={() => (
-      <Error>
-        <Navigation links={sidebarLinks} />
-        <Main>{children}</Main>
-        {/* <StickyFooter>© {new Date().getFullYear()}, Built with</StickyFooter> */}
-      </Error>
+      <ThemeProvider>
+        <Container fluid>
+          <Navigation links={sidebarLinks} />
+          <Main>{children}</Main>
+        </Container>
+      </ThemeProvider>
     )}
   />
 );

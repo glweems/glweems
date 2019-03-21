@@ -1,17 +1,19 @@
-import React from 'react';
-import Layout from '@/layout';
-import SEO from '@/seo';
-import Hello from '@/hello';
 import About from '@/about';
-import Repos from '@/repos';
+import { Hello, Layout, SEO } from 'my-components';
+import PinnedRepos from '@/github';
+import { Container } from 'reactstrap';
+import React from 'react';
 
-const IndexPage = () => (
+export default () => (
   <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO
+      title="Home"
+      keywords={[`glweems`, `garrett`, `weems`, `portfolio`, `developer`]}
+    />
     <Hello />
-    <About />
-    <Repos />
+    <Container>
+      <About />
+      <PinnedRepos />
+    </Container>
   </Layout>
 );
-
-export default IndexPage;

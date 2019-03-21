@@ -1,12 +1,11 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import styled from 'styled-components';
-// import Theme from 'src/Theme';
+import { Container } from 'reactstrap';
 import Navbar from '@/navigation/navbar';
 import Sidebar from '@/navigation/sidebar';
 
-class Navigation extends Component {
+export default class extends Component {
   static propTypes = {
     links: PropTypes.array,
   };
@@ -29,11 +28,10 @@ class Navigation extends Component {
     const { isToggleOn } = this.state;
     const { links } = this.props;
     return (
-      <div>
+      <Container>
         <Navbar toggle={this.handleClick} />
         <Sidebar links={links} open={isToggleOn} />
-      </div>
+      </Container>
     );
   }
 }
-export default Navigation;
