@@ -1,9 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
-import React, { Component } from 'react';
 import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { Container } from 'src/Styled';
+import Theme from 'src/Theme';
 import styled from 'styled-components';
-import Theme, { Container } from 'src/Theme';
 
 const Button = styled.button`
   color: ${Theme.colors.bg};

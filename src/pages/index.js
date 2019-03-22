@@ -11,7 +11,7 @@ export default () => (
       keywords={[`glweems`, `garrett`, `weems`, `portfolio`, `developer`]}
     />
     <Container>
-      {/* <Hello /> */}
+      <Hello />
       <About />
       <PinnedRepos />
     </Container>

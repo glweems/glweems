@@ -3,15 +3,15 @@ import { graphql, StaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { sidebarLinks } from 'src/Data';
-import Theme, { ThemeProvider, Container } from 'src/Theme';
+import Theme, { ThemeProvider } from 'src/Theme';
+import { Container } from 'src/Styled';
 import styled from 'styled-components';
-import 'reset-css';
-// import 'normalize-css';
+import 'normalize-css';
 
 const Main = styled.main`
   max-width: 100%;
   overflow: hidden;
-  background: ${Theme.colors.light};
+  background: white;
 `;
 
 const Layout = ({ children }) => (
@@ -28,9 +28,9 @@ const Layout = ({ children }) => (
     render={() => (
       <ThemeProvider>
         <Navigation links={sidebarLinks} />
-        <Container>
-          <Main>{children}</Main>
-        </Container>
+        {/* <Container> */}
+        <Main>{children}</Main>
+        {/* </Container> */}
       </ThemeProvider>
     )}
   />

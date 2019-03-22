@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { graphql, Link } from 'gatsby';
-// import Container from '@/container';
 import Layout from '@/layout';
 import SEO from '@/seo';
+import { graphql, Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Container } from 'src/Styled';
 
 export default function TutorialsPage({
   data: {
@@ -22,9 +22,9 @@ export default function TutorialsPage({
   return (
     <Layout>
       <SEO title="Tutorials" />
-      <div>
+      <Container>
         <Links />
-      </div>
+      </Container>
     </Layout>
   );
 }

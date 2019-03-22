@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import React from 'react';
 import Theme, { MQ } from 'src/Theme';
+import styled from 'styled-components';
 // *:nth-last-child(1):nth-child(odd) { grid-column: 1 /-1; }
 export const CardGrid = styled.div`
   max-width: 100%;
