@@ -6,7 +6,6 @@ import { sidebarLinks } from 'src/Data';
 import Theme, { ThemeProvider } from 'src/Theme';
 import { Container } from 'src/Styled';
 import styled from 'styled-components';
-import 'normalize-css';
 
 const Main = styled.main`
   max-width: 100%;

@@ -1,5 +1,5 @@
-const path = require('path');
-require('dotenv').config();
+const path = require('path')
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 module.exports = {
   siteMetadata: {
@@ -9,11 +9,34 @@ module.exports = {
     author: '@glweems',
   },
   plugins: [
-    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/md`,
+        name: 'markdown-pages',
+      },
+    },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -24,6 +47,12 @@ module.exports = {
         theme_color: '#bada55',
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png',
+      },
+    },
+    {
+      resolve: `gatsby-source-medium-posts`,
+      options: {
+        username: 'glweems',
       },
     },
     {
@@ -51,17 +80,14 @@ module.exports = {
       options: { name: 'image', path: `./src/images` },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' },
-    },
-    `gatsby-transformer-remark`,
-    {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'GitHub',
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
-        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
+        headers: {
+          Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
+        },
       },
     },
     {
@@ -69,4 +95,4 @@ module.exports = {
       options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
   ],
-};
+}

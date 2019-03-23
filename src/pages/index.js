@@ -1,7 +1,7 @@
 import About from '@/about';
 import { Hello, Layout, SEO } from 'my-components';
 import PinnedRepos from '@/github';
-import { Container } from 'reactstrap';
+import { Container } from 'src/Styled';
 import React from 'react';
 
 export default () => (

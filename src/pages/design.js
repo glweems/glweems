@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import { Link, graphql } from 'gatsby';
-import { PropTypes, styled, Layout, SEO } from 'my-components';
-import Card, { CardGrid } from '@/card';
-import { Container } from 'reactstrap';
+import React, { Component } from 'react'
+import { Link, graphql } from 'gatsby'
+import { PropTypes, Layout, SEO } from 'my-components'
+
+import Card, { CardGrid } from '@/card'
+import { Container } from 'src/Styled'
 
 const Project = ({ name, description, covers: { size_808 } }) => (
   <div>
@@ -13,30 +14,30 @@ const Project = ({ name, description, covers: { size_808 } }) => (
       <p>{name}</p>
     </div>
   </div>
-);
+)
 
 Project.propTypes = {
   name: PropTypes.string,
   description: PropTypes.string,
   covers: PropTypes.shape({ size_115: PropTypes.string }),
-};
+}
 
 export default class GraphicDesignPage extends Component {
   static propTypes = {
     data: PropTypes.shape({
       allBehanceProjects: PropTypes.shape({ edges: PropTypes.array }),
     }),
-  };
+  }
 
   render() {
     const {
       data: {
         allBehanceProjects: { edges },
       },
-    } = this.props;
+    } = this.props
 
-    const nodes = [...edges.map(edge => [...{ ...edge.node }])];
-    const projects = [...nodes.map(node => node[0])];
+    const nodes = [...edges.map(edge => [...{ ...edge.node }])]
+    const projects = [...nodes.map(node => node[0])]
 
     const Projects = () =>
       projects.map((project, index) => (
@@ -46,7 +47,7 @@ export default class GraphicDesignPage extends Component {
           title={project.name}
           img={project.covers.size_808}
         />
-      ));
+      ))
     return (
       <Layout>
         <SEO title="Graphic Design" />
@@ -58,7 +59,7 @@ export default class GraphicDesignPage extends Component {
           </CardGrid>
         </Container>
       </Layout>
-    );
+    )
   }
 }
 
@@ -88,4 +89,4 @@ export const GraphicDesignPageQuery = graphql`
       }
     }
   }
-`;
+`

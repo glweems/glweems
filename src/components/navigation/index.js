@@ -1,7 +1,7 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Container } from 'reactstrap';
+import { Container } from 'src/Styled';
 import Navbar from '@/navigation/navbar';
 import Sidebar from '@/navigation/sidebar';
 
