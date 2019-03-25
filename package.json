@@ -32,7 +32,6 @@
     "gatsby-transformer-remote-image": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.17",
     "graphql": "^14.1.1",
-    "i": "^0.3.6",
     "node-fetch": "^2.3.0",
     "npm": "^6.9.0",
     "primer": "^11.0.0",
@@ -87,25 +86,5 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
-  },
-  "parser": "babel-eslint",
-  "extends": [
-    "wesbos"
-  ],
-  "rules": {
-    "import/no-unresolved": false,
-    "no-nested-ternary": 0,
-    "camelcase": 0,
-    "undefined": 0,
-    "react/display-name": 0,
-    "no-unused-expressions": 0,
-    "react/jsx-no-undef": 0,
-    "no-undef": 0,
-    "react/no-danger": 0
-  },
-  "settings": {
-    "react": {
-      "version": "latest"
-    }
   }
 }
