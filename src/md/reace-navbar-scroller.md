@@ -4,9 +4,10 @@ date: "2019-03-19"
 github: "git@github.com:gwtuts/styled-container.git"
 title: "Simple navbar component using react, typescript, and styled-components."
 subtitle: "In this project we will create a simple little Navbar component that has a logo or brand name and features horizontal scrolling."
+img: "https://raw.githubusercontent.com/gwtuts/react-navbar-scroller/master/demo.gif"
 ---
 
-# Simple navbar component using react, typescript, and styled-components.
+# Simple navbar component using react, typescript, and styled-components
 
 In this project we will create a simple little Navbar component that has a logo or brand name and features horizontal scrolling.
 
@@ -17,27 +18,21 @@ In this project we will create a simple little Navbar component that has a logo 
 
 ---
 
-### Setup.
+## Setup
 
 The setup for a react app in `TypeScript` is almost the exact same if you’re already using ``create-react-app```cli for your react applications.
 
-```
-npx create-react-app NavbarScrollerDemo --typescript
-```
+`npx create-react-app NavbarScrollerDemo --typescript`
 
 If you don’t already have the create-react-app cli run this script first
 
-```
-npm install -g create-react-app
-```
+`npm install -g create-react-app`
 
-#### Optional
+### Optional
 
 Before you get up and running I would recommend you installing the TSLint prettier plugin to keep things nice and tidy.
 
-```
-npm install --save-dev tslint-config-prettier
-```
+`npm install --save-dev tslint-config-prettier`
 
 Then create a `tslint.json` file in your root directory and add the following.
 

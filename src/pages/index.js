@@ -1,8 +1,8 @@
-import About from '@/about';
-import { Hello, Layout, SEO } from 'my-components';
-import PinnedRepos from '@/github';
-import { Container } from 'src/Styled';
-import React from 'react';
+import About from '@/about'
+import { Hello, Layout, SEO } from 'my-components'
+import PinnedRepos from '@/github'
+import { Container } from 'src/Styled'
+import React from 'react'
 
 export default () => (
   <Layout>
@@ -16,4 +16,4 @@ export default () => (
       <PinnedRepos />
     </Container>
   </Layout>
-);
+)

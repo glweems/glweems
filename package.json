@@ -3,6 +3,20 @@
   "description": "Personal Portfolio Website",
   "version": "1.0.0",
   "author": "Garrett Weems <gwgraphicdesign@gmail.com>",
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "dependencies": {
     "@primer/css": "^12.2.1",
     "axios": "^0.18.0",

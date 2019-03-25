@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import { Layout, SEO } from 'my-components'
+import Layout from '@/layout'
+import SEO from '@/seo'
 import 'prism-themes/themes/prism-atom-dark.css'
 
 export default function Template({ data }) {

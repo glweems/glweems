@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 export default class About extends Component {
   render() {
@@ -12,6 +12,6 @@ export default class About extends Component {
           quis nemo vel eveniet illum, voluptatem alias impedit labore!
         </p>
       </div>
-    );
+    )
   }
 }
