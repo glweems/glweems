@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import { PropTypes, Layout, SEO } from 'my-components'
-
+import Layout from '@/layout'
+import SEO from '@/seo'
 import Card, { CardGrid } from '@/card'
 import { Container } from 'src/Styled'
 
-const Project = ({ name, description, covers: { size_808 } }) => (
+const Project = ({ name, covers: { size_808 } }) => (
   <div>
     <div>
       <div className="project-img">
@@ -18,7 +19,6 @@ const Project = ({ name, description, covers: { size_808 } }) => (
 
 Project.propTypes = {
   name: PropTypes.string,
-  description: PropTypes.string,
   covers: PropTypes.shape({ size_115: PropTypes.string }),
 }
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Theme = {
   headingFont: `IBM Plex Sans, sans-serif;`,
@@ -14,7 +14,7 @@ const Theme = {
     header: 'Source Sans Pro',
     body: 'Roboto',
   },
-};
+}
 
 // const headings = [h1, h2, h3, h4, h5, h6];
 
@@ -32,7 +32,7 @@ export const ThemeProvider = styled.div`
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
-`;
+`
 
 const ScreenSizes = {
   mobileS: 320,
@@ -42,13 +42,13 @@ const ScreenSizes = {
   laptop: 1140,
   laptopL: 1440,
   desktop: 2560,
-};
+}
 
-export const MQ = {};
+export const MQ = {}
 for (const key in ScreenSizes) {
   if (key)
     MQ[key] = styles =>
-      `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`;
+      `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`
 }
 
-export default Theme;
+export default Theme

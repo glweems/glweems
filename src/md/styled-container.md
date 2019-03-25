@@ -4,6 +4,7 @@ git:  "https://github.com/gwtuts/styled-container.git"
 date: "2019-03-19"
 title: "Responsive Container Component with React and Styled-Components."
 subtitle: "In this project we will create a responsive bootstrap-like component that we can reuse across that site with reactjs and styled-components."
+thumbnail: null
 ---
 
 # Responsive Container Component with React and Styled-Components

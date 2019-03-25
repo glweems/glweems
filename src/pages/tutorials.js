@@ -22,15 +22,21 @@ export default class BlogPosts extends Component {
       },
     } = this
 
-    const BlogPosts = () =>
+    const Posts = () =>
       edges.map((edge, index) => {
         const {
           node: {
-            frontmatter: { title, subtitle, path, html },
+            frontmatter: { title, subtitle, path, thumbnail },
           },
         } = edge
         return (
-          <Card key={index} title={title} subtitle={subtitle} link={path} />
+          <Card
+            key={index}
+            title={title}
+            subtitle={subtitle}
+            link={path}
+            img={thumbnail}
+          />
         )
       })
 
@@ -38,45 +44,12 @@ export default class BlogPosts extends Component {
       <Layout>
         <SEO title="posts" />
         <Container>
-          <BlogPosts />
+          <Posts />
         </Container>
       </Layout>
     )
   }
 }
-//   render() {
-//     const {
-//       data: {
-//         allBehanceProjects: { edges },
-//       },
-//     } = this.props;
-
-//     const nodes = [...edges.map(edge => [...{ ...edge.node }])];
-//     const projects = [...nodes.map(node => node[0])];
-
-//     const Projects = () =>
-//       projects.map((project, index) => (
-//         <Card
-//           key={index}
-//           body={project.description}
-//           title={project.name}
-//           img={project.covers.size_808}
-//         />
-//       ));
-//     return (
-//       <Layout>
-//         <SEO title="Graphic Design" />
-//         <Container fluid>
-//           <h1>Graphic Design Page</h1>
-//           <Link to="/">Go back to the homepage</Link>
-//           <CardGrid>
-//             <Projects />
-//           </CardGrid>
-//         </Container>
-//       </Layout>
-//     );
-//   }
-// }
 
 export const GraphicDesignPageQuery = graphql`
   query allBlogPosts {
@@ -91,6 +64,7 @@ export const GraphicDesignPageQuery = graphql`
             title
             subtitle
             git
+            thumbnail
           }
           html
           timeToRead
