@@ -1,15 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import '~/@primer/css/dist/box.css';
-import '~/@primer/css/dist/buttons.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 const Repo = styled.div`
   background-color: #fff;
   border: 1px solid #d1d5da;
   border-radius: 3px;
   box-sizing: border-box;
-`;
+`
 
 const Header = styled.div`
   align-items: center;
@@ -30,7 +28,7 @@ const Header = styled.div`
       text-decoration: none;
     }
   }
-`;
+`
 // const Body = styled.div`
 //   border-bottom: 1px solid #e1e4e8;
 //   border-bottom-left-radius: 2px;
@@ -41,7 +39,7 @@ const Header = styled.div`
 // `;
 
 export default function Repository(props) {
-  const { name, description, url, primaryLanguage, homepageUrl } = props;
+  const { name, description, url, primaryLanguage, homepageUrl } = props
   return (
     <Repo className="Box">
       <Header className="Box-header d-flex flex-items-center">
@@ -57,7 +55,7 @@ export default function Repository(props) {
         <p>{primaryLanguage.name}</p>
       </div>
     </Repo>
-  );
+  )
 }
 Repository.propTypes = {
   name: PropTypes.string,
@@ -67,4 +65,4 @@ Repository.propTypes = {
   primaryLanguage: PropTypes.shape({
     name: PropTypes.string,
   }),
-};
+}

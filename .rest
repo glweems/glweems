@@ -8,7 +8,7 @@ GET {{behance}}users/glweems/collections
 
 ###
 GET http://behance.net/v2/users/glweems
-    ?api_key=T6FV1NZy5WqTYRiLbdjY1TEvwV7GwtAq
+    ?api_key=qsMmV2RCpuwZjQFbnh8jPhUgikTjpRCn
 
 ###
 GET https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@glweems

@@ -13,35 +13,14 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-netlify`,
     {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          `gatsby-remark-unwrap-images`,
-          `gatsby-remark-picture`,
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
-            },
-          },
-        ],
-      },
-    },
-    {
-      resolve: `gatsby-source-behance`,
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
+      resolve: 'gatsby-source-behance',
+      options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/src/md`,
-        name: 'markdown-pages',
-      },
+      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' },
     },
     {
       resolve: 'gatsby-plugin-manifest',
@@ -67,12 +46,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
-        '~': path.join(__dirname, './node_modules/'),
         src: path.join(__dirname, 'src/'),
         '@': path.join(__dirname, 'src/components/'),
-        pages: path.join(__dirname, 'src/pages/'),
-        scss: path.join(__dirname, 'src/scss/'),
-        'my-components': path.join(__dirname, 'src/components/index.js'),
       },
     },
     {
@@ -85,9 +60,26 @@ module.exports = {
         typeName: 'GitHub',
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
-        headers: {
-          Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
-        },
+        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          `gatsby-remark-unwrap-images`,
+          `gatsby-remark-picture`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false,
+            },
+          },
+        ],
       },
     },
   ],

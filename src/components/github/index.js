@@ -1,3 +1,3 @@
-import PinnedRepos from './PinnedRepos';
+import PinnedRepos from './PinnedRepos'
 
-export default PinnedRepos;
+export default PinnedRepos

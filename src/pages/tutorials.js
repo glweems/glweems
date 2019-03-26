@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import { Layout, SEO } from 'my-components'
-
+import Layout from '@/layout'
+import SEO from '@/seo'
 import BlogPostPreview, { CardGrid } from '@/blog-post-preview'
 import { Container } from 'src/Styled'
 
