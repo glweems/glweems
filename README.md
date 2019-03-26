@@ -1,99 +1,54 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9c9aba4f-abf3-45f6-b160-3445a4a9db1f/deploy-status)](https://app.netlify.com/sites/glweems/deploys)
-
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
-  <a href="https://www.gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  <a href="https://glweems.com">
+    <img alt="Glweems" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJ%0D%0AQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8y%0D%0AMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4%0D%0AbWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMTAwMC4wMDAwMDBwdCIg%0D%0AaGVpZ2h0PSIxMDAwLjAwMDAwMHB0IiB2aWV3Qm94PSIwIDAgMTAwMC4wMDAwMDAgMTAwMC4wMDAw%0D%0AMDAiCiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJ4TWlkWU1pZCBtZWV0Ij4KPG1ldGFkYXRhPgpDcmVh%0D%0AdGVkIGJ5IHBvdHJhY2UgMS4xMSwgd3JpdHRlbiBieSBQZXRlciBTZWxpbmdlciAyMDAxLTIwMTMK%0D%0APC9tZXRhZGF0YT4KPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsMTAwMC4wMDAwMDAp%0D%0AIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiCmZpbGw9IiMwMDAwMDAiIHN0cm9rZT0ibm9uZSI+%0D%0ACjxwYXRoIGQ9Ik0zODQ5IDg4ODYgYy0yIC0yIC00NiAtNyAtOTggLTExIC01MiAtMyAtOTcgLTgg%0D%0ALTEwMSAtMTAgLTMgLTIgLTMzCi02IC02NSAtMTAgLTIxMiAtMjMgLTYwMSAtMTM5IC04ODMgLTI2%0D%0ANCAtNTU4IC0yNDYgLTExMTUgLTY3NiAtMTQ3MiAtMTEzNgotMzAgLTM5IC01OCAtNzIgLTYxIC03%0D%0ANSAtMTYgLTEyIC0xODEgLTI1NSAtMjM3IC0zNTAgLTM1IC01OCAtNjcgLTExMiAtNzIKLTEyMCAt%0D%0ANjQgLTEwNCAtMTg3IC0zNzcgLTI0OSAtNTU1IC02NSAtMTg1IC0xNDQgLTUxMiAtMTQ5IC02MTUg%0D%0ALTEgLTggLTQgLTQ2Ci05IC04NSAtMTAgLTkxIC0xMCAtNDUwIDAgLTU0MCA2NiAtNjA5IDM0NCAt%0D%0AMTA0OCA4MTUgLTEyOTAgODYgLTQ0IDI0MCAtMTA0CjMxMiAtMTIxIDM0MSAtODIgNjI3IC04NyAx%0D%0AMDU1IC0xOSA3MSAxMiAzMzkgODMgNDEwIDExMCAzOSAxNCA3OCAyOCA4OCAzMCA3OQoxOCA0MDMg%0D%0AMTc2IDU3MiAyNzkgMjg1IDE3MiA1MTEgMzUzIDc4MSA2MjEgMjEwIDIwOSAzMzMgMzUzIDUxMiA2%0D%0AMDAgNDAgNTUgNzkKMTA3IDg2IDExNSA3IDkgMTUgMjQgMTkgMzQgNCAxMSA5IDE3IDExIDE1IDIg%0D%0ALTIgNyAtNzEgMTAgLTE1NCA0IC04MiA5IC0xNzUKMTEgLTIwNSA5IC0xMTkgMjIgLTI4MCAzMCAt%0D%0AMzUyIDMgLTI3IDcgLTY5IDEwIC05NSA3IC03NSAxNiAtMTU2IDIwIC0xODMgMgotMTQgNyAtNTQg%0D%0AMTAgLTkwIDQgLTM2IDkgLTY4IDExIC03MSAyIC00IC0xMSAtMTQgLTI5IC0yMyAtMTcgLTggLTY4%0D%0AIC0zOAotMTEyIC02NSAtNDQgLTI4IC05MyAtNTggLTEwOSAtNjcgLTU4IC0zMyAtMzU4IC0yNTcg%0D%0ALTQxMiAtMzA5IC02IC01IC00NCAtMzkKLTg1IC03NSAtNzUgLTY1IC0zNTAgLTMzOCAtNDA0IC00%0D%0AMDAgLTI2IC0zMSAtMTg0IC0yMjkgLTIwMyAtMjU1IC01MiAtNzEgLTgyCi0xMTYgLTgyIC0xMjEg%0D%0AMCAtMyAtMTQgLTI1IC0zMCAtNTAgLTQ5IC03MSAtMTY0IC0zMDAgLTIwNyAtNDE0IC00MCAtMTA0%0D%0AIC03NwotMjMzIC04OCAtMzAwIC0zIC0xOSAtOSAtNjAgLTE0IC05MCAtMTQgLTg2IC0xMSAtMjk3%0D%0AIDYgLTM4NSA2MSAtMzIzIDI4MgotNTYzIDYwNSAtNjU2IDgxIC0yMyAzMTMgLTM0IDQwMyAtMTkg%0D%0AMjggNSA2NiAxMSA4NyAxNSAyNjggNDUgNTQzIDI1NCA3MTYKNTQ1IDEyNyAyMTIgMTk5IDQxNyAy%0D%0ANzggNzg1IDYgMjkgMzIgMjExIDM5IDI3MCAzIDI4IDcgNzAgMTAgOTUgMzggMzE2IDM4Cjc4NyAw%0D%0AIDEyNTEgbC02IDY3IDY4IDMzIGM2NCAzMSAyOTYgMTI4IDI5OSAxMjUgMSAwIDQgLTIyIDcgLTQ4%0D%0AIDggLTY3IDU5Ci0yMDggOTggLTI3NCA3MiAtMTE5IDE5MiAtMjA4IDMzNCAtMjUwIDg0IC0yNCAy%0D%0ANDIgLTI0IDMxNSAxIDE2NCA1NCAyOTQgMTQ4CjQwNyAyOTIgbDQxIDUyIDE4IC0zNyBjNzcgLTE2%0D%0ANCAyMTEgLTI3NyAzODcgLTMyNyA1NyAtMTYgMjI1IC0yMyAyNzcgLTExIDE0CjQgMzcgOCA1MyAx%0D%0AMSAxNTEgMjggMzExIDE2NyA0MTMgMzYwIDcwIDEzMyAxNDIgNDAxIDE0NCA1MzkgMCAyOSAxIDI4%0D%0AIDY4IC0zNgoxNTggLTE1MiAzMTkgLTIyMSA1MDYgLTIxNyAxMjQgMyAxOTcgMjYgMzA3IDEwMCAx%0D%0AMTMgNzYgMjE1IDIyMCAyMjYgMzIyIDkgODEKLTU2IDE2OCAtMTM2IDE4MiAtODIgMTQgLTE1MiAt%0D%0AMjkgLTE5OCAtMTIwIC0zMSAtNjEgLTkxIC0xMTkgLTE0MCAtMTM2IC01NAotMTcgLTE2NSAtNSAt%0D%0AMjI4IDI1IC0xODAgODkgLTM0OSAzNjYgLTQyNiA3MDEgLTIxIDk1IC02MCAxNTEgLTEyMiAxNzQg%0D%0ALTM5CjE1IC0xMTMgNSAtMTQ3IC0xOSAtNTYgLTQwIC03NSAtNzggLTc1IC0xNTAgMSAtNjMgMTMg%0D%0ALTE4OSAyMSAtMjAxIDI0IC00MCAyNAotNjA4IDAgLTY4MCAtMyAtOCAtNyAtMzMgLTEwIC01NyAt%0D%0AMTggLTE0MiAtODQgLTI5NyAtMTYwIC0zNzYgLTU3IC01OCAtOTAKLTczIC0xODYgLTg1IC0xNzEg%0D%0ALTIwIC0yOTEgODMgLTM0NSAyOTQgLTIxIDgwIC0yNiAyOTkgLTExIDQ5NSAzMSA0MTUgMzEgNDYw%0D%0ACjggNTA3IC0zMiA2MiAtNzMgODkgLTEzNyA5MiAtOTkgNCAtMTY5IC01NCAtMTgwIC0xNDkgLTMg%0D%0ALTMwIC04IC02OCAtMTAgLTg1Ci0yIC0xNiAtNyAtNzkgLTEwIC0xNDAgLTMgLTYwIC04IC0xMjYg%0D%0ALTEwIC0xNDUgLTIgLTE5IC03IC03MyAtMTAgLTEyMCAtMTYKLTIyOSAtMzIgLTMwMyAtOTYgLTQz%0D%0ANSAtMzYgLTc0IC01MyAtOTkgLTExMyAtMTY1IC0xMTEgLTEyMiAtMjgxIC0xNjkgLTM5NwotMTEw%0D%0AIC0xMjcgNjUgLTE2OCAyMDcgLTE0NSA1MDcgMTUgMjAxIDk4IDQ1NSAxODkgNTgxIDg3IDEyMCA5%0D%0AMyAxOTkgMjIgMjc1Ci02NyA3MSAtMTc4IDczIC0yMzggMyAtMTAgLTEyIC0yNiAtMzAgLTM2IC00%0D%0AMSAtMTEwIC0xMjggLTIxNiAtMzkwIC0yNTcgLTYzNQotMiAtMTQgLTYgLTM2IC04IC01MCAtMyAt%0D%0AMTQgLTUgLTM4IC01IC01MyAtMSAtMjYgLTQgLTI4IC0zMyAtMjQgLTUyIDYgLTc2Ci0yIC0yNjgg%0D%0ALTgzIC02MyAtMjcgLTExNSAtNDggLTExNiAtNDcgLTEgMSAtNSAzMSAtOSA2NyAtMyAzNiAtOCA3%0D%0AOSAtMTAgOTUKLTIgMTcgLTYgNTUgLTEwIDg1IC0zIDMwIC04IDcxIC0xMCA5MCAtMyAzMSAtMTAg%0D%0AMTA0IC0yMSAyNDAgLTE0IDE2OSAtMTkgMzQ3Ci0xOCA2MzUgbDAgMzMwIDYwIDEyNSBjMTI0IDI1%0D%0ANiAxNzcgNDI4IDE3NyA1NzUgMCA2OSAtNCAxMDAgLTIwIDEzNSAtNzEgMTU4Ci0yNDEgMTk1IC0z%0D%0ANTQgNzcgLTc0IC03NyAtMTM4IC0yNzMgLTE2NCAtNTAyIC00IC0zMyAtOSAtNjcgLTEwIC03NiAt%0D%0AMiAtOCAtNgotNTUgLTEwIC0xMDUgLTkgLTEyMyAtMTIgLTEzOSAtMzUgLTE3NiAtMTEgLTE4IC0y%0D%0AOSAtNTAgLTQwIC03MiAtMTIgLTIxIC00MQotNjkgLTY2IC0xMDcgLTI0IC0zOCAtNDQgLTcyIC00%0D%0ANCAtNzUgMCAtMiAtNSAtMTAgLTEwIC0xNyAtNiAtNyAtNDkgLTcwIC05NwotMTQyIC03OCAtMTE5%0D%0AIC0yODAgLTM5NCAtMzMyIC00NTUgLTEyIC0xNCAtNDMgLTUwIC02OSAtODAgLTYwIC03MCAtMjAx%0D%0AIC0yMTcKLTI3MSAtMjg0IC0zMCAtMjggLTYzIC02MCAtNzUgLTcxIC0zMjQgLTMxMSAtODE3IC02%0D%0AMDAgLTEyMjYgLTcxOSAtMTEyIC0zMwotMjg1IC03MSAtMzY1IC04MCAtMjMzIC0yOCAtNTM0IC0y%0D%0AOCAtNjczIC0xIC0xMSAyIC0zNyA2IC01OCA5IC03MiAxMiAtMTk5CjQ5IC0yNzkgODMgLTM5NCAx%0D%0ANjUgLTYzOSA1MTYgLTcwMCAxMDAzIC0xMyAxMDcgLTE1IDE1MyAtMTYgMjg3IDAgMTI5IDUgMjMy%0D%0ACjE3IDMyMyAxMyA5OCAxNyAxMjMgMzkgMjI3IDYwIDI4MyAyMDQgNjQyIDM1OCA4OTUgMjMgMzgg%0D%0ANDcgNzcgNTIgODYgNTkgMTAxCjIzOSAzMzYgMzQ4IDQ1NiAzODMgNDE4IDc3NyA3MDQgMTI4MiA5%0D%0AMzEgMTkwIDg1IDQ2NiAxNzEgNjgwIDIxMCA1MCAxMCA5NyAxOAoxMDUgMjAgOCAyIDQ3IDYgODUg%0D%0AMTAgMzkgNCA4NCA5IDEwMCAxMSA0MSA1IDM0NyA1IDQxNSAwIDI4NCAtMjIgNTE3IC04MCA3MzUK%0D%0ALTE4NiAzMTYgLTE1MyA1NDUgLTM3OCA2OTIgLTY4MCAxMDAgLTIwNiAxMzMgLTMyNyAxNjkgLTYw%0D%0ANCAxMSAtODcgNTkgLTE0NgoxMzYgLTE2NyAxMTAgLTI5IDIxMyA2NSAyMDMgMTg2IC0yMiAyNTUg%0D%0ALTg5IDUwMiAtMTk2IDcyMCAtNDEgODQgLTEzOSAyNDgKLTE1OSAyNjUgLTMgMyAtMzIgNDAgLTY0%0D%0AIDgzIC0yOTQgMzg3IC04MTAgNjQ4IC0xNDExIDcxMyAtNjAgNyAtNTEwIDE1IC01MTYKMTB6IG0x%0D%0ANDEyIC00OTgzIGMwIC0yNyAzIC03NSA2IC0xMDggOCAtOTcgOCAtNjIwIDAgLTc0NSAtMTMgLTIw%0D%0AMSAtMjUgLTMxMAotNDIgLTQwMCAtMyAtMTQgLTcgLTQ1IC0xMCAtNzAgLTE4IC0xNDggLTEwNSAt%0D%0ANDM4IC0xNzYgLTU4OCAtNzkgLTE2OCAtMjAzCi0zMjggLTMyNCAtNDIwIC00NiAtMzUgLTE2MyAt%0D%0AODkgLTIzNSAtMTA5IC05OSAtMjYgLTI4NSAtMjMgLTM3MCA2IC0xNTAgNTEKLTI0OCAxNDggLTMx%0D%0AMiAzMDYgLTMwIDc2IC0zNiAyNDggLTEzIDM5MSAxNiAxMDAgNjkgMjkxIDg2IDMwOSA1IDUgOSAx%0D%0ANSA5IDIzCjAgMTQgODUgMTg5IDEyMiAyNTEgMjE0IDM2MCA1NTcgNzI3IDkzMiA5OTcgMTE1IDgz%0D%0AIDMwMCAyMDMgMzE0IDIwNCA4IDAgMTIKLTE2IDEzIC00N3oiLz4KPC9nPgo8L3N2Zz4K" width="120" />
   </a>
 </p>
 <h1 align="center">
-  Gatsby's default starter
+  glweems.com
 </h1>
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+<p align="center">
+<!-- Netlify -->
+  <a href="https://app.netlify.com/sites/glweems/deploys">
+    <img
+      src="https://api.netlify.com/api/v1/badges/9c9aba4f-abf3-45f6-b160-3445a4a9db1f/deploy-status"
+      alt="Netlify"
+      data-canonical-src="https://api.netlify.com/api/v1/badges/9c9aba4f-abf3-45f6-b160-3445a4a9db1f/deploy-status"
+      style="max-width:100%;"
+    />
+  </a>
+  <!-- Styled Components -->
+  <a
+    href="https://github.com/styled-components/styled-components"
+    class="ghh-repo-x tooltipstered"
+    style="box-shadow: transparent 0px 0px;"
+    ><img
+      src="https://camo.githubusercontent.com/83915eaa262cfa89f70f2d4eb2ec55c0cbe7c615/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f7374796c652d2546302539462539322538352532307374796c65642d2d636f6d706f6e656e74732d6f72616e67652e7376673f636f6c6f72423d64616133353726636f6c6f72413d646237343865"
+      alt="style: styled-components"
+      data-canonical-src="https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&amp;colorA=db748e"
+      style="max-width:100%;"
+  />
+  </a>
+  <!-- Awsome -->
+  <a
+    href="https://github.com/sindresorhus/awesome"
+    class="ghh-repo-x tooltipstered"
+    style="box-shadow: transparent 0px 0px;"
+    ><img
+      src="https://camo.githubusercontent.com/13c4e50d88df7178ae1882a203ed57b641674f94/68747470733a2f2f63646e2e7261776769742e636f6d2f73696e647265736f726875732f617765736f6d652f643733303566333864323966656437386661383536353265336136336531353464643865383832392f6d656469612f62616467652e737667"
+      alt="Awesome"
+      data-canonical-src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg"
+      style="max-width:100%;"
+  /></a>
+</p>
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.org/docs/gatsby-starters/)._
 
-## 🚀 Quick start
+## Personal Portfolio Website
 
-1.  **Create a Gatsby site.**
+Build with
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+- React.js
+- Gatsby
+- Styled-Components
 
-    ```sh
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
 
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```sh
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-1.  **Open the source code and start editing!**
-
-    Your site is now running at `http://localhost:8000`!
-
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
-
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
-
-## 🧐 What's inside?
-
-A quick look at the top-level files and directories you'll see in a Gatsby project.
-
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── .prettierrc
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package-lock.json
-    ├── package.json
-    └── README.md
-
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
-
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
-
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
-
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
-
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
-
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
-
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
-
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
-
-9.  **`LICENSE`**: Gatsby is licensed under the MIT license.
-
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
-
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
-
-12. **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.org/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.org/tutorial/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
