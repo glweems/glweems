@@ -23,7 +23,7 @@ module.exports = {
         background_color: '#bada55',
         theme_color: '#bada55',
         display: 'minimal-ui',
-        icon: 'gw-favicon/favicon-32x32.png',
+        icon: 'src/images/gw-favicon/favicon-32x32.png',
       },
     },
     {

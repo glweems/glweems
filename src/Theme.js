@@ -28,7 +28,7 @@ export const ThemeProvider = styled.div`
   textarea {
     border: none;
     background: ${Theme.colors.white};
-    border-bottom: 1px solid ${Theme.colors.light};
+    border-bottom: 1.125px solid ${Theme.colors.dark};
     /* padding-left: 0.5rem; */
   }
 
