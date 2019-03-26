@@ -1,0 +1,3 @@
+[submodule "gw-favicon"]
+	path = gw-favicon
+	url = https://github.com/glweems/gw-favicon.git
