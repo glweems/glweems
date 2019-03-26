@@ -86,11 +86,11 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "now-build": "npm run build"
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
