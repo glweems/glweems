@@ -1,10 +1,10 @@
 /* eslint-disable react/destructuring-assignment */
-import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
-import React, { Component } from 'react';
-import { Container } from 'src/Styled';
-import Theme from 'src/Theme';
-import styled from 'styled-components';
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
+import React, { Component } from 'react'
+import { Container } from 'src/Styled'
+import Theme from 'src/Theme'
+import styled from 'styled-components'
 
 const Button = styled.button`
   color: ${Theme.colors.bg};
@@ -14,7 +14,7 @@ const Button = styled.button`
     content: 'MENU';
   }
   background: ${Theme.colors.dark};
-`;
+`
 
 const FlexContainer = styled.div`
   display: flex;
@@ -22,17 +22,15 @@ const FlexContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   justify-content: space-between;
-`;
+`
 
 const Navbar = styled.div`
   z-index: 1000;
   align-items: center;
   font-family: ${Theme.fontFamily.header};
   font-size: 1.25rem;
-  color: ${Theme.colors.bg};
-  background: ${Theme.colors.dark};
-  padding: ${Theme.padding};
-`;
+  background: ${Theme.colors.light};
+`
 
 const Brand = styled.div`
   * {
@@ -42,23 +40,24 @@ const Brand = styled.div`
     font-style: italic;
     text-decoration: none;
   }
-`;
+`
 
 const NavItem = styled.a`
   width: 100%;
-  font-size: 3rem;
+  font-size: 1.25rem;
   font-weight: bolder;
-  * {
-    color: ${Theme.colors.light};
-    margin-bottom: 1rem;
-    :hover {
-      color: ${Theme.colors.red};
-      text-decoration: underline;
-    }
+  color: ${Theme.colors.dark};
+  margin-bottom: 0.25rem;
+  :hover {
+    color: ${Theme.colors.red};
+    text-decoration: underline;
+  }
+  :current {
+    color: ${Theme.colors.red};
   }
   text-transform: uppercase;
   text-decoration: none;
-`;
+`
 
 const StyledDropdown = styled.div`
   margin-top: 2rem;
@@ -68,7 +67,7 @@ const StyledDropdown = styled.div`
   justify-content: flex-end;
   text-align: right;
   z-index: 900;
-`;
+`
 
 class Dropdown extends Component {
   static propTypes = {
@@ -79,17 +78,17 @@ class Dropdown extends Component {
         to: PropTypes.string,
       })
     ),
-  };
+  }
 
   render() {
-    const { open, links } = this.props;
+    const { open, links } = this.props
     const NavLinks = links.map(({ name, to }) => (
       <NavItem key={name}>
         <Link to={to}>{name}</Link>
       </NavItem>
-    ));
+    ))
 
-    return open ? <StyledDropdown>{NavLinks}</StyledDropdown> : <></>;
+    return open ? <StyledDropdown>{NavLinks}</StyledDropdown> : <></>
   }
 }
 
@@ -105,4 +104,4 @@ export default props => (
       <Dropdown links={props.links} open={props.open} />
     </Container>
   </Navbar>
-);
+)

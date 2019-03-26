@@ -6,7 +6,7 @@ import '@primer/css/build/build.css'
 export default function Repository(props) {
   const { name, description, url, primaryLanguage, homepageUrl } = props
   return (
-    <div className="Box Box--condensed">
+    <div className="github Box Box--condensed">
       <div className="Box-header d-flex flex-items-center">
         <h3 className="Box-title overflow-hidden flex-auto">{name}</h3>
         <button type="button" className="btn btn-primary btn-sm">

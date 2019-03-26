@@ -1,6 +1,13 @@
+import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
-import React from 'react'
+import styled from 'styled-components'
+
+const ImgDiv = styled.div`
+  img {
+    border-radius: 0.25rem;
+  }
+`
 
 export default () => (
   <StaticQuery
@@ -8,13 +15,17 @@ export default () => (
       query {
         placeholderImage: file(relativePath: { eq: "avi.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 512) {
+            fluid(maxWidth: 1024) {
               ...GatsbyImageSharpFluid
             }
           }
         }
       }
     `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
+    render={data => (
+      <ImgDiv>
+        <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+      </ImgDiv>
+    )}
   />
 )

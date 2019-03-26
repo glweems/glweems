@@ -5,10 +5,13 @@ const Theme = {
   headingFont: `IBM Plex Sans, sans-serif;`,
   colors: {
     red: `#ff5851`,
+    green: `#ff5851`,
     dark: `#24292e`,
     bg: `#fff`,
     light: `#EEEEEE`,
+    white: `#fff`,
   },
+  'border-radius': `3px`,
   padding: `1rem;`,
   fontFamily: {
     header: 'Source Sans Pro',
@@ -16,12 +19,37 @@ const Theme = {
   },
 }
 
-// const headings = [h1, h2, h3, h4, h5, h6];
-
 export const ThemeProvider = styled.div`
   font-family: 'Roboto';
   background: ${Theme.colors.light};
   color: ${Theme.colors.dark};
+
+  input,
+  textarea {
+    border: none;
+    background: ${Theme.colors.white};
+    border-bottom: 1px solid ${Theme.colors.light};
+    /* padding-left: 0.5rem; */
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    * {
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 1rem;
+    }
+  }
+  .submit {
+    background: ${Theme.colors.red};
+    border: none;
+    color: ${Theme.colors.white};
+    border-radius: ${Theme['border-radius']};
+    padding: 0.25rem 0;
+    text-transform: uppercase;
+  }
   a {
     text-decoration: none;
     :visited {
