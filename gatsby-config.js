@@ -15,14 +15,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     {
-      resolve: 'gatsby-source-behance',
-      options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: { path: `${__dirname}/src/md`, name: 'markdown-pages' },
-    },
-    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'glweems-portfolio-site',
@@ -35,13 +27,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          { family: `Roboto` },
-          { family: `Source Sans Pro`, variants: [`400`, `700`, `700i`] },
-        ],
-      },
+      resolve: 'gatsby-source-filesystem',
+      options: { name: 'image', path: `./src/images` },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: { name: `markdown-pages`, path: `${__dirname}/src/md` },
     },
     {
       resolve: 'gatsby-plugin-root-import',
@@ -51,8 +42,17 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
-      options: { name: 'image', path: `./src/images` },
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          { family: `Roboto` },
+          { family: `Source Sans Pro`, variants: [`400`, `700`, `700i`] },
+        ],
+      },
+    },
+    {
+      resolve: 'gatsby-source-behance',
+      options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
     },
     {
       resolve: 'gatsby-source-graphql',
