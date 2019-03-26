@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import { Layout, SEO } from 'my-components'
 
-import Card, { CardGrid } from '@/card'
+import BlogPostPreview, { CardGrid } from '@/blog-post-preview'
 import { Container } from 'src/Styled'
 
 export default class BlogPosts extends Component {
@@ -30,7 +30,7 @@ export default class BlogPosts extends Component {
           },
         } = edge
         return (
-          <Card
+          <BlogPostPreview
             key={index}
             title={title}
             subtitle={subtitle}

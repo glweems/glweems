@@ -22,6 +22,12 @@ export const ThemeProvider = styled.div`
   font-family: 'Roboto';
   background: ${Theme.colors.light};
   color: ${Theme.colors.dark};
+  a {
+    text-decoration: none;
+    :visited {
+      color: unset;
+    }
+  }
   h1,
   h2,
   h3,

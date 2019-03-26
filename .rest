@@ -1,5 +1,5 @@
 @behance = http://behance.net/v2/
-@behance_api = ?api_key=T6FV1NZy5WqTYRiLbdjY1TEvwV7GwtAq
+@behance_api = ?api_key=60qR7Q6Kwrl8Y44eTC1Pg9vrYp2NsSZ6
 ###
 GET {{behance}}users/glweems/collections
     {{behance_api}}

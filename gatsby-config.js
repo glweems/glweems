@@ -17,6 +17,8 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-unwrap-images`,
+          `gatsby-remark-picture`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
@@ -29,6 +31,10 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: `gatsby-source-behance`,
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -47,12 +53,6 @@ module.exports = {
         theme_color: '#bada55',
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png',
-      },
-    },
-    {
-      resolve: `gatsby-source-medium-posts`,
-      options: {
-        username: 'glweems',
       },
     },
     {
@@ -89,10 +89,6 @@ module.exports = {
           Authorization: `bearer ${process.env.GITHUB_TOKEN}`,
         },
       },
-    },
-    {
-      resolve: `gatsby-source-behance`,
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
   ],
 }
