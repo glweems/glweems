@@ -64,7 +64,6 @@ export const GraphicDesignPageQuery = graphql`
             path
             title
             subtitle
-            git
             thumbnail
           }
           excerpt
