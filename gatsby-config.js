@@ -35,7 +35,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: { name: `markdown-pages`, path: `${__dirname}/src/md` },
+      options: { name: `markdown-pages`, path: `${__dirname}/gwtuts` },
     },
     {
       resolve: 'gatsby-plugin-root-import',

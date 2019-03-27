@@ -24,7 +24,7 @@ exports.createPages = ({ actions, graphql }) =>
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         actions.createPage({
           path: node.frontmatter.path,
-          component: path.resolve(`src/templates/blog-template.js`),
+          component: path.resolve(`./src/templates/blog-template.js`),
           context: {},
         })
       })
