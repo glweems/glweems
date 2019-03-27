@@ -88,6 +88,7 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
+    "serve": "gatsby serve",
     "start": "gatsby develop",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
