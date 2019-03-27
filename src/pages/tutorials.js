@@ -26,14 +26,15 @@ export default class BlogPosts extends Component {
       edges.map((edge, index) => {
         const {
           node: {
+            excerpt,
             frontmatter: { title, subtitle, path, thumbnail },
           },
         } = edge
         return (
           <BlogPostPreview
             key={index}
-            title={title}
-            subtitle={subtitle}
+            title={excerpt}
+            subtitle={excerpt}
             link={path}
             img={thumbnail}
           />
@@ -66,6 +67,7 @@ export const GraphicDesignPageQuery = graphql`
             git
             thumbnail
           }
+          excerpt
           html
           timeToRead
         }

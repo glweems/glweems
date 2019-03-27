@@ -20,6 +20,7 @@ const Theme = {
 }
 
 export const ThemeProvider = styled.div`
+  width: 100%;
   font-family: 'Roboto';
   background: ${Theme.colors.light};
   color: ${Theme.colors.dark};

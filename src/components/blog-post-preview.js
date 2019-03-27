@@ -21,25 +21,19 @@ const Div = styled.div`
   grid-template-columns: auto 30%;
   justify-content: space-between;
   justify-items: center;
-  background: white;
   flex-basis: 100%;
   margin-bottom: 1rem;
-
-  ${MQ.mobileL(`
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  margin: 0;
-  `)}
 `
 
 const ImgDiv = styled.div`
-  max-height: 100%;
-  max-width: 100%;
+  max-height: 90%;
+  max-width: 90%;
   overflow: hidden;
 `
 const Body = styled.div`
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
 `
 
 const Title = styled.h4`
@@ -54,6 +48,15 @@ const Subtitle = styled.h6`
 const BlogPostPreview = props => {
   const { img, body, title, subtitle, link, html, children } = props
 
+  const imgStyle = {
+    backgroundImage: `url(${img})`,
+    height: '100%',
+    width: '100%',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    borderRadius: '3px',
+  }
   return (
     <Link to={link}>
       <Div>
@@ -63,7 +66,7 @@ const BlogPostPreview = props => {
           {!body || null}
           {children}
         </Body>
-        <ImgDiv>{!img || <img src={img} />}</ImgDiv>
+        <ImgDiv style={imgStyle} />
       </Div>
     </Link>
   )

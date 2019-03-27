@@ -53,10 +53,10 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-source-behance',
-    //   options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
-    // },
+    {
+      resolve: 'gatsby-source-behance',
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
+    },
     {
       resolve: 'gatsby-source-graphql',
       options: {
