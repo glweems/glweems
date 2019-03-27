@@ -23,12 +23,15 @@ module.exports = {
         background_color: '#bada55',
         theme_color: '#bada55',
         display: 'minimal-ui',
-        icon: 'src/images/gw-favicon/favicon-32x32.png',
+        icon: 'src/favicons/favicon-32x32.png',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
-      options: { name: 'image', path: `./src/images` },
+      options: {
+        name: 'image',
+        path: `./src/images`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -50,10 +53,10 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-source-behance',
-      options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
-    },
+    // {
+    //   resolve: 'gatsby-source-behance',
+    //   options: { username: 'glweems', apiKey: `${process.env.BEHANCE_TOKEN}` },
+    // },
     {
       resolve: 'gatsby-source-graphql',
       options: {
