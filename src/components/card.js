@@ -51,7 +51,7 @@ const Subtitle = styled.h6`
 `
 
 const Card = props => {
-  const { img, body, title, subtitle, link, html, children } = props
+  const { img, body, title, subtitle, link, children } = props
 
   return (
     <Div>
@@ -68,26 +68,11 @@ const Card = props => {
 }
 
 Card.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
   img: PropTypes.string,
   body: PropTypes.string,
-  title: PropTypes.string,
   link: PropTypes.string,
 }
 
 export default Card
-
-/*
-export default class card extends Component {
-  static propTypes = {
-    prop: PropTypes
-  }
-
-  render() {
-    return (
-      <div>
-
-      </div>
-    )
-  }
-}
-*/

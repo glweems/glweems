@@ -2,14 +2,14 @@
 import styled from 'styled-components'
 
 const Theme = {
-  headingFont: `IBM Plex Sans, sans-serif;`,
+  headingFont: `IBM Plex Mono;`,
   colors: {
-    red: `#ff5851`,
-    green: `#ff5851`,
-    dark: `#24292e`,
-    bg: `#fff`,
-    light: `#EEEEEE`,
     white: `#fff`,
+    light: `#F7F7F7`,
+    dark: `#24292e`,
+    red: `#ff5851`,
+    blue: `#6AA5E4`,
+    bg: `#fff`,
   },
   'border-radius': `3px`,
   padding: `1rem;`,

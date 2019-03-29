@@ -50,6 +50,7 @@ module.exports = {
         fonts: [
           { family: `Roboto` },
           { family: `Source Sans Pro`, variants: [`400`, `700`, `700i`] },
+          { family: `IBM Plex Mono`, variants: [`400`, `700`, `700i`] },
         ],
       },
     },
@@ -70,6 +71,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-prettier`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-picture`,
           {

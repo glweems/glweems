@@ -15,7 +15,7 @@ export default () => (
       query {
         github {
           viewer {
-            pinnedRepositories(last: 6) {
+            pinnedRepositories(last: 4) {
               edges {
                 node {
                   name
