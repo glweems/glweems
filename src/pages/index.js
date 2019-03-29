@@ -33,56 +33,56 @@ const StyledCard = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   .body {
-  background: ${Theme.colors.light};
+    background: ${Theme.colors.light};
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     overflow: hidden;
   }
   .title {
     font-family: ${Theme.headingFont};
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
-  color: rgba(0,0,0,.84);
-  display: -webkit-box;
-  fill: rgba(0,0,0,.84);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 28px;
-  margin: 0;
-  max-height: 84px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    color: rgba(0, 0, 0, 0.84);
+    display: -webkit-box;
+    fill: rgba(0, 0, 0, 0.84);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    margin: 0;
+    max-height: 84px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .subtitle {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  color: rgba(0,0,0,.54);
-  display: -webkit-box;
-  fill: rgba(0,0,0,.54);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 20px;
-  margin-top: 2px;
-  max-height: 40px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  transform: translateY(1.52px);
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    color: rgba(0, 0, 0, 0.54);
+    display: -webkit-box;
+    fill: rgba(0, 0, 0, 0.54);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 20px;
+    margin-top: 2px;
+    max-height: 40px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transform: translateY(1.52px);
   }
 `
 const ImgDiv = styled.div`
-background: blue;
-flex-basis: 40%;
-display: flex;
-flex-direction: column;
-align-self: center;
-margin-left: .5rem;
-overflow: hidden;
-/* img {
+  background: blue;
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-left: 0.5rem;
+  overflow: hidden;
+  /* img {
   max-width: 100%;
 } */
 `
@@ -109,7 +109,7 @@ const Card = ({ title, subtitle, img }) => {
         <h2 className="title">{title}</h2>
         <div className="subtitle">{subtitle}</div>
       </div>
-      {!img || <ImgDiv style={imgStyle}></ImgDiv>}
+      {!img || <ImgDiv style={imgStyle} />}
     </StyledCard>
   )
 }
@@ -119,37 +119,44 @@ export default ({ data }) => {
   //   <p key={i}>repo</p>
   // ))
   const {
-    github: { viewer: { pinnedRepositories: { edges: repos } } },
+    github: {
+      viewer: {
+        pinnedRepositories: { edges: repos },
+      },
+    },
     allBehanceProjects: { edges: designs },
-    allMarkdownRemark: { edges: tuts }
+    allMarkdownRemark: { edges: tuts },
   } = data
 
-  const PinnedRepos = () => repos.map((repo, i) => {
-    const { name, description } = repo.node
-    return <Card
-      key={i} title={name} subtitle={description}
-      img=""
-    />;
-  })
-  const BehanceProjects = () => designs.map((design, i) => {
-    const { name, description, covers: { size_808: img } } = design.node
-    return <Card
-      key={i}
-      title={name}
-      subtitle={description}
-      img={img}
-    />;
-  })
+  const PinnedRepos = () =>
+    repos.map((repo, i) => {
+      const { name, description } = repo.node
+      return <Card key={i} title={name} subtitle={description} img="" />
+    })
+  const BehanceProjects = () =>
+    designs.map((design, i) => {
+      const {
+        name,
+        description,
+        covers: { size_808: img },
+      } = design.node
+      return <Card key={i} title={name} subtitle={description} img={img} />
+    })
 
-  const MyTuts = () => tuts.map((tut, i) => {
-    const { frontmatter: { title, thumbnail: img } } = tut.node
-    return <Card
-      key={i}
-      title={title}
-      // subtitle={description}
-      img={img}
-    />;
-  })
+  const MyTuts = () =>
+    tuts.map((tut, i) => {
+      const {
+        frontmatter: { title, thumbnail: img },
+      } = tut.node
+      return (
+        <Card
+          key={i}
+          title={title}
+          // subtitle={description}
+          img={img}
+        />
+      )
+    })
 
   return (
     <Layout>
@@ -157,7 +164,7 @@ export default ({ data }) => {
       {/* <Repos /> */}
       <PinnedRepos />
       <BehanceProjects />
-      <MyTuts></MyTuts>
+      <MyTuts />
       <p>{JSON.stringify(repos)}</p>
       <p>{JSON.stringify(designs)}</p>
     </Layout>
@@ -194,8 +201,8 @@ export const indexQuery = graphql`
         }
       }
     }
-    allBehanceProjects(limit:3) {
-      edges{
+    allBehanceProjects(limit: 3) {
+      edges {
         node {
           name
           description
