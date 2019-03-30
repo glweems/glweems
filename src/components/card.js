@@ -1,122 +1,119 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import Theme from 'src/Theme'
-import styled from 'styled-components'
+import Theme, { MQ } from 'src/Theme'
+import styled, { css } from 'styled-components'
 
-const StyledCard = styled.div`
-  -webkit-box-align: stretch;
-  -webkit-box-flex: 1;
-  align-items: stretch;
-  display: flex;
-  flex: 1 1 auto;
-  /* font-size: 16px; */
-  /* line-height: 20px; */
-  max-width: 700px;
-  /* background: ${Theme.colors.light}; */
-  height: 100%;
-  margin-bottom: 0.25rem;
+export const CardGrid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  text-align: left;
+  ${MQ.laptop(`
+  grid-template-columns: 1fr 1fr;
+
+  `)}
 `
-const ImgDiv = styled.div`
-  -webkit-tap-highlight-color: transparent;
+
+export const Card = styled.div`
+  background: ${Theme.colors.light};
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.25rem 0;
+  align-items: space-evenly;
+  align-content: space-evenly;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    'title'
+    'subtitle'
+    'link';
+  ${props =>
+    props.imgRight &&
+    css`
+      grid-template-columns: 3fr 1fr;
+      grid-template-areas:
+        'title img'
+        'subtitle img'
+        'link img';
+    `}
+  ${props =>
+    props.imgTop &&
+    css`
+      grid-template-rows: auto auto 10rem 1fr;
+      grid-template-areas:
+        'title'
+        'subtitle'
+        'img'
+        'link';
+      ${MQ.laptop(`
+  grid-template-rows: auto auto 20rem 1fr;
+  `)}
+    `}
+`
+export const ImgDiv = styled.div`
   background-color: transparent;
-  background-position: 50% 50%;
+  background-origin: border-box;
+  background-position: 50% 35%;
   background-size: cover;
-  display: block;
+  grid-area: img;
+  height: 100%;
   outline: 0;
   text-decoration: none;
-  background-origin: border-box;
-  flex: 1 1 auto;
-  min-width: 25%;
+
+  -webkit-tap-highlight-color: transparent;
 `
 
-const CardBody = styled.div`
-  -webkit-box-flex: 1;
-  flex: 1 1 auto;
-  text-align: left;
-  /* flex-basis: 60%; */
-  max-width: 60%;
-  padding: 0.5rem;
-  *:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
-`
-
-const Title = styled.h2`
-  font-family: ${Theme.headingFont};
+export const CardTitle = styled.h2`
   color: ${Theme.colors.dark};
+
   display: -webkit-box;
   fill: rgba(0, 0, 0, 0.84);
+  font-family: ${Theme.headingFont};
   font-size: 16px;
   font-style: normal;
   font-weight: 600;
+  grid-area: title;
   line-height: 20px;
-  max-height: 40px;
   margin: 0;
-  margin-bottom: 0.25rem;
+  margin-left: 0.5rem;
+  max-height: 40px;
   overflow: hidden;
   text-overflow: ellipsis;
 `
 
-const Subtitle = styled.div`
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+export const CardSubtitle = styled.div`
   color: ${Theme.colors.secondary};
+
   display: -webkit-box;
   fill: rgba(0, 0, 0, 0.54);
   font-size: 13px;
   font-style: normal;
   font-weight: 200;
+  grid-area: subtitle;
   letter-spacing: 0;
   line-height: 18px;
-  margin-top: 2px;
-  max-height: 40px;
-  max-width: 95%;
+  margin-left: 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   transform: translateY(1.52px);
+
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `
 
-const CardLink = styled.div`
+export const CardLink = styled.div`
   color: ${Theme.colors.blue};
-  background: white;
-  margin-top: 0.5rem;
-  padding: 0;
-  font-weight: bold;
-  letter-spacing: 1px;
   font-size: 12px;
+  font-weight: bold;
+  grid-area: link;
+  letter-spacing: 1px;
+  margin-left: 0.5rem;
+  padding: 0;
   width: fit-content;
   :hover {
     text-decoration: underline;
   }
-  text-transform: uppercase;
 `
-export const Card = ({ title, subtitle, img, link }) => {
-  const imgStyle = {
-    backgroundImage: `url(${img})`,
-  }
-  return (
-    <StyledCard>
-      <CardBody>
-        <Title>{title}</Title>
-        <Subtitle>{subtitle}</Subtitle>
-        {!link || <CardLink>{link}</CardLink>}
-      </CardBody>
-      {!img || <ImgDiv style={imgStyle} />}
-    </StyledCard>
-  )
-}
 
-Card.propTypes = {
-  title: PropTypes.string,
-  subtitle: PropTypes.string,
-  img: PropTypes.string,
-  link: PropTypes.element,
-}
-
-export const CardGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  gap: 1rem;
-`
 export default Card

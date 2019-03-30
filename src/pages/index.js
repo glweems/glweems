@@ -1,8 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Layout from '@/layout'
 import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Theme from 'src/Theme'
 import { CardGrid } from '@/card'
 import { Heading } from 'src/Styled'
@@ -27,7 +28,68 @@ const ContactMe = () => (
   </form>
 )
 
-export default ({ data }) => {
+const Section = styled.section`
+  /* background: ${Theme.colors.light}; */
+  margin-bottom: 2rem;
+
+`
+const Button = styled.button`
+  background: ${Theme.colors.light};
+  border-color: ${Theme.colors.dark};
+  border-radius: 1px;
+  border-style: solid;
+  border-width: 2px;
+  color: ${Theme.colors.dark};
+  display: inline-block;
+  font-family: ${Theme.headingFont};
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  :hover {
+    background: ${Theme.colors.dark};
+    color: ${Theme.colors.light};
+    transition: all 0.4s ease 0s;
+  }
+  ${props =>
+    props.blue &&
+    css`
+      background: ${Theme.colors.blue};
+      color: ${Theme.colors.light};
+      border-color: ${Theme.colors.blue};
+      :hover {
+        background: ${Theme.colors.light};
+        color: ${Theme.colors.blue};
+        border-color: ${Theme.colors.blue};
+      }
+    `}
+  ${props =>
+    props.red &&
+    css`
+      background: ${Theme.colors.red};
+      color: ${Theme.colors.light};
+      border-color: ${Theme.colors.red};
+      :hover {
+        background: ${Theme.colors.light};
+        color: ${Theme.colors.red};
+        border-color: ${Theme.colors.red};
+      }
+    `}
+  ${props =>
+    props.center &&
+    css`
+      margin: 0 auto;
+    `}
+`
+
+const SectionEnd = styled.div`
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-start;
+`
+export const IndexPage = ({ data }) => {
   const {
     github: {
       viewer: {
@@ -41,23 +103,39 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
-      <section>
+      <Section>
         <Heading>Repos</Heading>
         <CardGrid>
           <PinnedRepos edges={repos} />
         </CardGrid>
-      </section>
-      <div>
-        <Heading>Design</Heading>
-        <BehanceProjects edges={designs} />
-      </div>
-      <section>
+        <SectionEnd>
+          <Button red>
+            <a href="https://github.com/glweems">View All Repos</a>
+          </Button>
+        </SectionEnd>
+      </Section>
+      <Heading>Design</Heading>
+      <Section>
+        <CardGrid>
+          <BehanceProjects edges={designs} />
+        </CardGrid>
+        <SectionEnd>
+          <Link to="/design/">
+            <Button red>View All Projects</Button>
+          </Link>
+        </SectionEnd>
+      </Section>
+      <Section>
         <Heading>Tutorials</Heading>
         <CardGrid>
           <MyTuts edges={tuts} />
         </CardGrid>
-        <h3>See More -></h3>
-      </section>
+        <SectionEnd>
+          <Link to="/tutorials">
+            <Button red> View All Tutorials </Button>
+          </Link>
+        </SectionEnd>
+      </Section>
     </Layout>
   )
 }
@@ -135,3 +213,7 @@ export const indexQuery = graphql`
     }
   }
 `
+IndexPage.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+export default IndexPage

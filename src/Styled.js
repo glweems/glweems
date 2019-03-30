@@ -46,5 +46,5 @@ export const Heading = styled.h1`
   font-family: ${Theme.headingFont};
   color: ${Theme.colors.muted};
   margin: 0 0 0.25rem 0.25rem;
-  font-size: 45px;
+  font-size: 50px;
 `

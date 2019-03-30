@@ -35,6 +35,7 @@ export const ThemeProvider = styled.div`
   }
 
   a {
+    color: ${Theme.colors.blue};
     text-decoration: none;
     :visited {
       color: unset;

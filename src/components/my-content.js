@@ -1,19 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
-import { Card } from '@/card'
+import {
+  Card,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  ImgDiv,
+  CardLink,
+} from '@/card'
+import Theme from 'src/Theme'
+import styled, { css } from 'styled-components'
 
 export const PinnedRepos = ({ edges }) =>
   edges.map((edge, i) => {
     const { name, description, url, languages } = edge.node
     return (
-      <Card
-        key={i}
-        title={name}
-        subtitle={description}
-        link={<a href={url}>github</a>}
-        tags={languages}
-      />
+      <Card>
+        <CardTitle>{name}</CardTitle>
+        <CardSubtitle>{description}</CardSubtitle>
+        <CardLink>
+          <a href={url}>github</a>
+        </CardLink>
+      </Card>
     )
   })
 
@@ -30,13 +39,14 @@ export const BehanceProjects = ({ edges }) =>
       covers: { size_808: img },
     } = edge.node
     return (
-      <Card
-        key={i}
-        title={name}
-        subtitle={description}
-        img={img}
-        link={<Link to={`designs/${slug}`}>View Project</Link>}
-      />
+      <Card key={i} imgTop>
+        <CardTitle>{name}</CardTitle>
+        <CardSubtitle>{description}</CardSubtitle>
+        <CardLink>
+          <Link to={`/designs/${slug}`}>See Project</Link>
+        </CardLink>
+        <ImgDiv style={{ backgroundImage: `url(${img})` }} />
+      </Card>
     )
   })
 
@@ -51,13 +61,14 @@ export const MyTuts = ({ edges }) =>
       frontmatter: { path, title, thumbnail: img, tags },
     } = edge.node
     return (
-      <Card
-        key={i}
-        title={title}
-        subtitle={excerpt}
-        img={img}
-        link={<Link to={path}>Read More...</Link>}
-      />
+      <Card key={i} imgRight>
+        <CardTitle>{title}</CardTitle>
+        <CardSubtitle>{excerpt}</CardSubtitle>
+        <CardLink>
+          <Link to={path}>Read More...</Link>
+        </CardLink>
+        <ImgDiv style={{ backgroundImage: `url(${img})` }} />
+      </Card>
     )
   })
 
