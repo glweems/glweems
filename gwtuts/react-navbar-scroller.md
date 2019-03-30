@@ -1,9 +1,10 @@
 ---
 path: /tutorials/react-navbar-scroller
 date: 2019-03-19
-title: "Simple navbar component using react, typescript, and styled-components."
-subtitle: "In this project we will create a simple little Navbar component that has a logo or brand name and features horizontal scrolling."
+title: 'Simple navbar component using react, typescript, and styled-components.'
+subtitle: 'In this project we will create a simple little Navbar component that has a logo or brand name and features horizontal scrolling.'
 thumbnail: https://raw.githubusercontent.com/gwtuts/react-navbar-scroller/master/demo.gif
+tags: ['react', 'navbar', 'component', 'typescript', 'styled-components']
 ---
 
 # Simple navbar component using react, typescript, and styled-components.
@@ -15,7 +16,7 @@ In this project we will create a simple little Navbar component that has a logo 
 [working demo](https://react-navbar-scroller.now.sh/)
 [source code](https://github.com/gwtuts)
 
-----
+---
 
 ### Setup.
 
@@ -32,11 +33,14 @@ npm install -g create-react-app
 ```
 
 #### Optional
+
 Before you get up and running I would recommend you installing the TSLint prettier plugin to keep things nice and tidy.
+
 ```
 npm install --save-dev tslint-config-prettier
 ```
-Then create a  `tslint.json` file in your root directory and add the following.
+
+Then create a `tslint.json` file in your root directory and add the following.
 
 ```js
 // tslint.json
@@ -50,7 +54,7 @@ Then create a  `tslint.json` file in your root directory and add the following.
 
 ### Getting Started
 
-After you run the  `create-react-app NavbarScrollerDemo --typescript` you should end up with a folder structure like so.
+After you run the `create-react-app NavbarScrollerDemo --typescript` you should end up with a folder structure like so.
 
 ```
 NavbarScrollerDemo/
@@ -75,35 +79,30 @@ NavbarScrollerDemo/
 Open your `App.tsx` file and delete all the junk so it looks like this
 
 ```js
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-
-      </div>
-    );
+    return <div className="App" />
   }
 }
 
-export default App;
-
+export default App
 ```
 
 Now we’re going to install another dependency to reset our browsers css.
 
 `npm install reset-css --save`
 
-Now add the package to your  `App.tsx`
+Now add the package to your `App.tsx`
 
 ```js
 // App.tsx
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import 'reset-css'
 ```
 
-*if you get an error saying module cannot be found you may need to add the package postcss-import* `npm install postcss-import --save`
+_if you get an error saying module cannot be found you may need to add the package postcss-import_ `npm install postcss-import --save`
 
 With that out of the way lets start creating the component.
 
@@ -115,11 +114,7 @@ Create a new `components/` directory in `./src/components/` and create a new `Na
 import * as React from 'react'
 
 const NavbarScroller = () => {
-  return (
-    <div>
-
-    </div>
-  )
+  return <div />
 }
 
 export default NavbarScroller
@@ -130,13 +125,15 @@ Import the component in your `App.tsx`
 ```js
 // App.tsx
 
-import NavbarScroller from './components/NavbarScroller';
+import NavbarScroller from './components/NavbarScroller'
 
 // ...
 
-return (<div className="App">
-			<NavbarScroller />
-		</div>);
+return (
+  <div className="App">
+    <NavbarScroller />
+  </div>
+)
 ```
 
 Now create a `navigation` object in your `App.tsx`. This will be the data we use that gets sent to the component and rendered.
@@ -144,18 +141,19 @@ Now create a `navigation` object in your `App.tsx`. This will be the data we use
 ```js
 // App.tsx
 const navigation = {
-  brand: { name: "NavbarScroller", to: "/" },
+  brand: { name: 'NavbarScroller', to: '/' },
   links: [
-    { name: "About Me", to: "/about" },
-    { name: "Blog", to: "/blog" },
-    { name: "Developement", to: "/dev" },
-    { name: "Graphic Design", to: "/design" },
-    { name: "Contact", to: "/contact" },
+    { name: 'About Me', to: '/about' },
+    { name: 'Blog', to: '/blog' },
+    { name: 'Developement', to: '/dev' },
+    { name: 'Graphic Design', to: '/design' },
+    { name: 'Contact', to: '/contact' }
   ]
 }
 ```
 
 Now pass the object into our component as props.
+
 ```js
 // App.tsx
 export default class App extends Component {
@@ -182,6 +180,7 @@ We can fix this by defining the types of props we’re sending to the component.
 Get it … types… typescript
 
 If we wanted to, we could simple clear the error by setting out props to any.
+
 ```js
 // NavbarScroller.tsx
 
@@ -197,32 +196,37 @@ const NavbarScroller = (props: any) => {
 export default NavbarScroller
 ```
 
-I’m not saying that you might not ever need to use  `any` to defend you type of for our situation we know we’re going to be sending two different props.
+I’m not saying that you might not ever need to use `any` to defend you type of for our situation we know we’re going to be sending two different props.
 
-1. The  `brand` object that contains two different properties `name, to` these are both strings and even if their value changes. The variable type should still always be an `object` with two values that are  `name` and `to`.
+1. The `brand` object that contains two different properties `name, to` these are both strings and even if their value changes. The variable type should still always be an `object` with two values that are `name` and `to`.
 2. The `links` array is same object as our `brand` but in an array. And it should always retain that structure.
 
 First let’s just tell TypeScript that the props are an object.
+
 ```js
 const NavbarScroller = (props: {}) => {...}
 ```
 
 Now that we have defended the object lets add the `brand`
+
 ```js
 const NavbarScroller = (props: { brand }) => {...}
 ```
 
 Now we need to defend the brand and the brand is…. you guessed it, an object.
+
 ```js
 const NavbarScroller = (props: { brand: {} }) => {...}
 ```
 
 Now we can start defining the brand object that contains two strings, `name` and `to`
+
 ```js
 const NavbarScroller = (props: { brand: { name: string, to: string } }) => {...}
 ```
 
 So that validates our brand object but now we need to validate our links, the array of the same object.
+
 ```js
 const NavbarScroller = (props: {
   brand: { name: string; to: string };
@@ -230,8 +234,8 @@ const NavbarScroller = (props: {
 }) => { ... };
 ```
 
-
 Now we can shape the objects within the array.
+
 ```
 const NavbarScroller = (props: {
   brand: { name: string; to: string };
@@ -241,66 +245,74 @@ const NavbarScroller = (props: {
 // Then is pretty much the same as defining the object.
 ```
 
-
 That right there is what all the `TypeScript` Hype is about. When functions know what that are expecting before hand it allows us to find bugs before they even happen and make it a lot easier to find and fix problems before they make it into production.
 
-
 Now lets add our Brand element
+
 ```js
 // NavbarScroller.tsx
-const { brand } = props;
+const { brand } = props
 // descructure object to avoid 'props.brand.to'
 
-  return (
-    <div>
-      <a href={brand.to}>{brand.name}</a>
-    </div>
-  )
+return (
+  <div>
+    <a href={brand.to}>{brand.name}</a>
+  </div>
+)
 ```
-
 
 Mapping our links.
 Here we want out type to be `NavLinks: any` because we’re returning JSX.
+
 ```js
-const NavLinks: any = () => links.map((link: { name: string, to: string }) => <li key={link.name}><a href={link.to}>{link.name}</a></li>);
+const NavLinks: any = () =>
+  links.map((link: { name: string, to: string }) => (
+    <li key={link.name}>
+      <a href={link.to}>{link.name}</a>
+    </li>
+  ))
 
-return (<div>
-			<a href={brand.to}>{brand.name}</a>
-			<NavLinks />
-		</div>)
+return (
+  <div>
+    <a href={brand.to}>{brand.name}</a>
+    <NavLinks />
+  </div>
+)
 ```
-
 
 Finally.
 
-Lets add some `styled-components` in our  `NavbarScroller.tsx`;
+Lets add some `styled-components` in our `NavbarScroller.tsx`;
+
 ```
 npm install styled-components --save
 ```
 
-
 ```js
 import * as React from 'react'
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const NavbarScroller = (props: {
-  brand: { name: string; to: string },
+  brand: { name: string, to: string },
   links: Array<{ name: string, to: string }>
 }) => {
-  const { brand, links } = props;
-  const NavLinks: any = () => links.map((link: { name: string, to: string }) => <li key={link.name}><a href={link.to}>{link.name}</a></li>);
+  const { brand, links } = props
+  const NavLinks: any = () =>
+    links.map((link: { name: string, to: string }) => (
+      <li key={link.name}>
+        <a href={link.to}>{link.name}</a>
+      </li>
+    ))
   return (
     <div>
       <a href={brand.to}>{brand.name}</a>
       <NavLinks />
     </div>
   )
-};
+}
 
-export default NavbarScroller;
-
+export default NavbarScroller
 ```
-
 
 ### Here is the styling I used for the styled-components
 
@@ -310,11 +322,11 @@ const Theme = {
     bg: `#fff`,
     dark: `#24292e`,
     light: `#EEEEEE`,
-    red: `#ff5851`,
+    red: `#ff5851`
   },
   fonts: {
     body: `IBM Plex Sans, sans-serif`,
-    heading: `IBM Plex Sans, sans-serif`,
+    heading: `IBM Plex Sans, sans-serif`
   }
 }
 
@@ -325,19 +337,25 @@ const Navbar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  a { color: white; text-decoration: none; }`;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+`
 
 const Brand = styled.a`
   font-weight: bold;
   font-style: italic;
   margin-left: 1rem;
-  padding-right: 1rem;`;
+  padding-right: 1rem;
+`
 
 const Ul = styled.ul`
   display: flex;
   flex-wrap: nowrap;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch;`;
+  -webkit-overflow-scrolling: touch;
+`
 
 const Li = styled.li`
   flex: 0 0 auto;
@@ -359,29 +377,35 @@ const Li = styled.li`
   height: 50px;
   justify-content: center;
   line-height: 16px;
-  margin: 0 10px ;
+  margin: 0 10px;
   text-decoration: none;
-  white-space: nowrap;`;
+  white-space: nowrap;
+`
 ```
 
-
 After you create the styled-components you can go back and update your component to use them like so.
+
 ```js
 const NavbarScroller = (props: {
-  brand: { name: string; to: string },
+  brand: { name: string, to: string },
   links: Array<{ name: string, to: string }>
 }) => {
-  const { brand, links } = props;
-  const NavLinks: any = () => links.map((link: { name: string, to: string }) => <Li key={link.name}><a href={link.to}>{link.name}</a></Li>);
+  const { brand, links } = props
+  const NavLinks: any = () =>
+    links.map((link: { name: string, to: string }) => (
+      <Li key={link.name}>
+        <a href={link.to}>{link.name}</a>
+      </Li>
+    ))
   return (
     <Navbar>
       <Brand href={brand.to}>{brand.name}</Brand>
       <Ul>
         <NavLinks />
       </Ul>
-    </Navbar >
+    </Navbar>
   )
-};
+}
 ```
 
 There you have it!
@@ -389,4 +413,3 @@ There you have it!
 --glweems
 
 ![](https://raw.githubusercontent.com/gwtuts/react-navbar-scroller/master/demo.png)
-

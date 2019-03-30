@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import BlogPostPreview, { CardGrid } from '@/blog-post-preview'
+import { Card, CardGrid } from '@/card'
 import { Container } from 'src/Styled'
 
 export default class BlogPosts extends Component {
@@ -27,15 +27,15 @@ export default class BlogPosts extends Component {
         const {
           node: {
             excerpt,
-            frontmatter: { title, subtitle, path, thumbnail },
+            frontmatter: { title, path, thumbnail },
           },
         } = edge
         return (
-          <BlogPostPreview
+          <Card
             key={index}
-            title={excerpt}
+            title={title}
             subtitle={excerpt}
-            link={path}
+            link={<Link to={path}>Read More..</Link>}
             img={thumbnail}
           />
         )
@@ -44,9 +44,9 @@ export default class BlogPosts extends Component {
     return (
       <Layout>
         <SEO title="posts" />
-        <Container>
+        <CardGrid>
           <Posts />
-        </Container>
+        </CardGrid>
       </Layout>
     )
   }

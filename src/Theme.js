@@ -2,13 +2,14 @@
 import styled from 'styled-components'
 
 const Theme = {
-  headingFont: `IBM Plex Mono;`,
+  headingFont: `IBM Plex Mono`,
   colors: {
     white: `#fff`,
     light: `#F7F7F7`,
     dark: `#24292e`,
+    secondary: `##707070`,
     red: `#ff5851`,
-    blue: `#6AA5E4`,
+    blue: `#5687e8`,
     bg: `#fff`,
   },
   'border-radius': `3px`,
@@ -56,16 +57,6 @@ export const ThemeProvider = styled.div`
     :visited {
       color: unset;
     }
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: 'Roboto';
-    font-weight: bold;
-    margin-bottom: 0.5rem;
   }
 `
 

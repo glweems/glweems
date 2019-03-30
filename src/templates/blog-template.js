@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
@@ -25,7 +26,7 @@ const BlogPost = styled.div`
   }
 `
 
-const Template = ({ data }) => {
+const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data
   const { title } = markdownRemark.frontmatter
   const { html } = markdownRemark
@@ -41,8 +42,8 @@ const Template = ({ data }) => {
   )
 }
 export const pageQuery = graphql`
-  query SinglePost($path: String!) {
-    markdownRemark(frontmatter: { path: { eq: $path } }) {
+  query SinglePost($slug: String!) {
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -52,4 +53,8 @@ export const pageQuery = graphql`
     }
   }
 `
-export default Template
+
+BlogTemplate.propTypes = {
+  data: PropTypes.object,
+}
+export default BlogTemplate

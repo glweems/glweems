@@ -9,3 +9,19 @@ export const Container = styled.div`
   ${MQ.laptopL(`max-width: 1140px`)}
   ${MQ.desktop(`max-width: 1440px`)};
 `
+export const Flex = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+`
+export const Tag = styled.div`
+  /* background: ${Theme.colors.blue}; */
+  background: ${Theme.colors.light};
+  font-size: 13px;
+  font-weight: medium;
+  /* border-radius: 0.25rem; */
+  /* padding: 0px 12px; */
+`

@@ -1,9 +1,10 @@
 ---
 path: /tutorials/react-peekaboo-navbar
 date: 2019-03-18
-title: "Simple navbar component using react, typescript, and styled-components."
-subtitle: "This will create a react-component `Navbar` that will be hidden when the user scrolls down and visible when the user scrolls up."
+title: 'Simple navbar component using react, typescript, and styled-components.'
+subtitle: 'This will create a react-component `Navbar` that will be hidden when the user scrolls down and visible when the user scrolls up.'
 thumbnail: https://raw.githubusercontent.com/gwtuts/react-peekaboo-navbar/master/demo.gif
+tags: ['react', 'navbar', 'component', 'styled-components']
 ---
 
 # React auto-hide on scroll navbar.
@@ -12,7 +13,7 @@ thumbnail: https://raw.githubusercontent.com/gwtuts/react-peekaboo-navbar/master
 
 ---
 
-![](https://avatars2.githubusercontent.com/u/48597129?s=100&u=975926e0bc8d1da9ae020e4af5925862682e516c&v=4 "gwtuts")
+![](https://avatars2.githubusercontent.com/u/48597129?s=100&u=975926e0bc8d1da9ae020e4af5925862682e516c&v=4 'gwtuts')
 
 <p align="center">
   <a href="https://react-peekaboo-navbar.gwtuts.com">Demo</a>
@@ -36,15 +37,15 @@ In your `App.js` create the following constants;
 
 ```js
 // App.js
-import Navbar from "./Navbar";
+import Navbar from './Navbar'
 
 const navlinks = [
-  { name: "Home", to: "/" },
-  { name: "About", to: "/about" },
-  { name: "Contact", to: "/contact" }
-];
+  { name: 'Home', to: '/' },
+  { name: 'About', to: '/about' },
+  { name: 'Contact', to: '/contact' }
+]
 
-const brand = { name: "peekaboo", to: "home" };
+const brand = { name: 'peekaboo', to: 'home' }
 
 export default class App extends Component {
   render() {
@@ -52,7 +53,7 @@ export default class App extends Component {
       <div className="App">
         <Navbar brand={brand} links={navlinks} />
       </div>
-    );
+    )
   }
 }
 ```
