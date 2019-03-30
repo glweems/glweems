@@ -11,11 +11,19 @@ const Theme = {
     muted: `#D1D6DB`,
     red: `#ff5851`,
     blue: `#5687e8`,
+    green: `#5DB583`,
   },
-  'border-radius': `3px`,
-  padding: `1rem;`,
+  breakpoints: {
+    mobileS: `320px`,
+    mobileM: `375px`,
+    mobileL: `425px`,
+    tablet: `639px`,
+    laptop: `1140px`,
+    laptopL: `1440px`,
+    desktop: `2560px`,
+  },
   fontFamily: {
-    header: 'Source Sans Pro',
+    header: 'IBM Plex Mono',
     body: 'Roboto',
   },
 }
@@ -37,8 +45,11 @@ export const ThemeProvider = styled.div`
   a {
     color: ${Theme.colors.blue};
     text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
     :visited {
-      color: unset;
+      color: inherit;
     }
   }
 `

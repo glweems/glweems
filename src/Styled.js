@@ -48,3 +48,52 @@ export const Heading = styled.h1`
   margin: 0 0 0.25rem 0.25rem;
   font-size: 50px;
 `
+export const Button = styled.button`
+  background: ${Theme.colors.light};
+  border-color: ${Theme.colors.dark};
+  border-radius: 1px;
+  border-style: solid;
+  border-width: 2px;
+  color: ${Theme.colors.dark};
+  display: inline-block;
+  font-family: ${Theme.headingFont};
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  :hover {
+    background: ${Theme.colors.dark};
+    color: ${Theme.colors.light};
+    transition: all 0.4s ease 0s;
+  }
+  ${props =>
+    props.blue &&
+    css`
+      background: ${Theme.colors.blue};
+      color: ${Theme.colors.light};
+      border-color: ${Theme.colors.blue};
+      :hover {
+        background: ${Theme.colors.light};
+        color: ${Theme.colors.blue};
+        border-color: ${Theme.colors.blue};
+      }
+    `}
+  ${props =>
+    props.red &&
+    css`
+      background: ${Theme.colors.red};
+      color: ${Theme.colors.light};
+      border-color: ${Theme.colors.red};
+      :hover {
+        background: ${Theme.colors.light};
+        color: ${Theme.colors.red};
+        border-color: ${Theme.colors.red};
+      }
+    `}
+  ${props =>
+    props.center &&
+    css`
+      margin: 0 auto;
+    `}
+`

@@ -9,21 +9,22 @@ export const CardGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   text-align: left;
-  ${MQ.laptop(`
-  grid-template-columns: 1fr 1fr;
 
-  `)}
+  /* ${MQ.laptop(`
+  grid-template-columns: 1fr 1fr 1fr;
+  `)} */
 `
 
 export const Card = styled.div`
-  background: ${Theme.colors.light};
+  /* background: ${Theme.colors.light}; */
   display: grid;
   gap: 0.25rem;
   padding: 0.25rem 0;
   align-items: space-evenly;
   align-content: space-evenly;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
+  grid-auto-rows: 1fr;
   grid-template-areas:
     'title'
     'subtitle'
@@ -40,28 +41,29 @@ export const Card = styled.div`
   ${props =>
     props.imgTop &&
     css`
-      grid-template-rows: auto auto 10rem 1fr;
+      grid-template-rows: auto auto auto 1fr;
       grid-template-areas:
         'title'
         'subtitle'
         'img'
         'link';
       ${MQ.laptop(`
-  grid-template-rows: auto auto 20rem 1fr;
+  grid-template-rows: auto auto auto 1fr;
   `)}
     `}
 `
 export const ImgDiv = styled.div`
-  background-color: transparent;
-  background-origin: border-box;
-  background-position: 50% 35%;
+  background-position: 50% 50%;
   background-size: cover;
   grid-area: img;
-  height: 100%;
-  outline: 0;
-  text-decoration: none;
-
-  -webkit-tap-highlight-color: transparent;
+  height: 200px;
+  width: 100%;
+  ${MQ.mobileM(`
+  width: 60%;
+  `)}
+  ${MQ.laptop(`
+  max-height: 200px;
+  `)}
 `
 
 export const CardTitle = styled.h2`

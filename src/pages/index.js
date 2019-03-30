@@ -5,7 +5,7 @@ import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
 import styled, { css } from 'styled-components'
 import Theme from 'src/Theme'
-import { CardGrid } from '@/card'
+import { CardGrid, Card, CardTitle, CardSubtitle } from '@/card'
 import { Heading } from 'src/Styled'
 import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
 
@@ -30,57 +30,16 @@ const ContactMe = () => (
 
 const Section = styled.section`
   /* background: ${Theme.colors.light}; */
-  margin-bottom: 2rem;
+  max-width: ${Theme.breakpoints.tablet};
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
 
 `
-const Button = styled.button`
-  background: ${Theme.colors.light};
-  border-color: ${Theme.colors.dark};
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 2px;
-  color: ${Theme.colors.dark};
-  display: inline-block;
-  font-family: ${Theme.headingFont};
-  font-size: 16px;
-  font-weight: 500;
-  padding: 4px 6px;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-  :hover {
-    background: ${Theme.colors.dark};
-    color: ${Theme.colors.light};
-    transition: all 0.4s ease 0s;
-  }
-  ${props =>
-    props.blue &&
-    css`
-      background: ${Theme.colors.blue};
-      color: ${Theme.colors.light};
-      border-color: ${Theme.colors.blue};
-      :hover {
-        background: ${Theme.colors.light};
-        color: ${Theme.colors.blue};
-        border-color: ${Theme.colors.blue};
-      }
-    `}
-  ${props =>
-    props.red &&
-    css`
-      background: ${Theme.colors.red};
-      color: ${Theme.colors.light};
-      border-color: ${Theme.colors.red};
-      :hover {
-        background: ${Theme.colors.light};
-        color: ${Theme.colors.red};
-        border-color: ${Theme.colors.red};
-      }
-    `}
-  ${props =>
-    props.center &&
-    css`
-      margin: 0 auto;
-    `}
+
+const BigLink = styled(Link)`
+  font-family: ${Theme.fontFamily.header};
+  font-weight: 600;
+  color: ${Theme.colors.green} !important;
 `
 
 const SectionEnd = styled.div`
@@ -104,25 +63,28 @@ export const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
       <Section>
+        <Heading>Hi, I'm Garrett</Heading>
+        <Card>
+          <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
+          <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
+        </Card>
+      </Section>
+      <Section>
         <Heading>Repos</Heading>
         <CardGrid>
           <PinnedRepos edges={repos} />
         </CardGrid>
         <SectionEnd>
-          <Button red>
-            <a href="https://github.com/glweems">View All Repos</a>
-          </Button>
+          <a href="https://github.com/glweems">View All Repos -></a>
         </SectionEnd>
       </Section>
-      <Heading>Design</Heading>
       <Section>
+        <Heading>Design</Heading>
         <CardGrid>
           <BehanceProjects edges={designs} />
         </CardGrid>
         <SectionEnd>
-          <Link to="/design/">
-            <Button red>View All Projects</Button>
-          </Link>
+          <BigLink to="/design">View All Designs -></BigLink>
         </SectionEnd>
       </Section>
       <Section>
@@ -131,9 +93,7 @@ export const IndexPage = ({ data }) => {
           <MyTuts edges={tuts} />
         </CardGrid>
         <SectionEnd>
-          <Link to="/tutorials">
-            <Button red> View All Tutorials </Button>
-          </Link>
+          <BigLink to="/tutorials">View All Tutorials</BigLink>
         </SectionEnd>
       </Section>
     </Layout>

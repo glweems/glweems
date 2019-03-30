@@ -61,7 +61,7 @@ export const MyTuts = ({ edges }) =>
       frontmatter: { path, title, thumbnail: img, tags },
     } = edge.node
     return (
-      <Card key={i} imgRight>
+      <Card key={i} imgTop>
         <CardTitle>{title}</CardTitle>
         <CardSubtitle>{excerpt}</CardSubtitle>
         <CardLink>
