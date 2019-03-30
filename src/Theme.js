@@ -7,10 +7,10 @@ const Theme = {
     white: `#fff`,
     light: `#F7F7F7`,
     dark: `#24292e`,
-    secondary: `##707070`,
+    secondary: `#707070`,
+    muted: `#D1D6DB`,
     red: `#ff5851`,
     blue: `#5687e8`,
-    bg: `#fff`,
   },
   'border-radius': `3px`,
   padding: `1rem;`,
@@ -23,7 +23,7 @@ const Theme = {
 export const ThemeProvider = styled.div`
   width: 100%;
   font-family: 'Roboto';
-  background: ${Theme.colors.light};
+  background: ${Theme.colors.white};
   color: ${Theme.colors.dark};
 
   input,
@@ -34,24 +34,6 @@ export const ThemeProvider = styled.div`
     /* padding-left: 0.5rem; */
   }
 
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    * {
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 1rem;
-    }
-  }
-  .submit {
-    background: ${Theme.colors.red};
-    border: none;
-    color: ${Theme.colors.white};
-    border-radius: ${Theme['border-radius']};
-    padding: 0.25rem 0;
-    text-transform: uppercase;
-  }
   a {
     text-decoration: none;
     :visited {

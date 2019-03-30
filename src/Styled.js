@@ -17,11 +17,34 @@ export const Flex = styled.div`
     margin-right: 0.5rem;
   }
 `
+export const Scroller = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  width: 100%;
+  max-width: 100%;
+  overflow: scroll;
+  *:not(:last-child) {
+    margin-right: 0.5rem;
+  }
+`
 export const Tag = styled.div`
   /* background: ${Theme.colors.blue}; */
-  background: ${Theme.colors.light};
+  color: ${Theme.colors.blue};
   font-size: 13px;
   font-weight: medium;
-  /* border-radius: 0.25rem; */
-  /* padding: 0px 12px; */
+  min-width: fit-content;
+  margin: 0;
+  border-radius: 0.25rem;
+  padding: 0px 12px;
+  ::before {
+    content: '#';
+  }
+`
+
+export const Heading = styled.h1`
+  font-family: ${Theme.headingFont};
+  color: ${Theme.colors.muted};
+  margin: 0 0 0.25rem 0.25rem;
+  font-size: 45px;
 `

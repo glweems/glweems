@@ -1,19 +1,17 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from 'gatsby'
-import Theme, { MQ } from 'src/Theme'
+import Theme from 'src/Theme'
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
-  /* -webkit-box-align: stretch; */
-  /* -webkit-box-flex: 1; */
-  /* align-items: stretch; */
+  -webkit-box-align: stretch;
+  -webkit-box-flex: 1;
+  align-items: stretch;
   display: flex;
-  /* flex: 1 1 auto; */
+  flex: 1 1 auto;
   /* font-size: 16px; */
   /* line-height: 20px; */
   max-width: 700px;
-  width: 100%;
   /* background: ${Theme.colors.light}; */
   height: 100%;
   margin-bottom: 0.25rem;
@@ -28,15 +26,15 @@ const ImgDiv = styled.div`
   text-decoration: none;
   background-origin: border-box;
   flex: 1 1 auto;
-  flex-basis: 25%;
+  min-width: 25%;
 `
 
 const CardBody = styled.div`
   -webkit-box-flex: 1;
-  min-height: 5rem;
   flex: 1 1 auto;
   text-align: left;
-  flex-basis: 60%;
+  /* flex-basis: 60%; */
+  max-width: 60%;
   padding: 0.5rem;
   *:not(:last-child) {
     margin-bottom: 0.5rem;
@@ -85,15 +83,14 @@ const CardLink = styled.div`
   padding: 0;
   font-weight: bold;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 12px;
   width: fit-content;
   :hover {
     text-decoration: underline;
   }
-  /* text-transform: uppercase; */
+  text-transform: uppercase;
 `
-
-export const Card = ({ title, subtitle, img, link, children }) => {
+export const Card = ({ title, subtitle, img, link }) => {
   const imgStyle = {
     backgroundImage: `url(${img})`,
   }
@@ -103,7 +100,6 @@ export const Card = ({ title, subtitle, img, link, children }) => {
         <Title>{title}</Title>
         <Subtitle>{subtitle}</Subtitle>
         {!link || <CardLink>{link}</CardLink>}
-        {!children || <div>{children}</div>}
       </CardBody>
       {!img || <ImgDiv style={imgStyle} />}
     </StyledCard>
@@ -114,15 +110,13 @@ Card.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
   img: PropTypes.string,
-  body: PropTypes.string,
   link: PropTypes.element,
-  children: PropTypes.any,
 }
 
 export const CardGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: auto;
   gap: 1rem;
 `
 export default Card

@@ -2,10 +2,11 @@ import React from 'react'
 import Layout from '@/layout'
 import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
-import Theme from 'src/Theme'
 import styled from 'styled-components'
-import { CardGrid, Card } from '@/card'
-import { Flex, Tag } from 'src/Styled'
+import Theme from 'src/Theme'
+import { CardGrid } from '@/card'
+import { Heading } from 'src/Styled'
+import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
 
 const ContactMe = () => (
   <form name="contact" netlify>
@@ -25,9 +26,6 @@ const ContactMe = () => (
     </p>
   </form>
 )
-const Heading = styled.h1`
-  font-family: ${Theme.headingFont};
-`
 
 export default ({ data }) => {
   const {
@@ -40,79 +38,25 @@ export default ({ data }) => {
     allMarkdownRemark: { edges: tuts },
   } = data
 
-  const PinnedRepos = () =>
-    repos.map((repo, i) => {
-      const { name, description } = repo.node
-      return <Card key={i} title={name} subtitle={description} img="" />
-    })
-  const BehanceProjects = () =>
-    designs.map((design, i) => {
-      const {
-        name,
-        description,
-        areas,
-        fields: { slug },
-        covers: { size_808: img },
-      } = design.node
-      return (
-        <Card
-          key={i}
-          title={name}
-          subtitle={description}
-          img={img}
-          link={<Link to={`designs/${slug}`}>View Project</Link>}
-        >
-          {/* <div>
-            {areas.map(area => (
-              <span key={area}>{area}</span>
-            ))}
-          </div> */}
-        </Card>
-      )
-    })
-
-  const MyTuts = () =>
-    tuts.map((tut, i) => {
-      const {
-        excerpt,
-        frontmatter: { path, title, thumbnail: img, tags },
-      } = tut.node
-      return (
-        <Card
-          key={i}
-          title={title}
-          subtitle={excerpt}
-          img={img}
-          link={<Link to={path}>Read More...</Link>}
-        >
-          <Flex>
-            {tags.map(tag => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </Flex>
-        </Card>
-      )
-    })
-
   return (
     <Layout>
       <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
       <section>
         <Heading>Repos</Heading>
         <CardGrid>
-          <PinnedRepos />
+          <PinnedRepos edges={repos} />
         </CardGrid>
       </section>
       <div>
         <Heading>Design</Heading>
-        <BehanceProjects />
+        <BehanceProjects edges={designs} />
       </div>
       <section>
         <Heading>Tutorials</Heading>
         <CardGrid>
-          <MyTuts />
+          <MyTuts edges={tuts} />
         </CardGrid>
-        <h3>View All</h3>
+        <h3>See More -></h3>
       </section>
     </Layout>
   )

@@ -5,6 +5,7 @@ import Layout from '@/layout'
 import SEO from '@/seo'
 import { Card, CardGrid } from '@/card'
 import { Container } from 'src/Styled'
+import { MyTuts } from '@/my-content'
 
 export default class BlogPosts extends Component {
   static propTypes = {
@@ -22,30 +23,11 @@ export default class BlogPosts extends Component {
       },
     } = this
 
-    const Posts = () =>
-      edges.map((edge, index) => {
-        const {
-          node: {
-            excerpt,
-            frontmatter: { title, path, thumbnail },
-          },
-        } = edge
-        return (
-          <Card
-            key={index}
-            title={title}
-            subtitle={excerpt}
-            link={<Link to={path}>Read More..</Link>}
-            img={thumbnail}
-          />
-        )
-      })
-
     return (
       <Layout>
         <SEO title="posts" />
         <CardGrid>
-          <Posts />
+          <MyTuts edges={edges} />
         </CardGrid>
       </Layout>
     )
