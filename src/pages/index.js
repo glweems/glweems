@@ -9,24 +9,7 @@ import { CardGrid, Card, CardTitle, CardSubtitle } from '@/card'
 import { Heading } from 'src/Styled'
 import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
 
-const ContactMe = () => (
-  <form name="contact" netlify>
-    <p>Give me a shout</p>
-    <input id="name" type="name" name="name" placeholder="name" />
-    <input id="email" type="email" name="email" placeholder="email" />
-    <textarea
-      type="text"
-      name="message"
-      id="message"
-      placeholder="message..."
-    />
-    <p>
-      <button type="submit" className="submit">
-        Send
-      </button>
-    </p>
-  </form>
-)
+import ContactForm from '@/form/contact'
 
 const Section = styled.section`
   /* background: ${Theme.colors.light}; */
@@ -62,6 +45,12 @@ export const IndexPage = ({ data }) => {
   return (
     <Layout>
       <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
+      <Section>
+        <Heading>Contact me</Heading>
+        <div>
+          <ContactForm />
+        </div>
+      </Section>
       <Section>
         <Heading>Hi, I'm Garrett</Heading>
         <Card>
