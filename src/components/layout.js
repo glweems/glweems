@@ -6,6 +6,7 @@ import { sidebarLinks } from 'src/Data'
 import Theme, { ThemeProvider } from 'src/Theme'
 import { Container } from 'src/Styled'
 import styled from 'styled-components'
+import ErrorBoundary from '@/sentry'
 
 const Main = styled.main`
   max-width: 100%;
@@ -25,12 +26,14 @@ const Layout = ({ children }) => (
       }
     `}
     render={() => (
-      <ThemeProvider>
-        <Navigation links={sidebarLinks} />
-        {/* <Container> */}
-        <Main>{children}</Main>
-        {/* </Container> */}
-      </ThemeProvider>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <Navigation links={sidebarLinks} />
+          {/* <Container> */}
+          <Main>{children}</Main>
+          {/* </Container> */}
+        </ThemeProvider>
+      </ErrorBoundary>
     )}
   />
 )
