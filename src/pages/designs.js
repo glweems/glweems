@@ -1,34 +1,25 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { CardGrid } from '@/card'
 import { BehanceProjects } from '@/my-content'
+import { Container } from 'elements'
 
-export default class GraphicDesignPage extends Component {
-  static propTypes = {
-    data: PropTypes.shape({
-      allBehanceProjects: PropTypes.shape({ edges: PropTypes.array }),
-    }),
-  }
+const GraphicDesignPage = ({ data }) => (
+  <Layout>
+    <SEO title="Graphic Design" />
+    <Container>
+      <BehanceProjects edges={data.allBehanceProjects.edges} />
+    </Container>
+  </Layout>
+)
 
-  render() {
-    const {
-      data: {
-        allBehanceProjects: { edges },
-      },
-    } = this.props
-    return (
-      <Layout>
-        <SEO title="Graphic Design" />
-        <CardGrid>
-          <BehanceProjects edges={edges} />
-        </CardGrid>
-      </Layout>
-    )
-  }
+GraphicDesignPage.propTypes = {
+  data: PropTypes.object.isRequired,
 }
+
+export default GraphicDesignPage
 
 export const GraphicDesignPageQuery = graphql`
   query {
@@ -48,7 +39,7 @@ export const GraphicDesignPageQuery = graphql`
             id
           }
           covers {
-            size_808
+            size_max_808
           }
           stats {
             views

@@ -1,8 +1,9 @@
 /* eslint-disable react/no-multi-comp */
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Navbar from '@/navigation/navbar'
-import Sidebar from '@/navigation/sidebar'
+import { graphql, Link } from 'gatsby'
+import Navbar from './navbar'
+import Sidebar from './sidebar'
 
 export default class extends Component {
   static propTypes = {

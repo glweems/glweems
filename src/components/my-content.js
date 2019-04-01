@@ -3,74 +3,57 @@ import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import {
   Card,
-  CardBody,
+  CardImg,
   CardTitle,
   CardSubtitle,
-  ImgDiv,
   CardLink,
-} from '@/card'
-import Theme from 'src/Theme'
-import styled, { css } from 'styled-components'
+} from 'src/styled/card'
+import { Flex } from 'elements'
 
 export const PinnedRepos = ({ edges }) =>
-  edges.map((edge, i) => {
-    const { name, description, url, languages } = edge.node
-    return (
-      <Card>
-        <CardTitle>{name}</CardTitle>
-        <CardSubtitle>{description}</CardSubtitle>
-        <CardLink>
-          <a href={url}>github</a>
-        </CardLink>
-      </Card>
-    )
-  })
+  edges.map((edge, i) => (
+    <Card key={i} minwidth="200px">
+      <CardTitle>{edge.node.name}</CardTitle>
+      <CardSubtitle>{edge.node.description}</CardSubtitle>
+      <CardLink>
+        <Flex>
+          <a href={edge.node.url}>github</a>
+          <a href={edge.node.homepageUrl}>homepage</a>
+        </Flex>
+      </CardLink>
+    </Card>
+  ))
 
 PinnedRepos.propTypes = {
   edges: PropTypes.array,
 }
 
 export const BehanceProjects = ({ edges }) =>
-  edges.map((edge, i) => {
-    const {
-      name,
-      description,
-      fields: { slug },
-      covers: { size_808: img },
-    } = edge.node
-    return (
-      <Card key={i} imgTop>
-        <CardTitle>{name}</CardTitle>
-        <CardSubtitle>{description}</CardSubtitle>
-        <CardLink>
-          <Link to={`/designs/${slug}`}>See Project</Link>
-        </CardLink>
-        <ImgDiv style={{ backgroundImage: `url(${img})` }} />
-      </Card>
-    )
-  })
+  edges.map((edge, i) => (
+    <Card key={i} minwidth="200px">
+      <CardTitle>{edge.node.name}</CardTitle>
+      <CardImg img={edge.node.covers.size_max_808} />
+      <CardLink>
+        <Link to={`/designs/${edge.node.fields.slug}`}>See Project</Link>
+      </CardLink>
+    </Card>
+  ))
 
 BehanceProjects.propTypes = {
   edges: PropTypes.array,
 }
 
 export const MyTuts = ({ edges }) =>
-  edges.map((edge, i) => {
-    const {
-      excerpt,
-      frontmatter: { path, title, thumbnail: img, tags },
-    } = edge.node
-    return (
-      <Card key={i} imgTop>
-        <CardTitle>{title}</CardTitle>
-        <CardSubtitle>{excerpt}</CardSubtitle>
-        <CardLink>
-          <Link to={path}>Read More...</Link>
-        </CardLink>
-        <ImgDiv style={{ backgroundImage: `url(${img})` }} />
-      </Card>
-    )
-  })
+  edges.map((edge, i) => (
+    <Card key={i} minwidth="200px">
+      <CardTitle>{edge.node.frontmatter.title}</CardTitle>
+      <CardSubtitle>{edge.node.excerpt}</CardSubtitle>
+      <CardImg img={edge.node.frontmatter.thumbnail} />
+      <CardLink>
+        <Link to={edge.node.frontmatter.path}>Read More...</Link>
+      </CardLink>
+    </Card>
+  ))
 
 MyTuts.propTypes = {
   edges: PropTypes.array,

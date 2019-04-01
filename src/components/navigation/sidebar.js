@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import Theme from 'src/Theme'
+import Theme from 'src/styled/theme'
 
 const StyledSidebar = styled.div`
   display: flex;

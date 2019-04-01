@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { Card, CardGrid } from '@/card'
-import { Container } from 'src/Styled'
 import { MyTuts } from '@/my-content'
 
 export default class BlogPosts extends Component {
@@ -26,9 +24,9 @@ export default class BlogPosts extends Component {
     return (
       <Layout>
         <SEO title="posts" />
-        <CardGrid>
+        <div>
           <MyTuts edges={edges} />
-        </CardGrid>
+        </div>
       </Layout>
     )
   }

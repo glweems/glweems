@@ -1,18 +1,11 @@
-import Navigation from '@/navigation'
 import { graphql, StaticQuery } from 'gatsby'
+import { Main } from 'elements'
+import { sidebarLinks } from 'src/_DATA_'
+import { ThemeProvider } from 'src/styled/theme'
+import ErrorBoundary from '@/sentry'
+import Navigation from '@/navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { sidebarLinks } from 'src/Data'
-import Theme, { ThemeProvider } from 'src/Theme'
-import { Container } from 'src/Styled'
-import styled from 'styled-components'
-import ErrorBoundary from '@/sentry'
-
-const Main = styled.main`
-  max-width: 100%;
-  overflow: hidden;
-  background: white;
-`
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -29,9 +22,7 @@ const Layout = ({ children }) => (
       <ErrorBoundary>
         <ThemeProvider>
           <Navigation links={sidebarLinks} />
-          {/* <Container> */}
           <Main>{children}</Main>
-          {/* </Container> */}
         </ThemeProvider>
       </ErrorBoundary>
     )}
@@ -40,6 +31,9 @@ const Layout = ({ children }) => (
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  data: PropTypes.shape({
+    site: PropTypes.shape({}),
+  }),
 }
 
 export default Layout

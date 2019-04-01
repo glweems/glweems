@@ -73,31 +73,3 @@ exports.createPages = ({ actions, graphql }) =>
     .catch(err => {
       throw new Error(err)
     })
-
-// exports.createPages = ({ actions, graphql }) =>
-//   graphql(`
-//     {
-//       allBehanceProjects {
-//         edges {
-//           node {
-//             id
-//           }
-//         }
-//       }
-//     }
-//   `)
-//     .then(result => {
-//       if (result.errors) {
-//         return Promise.reject(result.errors)
-//       }
-//       result.data.allBehanceProjects.edges.forEach(({ node }) => {
-//         actions.createPage({
-//           path: node.id,
-//           component: path.resolve(`./src/templates/design-template.js`),
-//           context: {},
-//         })
-//       })
-//     })
-//     .catch(err => {
-//       throw new Error(err)
-//     })

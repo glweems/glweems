@@ -7,6 +7,11 @@ module.exports = {
     description:
       'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
     author: '@glweems',
+    sidebarLinks: [
+      { name: 'About', to: '/about' },
+      { name: 'Tutorials', to: '/tutorials' },
+      { name: 'Graphic Design', to: '/designs' },
+    ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -35,29 +40,29 @@ module.exports = {
     },
     {
       resolve: `gatsby-source-filesystem`,
-      options: { name: `markdown-pages`, path: `${__dirname}/gwtuts` },
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/pages/gwtuts`,
+      },
     },
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
         src: path.join(__dirname, 'src/'),
         '@': path.join(__dirname, 'src/components/'),
+        elements: path.join(__dirname, 'src/styled/elements'),
       },
     },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [
-          { family: `Roboto`, variants: [`300`, `400`, `800`] },
-          {
-            family: `Source Sans Pro`,
-            variants: [`400`, `500`, `600`, `700`, `700i`],
-          },
-          {
-            family: `IBM Plex Mono`,
-            variants: [`400`, `500`, `600`, `700`, `700i`],
-          },
-        ],
+        fonts: [{ family: `Karla`, variants: [`400`, `400i`, `700`, `700i`] }],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
       },
     },
     {

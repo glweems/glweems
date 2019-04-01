@@ -3,91 +3,56 @@ import PropTypes from 'prop-types'
 import Layout from '@/layout'
 import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
-import styled, { css } from 'styled-components'
-import Theme from 'src/Theme'
-import { CardGrid, Card, CardTitle, CardSubtitle } from '@/card'
-import { Heading } from 'src/Styled'
+import styled from 'styled-components'
+import theme from 'src/styled/theme'
+import { Card, CardTitle, CardSubtitle } from 'src/styled/card'
 import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
-
-import ContactForm from '@/form/contact'
+import { H1, A, Container, Flex } from 'elements'
 
 const Section = styled.section`
-  /* background: ${Theme.colors.light}; */
-  max-width: ${Theme.breakpoints.tablet};
+  max-width: ${theme.breakpoints.tablet};
   margin: 0 auto;
-  margin-bottom: 2.5rem;
-
+  margin-bottom: 2rem;
+  border-bottom: 2px solid ${theme.colors.dark};
 `
 
-const BigLink = styled(Link)`
-  font-family: ${Theme.fontFamily.header};
-  font-weight: 600;
-  color: ${Theme.colors.green} !important;
-`
-
-const SectionEnd = styled.div`
-  width: 100%;
-  padding: 1rem;
-  display: flex;
-  justify-content: flex-start;
-`
-export const IndexPage = ({ data }) => {
-  const {
-    github: {
-      viewer: {
-        pinnedRepositories: { edges: repos },
-      },
-    },
-    allBehanceProjects: { edges: designs },
-    allMarkdownRemark: { edges: tuts },
-  } = data
-
-  return (
-    <Layout>
-      <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
+export const IndexPage = ({ data }) => (
+  <Layout>
+    <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
+    <Container>
       <Section>
-        <Heading>Contact me</Heading>
-        <div>
-          <ContactForm />
-        </div>
-      </Section>
-      <Section>
-        <Heading>Hi, I'm Garrett</Heading>
+        <H1 bold>Hi, I'm Garrett</H1>
         <Card>
           <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
           <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
         </Card>
       </Section>
       <Section>
-        <Heading>Repos</Heading>
-        <CardGrid>
-          <PinnedRepos edges={repos} />
-        </CardGrid>
-        <SectionEnd>
-          <a href="https://github.com/glweems">View All Repos -></a>
-        </SectionEnd>
+        <H1 bold>Repos</H1>
+        <Flex scroll>
+          <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
+        </Flex>
+        <A href="https://github.com/glweems">View All Repos -></A>
       </Section>
+
       <Section>
-        <Heading>Design</Heading>
-        <CardGrid>
-          <BehanceProjects edges={designs} />
-        </CardGrid>
-        <SectionEnd>
-          <BigLink to="/design">View All Designs -></BigLink>
-        </SectionEnd>
+        <H1 bold>Design</H1>
+        <Flex scroll>
+          <BehanceProjects edges={data.allBehanceProjects.edges} />
+        </Flex>
+        <Link to="/designs">View All Designs -></Link>
       </Section>
+
       <Section>
-        <Heading>Tutorials</Heading>
-        <CardGrid>
-          <MyTuts edges={tuts} />
-        </CardGrid>
-        <SectionEnd>
-          <BigLink to="/tutorials">View All Tutorials</BigLink>
-        </SectionEnd>
+        <H1 bold>Tutorials</H1>
+        <Flex scroll>
+          <MyTuts edges={data.allMarkdownRemark.edges} />
+        </Flex>
+        <Link to="/tutorials">View All Tutorials</Link>
       </Section>
-    </Layout>
-  )
-}
+    </Container>
+  </Layout>
+)
 
 export const indexQuery = graphql`
   query {
@@ -99,6 +64,7 @@ export const indexQuery = graphql`
               name
               description
               url
+              homepageUrl
               languages(first: 3) {
                 edges {
                   node {
@@ -138,7 +104,7 @@ export const indexQuery = graphql`
           description
           areas
           covers {
-            size_808
+            size_max_808
           }
           tools {
             id

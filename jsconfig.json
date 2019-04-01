@@ -7,11 +7,17 @@
       "@/*": [
         "src/components/*"
       ],
+      "~": [
+        "src/styled/"
+      ],
+      "elements": [
+        "src/styled/elements"
+      ],
       "src/*": [
         "src/*"
       ],
       "pages/*": [
-        "src/pages/w*"
+        "src/pages/*"
       ],
     }
   },

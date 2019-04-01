@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { Container } from 'src/Styled'
 import 'prism-themes/themes/prism-atom-dark.css'
 // import 'prism-themes/themes/prism-base16-ateliersulphurpool.light.css'
 // import 'prism-themes/themes/prism-cb.css'
@@ -34,9 +33,9 @@ const BlogTemplate = ({ data }) => {
     <Layout>
       <BlogPost>
         <SEO title={title} />
-        <Container>
+        <div>
           <article dangerouslySetInnerHTML={{ __html: html }} />
-        </Container>
+        </div>
       </BlogPost>
     </Layout>
   )

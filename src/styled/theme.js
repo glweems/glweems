@@ -1,8 +1,8 @@
 /* eslint-disable no-restricted-syntax */
 import styled from 'styled-components'
 
-const Theme = {
-  headingFont: `IBM Plex Mono`,
+const theme = {
+  font: `karla`,
   colors: {
     white: `#fff`,
     light: `#F7F7F7`,
@@ -23,34 +23,23 @@ const Theme = {
     desktop: `2560px`,
   },
   fontFamily: {
-    header: 'IBM Plex Mono',
+    header: 'karla',
     body: 'Roboto',
   },
 }
 
 export const ThemeProvider = styled.div`
   width: 100%;
-  font-family: 'Roboto';
-  background: ${Theme.colors.white};
-  color: ${Theme.colors.dark};
-
-  input,
-  textarea {
-    border: none;
-    background: ${Theme.colors.white};
-    border-bottom: 1.125px solid ${Theme.colors.dark};
-    /* padding-left: 0.5rem; */
-  }
-
+  font-family: 'Karla';
+  background: white;
+  color: ${theme.colors.dark};
   a {
-    color: ${Theme.colors.blue};
-    text-decoration: none;
-    :hover {
-      text-decoration: underline;
-    }
-    :visited {
-      color: inherit;
-    }
+    color: ${theme.colors.blue}!important;
+  }
+  img {
+    background: none !important;
+    padding: 0;
+    margin: 0;
   }
 `
 
@@ -71,4 +60,4 @@ for (const key in ScreenSizes) {
       `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`
 }
 
-export default Theme
+export default theme
