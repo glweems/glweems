@@ -1,9 +1,10 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import theme, { MQ } from 'src/styled/theme'
 
 export const Main = styled.main`
   max-width: 100%;
   overflow: hidden;
+  margin-top: 4rem;
 `
 export const Container = styled.div`
   max-width: 100%;
@@ -133,17 +134,19 @@ export const A = styled.a`
 export const Button = styled.button`
   background: ${theme.colors.light};
   border-color: ${theme.colors.dark};
-  border-radius: 1px;
-  border-style: solid;
-  border-width: 2px;
+  border: none;
   color: ${theme.colors.dark};
-  display: inline-block;
   font-family: ${theme.font};
-  font-size: 16px;
-  font-weight: 500;
-  padding: 4px 6px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.125px;
+  ${props =>
+    props.bordered &&
+    css`
+      border-radius: 3px;
+      border-style: solid;
+      border-width: 1px;
+    `}
   :hover {
     background: ${theme.colors.dark};
     color: ${theme.colors.light};
@@ -159,6 +162,18 @@ export const Button = styled.button`
         background: ${theme.colors.light};
         color: ${theme.colors.blue};
         border-color: ${theme.colors.blue};
+      }
+    `}
+  ${props =>
+    props.dark &&
+    css`
+      background: ${theme.colors.dark};
+      color: ${theme.colors.light};
+      border-color: ${theme.colors.light};
+      :hover {
+        background: ${theme.colors.light};
+        color: ${theme.colors.dark};
+        border-color: ${theme.colors.dark};
       }
     `}
   ${props =>
@@ -181,21 +196,41 @@ export const Button = styled.button`
 `
 
 export const Flex = styled.div`
-  width: 100%;
   display: flex;
   a:not(:last-child) {
     margin-right: 0.25rem;
   }
-  justify-content: ${props =>
-    props.center
-      ? 'center'
-      : props.end
-      ? 'flex-end'
-      : props.between
-      ? 'space-between'
-      : props.evenly
-      ? 'space-evenly'
-      : 'flex-start'};
+
+  ${props =>
+    props['justify-content'] &&
+    css`
+      justify-content: ${props['justify-content']};
+    `}
+  ${props =>
+    props['align-content'] &&
+    css`
+      align-content: ${props['align-content']};
+    `}
+  ${props =>
+    props['align-items'] &&
+    css`
+      align-items: ${props['align-items']};
+    `}
 
   overflow: ${props => (props.scroll ? 'auto' : '')};
+`
+
+export const List = styled.ul`
+  ${props =>
+    props['no-bullets'] &&
+    css`
+      margin: 0;
+      list-style: none;
+    `}
+text-align: ${props =>
+  props['text-right'] ? 'right' : props['text-center'] ? 'center' : 'left'}
+`
+
+export const LI = styled.li`
+  margin: 0;
 `

@@ -1,9 +1,8 @@
 import { graphql, StaticQuery } from 'gatsby'
 import { Main } from 'elements'
-import { sidebarLinks } from 'src/_DATA_'
 import { ThemeProvider } from 'src/styled/theme'
 import ErrorBoundary from '@/sentry'
-import Navigation from '@/navigation'
+import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -21,7 +20,7 @@ const Layout = ({ children }) => (
     render={() => (
       <ErrorBoundary>
         <ThemeProvider>
-          <Navigation links={sidebarLinks} />
+          <Navbar />
           <Main>{children}</Main>
         </ThemeProvider>
       </ErrorBoundary>

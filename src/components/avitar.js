@@ -15,17 +15,13 @@ export default () => (
       query {
         placeholderImage: file(relativePath: { eq: "avi.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 1024) {
+            fluid(maxWidth: 250) {
               ...GatsbyImageSharpFluid
             }
           }
         }
       }
     `}
-    render={data => (
-      <ImgDiv>
-        <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-      </ImgDiv>
-    )}
+    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
   />
 )
