@@ -7,6 +7,7 @@ plugins/gatsby-source-readme
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+**/node_modules/**
 
 # Runtime data
 pids
