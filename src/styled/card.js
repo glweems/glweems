@@ -2,9 +2,11 @@ import styled, { css } from 'styled-components'
 import theme from './theme'
 
 export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: space-between;
+  align-items: space-between;
   min-width: ${props => (props.minwidth ? props.minwidth : null)};
   padding: 0.25rem;
   width: 100%;
@@ -26,7 +28,7 @@ export const CardImg = styled.div`
   background-image: ${props => (props.img ? `url(${props.img})` : null)};
   background-position: 50% 50%;
   background-size: cover;
-  height: ${props => (props.height ? `url(${props.height})` : `100px`)};
+  height: ${props => (props.height ? props.height : `200px`)};
   border-radius: 3px;
 `
 

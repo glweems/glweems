@@ -4,7 +4,6 @@ import { darken, lighten } from 'polished'
 
 export const Main = styled.main`
   max-width: 100%;
-  overflow: hidden;
   margin-top: 4rem;
 `
 export const Container = styled.div`
@@ -257,6 +256,8 @@ export const Flex = styled.div`
     `}
 
   overflow: ${props => (props.scroll ? 'auto' : '')};
+  /* overflow: touch; */
+  -webkit-overflow-scrolling: touch;
   overflow: ${props => (props.hidden ? 'hidden' : '')};
 `
 

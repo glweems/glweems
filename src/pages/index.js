@@ -78,7 +78,7 @@ export const indexQuery = graphql`
         }
       }
     }
-    allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 3) {
+    allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
       edges {
         node {
           fields {

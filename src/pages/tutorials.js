@@ -4,13 +4,14 @@ import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
 import { MyTuts } from '@/my-content'
+import { Container } from 'elements'
 
 const TutorialsPage = ({ data }) => (
   <Layout>
     <SEO title="Graphic Design" />
-    <div>
+    <Container>
       <MyTuts edges={data.allMarkdownRemark.edges} />
-    </div>
+    </Container>
   </Layout>
 )
 
