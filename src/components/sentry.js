@@ -22,5 +22,6 @@ export default class ErrorBoundary extends Component {
       return <h1>Something went wrong!</h1>
     }
     // when there's not an error, render children untouched
+    return this.props.children
   }
 }
