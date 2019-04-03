@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import theme, { MQ } from 'src/styled/theme'
+import { darken, lighten } from 'polished'
 
 export const Main = styled.main`
   max-width: 100%;
@@ -13,7 +14,24 @@ export const Container = styled.div`
   ${MQ.laptopL(`max-width: 1140px`)}
   ${MQ.desktop(`max-width: 1440px`)};
 `
-export const Tag = styled.div``
+export const Tag = styled.button`
+  -webkit-box-flex: 0;
+  align-self: center;
+  background-color: rgba(0, 173, 159, 0.06);
+  border-radius: 3px;
+  background: ${darken(0.1, theme.colors.light)};
+  color: ${lighten(0.2, theme.colors.dark)};
+  display: inline-block;
+  flex: 0 0 auto;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 14px;
+  margin-right: 8px;
+  padding: 1px 4px;
+  position: relative;
+  text-transform: uppercase;
+  white-space: nowrap;
+`
 
 export const H1 = styled.h1`
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
@@ -128,7 +146,28 @@ export const A = styled.a`
       ? theme.colors.green
       : props.light
       ? theme.colors.light
+      : props.muted
+      ? theme.colors.muted
+      : props.secondary
+      ? theme.colors.secondary
       : theme.colors.dark};
+
+  svg {
+    color: ${props =>
+      props.red
+        ? theme.colors.red
+        : props.blue
+        ? theme.colors.blue
+        : props.green
+        ? theme.colors.green
+        : props.light
+        ? theme.colors.light
+        : props.muted
+        ? theme.colors.muted
+        : props.secondary
+        ? theme.colors.secondary
+        : theme.colors.dark};
+  }
 `
 
 export const Button = styled.button`
@@ -218,6 +257,7 @@ export const Flex = styled.div`
     `}
 
   overflow: ${props => (props.scroll ? 'auto' : '')};
+  overflow: ${props => (props.hidden ? 'hidden' : '')};
 `
 
 export const List = styled.ul`

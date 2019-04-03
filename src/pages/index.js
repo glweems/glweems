@@ -10,7 +10,6 @@ import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
 import { H1, A, Container, Flex } from 'elements'
 
 const Section = styled.section`
-  max-width: ${theme.breakpoints.tablet};
   margin: 0 auto;
   margin-bottom: 2rem;
   border-bottom: 2px solid ${theme.colors.dark};
@@ -55,7 +54,7 @@ export const IndexPage = ({ data }) => (
 )
 
 export const indexQuery = graphql`
-  query {
+  query IndexPage {
     github {
       viewer {
         pinnedRepositories(last: 4) {
@@ -68,28 +67,12 @@ export const indexQuery = graphql`
               languages(first: 3) {
                 edges {
                   node {
-                    id
+                    color
                     name
                   }
                 }
               }
             }
-          }
-        }
-      }
-    }
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          excerpt
-          timeToRead
-          frontmatter {
-            title
-            path
-            date
-            thumbnail
-            tags
           }
         }
       }
@@ -102,26 +85,25 @@ export const indexQuery = graphql`
           }
           name
           description
-          areas
           covers {
             size_max_808
           }
-          tools {
-            id
-            category
+          tags
+        }
+      }
+    }
+    allMarkdownRemark(limit: 4) {
+      edges {
+        node {
+          id
+          excerpt
+          timeToRead
+          frontmatter {
             title
-            synonym {
-              tag_id
-              name
-              title
-              url
-              download_url
-              gallery_url
-              authenticated
-              type
-              icon_url
-              icon_url_2x
-            }
+            path
+            date
+            thumbnail
+            tags
           }
         }
       }

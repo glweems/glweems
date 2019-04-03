@@ -4,20 +4,24 @@
   "version": "1.0.0",
   "author": "Garrett Weems <gwgraphicdesign@gmail.com>",
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "lint": "lint-staged"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "lint": "lint-staged"
     }
   },
   "lint-staged": {
     "*.js": [
-      "eslint --fix",
+      "eslint ./src",
       "git add"
     ]
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-brands-svg-icons": "^5.8.1",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@primer/css": "^12.2.1",
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.10.0",
@@ -46,8 +50,10 @@
     "gatsby-transformer-remote-image": "^2.0.1",
     "gatsby-transformer-sharp": "^2.1.17",
     "graphql": "^14.1.1",
+    "husky": "^1.3.1",
     "node-fetch": "^2.3.0",
     "normalize-css": "^2.3.1",
+    "polished": "^3.2.0",
     "prism-themes": "^1.0.1",
     "prismjs": "^1.15.0",
     "prop-types": "^15.7.2",
@@ -63,8 +69,9 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.1",
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.15.3",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-wesbos": "0.0.19",
@@ -78,7 +85,6 @@
     "gatsby-cli": "^2.4.16",
     "gatsby-plugin-eslint": "^2.0.4",
     "gatsby-plugin-root-import": "^2.0.5",
-    "polished": "^3.1.0",
     "prettier": "^1.16.4"
   },
   "keywords": [
