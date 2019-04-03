@@ -10,9 +10,7 @@ import {
   CardSubtitle,
   CardLink,
 } from 'src/styled/card'
-
 import Tags from '@/tags'
-
 import { A, Flex } from 'elements'
 
 export const PinnedRepos = ({ edges }) =>
@@ -55,12 +53,12 @@ BehanceProjects.propTypes = {
 }
 
 export const MyTuts = ({ edges }) =>
-  edges.map((edge, i) => (
-    <Card key={i} minwidth="200px">
+  edges.map((edge, index) => (
+    <Card key={index} minwidth="200px">
       <CardTitle>{edge.node.frontmatter.title}</CardTitle>
       <CardSubtitle>{edge.node.excerpt}</CardSubtitle>
-      <Tags {...edge.node.frontmatter} />
       <CardImg img={edge.node.frontmatter.thumbnail} />
+      <Tags {...edge.node.frontmatter} />
       <Flex hidden />
       <CardLink>
         <Link to={edge.node.frontmatter.path}>Read More...</Link>

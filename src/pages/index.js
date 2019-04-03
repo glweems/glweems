@@ -26,6 +26,7 @@ export const IndexPage = ({ data }) => (
           <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
         </Card>
       </Section>
+
       <Section>
         <H1 bold>Repos</H1>
         <Flex scroll>
@@ -47,7 +48,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
-        <Link to="/tutorials">View All Tutorials</Link>
+        <Link to="/tutorials/">View All Tutorials</Link>
       </Section>
     </Container>
   </Layout>
