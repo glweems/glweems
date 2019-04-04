@@ -1,18 +1,6 @@
-/* eslint-disable no-restricted-syntax */
 import styled from 'styled-components'
 
 const theme = {
-  font: `karla`,
-  colors: {
-    white: `#fff`,
-    light: `#F7F7F7`,
-    dark: `#24292e`,
-    secondary: `#707070`,
-    muted: `#D1D6DB`,
-    red: `#ff5851`,
-    blue: `#5687e8`,
-    green: `#5DB583`,
-  },
   breakpoints: {
     mobileS: `320px`,
     mobileM: `375px`,
@@ -22,9 +10,20 @@ const theme = {
     laptopL: `1440px`,
     desktop: `2560px`,
   },
+  colors: {
+    blue: `#5687e8`,
+    dark: `#24292e`,
+    green: `#5DB583`,
+    light: `#F7F7F7`,
+    muted: `#D1D6DB`,
+    red: `#ff5851`,
+    secondary: `#707070`,
+    white: `#fff`,
+  },
+  font: `karla`,
   fontFamily: {
-    header: 'karla',
     body: 'Roboto',
+    header: 'karla',
   },
 }
 
@@ -55,9 +54,10 @@ const ScreenSizes = {
 
 export const MQ = {}
 for (const key in ScreenSizes) {
-  if (key)
+  if (key) {
     MQ[key] = styles =>
       `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`
+  }
 }
 
 export default theme

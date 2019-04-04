@@ -1,9 +1,9 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { BehanceProjects } from '@/my-content'
+import BehanceProjects from '@/my-content'
 import { Container } from 'elements'
 
 const GraphicDesignPage = ({ data }) => (
@@ -16,7 +16,7 @@ const GraphicDesignPage = ({ data }) => (
 )
 
 GraphicDesignPage.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 }
 
 export default GraphicDesignPage

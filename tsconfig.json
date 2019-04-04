@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": [
+        "components/*"
+      ],
+      "theme": [
+        "styled/theme"
+      ],
+      "elements": [
+        "styled/elements"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest",
+    "src/setupTests.ts"
+  ],
+  "types": [
+    "typePatches"
+  ]
+}

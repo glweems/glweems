@@ -1,12 +1,15 @@
-import { graphql, StaticQuery } from 'gatsby'
-import { Main } from 'elements'
-import { ThemeProvider } from 'src/styled/theme'
-import ErrorBoundary from '@/sentry'
 import Navbar from '@/navbar'
-import PropTypes from 'prop-types'
-import React from 'react'
+import ErrorBoundary from '@/sentry'
+import { Main } from 'elements'
+import { graphql, StaticQuery } from 'gatsby'
+import React, { ReactNode } from 'react'
+import { ThemeProvider } from 'theme'
 
-const Layout = ({ children }) => (
+interface Props {
+  children: ReactNode[]
+}
+
+const Layout = ({ children }: Props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -27,12 +30,5 @@ const Layout = ({ children }) => (
     )}
   />
 )
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  data: PropTypes.shape({
-    site: PropTypes.shape({}),
-  }),
-}
 
 export default Layout

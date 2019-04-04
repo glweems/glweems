@@ -1,15 +1,15 @@
-import React from 'react'
-import { CardTitle, CardSubtitle } from 'src/styled/card'
 import Avitar from '@/avitar'
-import styled from 'styled-components'
-import { A, H1, Flex } from 'elements'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faGithub,
-  faMedium,
   faBehance,
   faCodepen,
+  faGithub,
+  faMedium,
 } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { A, Flex, H1 } from 'elements'
+import * as React from 'react'
+import { CardSubtitle, CardTitle } from 'styled/card'
+import styled from 'styled-components'
 
 const AboutStyled = styled.div`
   display: grid;
@@ -28,8 +28,8 @@ const AboutStyled = styled.div`
 const About = () => (
   <AboutStyled>
     <Avitar />
-    <Flex column align-items="flex-start">
-      <H1 bold>Hi, I'm Garrett</H1>
+    <Flex column={true} align-items="flex-start">
+      <H1 bold={true}>Hi, I'm Garrett</H1>
       <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
       <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
       <Flex>

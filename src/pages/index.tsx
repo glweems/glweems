@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Layout from '@/layout'
-import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
+import { graphql, Link } from 'gatsby'
+import * as React from 'react'
 import styled from 'styled-components'
-import theme from 'src/styled/theme'
+import theme from 'theme'
 
-import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
-import { H1, A, Container, Flex } from 'elements'
+import BehanceProjects, { MyTuts } from '@/my-content'
+import { PinnedRepos } from '@/PinnedRepos'
+import { A, Container, Flex, H1 } from 'elements'
 
 import About from '@/garrett'
 
@@ -26,24 +26,24 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <H1 bold>Repos</H1>
-        <Flex scroll>
+        <H1 bold={true}>Repos</H1>
+        <Flex scroll={true}>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
         <A href="https://github.com/glweems">View All Repos -></A>
       </Section>
 
       <Section>
-        <H1 bold>Design</H1>
-        <Flex scroll>
+        <H1 bold={true}>Design</H1>
+        <Flex scroll={true}>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
         <Link to="/designs">View All Designs -></Link>
       </Section>
 
       <Section>
-        <H1 bold>Tutorials</H1>
-        <Flex scroll>
+        <H1 bold={true}>Tutorials</H1>
+        <Flex scroll={true}>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
         <Link to="/tutorials/">View All Tutorials</Link>
@@ -109,7 +109,4 @@ export const indexQuery = graphql`
     }
   }
 `
-IndexPage.propTypes = {
-  data: PropTypes.object.isRequired,
-}
 export default IndexPage

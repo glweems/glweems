@@ -1,29 +1,40 @@
 {
   "compilerOptions": {
-    "target": "es2017",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": [
-        "src/components/*"
-      ],
-      "~": [
-        "src/styled/"
-      ],
-      "elements": [
-        "src/styled/elements"
-      ],
-      "src/*": [
-        "src/*"
-      ],
-      "pages/*": [
-        "src/pages/*"
-      ],
-    }
+    "module": "commonjs",
+    "target": "esnext",
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2017"
+    ],
+    "strict": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "removeComments": false,
   },
-  "exclude": [
-    "node_modules",
-    "public"
-  ],
-  "module": "commonjs"
+  "paths": {
+    "@/*": [
+      "components/*"
+    ],
+    "~": [
+      "styled/"
+    ],
+    "elements": [
+      "styled/elements"
+    ],
+    "src/*": [
+      "*"
+    ],
+    "pages/*": [
+      "pages/*"
+    ],
+  },
+  "include": [
+    "./src/**/*"
+  ]
 }

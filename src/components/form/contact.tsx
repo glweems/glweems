@@ -1,4 +1,4 @@
-import React from 'react'
+import * as React from 'react'
 
 const contactForm = () => (
   <form name="contact" method="POST" data-netlify="true">

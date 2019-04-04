@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-typescript`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -42,7 +43,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/pages/gwtuts`,
+        path: `${__dirname}/src/pages/tutorials`,
       },
     },
     {
@@ -50,6 +51,8 @@ module.exports = {
       options: {
         src: path.join(__dirname, 'src/'),
         '@': path.join(__dirname, 'src/components/'),
+        styled: path.join(__dirname, 'src/styled/'),
+        theme: path.join(__dirname, 'src/styled/theme'),
         elements: path.join(__dirname, 'src/styled/elements'),
       },
     },

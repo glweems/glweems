@@ -1,7 +1,9 @@
-import React from 'react'
+import Garrett from '@/garrett'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import Garrett from '@/garrett'
+import * as React from 'react'
+
+
 
 const AboutPage = () => (
   <Layout>

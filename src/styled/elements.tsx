@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
-import theme, { MQ } from 'src/styled/theme'
 import { darken, lighten } from 'polished'
+import styled, { css } from 'styled-components'
+import theme, { MQ } from 'theme'
 
 export const Main = styled.main`
   max-width: 100%;

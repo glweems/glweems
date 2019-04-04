@@ -58,14 +58,14 @@ exports.createPages = ({ actions, graphql }) =>
       result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         actions.createPage({
           path: `/tutorials${node.fields.slug}`,
-          component: path.resolve(`./src/templates/blog-template.js`),
+          component: path.resolve(`./src/templates/blog-template.tsx`),
           context: { slug: node.fields.slug },
         })
       })
       result.data.allBehanceProjects.edges.forEach(({ node }) => {
         actions.createPage({
           path: `/designs/${node.fields.slug}`,
-          component: path.resolve(`./src/templates/design-template.js`),
+          component: path.resolve(`./src/templates/design-template.tsx`),
           context: { slug: node.fields.slug },
         })
       })

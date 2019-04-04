@@ -1,9 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { H1, H3, Container } from 'elements'
+import { Container, H1, H3 } from 'elements'
+import { graphql } from 'gatsby'
+import * as React from 'react'
 
 const DesignTemplate = ({ data }) => {
   const Images = () =>
@@ -23,7 +22,7 @@ const DesignTemplate = ({ data }) => {
       <Container>
         <SEO title="designs" />
         <H1>{data.behanceProjects.name}</H1>
-        <H3 secondary>{data.behanceProjects.description}</H3>
+        <H3 secondary={true}>{data.behanceProjects.description}</H3>
         <Images />
       </Container>
     </Layout>
@@ -62,8 +61,4 @@ export const designQuery = graphql`
     }
   }
 `
-
-DesignTemplate.propTypes = {
-  data: PropTypes.object,
-}
 export default DesignTemplate

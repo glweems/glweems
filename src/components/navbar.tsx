@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { sidebarLinks } from 'src/_DATA_'
 import { Container, Flex, Button, List, LI } from 'elements'
 import { Link } from 'gatsby'
-import { Navbar } from 'src/styled/navbar'
+import { Navbar } from 'styled//navbar'
 
 export default class extends Component {
   constructor(props) {

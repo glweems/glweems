@@ -1,9 +1,23 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { graphql, useStaticQuery } from 'gatsby'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
 import Helmet from 'react-helmet'
-import { useStaticQuery, graphql } from 'gatsby'
 
-export default function SEO({ description, lang, meta, keywords, title }) {
+interface Props {
+  title: string,
+  description: string,
+  lang: string,
+  meta: any[],
+  keywords: any[],
+}
+
+export default function SEO({
+  title,
+  description,
+  lang,
+  meta,
+  keywords,
+}: Props) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -64,9 +78,9 @@ export default function SEO({ description, lang, meta, keywords, title }) {
         .concat(
           keywords.length > 0
             ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
+              name: `keywords`,
+              content: keywords.join(`, `),
+            }
             : []
         )
         .concat(meta)}

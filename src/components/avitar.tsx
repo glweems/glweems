@@ -1,11 +1,11 @@
-import React from 'react'
 import { graphql, StaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import * as React from 'react'
 
 export default () => (
   <StaticQuery
     query={graphql`
-      query {
+        query {
         placeholderImage: file(relativePath: { eq: "avi.jpg" }) {
           childImageSharp {
             fluid(maxWidth: 1024) {
