@@ -238,7 +238,7 @@ export const Flex = styled.div`
   a:not(:last-child) {
     margin-right: 0.25rem;
   }
-
+flex-direction: ${props => (props.column ? 'column' : 'row')};
   ${props =>
     props['justify-content'] &&
     css`

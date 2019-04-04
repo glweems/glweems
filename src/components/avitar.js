@@ -8,7 +8,7 @@ export default () => (
       query {
         placeholderImage: file(relativePath: { eq: "avi.jpg" }) {
           childImageSharp {
-            fluid(maxWidth: 250) {
+            fluid(maxWidth: 1024) {
               ...GatsbyImageSharpFluid
             }
           }

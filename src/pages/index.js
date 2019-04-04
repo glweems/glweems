@@ -5,9 +5,11 @@ import { graphql, Link } from 'gatsby'
 import SEO from '@/seo'
 import styled from 'styled-components'
 import theme from 'src/styled/theme'
-import { Card, CardTitle, CardSubtitle } from 'src/styled/card'
+
 import { PinnedRepos, BehanceProjects, MyTuts } from '@/my-content'
 import { H1, A, Container, Flex } from 'elements'
+
+import About from '@/garrett'
 
 const Section = styled.section`
   margin: 0 auto;
@@ -20,11 +22,7 @@ export const IndexPage = ({ data }) => (
     <SEO title="Home" keywords={['glweems', 'developer', 'designer']} />
     <Container>
       <Section>
-        <H1 bold>Hi, I'm Garrett</H1>
-        <Card>
-          <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
-          <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
-        </Card>
+        <About />
       </Section>
 
       <Section>
