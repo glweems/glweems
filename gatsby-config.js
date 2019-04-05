@@ -42,7 +42,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/pages/gwtuts`,
+        path: `${__dirname}/src/pages/tutorials`,
       },
     },
     {
