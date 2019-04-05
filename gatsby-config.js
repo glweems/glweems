@@ -21,6 +21,21 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-typescript`,
     {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
+              wrapperStyle: fluidResult =>
+                `flex:${_.round(fluidResult.aspectRatio, 2)};`,
+            },
+          },
+        ],
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'glweems-portfolio-site',
@@ -43,7 +58,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/pages/tutorials`,
+        path: `${__dirname}/src/pages/tutorials/`,
       },
     },
     {

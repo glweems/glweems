@@ -1,11 +1,11 @@
 import Layout from '@/layout'
 import SEO from '@/seo'
 import { graphql, Link } from 'gatsby'
-import * as React from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import theme from 'theme'
-
-import BehanceProjects, { MyTuts } from '@/my-content'
+import BehanceProjects from '@/behance-projects'
+import MyTuts from '@/my-tutorials'
 import { PinnedRepos } from '@/PinnedRepos'
 import { A, Container, Flex, H1 } from 'elements'
 
@@ -15,6 +15,22 @@ const Section = styled.section`
   margin: 0 auto;
   margin-bottom: 2rem;
   border-bottom: 2px solid ${theme.colors.dark};
+  background: ${props =>
+    props.red
+      ? theme.colors.red
+      : props.blue
+      ? theme.colors.blue
+      : props.green
+      ? theme.colors.green
+      : props.light
+      ? theme.colors.light
+      : props.muted
+      ? theme.colors.muted
+      : props.secondary
+      ? theme.colors.secondary
+      : props.dark
+      ? theme.colors.dark
+      : 'transparent'};
 `
 
 export const IndexPage = ({ data }) => (
@@ -97,6 +113,9 @@ export const indexQuery = graphql`
           id
           excerpt
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             path

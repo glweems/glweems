@@ -1,5 +1,4 @@
-import * as React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { Flex, Tag } from 'elements'
 
 const Tags = ({ tags }) => (
@@ -9,9 +8,5 @@ const Tags = ({ tags }) => (
     ))}
   </Flex>
 )
-
-Tags.propTypes = {
-  tags: PropTypes.arrayOf(PropTypes.string.isRequired),
-}
 
 export default Tags

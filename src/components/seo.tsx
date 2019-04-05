@@ -1,14 +1,14 @@
+// tslint:disable-next-line: quotemark
 import { graphql, useStaticQuery } from 'gatsby'
-import * as PropTypes from 'prop-types'
 import * as React from 'react'
 import Helmet from 'react-helmet'
 
 interface Props {
-  title: string,
-  description: string,
-  lang: string,
-  meta: any[],
-  keywords: any[],
+  title: string
+  description: string
+  lang: string
+  meta: any[]
+  keywords: any[]
 }
 
 export default function SEO({
@@ -16,7 +16,7 @@ export default function SEO({
   description,
   lang,
   meta,
-  keywords,
+  keywords
 }: Props) {
   const { site } = useStaticQuery(
     graphql`
@@ -37,67 +37,10 @@ export default function SEO({
   return (
     <Helmet
       htmlAttributes={{
-        lang,
+        lang
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ]
-        .concat(
-          keywords.length > 0
-            ? {
-              name: `keywords`,
-              content: keywords.join(`, `),
-            }
-            : []
-        )
-        .concat(meta)}
     />
   )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
 }

@@ -3,7 +3,7 @@ import {
   faBehance,
   faCodepen,
   faGithub,
-  faMedium,
+  faMedium
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { A, Flex, H1 } from 'elements'
@@ -16,7 +16,13 @@ const AboutStyled = styled.div`
   grid-template-columns: 1fr 2.5fr;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
+  div {
+    width: 100%;
+  }
+  a {
+    font-size: 1.5rem;
+  }
   img {
     border-radius: 5px;
   }
@@ -26,28 +32,30 @@ const AboutStyled = styled.div`
 `
 
 const About = () => (
-  <AboutStyled>
-    <Avitar />
-    <Flex column={true} align-items="flex-start">
-      <H1 bold={true}>Hi, I'm Garrett</H1>
-      <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
-      <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
-      <Flex>
-        <A href="https://github.com/glweems">
-          <FontAwesomeIcon icon={faGithub} />
-        </A>
-        <A href="https://medium.com/glweems">
-          <FontAwesomeIcon icon={faMedium} />
-        </A>
-        <A href="https://behance.net/glweems">
-          <FontAwesomeIcon icon={faBehance} />
-        </A>
-        <A href="https://codepen.io/glweems">
-          <FontAwesomeIcon icon={faCodepen} />
-        </A>
+  <div>
+    <H1 bold={true}>Hi, I'm Garrett</H1>
+    <AboutStyled>
+      <Avitar />
+      <Flex column={true} align-items="flex-start">
+        <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
+        <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
+        <Flex>
+          <A href="https://github.com/glweems">
+            <FontAwesomeIcon icon={faGithub} />
+          </A>
+          <A href="https://medium.com/glweems">
+            <FontAwesomeIcon icon={faMedium} />
+          </A>
+          <A href="https://behance.net/glweems">
+            <FontAwesomeIcon icon={faBehance} />
+          </A>
+          <A href="https://codepen.io/glweems">
+            <FontAwesomeIcon icon={faCodepen} />
+          </A>
+        </Flex>
       </Flex>
-    </Flex>
-  </AboutStyled>
+    </AboutStyled>
+  </div>
 )
 
 export default About

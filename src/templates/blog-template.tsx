@@ -16,6 +16,7 @@ import 'prism-themes/themes/prism-atom-dark.css'
 // import 'prism-themes/themes/prism-pojoaque.css'
 // import 'prism-themes/themes/prism-xonokai.css'
 import styled from 'styled-components'
+import { Container } from 'elements'
 
 const BlogPost = styled.div`
   max-width: 100%;
@@ -32,9 +33,9 @@ const BlogTemplate = ({ data }) => {
     <Layout>
       <BlogPost>
         <SEO title={title} />
-        <div>
+        <Container>
           <article dangerouslySetInnerHTML={{ __html: html }} />
-        </div>
+        </Container>
       </BlogPost>
     </Layout>
   )

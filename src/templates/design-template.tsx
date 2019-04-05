@@ -4,7 +4,7 @@ import { Container, H1, H3 } from 'elements'
 import { graphql } from 'gatsby'
 import * as React from 'react'
 
-const DesignTemplate = ({ data }) => {
+const DesignTemplate = ({ data }: object) => {
   const Images = () =>
     data.behanceProjects.modules
       .filter(module => module.sizes !== null)

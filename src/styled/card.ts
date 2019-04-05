@@ -1,7 +1,12 @@
 import styled, { css } from 'styled-components'
 import theme from './theme'
 
-export const Card = styled.div`
+interface Props {
+  minwidth: string
+}
+
+export const Card: Props = styled.div`
+  border-radius: 3px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -10,6 +15,13 @@ export const Card = styled.div`
   min-width: ${props => (props.minwidth ? props.minwidth : null)};
   padding: 0.25rem;
   width: 100%;
+
+  ${props =>
+    props.light &&
+    css`
+      background: ${theme.colors.light};
+    `}
+
   ${props =>
     props.bordered &&
     css`
@@ -18,6 +30,7 @@ export const Card = styled.div`
       border-color: ${theme.colors.dark};
     `};
 `
+
 export const CardBody = styled.div`
   background-image: ${props => (props.img ? `url(${props.img})` : null)};
   background-position: 50% 50%;

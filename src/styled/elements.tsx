@@ -83,6 +83,7 @@ export const H3 = styled.h3`
       ? theme.colors.secondary
       : theme.colors.dark};
 `
+
 export const H4 = styled.h4`
   font-weight: ${props => (props.bold ? 'bold' : 'normal')};
   color: ${props =>
@@ -238,6 +239,10 @@ export const Flex = styled.div`
   a:not(:last-child) {
     margin-right: 0.25rem;
   }
+  .card {
+    margin-right: 1rem;
+  }
+-webkit-overflow-scrolling: touch;
 flex-direction: ${props => (props.column ? 'column' : 'row')};
   ${props =>
     props['justify-content'] &&
@@ -256,8 +261,6 @@ flex-direction: ${props => (props.column ? 'column' : 'row')};
     `}
 
   overflow: ${props => (props.scroll ? 'auto' : '')};
-  /* overflow: touch; */
-  -webkit-overflow-scrolling: touch;
   overflow: ${props => (props.hidden ? 'hidden' : '')};
 `
 

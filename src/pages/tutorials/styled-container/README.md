@@ -11,7 +11,7 @@ tags: ['react', 'component', 'container', 'responsive', 'styled-components']
 
 # Responsive Container Component with React and Styled-Components.
 
-![](https://cdn-images-1.medium.com/max/800/1*8slP0diGduUQy3qk9N7HsQ.png)
+![](thumbnail.png)
 
 ## Setup
 

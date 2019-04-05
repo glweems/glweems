@@ -9,7 +9,7 @@ tags: ['react', 'navbar', 'component', 'styled-components']
 
 # React auto-hide on scroll navbar.
 
-![](https://raw.githubusercontent.com/gwtuts/react-peekaboo-navbar/master/demo.gif)
+![](demo.gif)
 
 ---
 

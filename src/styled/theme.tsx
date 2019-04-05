@@ -8,7 +8,7 @@ const theme = {
     tablet: `639px`,
     laptop: `1140px`,
     laptopL: `1440px`,
-    desktop: `2560px`,
+    desktop: `2560px`
   },
   colors: {
     blue: `#5687e8`,
@@ -18,13 +18,13 @@ const theme = {
     muted: `#D1D6DB`,
     red: `#ff5851`,
     secondary: `#707070`,
-    white: `#fff`,
+    white: `#fff`
   },
   font: `karla`,
   fontFamily: {
     body: 'Roboto',
-    header: 'karla',
-  },
+    header: 'karla'
+  }
 }
 
 export const ThemeProvider = styled.div`
@@ -40,6 +40,9 @@ export const ThemeProvider = styled.div`
     padding: 0;
     margin: 0;
   }
+  button {
+    border: none;
+  }
 `
 
 const ScreenSizes = {
@@ -49,15 +52,24 @@ const ScreenSizes = {
   tablet: 639,
   laptop: 1140,
   laptopL: 1440,
-  desktop: 2560,
+  desktop: 2560
 }
 
-export const MQ = {}
-for (const key in ScreenSizes) {
-  if (key) {
-    MQ[key] = styles =>
-      `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`
-  }
+export const MQ = {
+  mobileS: styles =>
+    `@media screen and (min-width: ${ScreenSizes.mobileS}px) { ${styles} }`,
+  mobileM: styles =>
+    `@media screen and (min-width: ${ScreenSizes.mobileM}px) { ${styles} }`,
+  mobileL: styles =>
+    `@media screen and (min-width: ${ScreenSizes.mobileL}px) { ${styles} }`,
+  tablet: styles =>
+    `@media screen and (min-width: ${ScreenSizes.tablet}px) { ${styles} }`,
+  laptop: styles =>
+    `@media screen and (min-width: ${ScreenSizes.laptop}px) { ${styles} }`,
+  laptopL: styles =>
+    `@media screen and (min-width: ${ScreenSizes.laptopL}px) { ${styles} }`,
+  desktop: styles =>
+    `@media screen and (min-width: ${ScreenSizes.desktop}px) { ${styles} }`
 }
 
 export default theme
