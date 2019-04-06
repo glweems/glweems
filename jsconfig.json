@@ -19,6 +19,9 @@
       "pages/*": [
         "src/pages/*"
       ],
+      "styled/*": [
+        "src/styled/*"
+      ]
     }
   },
   "exclude": [

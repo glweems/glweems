@@ -2,10 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Flex, Tag } from 'elements'
 
-const Tags = ({ tags }) => (
-  <Flex hidden>
-    {tags.slice(0, 3).map((item, index) => (
-      <Tag key={index}>{item}</Tag>
+const Tags = props => (
+  <Flex wrap='true'>
+    {props.tags.slice(0, 2).map((item, index) => (
+      <Tag key={index} {...props}>
+        {item}
+      </Tag>
     ))}
   </Flex>
 )

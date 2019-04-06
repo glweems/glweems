@@ -1,25 +1,22 @@
 import styled, { css } from 'styled-components'
-import theme, { MQ } from 'src/styled/theme'
+import theme, { media } from 'src/styled/theme'
 import { darken, lighten } from 'polished'
 
 export const Main = styled.main`
   max-width: 100%;
-  margin-top: 4rem;
+  padding-top: 4rem;
 `
 export const Container = styled.div`
-  max-width: 100%;
+  max-width: ${992 / 16}em;
   margin: 0 auto;
   padding: 0.5rem;
-  ${MQ.laptopL(`max-width: 1140px`)}
-  ${MQ.desktop(`max-width: 1440px`)};
+  ${media.phone`width: 100%;`};
 `
+
 export const Tag = styled.button`
   -webkit-box-flex: 0;
   align-self: center;
-  background-color: rgba(0, 173, 159, 0.06);
   border-radius: 3px;
-  background: ${darken(0.1, theme.colors.light)};
-  color: ${lighten(0.2, theme.colors.dark)};
   display: inline-block;
   flex: 0 0 auto;
   font-size: 11px;
@@ -30,6 +27,37 @@ export const Tag = styled.button`
   position: relative;
   text-transform: uppercase;
   white-space: nowrap;
+  ::before {
+  content: "# ";
+}
+  background: ${props => darken(0.1, props.theme.colors.light)};
+  color: ${props => lighten(0.2, props.theme.colors.dark)};
+  ${props =>
+    props.dark &&
+    css`
+      background: ${props => darken(0.1, props.theme.colors.light)};
+      color: ${props => lighten(0.2, props.theme.colors.dark)};
+    `}
+  ${props =>
+    props.red &&
+    css`
+      background: ${props => lighten(0.2, props.theme.colors.red)};
+      color: ${props => darken(0.4, props.theme.colors.red)};
+    `}
+  ${props =>
+    props.green &&
+    css`
+      background: ${props => lighten(0.2, props.theme.colors.green)};
+      color: ${props => darken(0.4, props.theme.colors.green)};
+    `}
+  ${props =>
+    props.blue &&
+    css`
+      background: ${props => lighten(0.2, props.theme.colors.blue)};
+      color: ${props => darken(0.4, props.theme.colors.blue)};
+    `}
+
+
 `
 
 export const H1 = styled.h1`
@@ -66,92 +94,14 @@ export const H2 = styled.h2`
       ? theme.colors.secondary
       : theme.colors.dark};
 `
-export const H3 = styled.h3`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
-export const H4 = styled.h4`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
-export const H5 = styled.h5`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
-export const H6 = styled.h6`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
+export const H3 = styled.h3``
+
+export const H4 = styled.h4``
+export const H5 = styled.h5``
+export const H6 = styled.h6``
 
 export const A = styled.a`
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-
-  svg {
+  /* svg {
     color: ${props =>
       props.red
         ? theme.colors.red
@@ -166,7 +116,7 @@ export const A = styled.a`
         : props.secondary
         ? theme.colors.secondary
         : theme.colors.dark};
-  }
+  } */
 `
 
 export const Button = styled.button`
@@ -235,30 +185,45 @@ export const Button = styled.button`
 
 export const Flex = styled.div`
   display: flex;
-  a:not(:last-child) {
-    margin-right: 0.25rem;
-  }
-flex-direction: ${props => (props.column ? 'column' : 'row')};
-  ${props =>
-    props['justify-content'] &&
-    css`
-      justify-content: ${props['justify-content']};
-    `}
-  ${props =>
-    props['align-content'] &&
-    css`
-      align-content: ${props['align-content']};
-    `}
-  ${props =>
-    props['align-items'] &&
-    css`
-      align-items: ${props['align-items']};
-    `}
 
-  overflow: ${props => (props.scroll ? 'auto' : '')};
-  /* overflow: touch; */
+/* width */
+${props =>
+  props.w100 &&
+  css`
+    width: 100%;
+  `}
+/* column */
+${props =>
+  props.column &&
+  css`
+    flex-direction: column;
+  `}
+
+/* space-between */
+${props =>
+  props.between &&
+  css`
+    justify-content: space-between;
+  `}
+
+/* evenly */
+${props =>
+  props.evenly &&
+  css`
+    justify-content: space-evenly;
+  `}
+
+/* overflow */
+${props =>
+  props.wrap &&
+  css`
+    flex-wrap: wrap;
+  `}
+
+
+
+  overflow: ${props => (props.scroll ? 'auto' : 'hidden')};
   -webkit-overflow-scrolling: touch;
-  overflow: ${props => (props.hidden ? 'hidden' : '')};
 `
 
 export const List = styled.ul`
@@ -270,6 +235,13 @@ export const List = styled.ul`
     `}
 text-align: ${props =>
   props['text-right'] ? 'right' : props['text-center'] ? 'center' : 'left'}
+`
+
+export const IconLink = styled.a`
+  color: ${props => props.theme.colors.dark}!important;
+  :hover {
+    color: ${props => props.theme.colors.blue}!important;
+  }
 `
 
 export const LI = styled.li`

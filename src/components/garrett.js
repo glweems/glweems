@@ -1,50 +1,48 @@
 import React from 'react'
-import { CardTitle, CardSubtitle } from 'src/styled/card'
+import { Title, CardSubtitle } from 'src/styled/card'
 import Avitar from '@/avitar'
 import styled from 'styled-components'
-import { A, H1, Flex } from 'elements'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faGithub,
-  faMedium,
-  faBehance,
-  faCodepen,
-} from '@fortawesome/free-brands-svg-icons'
+import { H1, Flex, IconLink } from 'elements'
+import { socialMediaAccounts } from 'src/_DATA_'
+
+console.log('TCL: socialMediaAccounts', socialMediaAccounts)
 
 const AboutStyled = styled.div`
   display: grid;
-  grid-template-columns: 1fr 2.5fr;
-  align-items: flex-start;
+  grid-template-columns: auto 1fr 2.5fr;
+  align-items: space-between;
   gap: 1rem;
-  padding: 1rem;
+  padding-bottom: 1rem;
+  div {
+    width: 100%;
+  }
+  a {
+    font-size: 1.5rem;
+  }
   img {
     border-radius: 5px;
   }
   svg {
-    margin-right: 0.25rem;
+    margin-right: 2rem;
   }
 `
+
+const SocialMediaComponents = ({ accounts }) =>
+  accounts.map((acc, i) => (
+    <IconLink key={i} href={acc.link}>
+      <acc.SvgIcon />
+    </IconLink>
+  ))
 
 const About = () => (
   <AboutStyled>
     <Avitar />
-    <Flex column align-items="flex-start">
+    <Flex w100 column evenly>
       <H1 bold>Hi, I'm Garrett</H1>
-      <CardTitle>Designer / Developer Based in Melbourne, FL.</CardTitle>
+      <Title>Designer / Developer Based in Melbourne, FL.</Title>
       <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
       <Flex>
-        <A href="https://github.com/glweems">
-          <FontAwesomeIcon icon={faGithub} />
-        </A>
-        <A href="https://medium.com/glweems">
-          <FontAwesomeIcon icon={faMedium} />
-        </A>
-        <A href="https://behance.net/glweems">
-          <FontAwesomeIcon icon={faBehance} />
-        </A>
-        <A href="https://codepen.io/glweems">
-          <FontAwesomeIcon icon={faCodepen} />
-        </A>
+        <SocialMediaComponents accounts={socialMediaAccounts} />
       </Flex>
     </Flex>
   </AboutStyled>

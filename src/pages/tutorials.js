@@ -8,7 +8,7 @@ import { Container } from 'elements'
 
 const TutorialsPage = ({ data }) => (
   <Layout>
-    <SEO title="Graphic Design" />
+    <SEO title='Graphic Design' />
     <Container>
       <MyTuts edges={data.allMarkdownRemark.edges} />
     </Container>

@@ -1,15 +1,17 @@
 import styled, { css } from 'styled-components'
-import theme from './theme'
 
 export const Card = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: auto auto 1.5em;
   justify-items: space-between;
   align-items: space-between;
+  align-content: flex-end;
   min-width: ${props => (props.minwidth ? props.minwidth : null)};
+
   padding: 0.25rem;
   width: 100%;
+
   ${props =>
     props.bordered &&
     css`
@@ -18,11 +20,19 @@ export const Card = styled.div`
       border-color: ${theme.colors.dark};
     `};
 `
-export const CardBody = styled.div`
-  background-image: ${props => (props.img ? `url(${props.img})` : null)};
-  background-position: 50% 50%;
-  background-size: cover;
+
+export const Header = styled.div`
+  * {
+    margin: 0;
+  }
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 1rem;
 `
+
+export const CardBody = styled.div``
 
 export const CardImg = styled.div`
   background-image: ${props => (props.img ? `url(${props.img})` : null)};
@@ -32,7 +42,7 @@ export const CardImg = styled.div`
   border-radius: 3px;
 `
 
-export const CardTitle = styled.h4`
+export const Title = styled.h4`
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -42,7 +52,7 @@ export const CardTitle = styled.h4`
 `
 
 export const CardSubtitle = styled.small`
-  color: ${theme.colors.secondary};
+  color: ${props => props.theme.colors.secondary};
   font-style: normal;
   font-weight: 200;
   line-height: 14px;
@@ -52,7 +62,7 @@ export const CardSubtitle = styled.small`
   text-overflow: ellipsis;
 `
 export const CardLink = styled.span`
-  color: ${theme.colors.blue};
+  color: ${props => props.theme.colors.blue};
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.5px;
@@ -61,3 +71,5 @@ export const CardLink = styled.span`
     text-decoration: underline;
   }
 `
+
+export default { Card, CardBody, Title, CardSubtitle, CardLink }

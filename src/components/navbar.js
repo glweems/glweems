@@ -19,8 +19,8 @@ export default class extends Component {
     return (
       <Navbar>
         <Container>
-          <Flex justify-content="space-between" align-items="center">
-            <Link to="/">glw</Link>
+          <Flex between>
+            <Link to='/'>glw</Link>
             <Button dark bordered onClick={this.handleClick}>
               menu
             </Button>
