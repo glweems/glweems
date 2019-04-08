@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
-import { Main } from 'elements'
-import theme from 'src/styled/theme'
+import { Main } from 'styled/elements'
+import theme from 'styled/theme'
 import ErrorBoundary from '@/sentry'
 import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
@@ -8,7 +8,7 @@ import React from 'react'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
- width: 100%;
+  width: 100%;
   font-family: ${props => props.theme.font};
   background: ${props => props.theme.colors.bg};
   color: ${props => props.theme.colors.dark};
@@ -18,6 +18,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   a {
+    font-weight: bold;
     color: ${props => props.theme.colors.blue}!important;
   }
   img {

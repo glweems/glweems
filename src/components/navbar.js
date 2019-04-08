@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { sidebarLinks } from 'src/_DATA_'
-import { Container, Flex, Button, List, LI } from 'elements'
+import { sidebarLinks } from 'src/data'
+import { Container, Flex, Button, List, LI } from 'styled/elements'
 import { Link } from 'gatsby'
 import { Navbar } from 'src/styled/navbar'
 

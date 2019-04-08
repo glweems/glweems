@@ -2,8 +2,8 @@ import React from 'react'
 import { Title, CardSubtitle } from 'src/styled/card'
 import Avitar from '@/avitar'
 import styled from 'styled-components'
-import { H1, Flex, IconLink } from 'elements'
-import { socialMediaAccounts } from 'src/_DATA_'
+import { H1, Flex, IconLink } from 'styled/elements'
+import { socialMediaAccounts } from 'src/data'
 
 console.log('TCL: socialMediaAccounts', socialMediaAccounts)
 

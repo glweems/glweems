@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Flex, Tag } from 'elements'
+import { Flex, Tag } from 'styled/elements'
 
 const Tags = props => (
   <Flex wrap='true'>

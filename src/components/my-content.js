@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {
@@ -10,10 +9,10 @@ import {
   CardSubtitle,
   CardBody,
   CardImg,
-  CardLink,
 } from 'src/styled/card'
 import Tags from '@/tags'
-import { A, Flex, IconLink } from 'elements'
+import { Flex, IconLink } from 'styled/elements'
+import Link from '@/link'
 
 export const MyTuts = ({ edges }) =>
   edges.map((edge, index) => (
@@ -22,9 +21,7 @@ export const MyTuts = ({ edges }) =>
       <CardBody>
         <CardImg img={edge.node.frontmatter.thumbnail} height='100px' />
         <Flex hidden />
-        <CardLink>
-          <Link to={edge.node.frontmatter.path}>Read More...</Link>
-        </CardLink>
+        <Link to={edge.node.frontmatter.path}>Read More...</Link>
       </CardBody>
       <Tags {...edge.node.frontmatter} />
     </Card>
@@ -40,9 +37,7 @@ export const BehanceProjects = ({ edges }) =>
       <Title>{edge.node.name}</Title>
       <CardBody>
         <CardImg img={edge.node.covers.size_max_808} />
-        <CardLink>
-          <Link to={`/designs/${edge.node.fields.slug}`}>See Project</Link>
-        </CardLink>
+        <Link to={`/designs/${edge.node.fields.slug}`}>See Project</Link>
       </CardBody>
       <Tags {...edge.node} />
     </Card>
@@ -61,12 +56,7 @@ export const PinnedRepos = ({ edges }) =>
         </IconLink>
       </Header>
       <CardSubtitle>{edge.node.description}</CardSubtitle>
-
-      <Flex>
-        <A href={edge.node.homepageUrl}>homepage</A>
-      </Flex>
-
-      <CardLink />
+      <Link href={edge.node.homepageUrl}>homepage</Link>
     </Card>
   ))
 

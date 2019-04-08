@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
 import { MyTuts } from '@/my-content'
-import { Container } from 'elements'
+import { Container } from 'styled/elements'
 
 const TutorialsPage = ({ data }) => (
   <Layout>

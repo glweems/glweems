@@ -50,7 +50,9 @@ module.exports = {
       options: {
         src: path.join(__dirname, 'src/'),
         '@': path.join(__dirname, 'src/components/'),
-        elements: path.join(__dirname, 'src/styled/elements'),
+        pages: path.join(__dirname, 'src/pages/'),
+        styled: path.join(__dirname, 'src/styled/'),
+        templates: path.join(__dirname, 'src/templates'),
       },
     },
     {

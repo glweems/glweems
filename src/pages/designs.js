@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
 import { BehanceProjects } from '@/my-content'
-import { Container } from 'elements'
+import { Container } from 'styled/elements'
 
 const GraphicDesignPage = ({ data }) => (
   <Layout>

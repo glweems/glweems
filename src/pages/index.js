@@ -1,14 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Layout from '@/layout'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import SEO from '@/seo'
 import styled from 'styled-components'
 import theme from 'src/styled/theme'
-
 import { MyTuts, PinnedRepos, BehanceProjects } from '@/my-content'
-import { H1, A, Container, Flex } from 'elements'
+import { H1, Container, Flex } from 'styled/elements'
 import About from '@/garrett'
+import Link from '@/link'
 
 const Section = styled.section`
   margin: 0 auto;
@@ -29,7 +29,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
-        <Link to='/tutorials/'>View All Tutorials</Link>
+        <Link to='/tutorials'>View All Tutorials</Link>
       </Section>
 
       <Section>
@@ -45,7 +45,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
-        <A href='https://github.com/glweems'>View All Repos -></A>
+        <Link href='https://github.com/glweems'>View All Repos -></Link>
       </Section>
     </Container>
   </Layout>
