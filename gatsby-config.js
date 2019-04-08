@@ -52,7 +52,7 @@ module.exports = {
         '@': path.join(__dirname, 'src/components/'),
         pages: path.join(__dirname, 'src/pages/'),
         styled: path.join(__dirname, 'src/styled/'),
-        templates: path.join(__dirname, 'src/templates'),
+        elements: path.join(__dirname, 'src/styled/elements'),
       },
     },
     {

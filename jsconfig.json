@@ -7,12 +7,6 @@
       "@/*": [
         "src/components/*"
       ],
-      "~": [
-        "src/styled/"
-      ],
-      "elements": [
-        "src/styled/elements"
-      ],
       "src/*": [
         "src/*"
       ],
