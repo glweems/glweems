@@ -18,6 +18,10 @@ In this project we will create a simple little Navbar component that has a logo 
 
 ---
 
+<iframe src="https://codesandbox.io/embed/qzylvzx6rj?autoresize=1&fontsize=14&hidenavigation=1" title="react-navbar-scroller" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+[![Edit react-navbar-scroller](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/qzylvzx6rj?autoresize=1&fontsize=14&hidenavigation=1)
+
 ### Setup.
 
 The setup for a react app in TypeScript is almost the exact same if you’re already using create-react-app cli for your react applications.
@@ -84,7 +88,7 @@ import React, { Component } from 'react'
 
 class App extends Component {
   render() {
-    return <div className="App" />
+    return <div className='App' />
   }
 }
 
@@ -134,7 +138,7 @@ Import the component in your _App.tsx_
 import NavbarScroller from './components/NavbarScroller'
 // ...
 return (
-  <div className="App">
+  <div className='App'>
     <NavbarScroller />
   </div>
 )
@@ -152,8 +156,8 @@ const navigation = {
     { name: 'Blog', to: '/blog' },
     { name: 'Developement', to: '/dev' },
     { name: 'Graphic Design', to: '/design' },
-    { name: 'Contact', to: '/contact' }
-  ]
+    { name: 'Contact', to: '/contact' },
+  ],
 }
 ```
 
@@ -168,7 +172,7 @@ export default class App extends Component {
     const { brand, links } = navigation
 
     return (
-      <div className="App">
+      <div className='App'>
         <NavbarScroller brand={brand} links={links} />
       </div>
     )
@@ -326,12 +330,12 @@ const Theme = {
     bg: `#fff`,
     dark: `#24292e`,
     light: `#EEEEEE`,
-    red: `#ff5851`
+    red: `#ff5851`,
   },
   fonts: {
     body: `IBM Plex Sans, sans-serif`,
-    heading: `IBM Plex Sans, sans-serif`
-  }
+    heading: `IBM Plex Sans, sans-serif`,
+  },
 }
 
 const Navbar = styled.nav`
