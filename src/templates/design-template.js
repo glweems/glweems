@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '@/layout'
 import SEO from '@/seo'
-import { H1, H3, Container } from 'styled/elements'
+import { H1, H3, Container } from 'elements'
 
 const DesignTemplate = ({ data }) => {
   const Images = () =>

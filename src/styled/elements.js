@@ -13,7 +13,7 @@ export const Container = styled.div`
   ${media.phone`width: 100%;`};
 `
 
-export const Tag = styled.button`
+export const Tag = styled.span`
   -webkit-box-flex: 0;
   align-self: center;
   border-radius: 3px;
@@ -27,11 +27,21 @@ export const Tag = styled.button`
   position: relative;
   text-transform: uppercase;
   white-space: nowrap;
-  ::before {
-  content: "# ";
-}
-  background: ${props => darken(0.1, props.theme.colors.light)};
-  color: ${props => lighten(0.2, props.theme.colors.dark)};
+
+  ${props =>
+    props.hashtag &&
+    css`
+      ::before {
+        content: '#';
+        /* letter-spacing: 1px; */
+      }
+    `}
+
+  background: ${props =>
+    props.bg ? lighten(0.6, props.theme.colors.dark) : 'none'};
+  color: ${props =>
+    props.color ? props.color : lighten(0.2, props.theme.colors.dark)};
+
   ${props =>
     props.dark &&
     css`
@@ -56,68 +66,15 @@ export const Tag = styled.button`
       background: ${props => lighten(0.2, props.theme.colors.blue)};
       color: ${props => darken(0.4, props.theme.colors.blue)};
     `}
-
-
 `
 
-export const H1 = styled.h1`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
-export const H2 = styled.h2`
-  font-weight: ${props => (props.bold ? 'bold' : 'normal')};
-  color: ${props =>
-    props.red
-      ? theme.colors.red
-      : props.blue
-      ? theme.colors.blue
-      : props.green
-      ? theme.colors.green
-      : props.light
-      ? theme.colors.light
-      : props.muted
-      ? theme.colors.muted
-      : props.secondary
-      ? theme.colors.secondary
-      : theme.colors.dark};
-`
+export const H1 = styled.h1``
+export const H2 = styled.h2``
 export const H3 = styled.h3``
-
 export const H4 = styled.h4``
 export const H5 = styled.h5``
 export const H6 = styled.h6``
-
-export const A = styled.a`
-  /* svg {
-    color: ${props =>
-      props.red
-        ? theme.colors.red
-        : props.blue
-        ? theme.colors.blue
-        : props.green
-        ? theme.colors.green
-        : props.light
-        ? theme.colors.light
-        : props.muted
-        ? theme.colors.muted
-        : props.secondary
-        ? theme.colors.secondary
-        : theme.colors.dark};
-  } */
-`
+export const A = styled.a``
 
 export const Button = styled.button`
   background: ${theme.colors.light};

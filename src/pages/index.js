@@ -6,7 +6,7 @@ import SEO from '@/seo'
 import styled from 'styled-components'
 import theme from 'src/styled/theme'
 import { MyTuts, PinnedRepos, BehanceProjects } from '@/my-content'
-import { H1, Container, Flex } from 'styled/elements'
+import { H1, Container, Flex } from 'elements'
 import About from '@/garrett'
 import Link from '@/link'
 

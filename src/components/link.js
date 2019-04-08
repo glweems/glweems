@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
-import { A } from 'styled/elements'
+import { A } from 'elements'
 
 const Link = props =>
   props.to ? (
