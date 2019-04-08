@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 const font = `'Karla', sans-serif`
 
@@ -29,5 +29,68 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
   `
   return acc
 }, {})
+
+export const GlobalStyle = createGlobalStyle`
+  width: 100%;
+  font-family: ${props => props.theme.font};
+  background: ${props => props.theme.colors.bg};
+  color: ${props => props.theme.colors.dark};
+
+  h1 {
+    font-weight: unset;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+
+  img {
+    background: none !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  button,
+  input,
+  optgroup,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+  }
+
+  button,
+  input {
+    overflow: hidden;
+  }
+
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+
+  button,
+  [type="button"],
+  [type="reset"],
+  [type="submit"] {
+    -webkit-appearance: button;
+  }
+
+  button:hover,
+  button:focus {
+      background: inherit;
+  }
+
+  button:focus {
+      outline: inherit;
+  }
+
+
+`
 
 export default { sizes, colors, font }
