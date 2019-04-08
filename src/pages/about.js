@@ -1,8 +1,8 @@
-import React from 'react'
-import Layout from '@/layout'
-import SEO from '@/seo'
-import Garrett from '@/garrett'
 import { Container } from 'elements'
+import Garrett from '@/garrett'
+import Layout from '@/layout'
+import React from 'react'
+import SEO from '@/seo'
 
 const AboutPage = () => (
   <Layout>

@@ -1,14 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import { BehanceProjects, MyTuts, PinnedRepos } from '@/my-content'
+import { Container, Flex, H1 } from 'elements'
+
+import About from '@/garrett'
 import Layout from '@/layout'
-import { graphql } from 'gatsby'
+import Link from '@/link'
+import PropTypes from 'prop-types'
+import React from 'react'
 import SEO from '@/seo'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import theme from 'src/styled/theme'
-import { MyTuts, PinnedRepos, BehanceProjects } from '@/my-content'
-import { H1, Container, Flex } from 'elements'
-import About from '@/garrett'
-import Link from '@/link'
 
 const Section = styled.section`
   margin: 0 auto;

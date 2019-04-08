@@ -1,8 +1,9 @@
+import { Button, Container, Flex, LI, List } from 'elements'
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { sidebarLinks } from 'src/data'
-import { Container, Flex, Button, List, LI } from 'elements'
+
 import { Link } from 'gatsby'
+import { sidebarLinks } from 'src/data'
+import styled from 'styled-components'
 
 const Navbar = styled.section`
   background: ${props => props.theme.colors.dark};

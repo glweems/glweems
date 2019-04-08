@@ -1,9 +1,10 @@
-import React from 'react'
+import { CardSubtitle, Title } from 'styled/card'
+import { Flex, H1, IconLink } from 'elements'
+
 import Avitar from '@/avitar'
-import styled from 'styled-components'
-import { Title, CardSubtitle } from 'styled/card'
-import { H1, Flex, IconLink } from 'elements'
+import React from 'react'
 import { socialMediaAccounts } from 'src/data'
+import styled from 'styled-components'
 
 const AboutStyled = styled.div`
   display: grid;

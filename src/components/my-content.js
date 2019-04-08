@@ -1,18 +1,19 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {
   Card,
-  Header,
-  Title,
-  CardSubtitle,
   CardBody,
   CardImg,
+  CardSubtitle,
+  Header,
+  Title,
 } from 'src/styled/card'
-import Tags from '@/tags'
 import { Flex, Tag } from 'styled/elements'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Link from '@/link'
+import PropTypes from 'prop-types'
+import React from 'react'
+import Tags from '@/tags'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export const MyTuts = ({ edges }) =>
   edges.map((edge, index) => (

@@ -1,7 +1,8 @@
-import { graphql, StaticQuery } from 'gatsby'
-import { Main } from 'elements'
+import { StaticQuery, graphql } from 'gatsby'
 import theme, { GlobalStyle } from 'styled/theme'
+
 import ErrorBoundary from '@/sentry'
+import { Main } from 'elements'
 import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'

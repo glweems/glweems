@@ -1,9 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { Container, H1, H3 } from 'elements'
+
 import Layout from '@/layout'
+import PropTypes from 'prop-types'
+import React from 'react'
 import SEO from '@/seo'
-import { H1, H3, Container } from 'elements'
+import { graphql } from 'gatsby'
 
 const DesignTemplate = ({ data }) => {
   const Images = () =>

@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Layout from '@/layout'
-import SEO from '@/seo'
-import 'prism-themes/themes/prism-atom-dark.css'
 import { Container } from 'elements'
+import Layout from '@/layout'
+import PropTypes from 'prop-types'
+import React from 'react'
+import SEO from '@/seo'
+import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 const BlogPost = styled.div`
@@ -23,6 +22,7 @@ const BlogTemplate = ({ data }) => {
           <article dangerouslySetInnerHTML={{ __html: html }} />
         </Container>
       </BlogPost>
+      <hr />
     </Layout>
   )
 }

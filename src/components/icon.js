@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link as GatsbyLink } from 'gatsby'
 import { A } from 'elements'
+import { Link as GatsbyLink } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const Icon = props =>
   props.to ? (
