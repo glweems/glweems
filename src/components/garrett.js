@@ -1,29 +1,33 @@
 import React from 'react'
-import { Title, CardSubtitle } from 'src/styled/card'
 import Avitar from '@/avitar'
 import styled from 'styled-components'
-import { H1, Flex, IconLink } from 'styled/elements'
+import { Title, CardSubtitle } from 'styled/card'
+import { H1, Flex, IconLink } from 'elements'
 import { socialMediaAccounts } from 'src/data'
-
-console.log('TCL: socialMediaAccounts', socialMediaAccounts)
 
 const AboutStyled = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr 2.5fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 10rem auto;
   align-items: space-between;
+  justify-items: space-between;
   gap: 1rem;
   padding-bottom: 1rem;
-  div {
-    width: 100%;
+  ${H1} {
+    grid-column: 1/-1;
   }
   a {
     font-size: 1.5rem;
   }
   img {
     border-radius: 5px;
+    max-width: 200px;
   }
   svg {
     margin-right: 2rem;
+  }
+  * {
+    margin-bottom: 0.25rem;
   }
 `
 
@@ -36,9 +40,9 @@ const SocialMediaComponents = ({ accounts }) =>
 
 const About = () => (
   <AboutStyled>
+    <H1 bold>Hi, I'm Garrett</H1>
     <Avitar />
-    <Flex w100 column evenly>
-      <H1 bold>Hi, I'm Garrett</H1>
+    <Flex w100 column start>
       <Title>Designer / Developer Based in Melbourne, FL.</Title>
       <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
       <Flex>
