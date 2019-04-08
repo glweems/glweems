@@ -8,7 +8,7 @@ import { graphql } from 'gatsby'
 
 const TutorialsPage = ({ data }) => (
   <Layout>
-    <SEO title='Graphic Design' />
+    <SEO title='Tutorials' />
     <Container>
       <MyTuts edges={data.allMarkdownRemark.edges} />
     </Container>

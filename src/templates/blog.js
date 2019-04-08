@@ -11,9 +11,10 @@ const BlogPost = styled.div`
 `
 
 const BlogTemplate = ({ data }) => {
-  const { markdownRemark } = data
+  const { markdownRemark, allMarkdownRemark } = data
   const { title } = markdownRemark.frontmatter
   const { html } = markdownRemark
+
   return (
     <Layout>
       <BlogPost>
@@ -23,6 +24,7 @@ const BlogTemplate = ({ data }) => {
         </Container>
       </BlogPost>
       <hr />
+      {/* <Related /> */}
     </Layout>
   )
 }
@@ -34,6 +36,23 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         path
         title
+        tags
+      }
+    }
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          excerpt
+          timeToRead
+          frontmatter {
+            title
+            path
+            date
+            thumbnail
+            tags
+          }
+        }
       }
     }
   }

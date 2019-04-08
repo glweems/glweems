@@ -43,7 +43,7 @@ const About = () => (
   <AboutStyled>
     <H1 bold>Hi, I'm Garrett</H1>
     <Avitar />
-    <Flex w100 column start>
+    <Flex w100 column>
       <Title>Designer / Developer Based in Melbourne, FL.</Title>
       <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
       <Flex>

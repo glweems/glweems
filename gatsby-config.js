@@ -19,6 +19,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
+    `gatsby-plugin-tags`,
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -70,7 +71,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sentry',
       options: {
-        dsn: 'https://0c4da3a90ae54fb286dc83cd6daff483@sentry.io/1408965',
+        dsn: process.env.SENTRY_TOKEN,
         environment: process.env.NODE_ENV,
         enabled: (() =>
           ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
