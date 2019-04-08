@@ -1,8 +1,23 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { sidebarLinks } from 'src/data'
 import { Container, Flex, Button, List, LI } from 'elements'
 import { Link } from 'gatsby'
-import { Navbar } from 'src/styled/navbar'
+
+const Navbar = styled.section`
+  background: ${props => props.theme.colors.dark};
+  color: ${props => props.theme.colors.light};
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  top: 0;
+  a:hover {
+    text-decoration: underline;
+  }
+  ul {
+    margin: 2rem 0;
+  }
+`
 
 export default class extends Component {
   constructor(props) {
