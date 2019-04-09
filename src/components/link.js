@@ -7,7 +7,9 @@ const Link = props =>
   props.to ? (
     <GatsbyLink {...props}>{props.children}</GatsbyLink>
   ) : (
-    <A {...props}>{props.children}</A>
+    <A {...props} target='_blank'>
+      {props.children}
+    </A>
   )
 
 Link.propTypes = {

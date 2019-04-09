@@ -1,10 +1,10 @@
 import { Link, graphql } from 'gatsby'
 
-// Components
+import { Container } from 'elements'
 import { Helmet } from 'react-helmet'
+import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
-// Utilities
 import kebabCase from 'lodash/kebabCase'
 
 const TagsPage = ({
@@ -15,9 +15,9 @@ const TagsPage = ({
     },
   },
 }) => (
-  <div>
+  <Layout>
     <Helmet title={title} />
-    <div>
+    <Container>
       <h1>Tags</h1>
       <ul>
         {group.map(tag => (
@@ -28,8 +28,8 @@ const TagsPage = ({
           </li>
         ))}
       </ul>
-    </div>
-  </div>
+    </Container>
+  </Layout>
 )
 
 TagsPage.propTypes = {

@@ -9,12 +9,9 @@ import React from 'react'
 import SEO from '@/seo'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-import theme from 'src/styled/theme'
 
 const Section = styled.section`
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  border-bottom: 2px solid ${theme.colors.dark};
+  margin: 2rem 0;
 `
 
 export const IndexPage = ({ data }) => (
@@ -35,7 +32,7 @@ export const IndexPage = ({ data }) => (
 
       <Section>
         <H1 bold>Design</H1>
-        <Flex scroll>
+        <Flex scroll between>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
         <Link to='/designs'>View All Designs -></Link>

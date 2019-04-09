@@ -12,14 +12,14 @@ tags: ['navbar', 'typescript', 'styled-components']
 
 In this project we will create a simple little Navbar component that has a logo or brand name and features horizontal scrolling.
 
-![](demo.gif)
+![demo](demo.gif)
 
 [working demo](https://react-navbar-scroller.now.sh/)
 [source code](https://github.com/gwtuts)
 
 ---
 
-<iframe src="https://codesandbox.io/embed/qzylvzx6rj?autoresize=1&fontsize=14&hidenavigation=1" title="react-navbar-scroller" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe src="https://codesandbox.io/embed/qzylvzx6rj?autoresize=1&fontsize=14&hidenavigation=1&view=preview" title="react-navbar-scroller" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 [![Edit react-navbar-scroller](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/qzylvzx6rj?autoresize=1&fontsize=14&hidenavigation=1)
 

@@ -36,6 +36,10 @@ export const GlobalStyle = createGlobalStyle`
   background: ${props => props.theme.colors.bg};
   color: ${props => props.theme.colors.dark};
 
+  * {
+    color: ${props => (props.light ? props.theme.colors.light : 'inherit')};
+  }
+
   h1 {
     font-weight: unset;
   }

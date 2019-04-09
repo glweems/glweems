@@ -96,6 +96,7 @@ module.exports = {
         plugins: [
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-picture`,
+          `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

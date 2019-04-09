@@ -17,7 +17,7 @@
     "serve": "gatsby serve",
     "start": "gatsby develop",
     "lint": "eslint --ignore-path .gitignore --ext .js .",
-    "now-build": "npm run build"
+    "now-build": "gatsby build"
   },
   "repository": "github:glweems/glweems",
   "bugs": {
@@ -60,6 +60,7 @@
     "gatsby-plugin-typography": "^2.2.10",
     "gatsby-remark-picture": "^1.0.1",
     "gatsby-remark-prismjs": "^3.2.6",
+    "gatsby-remark-responsive-iframe": "^2.1.1",
     "gatsby-remark-unwrap-images": "^1.0.1",
     "gatsby-source-behance": "^3.0.2",
     "gatsby-source-filesystem": "^2.0.27",

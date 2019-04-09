@@ -1,7 +1,8 @@
 import { CardSubtitle, Title } from 'styled/card'
-import { Flex, H1, IconLink } from 'elements'
+import { Flex, H1 } from 'elements'
 
 import Avitar from '@/avitar'
+import Link from '@/link'
 import React from 'react'
 import { socialMediaAccounts } from 'src/data'
 import styled from 'styled-components'
@@ -34,9 +35,9 @@ const AboutStyled = styled.div`
 
 const SocialMediaComponents = ({ accounts }) =>
   accounts.map((acc, i) => (
-    <IconLink key={i} href={acc.link}>
+    <Link key={i} href={acc.link}>
       <acc.SvgIcon />
-    </IconLink>
+    </Link>
   ))
 
 const About = () => (
