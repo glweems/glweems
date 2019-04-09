@@ -12,6 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
+    "test": "echo \"no test specified\" && exit 0",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
