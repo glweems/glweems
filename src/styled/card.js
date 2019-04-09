@@ -17,7 +17,6 @@ export const Card = styled.div`
     css`
       border-width: 2px;
       border-style: solid;
-      border-color: ${theme.colors.dark};
     `};
 `
 

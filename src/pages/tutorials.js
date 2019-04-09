@@ -29,9 +29,11 @@ export const TutsQuery = graphql`
           id
           excerpt
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
-            path
             date
             thumbnail
             tags

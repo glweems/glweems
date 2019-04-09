@@ -1,7 +1,7 @@
 import { Button, Container, Flex, LI, List } from 'elements'
 import React, { Component } from 'react'
 
-import { Link } from 'gatsby'
+import Link from '@/link'
 import { sidebarLinks } from 'src/data'
 import styled from 'styled-components'
 
@@ -32,6 +32,7 @@ export default class extends Component {
   }
 
   render() {
+    const { isToggleOn } = this.state
     return (
       <Navbar>
         <Container>
@@ -41,7 +42,7 @@ export default class extends Component {
               menu
             </Button>
           </Flex>
-          {this.state.isToggleOn ? (
+          {isToggleOn ? (
             <List no-bullets text-right>
               {sidebarLinks.map(link => (
                 <LI key={link.name}>

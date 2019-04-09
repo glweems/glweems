@@ -1,6 +1,7 @@
-import { darken, lighten } from 'polished'
 import styled, { css } from 'styled-components'
 import theme, { media } from 'src/styled/theme'
+
+import { lighten } from 'polished'
 
 export const Main = styled.main`
   max-width: 100%;
@@ -33,7 +34,6 @@ export const Tag = styled.span`
     css`
       ::before {
         content: '#';
-        /* letter-spacing: 1px; */
       }
     `}
 
@@ -41,31 +41,6 @@ export const Tag = styled.span`
     props.bg ? lighten(0.6, props.theme.colors.dark) : 'none'};
   color: ${props =>
     props.color ? props.color : lighten(0.2, props.theme.colors.dark)};
-
-  ${props =>
-    props.dark &&
-    css`
-      background: ${props => darken(0.1, props.theme.colors.light)};
-      color: ${props => lighten(0.2, props.theme.colors.dark)};
-    `}
-  ${props =>
-    props.red &&
-    css`
-      background: ${props => lighten(0.2, props.theme.colors.red)};
-      color: ${props => darken(0.4, props.theme.colors.red)};
-    `}
-  ${props =>
-    props.green &&
-    css`
-      background: ${props => lighten(0.2, props.theme.colors.green)};
-      color: ${props => darken(0.4, props.theme.colors.green)};
-    `}
-  ${props =>
-    props.blue &&
-    css`
-      background: ${props => lighten(0.2, props.theme.colors.blue)};
-      color: ${props => darken(0.4, props.theme.colors.blue)};
-    `}
 `
 
 export const H1 = styled.h1``

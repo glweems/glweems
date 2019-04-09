@@ -11,7 +11,7 @@ const BlogPost = styled.div`
 `
 
 const BlogTemplate = ({ data }) => {
-  const { markdownRemark, allMarkdownRemark } = data
+  const { markdownRemark } = data
   const { title } = markdownRemark.frontmatter
   const { html } = markdownRemark
 
@@ -34,7 +34,6 @@ export const pageQuery = graphql`
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
-        path
         title
         tags
       }
@@ -47,7 +46,6 @@ export const pageQuery = graphql`
           timeToRead
           frontmatter {
             title
-            path
             date
             thumbnail
             tags

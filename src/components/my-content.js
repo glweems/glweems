@@ -17,56 +17,85 @@ import { ellipsis } from 'polished'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export const MyTuts = ({ edges }) =>
-  edges.map((edge, i) => (
-    <Link to={edge.node.frontmatter.path} key={i}>
+  edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
+    <Link to={slug} key={id}>
       <Card minwidth='245px'>
-        <Title>{edge.node.frontmatter.title}</Title>
-        <CardImg img={edge.node.frontmatter.thumbnail} height='100px' />
+        <Title>{frontmatter.title}</Title>
+        <CardImg img={frontmatter.thumbnail} height='100px' />
         <CardBody>
           <Flex between>
-            <CardSubtitle>{`${edge.node.timeToRead} min read`}</CardSubtitle>
+            <CardSubtitle>{`${timeToRead} min read`}</CardSubtitle>
             <CardSubtitle>
-              {new Date(edge.node.frontmatter.date).toISOString().slice(0, 10)}
+              {new Date(frontmatter.date).toISOString().slice(0, 10)}
             </CardSubtitle>
           </Flex>
         </CardBody>
-        <Tags {...edge.node.frontmatter} hashtag />
+        <Tags {...frontmatter} hashtag />
       </Card>
     </Link>
   ))
 
 MyTuts.propTypes = {
-  edges: PropTypes.array,
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        excerpt: PropTypes.string.isRequired,
+        timeToRead: PropTypes.number.isRequired,
+        frontmatter: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          tags: PropTypes.array.isRequired,
+        }),
+        fields: PropTypes.shape({
+          slug: PropTypes.string.isRequired,
+        }),
+      }),
+    }).isRequired
+  ),
 }
 
 export const BehanceProjects = ({ edges }) =>
-  edges.map((edge, i) => (
-    <Link to={`/designs/${edge.node.fields.slug}`} key={i}>
+  edges.map(({ node: { fields: { slug }, name, covers, tags, id } }) => (
+    <Link to={`/designs/${slug}`} key={id}>
       <Card minwidth='225px'>
-        <Title>{edge.node.name}</Title>
-        <CardImg img={edge.node.covers.size_max_808} />
-        <Tags {...edge.node} hashtag />
+        <Title>{name}</Title>
+        <CardImg img={covers.size_max_808} />
+        <Tags tags={tags} hashtag />
       </Card>
     </Link>
   ))
 
 BehanceProjects.propTypes = {
-  edges: PropTypes.array,
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        covers: PropTypes.shape({
+          size_max_808: PropTypes.string.isRequired,
+        }),
+        fields: PropTypes.shape({
+          slug: PropTypes.string.isRequired,
+        }),
+        tags: PropTypes.array.isRequired,
+      }),
+    }).isRequired
+  ),
 }
 export const PinnedRepos = ({ edges }) =>
-  edges.map((edge, i) => (
+  edges.map(({ node: { name, url, description, languages } }, i) => (
     <Card key={i} minwidth='225px'>
       <Header>
-        <Title light>{edge.node.name}</Title>
-        <Link href={edge.node.url} target='_'>
+        <Title light>{name}</Title>
+        <Link href={url} target='_'>
           <FontAwesomeIcon icon={faGithub} />
         </Link>
       </Header>
-      <CardSubtitle style={ellipsis(225)}>{edge.node.description}</CardSubtitle>
+      <CardSubtitle style={ellipsis(225)}>{description}</CardSubtitle>
       <Flex scroll>
-        {edge.node.languages.edges.map((lang, i) => (
-          <Tag key={i} color={lang.node.color}>
-            {lang.node.name}
+        {languages.edges.map(({ node: { name: lang, color, id } }) => (
+          <Tag key={id} color={color}>
+            {lang}
           </Tag>
         ))}
       </Flex>
@@ -74,5 +103,22 @@ export const PinnedRepos = ({ edges }) =>
   ))
 
 PinnedRepos.propTypes = {
-  edges: PropTypes.array,
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        url: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        languages: PropTypes.shape({
+          node: PropTypes.shape({
+            edges: PropTypes.arrayOf({
+              name: PropTypes.string.isRequired,
+              color: PropTypes.string.isRequired,
+            }),
+          }),
+        }),
+      }),
+    }).isRequired
+  ),
 }

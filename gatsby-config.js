@@ -26,8 +26,8 @@ module.exports = {
         name: 'glweems-portfolio-site',
         short_name: 'glweems',
         start_url: '/',
-        background_color: '#bada55',
-        theme_color: '#bada55',
+        background_color: '#ff5851',
+        theme_color: '#5687e8',
         display: 'minimal-ui',
         icon: 'src/images/gatsby-icon.png',
       },
@@ -38,6 +38,10 @@ module.exports = {
         name: 'image',
         path: `./src/images`,
       },
+    },
+    {
+      resolve: 'gatsby-source-behance',
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -71,15 +75,11 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sentry',
       options: {
-        dsn: "https://0c4da3a90ae54fb286dc83cd6daff483@sentry.io/1408965",
+        dsn: process.env.SENTRY_TOKEN,
         environment: process.env.NODE_ENV,
         enabled: (() =>
           ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
       },
-    },
-    {
-      resolve: 'gatsby-source-behance',
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
     {
       resolve: 'gatsby-source-graphql',
