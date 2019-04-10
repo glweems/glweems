@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import theme, { media } from 'src/styled/theme'
+import theme, { media } from 'theme'
 
 import { lighten } from 'polished'
 
@@ -117,43 +117,33 @@ export const Button = styled.button`
 
 export const Flex = styled.div`
   display: flex;
-
-/* width */
-${props =>
-  props.w100 &&
-  css`
-    width: 100%;
-  `}
-/* column */
-${props =>
-  props.column &&
-  css`
-    flex-direction: column;
-  `}
-
-/* space-between */
-${props =>
-  props.between &&
-  css`
-    justify-content: space-between;
-  `}
-
-/* evenly */
-${props =>
-  props.evenly &&
-  css`
-    justify-content: space-evenly;
-  `}
-
-/* overflow */
-${props =>
-  props.wrap &&
-  css`
-    flex-wrap: wrap;
-  `}
-
-
-
+  align-items: ${props => (props.alignCenter ? 'center' : null)};
+  height: ${props => (props.h100 ? '100%' : null)};
+  ${props =>
+    props.w100 &&
+    css`
+      width: 100%;
+    `};
+  ${props =>
+    props.column &&
+    css`
+      flex-direction: column;
+    `};
+  ${props =>
+    props.between &&
+    css`
+      justify-content: space-between;
+    `};
+  ${props =>
+    props.evenly &&
+    css`
+      justify-content: space-evenly;
+    `};
+  ${props =>
+    props.wrap &&
+    css`
+      flex-wrap: wrap;
+    `};
   overflow: ${props => (props.scroll ? 'auto' : 'hidden')};
   -webkit-overflow-scrolling: touch;
 `
@@ -165,8 +155,6 @@ export const List = styled.ul`
       margin: 0;
       list-style: none;
     `}
-text-align: ${props =>
-  props['text-right'] ? 'right' : props['text-center'] ? 'center' : 'left'}
 `
 
 export const IconLink = styled.a`

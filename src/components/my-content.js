@@ -5,7 +5,7 @@ import {
   CardSubtitle,
   Header,
   Title,
-} from 'src/styled/card'
+} from 'styled/card'
 import { Flex, Tag } from 'styled/elements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

@@ -1,5 +1,5 @@
 import { Button, Container, Flex, LI, List } from 'elements'
-import { toggleDarkMode, toggleNavBar } from 'src/state/app'
+import { toggleDarkMode, toggleNavBar } from 'state/app'
 
 import FullLogo from '@/logo'
 import Link from '@/link'

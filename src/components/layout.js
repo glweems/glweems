@@ -1,5 +1,5 @@
 import { StaticQuery, graphql } from 'gatsby'
-import theme, { GlobalStyle } from 'styled/theme'
+import theme, { GlobalStyle } from 'theme'
 
 import ErrorBoundary from '@/sentry'
 import { Main } from 'elements'
