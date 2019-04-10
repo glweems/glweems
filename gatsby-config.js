@@ -23,7 +23,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'glweems-portfolio-site',
+        name: 'Garrett Weems | Web Developer',
         short_name: 'glweems',
         start_url: '/',
         background_color: '#ff5851',
@@ -40,10 +40,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-behance',
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
@@ -58,6 +54,7 @@ module.exports = {
         pages: path.join(__dirname, 'src/pages/'),
         styled: path.join(__dirname, 'src/styled/'),
         elements: path.join(__dirname, 'src/styled/elements'),
+        store: path.join(__dirname, 'src/store/')
       },
     },
     {
@@ -71,6 +68,10 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
+    },
+    {
+      resolve: 'gatsby-source-behance',
+      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
     },
     {
       resolve: 'gatsby-plugin-sentry',
@@ -94,8 +95,8 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-unwrap-images`,
           `gatsby-remark-picture`,
+          `gatsby-remark-unwrap-images`,
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,

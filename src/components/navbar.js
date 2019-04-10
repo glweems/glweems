@@ -1,7 +1,11 @@
 import { Button, Container, Flex, LI, List } from 'elements'
-import React, { Component } from 'react'
+import { toggleDarkMode, toggleNavBar } from 'src/state/app'
 
+import FullLogo from '@/logo'
 import Link from '@/link'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { connect } from 'react-redux'
 import { sidebarLinks } from 'src/data'
 import styled from 'styled-components'
 
@@ -18,41 +22,55 @@ const Navbar = styled.section`
   ul {
     margin: 2rem 0;
   }
+
+  transition: all 1s ease-in-out;
 `
+const Navigation = ({ isDarkMode, isNavOpen, dispatch }) => (
+  <Navbar>
+    <Container>
+      <Flex w100 h100 alignCenter between>
+        <Link to='/'>
+          <FullLogo fill='white' />
+        </Link>
+        <Button
+          dark
+          bordered
+          onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
+          menu
+        </Button>
+      </Flex>
+      {isNavOpen ? (
+        <List no-bullets text-right>
+          {sidebarLinks.map(link => (
+            <LI key={link.name}>
+              <Link to={link.to}>{link.name}</Link>
+            </LI>
+          ))}
+          <LI>
+            <button
+              type='button'
+              className='gw'
+              style={isDarkMode ? { background: 'pink' } : null}
+              onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
+              dark mode is {isDarkMode ? 'on' : 'off'}
+            </button>
+          </LI>
+        </List>
+      ) : null}
+    </Container>
+  </Navbar>
+)
 
-export default class extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { isToggleOn: false }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    this.setState(prevState => ({ isToggleOn: !prevState.isToggleOn }))
-  }
-
-  render() {
-    const { isToggleOn } = this.state
-    return (
-      <Navbar>
-        <Container>
-          <Flex between>
-            <Link to='/'>glw</Link>
-            <Button dark bordered onClick={this.handleClick}>
-              menu
-            </Button>
-          </Flex>
-          {isToggleOn ? (
-            <List no-bullets text-right>
-              {sidebarLinks.map(link => (
-                <LI key={link.name}>
-                  <Link to={link.to}>{link.name}</Link>
-                </LI>
-              ))}
-            </List>
-          ) : null}
-        </Container>
-      </Navbar>
-    )
-  }
+Navigation.propTypes = {
+  isNavOpen: PropTypes.bool.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
+
+export default connect(
+  state => ({
+    isNavOpen: state.app.isNavOpen,
+    isDarkMode: state.app.isDarkMode,
+  }),
+  null
+)(Navigation)

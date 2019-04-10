@@ -26,6 +26,7 @@ export const GraphicDesignPageQuery = graphql`
     allBehanceProjects {
       edges {
         node {
+          id
           name
           created
           url
