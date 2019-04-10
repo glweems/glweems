@@ -53,8 +53,9 @@ module.exports = {
         '@': path.join(__dirname, 'src/components/'),
         pages: path.join(__dirname, 'src/pages/'),
         styled: path.join(__dirname, 'src/styled/'),
-        elements: path.join(__dirname, 'src/styled/elements'),
-        store: path.join(__dirname, 'src/store/')
+        theme: path.join(__dirname, 'src/styled/theme.js'),
+        elements: path.join(__dirname, 'src/styled/elements.js'),
+        state: path.join(__dirname, 'src/state'),
       },
     },
     {

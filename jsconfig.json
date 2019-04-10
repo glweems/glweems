@@ -2,19 +2,22 @@
   "compilerOptions": {
     "target": "es2017",
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
+    "baseUrl": "src/",
     "paths": {
       "@/*": [
-        "src/components/*"
+        "components/*"
       ],
       "src/*": [
-        "src/*"
+        "/*"
       ],
       "pages/*": [
-        "src/pages/*"
+        "pages/*"
       ],
       "styled/*": [
-        "src/styled/*"
+        "styled/*"
+      ],
+      "theme": [
+        "./src/styled/theme.js"
       ]
     }
   },
