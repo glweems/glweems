@@ -7,6 +7,8 @@ import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
+import { connect } from 'react-redux'
+import { store } from 'state/store'
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -24,15 +26,24 @@ const Layout = ({ children }) => (
         <ThemeProvider theme={theme}>
           <React.Fragment>
             <GlobalStyle />
-            <Navbar />
+            <Navbar {...store} />
             <Main>{children}</Main>
+            {JSON.stringify(store)}
           </React.Fragment>
         </ThemeProvider>
       </ErrorBoundary>
     )}
   />
 )
-export default Layout
+
+const mapStateToProps = state => ({
+  isDarkMode: state.isDarkMode,
+  isNavOpen: state.isNavOpen,
+  navbarLinks: state.navbarLinks,
+})
+
+export default connect(mapStateToProps)(Layout)
+
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
   data: PropTypes.shape({

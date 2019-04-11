@@ -2,7 +2,7 @@ import { BehanceProjects, MyTuts, PinnedRepos } from '@/my-content'
 import { Container, Flex, H1 } from 'elements'
 
 import About from '@/garrett'
-import Layout from '@/layout'
+import Layout from '@/containers/layout'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'

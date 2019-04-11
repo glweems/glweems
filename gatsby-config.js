@@ -72,7 +72,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `markdown-pages`,
-        path: `${__dirname}/src/pages/tutorials`,
+        path: `${__dirname}/tutorials`,
       },
     },
     {
@@ -99,6 +99,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+
     {
       resolve: 'gatsby-source-behance',
       options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
@@ -119,13 +120,6 @@ module.exports = {
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-remote-images`,
-      options: {
-        nodeType: 'allBehanceProjects',
-        imagePath: 'node.covers.size_max_808',
       },
     },
     {

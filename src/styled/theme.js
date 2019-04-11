@@ -4,14 +4,13 @@ const font = `'Karla', sans-serif`
 
 const colors = {
   blue: `#5687e8`,
-  dark: `#24292e`,
   green: `#5DB583`,
-  light: `#F7F7F7`,
-  muted: `#D1D6DB`,
   red: `#ff5851`,
+  muted: `#D1D6DB`,
+  light: `#F7F7F7`,
+  dark: `#24292e`,
   secondary: `#707070`,
   white: `#fff`,
-  bg: `pink`,
 }
 
 const sizes = {

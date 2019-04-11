@@ -2,7 +2,7 @@ import { Link, graphql } from 'gatsby'
 
 import { Container } from 'elements'
 import { Helmet } from 'react-helmet'
-import Layout from '@/layout'
+import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import kebabCase from 'lodash/kebabCase'

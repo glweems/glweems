@@ -1,5 +1,5 @@
 import { Container } from 'elements'
-import Layout from '@/layout'
+import Layout from '@/containers/layout'
 import { MyTuts } from '@/my-content'
 import PropTypes from 'prop-types'
 import React from 'react'

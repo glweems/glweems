@@ -1,6 +1,6 @@
 import { Container, List } from 'elements'
 
-import Layout from '@/layout'
+import Layout from '@/containers/layout'
 import Link from '@/link'
 import React from 'react'
 import SEO from '@/seo'

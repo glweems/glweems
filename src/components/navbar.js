@@ -25,7 +25,7 @@ const Navbar = styled.section`
 
   transition: all 1s ease-in-out;
 `
-const Navigation = ({ isDarkMode, isNavOpen, dispatch }) => (
+const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
   <Navbar>
     <Container>
       <Flex w100 h100 alignCenter between>
@@ -41,7 +41,7 @@ const Navigation = ({ isDarkMode, isNavOpen, dispatch }) => (
       </Flex>
       {isNavOpen ? (
         <List no-bullets text-right>
-          {sidebarLinks.map(link => (
+          {navbarLinks.map(link => (
             <LI key={link.name}>
               <Link to={link.to}>{link.name}</Link>
             </LI>
@@ -67,10 +67,7 @@ Navigation.propTypes = {
   dispatch: PropTypes.func.isRequired,
 }
 
-export default connect(
-  state => ({
-    isNavOpen: state.app.isNavOpen,
-    isDarkMode: state.app.isDarkMode,
-  }),
-  null
-)(Navigation)
+export default connect(state => ({
+  isNavOpen: state.isNavOpen,
+  isDarkMode: state.isDarkMode,
+}))(Navigation)
