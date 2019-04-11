@@ -21,6 +21,35 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-tags`,
     {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './src/images/favicon.png',
+        appName: null,
+        appDescription: null,
+        developerName: null,
+        developerURL: null,
+        dir: 'auto',
+        lang: 'en-US',
+        background: '#ff5851',
+        theme_color: '#5687e8',
+        display: 'standalone',
+        orientation: 'any',
+        start_url: '/?homescreen=1',
+        version: '1.0',
+
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+    {
       resolve: 'gatsby-plugin-manifest',
       options: {
         name: 'Garrett Weems | Web Developer',
@@ -90,6 +119,13 @@ module.exports = {
         fieldName: 'github',
         url: 'https://api.github.com/graphql',
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'allBehanceProjects',
+        imagePath: 'node.covers.size_max_808',
       },
     },
     {
