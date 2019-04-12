@@ -10,7 +10,7 @@ import { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
 import { store } from 'state/store'
 
-const Layout = ({ children }) => (
+const Layout = ({ children, isDarkMode }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -22,16 +22,16 @@ const Layout = ({ children }) => (
       }
     `}
     render={() => (
-      <ErrorBoundary>
-        <ThemeProvider theme={theme}>
+      <ThemeProvider theme={!isDarkMode ? theme.light : theme.dark}>
+        <ErrorBoundary>
           <React.Fragment>
             <GlobalStyle />
-            <Navbar {...store} />
+            <Navbar {...store.getState()} />
             <Main>{children}</Main>
-            {JSON.stringify(store)}
+            {JSON.stringify(isDarkMode)}
           </React.Fragment>
-        </ThemeProvider>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </ThemeProvider>
     )}
   />
 )

@@ -14,6 +14,7 @@
     "build": "gatsby build",
     "test": "echo \"no test specified\" && exit 0",
     "postinstall": "node node_modules/husky/lib/installer/bin install",
+    "lint:css": "stylelint './src/**/*.js'",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "dev": "gatsby develop",
@@ -44,7 +45,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
-    "babel-plugin-styled-components": "^1.10.0",
     "dotenv": "^7.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^2.1.2",
@@ -90,10 +90,12 @@
     "redux-devtools-extension": "^2.13.8",
     "slugify": "^1.3.4",
     "styled-components": "^4.2.0",
+    "styled-theming": "^2.2.0",
     "typography": "^0.16.19"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
+    "babel-plugin-styled-components": "^1.10.0",
     "bluebird": "^3.5.4",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
@@ -111,6 +113,10 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
+    "stylelint": "^9.10.1",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.6.0",
     "typescript": "^3.4.3"
   },
   "resolutions": {

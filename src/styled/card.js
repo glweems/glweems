@@ -51,7 +51,7 @@ export const Title = styled.h4`
 `
 
 export const CardSubtitle = styled.small`
-  color: ${props => props.theme.colors.secondary};
+  color: ${props => props.theme.muted};
   font-style: normal;
   font-weight: 200;
   line-height: 14px;
@@ -61,7 +61,7 @@ export const CardSubtitle = styled.small`
   text-overflow: ellipsis;
 `
 export const CardLink = styled.span`
-  color: ${props => props.theme.colors.blue};
+  color: ${props => props.theme.blue};
   font-size: 14px;
   font-weight: bold;
   letter-spacing: 0.5px;

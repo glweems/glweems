@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components'
-import theme, { media } from 'theme'
 
 import { lighten } from 'polished'
+import { media } from 'theme'
 
 export const Main = styled.main`
+  color: ${props => props.theme.text};
+  background: ${props => props.theme.bg};
   max-width: 100%;
   padding-top: 4rem;
 `
@@ -28,19 +30,8 @@ export const Tag = styled.span`
   position: relative;
   text-transform: uppercase;
   white-space: nowrap;
-
-  ${props =>
-    props.hashtag &&
-    css`
-      ::before {
-        content: '#';
-      }
-    `}
-
-  background: ${props =>
-    props.bg ? lighten(0.6, props.theme.colors.dark) : 'none'};
-  color: ${props =>
-    props.color ? props.color : lighten(0.2, props.theme.colors.dark)};
+  background: ${props => lighten(0.6, props.theme.bg)};
+  color: ${props => lighten(0.2, props.theme.text)};
 `
 
 export const H1 = styled.h1``
@@ -52,11 +43,10 @@ export const H6 = styled.h6``
 export const A = styled.a``
 
 export const Button = styled.button`
-  background: ${theme.colors.light};
-  border-color: ${theme.colors.dark};
+  background: ${props => props.theme.bg};
+  border-color: ${props => props.theme.text};
+  color: ${props => props.theme.text};
   border: none;
-  color: ${theme.colors.dark};
-  font-family: ${theme.font};
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.125px;
@@ -66,52 +56,6 @@ export const Button = styled.button`
       border-radius: 3px;
       border-style: solid;
       border-width: 1px;
-    `}
-  :hover {
-    background: ${theme.colors.dark};
-    color: ${theme.colors.light};
-    transition: all 0.4s ease 0s;
-  }
-  ${props =>
-    props.blue &&
-    css`
-      background: ${theme.colors.blue};
-      color: ${theme.colors.light};
-      border-color: ${theme.colors.blue};
-      :hover {
-        background: ${theme.colors.light};
-        color: ${theme.colors.blue};
-        border-color: ${theme.colors.blue};
-      }
-    `}
-  ${props =>
-    props.dark &&
-    css`
-      background: ${theme.colors.dark};
-      color: ${theme.colors.light};
-      border-color: ${theme.colors.light};
-      :hover {
-        background: ${theme.colors.light};
-        color: ${theme.colors.dark};
-        border-color: ${theme.colors.dark};
-      }
-    `}
-  ${props =>
-    props.red &&
-    css`
-      background: ${theme.colors.red};
-      color: ${theme.colors.light};
-      border-color: ${theme.colors.red};
-      :hover {
-        background: ${theme.colors.light};
-        color: ${theme.colors.red};
-        border-color: ${theme.colors.red};
-      }
-    `}
-  ${props =>
-    props.center &&
-    css`
-      margin: 0 auto;
     `}
 `
 
@@ -158,9 +102,9 @@ export const List = styled.ul`
 `
 
 export const IconLink = styled.a`
-  color: ${props => props.theme.colors.dark}!important;
+  color: ${props => props.theme.dark}!important;
   :hover {
-    color: ${props => props.theme.colors.blue}!important;
+    color: ${props => props.theme.blue}!important;
   }
 `
 

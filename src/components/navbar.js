@@ -1,17 +1,19 @@
 import { Button, Container, Flex, LI, List } from 'elements'
-import { toggleDarkMode, toggleNavBar } from 'state/app'
+import { toggleDarkMode, toggleNavBar } from 'state/reducers'
 
 import FullLogo from '@/logo'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { sidebarLinks } from 'src/data'
 import styled from 'styled-components'
 
 const Navbar = styled.section`
-  background: ${props => props.theme.colors.dark};
-  color: ${props => props.theme.colors.light};
+  background: ${props => props.theme.text};
+  color: ${props => props.theme.bg};
+  svg {
+    fill: ${props => props.theme.bg};
+  }
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -22,15 +24,13 @@ const Navbar = styled.section`
   ul {
     margin: 2rem 0;
   }
-
-  transition: all 1s ease-in-out;
 `
 const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
   <Navbar>
     <Container>
       <Flex w100 h100 alignCenter between>
         <Link to='/'>
-          <FullLogo fill='white' />
+          <FullLogo />
         </Link>
         <Button
           dark

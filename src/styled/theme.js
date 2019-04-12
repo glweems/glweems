@@ -7,10 +7,6 @@ const colors = {
   green: `#5DB583`,
   red: `#ff5851`,
   muted: `#D1D6DB`,
-  light: `#F7F7F7`,
-  dark: `#24292e`,
-  secondary: `#707070`,
-  white: `#fff`,
 }
 
 const sizes = {
@@ -18,6 +14,30 @@ const sizes = {
   tablet: 768,
   desktop: 992,
 }
+
+const light = {
+  ...colors,
+  font,
+  light: `#F7F7F7`,
+  dark: `#24292e`,
+  secondary: `#707070`,
+  white: `#fff`,
+  bg: `#F7F7F7`,
+  text: `#24292e`,
+}
+const dark = {
+  font,
+  dark: `#F7F7F7`,
+  light: `#24292e`,
+  secondary: `#707070`,
+  white: `#fff`,
+  bg: `#24292e`,
+  text: `#F7F7F7`,
+}
+
+const theme = { light, dark }
+
+export default theme
 
 // Iterate through the sizes and create a media template
 export const media = Object.keys(sizes).reduce((acc, label) => {
@@ -30,30 +50,19 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 }, {})
 
 export const GlobalStyle = createGlobalStyle`
-  width: 100%;
   font-family: ${props => props.theme.font};
-  background: ${props => props.theme.colors.bg};
-  color: ${props => props.theme.colors.dark};
-
-  * {
-    color: ${props => (props.light ? props.theme.colors.light : 'inherit')};
-  }
-
-  h1 {
-    font-weight: unset;
-  }
+  color: ${props => props.theme.blue};
+  width: 100%;
 
   a {
     color: inherit;
     text-decoration: inherit;
   }
-
   img {
     background: none !important;
     padding: 0;
     margin: 0;
   }
-
   button,
   input,
   optgroup,
@@ -64,36 +73,25 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.15;
     margin: 0;
   }
-
   button,
   input {
     overflow: hidden;
   }
-
-
   button,
   select {
     text-transform: none;
   }
-
-
   button,
-  [type="button"],
-  [type="reset"],
-  [type="submit"] {
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
     -webkit-appearance: button;
   }
-
   button:hover,
   button:focus {
-      background: inherit;
+    background: none;
   }
-
   button:focus {
-      outline: inherit;
+    /* outline: inherit; */
   }
-
-
 `
-
-export default { sizes, colors, font }

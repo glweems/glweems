@@ -5,4 +5,4 @@ import rootReducer from './reducers'
 export const createStore = () =>
   reduxCreateStore(rootReducer, composeWithDevTools())
 
-export const store = createStore().getState()
+export const store = createStore()
