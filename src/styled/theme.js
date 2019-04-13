@@ -17,16 +17,18 @@ const sizes = {
 
 const light = {
   ...colors,
-  font,
+  mode: `light`,
   light: `#F7F7F7`,
   dark: `#24292e`,
   secondary: `#707070`,
   white: `#fff`,
+  muted: `#83888D`,
   bg: `#F7F7F7`,
   text: `#24292e`,
 }
 const dark = {
-  font,
+  ...colors,
+  mode: `dark`,
   dark: `#F7F7F7`,
   light: `#24292e`,
   secondary: `#707070`,
@@ -50,48 +52,102 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 }, {})
 
 export const GlobalStyle = createGlobalStyle`
-  font-family: ${props => props.theme.font};
-  color: ${props => props.theme.blue};
-  width: 100%;
+
+/* ${props =>
+  props.mode &&
+  css`
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+  `} */
+
+  html {
+    width: 100%;
+  }
+
+  body {
+    background: ${props => props.theme.bg};
+    color: ${props => props.theme.text};
+    font-family: ${font};
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  main {
+    padding-top: 4rem;
+  }
 
   a {
     color: inherit;
     text-decoration: inherit;
   }
+
   img {
     background: none !important;
     padding: 0;
     margin: 0;
   }
-  button,
-  input,
-  optgroup,
-  select,
-  textarea {
-    font-family: inherit;
-    font-size: 100%;
-    line-height: 1.15;
-    margin: 0;
+
+  [role='button'],
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  button {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
   }
-  button,
-  input {
-    overflow: hidden;
-  }
-  button,
-  select {
-    text-transform: none;
-  }
-  button,
-  [type='button'],
-  [type='reset'],
-  [type='submit'] {
-    -webkit-appearance: button;
-  }
-  button:hover,
-  button:focus {
+
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  button {
     background: none;
+    border: 0;
+    color: inherit;
+    cursor: default;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+    -moz-user-select: none;
+    -ms-user-select: none;
   }
-  button:focus {
-    /* outline: inherit; */
+  input::-moz-focus-inner,
+  button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
   }
+
+  [role='button'] {
+    color: inherit;
+    cursor: default;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: pre;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+  }
+
+  /* Demo */
+  [role='button'],
+  input[type='submit'],
+  input[type='reset'],
+  input[type='button'],
+  button {
+    border-radius: 0.25em;
+    height: 2.5em;
+    line-height: 2.5;
+    margin: 0.25em;
+    padding: 0 .75em;
+  }
+    button:focus {
+      outline:none;
+    }
+
+
 `

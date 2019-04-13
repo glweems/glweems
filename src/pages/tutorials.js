@@ -1,6 +1,6 @@
 import { Container } from 'elements'
 import Layout from '@/containers/layout'
-import { MyTuts } from '@/my-content'
+import MyTuts from '@/MyTuts'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'

@@ -1,6 +1,6 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const path = require('path')
-const slugify = require('slugify')
+const path = require(`path`)
+const slugify = require(`slugify`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
@@ -9,7 +9,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: `slug`,
-      value: `/tutorials${slug.replace(/\/README\//g, '')}`,
+      value: `/tutorials${slug.replace(/\/README\//g, ``)}`,
     })
   }
   if (node.internal.type === `BehanceProjects`) {

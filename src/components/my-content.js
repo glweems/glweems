@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardBody,
-  CardImg,
-  CardSubtitle,
-  Header,
-  Title,
-} from 'styled/card'
+import { Card, CardImg, CardSubtitle, Header, Title } from 'styled/card'
 import { Flex, Tag } from 'styled/elements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,53 +9,15 @@ import Tags from '@/tags'
 import { ellipsis } from 'polished'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
-export const MyTuts = ({ edges }) =>
-  edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
-    <Link to={slug} key={id}>
-      <Card minwidth='245px'>
-        <Title>{frontmatter.title}</Title>
-        <CardImg img={frontmatter.thumbnail} height='100px' />
-        <CardBody>
-          <Flex between>
-            <CardSubtitle>{`${timeToRead} min read`}</CardSubtitle>
-            <CardSubtitle>
-              {new Date(frontmatter.date).toISOString().slice(0, 10)}
-            </CardSubtitle>
-          </Flex>
-        </CardBody>
-        <Tags {...frontmatter} hashtag />
-      </Card>
-    </Link>
-  ))
-
-MyTuts.propTypes = {
-  edges: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        excerpt: PropTypes.string.isRequired,
-        timeToRead: PropTypes.number.isRequired,
-        frontmatter: PropTypes.shape({
-          title: PropTypes.string.isRequired,
-          tags: PropTypes.array.isRequired,
-        }),
-        fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired,
-        }),
-      }),
-    }).isRequired
-  ),
-}
-
 export const BehanceProjects = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, name, covers, tags, id } }) => (
-    <Link to={`/designs/${slug}`} key={id}>
-      <Card minwidth='225px'>
+    <Card minwidth='225px' key={id}>
+      <Link to={`/designs/${slug}`}>
         <Title>{name}</Title>
         <CardImg img={covers.size_max_808} />
         <Tags tags={tags} hashtag />
-      </Card>
-    </Link>
+      </Link>
+    </Card>
   ))
 
 BehanceProjects.propTypes = {

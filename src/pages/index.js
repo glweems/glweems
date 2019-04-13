@@ -1,9 +1,10 @@
-import { BehanceProjects, MyTuts, PinnedRepos } from '@/my-content'
+import { BehanceProjects, PinnedRepos } from '@/my-content'
 import { Container, Flex, H1 } from 'elements'
 
 import About from '@/garrett'
 import Layout from '@/containers/layout'
 import Link from '@/link'
+import MyTuts from '@/MyTuts'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
@@ -16,7 +17,7 @@ const Section = styled.section`
 
 export const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title='Home' keywords={['glweems', 'developer', 'designer']} />
+    <SEO title='Home' keywords={[`glweems`, `developer`, `designer`]} />
     <Container>
       <Section>
         <About />
@@ -24,9 +25,7 @@ export const IndexPage = ({ data }) => (
 
       <Section>
         <H1 bold>Tutorials</H1>
-        <Flex scroll>
-          <MyTuts edges={data.allMarkdownRemark.edges} />
-        </Flex>
+        <MyTuts edges={data.allMarkdownRemark.edges} />
         <Link to='/tutorials'>View All Tutorials</Link>
       </Section>
 

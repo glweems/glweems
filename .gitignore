@@ -9,6 +9,8 @@ yarn-debug.log*
 yarn-error.log*
 **/node_modules/**
 
+
+tutorials/
 # Runtime data
 pids
 *.pid

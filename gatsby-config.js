@@ -1,41 +1,41 @@
-const path = require('path')
-require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
+const path = require(`path`)
+require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` })
 
 module.exports = {
   siteMetadata: {
-    title: 'Glweems',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@glweems',
+    title: `Glweems`,
+    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    author: `@glweems`,
     sidebarLinks: [
-      { name: 'About', to: '/about' },
-      { name: 'Tutorials', to: '/tutorials' },
-      { name: 'Graphic Design', to: '/designs' },
+      { name: `About`, to: `/about` },
+      { name: `Tutorials`, to: `/tutorials` },
+      { name: `Graphic Design`, to: `/designs` },
     ],
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-tags`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: './src/images/favicon.png',
+        logo: `./src/images/favicon.png`,
         appName: null,
         appDescription: null,
         developerName: null,
         developerURL: null,
-        dir: 'auto',
-        lang: 'en-US',
-        background: '#ff5851',
-        theme_color: '#5687e8',
-        display: 'standalone',
-        orientation: 'any',
-        start_url: '/?homescreen=1',
-        version: '1.0',
+        dir: `auto`,
+        lang: `en-US`,
+        background: `#ff5851`,
+        theme_color: `#5687e8`,
+        display: `standalone`,
+        orientation: `any`,
+        start_url: `/?homescreen=1`,
+        version: `1.0`,
 
         icons: {
           android: true,
@@ -50,21 +50,21 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Garrett Weems | Web Developer',
-        short_name: 'glweems',
-        start_url: '/',
-        background_color: '#ff5851',
-        theme_color: '#5687e8',
-        display: 'minimal-ui',
-        icon: 'src/images/gatsby-icon.png',
+        name: `Garrett Weems | Web Developer`,
+        short_name: `glweems`,
+        start_url: `/`,
+        background_color: `#ff5851`,
+        theme_color: `#5687e8`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`,
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'image',
+        name: `image`,
         path: `./src/images`,
       },
     },
@@ -76,15 +76,15 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-root-import',
+      resolve: `gatsby-plugin-root-import`,
       options: {
-        src: path.join(__dirname, 'src/'),
-        '@': path.join(__dirname, 'src/components/'),
-        pages: path.join(__dirname, 'src/pages/'),
-        styled: path.join(__dirname, 'src/styled/'),
-        theme: path.join(__dirname, 'src/styled/theme.js'),
-        elements: path.join(__dirname, 'src/styled/elements.js'),
-        state: path.join(__dirname, 'src/state'),
+        src: path.join(__dirname, `src/`),
+        '@': path.join(__dirname, `src/components/`),
+        pages: path.join(__dirname, `src/pages/`),
+        styled: path.join(__dirname, `src/styled/`),
+        theme: path.join(__dirname, `src/styled/theme.js`),
+        elements: path.join(__dirname, `src/styled/elements.js`),
+        state: path.join(__dirname, `src/state`),
       },
     },
     {
@@ -101,24 +101,24 @@ module.exports = {
     },
 
     {
-      resolve: 'gatsby-source-behance',
-      options: { username: 'glweems', apiKey: process.env.BEHANCE_TOKEN },
+      resolve: `gatsby-source-behance`,
+      options: { username: `glweems`, apiKey: process.env.BEHANCE_TOKEN },
     },
     {
-      resolve: 'gatsby-plugin-sentry',
+      resolve: `gatsby-plugin-sentry`,
       options: {
         dsn: process.env.SENTRY_TOKEN,
         environment: process.env.NODE_ENV,
         enabled: (() =>
-          ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+          [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     {
-      resolve: 'gatsby-source-graphql',
+      resolve: `gatsby-source-graphql`,
       options: {
-        typeName: 'GitHub',
-        fieldName: 'github',
-        url: 'https://api.github.com/graphql',
+        typeName: `GitHub`,
+        fieldName: `github`,
+        url: `https://api.github.com/graphql`,
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
       },
     },
@@ -126,13 +126,13 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-picture`,
+          `gatsby-remark-autolink-headers`,
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: `language-`,
               inlineCodeMarker: null,
               aliases: {},
               showLineNumbers: false,

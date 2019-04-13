@@ -1,11 +1,11 @@
-const path = require('path')
-const _ = require('lodash')
+const path = require(`path`)
+const _ = require(`lodash`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve('src/templates/tutorial.js')
-  const tagTemplate = path.resolve('src/templates/tags.js')
+  const blogPostTemplate = path.resolve(`src/templates/tutorial.js`)
+  const tagTemplate = path.resolve(`src/templates/tags.js`)
 
   return graphql(`
     {
@@ -44,7 +44,7 @@ exports.createPages = ({ actions, graphql }) => {
     let tags = []
     // Iterate through each post, putting all found tags into `tags`
     _.each(posts, edge => {
-      if (_.get(edge, 'node.frontmatter.tags')) {
+      if (_.get(edge, `node.frontmatter.tags`)) {
         tags = tags.concat(edge.node.frontmatter.tags)
       }
     })

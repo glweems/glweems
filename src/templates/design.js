@@ -15,7 +15,7 @@ const DesignTemplate = ({ data }) => {
           key={i}
           src={module.sizes.size_disp}
           alt={module.id}
-          style={{ width: '100%' }}
+          style={{ width: `100%` }}
         />
       ))
 

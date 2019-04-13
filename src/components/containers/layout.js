@@ -2,7 +2,6 @@ import { StaticQuery, graphql } from 'gatsby'
 import theme, { GlobalStyle } from 'theme'
 
 import ErrorBoundary from '@/sentry'
-import { Main } from 'elements'
 import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -24,12 +23,9 @@ const Layout = ({ children, isDarkMode }) => (
     render={() => (
       <ThemeProvider theme={!isDarkMode ? theme.light : theme.dark}>
         <ErrorBoundary>
-          <React.Fragment>
-            <GlobalStyle />
-            <Navbar {...store.getState()} />
-            <Main>{children}</Main>
-            {JSON.stringify(isDarkMode)}
-          </React.Fragment>
+          <GlobalStyle />
+          <Navbar {...store.getState()} />
+          <main>{children}</main>
         </ErrorBoundary>
       </ThemeProvider>
     )}
@@ -46,6 +42,7 @@ export default connect(mapStateToProps)(Layout)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
+  isDarkMode: PropTypes.bool.isRequired,
   data: PropTypes.shape({
     site: PropTypes.shape({}),
   }),

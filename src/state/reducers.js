@@ -2,19 +2,19 @@ const initialState = {
   isNavOpen: false,
   isDarkMode: false,
   navbarLinks: [
-    { name: 'About', to: '/about' },
-    { name: 'Tutorials', to: '/tutorials' },
-    { name: 'Graphic Design', to: '/designs' },
+    { name: `About`, to: `/about` },
+    { name: `Tutorials`, to: `/tutorials` },
+    { name: `Graphic Design`, to: `/designs` },
   ],
 }
 
-const TOGGLE_NAVBAR = 'TOGGLE_NAVBAR'
+const TOGGLE_NAVBAR = `TOGGLE_NAVBAR`
 export const toggleNavBar = isNavOpen => ({
   type: TOGGLE_NAVBAR,
   isNavOpen,
 })
 
-const TOGGLE_DARKMODE = 'TOGGLE_DARKMODE'
+const TOGGLE_DARKMODE = `TOGGLE_DARKMODE`
 export const toggleDarkMode = isDarkMode => ({
   type: TOGGLE_DARKMODE,
   isDarkMode,

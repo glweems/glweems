@@ -70,7 +70,7 @@
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err"
+        "argsIgnorePattern": "res|next|^err|i,index"
       }
     ],
     "arrow-body-style": [
@@ -109,7 +109,7 @@
     ],
     "quotes": [
       2,
-      "single",
+      "backtick",
       {
         "avoidEscape": true,
         "allowTemplateLiterals": true
