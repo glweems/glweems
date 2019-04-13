@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { lighten } from 'polished'
+import { lighten, darken } from 'polished'
 import { media } from 'theme'
 
 export const Container = styled.div`
@@ -147,7 +147,7 @@ export const Article = styled.article`
 
       :not(pre) > code[class*='language-'],
       pre[class*='language-'] {
-        background: #1d1f21;
+        background: ${props => lighten(0.025, props.theme.bg)};
       }
 
       :not(pre) > code[class*='language-'] {
@@ -281,7 +281,7 @@ export const Article = styled.article`
         -moz-hyphens: none;
         -ms-hyphens: none;
         hyphens: none;
-        background: #faf8f5;
+        background: ${props => darken(0.025, props.theme.bg)};
         color: #728fcb;
       }
 

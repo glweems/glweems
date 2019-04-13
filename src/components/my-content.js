@@ -12,11 +12,11 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons'
 export const BehanceProjects = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, name, covers, tags, id } }) => (
     <Card minwidth='225px' key={id}>
+      <Title>{name}</Title>
       <Link to={`/designs/${slug}`}>
-        <Title>{name}</Title>
         <CardImg img={covers.size_max_808} />
-        <Tags tags={tags} hashtag />
       </Link>
+      <Tags tags={tags} hashtag />
     </Card>
   ))
 

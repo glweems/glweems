@@ -50,7 +50,7 @@
     "dotenv": "^7.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^2.1.2",
-    "gatsby": "^2.3.16",
+    "gatsby": "^2.3.22",
     "gatsby-image": "^2.0.37",
     "gatsby-plugin-config": "^1.0.7",
     "gatsby-plugin-favicon": "^3.1.6",
@@ -63,6 +63,7 @@
     "gatsby-plugin-sentry": "^1.0.1",
     "gatsby-plugin-sharp": "^2.0.29",
     "gatsby-plugin-styled-components": "^3.0.7",
+    "gatsby-plugin-transition-link": "^1.12.2",
     "gatsby-plugin-typography": "^2.2.10",
     "gatsby-remark-autolink-headers": "^2.0.16",
     "gatsby-remark-picture": "^1.0.1",
@@ -94,13 +95,11 @@
     "reset-css": "^4.0.1",
     "slugify": "^1.3.4",
     "styled-components": "^4.2.0",
-    "styled-theming": "^2.2.0",
     "typography": "^0.16.19"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "babel-plugin-styled-components": "^1.10.0",
-    "bluebird": "^3.5.4",
     "eslint": "^5.14.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "^4.1.0",
@@ -117,16 +116,14 @@
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4",
-    "stylelint": "^9.10.1",
-    "stylelint-config-recommended": "^2.1.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.6.0",
     "typescript": "^3.4.3"
   },
   "resolutions": {
+    "gatsby": "^3.2.22",
     "graphql": "^14.2.1"
   },
   "peerDependencies": {
-    "graphql": "^0.12.0"
+    "graphql": "^0.11.3 || ^0.12.3 || ^0.13.0",
+    "gatsby": "^1.9.250"
   }
 }

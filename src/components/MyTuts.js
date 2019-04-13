@@ -1,9 +1,10 @@
 import { Card, CardBody, CardImg, CardSubtitle, Title } from 'styled/card'
-import { Flex, Tag } from 'styled/elements'
+import { Flex } from 'styled/elements'
 
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Tags from '@/tags'
 
 const MyTuts = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
@@ -21,14 +22,29 @@ const MyTuts = ({ edges }) =>
         </CardBody>
       </Link>
       <Flex>
-        {frontmatter.tags.map(tag => (
-          <Tag key={tag}>
-            <Link to={`/tags/${tag}`}>{tag}</Link>
-          </Tag>
-        ))}
+        <Tags {...frontmatter} />
       </Flex>
     </Card>
   ))
+
+MyTuts.propTypes = {
+  edges: PropTypes.arrayOf(
+    PropTypes.shape({
+      node: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        excerpt: PropTypes.string.isRequired,
+        timeToRead: PropTypes.number.isRequired,
+        frontmatter: PropTypes.shape({
+          title: PropTypes.string.isRequired,
+          tags: PropTypes.array.isRequired,
+        }),
+        fields: PropTypes.shape({
+          slug: PropTypes.string.isRequired,
+        }),
+      }),
+    }).isRequired
+  ),
+}
 
 MyTuts.propTypes = {
   edges: PropTypes.arrayOf(

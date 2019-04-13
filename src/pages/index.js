@@ -25,7 +25,9 @@ export const IndexPage = ({ data }) => (
 
       <Section>
         <H1 bold>Tutorials</H1>
-        <MyTuts edges={data.allMarkdownRemark.edges} />
+        <Flex scroll between>
+          <MyTuts edges={data.allMarkdownRemark.edges} />
+        </Flex>
         <Link to='/tutorials'>View All Tutorials</Link>
       </Section>
 

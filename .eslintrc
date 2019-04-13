@@ -67,10 +67,11 @@
     "wesbos"
   ],
   "rules": {
+    "no-shadow": 0,
     "no-unused-vars": [
       1,
       {
-        "argsIgnorePattern": "res|next|^err|i,index"
+        "argsIgnorePattern": "res|next|^err|i|index|props"
       }
     ],
     "arrow-body-style": [

@@ -1,7 +1,7 @@
 # Logs
 logs
 
-plugins/gatsby-source-readme
+plugins/gatsby-source-behance
 
 *.log
 npm-debug.log*
