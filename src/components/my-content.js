@@ -1,4 +1,4 @@
-import { Card, CardImg, CardSubtitle, Header, Title } from 'styled/card'
+import { Card, CardImg, Subtitle, Title } from 'styled/card'
 import { Flex, Tag } from 'styled/elements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -40,13 +40,13 @@ BehanceProjects.propTypes = {
 export const PinnedRepos = ({ edges }) =>
   edges.map(({ node: { name, url, description, languages } }, i) => (
     <Card key={i} minwidth='225px'>
-      <Header>
-        <Title light>{name}</Title>
+      <Flex between noMargin noPadding alignCenter>
+        <Title>{name}</Title>
         <Link href={url} target='_'>
           <FontAwesomeIcon icon={faGithub} />
         </Link>
-      </Header>
-      <CardSubtitle style={ellipsis(225)}>{description}</CardSubtitle>
+      </Flex>
+      <Subtitle style={ellipsis(225)}>{description}</Subtitle>
       <Flex scroll>
         {languages.edges.map(({ node: { name: lang, color, id } }) => (
           <Tag key={id} color={color}>

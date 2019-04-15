@@ -1,4 +1,4 @@
-import { Card, CardBody, CardImg, CardSubtitle, Title } from 'styled/card'
+import { Card, CardImg, Title } from 'styled/card'
 import { Flex } from 'styled/elements'
 
 import Link from '@/link'
@@ -12,18 +12,18 @@ const MyTuts = ({ edges }) =>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
         <CardImg img={frontmatter.thumbnail} height='100px' />
-        <CardBody>
+        <div>
           <Flex between>
-            <CardSubtitle>{`${timeToRead} min read`}</CardSubtitle>
-            <CardSubtitle>
+            <small muted>{`${timeToRead} min read`}</small>
+            <small>
               {new Date(frontmatter.date).toISOString().slice(0, 10)}
-            </CardSubtitle>
+            </small>
           </Flex>
-        </CardBody>
+          <Flex>
+            <Tags {...frontmatter} />
+          </Flex>
+        </div>
       </Link>
-      <Flex>
-        <Tags {...frontmatter} />
-      </Flex>
     </Card>
   ))
 

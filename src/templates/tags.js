@@ -1,5 +1,3 @@
-// Components
-
 import { Container } from 'elements'
 import Layout from '@/containers/layout'
 import Link from '@/link'

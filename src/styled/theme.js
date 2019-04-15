@@ -29,8 +29,8 @@ const light = {
 const dark = {
   ...colors,
   mode: `dark`,
-  dark: `#F7F7F7`,
-  light: `#24292e`,
+  light: `#F7F7F7`,
+  dark: `#24292e`,
   secondary: `#707070`,
   white: `#fff`,
   bg: `#24292e`,
@@ -52,15 +52,6 @@ export const media = Object.keys(sizes).reduce((acc, label) => {
 }, {})
 
 export const GlobalStyle = createGlobalStyle`
-
-/* ${props =>
-  props.mode &&
-  css`
-    border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-  `} */
-
   html {
     width: 100%;
   }
@@ -88,66 +79,38 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
-  [role='button'],
-  input[type='submit'],
-  input[type='reset'],
-  input[type='button'],
-  button {
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
+  small {
+    color: ${props => props.theme.muted};
   }
+
+${props =>
+  props.noMargin &&
+  css`
+    * {
+      margin: 0;
+    }
+  `}
+${props =>
+  props.noPadding &&
+  css`
+    * {
+      padding: 0;
+    }
+  `}
 
   input[type='submit'],
   input[type='reset'],
   input[type='button'],
   button {
+    box-sizing: content-box;
     background: none;
     border: 0;
     color: inherit;
-    cursor: default;
-    font: inherit;
     line-height: normal;
     overflow: visible;
     padding: 0;
-    -webkit-appearance: button; /* for input */
-    -webkit-user-select: none; /* for button */
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-  input::-moz-focus-inner,
-  button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-  }
-
-  [role='button'] {
-    color: inherit;
-    cursor: default;
-    display: inline-block;
-    text-align: center;
-    text-decoration: none;
-    white-space: pre;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-  }
-
-  /* Demo */
-  [role='button'],
-  input[type='submit'],
-  input[type='reset'],
-  input[type='button'],
-  button {
-    border-radius: 0.25em;
-    height: 2.5em;
-    line-height: 2.5;
-    margin: 0.25em;
-    padding: 0 .75em;
-  }
-    button:focus {
+    :focus {
       outline:none;
     }
-
-
+  }
 `

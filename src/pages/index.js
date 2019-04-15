@@ -1,5 +1,5 @@
 import { BehanceProjects, PinnedRepos } from '@/my-content'
-import { Container, Flex, H1 } from 'elements'
+import { Container, Flex } from 'elements'
 
 import About from '@/garrett'
 import Layout from '@/containers/layout'
@@ -24,7 +24,7 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <H1 bold>Tutorials</H1>
+        <h1 bold>Tutorials</h1>
         <Flex scroll between>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
@@ -32,7 +32,7 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <H1 bold>Design</H1>
+        <h1 bold>Design</h1>
         <Flex scroll between>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
@@ -40,7 +40,7 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <H1 bold>Repos</H1>
+        <h1 bold>Repos</h1>
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>

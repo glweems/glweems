@@ -1,21 +1,21 @@
-import { Container, Flex, List } from 'elements'
+import { Container, Flex, List, Button } from 'elements'
 import { FullLogo } from '@/icons'
 import { toggleDarkMode, toggleNavBar } from 'state/reducers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faBars,
-  faTimesCircle,
-  faAdjust,
-} from '@fortawesome/free-solid-svg-icons'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import {
+  faBars,
+  faTimesCircle,
+  faAdjust,
+} from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = styled.section`
   background: ${props => props.theme.blue};
-  color: ${props => props.theme.light};
+  color: ${props => props.theme.text};
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -57,10 +57,12 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
         <Link to='/'>
           <FullLogo />
         </Link>
-        <FontAwesomeIcon
-          onClick={() => dispatch(toggleNavBar(!isNavOpen))}
-          icon={!isNavOpen ? faBars : faTimesCircle}
-        />
+        <Button
+          bordered
+          type='button'
+          onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
+          <FontAwesomeIcon icon={!isNavOpen ? faBars : faTimesCircle} />
+        </Button>
       </Flex>
       <List simple textRight className={!isNavOpen ? `open` : `close`}>
         {navbarLinks.map(link => (
@@ -69,12 +71,12 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
           </li>
         ))}
         <li>
-          <div style={{ display: `inline-block` }}>
-            <FontAwesomeIcon
-              onClick={() => dispatch(toggleDarkMode(!isDarkMode))}
-              icon={faAdjust}
-            />
-          </div>
+          <Button
+            bordered
+            type='button'
+            onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
+            <FontAwesomeIcon icon={faAdjust} />
+          </Button>
         </li>
       </List>
     </Container>

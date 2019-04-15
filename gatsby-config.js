@@ -90,7 +90,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {
-        fonts: [{ family: `Karla`, variants: [`400`, `400i`, `700`, `700i`] }],
+        fonts: [
+          { family: `Roboto` },
+          { family: `Karla`, variants: [`400`, `400i`, `700`, `700i`] },
+        ],
       },
     },
     {

@@ -1,4 +1,4 @@
-import { Container, H1, H3 } from 'elements'
+import { Container } from 'elements'
 
 import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
@@ -23,8 +23,8 @@ const DesignTemplate = ({ data }) => {
     <Layout>
       <Container>
         <SEO title='designs' />
-        <H1>{data.behanceProjects.name}</H1>
-        <H3 secondary>{data.behanceProjects.description}</H3>
+        <h1>{data.behanceProjects.name}</h1>
+        <h3 secondary>{data.behanceProjects.description}</h3>
         <Images />
       </Container>
     </Layout>

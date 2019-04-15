@@ -1,5 +1,5 @@
-import { CardSubtitle, Title } from 'styled/card'
-import { Flex, H1 } from 'elements'
+import { Subtitle, Title } from 'styled/card'
+import { Flex } from 'elements'
 
 import Avitar from '@/avitar'
 import Link from '@/link'
@@ -15,7 +15,7 @@ const AboutStyled = styled.div`
   justify-items: space-between;
   gap: 1rem;
   padding-bottom: 1rem;
-  ${H1} {
+  h1 {
     grid-column: 1/-1;
   }
   a {
@@ -42,11 +42,11 @@ const SocialMediaComponents = ({ accounts }) =>
 
 const About = () => (
   <AboutStyled>
-    <H1 bold>Hi, I'm Garrett</H1>
+    <h1 bold>Hi, I'm Garrett</h1>
     <Avitar />
     <Flex w100 column>
       <Title>Designer / Developer Based in Melbourne, FL.</Title>
-      <CardSubtitle>gwgraphicdesign@gmail.com</CardSubtitle>
+      <Subtitle>gwgraphicdesign@gmail.com</Subtitle>
       <Flex>
         <SocialMediaComponents accounts={socialMediaAccounts} />
       </Flex>

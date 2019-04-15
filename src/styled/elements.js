@@ -5,50 +5,59 @@ import { media } from 'theme'
 
 export const Container = styled.div`
   max-width: ${992 / 16}em;
-  margin: 0 auto;
   padding: 0.5rem;
+  margin: 0 auto;
   ${media.phone`width: 100%;`};
 `
 
 export const Tag = styled.span`
-  align-self: center;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 3px;
+  border-color: ${props => props.theme.blue};
   display: inline-block;
-  flex: 0 0 auto;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 14px;
-  margin-right: 8px;
-  padding: 1px 4px;
+  font-size: 12px;
+  height: 10px;
+  line-height: 0;
+  min-width: auto;
+  outline: none;
+  overflow: hidden;
+  padding: 6px 4px;
   position: relative;
+  text-align: center;
+  text-decoration: none;
   text-transform: uppercase;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-property: all;
+  transition-timing-function: ease;
+  user-select: none;
+  vertical-align: middle;
   white-space: nowrap;
-  background: ${props => lighten(0.25, props.theme.blue)};
-  color: ${props => lighten(0.2, props.theme.text)};
+  background: ${props => props.theme.blue};
+  color: ${props => props.theme.light};
+  :hover {
+    background: none;
+    color: ${props => props.theme.blue};
+    border-color: ${props => props.theme.blue};
+  }
 `
 
-export const H1 = styled.h1``
-export const H2 = styled.h2``
-export const H3 = styled.h3``
-export const H4 = styled.h4``
-export const H5 = styled.h5``
-export const H6 = styled.h6``
-export const A = styled.a``
-
 export const Button = styled.button`
-  background: ${props => props.theme.bg};
+  background: none;
   border-color: ${props => props.theme.text};
   color: ${props => props.theme.text};
   border: none;
-  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.125px;
+  margin: 0;
+  padding: 3px 6px;
   ${props =>
     props.bordered &&
     css`
       border-radius: 3px;
       border-style: solid;
-      border-width: 1px;
+      border-width: 2px;
     `}
 `
 
@@ -83,6 +92,10 @@ export const Flex = styled.div`
     `};
   overflow: ${props => (props.scroll ? `auto` : `hidden`)};
   -webkit-overflow-scrolling: touch;
+
+  ${Tag}:not(last-child) {
+    margin-right: 0.5rem;
+  }
 `
 
 export const List = styled.ul`

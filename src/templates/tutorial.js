@@ -1,5 +1,4 @@
 import { Article, Container } from 'elements'
-
 import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
