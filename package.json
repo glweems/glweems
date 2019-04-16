@@ -30,15 +30,9 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run lint:fix",
+      "pre-push": "npm clean && npm build"
     }
-  },
-  "lint-staged": {
-    "*.js": [
-      "npm run lint",
-      "gatsby build",
-      "git add"
-    ]
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.1",
