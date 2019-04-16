@@ -1,7 +1,7 @@
 import { Container, Flex, List, Button } from 'elements'
-import { FullLogo } from '@/icons'
 import { toggleDarkMode, toggleNavBar } from 'state/reducers'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FullLogo } from '@/icons'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -12,16 +12,58 @@ import {
   faTimesCircle,
   faAdjust,
 } from '@fortawesome/free-solid-svg-icons'
+import { media } from 'theme'
 
+const Wrapper = styled.div`
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  .close {
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.2s ease-out;
+  }
+  .open {
+    visibility: visable;
+    opacity: 1;
+    transition: all 0.2s ease-in;
+  }
+
+  a:hover {
+    color: ${props => props.theme.text};
+  }
+`
 const Navbar = styled.section`
   background: ${props => props.theme.blue};
   color: ${props => props.theme.text};
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
   border-bottom: 2px solid ${props => props.theme.text};
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.25rem;
   top: 0;
+  .toggle {
+    display: none;
+    background: ${props => props.theme.bg};
+    color: ${props => props.theme.text};
+  }
+
+  .links {
+    *:not(last-child) {
+      padding: 0.5rem !important;
+    }
+  }
+  ${Flex} {
+    align-content: center;
+  }
+  ${media.phone`
+.links {
+  display: none;
+}
+
+.toggle {
+  display: unset;
+}
+
+
+`};
   svg {
     font-size: 1.25rem;
     margin: 0;
@@ -29,42 +71,35 @@ const Navbar = styled.section`
     display: block;
     fill: ${props => props.theme.bg};
   }
-  a:hover {
-    color: ${props => props.theme.text};
-  }
-  ul {
-    margin: 1rem 0;
-  }
-  li {
-    font-size: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-
-  .open {
-    display: none;
-  }
-
-  .toggle {
-    background: ${props => props.theme.bg};
-    color: ${props => props.theme.text};
-  }
 `
+
 const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
-  <Navbar>
+  <Wrapper>
+    <Navbar>
+      <Container>
+        <Flex w100 h100 alignCenter between>
+          <Link to='/'>
+            <FullLogo />
+          </Link>
+          <Button
+            bordered
+            className='toggle'
+            type='button'
+            onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
+            <FontAwesomeIcon icon={!isNavOpen ? faBars : faTimesCircle} />
+          </Button>
+          <div className='links'>
+            {navbarLinks.map(link => (
+              <Link key={link.name} to={link.to}>
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </Flex>
+      </Container>
+    </Navbar>
     <Container>
-      <Flex w100 h100 alignCenter between>
-        <Link to='/'>
-          <FullLogo />
-        </Link>
-        <Button
-          bordered
-          type='button'
-          onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
-          <FontAwesomeIcon icon={!isNavOpen ? faBars : faTimesCircle} />
-        </Button>
-      </Flex>
-      <List simple textRight className={!isNavOpen ? `open` : `close`}>
+      <List simple textRight className={isNavOpen ? `open` : `close`}>
         {navbarLinks.map(link => (
           <li key={link.name}>
             <Link to={link.to}>{link.name}</Link>
@@ -80,7 +115,7 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
         </li>
       </List>
     </Container>
-  </Navbar>
+  </Wrapper>
 )
 
 Navigation.propTypes = {

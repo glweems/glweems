@@ -5,7 +5,6 @@ import { media } from 'theme'
 
 export const Container = styled.div`
   max-width: ${992 / 16}em;
-  padding: 0.5rem;
   margin: 0 auto;
   ${media.phone`width: 100%;`};
 `
@@ -99,6 +98,12 @@ export const Flex = styled.div`
 `
 
 export const List = styled.ul`
+  margin: 0;
+  padding: 0;
+li {
+  margin: 0;
+  padding: 0;
+}
   ${props =>
     props.simple &&
     css`

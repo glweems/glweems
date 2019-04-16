@@ -22,9 +22,11 @@ export const CardImg = styled.div`
   background-size: cover;
   background-position: 50% 50%;
   border-radius: 3px;
+  border: 2px solid ${props => props.theme.bg};
   :hover {
-    border: 2px solid ${props => props.theme.muted};
+    border: 2px solid ${props => props.theme.blue};
   }
+  transition: all 0.25s ease-in-out;
 `
 
 export const Title = styled.h4`

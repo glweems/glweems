@@ -55,7 +55,10 @@ export const GlobalStyle = createGlobalStyle`
   html {
     width: 100%;
   }
-
+div {
+  margin: 0;
+  padding: 0;
+}
   body {
     background: ${props => props.theme.bg};
     color: ${props => props.theme.text};
