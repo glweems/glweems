@@ -19,9 +19,7 @@ const MyTuts = ({ edges }) =>
               {new Date(frontmatter.date).toISOString().slice(0, 10)}
             </small>
           </Flex>
-          <Flex>
-            <Tags {...frontmatter} />
-          </Flex>
+          <Flex>{/* <Tags {...frontmatter} /> */}</Flex>
         </div>
       </Link>
     </Card>

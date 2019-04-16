@@ -10,9 +10,3 @@
 [submodule "tutorials/styled-container"]
 	path = tutorials/styled-container
 	url = https://github.com/gwtuts/styled-container
-[submodule "src/images/favicons"]
-	path = src/images/favicons
-	url = https://github.com/glweems/favicons
-[submodule "tutorials/gatsby-darkmode"]
-	path = tutorials/gatsby-darkmode
-	url = https://github.com/gwtuts/gatsby-darkmode
