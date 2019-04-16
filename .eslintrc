@@ -69,9 +69,9 @@
   "rules": {
     "no-shadow": 0,
     "no-unused-vars": [
-      1,
+      0,
       {
-        "argsIgnorePattern": "res|next|^err|i|index|props"
+        "argsIgnorePattern": "res|next|^err"
       }
     ],
     "arrow-body-style": [
