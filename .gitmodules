@@ -10,3 +10,6 @@
 [submodule "tutorials/styled-container"]
 	path = tutorials/styled-container
 	url = https://github.com/gwtuts/styled-container
+[submodule "src/images/favicons"]
+	path = src/images/favicons
+	url = https://github.com/glweems/favicons
