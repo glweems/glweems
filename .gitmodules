@@ -1,9 +1,3 @@
-[submodule "tutorials/react-navbar-scroller"]
-  path = tutorials/react-navbar-scroller
-  url = https://github.com/gwtuts/react-navbar-scroller
-[submodule "tutorials/react-peekaboo-navbar"]
-  path = tutorials/react-peekaboo-navbar
-  url = https://github.com/gwtuts/react-peekaboo-navbar
-[submodule "tutorials/styled-container"]
-	path = tutorials/styled-container
-	url = https://github.com/gwtuts/styled-container
+[submodule "plugins/gatsby-source-behance"]
+	path = plugins/gatsby-source-behance
+	url = https://github.com/glweems/gatsby-source-behance

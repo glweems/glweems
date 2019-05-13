@@ -1,7 +1,6 @@
 # Logs
 logs
 
-plugins/gatsby-source-behance
 
 *.log
 npm-debug.log*
@@ -9,8 +8,6 @@ yarn-debug.log*
 yarn-error.log*
 **/node_modules/**
 
-
-tutorials/
 # Runtime data
 pids
 *.pid
