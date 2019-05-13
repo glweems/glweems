@@ -1,6 +1,3 @@
-[submodule "plugins/gatsby-source-behance"]
-  path = plugins/gatsby-source-behance
-	url = https://github.com/glweems/gatsby-source-behance
 [submodule "tutorials/react-navbar-scroller"]
   path = tutorials/react-navbar-scroller
   url = https://github.com/gwtuts/react-navbar-scroller
