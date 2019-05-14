@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Tag } from 'elements'
+import { lighten } from 'polished'
 
 export const Card = styled.div`
   display: grid;
@@ -14,6 +15,21 @@ export const Card = styled.div`
     margin: 0;
     padding: 0;
   }
+  .card-img {
+    height: 125px;
+    /* height: 100px; */
+    /* height: ${props => (props.height ? props.height : `150px`)}; */
+    /* background-image: ${props =>
+      props.img ? `url(${props.img})` : null}; */
+    /* background-size: cover; */
+    /* background-position: 50% 50%; */
+    border-radius: 3px;
+    border: 2px solid ${props => props.theme.bg};
+    :hover {
+      border: 2px solid ${props => lighten(0.5, props.theme.text)};
+    }
+    transition: all 0.25s ease-in-out;
+  }
 `
 
 export const CardImg = styled.div`
@@ -24,7 +40,7 @@ export const CardImg = styled.div`
   border-radius: 3px;
   border: 2px solid ${props => props.theme.bg};
   :hover {
-    border: 2px solid ${props => props.theme.blue};
+    border: 2px solid ${props => lighten(0.5, props.theme.text)};
   }
   transition: all 0.25s ease-in-out;
 `

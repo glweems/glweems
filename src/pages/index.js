@@ -104,7 +104,24 @@ export const indexQuery = graphql`
           frontmatter {
             title
             date
-            thumbnail
+            thumbnail {
+              childImageSharp {
+                fluid {
+                  base64
+                  tracedSVG
+                  aspectRatio
+                  src
+                  srcSet
+                  srcWebp
+                  srcSetWebp
+                  sizes
+                  originalImg
+                  originalName
+                  presentationWidth
+                  presentationHeight
+                }
+              }
+            }
             tags
           }
         }

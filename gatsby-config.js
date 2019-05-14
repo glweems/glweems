@@ -19,7 +19,6 @@ module.exports = {
     `gatsby-plugin-netlify`,
     `gatsby-plugin-tags`,
     `gatsby-plugin-sharp`,
-    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
@@ -102,7 +101,6 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-
     {
       resolve: `gatsby-source-behance`,
       options: { username: `glweems`, apiKey: process.env.BEHANCE_TOKEN },
@@ -125,12 +123,15 @@ module.exports = {
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
       },
     },
+    `custom-markdown`,
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
           `gatsby-remark-autolink-headers`,
           `gatsby-remark-unwrap-images`,
+          `gatsby-remark-images`,
+          `gatsby-remark-copy-linked-files`,
           `gatsby-remark-responsive-iframe`,
           {
             resolve: `gatsby-remark-prismjs`,

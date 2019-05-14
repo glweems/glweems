@@ -1,6 +1,6 @@
 import { Card, CardImg, Title } from 'styled/card'
 import { Flex } from 'styled/elements'
-
+import FluidImg from 'gatsby-image'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -11,7 +11,12 @@ const MyTuts = ({ edges }) =>
     <Card minwidth='245px' key={id}>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
-        <CardImg img={frontmatter.thumbnail} height='100px' />
+        {/* <CardImg img={frontmatter.thumbnail} height='100px' /> */}
+        {/* <p>{JSON.stringify(frontmatter.thumbnail)}</p> */}
+        <FluidImg
+          className='card-img'
+          fluid={frontmatter.thumbnail.childImageSharp.fluid}
+        />
         <div>
           <Flex between>
             <small muted>{`${timeToRead} min read`}</small>

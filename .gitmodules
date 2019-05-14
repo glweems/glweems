@@ -1,3 +1,15 @@
 [submodule "plugins/gatsby-source-behance"]
 	path = plugins/gatsby-source-behance
 	url = https://github.com/glweems/gatsby-source-behance
+[submodule "tutorials/gatsby-darkmode"]
+	path = tutorials/gatsby-darkmode
+	url = https://github.com/gwtuts/gatsby-darkmode
+[submodule "tutorials/react-navbar-scroller"]
+	path = tutorials/react-navbar-scroller
+	url = https://github.com/gwtuts/react-navbar-scroller.git
+[submodule "tutorials/react-peekaboo-navbar"]
+	path = tutorials/react-peekaboo-navbar
+	url = https://github.com/gwtuts/react-peekaboo-navbar.git
+[submodule "tutorials/styled-container"]
+	path = tutorials/styled-container
+	url = https://github.com/gwtuts/styled-container.git

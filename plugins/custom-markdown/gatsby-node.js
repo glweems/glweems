@@ -1,28 +1,26 @@
-const {
-  createFilePath,
-  createRemoteFileNode,
-} = require(`gatsby-source-filesystem`)
+const { createFilePath } = require(`gatsby-source-filesystem`)
 const path = require(`path`)
-const slugify = require(`slugify`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
-  if (node.internal.type === `BehanceProjects`) {
+  if (node.internal.type === `MarkdownRemark`) {
+    const slug = createFilePath({ node, getNode })
     createNodeField({
       node,
       name: `slug`,
-      value: slugify(node.name).toLowerCase(),
+      value: `/tutorials${slug.replace(/\/README\//g, ``)}`,
     })
   }
 }
-
 exports.createPages = ({ actions, graphql }) =>
   graphql(`
     {
-      allBehanceProjects {
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
         edges {
           node {
-            id
             fields {
               slug
             }
@@ -35,10 +33,10 @@ exports.createPages = ({ actions, graphql }) =>
       if (result.errors) {
         return Promise.reject(result.errors)
       }
-      result.data.allBehanceProjects.edges.forEach(({ node }) => {
+      result.data.allMarkdownRemark.edges.forEach(({ node }) => {
         actions.createPage({
-          path: `/designs/${node.fields.slug}`,
-          component: path.resolve(`src/templates/design.js`),
+          path: node.fields.slug,
+          component: path.resolve(`src/templates/tutorial.js`),
           context: { slug: node.fields.slug },
         })
       })
