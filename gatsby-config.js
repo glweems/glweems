@@ -146,5 +146,12 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: `behanceProjects`,
+        imagePath: `covers.size_115`,
+      },
+    },
   ],
 }

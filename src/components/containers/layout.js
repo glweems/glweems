@@ -8,6 +8,7 @@ import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
 import { store } from 'state/store'
+import Footer from '@/footer'
 
 const Layout = ({ children, isDarkMode }) => (
   <StaticQuery
@@ -26,6 +27,7 @@ const Layout = ({ children, isDarkMode }) => (
           <GlobalStyle />
           <Navbar {...store.getState()} />
           <main>{children}</main>
+          <Footer />
         </ErrorBoundary>
       </ThemeProvider>
     )}
