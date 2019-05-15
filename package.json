@@ -20,8 +20,8 @@
     "dev": "gatsby develop",
     "serve": "gatsby serve",
     "start": "gatsby develop",
-    "lint": "eslint -c .eslintrc --ignore-path .gitignore .",
-    "lint:fix": "eslint -c .eslintrc --ignore-path .gitignore . --fix",
+    "lint": "eslint -c .eslintrc --ignore-path .gitignore ./src",
+    "lint:fix": "eslint -c .eslintrc --ignore-path .gitignore ./src --fix",
     "now-build": "npm run build"
   },
   "repository": "github:glweems/glweems",
@@ -31,7 +31,7 @@
   "husky": {
     "hooks": {
       "pre-commit": "npm run lint:fix",
-      "pre-push": "npm run clean && npm run build"
+      "pre-push": "npm run build"
     }
   },
   "dependencies": {
@@ -41,6 +41,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.8.1",
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
+    "bluebird": "^3.5.4",
     "dotenv": "^7.0.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-loader": "^2.1.2",
