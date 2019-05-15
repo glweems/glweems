@@ -1,6 +1,3 @@
-[submodule "plugins/gatsby-source-behance"]
-	path = plugins/gatsby-source-behance
-	url = https://github.com/glweems/gatsby-source-behance
 [submodule "tutorials/gatsby-darkmode"]
 	path = tutorials/gatsby-darkmode
 	url = https://github.com/gwtuts/gatsby-darkmode
