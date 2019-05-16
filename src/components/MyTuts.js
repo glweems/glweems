@@ -11,24 +11,20 @@ const MyTuts = ({ edges }) =>
     <Card minwidth='245px' key={id}>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
-        {/* <CardImg img={frontmatter.thumbnail} height='100px' /> */}
-        {/* <p>{JSON.stringify(frontmatter.thumbnail)}</p> */}
         <FluidImg
           className='card-img'
           fluid={frontmatter.thumbnail.childImageSharp.fluid}
         />
-        <div>
-          <Flex between>
-            <small muted>{`${timeToRead} min read`}</small>
-            <small>
-              {new Date(frontmatter.date).toISOString().slice(0, 10)}
-            </small>
-          </Flex>
-          <Flex>
-            <Tags {...frontmatter} />
-          </Flex>
-        </div>
       </Link>
+      <div>
+        <Flex between>
+          <small muted>{`${timeToRead} min read`}</small>
+          <small>{new Date(frontmatter.date).toISOString().slice(0, 10)}</small>
+        </Flex>
+        <Flex>
+          <Tags {...frontmatter} />
+        </Flex>
+      </div>
     </Card>
   ))
 

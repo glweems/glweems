@@ -6,7 +6,7 @@ export const Card = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1.5em;
+  grid-template-rows: 1fr auto 1.5em auto;
   min-width: ${props => (props.minwidth ? props.minwidth : null)};
   width: 100%;
   padding: 0.5rem;
@@ -17,12 +17,6 @@ export const Card = styled.div`
   }
   .card-img {
     height: 125px;
-    /* height: 100px; */
-    /* height: ${props => (props.height ? props.height : `150px`)}; */
-    /* background-image: ${props =>
-      props.img ? `url(${props.img})` : null}; */
-    /* background-size: cover; */
-    /* background-position: 50% 50%; */
     border-radius: 3px;
     border: 2px solid ${props => props.theme.bg};
     :hover {

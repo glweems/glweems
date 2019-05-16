@@ -2,7 +2,8 @@ import { Card, CardImg, Subtitle, Title } from 'styled/card'
 import { Flex, Tag } from 'styled/elements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Link from '@/link'
+// import Link from '@/link'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Tags from '@/tags'
@@ -16,7 +17,7 @@ export const BehanceProjects = ({ edges }) =>
       <Link to={`/designs/${slug}`}>
         <CardImg img={covers.size_max_808} />
       </Link>
-      <Tags tags={tags} hashtag />
+      {/* <Tags tags={tags} /> */}
     </Card>
   ))
 
