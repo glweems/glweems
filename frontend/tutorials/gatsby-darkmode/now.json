@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "name": "gatsby-darkmode",
+  "public": true,
+  "alias": [
+    "gatsby-darkmode"
+  ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ]
+}
