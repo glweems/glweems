@@ -3,7 +3,7 @@
   "name": "glweems",
   "public": true,
   "alias": [
-    "glweems.now.sh"
+    "glweems"
   ],
   "builds": [
     {

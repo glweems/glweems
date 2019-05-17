@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { darken } from 'polished'
 import axios from 'axios'
-import { Button, Form } from 'styled/elements'
+import { Button } from 'styled/elements'
+import { media } from 'theme'
 
 export default class subscribe extends Component {
   constructor() {
     super()
-    this.state = { subscribers: [], email: ``, success: ``, error: `` }
+    this.state = { email: ``, success: ``, error: `` }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -20,34 +22,57 @@ export default class subscribe extends Component {
     event.preventDefault()
     const { email } = this.state
     axios
-      .post(`/api/subscribe`, { email })
-      .then(res =>
-        res.status === 201
-          ? this.setState({ success: `Subscribed!` })
-          : this.setState({ error: `Whoops! Something Went Wrong` })
-      )
+      .post(`https://api.glweems.com/v1/subscribe`, { email })
+      .then(res => console.log(res))
   }
 
   render() {
-    const { subscribers, email, success, error } = this.state
+    const { email, success, error } = this.state
     return (
-      <div>
-        <span>{error}</span>
-        <span>{success}</span>
-        <Form onSubmit={this.handleSubmit}>
-          <label htmlFor='email'>Subscribe</label>
-          {JSON.stringify(subscribers)}
+      <StyledSubscribe>
+        <div>
+          <h2>Subscribe to our newsletter</h2>
+          <span>{error}</span>
+          <span>{success}</span>
+        </div>
+        <Form onSubmit={this.handleSubmit} className='effect-19'>
           <input
+            className='effect-19'
             type='email'
             value={email}
             onChange={this.handleChange}
             placeholder='Email'
           />
-          <Button type='submit' value='Submit' style={{ color: `white` }}>
+          <Button
+            submit
+            type='submit'
+            value='Submit'
+            style={{ color: `white` }}>
             HELLO
           </Button>
         </Form>
-      </div>
+      </StyledSubscribe>
     )
   }
 }
+const StyledSubscribe = styled.section`
+  width: 100%;
+  background: ${props => darken(0.1, props.theme.bg)};
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  ${media.tablet`grid-template-columns: 1fr;`}
+`
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+
+  input {
+    margin-bottom: 1rem;
+  }
+
+  label {
+    text-align: left;
+  }
+`

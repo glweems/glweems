@@ -16,7 +16,6 @@ const Footer = () => (
       <li>glweems</li>
       <li>glweems</li>
     </ul>
-    <Subscribe />
   </StyledFooter>
 )
 

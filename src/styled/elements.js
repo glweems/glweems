@@ -6,7 +6,6 @@ import { media } from 'theme'
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
 
   label {
     text-align: left;
@@ -59,13 +58,18 @@ export const Tag = styled.span`
 
 export const Button = styled.button`
   background: none;
-  border-color: ${props => props.theme.text};
+  /* border-color: ${props => props.theme.text}; */
   color: ${props => props.theme.text};
   border: none;
   text-transform: uppercase;
   letter-spacing: 0.125px;
   margin: 0;
-  padding: 3px 6px;
+  padding: 5px 6px;
+  border-radius: 3px;
+  border-style: solid;
+  border-width: 2px;
+  font-size: 17px;
+  font-weight: bold;
   ${props =>
     props.bordered &&
     css`
@@ -73,6 +77,13 @@ export const Button = styled.button`
       border-style: solid;
       border-width: 2px;
     `}
+
+    ${props =>
+      props.submit &&
+      css`
+        border-color: ${props => darken(0.1, props.theme.green)};
+        background: ${props => props.theme.green};
+      `};
 `
 
 export const Flex = styled.div`

@@ -1,13 +1,11 @@
 const path = require(`path`)
-require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` })
+
+console.log(process.env.NODE_ENV)
 
 module.exports = {
   proxy: {
-    prefix: `/api`,
-    url:
-      process.env.NODE_ENV === `development`
-        ? `http://localhost:5000`
-        : `https://glweems-backend.herokuapp.com`,
+    prefix: `/v1`,
+    url: `http://localhost:5000`,
   },
   siteMetadata: {
     title: `Glweems`,

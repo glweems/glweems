@@ -1,6 +1,6 @@
 import { BehanceProjects, PinnedRepos } from '@/my-content'
 import { Container, Flex } from 'elements'
-
+import Subscribe from '@/form/subscribe'
 import About from '@/garrett'
 import Layout from '@/containers/layout'
 import Link from '@/link'
@@ -24,7 +24,7 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <h1 bold>Tutorials</h1>
+        <h1>Tutorials</h1>
         <Flex scroll between>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
@@ -32,7 +32,7 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <h1 bold>Design</h1>
+        <h1>Design</h1>
         <Flex scroll between>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
@@ -40,12 +40,14 @@ export const IndexPage = ({ data }) => (
       </Section>
 
       <Section>
-        <h1 bold>Repos</h1>
+        <h1>Repos</h1>
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
         <Link href='https://github.com/glweems'>View All Repos -></Link>
       </Section>
+
+      <Subscribe />
     </Container>
   </Layout>
 )
