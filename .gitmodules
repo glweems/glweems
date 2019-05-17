@@ -1,13 +1,17 @@
 [submodule "tutorials/gatsby-darkmode"]
+  shallow = true
 	path = tutorials/gatsby-darkmode
 	url = https://github.com/gwtuts/gatsby-darkmode
 [submodule "tutorials/react-navbar-scroller"]
+shallow = true
 	path = tutorials/react-navbar-scroller
 	url = https://github.com/gwtuts/react-navbar-scroller.git
 [submodule "tutorials/styled-container"]
+  shallow = true
 	path = tutorials/styled-container
 	url = https://github.com/gwtuts/styled-container.git
 
 [submodule "tutorials/react-peekaboo-navbar"]
+  shallow = true
 	path = tutorials/react-peekaboo-navbar
 	url = https://github.com/gwtuts/react-peekaboo-navbar.git

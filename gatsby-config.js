@@ -2,6 +2,13 @@ const path = require(`path`)
 require(`dotenv`).config({ path: `.env.${process.env.NODE_ENV}` })
 
 module.exports = {
+  proxy: {
+    prefix: `/api`,
+    url:
+      process.env.NODE_ENV === `development`
+        ? `http://localhost:5000`
+        : `https://glweems-backend.herokuapp.com`,
+  },
   siteMetadata: {
     title: `Glweems`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
