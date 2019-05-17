@@ -3,6 +3,21 @@ import styled, { css } from 'styled-components'
 import { lighten, darken } from 'polished'
 import { media } from 'theme'
 
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+
+  label {
+    text-align: left;
+  }
+
+  [submit],
+  button {
+    background: ${props => props.theme.green};
+  }
+`
+
 export const Container = styled.div`
   max-width: ${992 / 16}em;
   margin: 0 auto;

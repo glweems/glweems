@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
-import Subscribe from '@/subscribe'
+import Subscribe from '@/form/subscribe'
 
 const StyledFooter = styled.footer`
   width: 100%;

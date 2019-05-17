@@ -42,7 +42,7 @@ const SocialMediaComponents = ({ accounts }) =>
 
 const About = () => (
   <AboutStyled>
-    <h1 bold>Hi, I'm Garrett</h1>
+    <h1>Hi, I'm Garrett</h1>
     <Avitar />
     <Flex w100 column>
       <Title>Designer / Developer Based in Melbourne, FL.</Title>
