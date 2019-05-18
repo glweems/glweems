@@ -1,4 +1,4 @@
-import { Card, CardImg, Title } from 'styled/card'
+import { Card, Title } from 'styled/card'
 import { Flex } from 'styled/elements'
 import FluidImg from 'gatsby-image'
 import Link from '@/link'
@@ -21,9 +21,9 @@ const MyTuts = ({ edges }) =>
           <small muted>{`${timeToRead} min read`}</small>
           <small>{new Date(frontmatter.date).toISOString().slice(0, 10)}</small>
         </Flex>
-        <Flex>
+        {/* <Flex>
           <Tags {...frontmatter} />
-        </Flex>
+        </Flex> */}
       </div>
     </Card>
   ))

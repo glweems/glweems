@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Tags from '@/tags'
+// import Tags from '@/tags'
 import { ellipsis } from 'polished'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -48,13 +48,13 @@ export const PinnedRepos = ({ edges }) =>
         </Link>
       </Flex>
       <Subtitle style={ellipsis(225)}>{description}</Subtitle>
-      <Flex scroll>
+      {/* <Flex scroll>
         {languages.edges.map(({ node: { name: lang, color, id } }) => (
           <Tag key={id} color={color}>
             {lang}
           </Tag>
         ))}
-      </Flex>
+      </Flex> */}
     </Card>
   ))
 

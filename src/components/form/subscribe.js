@@ -14,6 +14,10 @@ export default class subscribe extends Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
+  componentDidMount() {
+    axios.get(`/.netlify/functions/hello`).then(res => console.log(res))
+  }
+
   handleChange(event) {
     this.setState({ email: event.target.value })
   }
@@ -21,9 +25,7 @@ export default class subscribe extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const { email } = this.state
-    axios
-      .post(`https://api.glweems.com/v1/subscribe`, { email })
-      .then(res => console.log(res))
+    axios.post(`/v1/subscribe`, { email }).then(res => console.log(res))
   }
 
   render() {
