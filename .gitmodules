@@ -1,7 +1,3 @@
-[submodule "tutorials/gatsby-darkmode"]
-  shallow = true
-	path = tutorials/gatsby-darkmode
-	url = https://github.com/gwtuts/gatsby-darkmode
 [submodule "tutorials/react-navbar-scroller"]
 shallow = true
 	path = tutorials/react-navbar-scroller
