@@ -12,7 +12,16 @@ import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
 const Section = styled.section`
-  margin: 2rem 0;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+
+  h1,
+  a {
+    padding: 0 0.5rem;
+  }
+  .padding {
+    padding-left: 1rem !important;
+  }
 `
 
 export const IndexPage = ({ data }) => (
@@ -20,7 +29,9 @@ export const IndexPage = ({ data }) => (
     <SEO title='Home' keywords={[`glweems`, `developer`, `designer`]} />
     <Container>
       <Section>
-        <About />
+        <Container className='padding'>
+          <About className='about-section' />
+        </Container>
       </Section>
 
       <Section>
