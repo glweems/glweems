@@ -26,12 +26,12 @@ const Layout = ({ children, isDarkMode }) => (
       }
     `}
     render={() => (
-      <ThemeProvider theme={!isDarkMode ? theme.light : theme.dark}>
+      <ThemeProvider theme={isDarkMode ? theme.light : theme.dark}>
         <ErrorBoundary>
           <GlobalStyle />
           <Navbar {...store.getState()} />
           <Main>{children}</Main>
-          <Footer />
+          {/* <Footer /> */}
         </ErrorBoundary>
       </ThemeProvider>
     )}
