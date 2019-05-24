@@ -11,6 +11,7 @@ import Footer from '@/footer'
 
 const Main = styled.main`
   min-height: 100vh;
+  padding-top: 4rem;
 `
 
 const Layout = ({ children, isDarkMode }) => (

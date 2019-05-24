@@ -13,6 +13,7 @@ import {
   faAdjust,
 } from '@fortawesome/free-solid-svg-icons'
 import { media } from 'theme'
+import { lighten } from 'polished'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -32,11 +33,16 @@ const Wrapper = styled.div`
   a:hover {
     color: ${props => props.theme.text};
   }
+
+  ${List} {
+    background: ${props => lighten(0.1, props.theme.bg)};
+    padding: 1rem;
+  }
 `
 const Navbar = styled.section`
   background: ${props => props.theme.blue};
   color: ${props => props.theme.text};
-  border-bottom: 2px solid ${props => props.theme.text};
+  /* border-bottom: 2px solid ${props => props.theme.text}; */
   padding: 0.5rem 0.25rem;
   top: 0;
   .toggle {
@@ -71,6 +77,10 @@ const Navbar = styled.section`
     display: block;
     fill: ${props => props.theme.bg};
   }
+
+  .logo-link {
+    padding-left: 0.5rem;
+  }
 `
 
 const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
@@ -78,7 +88,7 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
     <Navbar>
       <Container>
         <Flex w100 h100 alignCenter between>
-          <Link to='/'>
+          <Link className='logo-link' to='/'>
             <FullLogo />
           </Link>
           <Button
@@ -99,7 +109,7 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
       </Container>
     </Navbar>
     <Container>
-      <List simple textRight className={isNavOpen ? `open` : `close`}>
+      <List simple className={isNavOpen ? `open` : `close`}>
         {navbarLinks.map(link => (
           <li key={link.name}>
             <Link to={link.to}>{link.name}</Link>

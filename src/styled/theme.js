@@ -67,10 +67,6 @@ div {
     overflow: hidden;
   }
 
-  main {
-    padding-top: 4rem;
-  }
-
   a {
     color: inherit;
     text-decoration: inherit;
