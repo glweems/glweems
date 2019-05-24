@@ -31,24 +31,29 @@ const Wrapper = styled.div`
   }
 
   a:hover {
-    color: ${props => props.theme.text};
+    color: ${props => props.theme.blue};
   }
 
   ${List} {
     background: ${props => lighten(0.1, props.theme.bg)};
     padding: 1rem;
+    font-size: 1.75rem;
   }
 `
+
 const Navbar = styled.section`
-  background: ${props => props.theme.blue};
+  background: ${props => props.theme.bg};
   color: ${props => props.theme.text};
-  /* border-bottom: 2px solid ${props => props.theme.text}; */
+  border-bottom: 2px solid ${props => lighten(0.05, props.theme.bg)};
   padding: 0.5rem 0.25rem;
   top: 0;
   .toggle {
     display: none;
-    background: ${props => props.theme.bg};
+    /* background: ${props => props.theme.bg}; */
     color: ${props => props.theme.text};
+    :hover {
+    color: ${props => props.theme.blue};
+    }
   }
 
   .links {
@@ -75,7 +80,10 @@ const Navbar = styled.section`
     margin: 0;
     padding: 0;
     display: block;
-    fill: ${props => props.theme.bg};
+    fill: ${props => props.theme.text};
+    :hover {
+       fill: ${props => props.theme.blue};
+    }
   }
 
   .logo-link {
