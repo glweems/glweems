@@ -13,7 +13,7 @@ import {
   faAdjust,
 } from '@fortawesome/free-solid-svg-icons'
 import { media } from 'theme'
-import { lighten } from 'polished'
+import { lighten, darken } from 'polished'
 
 const Wrapper = styled.div`
   position: fixed;
@@ -35,7 +35,7 @@ const Wrapper = styled.div`
   }
 
   ${List} {
-    background: ${props => lighten(0.1, props.theme.bg)};
+    background: ${props => darken(0.1, props.theme.bg)};
     padding: 1rem;
     font-size: 1.75rem;
   }
@@ -58,7 +58,7 @@ const Navbar = styled.section`
 
   .links {
     *:not(last-child) {
-      padding: 0.5rem !important;
+      padding: 0.5rem ;
     }
   }
   ${Flex} {
@@ -100,7 +100,6 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
             <FullLogo />
           </Link>
           <Button
-            bordered
             className='toggle'
             type='button'
             onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
