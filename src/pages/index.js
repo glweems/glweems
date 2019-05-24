@@ -1,5 +1,5 @@
 import { BehanceProjects, PinnedRepos } from '@/my-content'
-import { Container, Flex } from 'elements'
+import { Container, Flex, Button } from 'elements'
 import Subscribe from '@/form/subscribe'
 import About from '@/garrett'
 import Layout from '@/containers/layout'
@@ -19,8 +19,9 @@ const Section = styled.section`
   a {
     padding: 0 0.5rem;
   }
-  .padding {
-    padding-left: 1rem !important;
+
+  ${Flex} {
+    margin-bottom: 1rem;
   }
 `
 
@@ -29,9 +30,7 @@ export const IndexPage = ({ data }) => (
     <SEO title='Home' keywords={[`glweems`, `developer`, `designer`]} />
     <Container>
       <Section>
-        <Container className='padding'>
-          <About className='about-section' />
-        </Container>
+        <About className='about-section' />
       </Section>
 
       <Section>
@@ -39,7 +38,11 @@ export const IndexPage = ({ data }) => (
         <Flex scroll between>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
-        <Link to='/tutorials'>View All Tutorials</Link>
+        <Link to='/tutorials'>
+          <Button blue small>
+            View More
+          </Button>
+        </Link>
       </Section>
 
       <Section>
@@ -47,7 +50,11 @@ export const IndexPage = ({ data }) => (
         <Flex scroll between>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
-        <Link to='/designs'>View All Designs -></Link>
+        <Link to='/designs'>
+          <Button blue small>
+            View More
+          </Button>
+        </Link>
       </Section>
 
       <Section>
@@ -55,10 +62,14 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
-        <Link href='https://github.com/glweems'>View All Repos -></Link>
+        <Link href='https://github.com/glweems'>
+          <Button blue small>
+            View More
+          </Button>
+        </Link>
       </Section>
 
-      <Subscribe />
+      {/* <Subscribe /> */}
     </Container>
   </Layout>
 )
