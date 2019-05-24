@@ -18,6 +18,9 @@
       ],
       "theme": [
         "./src/styled/theme.js"
+      ],
+      "elements": [
+        "./src/styled/elements.js"
       ]
     }
   },
