@@ -62,12 +62,12 @@ export const Button = styled.button`
   color: ${props => props.theme.text};
   border: none;
   text-transform: uppercase;
-  letter-spacing: 0.125px;
+  letter-spacing: 0.145px;
   margin: 0;
-  padding: 5px 6px;
+  padding: 5px 15px;
   border-radius: 3px;
-  border-style: solid;
-  border-width: 2px;
+  /* border-style: solid;
+  border-width: 2px; */
   font-size: 17px;
   font-weight: bold;
   ${props =>
@@ -78,12 +78,23 @@ export const Button = styled.button`
       border-width: 2px;
     `}
 
-    ${props =>
-      props.submit &&
-      css`
-        border-color: ${props => darken(0.1, props.theme.green)};
-        background: ${props => props.theme.green};
-      `};
+  ${props =>
+    props.submit &&
+    css`
+      border-color: ${props => darken(0.1, props.theme.green)};
+      background: ${props => props.theme.green};
+    `};
+
+  ${props =>
+    props.blue &&
+    css`
+      background: ${props => props.theme.blue};
+    `};
+  ${props =>
+    props.small &&
+    css`
+      font-size: 14px;
+    `};
 `
 
 export const Flex = styled.div`
