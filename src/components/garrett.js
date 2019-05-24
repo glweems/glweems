@@ -13,8 +13,9 @@ const AboutStyled = styled.div`
   grid-template-rows: auto 10rem auto;
   align-items: space-between;
   justify-items: space-between;
-  gap: 1rem;
+  gap: 2rem;
   padding-bottom: 1rem;
+  padding: 0 0.5rem;
   h1 {
     grid-column: 1/-1;
   }
@@ -30,6 +31,9 @@ const AboutStyled = styled.div`
   }
   * {
     margin-bottom: 0.25rem;
+  }
+  ${Subtitle} {
+    margin-bottom: 1rem;
   }
 `
 
