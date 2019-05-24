@@ -15,7 +15,7 @@ export default class subscribe extends Component {
   }
 
   componentDidMount() {
-    axios.get(`/.netlify/functions/hello`).then(res => console.log(res))
+    // axios.get(`/.netlify/functions/subscribers`).then(res => console.log(res))
   }
 
   handleChange(event) {
@@ -25,7 +25,9 @@ export default class subscribe extends Component {
   handleSubmit(event) {
     event.preventDefault()
     const { email } = this.state
-    axios.post(`/v1/subscribe`, { email }).then(res => console.log(res))
+    axios
+      .post(`/.netlify/functions/subscribe`, { email })
+      .then(res => console.log(res))
   }
 
   render() {
