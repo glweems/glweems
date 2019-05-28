@@ -1,5 +1,5 @@
 import * as Icon from '@fortawesome/free-brands-svg-icons'
-
+import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 
@@ -34,3 +34,10 @@ export const socialMediaAccounts = [
     SvgIcon: () => <FontAwesomeIcon icon={Icon.faCodepen} />,
   },
 ]
+
+export const glweems = axios.create({
+  baseURL:
+    process.env.NODE_ENV === `development`
+      ? `http://localhost:5000`
+      : `https://api.glweems.com`,
+})

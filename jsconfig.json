@@ -21,6 +21,9 @@
       ],
       "elements": [
         "./src/styled/elements.js"
+      ],
+      "data": [
+        "./src/data.js"
       ]
     }
   },

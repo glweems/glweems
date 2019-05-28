@@ -11,6 +11,8 @@ import SEO from '@/seo'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
 
+import ContactForm from '../components/form/contact'
+
 const Section = styled.section`
   margin-top: 2rem;
   margin-bottom: 4rem;
@@ -31,6 +33,10 @@ export const IndexPage = ({ data }) => (
     <Container>
       <Section>
         <About className='about-section' />
+        <h2>Give me a shout</h2>
+        <Button blue small>
+          <Link to='/about'>Contact</Link>
+        </Button>
       </Section>
 
       <Section>

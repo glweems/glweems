@@ -11,6 +11,15 @@ export const Form = styled.form`
     text-align: left;
   }
 
+  input,
+  textarea {
+    margin-bottom: 0.75rem;
+    border-radius: 3px;
+    border-color: transparent;
+    padding-left: 0.5rem;
+  }
+
+
   [submit],
   button {
     background: ${props => props.theme.green};

@@ -12,19 +12,6 @@ module.exports = {
       { name: `Graphic Design`, to: `/designs` },
     ],
   },
-
-  developMiddleware: app => {
-    app.use(
-      `/.netlify/functions/`,
-      proxy({
-        target: `http://localhost:9000`,
-        pathRewrite: {
-          '/.netlify/functions/': ``,
-        },
-      })
-    )
-  },
-
   plugins: [
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -121,6 +108,7 @@ module.exports = {
         theme: path.join(__dirname, `src/styled/theme.js`),
         elements: path.join(__dirname, `src/styled/elements.js`),
         state: path.join(__dirname, `src/state`),
+        data: path.join(__dirname, `src/data.js`),
       },
     },
     {
