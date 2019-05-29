@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FullLogo } from '@/icons'
 import Link from '@/link'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import {
@@ -15,14 +15,13 @@ import {
 import { media } from 'theme'
 import { lighten, darken } from 'polished'
 
-const Wrapper = styled.div`
-  position: fixed;
-  z-index: 1000;
+const Dropdown = styled.div`
   width: 100%;
   .close {
     visibility: hidden;
     opacity: 0;
     transition: all 0.2s ease-out;
+    transform: translateY(-4rem);
   }
   .open {
     visibility: visable;
@@ -42,6 +41,7 @@ const Wrapper = styled.div`
 `
 
 const Navbar = styled.section`
+
   background: ${props => props.theme.bg};
   color: ${props => props.theme.text};
   border-bottom: 2px solid ${props => lighten(0.05, props.theme.bg)};
@@ -92,7 +92,7 @@ const Navbar = styled.section`
 `
 
 const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
-  <Wrapper>
+  <Fragment>
     <Navbar>
       <Container>
         <Flex w100 h100 alignCenter between>
@@ -115,24 +115,28 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
         </Flex>
       </Container>
     </Navbar>
-    <Container>
-      <List simple className={isNavOpen ? `open` : `close`}>
-        {navbarLinks.map(link => (
-          <li key={link.name}>
-            <Link to={link.to}>{link.name}</Link>
-          </li>
-        ))}
-        <li>
-          <Button
-            bordered
-            type='button'
-            onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
-            <FontAwesomeIcon icon={faAdjust} />
-          </Button>
-        </li>
-      </List>
-    </Container>
-  </Wrapper>
+    {isNavOpen ? (
+      <Dropdown>
+        <Container>
+          <List simple>
+            {navbarLinks.map(link => (
+              <li key={link.name}>
+                <Link to={link.to}>{link.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Button
+                bordered
+                type='button'
+                onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
+                <FontAwesomeIcon icon={faAdjust} />
+              </Button>
+            </li>
+          </List>
+        </Container>
+      </Dropdown>
+    ) : null}
+  </Fragment>
 )
 
 Navigation.propTypes = {

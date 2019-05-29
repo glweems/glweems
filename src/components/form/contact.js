@@ -13,9 +13,7 @@ const Notification = styled.div`
   border-radius: 3px;
 `
 
-const StyledContactForm = styled.form`
-
-`
+const StyledContactForm = styled.form``
 
 export default class ContactForm extends Component {
   constructor() {
@@ -105,7 +103,9 @@ export default class ContactForm extends Component {
             onChange={this.handleChange}
             placeholder='Email'
           />
-          <textarea rows="4" cols="50"
+          <textarea
+            rows='4'
+            cols='50'
             name='body'
             type='text'
             value={body}

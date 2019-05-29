@@ -19,7 +19,6 @@ export const Form = styled.form`
     padding-left: 0.5rem;
   }
 
-
   [submit],
   button {
     background: ${props => props.theme.green};
