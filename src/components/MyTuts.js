@@ -8,11 +8,11 @@ import Tags from '@/tags'
 
 const MyTuts = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
-    <Card minwidth='245px' key={id}>
+    <Card minwidth="245px" key={id}>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
         <FluidImg
-          className='card-img'
+          className="card-img"
           fluid={frontmatter.thumbnail.childImageSharp.fluid}
         />
       </Link>
@@ -37,14 +37,14 @@ MyTuts.propTypes = {
         timeToRead: PropTypes.number.isRequired,
         frontmatter: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          tags: PropTypes.array.isRequired,
+          tags: PropTypes.array.isRequired
         }),
         fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired,
-        }),
-      }),
+          slug: PropTypes.string.isRequired
+        })
+      })
     }).isRequired
-  ),
+  )
 }
 
 MyTuts.propTypes = {
@@ -56,14 +56,14 @@ MyTuts.propTypes = {
         timeToRead: PropTypes.number.isRequired,
         frontmatter: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          tags: PropTypes.array.isRequired,
+          tags: PropTypes.array.isRequired
         }),
         fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired,
-        }),
-      }),
+          slug: PropTypes.string.isRequired
+        })
+      })
     }).isRequired
-  ),
+  )
 }
 
 export default MyTuts

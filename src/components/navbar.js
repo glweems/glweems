@@ -10,7 +10,7 @@ import styled from 'styled-components'
 import {
   faBars,
   faTimesCircle,
-  faAdjust,
+  faAdjust
 } from '@fortawesome/free-solid-svg-icons'
 import { media } from 'theme'
 import { lighten, darken } from 'polished'
@@ -96,16 +96,17 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
     <Navbar>
       <Container>
         <Flex w100 h100 alignCenter between>
-          <Link className='logo-link' to='/'>
+          <Link className="logo-link" to="/">
             <FullLogo />
           </Link>
           <Button
-            className='toggle'
-            type='button'
-            onClick={() => dispatch(toggleNavBar(!isNavOpen))}>
+            className="toggle"
+            type="button"
+            onClick={() => dispatch(toggleNavBar(!isNavOpen))}
+          >
             <FontAwesomeIcon icon={!isNavOpen ? faBars : faTimesCircle} />
           </Button>
-          <div className='links'>
+          <div className="links">
             {navbarLinks.map(link => (
               <Link key={link.name} to={link.to}>
                 {link.name}
@@ -127,8 +128,9 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
             <li>
               <Button
                 bordered
-                type='button'
-                onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
+                type="button"
+                onClick={() => dispatch(toggleDarkMode(!isDarkMode))}
+              >
                 <FontAwesomeIcon icon={faAdjust} />
               </Button>
             </li>
@@ -143,10 +145,10 @@ Navigation.propTypes = {
   isNavOpen: PropTypes.bool.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  navbarLinks: PropTypes.array.isRequired,
+  navbarLinks: PropTypes.array.isRequired
 }
 
 export default connect(state => ({
   isNavOpen: state.isNavOpen,
-  isDarkMode: state.isDarkMode,
+  isDarkMode: state.isDarkMode
 }))(Navigation)

@@ -24,7 +24,7 @@ export default class ContactForm extends Component {
       company: ``,
       email: ``,
       body: ``,
-      errors: [],
+      errors: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -50,7 +50,7 @@ export default class ContactForm extends Component {
           lastname,
           company,
           email,
-          body,
+          body
         })
         .then(res => {
           this.setState({
@@ -58,7 +58,7 @@ export default class ContactForm extends Component {
             lastname: ``,
             company: ``,
             email: ``,
-            body: ``,
+            body: ``
           })
         })
     }
@@ -74,45 +74,45 @@ export default class ContactForm extends Component {
             ))
           : null}
         <Form onSubmit={this.handleSubmit}>
-          <label htmlFor='email'>Give me a shout</label>
+          <label htmlFor="email">Give me a shout</label>
           <input
-            name='firstname'
-            type='text'
+            name="firstname"
+            type="text"
             value={firstname}
             onChange={this.handleChange}
-            placeholder='First Name'
+            placeholder="First Name"
           />
           <input
-            name='lastname'
-            type='text'
+            name="lastname"
+            type="text"
             value={lastname}
             onChange={this.handleChange}
-            placeholder='Last Name'
+            placeholder="Last Name"
           />
           <input
-            name='company'
-            type='text'
+            name="company"
+            type="text"
             value={company}
             onChange={this.handleChange}
-            placeholder='Company'
+            placeholder="Company"
           />
           <input
-            name='email'
-            type='email'
+            name="email"
+            type="email"
             value={email}
             onChange={this.handleChange}
-            placeholder='Email'
+            placeholder="Email"
           />
           <textarea
-            rows='4'
-            cols='50'
-            name='body'
-            type='text'
+            rows="4"
+            cols="50"
+            name="body"
+            type="text"
             value={body}
             onChange={this.handleChange}
-            placeholder='Message'
+            placeholder="Message"
           />
-          <Button type='submit' value='Submit' style={{ color: `white` }}>
+          <Button type="submit" value="Submit" style={{ color: `white` }}>
             HELLO
           </Button>
         </Form>
