@@ -22,7 +22,7 @@ const DesignTemplate = ({ data }) => {
   return (
     <Layout>
       <Container>
-        <SEO title='designs' />
+        <SEO title="designs" />
         <h1>{data.behanceProjects.name}</h1>
         <h3 secondary>{data.behanceProjects.description}</h3>
         <Images />

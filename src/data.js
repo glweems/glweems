@@ -1,7 +1,8 @@
 import * as Icon from '@fortawesome/free-brands-svg-icons'
-import axios from 'axios'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
+import axios from 'axios'
 
 export const sidebarLinks = [
   { name: `About`, to: `/about` },

@@ -1,10 +1,10 @@
 import { Card, Title } from 'styled/card'
-import { Flex } from 'styled/elements'
+
+import { Flex } from 'elements'
 import FluidImg from 'gatsby-image'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Tags from '@/tags'
 
 const MyTuts = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
@@ -37,14 +37,14 @@ MyTuts.propTypes = {
         timeToRead: PropTypes.number.isRequired,
         frontmatter: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          tags: PropTypes.array.isRequired
+          tags: PropTypes.array.isRequired,
         }),
         fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired
-        })
-      })
+          slug: PropTypes.string.isRequired,
+        }),
+      }),
     }).isRequired
-  )
+  ),
 }
 
 MyTuts.propTypes = {
@@ -56,14 +56,14 @@ MyTuts.propTypes = {
         timeToRead: PropTypes.number.isRequired,
         frontmatter: PropTypes.shape({
           title: PropTypes.string.isRequired,
-          tags: PropTypes.array.isRequired
+          tags: PropTypes.array.isRequired,
         }),
         fields: PropTypes.shape({
-          slug: PropTypes.string.isRequired
-        })
-      })
+          slug: PropTypes.string.isRequired,
+        }),
+      }),
     }).isRequired
-  )
+  ),
 }
 
 export default MyTuts

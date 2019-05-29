@@ -1,10 +1,10 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { Component } from 'react'
-import styled from 'styled-components'
-import { darken } from 'polished'
+
+import { Button } from 'elements'
 import axios from 'axios'
-import { Button } from 'styled/elements'
+import { darken } from 'polished'
 import { media } from 'theme'
+import styled from 'styled-components'
 
 export default class subscribe extends Component {
   constructor() {
@@ -39,19 +39,20 @@ export default class subscribe extends Component {
           <span>{error}</span>
           <span>{success}</span>
         </div>
-        <Form onSubmit={this.handleSubmit} className='effect-19'>
+        <Form onSubmit={this.handleSubmit} className="effect-19">
           <input
-            className='effect-19'
-            type='email'
+            className="effect-19"
+            type="email"
             value={email}
             onChange={this.handleChange}
-            placeholder='Email'
+            placeholder="Email"
           />
           <Button
             submit
-            type='submit'
-            value='Submit'
-            style={{ color: `white` }}>
+            type="submit"
+            value="Submit"
+            style={{ color: `white` }}
+          >
             HELLO
           </Button>
         </Form>

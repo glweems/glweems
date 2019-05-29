@@ -1,14 +1,8 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-/* eslint-disable class-methods-use-this */
-/* eslint-disable jsx-a11y/click-events-have-key-events) */
+import { Container, List } from 'elements'
 import React, { Component } from 'react'
 import Layout from '@/containers/layout'
 import { glweems } from 'src/data'
 import styled from 'styled-components'
-import { Button, Container, List } from 'elements'
 
 const Messages = styled.div`
   display: grid;
@@ -49,7 +43,7 @@ export default class admin extends Component {
   }
 
   componentDidMount() {
-    const { messages } = this.state
+    // const { messages } = this.state
     glweems
       .get(`/messages`)
       .then(({ data }) => this.setState({ messages: data }))
@@ -77,7 +71,8 @@ export default class admin extends Component {
                 <MsgSmall
                   key={message._id}
                   unread={message.read}
-                  onClick={() => this.handleClick(message._id)}>
+                  onClick={() => this.handleClick(message._id)}
+                >
                   <span>{`${message.firstname} ${message.lastname}`}</span>
                   <small>{message.createdAt}</small>
                   <small>{message.read}</small>

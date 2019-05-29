@@ -1,5 +1,4 @@
 const path = require(`path`)
-const proxy = require(`http-proxy-middleware`)
 
 module.exports = {
   siteMetadata: {
@@ -109,6 +108,7 @@ module.exports = {
         elements: path.join(__dirname, `src/styled/elements.js`),
         state: path.join(__dirname, `src/state`),
         data: path.join(__dirname, `src/data.js`),
+        forms: path.join(__dirname, `src/components/forms/`),
       },
     },
     {

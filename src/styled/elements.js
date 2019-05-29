@@ -1,6 +1,5 @@
+import { darken, lighten } from 'polished'
 import styled, { css } from 'styled-components'
-
-import { lighten, darken } from 'polished'
 import { media } from 'theme'
 
 export const Form = styled.form`

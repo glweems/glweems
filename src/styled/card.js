@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import { darken, lighten } from 'polished'
+
 import { Tag } from 'elements'
-import { lighten, darken } from 'polished'
+import styled from 'styled-components'
 
 export const Card = styled.div`
   display: grid;

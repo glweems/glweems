@@ -1,10 +1,8 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
+import { Button, Form } from 'elements'
 import React, { Component, Fragment } from 'react'
-import axios from 'axios'
-import { Form, Button } from 'styled/elements'
-import styled from 'styled-components'
-import { lighten } from 'polished'
 import { glweems } from 'src/data'
+import { lighten } from 'polished'
+import styled from 'styled-components'
 
 const Notification = styled.div`
   color: ${props => props.theme.dark};
@@ -12,8 +10,6 @@ const Notification = styled.div`
   padding: 0.25rem 0.75rem;
   border-radius: 3px;
 `
-
-const StyledContactForm = styled.form``
 
 export default class ContactForm extends Component {
   constructor() {
@@ -24,7 +20,7 @@ export default class ContactForm extends Component {
       company: ``,
       email: ``,
       body: ``,
-      errors: []
+      errors: [],
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -50,7 +46,7 @@ export default class ContactForm extends Component {
           lastname,
           company,
           email,
-          body
+          body,
         })
         .then(res => {
           this.setState({
@@ -58,7 +54,7 @@ export default class ContactForm extends Component {
             lastname: ``,
             company: ``,
             email: ``,
-            body: ``
+            body: ``,
           })
         })
     }
@@ -74,7 +70,6 @@ export default class ContactForm extends Component {
             ))
           : null}
         <Form onSubmit={this.handleSubmit}>
-          <label htmlFor="email">Give me a shout</label>
           <input
             name="firstname"
             type="text"

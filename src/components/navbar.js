@@ -1,19 +1,20 @@
-import { Container, Flex, List, Button } from 'elements'
+import { Button, Container, Flex, List } from 'elements'
+import React, { Fragment } from 'react'
+import { darken, lighten } from 'polished'
+import {
+  faAdjust,
+  faBars,
+  faTimesCircle,
+} from '@fortawesome/free-solid-svg-icons'
 import { toggleDarkMode, toggleNavBar } from 'state/reducers'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FullLogo } from '@/icons'
 import Link from '@/link'
 import PropTypes from 'prop-types'
-import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
-import {
-  faBars,
-  faTimesCircle,
-  faAdjust
-} from '@fortawesome/free-solid-svg-icons'
 import { media } from 'theme'
-import { lighten, darken } from 'polished'
+import styled from 'styled-components'
 
 const Dropdown = styled.div`
   width: 100%;
@@ -145,10 +146,10 @@ Navigation.propTypes = {
   isNavOpen: PropTypes.bool.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
-  navbarLinks: PropTypes.array.isRequired
+  navbarLinks: PropTypes.array.isRequired,
 }
 
 export default connect(state => ({
   isNavOpen: state.isNavOpen,
-  isDarkMode: state.isDarkMode
+  isDarkMode: state.isDarkMode,
 }))(Navigation)

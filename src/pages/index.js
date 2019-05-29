@@ -1,6 +1,6 @@
 import { BehanceProjects, PinnedRepos } from '@/my-content'
-import { Container, Flex, Button } from 'elements'
-import Subscribe from '@/form/subscribe'
+import { Button, Container, Flex } from 'elements'
+
 import About from '@/garrett'
 import Layout from '@/containers/layout'
 import Link from '@/link'
@@ -10,8 +10,6 @@ import React from 'react'
 import SEO from '@/seo'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
-
-import ContactForm from '../components/form/contact'
 
 const Section = styled.section`
   margin-top: 2rem;
@@ -29,14 +27,11 @@ const Section = styled.section`
 
 export const IndexPage = ({ data }) => (
   <Layout>
-    <SEO title='Home' keywords={[`glweems`, `developer`, `designer`]} />
+    <SEO title="Home" keywords={[`glweems`, `developer`, `designer`]} />
     <Container>
       <Section>
-        <About className='about-section' />
+        <About className="about-section" />
         <h2>Give me a shout</h2>
-        <Button blue small>
-          <Link to='/about'>Contact</Link>
-        </Button>
       </Section>
 
       <Section>
@@ -44,7 +39,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll between>
           <MyTuts edges={data.allMarkdownRemark.edges} />
         </Flex>
-        <Link to='/tutorials'>
+        <Link to="/tutorials">
           <Button blue small>
             View More
           </Button>
@@ -56,7 +51,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll between>
           <BehanceProjects edges={data.allBehanceProjects.edges} />
         </Flex>
-        <Link to='/designs'>
+        <Link to="/designs">
           <Button blue small>
             View More
           </Button>
@@ -68,7 +63,7 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
-        <Link href='https://github.com/glweems'>
+        <Link href="https://github.com/glweems">
           <Button blue small>
             View More
           </Button>
