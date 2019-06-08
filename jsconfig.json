@@ -24,6 +24,9 @@
       ],
       "data": [
         "./src/data.js"
+      ],
+      "forms": [
+        "./src/components/forms/*"
       ]
     }
   },

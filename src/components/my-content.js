@@ -1,23 +1,20 @@
 import { Card, CardImg, Subtitle, Title } from 'styled/card'
-import { Flex, Tag } from 'styled/elements'
+import { Flex } from 'elements'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import Link from '@/link'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-// import Tags from '@/tags'
 import { ellipsis } from 'polished'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 export const BehanceProjects = ({ edges }) =>
-  edges.map(({ node: { fields: { slug }, name, covers, tags, id } }) => (
-    <Card minwidth='225px' key={id}>
+  edges.map(({ node: { fields: { slug }, name, covers, id } }) => (
+    <Card minwidth="225px" key={id}>
       <Title>{name}</Title>
       <Link to={`/designs/${slug}`}>
         <CardImg img={covers.size_max_808} />
       </Link>
-      {/* <Tags tags={tags} /> */}
     </Card>
   ))
 
@@ -39,11 +36,11 @@ BehanceProjects.propTypes = {
   ),
 }
 export const PinnedRepos = ({ edges }) =>
-  edges.map(({ node: { name, url, description, languages } }, i) => (
-    <Card key={i} minwidth='225px'>
+  edges.map(({ node: { name, url, description } }, i) => (
+    <Card key={i} minwidth="225px">
       <Flex between noMargin noPadding alignCenter>
         <Title>{name}</Title>
-        <Link href={url} target='_'>
+        <Link href={url} target="_">
           <FontAwesomeIcon icon={faGithub} />
         </Link>
       </Flex>

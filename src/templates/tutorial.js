@@ -8,6 +8,7 @@ import styled from 'styled-components'
 
 const BlogPost = styled.div`
   max-width: 100%;
+  padding: 1rem;
 `
 
 const BlogTemplate = ({ data }) => {
@@ -26,6 +27,7 @@ const BlogTemplate = ({ data }) => {
     </Layout>
   )
 }
+
 export const pageQuery = graphql`
   query SinglePost($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {

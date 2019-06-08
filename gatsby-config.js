@@ -1,5 +1,4 @@
 const path = require(`path`)
-const proxy = require(`http-proxy-middleware`)
 
 module.exports = {
   siteMetadata: {
@@ -81,7 +80,7 @@ module.exports = {
         background_color: `#ff5851`,
         theme_color: `#5687e8`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`,
+        icon: `src/images/favicon.png`,
       },
     },
     {
@@ -109,6 +108,7 @@ module.exports = {
         elements: path.join(__dirname, `src/styled/elements.js`),
         state: path.join(__dirname, `src/state`),
         data: path.join(__dirname, `src/data.js`),
+        forms: path.join(__dirname, `src/components/forms/`),
       },
     },
     {

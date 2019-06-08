@@ -38,25 +38,30 @@
           [
             "state",
             "./src/state"
+          ],
+          [
+            "forms",
+            "./src/components/forms"
           ]
         ],
         "extensions": [
-          ".ts",
-          ".js",
-          ".jsx",
-          ".json"
+          ".js"
         ]
       }
     }
   },
   "parser": "babel-eslint",
   "parserOptions": {
-    "ecmaVersion": 2017,
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "impliedStrict": true,
-      "classes": true
-    }
+    "ecmaVersion": 2017
+  },
+  "extends": [
+    "wesbos",
+    "prettier"
+  ],
+  "rules": {
+    "no-shadow": "off",
+    "react/display-name": "off",
+    "sort-imports": "error"
   },
   "env": {
     "browser": true,
