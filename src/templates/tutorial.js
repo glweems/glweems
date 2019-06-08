@@ -1,4 +1,7 @@
+/* eslint-disable react/no-multi-comp */
 import { Article, Container } from 'elements'
+import AddComment from '@/forms/comment'
+import Comments from '@/comments'
 import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -14,7 +17,8 @@ const BlogPost = styled.div`
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data
   const { title } = markdownRemark.frontmatter
-  const { html } = markdownRemark
+  const { html, fields } = markdownRemark
+  const { slug } = fields
 
   return (
     <Layout>
@@ -22,6 +26,13 @@ const BlogTemplate = ({ data }) => {
         <SEO title={title} />
         <Container>
           <Article dangerouslySetInnerHTML={{ __html: html }} />
+          <AddComment
+            post={slug.replace('/tutorials/', '')}
+            url="/tutorials/comments"
+          />
+          <Comments
+            url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
+          />
         </Container>
       </BlogPost>
     </Layout>
@@ -32,6 +43,9 @@ export const pageQuery = graphql`
   query SinglePost($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
+      fields {
+        slug
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
@@ -44,6 +58,9 @@ export const pageQuery = graphql`
           id
           excerpt
           timeToRead
+          fields {
+            slug
+          }
           frontmatter {
             title
             date
