@@ -1,18 +1,18 @@
 import { Card, Title } from 'styled/card'
-import { Flex } from 'styled/elements'
+
+import { Flex } from 'elements'
 import FluidImg from 'gatsby-image'
 import Link from '@/link'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Tags from '@/tags'
 
 const MyTuts = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
-    <Card minwidth='245px' key={id}>
+    <Card minwidth="245px" key={id}>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
         <FluidImg
-          className='card-img'
+          className="card-img"
           fluid={frontmatter.thumbnail.childImageSharp.fluid}
         />
       </Link>

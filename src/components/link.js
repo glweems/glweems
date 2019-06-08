@@ -7,7 +7,7 @@ const Link = props => {
   return to ? (
     <GatsbyLink {...props}>{children}</GatsbyLink>
   ) : (
-    <a {...props} target='_blank'>
+    <a {...props} target="_blank">
       {children}
     </a>
   )

@@ -1,7 +1,7 @@
 import { Subtitle, Title } from 'styled/card'
-import { Flex } from 'elements'
 
 import Avitar from '@/avitar'
+import { Flex } from 'elements'
 import Link from '@/link'
 import React from 'react'
 import { socialMediaAccounts } from 'src/data'

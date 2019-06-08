@@ -1,13 +1,12 @@
 import { StaticQuery, graphql } from 'gatsby'
+import styled, { ThemeProvider } from 'styled-components'
 import theme, { GlobalStyle } from 'theme'
 import ErrorBoundary from '@/sentry'
 import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styled, { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
 import { store } from 'state/store'
-import Footer from '@/footer'
 
 const Main = styled.main`
   padding-top: 4rem;
@@ -30,7 +29,6 @@ const Layout = ({ children, isDarkMode }) => (
           <GlobalStyle />
           <Navbar {...store.getState()} />
           <Main>{children}</Main>
-          {/* <Footer /> */}
         </ErrorBoundary>
       </ThemeProvider>
     )}

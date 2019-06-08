@@ -8,7 +8,7 @@ import { graphql } from 'gatsby'
 
 const GraphicDesignPage = ({ data }) => (
   <Layout>
-    <SEO title='Graphic Design' />
+    <SEO title="Graphic Design" />
     <Container>
       <BehanceProjects edges={data.allBehanceProjects.edges} />
     </Container>

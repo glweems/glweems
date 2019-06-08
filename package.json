@@ -18,7 +18,7 @@
     "develop": "gatsby develop",
     "lint": "eslint -c .eslintrc --ignore-path .gitignore ./src",
     "lint:css": "stylelint './src/**/*.js'",
-    "lint:fix": "eslint -c .eslintrc --ignore-path .gitignore ./src --fix",
+    "lint:fix": "eslint --ignore-path .gitignore ./src --fix",
     "now-build": "npm run build",
     "postinstall": "node node_modules/husky/lib/installer/bin install",
     "test": "echo \"no test specified\" && exit 0"
@@ -41,8 +41,6 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "axios": "^0.18.0",
     "bluebird": "^3.5.5",
-    "eslint-import-resolver-alias": "^1.1.2",
-    "eslint-loader": "^2.1.2",
     "gatsby": "^2.7.3",
     "gatsby-image": "^2.1.1",
     "gatsby-plugin-config": "^1.0.7",
@@ -97,6 +95,8 @@
     "typography": "^0.16.19"
   },
   "devDependencies": {
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-loader": "^2.1.2",
     "babel-eslint": "^10.0.1",
     "babel-plugin-styled-components": "^1.10.0",
     "eslint": "^5.16.0",
