@@ -1,7 +1,7 @@
 import { Container, List } from 'elements'
 
 import Layout from '@/containers/layout'
-import Link from '@/link'
+import { Link } from 'gatsby'
 import React from 'react'
 import SEO from '@/seo'
 import { sidebarLinks } from 'src/data'

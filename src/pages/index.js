@@ -1,14 +1,14 @@
 import { BehanceProjects, PinnedRepos } from '@/my-content'
 import { Button, Container, Flex } from 'elements'
-
+import { Link, graphql } from 'gatsby'
 import About from '@/garrett'
 import Layout from '@/containers/layout'
-import Link from '@/link'
 import MyTuts from '@/MyTuts'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
-import { graphql } from 'gatsby'
+
 import styled from 'styled-components'
 
 const Section = styled.section`
@@ -63,14 +63,12 @@ export const IndexPage = ({ data }) => (
         <Flex scroll>
           <PinnedRepos edges={data.github.viewer.pinnedRepositories.edges} />
         </Flex>
-        <Link href="https://github.com/glweems">
+        <OutboundLink href="https://github.com/glweems">
           <Button blue small>
             View More
           </Button>
-        </Link>
+        </OutboundLink>
       </Section>
-
-      {/* <Subscribe /> */}
     </Container>
   </Layout>
 )

@@ -1,11 +1,11 @@
-import { Subtitle, Title } from 'styled/card'
-
 import Avitar from '@/avitar'
-import { Flex } from 'elements'
-import Link from '@/link'
+import { Button, Flex } from 'elements'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import React from 'react'
 import { socialMediaAccounts } from 'src/data'
 import styled from 'styled-components'
+import { Subtitle, Title } from 'styled/card'
+import { navigate } from 'gatsby'
 
 const AboutStyled = styled.div`
   display: grid;
@@ -32,6 +32,7 @@ const AboutStyled = styled.div`
   * {
     margin-bottom: 0.25rem;
   }
+
   ${Subtitle} {
     margin-bottom: 1rem;
   }
@@ -39,9 +40,9 @@ const AboutStyled = styled.div`
 
 const SocialMediaComponents = ({ accounts }) =>
   accounts.map((acc, i) => (
-    <Link key={i} href={acc.link}>
+    <OutboundLink key={i} href={acc.link} target="_blank">
       <acc.SvgIcon />
-    </Link>
+    </OutboundLink>
   ))
 
 const About = () => (
@@ -54,6 +55,11 @@ const About = () => (
       <Flex>
         <SocialMediaComponents accounts={socialMediaAccounts} />
       </Flex>
+      <div>
+        <Button small blue onClick={() => navigate('/contact')}>
+          Contact me!
+        </Button>
+      </div>
     </Flex>
   </AboutStyled>
 )

@@ -1,5 +1,5 @@
 import { Flex, Tag } from 'elements'
-import Link from '@/link'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 
