@@ -27,6 +27,12 @@ module.exports = {
     },
 
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout.js`),
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
@@ -101,12 +107,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts: [
-          { family: `Roboto` },
-          { family: `Karla`, variants: [`400`, `400i`, `700`, `700i`] },
-        ],
+        google: {
+          families: ['Roboto', 'Karla'],
+        },
       },
     },
     {

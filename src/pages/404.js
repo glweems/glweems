@@ -1,13 +1,13 @@
 import { Container, List } from 'elements'
 
-import Layout from '@/containers/layout'
+import Layout from '@/layout'
 import { Link } from 'gatsby'
 import React from 'react'
 import SEO from '@/seo'
 import { sidebarLinks } from 'src/data'
 
 const NotFoundPage = () => (
-  <Layout>
+  <>
     <SEO title="404: Not found" />
     <Container>
       <h1>NOT FOUND</h1>
@@ -25,7 +25,7 @@ const NotFoundPage = () => (
         </li>
       </List>
     </Container>
-  </Layout>
+  </>
 )
 
 export default NotFoundPage

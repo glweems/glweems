@@ -1,8 +1,6 @@
 import { Link, graphql } from 'gatsby'
-
 import { Container } from 'elements'
 import { Helmet } from 'react-helmet'
-import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import kebabCase from 'lodash/kebabCase'
@@ -15,7 +13,7 @@ const TagsPage = ({
     },
   },
 }) => (
-  <Layout>
+  <>
     <Helmet title={title} />
     <Container>
       <h1>Tags</h1>
@@ -29,7 +27,7 @@ const TagsPage = ({
         ))}
       </ul>
     </Container>
-  </Layout>
+  </>
 )
 
 TagsPage.propTypes = {

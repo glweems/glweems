@@ -2,7 +2,7 @@ import { BehanceProjects, PinnedRepos } from '@/my-content'
 import { Button, Container, Flex } from 'elements'
 import { Link, graphql } from 'gatsby'
 import About from '@/garrett'
-import Layout from '@/containers/layout'
+import Layout from '@/layout'
 import MyTuts from '@/MyTuts'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import PropTypes from 'prop-types'
@@ -26,12 +26,11 @@ const Section = styled.section`
 `
 
 export const IndexPage = ({ data }) => (
-  <Layout>
+  <>
     <SEO title="Home" keywords={[`glweems`, `developer`, `designer`]} />
     <Container>
       <Section>
         <About className="about-section" />
-        <h2>Give me a shout</h2>
       </Section>
 
       <Section>
@@ -70,7 +69,7 @@ export const IndexPage = ({ data }) => (
         </OutboundLink>
       </Section>
     </Container>
-  </Layout>
+  </>
 )
 
 export const indexQuery = graphql`

@@ -1,6 +1,6 @@
 import { Link, graphql } from 'gatsby'
 import { Container } from 'elements'
-import Layout from '@/containers/layout'
+import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -12,23 +12,21 @@ const Tags = ({ pageContext, data }) => {
   } tagged with "${tag}"`
 
   return (
-    <Layout>
-      <Container>
-        <h1>{tagHeader}</h1>
-        <ul>
-          {edges.map(({ node }) => {
-            const { slug } = node.fields
-            const { title } = node.frontmatter
-            return (
-              <li key={slug}>
-                <Link to={slug}>{title}</Link>
-              </li>
-            )
-          })}
-        </ul>
-        <Link to="/tags">All tags</Link>
-      </Container>
-    </Layout>
+    <Container>
+      <h1>{tagHeader}</h1>
+      <ul>
+        {edges.map(({ node }) => {
+          const { slug } = node.fields
+          const { title } = node.frontmatter
+          return (
+            <li key={slug}>
+              <Link to={slug}>{title}</Link>
+            </li>
+          )
+        })}
+      </ul>
+      <Link to="/tags">All tags</Link>
+    </Container>
   )
 }
 

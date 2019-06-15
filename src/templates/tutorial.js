@@ -2,7 +2,7 @@
 import { Article, Container } from 'elements'
 import AddComment from '@/forms/comment'
 import Comments from '@/comments'
-import Layout from '@/containers/layout'
+import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
@@ -21,21 +21,19 @@ const BlogTemplate = ({ data }) => {
   const { slug } = fields
 
   return (
-    <Layout>
-      <BlogPost>
-        <SEO title={title} />
-        <Container>
-          <Article dangerouslySetInnerHTML={{ __html: html }} />
-          <AddComment
-            post={slug.replace('/tutorials/', '')}
-            url="/tutorials/comments"
-          />
-          <Comments
-            url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
-          />
-        </Container>
-      </BlogPost>
-    </Layout>
+    <BlogPost>
+      <SEO title={title} />
+      <Container>
+        <Article dangerouslySetInnerHTML={{ __html: html }} />
+        <AddComment
+          post={slug.replace('/tutorials/', '')}
+          url="/tutorials/comments"
+        />
+        <Comments
+          url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
+        />
+      </Container>
+    </BlogPost>
   )
 }
 

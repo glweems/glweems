@@ -1,6 +1,6 @@
 import { Container } from 'elements'
 
-import Layout from '@/containers/layout'
+import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
@@ -20,14 +20,12 @@ const DesignTemplate = ({ data }) => {
       ))
 
   return (
-    <Layout>
-      <Container>
-        <SEO title="designs" />
-        <h1>{data.behanceProjects.name}</h1>
-        <h3 secondary>{data.behanceProjects.description}</h3>
-        <Images />
-      </Container>
-    </Layout>
+    <Container>
+      <SEO title="designs" />
+      <h1>{data.behanceProjects.name}</h1>
+      <h3 secondary>{data.behanceProjects.description}</h3>
+      <Images />
+    </Container>
   )
 }
 
