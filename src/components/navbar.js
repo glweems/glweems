@@ -6,7 +6,7 @@ import {
   faBars,
   faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons'
-import { toggleDarkMode, toggleNavBar } from 'state/reducers'
+import { toggleDarkMode, toggleNavBar } from 'state/actions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { FullLogo } from '@/icons'

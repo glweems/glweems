@@ -1,10 +1,8 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Container, List } from 'elements'
+import { List } from 'elements'
 import React, { Component } from 'react'
-
-import Layout from '@/layout'
 import { glweems } from 'src/data'
 import styled from 'styled-components'
 
