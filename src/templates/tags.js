@@ -1,6 +1,5 @@
 import { Link, graphql } from 'gatsby'
 import { Container } from 'elements'
-import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 

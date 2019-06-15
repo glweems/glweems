@@ -2,7 +2,6 @@
 import { Article, Container } from 'elements'
 import AddComment from '@/forms/comment'
 import Comments from '@/comments'
-import Layout from '@/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
@@ -16,24 +15,26 @@ const BlogPost = styled.div`
 
 const BlogTemplate = ({ data }) => {
   const { markdownRemark } = data
-  const { title } = markdownRemark.frontmatter
+  const { title, tags } = markdownRemark.frontmatter
   const { html, fields } = markdownRemark
   const { slug } = fields
 
   return (
-    <BlogPost>
-      <SEO title={title} />
-      <Container>
-        <Article dangerouslySetInnerHTML={{ __html: html }} />
-        <AddComment
-          post={slug.replace('/tutorials/', '')}
-          url="/tutorials/comments"
-        />
-        <Comments
-          url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
-        />
-      </Container>
-    </BlogPost>
+    <>
+      <SEO title={title} tags={tags} />
+      <BlogPost>
+        <Container>
+          <Article dangerouslySetInnerHTML={{ __html: html }} />
+          <AddComment
+            post={slug.replace('/tutorials/', '')}
+            url="/tutorials/comments"
+          />
+          <Comments
+            url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
+          />
+        </Container>
+      </BlogPost>
+    </>
   )
 }
 

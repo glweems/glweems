@@ -7,7 +7,19 @@ import { graphql } from 'gatsby'
 
 const TutorialsPage = ({ data }) => (
   <>
-    <SEO title="Tutorials" />
+    <SEO
+      title="All Tutorials"
+      keywords={[
+        'tutorials',
+        'how to',
+        'react',
+        'javascript',
+        'gatsby',
+        'redux',
+        'typescript',
+        'styled-components',
+      ]}
+    />
     <Container>
       <MyTuts edges={data.allMarkdownRemark.edges} />
     </Container>

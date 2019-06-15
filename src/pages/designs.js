@@ -7,7 +7,10 @@ import { graphql } from 'gatsby'
 
 const GraphicDesignPage = ({ data }) => (
   <>
-    <SEO title="Graphic Design" />
+    <SEO
+      title="Graphic Design"
+      keywords={[`Photoshop`, `Illustator`, `Design`, `Designer`]}
+    />
     <Container>
       <BehanceProjects edges={data.allBehanceProjects.edges} />
     </Container>

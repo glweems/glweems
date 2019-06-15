@@ -7,7 +7,7 @@ import SEO from '@/seo'
 const AboutPage = () => (
   <>
     <Container>
-      <SEO title="about" />
+      <SEO title="About" />
       <Garrett />
       <ContactForm />
     </Container>
