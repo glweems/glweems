@@ -1,14 +1,14 @@
 import { Container } from 'elements'
-
-import Layout from '@/containers/layout'
 import PropTypes from 'prop-types'
 import React from 'react'
 import SEO from '@/seo'
 import { graphql } from 'gatsby'
 
 const DesignTemplate = ({ data }) => {
+  const { name, tags, description, modules } = data.behanceProjects
+
   const Images = () =>
-    data.behanceProjects.modules
+    modules
       .filter(module => module.sizes !== null)
       .map((module, i) => (
         <img
@@ -20,14 +20,12 @@ const DesignTemplate = ({ data }) => {
       ))
 
   return (
-    <Layout>
-      <Container>
-        <SEO title="designs" />
-        <h1>{data.behanceProjects.name}</h1>
-        <h3 secondary>{data.behanceProjects.description}</h3>
-        <Images />
-      </Container>
-    </Layout>
+    <Container>
+      <SEO title="All Designs" keywords={tags} description={description} />
+      <h1>{name}</h1>
+      <h3>{description}</h3>
+      <Images />
+    </Container>
   )
 }
 

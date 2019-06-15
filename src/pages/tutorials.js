@@ -1,5 +1,4 @@
 import { Container } from 'elements'
-import Layout from '@/containers/layout'
 import MyTuts from '@/MyTuts'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -7,12 +6,24 @@ import SEO from '@/seo'
 import { graphql } from 'gatsby'
 
 const TutorialsPage = ({ data }) => (
-  <Layout>
-    <SEO title="Tutorials" />
+  <>
+    <SEO
+      title="All Tutorials"
+      keywords={[
+        'tutorials',
+        'how to',
+        'react',
+        'javascript',
+        'gatsby',
+        'redux',
+        'typescript',
+        'styled-components',
+      ]}
+    />
     <Container>
       <MyTuts edges={data.allMarkdownRemark.edges} />
     </Container>
-  </Layout>
+  </>
 )
 
 TutorialsPage.propTypes = {

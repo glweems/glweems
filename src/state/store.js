@@ -6,3 +6,5 @@ export const createStore = () =>
   reduxCreateStore(rootReducer, composeWithDevTools())
 
 export const store = createStore()
+
+export default createStore(rootReducer, composeWithDevTools())

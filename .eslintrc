@@ -55,19 +55,15 @@
     "ecmaVersion": 2017
   },
   "extends": [
-    "wesbos",
-    "prettier"
+    "wesbos"
   ],
   "rules": {
     "no-shadow": "off",
     "react/display-name": "off",
-    "sort-imports": "error"
+    "sort-imports": "off"
   },
   "env": {
     "browser": true,
     "node": true
-  },
-  "plugins": [
-    "prettier"
-  ]
+  }
 }

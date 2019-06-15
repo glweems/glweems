@@ -1,10 +1,8 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { Container, List } from 'elements'
+import { List } from 'elements'
 import React, { Component } from 'react'
-
-import Layout from '@/containers/layout'
 import { glweems } from 'src/data'
 import styled from 'styled-components'
 
@@ -77,46 +75,44 @@ export default class admin extends Component {
       state: { messages, activeMsg },
     } = this
     return (
-      <Layout>
-        <Container>
-          <h1>Messages</h1>
-          <Messages>
-            <List simple>
-              {messages.map(message => (
-                <MsgSmall key={message._id} unread={message.read}>
-                  <div onClick={() => this.showMsg(message._id)}>
-                    <span>{`${message.firstname} ${message.lastname}`}</span>
-                    <small>{message.createdAt}</small>
-                    <small>{message.read}</small>
-                  </div>
-                  <small onClick={() => this.markAsUnread(message._id)}>
-                    mark as unread
-                  </small>
-                  <small onClick={() => this.markAsRead(message._id)}>
-                    mark as read
-                  </small>
-                </MsgSmall>
-              ))}
-            </List>
-            {activeMsg.firstname ? (
-              <Message>
-                <h6>
-                  From: {activeMsg.firstname} {activeMsg.lastname}
-                </h6>
-                <h6>Email: {activeMsg.email}</h6>
-                <small>
-                  {Date(activeMsg.createdAt).replace(
-                    `GMT-0400 (Eastern Daylight Time)`,
-                    ``
-                  )}
+      <>
+        <h1>Messages</h1>
+        <Messages>
+          <List simple>
+            {messages.map(message => (
+              <MsgSmall key={message._id} unread={message.read}>
+                <div onClick={() => this.showMsg(message._id)}>
+                  <span>{`${message.firstname} ${message.lastname}`}</span>
+                  <small>{message.createdAt}</small>
+                  <small>{message.read}</small>
+                </div>
+                <small onClick={() => this.markAsUnread(message._id)}>
+                  mark as unread
                 </small>
+                <small onClick={() => this.markAsRead(message._id)}>
+                  mark as read
+                </small>
+              </MsgSmall>
+            ))}
+          </List>
+          {activeMsg.firstname ? (
+            <Message>
+              <h6>
+                From: {activeMsg.firstname} {activeMsg.lastname}
+              </h6>
+              <h6>Email: {activeMsg.email}</h6>
+              <small>
+                {Date(activeMsg.createdAt).replace(
+                  `GMT-0400 (Eastern Daylight Time)`,
+                  ``
+                )}
+              </small>
 
-                <div>{activeMsg.body}</div>
-              </Message>
-            ) : null}
-          </Messages>
-        </Container>
-      </Layout>
+              <div>{activeMsg.body}</div>
+            </Message>
+          ) : null}
+        </Messages>
+      </>
     )
   }
 }

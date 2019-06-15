@@ -6,13 +6,13 @@ import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import { store } from 'state/store'
+import Transition from '@/transition'
 
 const Main = styled.main`
   padding-top: 4rem;
 `
 
-const Layout = ({ children, isDarkMode }) => (
+const Layout = ({ children, location, isNavOpen, navbarLinks, isDarkMode }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -27,21 +27,15 @@ const Layout = ({ children, isDarkMode }) => (
       <ThemeProvider theme={isDarkMode ? theme.light : theme.dark}>
         <ErrorBoundary>
           <GlobalStyle />
-          <Navbar {...store.getState()} />
-          <Main>{children}</Main>
+          <Navbar isNavOpen={isNavOpen} navbarLinks={navbarLinks} />
+          <Main>
+            <Transition location={location}>{children}</Transition>
+          </Main>
         </ErrorBoundary>
       </ThemeProvider>
     )}
   />
 )
-
-const mapStateToProps = state => ({
-  isDarkMode: state.isDarkMode,
-  isNavOpen: state.isNavOpen,
-  navbarLinks: state.navbarLinks,
-})
-
-export default connect(mapStateToProps)(Layout)
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -49,4 +43,13 @@ Layout.propTypes = {
   data: PropTypes.shape({
     site: PropTypes.shape({}),
   }),
+  navbarLinks: PropTypes.array.isRequired,
+  isNavOpen: PropTypes.bool.isRequired,
+  location: PropTypes.object.isRequired,
 }
+
+export default connect(state => ({
+  isDarkMode: state.isDarkMode,
+  isNavOpen: state.isNavOpen,
+  navbarLinks: state.navbarLinks,
+}))(Layout)
