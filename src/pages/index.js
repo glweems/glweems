@@ -1,14 +1,14 @@
-import { BehanceProjects, PinnedRepos } from '@/my-content'
 import { Button, Container, Flex } from 'elements'
 import { Link, graphql } from 'gatsby'
-import About from '@/garrett'
-import MyTuts from '@/MyTuts'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 import SEO from '@/seo'
 
-import styled from 'styled-components'
+import MyTuts from '@/MyTuts'
+import About from '@/garrett'
+import { BehanceProjects, PinnedRepos } from '@/my-content'
 
 const Section = styled.section`
   margin-top: 2rem;

@@ -1,9 +1,9 @@
 import { Container } from 'elements'
-import MyTuts from '@/MyTuts'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SEO from '@/seo'
 import { graphql } from 'gatsby'
+import SEO from '@/seo'
+import MyTuts from '@/MyTuts'
 
 const TutorialsPage = ({ data }) => (
   <>
