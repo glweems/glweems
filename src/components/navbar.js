@@ -9,12 +9,12 @@ import {
 import { toggleDarkMode, toggleNavBar } from 'state/actions'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { FullLogo } from '@/icons'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { media } from 'theme'
 import styled from 'styled-components'
+import { FullLogo } from '@/icons'
 
 const Dropdown = styled.div`
   width: 100%;

@@ -1,12 +1,12 @@
 /* eslint-disable react/no-multi-comp */
 import { Article, Container } from 'elements'
-import AddComment from '@/forms/comment'
-import Comments from '@/comments'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SEO from '@/seo'
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import SEO from '@/seo'
+import Comments from '@/comments'
+import AddComment from '@/forms/comment'
 
 const BlogPost = styled.div`
   max-width: 100%;

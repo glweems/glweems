@@ -1,11 +1,11 @@
 import { StaticQuery, graphql } from 'gatsby'
 import styled, { ThemeProvider } from 'styled-components'
 import theme, { GlobalStyle } from 'theme'
-import ErrorBoundary from '@/sentry'
-import Navbar from '@/navbar'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
+import Navbar from '@/navbar'
+import ErrorBoundary from '@/sentry'
 import Transition from '@/transition'
 
 const Main = styled.main`

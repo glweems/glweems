@@ -1,7 +1,7 @@
 import ContactForm from 'forms/contact'
 import { Container } from 'elements'
-import Garrett from '@/garrett'
 import React from 'react'
+import Garrett from '@/garrett'
 import SEO from '@/seo'
 
 const AboutPage = () => (

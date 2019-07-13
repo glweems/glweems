@@ -1,8 +1,8 @@
 import { Container, List } from 'elements'
 import { Link } from 'gatsby'
 import React from 'react'
-import SEO from '@/seo'
 import { sidebarLinks } from 'src/data'
+import SEO from '@/seo'
 
 const NotFoundPage = () => (
   <>

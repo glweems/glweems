@@ -1,9 +1,9 @@
-import { BehanceProjects } from '@/my-content'
 import { Container } from 'elements'
 import PropTypes from 'prop-types'
 import React from 'react'
-import SEO from '@/seo'
 import { graphql } from 'gatsby'
+import SEO from '@/seo'
+import { BehanceProjects } from '@/my-content'
 
 const GraphicDesignPage = ({ data }) => (
   <>
