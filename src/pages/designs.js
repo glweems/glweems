@@ -1,4 +1,4 @@
-import { Container } from 'elements'
+import { Container, Grid } from 'elements'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { graphql } from 'gatsby'
@@ -12,7 +12,9 @@ const GraphicDesignPage = ({ data }) => (
       keywords={[`Photoshop`, `Illustator`, `Design`, `Designer`]}
     />
     <Container>
-      <BehanceProjects edges={data.allBehanceProjects.edges} />
+      <Grid>
+        <BehanceProjects edges={data.allBehanceProjects.edges} />
+      </Grid>
     </Container>
   </>
 )

@@ -2,6 +2,20 @@ import { darken, lighten } from 'polished'
 import styled, { css } from 'styled-components'
 import { media } from 'theme'
 
+export const Grid = styled.div`
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+  /* grid-template-rows: 300px; */
+  padding: 0 0.5rem;
+  ${media.tablet`
+    grid-template-columns: repeat(2, 1fr);
+  `}
+  ${media.desktop`
+    grid-template-columns: repeat(3, 1fr);
+  `}
+`
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;

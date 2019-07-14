@@ -9,12 +9,6 @@ const colors = {
   muted: `#D1D6DB`,
 }
 
-const sizes = {
-  phone: 576,
-  tablet: 768,
-  desktop: 992,
-}
-
 const light = {
   ...colors,
   mode: `light`,
@@ -41,10 +35,16 @@ const theme = { light, dark }
 
 export default theme
 
+const sizes = {
+  phone: 320,
+  tablet: 768,
+  desktop: 992,
+}
+
 // Iterate through the sizes and create a media template
 export const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
-    @media (max-width: ${sizes[label] / 16}em) {
+    @media (min-width: ${sizes[label] / 16}em) {
       ${css(...args)}
     }
   `
