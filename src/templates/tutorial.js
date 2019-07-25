@@ -1,42 +1,43 @@
+/* eslint-disable react/jsx-filename-extension */
 /* eslint-disable react/no-multi-comp */
-import { Article, Container } from 'elements'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { graphql } from 'gatsby'
-import styled from 'styled-components'
-import SEO from '@/seo'
-import Comments from '@/comments'
-import AddComment from '@/forms/comment'
+// import { Article, Container } from 'elements';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
+// import SEO from '@/seo';
+// import Comments from '@/comments';
+// import AddComment from '@/forms/comment';
 
 const BlogPost = styled.div`
   max-width: 100%;
   padding: 1rem;
-`
+`;
 
 const BlogTemplate = ({ data }) => {
-  const { markdownRemark } = data
-  const { title, tags } = markdownRemark.frontmatter
-  const { html, fields } = markdownRemark
-  const { slug } = fields
+  const { markdownRemark } = data;
+  const { title, tags } = markdownRemark.frontmatter;
+  const { html, fields } = markdownRemark;
+  const { slug } = fields;
 
   return (
-    <>
-      <SEO title={title} tags={tags} />
+    <div>
+      {/* <SEO title={title} tags={tags} /> */}
       <BlogPost>
-        <Container>
-          <Article dangerouslySetInnerHTML={{ __html: html }} />
-          <AddComment
+        <div>
+          <article dangerouslySetInnerHTML={{ __html: html }} />
+          {/* <AddComment
             post={slug.replace('/tutorials/', '')}
             url="/tutorials/comments"
-          />
-          <Comments
+          /> */}
+          {/* <Comments
             url={`/tutorials/comments/${slug.replace('/tutorials/', '')}`}
-          />
-        </Container>
+          /> */}
+        </div>
       </BlogPost>
-    </>
-  )
-}
+    </div>
+  );
+};
 
 export const pageQuery = graphql`
   query SinglePost($slug: String!) {
@@ -51,45 +52,7 @@ export const pageQuery = graphql`
         tags
       }
     }
-    allMarkdownRemark {
-      edges {
-        node {
-          id
-          excerpt
-          timeToRead
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            date
-            thumbnail {
-              childImageSharp {
-                fluid {
-                  base64
-                  tracedSVG
-                  aspectRatio
-                  src
-                  srcSet
-                  srcWebp
-                  srcSetWebp
-                  sizes
-                  originalImg
-                  originalName
-                  presentationWidth
-                  presentationHeight
-                }
-              }
-            }
-            tags
-          }
-        }
-      }
-    }
   }
-`
+`;
 
-BlogTemplate.propTypes = {
-  data: PropTypes.object,
-}
-export default BlogTemplate
+export default BlogTemplate;

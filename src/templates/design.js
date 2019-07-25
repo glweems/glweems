@@ -1,11 +1,11 @@
-import { Container } from 'elements'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from '@/seo'
+// import { Container } from 'elements';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+// import SEO from '@/seo';
 
 const DesignTemplate = ({ data }) => {
-  const { name, tags, description, modules } = data.behanceProjects
+  const { name, tags, description, modules } = data.behanceProjects;
 
   const Images = () =>
     modules
@@ -17,21 +17,21 @@ const DesignTemplate = ({ data }) => {
           alt={module.id}
           style={{ width: `100%` }}
         />
-      ))
+      ));
 
   return (
-    <Container>
-      <SEO title="All Designs" keywords={tags} description={description} />
+    <div>
+      {/* <SEO title="All Designs" keywords={tags} description={description} /> */}
       <h1>{name}</h1>
       <h3>{description}</h3>
       <Images />
-    </Container>
-  )
-}
+    </div>
+  );
+};
 
 export const designQuery = graphql`
   query singleDesign($slug: String!) {
-    behanceProjects(fields: { slug: { eq: $slug } }) {
+    behanceProjects(slug: { eq: $slug }) {
       name
       description
       published
@@ -60,9 +60,9 @@ export const designQuery = graphql`
       }
     }
   }
-`
+`;
 
 DesignTemplate.propTypes = {
   data: PropTypes.object,
-}
-export default DesignTemplate
+};
+export default DesignTemplate;

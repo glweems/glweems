@@ -1,0 +1,49 @@
+@import "variables";
+
+html {
+  width: 100%;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  max-width: 100%;
+  overflow: hidden;
+  color: $light;
+  background: $dark;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+  background: none !important;
+}
+
+small {
+  color: $muted;
+}
+
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+button {
+  box-sizing: content-box;
+  padding: 0;
+  overflow: visible;
+  color: inherit;
+  line-height: normal;
+  background: none;
+  border: 0;
+
+  :focus {
+    outline: none;
+  }
+}

@@ -1,18 +1,42 @@
-const path = require(`path`)
-require('dotenv').config()
+/* eslint-disable @typescript-eslint/camelcase */
+// const path = require(`path`);
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
     title: `Glweems`,
     description: `Full stack web developer / graphic designer.`,
     author: `@glweems`,
-    sidebarLinks: [
+    languageCode: 'en',
+    countryCode: 'US',
+    navLinks: [
       { name: `About`, to: `/about` },
       { name: `Tutorials`, to: `/tutorials` },
       { name: `Graphic Design`, to: `/designs` },
     ],
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Garrett Weems | Web Developer`,
+        short_name: `glweems`,
+        start_url: `/`,
+        background_color: `#ff5851`,
+        theme_color: `#5687e8`,
+        display: `minimal-ui`,
+        icon: `src/images/favicon.png`,
+      },
+    },
+    '@rhysforyou/gatsby-plugin-react-helmet-async',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-typescript',
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -25,18 +49,16 @@ module.exports = {
         cookieDomain: `glweems.com`,
       },
     },
-
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/layout.js`),
+        component: require.resolve(`./src/components/Layout.tsx`),
       },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-tags`,
+    `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-favicon`,
@@ -67,15 +89,11 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        name: `Garrett Weems | Web Developer`,
-        short_name: `glweems`,
-        start_url: `/`,
-        background_color: `#ff5851`,
-        theme_color: `#5687e8`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        google: {
+          families: ['Roboto', 'Karla'],
+        },
       },
     },
     {
@@ -93,34 +111,19 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-root-import`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        src: path.join(__dirname, `src/`),
-        '@': path.join(__dirname, `src/components/`),
-        pages: path.join(__dirname, `src/pages/`),
-        styled: path.join(__dirname, `src/styled/`),
-        theme: path.join(__dirname, `src/styled/theme.js`),
-        elements: path.join(__dirname, `src/styled/elements.js`),
-        state: path.join(__dirname, `src/state`),
-        data: path.join(__dirname, `src/data.js`),
-        forms: path.join(__dirname, `src/components/forms/`),
+        name: `behanceImages`,
+        path: `${__dirname}/behance`,
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
+      resolve: `gatsby-source-behance-images`,
       options: {
-        google: {
-          families: ['Roboto', 'Karla'],
-        },
+        username: `glweems`,
+        apiKey: process.env.BEHANCE_TOKEN,
+        folder: './behance',
       },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: { pathToConfigModule: `src/utils/typography` },
-    },
-    {
-      resolve: `gatsby-source-behance`,
-      options: { username: `glweems`, apiKey: process.env.BEHANCE_TOKEN },
     },
     {
       resolve: `gatsby-plugin-sentry`,
@@ -164,4 +167,4 @@ module.exports = {
       },
     },
   ],
-}
+};
