@@ -62,7 +62,4 @@ export const designQuery = graphql`
   }
 `;
 
-DesignTemplate.propTypes = {
-  data: PropTypes.object,
-};
 export default DesignTemplate;

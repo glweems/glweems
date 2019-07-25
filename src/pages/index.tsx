@@ -4,6 +4,7 @@ import { useStaticQuery, graphql, Link } from 'gatsby';
 import Microlink from '@microlink/react';
 import Card from '../components/Card';
 import styles from '../styles/components/card.module.scss';
+import Avitar from '../components/Avitar';
 
 const IndexPage = () => {
   const {
@@ -12,6 +13,7 @@ const IndexPage = () => {
   } = useIndexPageQuery();
   return (
     <>
+      <Avitar />
       <section>
         <h1>Hello World!</h1>
         <p>Gatsby is the best!</p>

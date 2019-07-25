@@ -106,25 +106,11 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/tutorials`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         name: `behanceImages`,
         path: `${__dirname}/behance`,
       },
     },
-    {
-      resolve: `gatsby-source-behance-images`,
-      options: {
-        username: `glweems`,
-        apiKey: process.env.BEHANCE_TOKEN,
-        folder: './behance',
-      },
-    },
+
     {
       resolve: `gatsby-plugin-sentry`,
       options: {
@@ -143,7 +129,46 @@ module.exports = {
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
       },
     },
-    `custom-markdown`,
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `react-peekaboo-navbar`,
+        remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
+        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+      },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `react-navbar-scroller`,
+        remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
+        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+      },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `gatsby-darkmode`,
+        remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
+        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+      },
+    },
+    {
+      resolve: `gatsby-source-git`,
+      options: {
+        name: `styled-container`,
+        remote: `https://github.com/gwtuts/styled-container.git`,
+        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+      },
+    },
+    {
+      resolve: `gatsby-source-behance-images`,
+      options: {
+        username: `glweems`,
+        apiKey: process.env.BEHANCE_TOKEN,
+        folder: './behance',
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

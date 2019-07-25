@@ -13,14 +13,7 @@ declare module '*.module.scss' {
 
 declare module '@microlink/react';
 declare module 'gatsby';
-
-interface Node<T> {
-  node: T;
-}
-
-interface Edges<T> {
-  edges: Node<T>[];
-}
+declare module 'gatsby-image';
 
 interface BehanceProject {
   allowComments: number;
