@@ -1,9 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { ThemeProvider } from 'styled-components';
-import { theme } from '../utils/theme';
+import React, { useState, createContext } from 'react';
+
 import Navbar from './Navbar';
+import Sidebar from './Sidebar';
+import SEO from './SEO';
+
+const LayoutContext = createContext();
 
 interface Props {
   children: React.ReactNode;
@@ -22,41 +24,35 @@ export default function Layout({ children }: Props) {
       }
     }
   `);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleMenu = () => setIsOpen(!isOpen);
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <>
-          <Helmet
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-            defaultTitle={data.site.siteMetadata.title}
-          >
-            <html lang={data.site.siteMetadata.languageCode} />
-            <meta
-              name="description"
-              content={data.site.siteMetadata.description}
-            />
+      <SEO />
+      <LayoutContext.Provider isOpen={[isOpen, setIsOpen]}>
+        <Sidebar
+          isOpen={isOpen}
+          navItems={[
+            { text: `About`, path: `/about` },
+            { text: `Tutorials`, path: `/tutorials` },
+            { text: `Design`, path: `/designs` },
+            { text: `Repos`, path: `/repos` },
+          ]}
+        />
+        <div id="outer-container" className={isOpen ? 'noScroll' : ''}>
+          <div id="page-wrap">
+            <Navbar toggleMenu={toggleMenu} />
 
-            <meta
-              property="og:locale"
-              content={`${data.site.siteMetadata.languageCode}_${data.site.siteMetadata.countryCode}`}
-            />
-          </Helmet>
+            <main>{children}</main>
 
-          <Navbar
-            links={[
-              { text: `About`, path: `/` },
-              { text: `Tutorials`, path: `/` },
-              { text: `Design`, path: `/` },
-              { text: `Repos`, path: `/` },
-            ]}
-          />
-
-          <main>{children}</main>
-
-          <footer>{/* TODO */}</footer>
-        </>
-      </ThemeProvider>
+            <footer>{/* TODO */}</footer>
+          </div>
+        </div>
+      </LayoutContext.Provider>
     </>
   );
 }
+/*
+
+
+*/
