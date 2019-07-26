@@ -1,6 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState, createContext } from 'react';
-
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import SEO from './SEO';
@@ -8,22 +6,10 @@ import SEO from './SEO';
 const LayoutContext = createContext();
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactChildren;
 }
 
 export default function Layout({ children }: Props) {
-  const data = useStaticQuery(graphql`
-    {
-      site {
-        siteMetadata {
-          title
-          description
-          languageCode
-          countryCode
-        }
-      }
-    }
-  `);
   const [isOpen, setIsOpen] = useState(false);
   const toggleMenu = () => setIsOpen(!isOpen);
   return (
@@ -39,6 +25,7 @@ export default function Layout({ children }: Props) {
             { text: `Repos`, path: `/repos` },
           ]}
         />
+
         <div id="outer-container" className={isOpen ? 'noScroll' : ''}>
           <div id="page-wrap">
             <Navbar toggleMenu={toggleMenu} />
@@ -52,7 +39,3 @@ export default function Layout({ children }: Props) {
     </>
   );
 }
-/*
-
-
-*/
