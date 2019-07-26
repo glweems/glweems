@@ -1,24 +1,6 @@
 const path = require(`path`);
 const slugify = require(`slugify`);
-/*
-const useCreatePagesQuery = () =>
-  useStaticQuery(graphql`
-    query CreatePagesQuery {
-      allBehanceProjects {
-        edges {
-          node {
-            id
-            slug
-          }
-        }
-      }
-    }
-  `);
 
-exports.createPages = ({ actions, graphql }) => {
-  const data = useCreatePagesQuery();console.log('TCL: exports.createPages -> data', data);
-};
- */
 exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     query CreatePagesQuery {

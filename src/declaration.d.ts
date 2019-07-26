@@ -15,84 +15,76 @@ declare module '@microlink/react';
 declare module 'gatsby';
 declare module 'gatsby-image';
 
-interface BehanceProject {
-  allowComments: number;
-  areas: string[];
-  canvasWidth: number;
-  conceived: number;
-  copyright: {
-    description: string;
-    license: string;
-    license_id: number;
-  };
-  created: number;
-  creatorID: number;
-  description: string;
-  editorVersion: number;
-  fields: {
-    slug: string;
-  };
+interface IndexPage {
+  data: IndexPageData;
+}
+interface IndexPageData {
+  github: Github;
+  allFile: AllFile;
+  allBehanceProjects: AllBehanceProjects;
+}
+interface Github {
+  viewer: Viewer;
+}
+interface Viewer {
+  pinnedItems: PinnedItems;
+}
+interface PinnedItems {
+  nodes: PinnedItem[];
+}
+interface PinnedItem {
   id: string;
-  matureAccess: string;
-  matureContent: number;
   name: string;
-  stats: {
-    views: number;
-    comments: number;
-    appreciations: number;
-  };
-  tags: string[];
-  tools: [
-    {
-      approved: string;
-      category: string;
-      category_id: number;
-      category_label: string;
-      id: number;
-      synonym: {
-        icon_url: string;
-        gallery_url: string;
-        download_url: string;
-        icon_url_2x: string;
-        name: string;
-        synonym_id: number;
-        tag_id: number;
-        title: string;
-        type: number;
-        url: string;
-      };
-      title: string;
-      url: string;
-    },
-    {
-      approved: string;
-      category: string;
-      category_id: number;
-      category_label: string;
-      id: number;
-      synonym: {
-        icon_url: string;
-        gallery_url: string;
-        download_url: string;
-        icon_url_2x: string;
-        name: string;
-        synonym_id: number;
-        tag_id: number;
-        title: string;
-        type: number;
-        url: string;
-      };
-      title: string;
-      url: string;
-    },
-  ];
   url: string;
-  covers: {
-    size_original: string;
-    size_max_808: string;
-    size_404: string;
-    size_230: string;
-    size_202: string;
-    size_115: string;
-  };
+  updatedAt: string;
+  description: string;
+  homepageUrl: string;
+  languages: Languages;
+}
+interface Languages {
+  nodes?: (NodesEntity1)[] | null;
+}
+interface NodesEntity1 {
+  color: string;
+  id: string;
+  name: string;
+}
+interface AllFile {
+  nodes: TutorialFileNode[];
+}
+interface EdgesEntity {
+  node: Node;
+}
+interface TutorialFileNode {
+  gitRemote: GitRemote;
+  childMarkdownRemark?: ChildMarkdownRemark | null;
+}
+interface GitRemote {
+  name: string;
+  webLink: string;
+}
+interface ChildMarkdownRemark {
+  html: string;
+  frontmatter: Frontmatter;
+}
+interface Frontmatter {
+  tags?: (string)[] | null;
+  title: string;
+}
+interface AllBehanceProjects {
+  edges: BehanceProjectNode[];
+}
+interface BehanceProjectNode {
+  node: BehanceProject;
+}
+interface BehanceProject {
+  id: string;
+  name: string;
+  slug: string;
+  description: string;
+  covers: Covers;
+  tags?: (string)[] | null;
+}
+interface Covers {
+  size_max_808: string;
 }

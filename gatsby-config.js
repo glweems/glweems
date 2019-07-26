@@ -4,17 +4,15 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Glweems`,
-    description: `Full stack web developer / graphic designer.`,
-    author: `@glweems`,
+    title: 'Garrett Weems',
+    titleTemplate: '%s · Glweems',
+    description: 'Full stack web developer / graphic designer.',
+    url: 'https://glweems.com',
+    image: '/images/snape.jpg',
     languageCode: 'en',
     countryCode: 'US',
-    navLinks: [
-      { name: `About`, to: `/about` },
-      { name: `Tutorials`, to: `/tutorials` },
-      { name: `Graphic Design`, to: `/designs` },
-    ],
   },
+
   plugins: [
     {
       resolve: `gatsby-plugin-manifest`,
@@ -134,7 +132,7 @@ module.exports = {
       options: {
         name: `react-peekaboo-navbar`,
         remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
-        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+        patterns: [`*`, `!./src/**/*`],
       },
     },
     {
@@ -142,7 +140,7 @@ module.exports = {
       options: {
         name: `react-navbar-scroller`,
         remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
-        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+        patterns: [`*`, `!./src/**/*`],
       },
     },
     {
@@ -150,7 +148,7 @@ module.exports = {
       options: {
         name: `gatsby-darkmode`,
         remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
-        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+        patterns: [`*`, `!./src/**/*`],
       },
     },
     {
@@ -158,7 +156,7 @@ module.exports = {
       options: {
         name: `styled-container`,
         remote: `https://github.com/gwtuts/styled-container.git`,
-        patterns: [`./*.{md,jpg,png,gif}`, `!./src/**`],
+        patterns: [`*`, `!./src/**/*`],
       },
     },
     {
