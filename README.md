@@ -1,5 +1,7 @@
 # ⚛️ gatsby-starter-ultra-modern
+[hello world example](embedded-codesandbox://hello-world-example)
 
+[![Edit react-peekaboo-navbar](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/gwtuts/react-peekaboo-navbar/tree/master/?autoresize=1&fontsize=14&view=preview)
 A Gatsby starter with typescript, redux boilerplate, styled-components, strict linting and auto-formatting rules.
 
 ## 🚀 Getting started

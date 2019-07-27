@@ -47,3 +47,30 @@ button {
     outline: none;
   }
 }
+
+.bm-item {
+  :hover {
+    color: $dark;
+  }
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.bm-menu {
+  padding: 1em 1.5em 0;
+  font-size: 1.15em;
+  background: $light;
+  border-right: 2px solid $light;
+}
+
+.bm-morph-shape {
+  fill: $light;
+}
+
+.bm-item-list {
+  color: $dark;
+}
+
+.bm-overlay {
+  background: $dark;
+}
