@@ -1,30 +1,47 @@
-/* eslint-disable react/jsx-filename-extension */
-/* eslint-disable react/no-multi-comp */
-// import { Article, Container } from 'elements';
-import React from 'react';
+import * as React from 'react';
+import * as RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-// import SEO from '@/seo';
-// import Comments from '@/comments';
-// import AddComment from '@/forms/comment';
+import SEO from '../components/SEO';
+import styles from '../styles/components/articlel.module.scss';
 
-const BlogTemplate = ({ data }) => {
+interface TutorialProps {
+  data: {
+    markdownRemark: ChildMarkdownRemark;
+  };
+}
+
+const BlogTemplate = ({
+  data: {
+    markdownRemark: {
+      htmlAst,
+      frontmatter: { title },
+    },
+  },
+}: TutorialProps) => {
+  const renderAst = new RehypeReact({
+    createElement: React.createElement,
+    components: {},
+  }).Compiler;
+
   return (
     <section className="container">
-      {/* <SEO title={title} tags={tags} /> */}
+      <SEO title={title} />
       <div>
-        <article
-          dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
-        />
+        <article className={styles.article}>
+          <>{renderAst(htmlAst)}</>
+        </article>
       </div>
     </section>
   );
 };
 
-export const pageQuery = graphql`
-  query SinglePost($slug: String!) {
+export default BlogTemplate;
+
+export const BlogPost = graphql`
+  query BlogPost($slug: String!) {
     markdownRemark(frontmatter: { path: { regex: $slug } }) {
       id
-      html
+      htmlAst
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title
@@ -33,5 +50,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-export default BlogTemplate;

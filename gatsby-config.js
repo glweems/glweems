@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/camelcase */
-// const path = require(`path`);
 require('dotenv').config();
+
+const path = require(`path`);
 
 module.exports = {
   siteMetadata: {
@@ -101,13 +103,6 @@ module.exports = {
         path: `./src/images`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `behanceImages`,
-        path: `${__dirname}/behance`,
-      },
-    },
 
     {
       resolve: `gatsby-plugin-sentry`,
@@ -128,35 +123,37 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-git`,
+      resolve: `gatsby-source-git-remotes`,
       options: {
-        name: `react-peekaboo-navbar`,
-        remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
-        patterns: [`*`, `!./src/**/*`],
+        repos: [
+          {
+            name: `react-peekaboo-navbar`,
+            remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `react-navbar-scroller`,
+            remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `gatsby-darkmode`,
+            remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `styled-container`,
+            remote: `https://github.com/gwtuts/styled-container.git`,
+            patterns: [`*`],
+          },
+        ],
       },
     },
     {
-      resolve: `gatsby-source-git`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: `react-navbar-scroller`,
-        remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
-        patterns: [`*`, `!./src/**/*`],
-      },
-    },
-    {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `gatsby-darkmode`,
-        remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
-        patterns: [`*`, `!./src/**/*`],
-      },
-    },
-    {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `styled-container`,
-        remote: `https://github.com/gwtuts/styled-container.git`,
-        patterns: [`*`, `!./src/**/*`],
+        name: `repos`,
+        path: path.join(__dirname, '.cache', 'gatsby-source-git'),
       },
     },
     {
@@ -164,7 +161,13 @@ module.exports = {
       options: {
         username: `glweems`,
         apiKey: process.env.BEHANCE_TOKEN,
-        folder: './behance',
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `behanceImages`,
+        path: path.join(__dirname, '.cache', 'gatsby-source-behance-images'),
       },
     },
     {
@@ -176,6 +179,7 @@ module.exports = {
           `gatsby-remark-images`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-responsive-iframe`,
+          `gatsby-remark-component`,
           {
             resolve: `gatsby-remark-prismjs`,
             options: {

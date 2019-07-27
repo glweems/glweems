@@ -50,7 +50,6 @@ const SEO = ({
           defaultDescription: description
           url
           defaultImage: image
-          twitterUsername
         }
       }
     }

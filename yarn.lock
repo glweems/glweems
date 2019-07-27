@@ -1469,6 +1469,13 @@
   dependencies:
     core-js "^2.5.7"
 
+"@mapbox/hast-util-table-cell-style@^0.1.3":
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/@mapbox/hast-util-table-cell-style/-/hast-util-table-cell-style-0.1.3.tgz#5b7166ae01297d72216932b245e4b2f0b642dca6"
+  integrity sha512-QsEsh5YaDvHoMQ2YHdvZy2iDnU3GgKVBTcHf6cILyoWDZtPSdlG444pL/ioPYO/GpXSfODBb9sefEetfC4v9oA==
+  dependencies:
+    unist-util-visit "^1.3.0"
+
 "@microlink/mql@^0.3.14":
   version "0.3.14"
   resolved "https://registry.yarnpkg.com/@microlink/mql/-/mql-0.3.14.tgz#c109074f687aab384ebc2cadee2b05bb1280bc55"
@@ -1602,11 +1609,6 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@types/bluebird@^3.5.27":
-  version "3.5.27"
-  resolved "https://registry.yarnpkg.com/@types/bluebird/-/bluebird-3.5.27.tgz#61eb4d75dc6bfbce51cf49ee9bbebe941b2cb5d0"
-  integrity sha512-6BmYWSBea18+tSjjSC3QIyV93ZKAeNWGM7R6aYt1ryTZXrlHF+QLV0G2yV0viEGVyRkyQsWfMoJ0k/YghBX5sQ==
-
 "@types/configstore@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@types/configstore/-/configstore-2.1.1.tgz#cd1e8553633ad3185c3f2f239ecff5d2643e92b6"
@@ -1733,6 +1735,13 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/rehype-react@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@types/rehype-react/-/rehype-react-3.1.0.tgz#889bd406e5f182725a810466a11bdc6bf6443d59"
+  integrity sha512-0/jP0c1XJZnSMexemgvj1pXjUYsGeuWQGc1kR7Cei2YMxQq6Jh1zS/587fZhjAtCs22yfFk9vKPA4Z5gJc6M6g==
+  dependencies:
+    "@types/react" "*"
 
 "@types/styled-components@^4.1.16":
   version "4.1.18"
@@ -6377,6 +6386,13 @@ gatsby-remark-autolink-headers@^2.1.3:
     mdast-util-to-string "^1.0.2"
     unist-util-visit "^1.3.0"
 
+gatsby-remark-component@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-component/-/gatsby-remark-component-1.1.3.tgz#9a5276d19028b7eaf1ab30f44070124360b8e34e"
+  integrity sha512-bRJ2r7FgdH12+ahsKSFe+OWPTmjw8lBD+S0ytm+p1M9Bfmq2Qai+ROacNAp7d18vZLEhRpzznWJgSU7gEejVXg==
+  dependencies:
+    unist-util-visit "^1.1.1"
+
 gatsby-remark-copy-linked-files@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/gatsby-remark-copy-linked-files/-/gatsby-remark-copy-linked-files-2.1.3.tgz#4b5d632a8907d2a327231a76c79e6c023852e745"
@@ -6435,26 +6451,13 @@ gatsby-remark-unwrap-images@^1.0.1:
     unist-util-remove "^1.0.1"
     unist-util-visit "^1.4.0"
 
-gatsby-source-behance-images@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-behance-images/-/gatsby-source-behance-images-1.1.0.tgz#556943a675d1ea031e063e58913ad6133ef33d23"
-  integrity sha512-7z855l2gSg9CJ0xgJ1Z09gUbfZSKT9AB45sRAwa1gyoWbjsreYI1ddPQ8ej8erQno3aj24XTACl1M5t01e1wkg==
+gatsby-source-behance-images@glweems/gatsby-source-behance-images:
+  version "1.0.0"
+  resolved "https://codeload.github.com/glweems/gatsby-source-behance-images/tar.gz/802f34cc460bde653cfd93b2eb16bf7e71ad5bc9"
   dependencies:
-    "@types/bluebird" "^3.5.27"
     axios "^0.18.0"
     bluebird "^3.5.4"
     image-downloader "^3.4.2"
-    prettier "^1.18.2"
-    request "^2.88.0"
-    request-progress "^3.0.0"
-    slugify "^1.3.4"
-
-gatsby-source-behance@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/gatsby-source-behance/-/gatsby-source-behance-3.0.2.tgz#303d8841f7477216bc49e07f06629295a6568d6b"
-  integrity sha512-fqP8AU60JShZcktRPEH9GkWhglX9+nMvdVXK8eQ0hi7PirKcMmVkpaq/iPeC5hU17mlcDnXRw0Gd3Xt/GC38CQ==
-  dependencies:
-    axios "^0.18.0"
 
 gatsby-source-filesystem@^2.0.4, gatsby-source-filesystem@^2.1.5:
   version "2.1.6"
@@ -6476,6 +6479,17 @@ gatsby-source-filesystem@^2.0.4, gatsby-source-filesystem@^2.1.5:
     read-chunk "^3.0.0"
     valid-url "^1.0.9"
     xstate "^3.1.0"
+
+gatsby-source-git-remotes@glweems/gatsby-source-git-remotes:
+  version "0.0.1"
+  resolved "https://codeload.github.com/glweems/gatsby-source-git-remotes/tar.gz/686a885c8af1390a4c1e93687f85e8163f6e306a"
+  dependencies:
+    fast-glob "^2.2.3"
+    fs-extra "^5.0.0"
+    gatsby-source-filesystem "^2.0.4"
+    git-url-parse "^11.1.1"
+    rimraf "^2.6.2"
+    simple-git "^1.105.0"
 
 gatsby-source-git@^1.0.1:
   version "1.0.1"
@@ -6526,7 +6540,7 @@ gatsby-telemetry@^1.1.7:
     stack-utils "1.0.2"
     uuid "3.3.2"
 
-gatsby-transformer-remark@^2.6.6:
+gatsby-transformer-remark@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.9.tgz#40c40fab689c4217c8de68880712a49867d7dea9"
   integrity sha512-o1/36A0IPvhoXleayaxhOMPNXH4JzO+b5VFd2ghvdODe88ErgkTF8zSWwhXMj0/pAJymtJBuzrwF+mTU9IK7Sw==
@@ -7350,6 +7364,18 @@ hast-to-hyperscript@^5.0.0:
     space-separated-tokens "^1.0.0"
     style-to-object "^0.2.1"
     unist-util-is "^2.0.0"
+    web-namespaces "^1.1.2"
+
+hast-to-hyperscript@^7.0.0:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/hast-to-hyperscript/-/hast-to-hyperscript-7.0.2.tgz#e9237c88c6069999ad38aec847fefc296f484c4c"
+  integrity sha512-NBMMst0hkDR21uSH75m9W2DkljBrLoMQEhGiLMLNij4HIzEDJMC1UG+CFR6EAjHi2zs3NHBoaAHJOHxftoIN2g==
+  dependencies:
+    comma-separated-tokens "^1.0.0"
+    property-information "^5.0.0"
+    space-separated-tokens "^1.0.0"
+    style-to-object "^0.2.1"
+    unist-util-is "^3.0.0"
     web-namespaces "^1.1.2"
 
 hast-util-from-parse5@^4.0.2:
@@ -11453,6 +11479,13 @@ property-information@^4.0.0:
   dependencies:
     xtend "^4.0.1"
 
+property-information@^5.0.0:
+  version "5.2.2"
+  resolved "https://registry.yarnpkg.com/property-information/-/property-information-5.2.2.tgz#20555eafd2296278a682e5a51d5123e7878ecc30"
+  integrity sha512-N2moasZmjn2mjVGIWpaqz5qnz6QyeQSGgGvMtl81gA9cPTWa6wpesRSe/quNnOjUHpvSH1oZx0pdz0EEckLFnA==
+  dependencies:
+    xtend "^4.0.1"
+
 proto-list@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/proto-list/-/proto-list-1.2.4.tgz#212d5bfe1318306a420f6402b8e26ff39647a849"
@@ -12070,6 +12103,14 @@ regjsparser@^0.6.0:
   dependencies:
     jsesc "~0.5.0"
 
+rehype-react@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/rehype-react/-/rehype-react-4.0.1.tgz#fcb79e99b49ee056cfc266c4992ecfae939e8efa"
+  integrity sha512-xg6PZHqWJLTBQM6ECvzWEZhVqRpbxrx8eAPaWQAoRK7v9lkAuBelBym3AVUvGRzlQsZky9MdKrDzyYTTm1cejQ==
+  dependencies:
+    "@mapbox/hast-util-table-cell-style" "^0.1.3"
+    hast-to-hyperscript "^7.0.0"
+
 relay-runtime@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-2.0.0.tgz#0e42df90365cc69f104f7e4b20fdcf975f5a9c0b"
@@ -12192,13 +12233,6 @@ replace-ext@1.0.0, replace-ext@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.0.tgz#de63128373fcbf7c3ccfa4de5a480c45a67958eb"
   integrity sha1-3mMSg3P8v3w8z6TeWkgMRaZ5WOs=
-
-request-progress@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/request-progress/-/request-progress-3.0.0.tgz#4ca754081c7fec63f505e4faa825aa06cd669dbe"
-  integrity sha1-TKdUCBx/7GP1BeT6qCWqBs1mnb4=
-  dependencies:
-    throttleit "^1.0.0"
 
 request@^2.65.0, request@^2.83.0, request@^2.87.0, request@^2.88.0:
   version "2.88.0"
@@ -13825,11 +13859,6 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-throttleit@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/throttleit/-/throttleit-1.0.0.tgz#9e785836daf46743145a5984b6268d828528ac6c"
-  integrity sha1-nnhYNtr0Z0MUWlmEtiaNgoUorGw=
-
 through2@^2.0.0, through2@^2.0.1:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -14358,7 +14387,7 @@ unist-util-visit-parents@^2.0.0, unist-util-visit-parents@^2.0.1:
   dependencies:
     unist-util-is "^3.0.0"
 
-unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.3.0, unist-util-visit@^1.4.0:
+unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.1.1, unist-util-visit@^1.3.0, unist-util-visit@^1.4.0:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.1.tgz#4724aaa8486e6ee6e26d7ff3c8685960d560b1e3"
   integrity sha512-AvGNk7Bb//EmJZyhtRUnNMEpId/AZ5Ph/KUpTI09WHQuDZHKovQ1oEv3mfmKpWKtoMzyMC4GLBm1Zy5k12fjIw==

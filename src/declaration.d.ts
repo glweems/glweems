@@ -65,6 +65,7 @@ interface GitRemote {
 }
 interface ChildMarkdownRemark {
   html: string;
+  htmlAst: any[];
   frontmatter: Frontmatter;
 }
 interface Frontmatter {

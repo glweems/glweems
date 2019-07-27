@@ -1,38 +1,59 @@
 // import { Container } from 'elements';
-import PropTypes from 'prop-types';
 import React from 'react';
 import { graphql } from 'gatsby';
-// import SEO from '@/seo';
+import Img from 'gatsby-image';
+import SEO from '../components/SEO';
 
-const DesignTemplate = ({ data }) => {
-  const { name, tags, description, modules } = data.behanceProjects;
+interface DesignTemplate {
+  data: {
+    behanceProjects: {
+      name: string;
+      slug: string;
+      description: '';
+      published: number;
+      created: number;
+      tags: string[];
+      tools: {
+        title: string;
+        synonym: {
+          icon_url: string;
+        }[];
+        areas: string[];
+      };
+    };
+    allFile: {
+      nodes: {
+        name: string;
+        childImageSharp: {
+          fluid: {};
+        };
+      }[];
+      totalCount: number;
+    };
+  };
+}
 
-  const Images = () =>
-    modules
-      .filter(module => module.sizes !== null)
-      .map((module, i) => (
-        <img
-          key={i}
-          src={module.sizes.size_disp}
-          alt={module.id}
-          style={{ width: `100%` }}
-        />
-      ));
+const DesignTemplate = ({ data }: DesignTemplate) => {
+  const { name, tags, description } = data.behanceProjects;
+  const { nodes } = data.allFile;
 
   return (
-    <div>
-      {/* <SEO title="All Designs" keywords={tags} description={description} /> */}
+    <section className="container">
+      <SEO title={name} keywords={tags} description={description} />
       <h1>{name}</h1>
       <h3>{description}</h3>
-      <Images />
-    </div>
+      {nodes.map(({ childImageSharp: { fluid } }) => (
+        <Img fluid={fluid} />
+      ))}
+    </section>
   );
 };
 
 export const designQuery = graphql`
-  query singleDesign($slug: String!) {
+  query SingleDesign($slug: String!) {
     behanceProjects(slug: { eq: $slug }) {
       name
+      slug
       description
       published
       created
@@ -41,23 +62,21 @@ export const designQuery = graphql`
         title
       }
       areas
-      modules {
-        id
-        project_id
-        caption
-        alignment
-        image_src
-        sizes {
-          size_1400
-          size_disp
-          size_max_1240
-          size_max_1920
-          size_max_1200
-          size_max_3840
-          size_original
-          size_2800
+    }
+    allFile(
+      filter: { relativeDirectory: { eq: $slug }, name: { ne: "cover" } }
+      sort: { fields: name, order: ASC }
+    ) {
+      nodes {
+        name
+        childImageSharp {
+          fluid(maxWidth: 700) {
+            # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
         }
       }
+      totalCount
     }
   }
 `;
