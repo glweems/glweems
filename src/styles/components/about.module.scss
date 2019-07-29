@@ -1,0 +1,13 @@
+@import "../variables";
+.about {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.avitar {
+  max-width: 12em;
+  margin-bottom: 1em;
+  img {
+    border-radius: 5px;
+  }
+}

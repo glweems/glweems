@@ -1,113 +1,178 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { useStaticQuery, graphql, Link } from 'gatsby';
-import Microlink from '@microlink/react';
-import Img from 'gatsby-image';
 import Card from '../components/Card';
 import styles from '../styles/components/card.module.scss';
-import Avitar from '../components/Avitar';
+import About from '../components/About';
+
+interface IndexPageQuery {
+  markdownFiles: {
+    nodes: {
+      id: string;
+      sourceInstanceName: string;
+      childMarkdownRemark: {
+        fileAbsolutePath: string;
+        frontmatter: {
+          thumbnail: {
+            childImageSharp: {
+              fluid: {};
+            };
+          };
+          title: string;
+          tags: string[];
+          path: string;
+        };
+      };
+    }[];
+  };
+  behanceImages: {
+    nodes: {
+      id: string;
+      sourceInstanceName: string;
+      relativeDirectory: string;
+      name: string;
+      childImageSharp: {
+        fluid: {};
+      };
+    }[];
+  };
+  github: {
+    viewer: {
+      pinnedItems: {
+        nodes: {
+          id: string;
+          name: string;
+          url: string;
+          updatedAt: string;
+          description: string;
+          homepageUrl: string;
+          languages: {
+            nodes: {
+              color: string;
+              id: string;
+              name: string;
+            }[];
+          };
+        }[];
+      };
+    };
+  };
+  allBehanceProjects: {
+    nodes: {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+      covers: {
+        size_max_808: string;
+      };
+      tags: string[];
+    }[];
+  };
+}
 
 const IndexPage = () => {
-  const { allFile, github, allBehanceProjects } = useIndexPageQuery();
+  const { behanceImages, markdownFiles, github, allBehanceProjects } = useIndexPageQuery();
+
+  const mergedBehance = allBehanceProjects.nodes.map(node => {
+    const found: { childImageSharp: { fluid: {} } } = behanceImages.nodes.find(
+      (imageNode: { relativeDirectory: string }) => imageNode.relativeDirectory === node.slug,
+    );
+    return { ...node, fluid: found.childImageSharp.fluid };
+  });
+
   return (
-    <>
-      <section>
-        <h1>Hello World!</h1>
-        <p>Gatsby is the best!</p>
-        <Avitar />
+    <div>
+      <section className="container">
+        <About />
       </section>
+      <Link to="/help">help</Link>
+
       <section className="container">
         <div className={styles.cards}>
-          {allFile.nodes.map(({ childMarkdownRemark }) => (
+          {markdownFiles.nodes.map(node => (
             <Card
-              title={childMarkdownRemark.frontmatter.title}
-              link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
-            >
-              <Img
-                fluid={
-                  childMarkdownRemark.frontmatter.thumbnail.childImageSharp
-                    .fluid
-                }
-              />
-            </Card>
+              key={node.id}
+              title={node.childMarkdownRemark.frontmatter.title}
+              link={`tutorials/${node.childMarkdownRemark.frontmatter.path}`}
+              img={node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp.fluid}
+            />
           ))}
         </div>
       </section>
       <section className="container">
         <h1>Design Projects</h1>
         <div className={styles.cards}>
-          {allBehanceProjects.edges.map(({ node }: BehanceProjectNode) => {
-            const { name, slug, covers } = node;
-            return (
-              <Card
-                key={name}
-                title={name}
-                img={covers.size_max_808}
-                link={`/designs/${slug}`}
-              />
-            );
-          })}
+          {mergedBehance.map(node => (
+            <Card
+              key={node.slug}
+              title={node.name}
+              link={`designs/${node.slug}`}
+              img={node.fluid}
+            />
+          ))}
         </div>
       </section>
-      <section>
-        {github.viewer.pinnedItems.nodes.map((edge: PinnedItem) => (
-          <div>
-            {edge.name}
-            <Microlink url={edge.homepageUrl} size="large" />
-          </div>
-        ))}
-      </section>
-    </>
+    </div>
   );
 };
 
 export default IndexPage;
 
-const useIndexPageQuery = (): IndexPageData => {
+const useIndexPageQuery = (): IndexPageQuery => {
   const {
     github,
-    allFile,
+    behanceImages,
+    markdownFiles,
     allBehanceProjects,
-  }: IndexPageData = useStaticQuery(graphql`
+  }: IndexPageQuery = useStaticQuery(graphql`
     query indexQuery {
-      # Tutorials
-      allFile(
-        filter: {
-          gitRemote__NODE: { ne: null }
-          childMarkdownRemark: { id: { ne: null } }
+      allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
+        nodes {
+          slug
+          tags
+          name
+          description
         }
+      }
+      behanceImages: allFile(
+        filter: { sourceInstanceName: { eq: "behanceImages" }, name: { eq: "cover" } }
       ) {
         nodes {
-          sourceInstanceName
-          childMarkdownRemark {
-            fileAbsolutePath
-            frontmatter {
-              thumbnail {
-                childImageSharp {
-                  fluid {
-                    base64
-                    tracedSVG
-                    aspectRatio
-                    src
-                    srcSet
-                    srcWebp
-                    srcSetWebp
-                    sizes
-                    originalImg
-                    originalName
-                    presentationWidth
-                    presentationHeight
-                  }
-                }
-              }
-              title
-              tags
-              path
+          relativeDirectory
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
       }
-      # Github Repos
+      markdownFiles: allFile(
+        filter: { gitRemote__NODE: { ne: null }, childMarkdownRemark: { id: { ne: null } } }
+      ) {
+        nodes {
+          id
+          sourceInstanceName
+          relativeDirectory
+          childMarkdownRemark {
+            frontmatter {
+              title
+              path
+              date
+              subtitle
+              thumbnail {
+                childImageSharp {
+                  fluid(maxWidth: 700) {
+                    # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       github {
         viewer {
           pinnedItems(first: 6) {
@@ -131,28 +196,13 @@ const useIndexPageQuery = (): IndexPageData => {
           }
         }
       }
-
-      #   # Behance Projects
-      #   allBehanceProjects(filter: {stats: {views: {gte: 20 } } }, limit: 4) {
-      #     edges {
-      #       node {
-      #         id
-      #         name
-      #         slug
-      #         description
-      #         covers {
-      #           size_max_808
-      #         }
-      #         tags
-      #       }
-      #     }
-      #   }
     }
   `);
 
   return {
     github,
-    allFile,
+    behanceImages,
+    markdownFiles,
     allBehanceProjects,
   };
 };

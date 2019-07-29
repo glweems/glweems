@@ -125,6 +125,7 @@ module.exports = {
     {
       resolve: `gatsby-source-git-remotes`,
       options: {
+        userDir: 'public',
         repos: [
           {
             name: `react-peekaboo-navbar`,
@@ -150,24 +151,18 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `repos`,
-        path: path.join(__dirname, '.cache', 'gatsby-source-git'),
-      },
-    },
-    {
       resolve: `gatsby-source-behance-images`,
       options: {
         username: `glweems`,
         apiKey: process.env.BEHANCE_TOKEN,
+        userDir: `public`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `behanceImages`,
-        path: path.join(__dirname, '.cache', 'gatsby-source-behance-images'),
+        path: `./public/gatsby-source-behance-images`,
       },
     },
     {

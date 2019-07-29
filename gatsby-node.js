@@ -39,7 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
         actions.createPage({
           path: `/tutorials/${node.name}`,
           component: path.resolve(`src/templates/tutorial.tsx`),
-          context: { slug: `/${node.name}/` },
+          context: { slug: `${node.name}/` },
         });
       });
     })

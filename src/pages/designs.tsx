@@ -2,7 +2,6 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { relative } from 'path';
 
 interface AllFileNode {
   relativeDirectory?: string | undefined;
@@ -41,10 +40,7 @@ interface Design {
 }
 
 const Designs = () => {
-  const {
-    allFile,
-    allBehanceProjects,
-  }: DesignsPageProps = useStaticQuery(graphql`
+  const { allFile, allBehanceProjects }: DesignsPageProps = useStaticQuery(graphql`
     query DesignPage {
       allFile(
         filter: {
@@ -75,10 +71,7 @@ const Designs = () => {
     }
   `);
 
-  const mergeQueries = (
-    projectNodes: AllBehanceProjects,
-    fileNodes: AllFile,
-  ) => {
+  const mergeQueries = (projectNodes: AllBehanceProjects, fileNodes: AllFile) => {
     return projectNodes.nodes.map(({ name, areas, slug }) => {
       const {
         childImageSharp: { fluid },
