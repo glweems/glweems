@@ -14,6 +14,8 @@ declare module '*.module.scss' {
 declare module '@microlink/react';
 declare module 'gatsby';
 declare module 'gatsby-image';
+declare module 'react-reveal';
+declare module 'react-burger-menu';
 
 interface IndexPageQuery {
   markdownFiles: {

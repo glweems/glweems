@@ -1,3 +1,5 @@
+@import "../variables";
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -7,9 +9,5 @@
   left: 0;
   width: 100%;
   padding: 1rem;
-  background: white;
-
-  * {
-    margin: 0;
-  }
+  background: lighten($dark, 10%);
 }

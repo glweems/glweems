@@ -1,49 +1,60 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { useStaticQuery, graphql, Link } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
+// import { Fade } from 'react-reveal';
 import Card from '../components/Card';
-import styles from '../styles/components/card.module.scss';
+import styles from '../styles/components/indexPage.module.scss';
 import About from '../components/About';
 
 const IndexPage = () => {
   const { behanceImages, markdownFiles, github, allBehanceProjects } = useIndexPageQuery();
 
   const mergedBehance = allBehanceProjects.nodes.map(node => {
-    const found: { childImageSharp: { fluid: {} } } = behanceImages.nodes.find(
+    const found: any = behanceImages.nodes.find(
       (imageNode: { relativeDirectory: string }) => imageNode.relativeDirectory === node.slug,
     );
-    return { ...node, fluid: found.childImageSharp.fluid };
+    return { ...node, fluid: found.childImageSharp.fluid, fixed: found.childImageSharp.fixed };
   });
 
   return (
-    <div>
+    <div className={styles.indexPage}>
       <section className="container">
         <About />
       </section>
 
       <section className="container">
-        <h2>Blog Posts</h2>
-        <div className={styles.cards}>
-          {markdownFiles.nodes.map(node => (
-            <Card
-              key={node.id}
-              title={node.childMarkdownRemark.frontmatter.title}
-              link={`tutorials/${node.childMarkdownRemark.frontmatter.path}`}
-              img={node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp.fluid}
-            />
-          ))}
+        <div>
+          <h2>Blog Posts</h2>
+          <div className={styles.cards}>
+            {markdownFiles.nodes.map(node => (
+              <Card
+                key={node.id}
+                title={node.childMarkdownRemark.frontmatter.title}
+                link={`tutorials/${node.childMarkdownRemark.frontmatter.path}`}
+                img={node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
+              >
+                <div className="tags">
+                  {node.childMarkdownRemark.frontmatter.tags.map(tag => (
+                    <small className="tag">{tag}</small>
+                  ))}
+                </div>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
+
       <section className="container">
         <h2>Design Projects</h2>
         <div className={styles.cards}>
           {mergedBehance.map(node => (
-            <Card
-              key={node.slug}
-              title={node.name}
-              link={`designs/${node.slug}`}
-              img={node.fluid}
-            />
+            <Card key={node.slug} title={node.name} link={`designs/${node.slug}`} img={node}>
+              <div className="tags">
+                {node.tags.map(tag => (
+                  <small className="tag">{tag.toLowerCase()}</small>
+                ))}
+              </div>
+            </Card>
           ))}
         </div>
       </section>
@@ -60,7 +71,7 @@ const useIndexPageQuery = (): IndexPageQuery => {
     markdownFiles,
     allBehanceProjects,
   }: IndexPageQuery = useStaticQuery(graphql`
-    query indexQuery {
+    query IndexPageQuery {
       allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
         nodes {
           slug
@@ -75,9 +86,8 @@ const useIndexPageQuery = (): IndexPageQuery => {
         nodes {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 700) {
-              # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            fixed(width: 300, height: 150) {
+              ...GatsbyImageSharpFixed
             }
           }
         }
@@ -95,11 +105,11 @@ const useIndexPageQuery = (): IndexPageQuery => {
               path
               date
               subtitle
+              tags
               thumbnail {
                 childImageSharp {
-                  fluid(maxWidth: 700) {
-                    # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
-                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
+                  fixed(width: 300, height: 150) {
+                    ...GatsbyImageSharpFixed
                   }
                 }
               }

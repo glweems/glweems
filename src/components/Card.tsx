@@ -5,18 +5,23 @@ import styles from '../styles/components/card.module.scss';
 
 interface Card {
   title: string;
-  img?: object;
+  img?: {
+    fixed?: object;
+    fluid?: object;
+  };
   link?: string;
-  children?: ChildNode | ChildNode | Element;
+  children?: any;
 }
 const Card = ({ title, img, link, children }: Card) => {
   const go = () => (link ? navigate(link) : null);
 
   return (
-    <div role="presentation" onClick={go} className={styles.card}>
+    <div className={styles.card}>
       <h6 className={styles.title}>{title}</h6>
-      {!img || <Img fluid={img} />}
-      {children}
+      <div role="presentation" onClick={go} className={styles.body}>
+        {!img || <Img className={styles.img} {...img} />}
+      </div>
+      <>{children}</>
     </div>
   );
 };

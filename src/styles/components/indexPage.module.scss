@@ -1,0 +1,26 @@
+@import "../mixins";
+
+.indexPage {
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(300px);
+  scroll-snap-type: y mandatory;
+  section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 100vh;
+  }
+}
+
+.cards {
+  display: grid;
+  gap: 1em;
+
+  @include breakpoint(sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include breakpoint(md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -1,42 +1,29 @@
 @import "../variables";
 @import "../mixins";
 
-.cards {
-  display: grid;
-  gap: 1em;
-
-  @include breakpoint(sm) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @include breakpoint(md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .card {
   display: grid;
   grid-template-rows: 1fr auto auto auto;
   grid-template-columns: 1fr;
   // gap: 0.25rem;
-  width: 100%;
+  // width: 100%;
 }
 
-.img {
-  height: 10em;
-  background-position: 50% 50%;
-  background-size: cover;
-  border-radius: 3px;
-  transition: all 0.25s ease-in-out;
-  &:hover {
+.body {
+  img {
+    border-radius: 3px;
+    transition: all 0.25s ease-in-out;
   }
 }
 
 .title {
-  // display: box;
+  white-space: nowrap;
+  width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   max-height: 37px;
   margin-bottom: 0.5em;
   overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .subtitle {
