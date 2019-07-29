@@ -1,19 +1,16 @@
-import { Card, Title } from 'styled/card'
-import { Flex } from 'elements'
-import FluidImg from 'gatsby-image'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { Card, Title } from 'styled/card';
+import { Flex } from 'elements';
+import FluidImg from 'gatsby-image';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const MyTuts = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, frontmatter, id, timeToRead } }) => (
     <Card minwidth="245px" key={id}>
       <Title>{frontmatter.title}</Title>
       <Link to={slug}>
-        <FluidImg
-          className="card-img"
-          fluid={frontmatter.thumbnail.childImageSharp.fluid}
-        />
+        <FluidImg className="card-img" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
       </Link>
       <div>
         <Flex between>
@@ -22,7 +19,7 @@ const MyTuts = ({ edges }) =>
         </Flex>
       </div>
     </Card>
-  ))
+  ));
 
 MyTuts.propTypes = {
   edges: PropTypes.arrayOf(
@@ -39,9 +36,9 @@ MyTuts.propTypes = {
           slug: PropTypes.string.isRequired,
         }),
       }),
-    }).isRequired
+    }).isRequired,
   ),
-}
+};
 
 MyTuts.propTypes = {
   edges: PropTypes.arrayOf(
@@ -58,8 +55,8 @@ MyTuts.propTypes = {
           slug: PropTypes.string.isRequired,
         }),
       }),
-    }).isRequired
+    }).isRequired,
   ),
-}
+};
 
-export default MyTuts
+export default MyTuts;

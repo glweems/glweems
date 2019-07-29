@@ -1,7 +1,7 @@
-import { Flex, Tag } from 'elements'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
+import { Flex, Tag } from 'elements';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const Tags = ({ tags }) => (
   <Flex wrap="true">
@@ -11,10 +11,10 @@ const Tags = ({ tags }) => (
       </Tag>
     ))}
   </Flex>
-)
+);
 
 Tags.propTypes = {
   tags: PropTypes.arrayOf(PropTypes.string.isRequired),
-}
+};
 
-export default Tags
+export default Tags;

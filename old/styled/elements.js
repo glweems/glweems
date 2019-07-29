@@ -1,6 +1,6 @@
-import { darken, lighten } from 'polished'
-import styled, { css } from 'styled-components'
-import { media } from 'theme'
+import { darken, lighten } from 'polished';
+import styled, { css } from 'styled-components';
+import { media } from 'theme';
 
 export const Form = styled.form`
   display: flex;
@@ -22,13 +22,13 @@ export const Form = styled.form`
   button {
     background: ${props => props.theme.green};
   }
-`
+`;
 
 export const Container = styled.div`
   max-width: ${992 / 16}em;
   margin: 0 auto;
   ${media.phone`width: 100%;`};
-`
+`;
 
 export const Tag = styled.span`
   border-width: 2px;
@@ -61,7 +61,7 @@ export const Tag = styled.span`
     color: ${props => props.theme.blue};
     border-color: ${props => props.theme.blue};
   }
-`
+`;
 
 export const Button = styled.button`
   background: none;
@@ -102,7 +102,7 @@ export const Button = styled.button`
     css`
       font-size: 14px;
     `};
-`
+`;
 
 export const Flex = styled.div`
   display: flex;
@@ -139,7 +139,7 @@ export const Flex = styled.div`
   ${Tag}:not(last-child) {
     margin-right: 0.5rem;
   }
-`
+`;
 
 export const List = styled.ul`
   margin: 0;
@@ -156,18 +156,18 @@ li {
     `}
 
     text-align: ${props => (props.textRight ? `right` : `left`)}
-`
+`;
 
 export const IconLink = styled.a`
   color: ${props => props.theme.dark}!important;
   :hover {
     color: ${props => props.theme.blue}!important;
   }
-`
+`;
 
 export const LI = styled.li`
   margin: 0;
-`
+`;
 
 export const Article = styled.article`
   img {
@@ -181,8 +181,7 @@ export const Article = styled.article`
       pre[class*='language-'] {
         color: #c5c8c6;
         text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-        font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier,
-          monospace;
+        font-family: Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace;
         direction: ltr;
         text-align: left;
         white-space: pre;
@@ -323,10 +322,9 @@ export const Article = styled.article`
     css`
       code[class*='language-'],
       pre[class*='language-'] {
-        font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-          'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-          'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-          'Courier New', Courier, monospace;
+        font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console',
+          'Lucida Sans Typewriter', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
+          'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier, monospace;
         font-size: 14px;
         line-height: 1.375;
         direction: ltr;
@@ -477,16 +475,8 @@ export const Article = styled.article`
 
       .line-highlight {
         background: rgba(45, 32, 6, 0.2);
-        background: -webkit-linear-gradient(
-          left,
-          rgba(45, 32, 6, 0.2) 70%,
-          rgba(45, 32, 6, 0)
-        );
-        background: linear-gradient(
-          to right,
-          rgba(45, 32, 6, 0.2) 70%,
-          rgba(45, 32, 6, 0)
-        );
+        background: -webkit-linear-gradient(left, rgba(45, 32, 6, 0.2) 70%, rgba(45, 32, 6, 0));
+        background: linear-gradient(to right, rgba(45, 32, 6, 0.2) 70%, rgba(45, 32, 6, 0));
       }
     `}
-`
+`;

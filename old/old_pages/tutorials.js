@@ -1,9 +1,9 @@
-import { Container } from 'elements'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from '@/seo'
-import MyTuts from '@/MyTuts'
+import { Container } from 'elements';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+import SEO from '@/seo';
+import MyTuts from '@/MyTuts';
 
 const TutorialsPage = ({ data }) => (
   <>
@@ -24,13 +24,13 @@ const TutorialsPage = ({ data }) => (
       <MyTuts edges={data.allMarkdownRemark.edges} />
     </Container>
   </>
-)
+);
 
 TutorialsPage.propTypes = {
   data: PropTypes.object.isRequired,
-}
+};
 
-export default TutorialsPage
+export default TutorialsPage;
 
 export const TutsQuery = graphql`
   query {
@@ -70,4 +70,4 @@ export const TutsQuery = graphql`
       }
     }
   }
-`
+`;

@@ -38,7 +38,5 @@ export const socialMediaAccounts = [
 
 export const glweems = axios.create({
   baseURL:
-    process.env.NODE_ENV === `development`
-      ? `http://localhost:5000`
-      : `https://api.glweems.com`,
+    process.env.NODE_ENV === `development` ? `http://localhost:5000` : `https://api.glweems.com`,
 });

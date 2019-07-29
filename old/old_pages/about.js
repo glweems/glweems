@@ -1,8 +1,8 @@
-import ContactForm from 'forms/contact'
-import { Container } from 'elements'
-import React from 'react'
-import Garrett from '@/garrett'
-import SEO from '@/seo'
+import ContactForm from 'forms/contact';
+import { Container } from 'elements';
+import React from 'react';
+import Garrett from '@/garrett';
+import SEO from '@/seo';
 
 const AboutPage = () => (
   <>
@@ -12,6 +12,6 @@ const AboutPage = () => (
       <ContactForm />
     </Container>
   </>
-)
+);
 
-export default AboutPage
+export default AboutPage;

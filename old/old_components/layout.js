@@ -1,16 +1,16 @@
-import { StaticQuery, graphql } from 'gatsby'
-import styled, { ThemeProvider } from 'styled-components'
-import theme, { GlobalStyle } from 'theme'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { connect } from 'react-redux'
-import Navbar from '@/navbar'
-import ErrorBoundary from '@/sentry'
-import Transition from '@/transition'
+import { StaticQuery, graphql } from 'gatsby';
+import styled, { ThemeProvider } from 'styled-components';
+import theme, { GlobalStyle } from 'theme';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import Navbar from '@/navbar';
+import ErrorBoundary from '@/sentry';
+import Transition from '@/transition';
 
 const Main = styled.main`
   padding-top: 4rem;
-`
+`;
 
 const Layout = ({ children, location, isNavOpen, navbarLinks, isDarkMode }) => (
   <StaticQuery
@@ -35,7 +35,7 @@ const Layout = ({ children, location, isNavOpen, navbarLinks, isDarkMode }) => (
       </ThemeProvider>
     )}
   />
-)
+);
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -46,10 +46,10 @@ Layout.propTypes = {
   navbarLinks: PropTypes.array.isRequired,
   isNavOpen: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
-}
+};
 
 export default connect(state => ({
   isDarkMode: state.isDarkMode,
   isNavOpen: state.isNavOpen,
   navbarLinks: state.navbarLinks,
-}))(Layout)
+}))(Layout);

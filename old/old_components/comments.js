@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { List } from 'elements'
-import PropTypes from 'prop-types'
-import { glweems } from 'src/data'
-import styled from 'styled-components'
+import React, { Component } from 'react';
+import { List } from 'elements';
+import PropTypes from 'prop-types';
+import { glweems } from 'src/data';
+import styled from 'styled-components';
 
 const Comment = styled.li`
   background: ${props => props.theme.light};
@@ -15,27 +15,27 @@ const Comment = styled.li`
   span:last-child {
     font-size: 0.75rem;
   }
-`
+`;
 
 export default class Comments extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       comments: [],
-    }
+    };
   }
 
   componentDidMount = () => {
-    const { url } = this.props
+    const { url } = this.props;
     glweems
       .get(url)
       .then(({ data }) => this.setState({ comments: data }))
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   render() {
-    const { comments } = this.state
+    const { comments } = this.state;
 
     return (
       <section>
@@ -49,10 +49,10 @@ export default class Comments extends Component {
           ))}
         </List>
       </section>
-    )
+    );
   }
 }
 
 Comments.propTypes = {
   url: PropTypes.string.isRequired,
-}
+};

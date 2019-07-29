@@ -1,30 +1,30 @@
-import { Button, Form } from 'elements'
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { glweems } from 'src/data'
+import { Button, Form } from 'elements';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { glweems } from 'src/data';
 
 export default class AddComment extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       comment: '',
-    }
+    };
   }
 
-  handleChange = e => this.setState({ [e.target.name]: e.target.value })
+  handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
   handleSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const { comment } = this.state
-    const { url, post } = this.props
+    const { comment } = this.state;
+    const { url, post } = this.props;
 
     glweems
       .post(url, { tutorial: post, comment })
       .then(() => this.setState({ comment: '' }))
-      .catch(err => console.log(err))
-  }
+      .catch(err => console.log(err));
+  };
 
   render() {
     return (
@@ -35,11 +35,11 @@ export default class AddComment extends Component {
           <Button>Add Comment</Button>
         </Form>
       </section>
-    )
+    );
   }
 }
 
 AddComment.propTypes = {
   url: PropTypes.string.isRequired,
   post: PropTypes.string.isRequired,
-}
+};

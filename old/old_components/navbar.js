@@ -1,20 +1,16 @@
-import { Button, Container, Flex, List } from 'elements'
-import React, { Fragment } from 'react'
-import { darken, lighten } from 'polished'
-import {
-  faAdjust,
-  faBars,
-  faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons'
-import { toggleDarkMode, toggleNavBar } from 'state/actions'
+import { Button, Container, Flex, List } from 'elements';
+import React, { Fragment } from 'react';
+import { darken, lighten } from 'polished';
+import { faAdjust, faBars, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { toggleDarkMode, toggleNavBar } from 'state/actions';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { media } from 'theme'
-import styled from 'styled-components'
-import { FullLogo } from '@/icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { media } from 'theme';
+import styled from 'styled-components';
+import { FullLogo } from '@/icons';
 
 const Dropdown = styled.div`
   width: 100%;
@@ -39,7 +35,7 @@ const Dropdown = styled.div`
     padding: 1rem;
     font-size: 1.75rem;
   }
-`
+`;
 
 const Navbar = styled.section`
 
@@ -90,7 +86,7 @@ const Navbar = styled.section`
   .logo-link {
     padding-left: 0.5rem;
   }
-`
+`;
 
 const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
   <Fragment>
@@ -127,11 +123,7 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
               </li>
             ))}
             <li>
-              <Button
-                bordered
-                type="button"
-                onClick={() => dispatch(toggleDarkMode(!isDarkMode))}
-              >
+              <Button bordered type="button" onClick={() => dispatch(toggleDarkMode(!isDarkMode))}>
                 <FontAwesomeIcon icon={faAdjust} />
               </Button>
             </li>
@@ -140,16 +132,16 @@ const Navigation = ({ isDarkMode, isNavOpen, navbarLinks, dispatch }) => (
       </Dropdown>
     ) : null}
   </Fragment>
-)
+);
 
 Navigation.propTypes = {
   isNavOpen: PropTypes.bool.isRequired,
   isDarkMode: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired,
   navbarLinks: PropTypes.array.isRequired,
-}
+};
 
 export default connect(state => ({
   isNavOpen: state.isNavOpen,
   isDarkMode: state.isDarkMode,
-}))(Navigation)
+}))(Navigation);

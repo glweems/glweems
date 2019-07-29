@@ -1,27 +1,24 @@
-import { Container } from 'elements'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { graphql } from 'gatsby'
-import SEO from '@/seo'
-import { BehanceProjects } from '@/my-content'
+import { Container } from 'elements';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { graphql } from 'gatsby';
+import SEO from '@/seo';
+import { BehanceProjects } from '@/my-content';
 
 const GraphicDesignPage = ({ data }) => (
   <>
-    <SEO
-      title="Graphic Design"
-      keywords={[`Photoshop`, `Illustator`, `Design`, `Designer`]}
-    />
+    <SEO title="Graphic Design" keywords={[`Photoshop`, `Illustator`, `Design`, `Designer`]} />
     <Container>
       <BehanceProjects edges={data.allBehanceProjects.edges} />
     </Container>
   </>
-)
+);
 
 GraphicDesignPage.propTypes = {
   data: PropTypes.object.isRequired,
-}
+};
 
-export default GraphicDesignPage
+export default GraphicDesignPage;
 
 export const GraphicDesignPageQuery = graphql`
   query {
@@ -53,4 +50,4 @@ export const GraphicDesignPageQuery = graphql`
       }
     }
   }
-`
+`;

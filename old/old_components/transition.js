@@ -1,11 +1,8 @@
 /* eslint-disable react/prop-types */
-import React from 'react'
-import {
-  TransitionGroup,
-  Transition as ReactTransition,
-} from 'react-transition-group'
+import React from 'react';
+import { TransitionGroup, Transition as ReactTransition } from 'react-transition-group';
 
-const timeout = 500
+const timeout = 500;
 const getTransitionStyles = {
   entering: {
     position: `absolute`,
@@ -19,11 +16,11 @@ const getTransitionStyles = {
     transition: `opacity ${timeout}ms ease-in-out`,
     opacity: 0,
   },
-}
+};
 
 class Transition extends React.PureComponent {
   render() {
-    const { children, location } = this.props
+    const { children, location } = this.props;
     return (
       <TransitionGroup>
         <ReactTransition
@@ -44,8 +41,8 @@ class Transition extends React.PureComponent {
           )}
         </ReactTransition>
       </TransitionGroup>
-    )
+    );
   }
 }
 
-export default Transition
+export default Transition;

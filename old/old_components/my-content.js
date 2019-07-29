@@ -1,12 +1,12 @@
-import { Card, CardImg, Subtitle, Title } from 'styled/card'
-import { Flex } from 'elements'
+import { Card, CardImg, Subtitle, Title } from 'styled/card';
+import { Flex } from 'elements';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { ellipsis } from 'polished'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { ellipsis } from 'polished';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 export const BehanceProjects = ({ edges }) =>
   edges.map(({ node: { fields: { slug }, name, covers, id } }) => (
@@ -16,7 +16,7 @@ export const BehanceProjects = ({ edges }) =>
         <CardImg img={covers.size_max_808} />
       </Link>
     </Card>
-  ))
+  ));
 
 BehanceProjects.propTypes = {
   edges: PropTypes.arrayOf(
@@ -32,9 +32,9 @@ BehanceProjects.propTypes = {
         }),
         tags: PropTypes.array.isRequired,
       }),
-    }).isRequired
+    }).isRequired,
   ),
-}
+};
 export const PinnedRepos = ({ edges }) =>
   edges.map(({ node: { name, url, description } }, i) => (
     <Card key={i} minwidth="225px">
@@ -53,7 +53,7 @@ export const PinnedRepos = ({ edges }) =>
         ))}
       </Flex> */}
     </Card>
-  ))
+  ));
 
 PinnedRepos.propTypes = {
   edges: PropTypes.arrayOf(
@@ -72,6 +72,6 @@ PinnedRepos.propTypes = {
           }),
         }),
       }),
-    }).isRequired
+    }).isRequired,
   ),
-}
+};

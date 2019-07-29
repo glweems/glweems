@@ -1,4 +1,4 @@
-import { TOGGLE_NAVBAR, TOGGLE_DARKMODE } from 'state/actions'
+import { TOGGLE_NAVBAR, TOGGLE_DARKMODE } from 'state/actions';
 
 const initialState = {
   isNavOpen: false,
@@ -8,16 +8,16 @@ const initialState = {
     { name: `Tutorials`, to: `/tutorials` },
     { name: `Graphic Design`, to: `/designs` },
   ],
-}
+};
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_DARKMODE:
-      return { ...state, isDarkMode: action.isDarkMode }
+      return { ...state, isDarkMode: action.isDarkMode };
 
     case TOGGLE_NAVBAR:
-      return { ...state, isNavOpen: action.isNavOpen }
+      return { ...state, isNavOpen: action.isNavOpen };
     default:
-      return state
+      return state;
   }
-}
+};

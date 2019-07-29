@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import { Button } from 'elements'
-import axios from 'axios'
-import { darken } from 'polished'
-import { media } from 'theme'
-import styled from 'styled-components'
+import { Button } from 'elements';
+import axios from 'axios';
+import { darken } from 'polished';
+import { media } from 'theme';
+import styled from 'styled-components';
 
 export default class subscribe extends Component {
   constructor() {
-    super()
-    this.state = { email: ``, success: ``, error: `` }
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    super();
+    this.state = { email: ``, success: ``, error: `` };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -19,19 +19,17 @@ export default class subscribe extends Component {
   }
 
   handleChange(event) {
-    this.setState({ email: event.target.value })
+    this.setState({ email: event.target.value });
   }
 
   handleSubmit(event) {
-    event.preventDefault()
-    const { email } = this.state
-    axios
-      .post(`/.netlify/functions/subscribe`, { email })
-      .then(res => console.log(res))
+    event.preventDefault();
+    const { email } = this.state;
+    axios.post(`/.netlify/functions/subscribe`, { email }).then(res => console.log(res));
   }
 
   render() {
-    const { email, success, error } = this.state
+    const { email, success, error } = this.state;
     return (
       <StyledSubscribe>
         <div>
@@ -47,17 +45,12 @@ export default class subscribe extends Component {
             onChange={this.handleChange}
             placeholder="Email"
           />
-          <Button
-            submit
-            type="submit"
-            value="Submit"
-            style={{ color: `white` }}
-          >
+          <Button submit type="submit" value="Submit" style={{ color: `white` }}>
             HELLO
           </Button>
         </Form>
       </StyledSubscribe>
-    )
+    );
   }
 }
 const StyledSubscribe = styled.section`
@@ -67,7 +60,7 @@ const StyledSubscribe = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
   ${media.tablet`grid-template-columns: 1fr;`}
-`
+`;
 
 export const Form = styled.form`
   display: flex;
@@ -80,4 +73,4 @@ export const Form = styled.form`
   label {
     text-align: left;
   }
-`
+`;
