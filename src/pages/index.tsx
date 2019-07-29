@@ -5,72 +5,6 @@ import Card from '../components/Card';
 import styles from '../styles/components/card.module.scss';
 import About from '../components/About';
 
-interface IndexPageQuery {
-  markdownFiles: {
-    nodes: {
-      id: string;
-      sourceInstanceName: string;
-      childMarkdownRemark: {
-        fileAbsolutePath: string;
-        frontmatter: {
-          thumbnail: {
-            childImageSharp: {
-              fluid: {};
-            };
-          };
-          title: string;
-          tags: string[];
-          path: string;
-        };
-      };
-    }[];
-  };
-  behanceImages: {
-    nodes: {
-      id: string;
-      sourceInstanceName: string;
-      relativeDirectory: string;
-      name: string;
-      childImageSharp: {
-        fluid: {};
-      };
-    }[];
-  };
-  github: {
-    viewer: {
-      pinnedItems: {
-        nodes: {
-          id: string;
-          name: string;
-          url: string;
-          updatedAt: string;
-          description: string;
-          homepageUrl: string;
-          languages: {
-            nodes: {
-              color: string;
-              id: string;
-              name: string;
-            }[];
-          };
-        }[];
-      };
-    };
-  };
-  allBehanceProjects: {
-    nodes: {
-      id: string;
-      name: string;
-      slug: string;
-      description: string;
-      covers: {
-        size_max_808: string;
-      };
-      tags: string[];
-    }[];
-  };
-}
-
 const IndexPage = () => {
   const { behanceImages, markdownFiles, github, allBehanceProjects } = useIndexPageQuery();
 
@@ -86,9 +20,9 @@ const IndexPage = () => {
       <section className="container">
         <About />
       </section>
-      <Link to="/help">help</Link>
 
       <section className="container">
+        <h2>Blog Posts</h2>
         <div className={styles.cards}>
           {markdownFiles.nodes.map(node => (
             <Card
@@ -101,7 +35,7 @@ const IndexPage = () => {
         </div>
       </section>
       <section className="container">
-        <h1>Design Projects</h1>
+        <h2>Design Projects</h2>
         <div className={styles.cards}>
           {mergedBehance.map(node => (
             <Card

@@ -2,6 +2,7 @@
 import React from 'react';
 import Avitar from './Avitar';
 import styles from '../styles/components/about.module.scss';
+import SocialMediaIcons from './SocialMedia';
 
 const About = () => {
   return (
@@ -18,6 +19,7 @@ const About = () => {
           gwgraphicdesign@gmail.com
         </a>
       </div>
+      <SocialMediaIcons noText horizontal size="lg" />
     </div>
   );
 };

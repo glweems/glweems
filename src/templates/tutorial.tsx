@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
-import styles from '../styles/components/articlel.module.scss';
+import styles from '../styles/components/article.module.scss';
 
 interface TutorialProps {
   data: {
@@ -10,14 +10,7 @@ interface TutorialProps {
   };
 }
 
-const BlogTemplate = ({
-  data: {
-    markdownRemark: {
-      htmlAst,
-      frontmatter: { title },
-    },
-  },
-}: TutorialProps) => {
+const BlogTemplate = ({ data: { markdownRemark } }: TutorialProps) => {
   const renderAst = new RehypeReact({
     createElement: React.createElement,
     components: {},
@@ -25,10 +18,10 @@ const BlogTemplate = ({
 
   return (
     <section className="container">
-      <SEO title={title} />
+      <SEO title={markdownRemark.frontmatter.title} />
       <div>
         <article className={styles.article}>
-          <>{renderAst(htmlAst)}</>
+          <>{renderAst(markdownRemark.htmlAst)}</>
         </article>
       </div>
     </section>
@@ -38,15 +31,15 @@ const BlogTemplate = ({
 export default BlogTemplate;
 
 export const BlogPost = graphql`
-  query BlogPost($slug: String!) {
-    markdownRemark(frontmatter: { path: { regex: $slug } }) {
-      id
-      htmlAst
+  query MyQuery($slug: String!) {
+    markdownRemark(frontmatter: { path: { eq: $slug } }) {
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
-        tags
+        path
+        date
+        subtitle
       }
+      htmlAst
     }
   }
 `;

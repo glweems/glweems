@@ -5,6 +5,17 @@
  * Ported for PrismJS by Albert Vallverdu [@byverdu]
  */
 
+.article {
+  width: 100%;
+  div {
+    width: 100%;
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
+}
+
 code[class*="language-"],
 pre[class*="language-"] {
   color: #f8f8f2;

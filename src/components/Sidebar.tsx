@@ -19,6 +19,7 @@ const Sidebar = ({ isOpen, navItems }: SidebarProps) => (
     customBurgerIcon={false}
     customCrossIcon={false}
     noOverlay
+    right
   >
     {navItems.map(({ text, path }: NavItem) => (
       <Link key={path} to={path}>

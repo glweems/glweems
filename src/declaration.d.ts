@@ -15,77 +15,68 @@ declare module '@microlink/react';
 declare module 'gatsby';
 declare module 'gatsby-image';
 
-interface IndexPage {
-  data: IndexPageData;
-}
-interface IndexPageData {
-  github: Github;
-  allFile: AllFile;
-  allBehanceProjects: AllBehanceProjects;
-}
-interface Github {
-  viewer: Viewer;
-}
-interface Viewer {
-  pinnedItems: PinnedItems;
-}
-interface PinnedItems {
-  nodes: PinnedItem[];
-}
-interface PinnedItem {
-  id: string;
-  name: string;
-  url: string;
-  updatedAt: string;
-  description: string;
-  homepageUrl: string;
-  languages: Languages;
-}
-interface Languages {
-  nodes?: (NodesEntity1)[] | null;
-}
-interface NodesEntity1 {
-  color: string;
-  id: string;
-  name: string;
-}
-interface AllFile {
-  nodes: TutorialFileNode[];
-}
-interface EdgesEntity {
-  node: Node;
-}
-interface TutorialFileNode {
-  gitRemote: GitRemote;
-  childMarkdownRemark?: ChildMarkdownRemark | null;
-}
-interface GitRemote {
-  name: string;
-  webLink: string;
-}
-interface ChildMarkdownRemark {
-  html: string;
-  htmlAst: any[];
-  frontmatter: Frontmatter;
-}
-interface Frontmatter {
-  tags?: (string)[] | null;
-  title: string;
-}
-interface AllBehanceProjects {
-  edges: BehanceProjectNode[];
-}
-interface BehanceProjectNode {
-  node: BehanceProject;
-}
-interface BehanceProject {
-  id: string;
-  name: string;
-  slug: string;
-  description: string;
-  covers: Covers;
-  tags?: (string)[] | null;
-}
-interface Covers {
-  size_max_808: string;
+interface IndexPageQuery {
+  markdownFiles: {
+    nodes: {
+      id: string;
+      sourceInstanceName: string;
+      childMarkdownRemark: {
+        fileAbsolutePath: string;
+        frontmatter: {
+          thumbnail: {
+            childImageSharp: {
+              fluid: {};
+            };
+          };
+          title: string;
+          tags: string[];
+          path: string;
+        };
+      };
+    }[];
+  };
+  behanceImages: {
+    nodes: {
+      id: string;
+      sourceInstanceName: string;
+      relativeDirectory: string;
+      name: string;
+      childImageSharp: {
+        fluid: {};
+      };
+    }[];
+  };
+  github: {
+    viewer: {
+      pinnedItems: {
+        nodes: {
+          id: string;
+          name: string;
+          url: string;
+          updatedAt: string;
+          description: string;
+          homepageUrl: string;
+          languages: {
+            nodes: {
+              color: string;
+              id: string;
+              name: string;
+            }[];
+          };
+        }[];
+      };
+    };
+  };
+  allBehanceProjects: {
+    nodes: {
+      id: string;
+      name: string;
+      slug: string;
+      description: string;
+      covers: {
+        size_max_808: string;
+      };
+      tags: string[];
+    }[];
+  };
 }

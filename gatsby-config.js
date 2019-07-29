@@ -172,8 +172,8 @@ module.exports = {
           `gatsby-remark-unwrap-images`,
           `gatsby-remark-images`,
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-responsive-iframe`,
           `gatsby-remark-component`,
+
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
