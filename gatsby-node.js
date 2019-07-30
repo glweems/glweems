@@ -1,49 +1,42 @@
+/* eslint-disable consistent-return */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
-const slugify = require(`slugify`);
 
 exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     query CreatePagesQuery {
-      allBehanceProjects {
-        edges {
-          node {
-            id
-            slug
-          }
+      allBehanceProject {
+        nodes {
+          slug
         }
       }
       allGitRemote {
-        edges {
-          node {
-            name
-          }
+        nodes {
+          name
         }
       }
     }
   `)
-    .then(result => {
-      if (result.errors) {
-        return Promise.reject(result.errors);
-      }
+    .then(({ data: { allBehanceProject, allGitRemote } }) => {
       // Create Behance Pages
-      result.data.allBehanceProjects.edges.forEach(({ node }) => {
+      allBehanceProject.nodes.forEach(({ slug }) => {
         actions.createPage({
-          path: `/designs/${node.slug}`,
+          path: `/designs/${slug}`,
           component: path.resolve(`src/templates/design.tsx`),
-          context: { slug: node.slug },
+          context: { slug: `/${slug}/` },
         });
       });
 
       // Create Git Pages
-      result.data.allGitRemote.edges.forEach(({ node }) => {
+      allGitRemote.nodes.forEach(({ name }) => {
         actions.createPage({
-          path: `/tutorials/${node.name}`,
+          path: `/tutorials/${name}`,
           component: path.resolve(`src/templates/tutorial.tsx`),
-          context: { slug: `${node.name}` },
+          context: { slug: `${name}` },
         });
       });
     })
     .catch(err => {
-      throw new Error(err);
+      throw new Error(err.message);
     });
 };

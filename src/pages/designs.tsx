@@ -54,18 +54,21 @@ const Designs = () => {
           relativeDirectory
           childImageSharp {
             fluid(maxWidth: 1000) {
-              # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
       }
-      allBehanceProjects(sort: { fields: slug, order: ASC }) {
+      allBehanceProject(sort: { fields: slug, order: ASC }) {
         nodes {
           slug
           name
-          areas
-          cover
+          description
+          tags
+          cover {
+            src
+            path
+          }
         }
       }
     }

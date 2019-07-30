@@ -1,4 +1,5 @@
-@import "variables";
+@import 'variables';
+@import 'mixins';
 
 html {
   width: 100%;
@@ -53,8 +54,8 @@ div {
 body {
   max-width: 100%;
   overflow: hidden;
-  color: $light;
-  background: $dark;
+  // color: $light;
+  // background: $dark;
 }
 
 a {
@@ -72,9 +73,9 @@ small {
   color: $muted;
 }
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
 button {
   box-sizing: content-box;
   padding: 0;
@@ -107,4 +108,15 @@ button {
 
 .bm-overlay {
   background: $dark;
+}
+
+article {
+  * {
+    max-width: 100vh;
+  }
+  display: grid;
+  grid-template-columns: 100%;
+  @include breakpoint(xs) {
+    grid-template-columns: 1fr 1fr 10px 740px 10px 1fr 1fr;
+  }
 }

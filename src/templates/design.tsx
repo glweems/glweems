@@ -34,12 +34,12 @@ interface DesignTemplate {
 }
 
 const DesignTemplate = ({ data }: DesignTemplate) => {
-  const { name, tags, description } = data.behanceProjects;
+  const { name, tags, description } = data.behanceProject;
   const { nodes } = data.allFile;
 
   return (
     <section className="container">
-      <SEO title={name} keywords={tags} description={description} />
+      <SEO title={name} tags={tags} description={description} />
       <h1>{name}</h1>
       <h3>{description}</h3>
       {nodes.map(({ childImageSharp: { fluid } }) => (
@@ -51,27 +51,21 @@ const DesignTemplate = ({ data }: DesignTemplate) => {
 
 export const designQuery = graphql`
   query SingleDesign($slug: String!) {
-    behanceProjects(slug: { eq: $slug }) {
+    behanceProject(slug: { regex: $slug }) {
       name
       slug
       description
-      published
-      created
       tags
       tools {
         title
       }
-      areas
+      tags
     }
-    allFile(
-      filter: { relativeDirectory: { eq: $slug }, name: { ne: "cover" } }
-      sort: { fields: name, order: ASC }
-    ) {
+    allFile(filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }) {
       nodes {
         name
         childImageSharp {
           fluid(maxWidth: 700) {
-            # Choose either the fragment including a small base64ed image, a traced placeholder SVG, or one without.
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
