@@ -49,7 +49,7 @@ const Designs = () => {
         nodes {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 1000) {
+            fluid(maxWidth: 1000, traceSVG: { background: "31a1e28", color: "#f8d58c" }) {
               ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }

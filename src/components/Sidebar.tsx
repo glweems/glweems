@@ -18,20 +18,21 @@ const Sidebar = ({ isOpen }: SidebarProps) => (
     pageWrapId="page-wrap"
     outerContainerId="outer-container"
     isOpen={isOpen}
+    className={styles.sidebar}
     customBurgerIcon={false}
     customCrossIcon={false}
     noOverlay
-    right
-    className={styles.sidebar}
   >
     <nav className={styles.nav}>
       <div>
-        <Link to="/blog">Blog</Link>
+        <Link to="/tutorials">Tutorials</Link>
       </div>
+
       <div>
         <Link to="/designs">Designs</Link>
       </div>
     </nav>
+
     <div className={styles.socialLinks}>
       <SocialMediaIcons size="sm" />
     </div>

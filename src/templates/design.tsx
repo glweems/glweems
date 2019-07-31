@@ -65,7 +65,7 @@ export const designQuery = graphql`
       nodes {
         name
         childImageSharp {
-          fluid(maxWidth: 700) {
+          fluid(maxWidth: 700, traceSVG: { background: "#31a1e28", color: "#f8d58c" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }

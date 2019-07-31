@@ -1,13 +1,24 @@
 @import "../variables";
+@import "../mixins";
+
 .about {
+  @extend %space-reset;
+
   display: grid;
   grid-template-columns: 1fr;
-}
+  gap: 2em;
 
-.avitar {
-  max-width: 12em;
-  margin-bottom: 1em;
-  img {
-    border-radius: 5px;
+  h1 {
+    color: $yellow;
+  }
+  h6 {
+    color: $red;
+  }
+
+  .avitar {
+    max-width: 12em;
+    img {
+      border-radius: 5px;
+    }
   }
 }

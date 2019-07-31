@@ -13,13 +13,8 @@ const About = () => {
       <div className={styles.avitar}>
         <Avitar />
       </div>
-      <div>
-        <h6>Designer / Developer Based in Melbourne, FL.</h6>
-        <a href="mailto:gwgraphicdesign@gmail.com" target="__blank__">
-          gwgraphicdesign@gmail.com
-        </a>
-      </div>
-      <SocialMediaIcons noText horizontal size="lg" />
+      <h6>Designer / Developer Based in Melbourne, FL.</h6>
+      <SocialMediaIcons noText horizontal marginRight="2em" size="lg" />
     </div>
   );
 };

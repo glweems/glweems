@@ -3,14 +3,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 import styles from '../styles/components/navbar.module.scss';
+import { Glweems } from './Icons';
 
 const Navbar = ({ toggleMenu }: any) => (
   <header>
     <nav className={styles.navbar}>
-      <Link to="/">glweems</Link>
       <button type="button" onClick={toggleMenu}>
         <FontAwesomeIcon icon={faBars} />
       </button>
+      <Link to="/">
+        <Glweems />
+      </Link>
+      <button>Email</button>
     </nav>
   </header>
 );

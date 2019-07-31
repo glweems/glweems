@@ -8,6 +8,7 @@ import {
   faGithub,
   faCodepen,
 } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 
 interface IconData {
   name: string;
@@ -16,6 +17,11 @@ interface IconData {
 }
 
 const data: IconData[] = [
+  {
+    name: 'Email',
+    link: 'mailto://gwgraphdesign@gmail.com',
+    icon: faEnvelopeOpenText,
+  },
   {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/glweems',
@@ -47,11 +53,11 @@ interface SocialMediaIconProps {
   name: string;
   link: string;
   icon: IconDefinition;
-  fontSize: string;
-  marginRight: string;
-  noText: boolean;
-  noIcon: boolean;
-  size:
+  fontSize?: string;
+  marginRight?: string;
+  noText?: boolean;
+  noIcon?: boolean;
+  size?:
     | 'xs'
     | 'lg'
     | 'sm'
@@ -66,7 +72,7 @@ interface SocialMediaIconProps {
     | '9x'
     | '10x'
     | undefined;
-  horizontal: boolean;
+  horizontal?: boolean;
 }
 
 const SocialMediaIcon = ({
@@ -80,7 +86,7 @@ const SocialMediaIcon = ({
   size,
 }: SocialMediaIconProps) => (
   <div style={{ fontSize, marginRight }}>
-    <a href={link} target="_blank_">
+    <a href={link} target="_blank_" className="icon-link">
       {noIcon ? null : (
         <FontAwesomeIcon icon={icon} style={{ marginRight: '0.75em' }} size={size} />
       )}
@@ -90,14 +96,14 @@ const SocialMediaIcon = ({
 );
 
 interface SocialMediaIcons {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  fontSize: string;
-  marginRight: string;
-  noText: boolean;
-  noIcon: boolean;
-  size:
+  name?: string;
+  link?: string;
+  icon?: IconDefinition;
+  fontSize?: string;
+  marginRight?: string;
+  noText?: boolean;
+  noIcon?: boolean;
+  size?:
     | 'xs'
     | 'lg'
     | 'sm'
@@ -112,7 +118,7 @@ interface SocialMediaIcons {
     | '9x'
     | '10x'
     | undefined;
-  horizontal: boolean;
+  horizontal?: boolean | undefined;
 }
 
 const SocialMediaIcons = ({

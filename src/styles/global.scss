@@ -1,5 +1,6 @@
-@import 'variables';
-@import 'mixins';
+@import "variables";
+@import "mixins";
+@import "../../node_modules/normalize-scss/sass/normalize";
 
 html {
   width: 100%;
@@ -15,47 +16,11 @@ div {
   flex-direction: row !important;
 }
 
-%space-reset {
-  margin: 0;
-  padding: 0;
-  * {
-    margin: 0;
-    padding: 0;
-  }
-}
-
-.tags {
-  @extend %space-reset;
-  white-space: nowrap;
-  overflow-y: hidden;
-  overflow-x: hidden;
-  text-overflow: hidden;
-  // line-height: 22px;
-  // max-height: 22px;
-  .tag {
-    background: lighten($dark, 20%);
-    border-radius: 0.1em;
-    font-size: 13px;
-    padding: 0 0.4em 0.3em;
-    color: $muted;
-    margin-right: 0.75em;
-  }
-  .tag:nth-child(4) {
-    display: none;
-  }
-  .tag:nth-child(5) {
-    display: none;
-  }
-  .tag:nth-child(6) {
-    display: none;
-  }
-}
-
 body {
   max-width: 100%;
   overflow: hidden;
-  // color: $light;
-  // background: $dark;
+  color: $light;
+  background: $dark;
 }
 
 a {
@@ -73,9 +38,9 @@ small {
   color: $muted;
 }
 
-input[type='submit'],
-input[type='reset'],
-input[type='button'],
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
 button {
   box-sizing: content-box;
   padding: 0;
@@ -108,4 +73,39 @@ button {
 
 .bm-overlay {
   background: $dark;
+}
+
+.icon-link {
+  cursor: pointer;
+}
+
+.tags {
+  @extend %space-reset;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  text-overflow: hidden;
+  // line-height: 22px;
+  // max-height: 22px;
+  .tag {
+    background: lighten($dark, 20%);
+    border-radius: 0.5em;
+    font-size: 13px;
+    padding: 0 0.4em 0.3em;
+    color: $muted;
+    margin-right: 0.75em;
+  }
+  .tag:nth-child(4) {
+    display: none;
+  }
+  .tag:nth-child(5) {
+    display: none;
+  }
+  .tag:nth-child(6) {
+    display: none;
+  }
+}
+
+.glweems {
+  fill: $yellow;
 }
