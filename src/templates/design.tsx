@@ -6,7 +6,7 @@ import SEO from '../components/SEO';
 
 interface DesignTemplate {
   data: {
-    behanceProjects: {
+    behanceProject: {
       name: string;
       slug: string;
       description: '';
@@ -39,7 +39,7 @@ const DesignTemplate = ({ data }: DesignTemplate) => {
 
   return (
     <section className="container">
-      <SEO title={name} tags={tags} description={description} />
+      <SEO title={name} keywords={tags} description={description} />
       <h1>{name}</h1>
       <h3>{description}</h3>
       {nodes.map(({ childImageSharp: { fluid } }) => (
