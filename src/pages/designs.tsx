@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 interface AllFileNode {
-  relativeDirectory?: string | undefined;
+  relativeDirectory: string;
   childImageSharp?:
     | {
         fluid: {};
@@ -14,40 +14,36 @@ interface AllFileNode {
 interface AllFile {
   nodes: AllFileNode[];
 }
-interface AllBehanceProjectsNode {
+interface AllBehanceProjectNode {
   name: string;
-  areas: string;
+  tags: string[];
   cover: string;
   slug: string;
 }
-interface AllBehanceProjects {
-  nodes: AllBehanceProjectsNode[];
+interface AllBehanceProject {
+  nodes: AllBehanceProjectNode[];
 }
 interface DesignsPageProps {
   allFile: {
     nodes: AllFileNode[];
   };
-  allBehanceProjects: {
-    nodes: AllBehanceProjectsNode[];
+  allBehanceProject: {
+    nodes: AllBehanceProjectNode[];
   };
 }
 
 interface Design {
   name: string;
-  areas: string;
+  tags: string[];
   slug: string;
   fluid: any;
 }
 
 const Designs = () => {
-  const { allFile, allBehanceProjects }: DesignsPageProps = useStaticQuery(graphql`
+  const { allFile, allBehanceProject }: DesignsPageProps = useStaticQuery(graphql`
     query DesignPage {
       allFile(
-        filter: {
-          name: { regex: "/cover/" }
-          absolutePath: { regex: "/gatsby-source-behance-images/" }
-          ext: { eq: ".jpg" }
-        }
+        filter: { name: { eq: "cover" }, relativePath: { regex: "/gatsby-source-behance-images/" } }
         sort: { fields: relativeDirectory, order: ASC }
       ) {
         nodes {
@@ -74,15 +70,15 @@ const Designs = () => {
     }
   `);
 
-  const mergeQueries = (projectNodes: AllBehanceProjects, fileNodes: AllFile) => {
-    return projectNodes.nodes.map(({ name, areas, slug }) => {
+  const mergeQueries = (projectNodes: AllBehanceProject, fileNodes: AllFile) => {
+    return projectNodes.nodes.map(({ name, tags, slug }) => {
       const {
         childImageSharp: { fluid },
-      }: any = fileNodes.nodes.find(file => file.relativeDirectory === slug);
+      }: any = fileNodes.nodes.find(file => file.relativeDirectory.includes(slug));
 
       const design: Design = {
         name,
-        areas,
+        tags,
         slug,
         fluid,
       };
@@ -91,7 +87,7 @@ const Designs = () => {
     });
   };
 
-  const designs = mergeQueries(allBehanceProjects, allFile);
+  const designs = mergeQueries(allBehanceProject, allFile);
 
   return (
     <section className="container">
