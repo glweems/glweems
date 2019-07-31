@@ -1,7 +1,22 @@
 import * as React from 'react';
-import * as RehypeReact from 'rehype-react';
+import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
+
+interface BlogTemplateProps {
+  data: {
+    markdownRemark: {
+      htmlAst: object;
+      frontmatter: {
+        title: string;
+        path: string;
+        date: string;
+        subtitle: string;
+        tags: string[];
+      };
+    };
+  };
+}
 
 const BlogTemplate = ({
   data: {
@@ -10,7 +25,7 @@ const BlogTemplate = ({
       frontmatter: { title, tags },
     },
   },
-}) => {
+}: BlogTemplateProps) => {
   const renderAst = new RehypeReact({
     createElement: React.createElement,
     components: {},
@@ -36,7 +51,6 @@ export const BlogPost = graphql`
         subtitle
         tags
       }
-      html
       htmlAst
     }
   }

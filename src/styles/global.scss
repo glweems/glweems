@@ -109,14 +109,3 @@ button {
 .bm-overlay {
   background: $dark;
 }
-
-article {
-  * {
-    max-width: 100vh;
-  }
-  display: grid;
-  grid-template-columns: 100%;
-  @include breakpoint(xs) {
-    grid-template-columns: 1fr 1fr 10px 740px 10px 1fr 1fr;
-  }
-}
