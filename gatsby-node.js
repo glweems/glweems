@@ -5,7 +5,7 @@ const path = require(`path`);
 exports.createPages = ({ actions, graphql }) => {
   return graphql(`
     query CreatePagesQuery {
-      allBehanceProject {
+      allBehanceProjects {
         nodes {
           slug
         }
@@ -17,9 +17,9 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `)
-    .then(({ data: { allBehanceProject, allGitRemote } }) => {
+    .then(({ data: { allBehanceProjects, allGitRemote } }) => {
       // Create Behance Pages
-      allBehanceProject.nodes.forEach(({ slug }) => {
+      allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
           path: `/designs/${slug}`,
           component: path.resolve(`src/templates/design.tsx`),

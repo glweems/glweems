@@ -14,21 +14,21 @@ interface AllFileNode {
 interface AllFile {
   nodes: AllFileNode[];
 }
-interface AllBehanceProjectNode {
+interface allBehanceProjectsNode {
   name: string;
   tags: string[];
   cover: string;
   slug: string;
 }
-interface AllBehanceProject {
-  nodes: AllBehanceProjectNode[];
+interface allBehanceProjects {
+  nodes: allBehanceProjectsNode[];
 }
 interface DesignsPageProps {
   allFile: {
     nodes: AllFileNode[];
   };
-  allBehanceProject: {
-    nodes: AllBehanceProjectNode[];
+  allBehanceProjects: {
+    nodes: allBehanceProjectsNode[];
   };
 }
 
@@ -40,7 +40,7 @@ interface Design {
 }
 
 const Designs = () => {
-  const { allFile, allBehanceProject }: DesignsPageProps = useStaticQuery(graphql`
+  const { allFile, allBehanceProjects }: DesignsPageProps = useStaticQuery(graphql`
     query DesignPage {
       allFile(
         filter: { name: { eq: "cover" }, relativePath: { regex: "/gatsby-source-behance-images/" } }
@@ -55,7 +55,7 @@ const Designs = () => {
           }
         }
       }
-      allBehanceProject(sort: { fields: slug, order: ASC }) {
+      allBehanceProjects(sort: { fields: slug, order: ASC }) {
         nodes {
           slug
           name
@@ -70,7 +70,7 @@ const Designs = () => {
     }
   `);
 
-  const mergeQueries = (projectNodes: AllBehanceProject, fileNodes: AllFile) => {
+  const mergeQueries = (projectNodes: allBehanceProjects, fileNodes: AllFile) => {
     return projectNodes.nodes.map(({ name, tags, slug }) => {
       const {
         childImageSharp: { fluid },
@@ -87,7 +87,7 @@ const Designs = () => {
     });
   };
 
-  const designs = mergeQueries(allBehanceProject, allFile);
+  const designs = mergeQueries(allBehanceProjects, allFile);
 
   return (
     <section className="container">

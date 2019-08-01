@@ -6477,10 +6477,10 @@ gatsby-remark-vscode@^1.0.6:
     unist-util-visit "^1.4.0"
     vscode-textmate "^4.1.0"
 
-gatsby-source-behance-images@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-behance-images/-/gatsby-source-behance-images-1.3.0.tgz#523b1668f64e40995eea5bf00b68d583517f0704"
-  integrity sha512-6xICkFwSdR9IOkqByiz7rwZupKYV2QwD/+1PvE+uu4vpqIXATjj5+y0M6NbfE3clM/F1HTgksdH0uq1xtHSa5A==
+gatsby-source-behance-images@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-behance-images/-/gatsby-source-behance-images-1.3.1.tgz#1a6d1fe4bbf589a3e07e83a50b7002c7623b8a0b"
+  integrity sha512-RkXCL5BxSnfv4aLWC7H2gMkSNnOZ8KV5YgN4Axhr/w33poOazax3oAvXW/rETPQ4Fe47NNK5S51vjw8BmhDfEg==
   dependencies:
     axios "^0.18.0"
     bluebird "^3.5.4"

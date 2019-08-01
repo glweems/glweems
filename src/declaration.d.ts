@@ -69,7 +69,7 @@ interface IndexPageQuery {
       };
     };
   };
-  allBehanceProject: {
+  allBehanceProjects: {
     nodes: {
       id: string;
       name: string;

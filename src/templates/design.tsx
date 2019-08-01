@@ -6,7 +6,7 @@ import SEO from '../components/SEO';
 
 interface DesignTemplate {
   data: {
-    behanceProject: {
+    behanceProjects: {
       name: string;
       slug: string;
       description: '';
@@ -34,7 +34,7 @@ interface DesignTemplate {
 }
 
 const DesignTemplate = ({ data }: DesignTemplate) => {
-  const { name, tags, description } = data.behanceProject;
+  const { name, tags, description } = data.behanceProjects;
   const { nodes } = data.allFile;
 
   return (
@@ -51,7 +51,7 @@ const DesignTemplate = ({ data }: DesignTemplate) => {
 
 export const designQuery = graphql`
   query SingleDesign($slug: String!) {
-    behanceProject(slug: { regex: $slug }) {
+    behanceProjects(slug: { regex: $slug }) {
       name
       slug
       description

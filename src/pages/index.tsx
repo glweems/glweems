@@ -7,9 +7,9 @@ import styles from '../styles/components/indexPage.module.scss';
 import About from '../components/About';
 
 const IndexPage = () => {
-  const { behanceImages, markdownFiles, github, allBehanceProject } = useIndexPageQuery();
+  const { behanceImages, markdownFiles, github, allBehanceProjects } = useIndexPageQuery();
 
-  const mergedBehance = allBehanceProject.nodes.map(node => {
+  const mergedBehance = allBehanceProjects.nodes.map(node => {
     const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
       imageNode.relativeDirectory.includes(node.slug),
     );
@@ -69,10 +69,10 @@ const useIndexPageQuery = (): IndexPageQuery => {
     github,
     behanceImages,
     markdownFiles,
-    allBehanceProject,
+    allBehanceProjects,
   }: IndexPageQuery = useStaticQuery(graphql`
     query IndexPageQuery {
-      allBehanceProject(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
+      allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
         nodes {
           slug
           name
@@ -150,6 +150,6 @@ const useIndexPageQuery = (): IndexPageQuery => {
     github,
     behanceImages,
     markdownFiles,
-    allBehanceProject,
+    allBehanceProjects,
   };
 };
