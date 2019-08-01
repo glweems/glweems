@@ -1,8 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/camelcase */
 require('dotenv').config();
-
-const path = require(`path`);
 
 module.exports = {
   siteMetadata: {
@@ -10,7 +6,7 @@ module.exports = {
     titleTemplate: '%s · Glweems',
     description: 'Full stack web developer / graphic designer.',
     url: 'https://glweems.com',
-    image: '/images/snape.jpg',
+    image: './src/images/favicon.jpg',
     languageCode: 'en',
     countryCode: 'US',
   },
@@ -28,13 +24,13 @@ module.exports = {
         icon: `src/images/favicon.png`,
       },
     },
-    '@rhysforyou/gatsby-plugin-react-helmet-async',
-    'gatsby-plugin-styled-components',
-    'gatsby-plugin-typescript',
+    `@rhysforyou/gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `src/utils/typography.ts`,
+        pathToConfigModule: `./src/utils/typography.ts`,
       },
     },
     {
@@ -56,7 +52,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
