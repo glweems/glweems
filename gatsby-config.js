@@ -166,13 +166,13 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              colorTheme: `Ayu Mirage Bordered`,
-              extensions: [
-                {
-                  identifier: `teabyii.ayu`,
-                  version: `0.18.0`,
-                },
-              ],
+              // colorTheme: `Ayu Mirage Bordered`,
+              // extensions: [
+              //   {
+              //     identifier: `teabyii.ayu`,
+              //     version: `0.18.0`,
+              //   },
+              // ],
             },
           },
         ],

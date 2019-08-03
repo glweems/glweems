@@ -8,6 +8,7 @@ declare module 'gatsby';
 declare module 'gatsby-image';
 declare module 'react-reveal';
 declare module 'react-burger-menu';
+declare module 'typography-theme-grand-view';
 
 interface Colors {
   light: string;

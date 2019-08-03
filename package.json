@@ -83,7 +83,7 @@
     "styled-components": "^4.3.2",
     "styled-media-query": "^2.1.2",
     "typography": "^0.16.19",
-    "typography-theme-funston": "^0.16.19"
+    "typography-theme-grand-view": "^0.16.19"
   },
   "devDependencies": {
     "@divyenduz/ts-graphql-plugin": "^0.1.0",
