@@ -1,9 +1,9 @@
-@import "variables";
-@import "mixins";
-@import "../../node_modules/normalize-scss/sass/normalize";
+@import 'variables';
+@import 'mixins';
+@import '../../node_modules/normalize-scss/sass/normalize';
 
 html {
-  width: 100%;
+  // width: 100%;
 }
 
 div {
@@ -19,8 +19,8 @@ div {
 body {
   max-width: 100%;
   overflow: hidden;
-  color: $light;
-  background: $dark;
+  background: $light;
+  color: $dark;
 }
 
 a {
@@ -38,9 +38,9 @@ small {
   color: $muted;
 }
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
 button {
   box-sizing: content-box;
   padding: 0;

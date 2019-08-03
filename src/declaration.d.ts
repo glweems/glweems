@@ -1,11 +1,3 @@
-// This file is used to hold ambient type declarations, as well as type shims
-// for npm module without type declarations, and assets files.
-
-// For example, to shim modules without declarations, use:
-// declare module 'package-without-declarations';
-
-// And to shim assets, use (one file extension per `declare`):
-// declare module '*.png';
 declare module '*.module.scss' {
   const content: { [className: string]: string };
   export default content;
@@ -16,6 +8,23 @@ declare module 'gatsby';
 declare module 'gatsby-image';
 declare module 'react-reveal';
 declare module 'react-burger-menu';
+
+interface Colors {
+  light: string;
+  dark: string;
+  red: string;
+  green: string;
+  yellow: string;
+  blue: string;
+  purple: string;
+  mint: string;
+  muted: string;
+  bg: string;
+}
+
+interface StyleProps {
+  theme: Colors;
+}
 
 interface IndexPageQuery {
   markdownFiles: {

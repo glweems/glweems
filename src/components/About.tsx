@@ -14,7 +14,7 @@ const About = () => {
         <Avitar />
       </div>
       <h6>Designer / Developer Based in Melbourne, FL.</h6>
-      <SocialMediaIcons noText horizontal marginRight="2em" size="lg" />
+      {/* <SocialMediaIcons noText horizontal marginRight="2em" size="lg" /> */}
     </div>
   );
 };
