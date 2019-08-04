@@ -1,29 +1,81 @@
 import * as React from 'react';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
-import styles from '../styles/components/card.module.scss';
+import styled from 'styled-components';
+import Tags from './Tags';
 
 interface Card {
   title: string;
-  img?: {
-    fixed?: object;
-    fluid?: object;
-  };
+  subtitle: string;
+  img: object;
   link?: string;
-  children?: any;
+  tags: string[];
 }
-const Card = ({ title, img, link, children }: Card) => {
+
+const Header = styled.h4`
+  color: ${props => props.theme.yellow};
+  margin: 0;
+`;
+const Subtitle = styled.small`
+  color: ${props => props.theme.muted};
+  margin: 0;
+  padding: 0;
+`;
+
+const Image = styled(Img)`
+  border-radius: 0.25em;
+`;
+
+const Footer = styled.div`
+  color: ${props => props.theme.green};
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+`;
+
+const StyledCard = styled.div`
+  display: grid;
+  gap: 0 1rem;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: 'Header Image' 'Subtitle Image' 'Footer Image';
+  cursor: pointer;
+  background: ${({ theme }) => theme.bg};
+
+  ${Header} {
+    grid-area: Header;
+  }
+
+  ${Subtitle} {
+    grid-area: Subtitle;
+  }
+
+  ${Footer} {
+    grid-area: Footer;
+  }
+
+  ${Image} {
+    grid-area: Image;
+  }
+`;
+
+const Card = ({ title, subtitle, img, link, tags }: Card) => {
   const go = () => (link ? navigate(link) : null);
 
   return (
-    <div className={styles.card}>
-      <h6 className={styles.title}>{title}</h6>
-      <div role="presentation" onClick={go} className={styles.body}>
-        {!img || <Img className={styles.img} {...img} />}
-      </div>
-      <>{children}</>
-    </div>
+    <StyledCard onClick={go}>
+      <Header>{title}</Header>
+      <Subtitle>{subtitle}</Subtitle>
+      <Footer>{<Tags items={tags} />}</Footer>
+      <Image {...img} />
+    </StyledCard>
   );
 };
 
 export default Card;
+/*
+align-items: space-between;
+align-content: space-between;
+justify-content: space-between;
+justify-items: space-between;
+*/
