@@ -2,12 +2,13 @@
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
+import { Container } from 'reactstrap';
 import Card from '../components/Card';
-import styles from '../styles/components/indexPage.module.scss';
 import About from '../components/About';
+import { media } from '../utils/theme';
 
 const IndexPage = () => {
-  const { behanceImages, markdownFiles, github, allBehanceProjects } = useIndexPageQuery();
+  const { behanceImages, markdownFiles, allBehanceProjects } = useIndexPageQuery();
 
   const mergedBehance = allBehanceProjects.nodes.map(node => {
     const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
@@ -16,43 +17,48 @@ const IndexPage = () => {
     return { ...node, ...found.childImageSharp };
   });
 
-  const Section = styled.section`
+  const Section = styled(Container)`
     border-top: 2px solid ${({ theme }) => theme.blue};
   `;
 
+  const Cards = styled.div`
+    display: grid;
+    gap: 1em;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    ${media.greaterThan('sm')`
+    grid-template-columns: repeat(2, 1fr);
+    `}
+    ${media.greaterThan('lg')`
+    grid-template-columns: repeat(3, 1fr);
+    `}
+  `;
+
   return (
-    <div className={styles.indexPage}>
-      <Section className="container">
+    <div>
+      <Container>
         <About />
+      </Container>
+
+      <Section>
+        <h2>Blog Posts</h2>
+        <Cards>
+          {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
+            <Card
+              key={id}
+              title={childMarkdownRemark.frontmatter.title}
+              subtitle={childMarkdownRemark.excerpt}
+              tags={childMarkdownRemark.frontmatter.tags}
+              link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
+              img={childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
+            />
+          ))}
+        </Cards>
       </Section>
 
-      <Section className="container">
-        <div>
-          <h2>Blog Posts</h2>
-          <div className={styles.cards}>
-            {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
-              <Card
-                key={id}
-                title={childMarkdownRemark.frontmatter.title}
-                subtitle={childMarkdownRemark.excerpt}
-                tags={childMarkdownRemark.frontmatter.tags}
-                link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
-                img={childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
-              >
-                {/* <div className="tags">
-                  {node.childMarkdownRemark.frontmatter.tags.map(tag => (
-                    <small className="tag">{tag}</small>
-                  ))}
-                </div> */}
-              </Card>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      <section className="container">
+      <Section>
         <h2>Design Projects</h2>
-        <div className={styles.cards}>
+        <Cards>
           {mergedBehance.map(node => (
             <Card
               key={node.slug}
@@ -61,16 +67,10 @@ const IndexPage = () => {
               img={node}
               tags={node.tags}
               link={`designs/${node.slug}`}
-            >
-              {/* <div className="tags">
-                {node.tags.map(tag => (
-                  <small className="tag">{tag.toLowerCase()}</small>
-                ))}
-              </div> */}
-            </Card>
+            />
           ))}
-        </div>
-      </section>
+        </Cards>
+      </Section>
     </div>
   );
 };

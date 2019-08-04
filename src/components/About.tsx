@@ -1,21 +1,62 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
+import styled from 'styled-components';
+import { Container } from 'reactstrap';
 import Avitar from './Avitar';
-import styles from '../styles/components/about.module.scss';
 import SocialMediaIcons from './SocialMedia';
+import { media } from '../utils/theme';
+
+const Title = styled.h1`
+  color: ${props => props.theme.yellow};
+`;
+const Subtitle = styled.h4`
+  color: ${props => props.theme.red};
+`;
+
+const Image = styled.div`
+  max-width: 12em;
+`;
+
+const SocialMedia = styled.div``;
+
+const StyledAbout = styled(Container)`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas: 'Title' 'Subtitle' 'Image' 'SocialMedia';
+
+  ${Title} {
+    grid-area: Title;
+  }
+  ${Subtitle} {
+    grid-area: Subtitle;
+  }
+
+  ${Image} {
+    grid-area: Image;
+  }
+
+  ${SocialMedia} {
+    grid-area: SocialMedia;
+  }
+
+  ${media.greaterThan('sm')`
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas: 'Title Title' 'Subtitle Subtitle' 'Image SocialMedia';
+  `}
+`;
 
 const About = () => {
   return (
-    <div className={styles.about}>
-      <div>
-        <h1>Hi, I'm Garrett</h1>
-      </div>
-      <div className={styles.avitar}>
+    <StyledAbout>
+      <Title>Hi, I'm Garrett</Title>
+      <Image>
         <Avitar />
-      </div>
-      <h6>Designer / Developer Based in Melbourne, FL.</h6>
-      {/* <SocialMediaIcons noText horizontal marginRight="2em" size="lg" /> */}
-    </div>
+      </Image>
+      <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
+      <SocialMediaIcons />
+    </StyledAbout>
   );
 };
 

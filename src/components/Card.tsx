@@ -2,6 +2,7 @@ import * as React from 'react';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
+import { media } from '../utils/theme';
 import Tags from './Tags';
 
 interface Card {
@@ -57,6 +58,12 @@ const StyledCard = styled.div`
   ${Image} {
     grid-area: Image;
   }
+
+  ${media.greaterThan('sm')`
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 10em  auto  auto;
+   grid-template-areas: 'Header' 'Image' 'Subtitle' 'Footer';
+  `};
 `;
 
 const Card = ({ title, subtitle, img, link, tags }: Card) => {
@@ -73,9 +80,3 @@ const Card = ({ title, subtitle, img, link, tags }: Card) => {
 };
 
 export default Card;
-/*
-align-items: space-between;
-align-content: space-between;
-justify-content: space-between;
-justify-items: space-between;
-*/

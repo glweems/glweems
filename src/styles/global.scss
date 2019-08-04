@@ -2,26 +2,9 @@
 @import 'mixins';
 @import '../../node_modules/normalize-scss/sass/normalize';
 
-html {
-  max-width: 100%;
-  overflow: hidden;
-}
-
-div {
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  width: 100%;
   background: $dark;
   color: $light !important;
-}
-
-img {
-  margin: 0;
-  padding: 0;
-  background: none !important;
 }
 
 input[type='submit'],

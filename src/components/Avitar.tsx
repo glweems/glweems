@@ -1,13 +1,18 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
+import styled from 'styled-components';
 
-export default () => {
+const StyledAvitar = styled(Img)`
+  border-radius: 0.25em;
+`;
+
+const Avitar = () => {
   const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "avi.jpg" }) {
+    query AvitarQuery {
+      file(relativePath: { eq: "avi.jpg" }) {
         childImageSharp {
-          fluid(maxWidth: 1024) {
+          fluid(maxWidth: 300) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -15,5 +20,7 @@ export default () => {
     }
   `);
 
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />;
+  return <StyledAvitar fluid={data.file.childImageSharp.fluid} />;
 };
+
+export default Avitar;

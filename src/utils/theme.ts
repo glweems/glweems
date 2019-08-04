@@ -2,15 +2,15 @@ import { createGlobalStyle } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 
 export const media = generateMedia({
-  lg: '78em',
-  md: '60em',
-  sm: '42em',
+  lg: '960px',
+  md: '720px',
+  sm: '540px',
 });
 
 export const theme = {
   light: '#f7f7f7',
   dark: `#1a1e28`,
-  red: `#e48b7d`,
+  red: `#d65947`,
   green: `#c3e28a`,
   yellow: `#f8d58c`,
   blue: `#89cefa`,
