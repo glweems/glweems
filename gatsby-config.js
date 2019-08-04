@@ -48,7 +48,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout.tsx`),
+        component: require.resolve(`./src/components/Providers.tsx`),
       },
     },
     `gatsby-transformer-sharp`,

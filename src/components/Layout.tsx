@@ -1,24 +1,22 @@
-import React, { useState, createContext, ReactChildren } from 'react';
-import styled, { ThemeProvider, StyledComponent } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import Menu from './Menu';
-import SEO from './SEO';
-import { theme, media } from '../utils/theme';
+
+import { media } from '../utils/theme';
 import Navbar from './Navbar';
 import Footer from './Footer';
-
-const LayoutContext = createContext();
 
 const Main = styled.div`
   grid-area: Main;
 `;
 
-const Layout: StyledComponent<any, any, any> = styled.div`
+const StyledLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas: 'Navbar' 'Menu' 'Main' 'Footer';
   ${media.greaterThan('sm')`
-  grid-template-areas: ${({ isMenu }: any) =>
+  grid-template-areas: ${({ isMenu }: any): string =>
     isMenu
       ? `"Menu Navbar" "Menu Main" "Menu Footer"`
       : `"Navbar Navbar" "Main Main" "Footer Footer"`};
@@ -35,27 +33,18 @@ const menuItems = [
 ];
 
 interface LayoutProps {
-  children?: React.ReactChild | ReactChildren;
+  children: React.ReactChildren;
+  isMenu: boolean;
+  setIsMenu: any;
 }
 
-export default ({ children }: LayoutProps) => {
-  const [isMenu, setIsMenu] = useState(false);
-  return (
-    <>
-      <SEO />
-      <LayoutContext.Provider isMenu={[isMenu, setIsMenu]}>
-        <ThemeProvider theme={theme}>
-          <Layout isMenu={isMenu}>
-            <Navbar isMenu={isMenu} toggleMenu={setIsMenu} />
+const Layout = ({ isMenu, setIsMenu, children }: LayoutProps) => (
+  <StyledLayout isMenu={isMenu}>
+    <Navbar isMenu={isMenu} toggleMenu={setIsMenu} />
+    <Main>{children}</Main>
+    <Footer />
+    <Menu isMenu={isMenu} items={menuItems} />
+  </StyledLayout>
+);
 
-            <Main>{children}</Main>
-
-            <Footer />
-
-            <Menu isMenu={isMenu} items={menuItems} />
-          </Layout>
-        </ThemeProvider>
-      </LayoutContext.Provider>
-    </>
-  );
-};
+export default Layout;
