@@ -40,9 +40,9 @@ const Navbar = ({ toggleMenu, isMenu }: Props) => (
     <Link to="/">
       <Glweems />
     </Link>
-    <div type="button">
+    <button type="button">
       <FontAwesomeIcon icon={faEnvelopeSquare} size="lg" />
-    </div>
+    </button>
   </Header>
 );
 

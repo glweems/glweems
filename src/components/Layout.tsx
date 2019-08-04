@@ -15,14 +15,14 @@ const Main = styled.div`
 const Layout: StyledComponent<any, any, any> = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr 10em;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas: 'Navbar' 'Menu' 'Main' 'Footer';
   ${media.greaterThan('sm')`
   grid-template-areas: ${({ isMenu }: any) =>
     isMenu
       ? `"Menu Navbar" "Menu Main" "Menu Footer"`
       : `"Navbar Navbar" "Main Main" "Footer Footer"`};
-  grid-template-rows: auto 1fr 6em;
+  grid-template-rows: auto 1fr auto;
   grid-template-columns: 10em 1fr;
   `}
 `;

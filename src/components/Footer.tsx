@@ -4,11 +4,12 @@ import SocialMediaIcons from './SocialMedia';
 
 const StyledFooter = styled.footer`
   grid-area: Footer;
+  text-align: center;
 `;
 
 const Footer = () => (
   <StyledFooter>
-    <SocialMediaIcons horizontal />
+    <SocialMediaIcons />
   </StyledFooter>
 );
 

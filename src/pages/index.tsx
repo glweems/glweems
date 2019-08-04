@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-// import { Fade } from 'react-reveal';
+import styled from 'styled-components';
 import Card from '../components/Card';
 import styles from '../styles/components/indexPage.module.scss';
 import About from '../components/About';
@@ -13,47 +13,60 @@ const IndexPage = () => {
     const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
       imageNode.relativeDirectory.includes(node.slug),
     );
-    return { ...node, fixed: found.childImageSharp.fixed };
+    return { ...node, ...found.childImageSharp };
   });
+
+  const Section = styled.section`
+    border-top: 2px solid ${({ theme }) => theme.blue};
+  `;
 
   return (
     <div className={styles.indexPage}>
-      <section className="container">
+      <Section className="container">
         <About />
-      </section>
+      </Section>
 
-      <section className="container">
+      <Section className="container">
         <div>
           <h2>Blog Posts</h2>
           <div className={styles.cards}>
-            {markdownFiles.nodes.map(node => (
+            {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
               <Card
-                key={node.id}
-                title={node.childMarkdownRemark.frontmatter.title}
-                link={`tutorials/${node.childMarkdownRemark.frontmatter.path}`}
-                img={node.childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
+                key={id}
+                title={childMarkdownRemark.frontmatter.title}
+                subtitle={childMarkdownRemark.excerpt}
+                tags={childMarkdownRemark.frontmatter.tags}
+                link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
+                img={childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
               >
-                <div className="tags">
+                {/* <div className="tags">
                   {node.childMarkdownRemark.frontmatter.tags.map(tag => (
                     <small className="tag">{tag}</small>
                   ))}
-                </div>
+                </div> */}
               </Card>
             ))}
           </div>
         </div>
-      </section>
+      </Section>
 
       <section className="container">
         <h2>Design Projects</h2>
         <div className={styles.cards}>
           {mergedBehance.map(node => (
-            <Card key={node.slug} title={node.name} link={`designs/${node.slug}`} img={node}>
-              <div className="tags">
+            <Card
+              key={node.slug}
+              title={node.name}
+              subtitle={node.description}
+              img={node}
+              tags={node.tags}
+              link={`designs/${node.slug}`}
+            >
+              {/* <div className="tags">
                 {node.tags.map(tag => (
                   <small className="tag">{tag.toLowerCase()}</small>
                 ))}
-              </div>
+              </div> */}
             </Card>
           ))}
         </div>
@@ -89,8 +102,11 @@ const useIndexPageQuery = (): IndexPageQuery => {
         nodes {
           relativeDirectory
           childImageSharp {
-            fixed(width: 300, height: 150) {
-              ...GatsbyImageSharpFixed
+            # fixed(width: 300, height: 150) {
+            #   ...GatsbyImageSharpFixed
+            # }
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid_noBase64
             }
           }
         }
@@ -103,6 +119,7 @@ const useIndexPageQuery = (): IndexPageQuery => {
           sourceInstanceName
           relativeDirectory
           childMarkdownRemark {
+            excerpt(pruneLength: 100)
             frontmatter {
               title
               path
@@ -111,8 +128,8 @@ const useIndexPageQuery = (): IndexPageQuery => {
               tags
               thumbnail {
                 childImageSharp {
-                  fixed(width: 300, height: 150) {
-                    ...GatsbyImageSharpFixed
+                  fluid(maxWidth: 300) {
+                    ...GatsbyImageSharpFluid_noBase64
                   }
                 }
               }

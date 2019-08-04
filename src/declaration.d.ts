@@ -33,6 +33,7 @@ interface IndexPageQuery {
       id: string;
       sourceInstanceName: string;
       childMarkdownRemark: {
+        excerpt: string;
         fileAbsolutePath: string;
         frontmatter: {
           thumbnail: {
