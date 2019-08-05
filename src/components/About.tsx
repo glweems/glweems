@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-import { media } from '../utils/theme';
 
 const Title = styled.h1`
-  color: ${props => props.theme.yellow};
+  color: ${props => props.theme.colors.yellow};
 `;
 const Subtitle = styled.h4`
-  color: ${props => props.theme.red};
+  color: ${props => props.theme.colors.red};
 `;
 
 const Image = styled.div`
@@ -43,15 +42,6 @@ const Wrapper = styled(Container)`
   ${SocialMedia} {
     grid-area: SocialMedia;
   }
-
-  ${media.greaterThan('sm')`
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(3, auto);
-  grid-template-areas:
-    'Title Title'
-    'Subtitle Subtitle'
-    'Image SocialMedia';
-  `}
 `;
 
 const About = () => (
@@ -61,7 +51,7 @@ const About = () => (
       <Avitar />
     </Image>
     <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
-    <SocialMediaIcons />
+    <SocialMediaIcons horizontal noText />
   </Wrapper>
 );
 

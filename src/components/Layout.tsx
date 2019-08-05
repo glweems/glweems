@@ -1,6 +1,5 @@
 import React, { ReactChild, ReactChildren } from 'react';
-import styled, { css } from 'styled-components';
-import { Container } from 'reactstrap';
+import styled from 'styled-components';
 import Menu from './Menu';
 import { media } from '../utils/theme';
 import Navbar, { Header } from './Navbar';
@@ -33,6 +32,7 @@ const Base = styled.div`
   }
   ${Main} {
     grid-area: Main;
+    height: 100%;
   }
 `;
 

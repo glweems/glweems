@@ -1,15 +1,13 @@
-declare module '*.module.scss' {
+// import original module declarations
+import 'styled-components';
+
+declare module '*.png' {
   const content: { [className: string]: string };
   export default content;
 }
 
-declare module '@microlink/react';
 declare module 'gatsby';
 declare module 'gatsby-image';
-declare module 'react-reveal';
-declare module 'react-burger-menu';
-declare module 'typography-theme-grand-view';
-declare module 'lodash-es/clamp';
 
 interface Colors {
   light: string;
@@ -24,8 +22,14 @@ interface Colors {
   bg: string;
 }
 
-interface StyleProps {
-  theme: Colors;
+// and extend them!
+declare module 'styled-components' {
+  export interface DefaultTheme {
+    borderRadius: string;
+    colors: Colors;
+    lightColors: Colors;
+    darkColors: Colors;
+  }
 }
 
 interface LocalFile {
@@ -36,11 +40,11 @@ interface LocalFile {
   };
 }
 
-interface GQLNodes<T> {
+export interface GQLNodes<T> {
   nodes: T[];
 }
 
-interface MarkdownRemark {
+export interface MarkdownRemark {
   id: string;
   sourceInstanceName: string;
   childMarkdownRemark: {

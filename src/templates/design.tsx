@@ -1,6 +1,5 @@
-// import { Container } from 'elements';
 import React, { useRef } from 'react';
-import { graphql, navigate } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { Container } from 'reactstrap';
 import { animated, useSprings } from 'react-spring';
@@ -8,6 +7,7 @@ import clamp from 'lodash-es/clamp';
 import { useGesture } from 'react-use-gesture';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
+import Cursor from '../images/cursor.png';
 
 const Image = styled(animated(Img))``;
 
@@ -21,6 +21,11 @@ const pages = [
 const Wrapper = styled.div`
   * {
     box-sizing: border-box;
+
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
   }
 
   overscroll-behavior-y: contain;
@@ -39,15 +44,13 @@ const Wrapper = styled.div`
     overflow: hidden;
     width: 100%;
     height: 100%;
-    cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png')
-        39 39,
-      auto;
+    cursor: url(${Cursor}), 39 39, auto;
   }
 
   #viewer > div {
     position: absolute;
     width: 100vw;
-    height: 80vh;
+    height: 50vh;
     will-change: transform;
   }
 
@@ -92,8 +95,7 @@ const Viewpager = ({ images }) => {
           >
             <Image
               style={{ transform: sc.interpolate(s => `scale(${s})`) }}
-              fixed={images[i].childImageSharp.fixed}
-              disabled
+              {...images[i].childImageSharp}
             />
           </Div>
         ))}
@@ -139,21 +141,19 @@ interface DesignTemplate {
 export const designQuery = graphql`
   query SingleDesign($slug: String!) {
     behanceProjects(slug: { regex: $slug }) {
-      name
-      slug
-      description
-      tags
+      ...BehanceCard
       tools {
         title
       }
-      tags
     }
     allFile(filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }) {
       nodes {
         id
         name
         childImageSharp {
-          ...FixedSvgBg
+          fluid(maxWidth: 800) {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
       totalCount

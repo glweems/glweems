@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { GQLNodes, MarkdownRemark } from '../declaration';
 
 interface TutorialsPageQuery {
   markdownFiles: GQLNodes<MarkdownRemark>;

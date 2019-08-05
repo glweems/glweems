@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import useAvitarQuery from '../graphql/AvitarQuery';
 
 const Image = styled(Img)`
-  border-radius: 0.25em;
+  border-radius: ${props => props.theme.borderRadius};
 `;
 
 const Avitar = () => {

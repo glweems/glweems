@@ -39,8 +39,8 @@ const Navigation = styled(animated.header)`
 
   height: 100vh;
   justify-items: space-between;
-  color: ${({ theme }: StyleProps) => theme.light};
-  background: ${({ theme }: StyleProps) => theme.bg};
+  color: ${props => props.theme.colors.light};
+  background: ${props => props.theme.colors.bg};
   ${Toggle} {
     grid-area: Toggle;
   }
@@ -54,7 +54,7 @@ const Navigation = styled(animated.header)`
   }
 `;
 
-const Menu = ({ items, isMenu }: MenuProps): React.ReactNode | null | any => {
+const Menu = ({ items, isMenu }: MenuProps) => {
   const transitions = useTransition(isMenu, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },

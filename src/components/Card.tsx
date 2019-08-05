@@ -14,21 +14,21 @@ interface Card {
 }
 
 const Header = styled.h4`
-  color: ${props => props.theme.yellow};
+  color: ${props => props.theme.lightColors.yellow};
   margin: 0;
 `;
 const Subtitle = styled.small`
-  color: ${props => props.theme.muted};
+  color: ${props => props.theme.colors.muted};
   margin: 0;
   padding: 0;
 `;
 
 const Image = styled(Img)`
-  border-radius: 0.25em;
+  border-radius: ${props => props.theme.borderRadius};
 `;
 
 const Footer = styled.div`
-  color: ${props => props.theme.green};
+  color: ${props => props.theme.colors.green};
   overflow: hidden;
   margin: 0;
   padding: 0;
@@ -41,8 +41,7 @@ const StyledCard = styled.div`
   grid-template-rows: repeat(3, auto);
   grid-template-areas: 'Header Image' 'Subtitle Image' 'Footer Image';
   cursor: pointer;
-  background: ${({ theme }) => theme.bg};
-
+  background: ${props => props.theme.colors.bg};
   ${Header} {
     grid-area: Header;
   }
@@ -60,9 +59,13 @@ const StyledCard = styled.div`
   }
 
   ${media.greaterThan('sm')`
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 10em  auto  auto;
-   grid-template-areas: 'Header' 'Image' 'Subtitle' 'Footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 10em  auto  auto;
+    grid-template-areas:
+      'Header'
+      'Image'
+      'Subtitle'
+      'Footer';
   `};
 `;
 

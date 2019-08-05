@@ -127,7 +127,7 @@ const SocialMediaIcons = ({
   size,
   horizontal = false,
 }: SocialMediaIcons) => (
-  <div className={horizontal ? 'flex' : ''}>
+  <div style={{ display: 'flex', flexDirection: horizontal ? 'horizontal' : 'column' }}>
     {data.map(item => (
       <SocialMediaIcon
         key={item.name}

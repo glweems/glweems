@@ -16,11 +16,13 @@ const Providers = ({ children }: Props) => {
     <>
       <SEO />
       <LayoutContext.Provider isMenu={[isMenu, setIsMenu]}>
-        <GlobalStyle />
         <ThemeProvider theme={theme}>
-          <Layout isMenu={isMenu} setIsMenu={setIsMenu}>
-            {children}
-          </Layout>
+          <>
+            <GlobalStyle />
+            <Layout isMenu={isMenu} setIsMenu={setIsMenu}>
+              {children}
+            </Layout>
+          </>
         </ThemeProvider>
       </LayoutContext.Provider>
     </>

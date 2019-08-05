@@ -14,12 +14,12 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: ${({ theme }: StyleProps) => theme.bg};
+  background: ${props => props.theme.colors.bg};
   svg {
-    fill: ${({ theme }: StyleProps) => theme.yellow};
+    fill: ${props => props.theme.colors.yellow};
   }
   button {
-    color: ${({ theme }) => theme.muted};
+    color: ${props => props.theme.colors.muted};
   }
 `;
 

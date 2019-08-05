@@ -1,6 +1,8 @@
 {
   "root": true,
-  "plugins": ["react-hooks"],
+  "plugins": [
+    "react-hooks"
+  ],
   "extends": [
     "airbnb",
     "plugin:@typescript-eslint/recommended",
@@ -15,12 +17,13 @@
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/camelcase": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [".tsx"]
+        "extensions": [
+          ".tsx"
+        ]
       }
     ]
   }
