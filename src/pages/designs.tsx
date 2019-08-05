@@ -3,22 +3,18 @@ import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { Container } from 'reactstrap';
 import Card, { Cards } from '../components/Card';
+import { mergedBehance } from '../utils/helpers';
 
 const Designs = () => {
   const { behanceImages, allBehanceProjects } = UseDesignsPageQuery();
 
-  const mergedBehance = allBehanceProjects.nodes.map(node => {
-    const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
-      imageNode.relativeDirectory.includes(node.slug),
-    );
-    return { ...node, ...found.childImageSharp };
-  });
+  const behance = mergedBehance(allBehanceProjects.nodes, behanceImages.nodes);
 
   return (
     <Container>
       <h1>Graphic Design Projects</h1>
       <Cards>
-        {mergedBehance.map(node => (
+        {behance.map(node => (
           <Card
             key={node.slug}
             title={node.name}
@@ -32,7 +28,13 @@ const Designs = () => {
     </Container>
   );
 };
-const UseDesignsPageQuery = () =>
+
+interface DesignsPageQuery {
+  allBehanceProjects: GQLNodes<BehanceProject>;
+  behanceImages: GQLNodes<BehanceImage>;
+}
+
+const UseDesignsPageQuery = (): DesignsPageQuery =>
   useStaticQuery(graphql`
     query DesignsPageQuery {
       allBehanceProjects {
@@ -52,8 +54,8 @@ const UseDesignsPageQuery = () =>
         nodes {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid_noBase64
+            fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

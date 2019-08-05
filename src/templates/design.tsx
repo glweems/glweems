@@ -1,53 +1,37 @@
 // import { Container } from 'elements';
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, navigate } from 'gatsby';
 import Img from 'gatsby-image';
+import { Container } from 'reactstrap';
 import SEO from '../components/SEO';
+
+const DesignTemplate = ({
+  data: {
+    behanceProjects: { name, tags, description },
+    allFile: { nodes: fileNodes },
+  },
+}: DesignTemplate) => (
+  <>
+    <SEO title={name} keywords={tags} description={description} />
+    <Container fluid>
+      <h1>{name}</h1>
+      <h3>{description}</h3>
+      {fileNodes.map(({ childImageSharp: { fluid }, id }) => (
+        <Img key={id} fluid={fluid} />
+      ))}
+    </Container>
+  </>
+);
 
 interface DesignTemplate {
   data: {
-    behanceProjects: {
-      name: string;
-      slug: string;
-      description: '';
-      published: number;
-      created: number;
-      tags: string[];
-      tools: {
-        title: string;
-        synonym: {
-          icon_url: string;
-        }[];
-        areas: string[];
-      };
-    };
+    behanceProjects: BehanceProject;
     allFile: {
-      nodes: {
-        name: string;
-        childImageSharp: {
-          fluid: {};
-        };
-      }[];
+      nodes: LocalFile[];
       totalCount: number;
     };
   };
 }
-
-const DesignTemplate = ({ data }: DesignTemplate) => {
-  const { name, tags, description } = data.behanceProjects;
-  const { nodes } = data.allFile;
-
-  return (
-    <section className="container">
-      <SEO title={name} keywords={tags} description={description} />
-      <h1>{name}</h1>
-      <h3>{description}</h3>
-      {nodes.map(({ childImageSharp: { fluid } }) => (
-        <Img fluid={fluid} />
-      ))}
-    </section>
-  );
-};
 
 export const designQuery = graphql`
   query SingleDesign($slug: String!) {
@@ -63,9 +47,10 @@ export const designQuery = graphql`
     }
     allFile(filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }) {
       nodes {
+        id
         name
         childImageSharp {
-          fluid(maxWidth: 700, traceSVG: { background: "#31a1e28", color: "#f8d58c" }) {
+          fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
             ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }

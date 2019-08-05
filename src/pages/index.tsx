@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import Card, { Cards } from '../components/Card';
 import About from '../components/About';
+import { mergedBehance } from '../utils/helpers';
 
 const Section = styled(Container)`
   border-top: 2px solid ${({ theme }) => theme.blue};
@@ -13,12 +14,7 @@ const Section = styled(Container)`
 const IndexPage = () => {
   const { behanceImages, markdownFiles, allBehanceProjects } = useIndexPageQuery();
 
-  const mergedBehance = allBehanceProjects.nodes.map(node => {
-    const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
-      imageNode.relativeDirectory.includes(node.slug),
-    );
-    return { ...node, ...found.childImageSharp };
-  });
+  const behance = mergedBehance(allBehanceProjects.nodes, behanceImages.nodes);
 
   return (
     <div>
@@ -45,7 +41,7 @@ const IndexPage = () => {
       <Section>
         <h2>Design Projects</h2>
         <Cards>
-          {mergedBehance.map(node => (
+          {behance.map(node => (
             <Card
               key={node.slug}
               title={node.name}
@@ -62,6 +58,19 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+interface IndexPageQuery {
+  markdownFiles: GQLNodes<MarkdownRemark>;
+  behanceImages: GQLNodes<BehanceImage>;
+
+  github: {
+    viewer: {
+      pinnedItems: GQLNodes<GithubRepository>;
+    };
+  };
+
+  allBehanceProjects: GQLNodes<BehanceProject>;
+}
 
 const useIndexPageQuery = (): IndexPageQuery =>
   useStaticQuery(graphql`
@@ -83,8 +92,8 @@ const useIndexPageQuery = (): IndexPageQuery =>
         nodes {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid_noBase64
+            fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }
@@ -94,8 +103,6 @@ const useIndexPageQuery = (): IndexPageQuery =>
       ) {
         nodes {
           id
-          sourceInstanceName
-          relativeDirectory
           childMarkdownRemark {
             excerpt(pruneLength: 100)
             frontmatter {
@@ -106,8 +113,8 @@ const useIndexPageQuery = (): IndexPageQuery =>
               tags
               thumbnail {
                 childImageSharp {
-                  fluid(maxWidth: 300) {
-                    ...GatsbyImageSharpFluid_noBase64
+                  fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
+                    ...GatsbyImageSharpFluid_withWebp_tracedSVG
                   }
                 }
               }

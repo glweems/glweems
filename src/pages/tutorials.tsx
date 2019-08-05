@@ -8,7 +8,7 @@ const Tutorials = () => {
 
   return (
     <Container>
-      Code Tutorials
+      <h1>Code Tutorials</h1>
       <Cards>
         {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
           <Card
@@ -25,7 +25,11 @@ const Tutorials = () => {
   );
 };
 
-const useTutorialsPageQuery = () =>
+interface TutorialsPageQuery {
+  markdownFiles: GQLNodes<MarkdownRemark>;
+}
+
+const useTutorialsPageQuery = (): TutorialsPageQuery =>
   useStaticQuery(graphql`
     query TutorialsPageQuery {
       markdownFiles: allFile(
