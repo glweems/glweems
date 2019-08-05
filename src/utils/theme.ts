@@ -36,7 +36,7 @@ button {
   line-height: normal;
   background: none;
   border: 0;
-
+cursor: pointer;
   :focus {
     outline: none;
   }

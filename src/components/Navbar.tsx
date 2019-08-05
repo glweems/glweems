@@ -3,55 +3,41 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { Container } from 'reactstrap';
 import { Glweems } from './Icons';
 
-interface Props {
+interface NavbarProps {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   isMenu: boolean;
 }
 
-const Header = styled.header`
-  grid-area: Navbar;
-  .nav {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    padding: 1rem;
-    grid-template-rows: 1fr;
-    grid-template-areas: '. . .';
-    background: ${({ theme }: StyleProps) => theme.red};
-    text-align: center;
-    div {
-      display: flex;
-      justify-content: center;
-      align-content: center;
-    }
-
-    button {
-      width: fit-content;
-      color: ${({ theme }) => theme.blue};
-      fill: ${({ theme }) => theme.blue};
-    }
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: ${({ theme }: StyleProps) => theme.bg};
+  svg {
+    fill: ${({ theme }: StyleProps) => theme.yellow};
+  }
+  button {
+    color: ${({ theme }) => theme.muted};
   }
 `;
 
-const Navbar = ({ toggleMenu, isMenu }: Props) => (
-  <Header>
-    <Container fluid className="nav">
-      <div>
-        <button type="button" onClick={() => toggleMenu(!isMenu)}>
-          <FontAwesomeIcon icon={isMenu ? faTimes : faBars} size="lg" />
-        </button>
-      </div>
-      <Link to="/">
-        <Glweems />
-      </Link>
-      <div>
-        <button type="button">
-          <FontAwesomeIcon icon={faEnvelopeSquare} size="lg" />
-        </button>
-      </div>
-    </Container>
+const Navbar = ({ toggleMenu, isMenu }: NavbarProps) => (
+  <Header className="container-fluid">
+    <div>
+      <button type="button" onClick={() => toggleMenu(!isMenu)}>
+        <FontAwesomeIcon icon={isMenu ? faTimes : faBars} size="lg" />
+      </button>
+    </div>
+    <Link to="/">
+      <Glweems height="2em" />
+    </Link>
+    <div>
+      <button type="button">
+        <FontAwesomeIcon icon={faEnvelopeSquare} size="lg" />
+      </button>
+    </div>
   </Header>
 );
 

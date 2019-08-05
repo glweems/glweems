@@ -4,15 +4,17 @@ import { Link } from 'gatsby';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import SocialMediaIcons from './SocialMedia';
 
+interface MenuItem {
+  text: string;
+  path: string;
+  icon?: IconDefinition;
+}
 interface MenuProps {
   isMenu?: boolean;
-  items: {
-    text: string;
-    path: string;
-    icon: any;
-  }[];
+  items: MenuItem[];
 }
 
 const Toggle = styled.div``;

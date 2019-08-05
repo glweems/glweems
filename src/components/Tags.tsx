@@ -20,7 +20,7 @@ const Tag = styled.span`
 const Tags = ({ items }: { items: string[] }) => (
   <StyledTags>
     {items.map(item => (
-      <Tag key={item}>{item}</Tag>
+      <Tag key={item}>{item.toLocaleLowerCase()}</Tag>
     ))}
   </StyledTags>
 );
