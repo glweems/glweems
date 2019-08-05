@@ -1,106 +1,85 @@
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import styled from 'styled-components';
+import { media } from '../utils/theme';
+import Card from '../components/Card';
 
-interface AllFileNode {
-  relativeDirectory: string;
-  childImageSharp?:
-    | {
-        fluid: {};
-      }
-    | undefined;
-}
-interface AllFile {
-  nodes: AllFileNode[];
-}
-interface allBehanceProjectsNode {
-  name: string;
-  tags: string[];
-  cover: string;
-  slug: string;
-}
-interface allBehanceProjects {
-  nodes: allBehanceProjectsNode[];
-}
-interface DesignsPageProps {
-  allFile: {
-    nodes: AllFileNode[];
-  };
-  allBehanceProjects: {
-    nodes: allBehanceProjectsNode[];
-  };
-}
-
-interface Design {
-  name: string;
-  tags: string[];
-  slug: string;
-  fluid: any;
-}
+const Cards = styled.div`
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  ${media.greaterThan('sm')`
+grid-template-columns: repeat(2, 1fr);
+`}
+  ${media.greaterThan('lg')`
+grid-template-columns: repeat(3, 1fr);
+`}
+`;
 
 const Designs = () => {
-  const { allFile, allBehanceProjects }: DesignsPageProps = useStaticQuery(graphql`
-    query DesignPage {
-      allFile(
-        filter: { name: { eq: "cover" }, relativePath: { regex: "/gatsby-source-behance-images/" } }
-        sort: { fields: relativeDirectory, order: ASC }
-      ) {
-        nodes {
-          relativeDirectory
-          childImageSharp {
-            fluid(maxWidth: 1000, traceSVG: { background: "31a1e28", color: "#f8d58c" }) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
-          }
-        }
-      }
-      allBehanceProjects(sort: { fields: slug, order: ASC }) {
+  const { behanceImages, allBehanceProjects } = UseDesignsPageQuery();
+
+  const mergedBehance = allBehanceProjects.nodes.map(node => {
+    const found: any = behanceImages.nodes.find((imageNode: { relativeDirectory: string }) =>
+      imageNode.relativeDirectory.includes(node.slug),
+    );
+    return { ...node, ...found.childImageSharp };
+  });
+
+  return (
+    <section className="container">
+      <Cards>
+        {mergedBehance.map(node => (
+          <Card
+            key={node.slug}
+            title={node.name}
+            subtitle={node.description}
+            img={node}
+            tags={node.tags}
+            link={`designs/${node.slug}`}
+          />
+        ))}
+      </Cards>
+    </section>
+  );
+};
+const UseDesignsPageQuery = () => {
+  const { behanceImages, allBehanceProjects } = useStaticQuery(graphql`
+    query DesignsPageQuery {
+      allBehanceProjects {
         nodes {
           slug
           name
           description
           tags
-          cover {
-            src
-            path
+        }
+      }
+      behanceImages: allFile(
+        filter: {
+          relativeDirectory: { regex: "/gatsby-source-behance-images/" }
+          name: { eq: "cover" }
+        }
+      ) {
+        nodes {
+          relativeDirectory
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid_noBase64
+            }
           }
         }
       }
     }
   `);
 
-  const mergeQueries = (projectNodes: allBehanceProjects, fileNodes: AllFile) => {
-    return projectNodes.nodes.map(({ name, tags, slug }) => {
-      const {
-        childImageSharp: { fluid },
-      }: any = fileNodes.nodes.find(file => file.relativeDirectory.includes(slug));
-
-      const design: Design = {
-        name,
-        tags,
-        slug,
-        fluid,
-      };
-
-      return design;
-    });
+  return {
+    behanceImages,
+    allBehanceProjects,
   };
-
-  const designs = mergeQueries(allBehanceProjects, allFile);
-
-  return (
-    <section className="container">
-      {designs.map(design => (
-        <article className="location-listing">
-          <div className="location-image">
-            {design.name}
-            <Img fluid={design.fluid} />
-          </div>
-        </article>
-      ))}
-    </section>
-  );
 };
 
 export default Designs;
