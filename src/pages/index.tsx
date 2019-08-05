@@ -7,6 +7,23 @@ import Card from '../components/Card';
 import About from '../components/About';
 import { media } from '../utils/theme';
 
+const Cards = styled.div`
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  ${media.greaterThan('sm')`
+grid-template-columns: repeat(2, 1fr);
+`}
+  ${media.greaterThan('lg')`
+grid-template-columns: repeat(3, 1fr);
+`}
+`;
+
+const Section = styled(Container)`
+  border-top: 2px solid ${({ theme }) => theme.blue};
+`;
+
 const IndexPage = () => {
   const { behanceImages, markdownFiles, allBehanceProjects } = useIndexPageQuery();
 
@@ -16,23 +33,6 @@ const IndexPage = () => {
     );
     return { ...node, ...found.childImageSharp };
   });
-
-  const Section = styled(Container)`
-    border-top: 2px solid ${({ theme }) => theme.blue};
-  `;
-
-  const Cards = styled.div`
-    display: grid;
-    gap: 1em;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    ${media.greaterThan('sm')`
-    grid-template-columns: repeat(2, 1fr);
-    `}
-    ${media.greaterThan('lg')`
-    grid-template-columns: repeat(3, 1fr);
-    `}
-  `;
 
   return (
     <div>
@@ -102,9 +102,6 @@ const useIndexPageQuery = (): IndexPageQuery => {
         nodes {
           relativeDirectory
           childImageSharp {
-            # fixed(width: 300, height: 150) {
-            #   ...GatsbyImageSharpFixed
-            # }
             fluid(maxWidth: 300) {
               ...GatsbyImageSharpFluid_noBase64
             }
