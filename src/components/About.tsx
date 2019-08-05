@@ -19,11 +19,15 @@ const Image = styled.div`
 
 const SocialMedia = styled.div``;
 
-const StyledAbout = styled(Container)`
+const Wrapper = styled(Container)`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(4, auto);
-  grid-template-areas: 'Title' 'Subtitle' 'Image' 'SocialMedia';
+  grid-template-areas:
+    'Title'
+    'Subtitle'
+    'Image'
+    'SocialMedia';
 
   ${Title} {
     grid-area: Title;
@@ -43,21 +47,22 @@ const StyledAbout = styled(Container)`
   ${media.greaterThan('sm')`
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(3, auto);
-  grid-template-areas: 'Title Title' 'Subtitle Subtitle' 'Image SocialMedia';
+  grid-template-areas:
+    'Title Title'
+    'Subtitle Subtitle'
+    'Image SocialMedia';
   `}
 `;
 
-const About = () => {
-  return (
-    <StyledAbout>
-      <Title>Hi, I'm Garrett</Title>
-      <Image>
-        <Avitar />
-      </Image>
-      <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
-      <SocialMediaIcons />
-    </StyledAbout>
-  );
-};
+const About = () => (
+  <Wrapper>
+    <Title>Hi, I'm Garrett</Title>
+    <Image>
+      <Avitar />
+    </Image>
+    <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
+    <SocialMediaIcons />
+  </Wrapper>
+);
 
 export default About;

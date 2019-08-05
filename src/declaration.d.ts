@@ -9,6 +9,7 @@ declare module 'gatsby-image';
 declare module 'react-reveal';
 declare module 'react-burger-menu';
 declare module 'typography-theme-grand-view';
+declare module 'lodash-es/clamp';
 
 interface Colors {
   light: string;

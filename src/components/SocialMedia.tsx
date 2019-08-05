@@ -8,20 +8,19 @@ import {
   faGithub,
   faCodepen,
 } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
+// import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 
 interface IconData {
   name: string;
   link: string;
   icon: IconDefinition;
 }
-
-const data: IconData[] = [
-  {
+/*  {
     name: 'Email',
     link: 'mailto://gwgraphdesign@gmail.com',
     icon: faEnvelopeOpenText,
-  },
+  }, */
+const data: IconData[] = [
   {
     name: 'LinkedIn',
     link: 'https://www.linkedin.com/in/glweems',

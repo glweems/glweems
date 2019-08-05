@@ -1,21 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { graphql, useStaticQuery } from 'gatsby';
+import useSEOQuery from '../graphql/SEOQuery';
 
-interface SeoQuery {
-  site: {
-    siteMetadata: {
-      defaultTitle: string;
-      titleTemplate: string;
-      defaultDescription: string;
-      url: string;
-      image: string;
-      defaultImage: string;
-    };
-  };
-}
-
-interface SiteMetadata {
+interface SEOProps {
   title?: string;
   description?: string;
   image?: string;
@@ -25,24 +12,12 @@ interface SiteMetadata {
   keywords?: string[];
 }
 
-const SEO = ({ title, description, image, article, pathname, keywords }: SiteMetadata) => {
+const SEO = ({ title, description, image, article, pathname, keywords }: SEOProps) => {
   const {
     site: {
       siteMetadata: { defaultTitle, titleTemplate, defaultDescription, url, defaultImage },
     },
-  }: SeoQuery = useStaticQuery(graphql`
-    query SEO {
-      site {
-        siteMetadata {
-          defaultTitle: title
-          titleTemplate
-          defaultDescription: description
-          url
-          defaultImage: image
-        }
-      }
-    }
-  `);
+  } = useSEOQuery();
 
   const seo = {
     title: title || defaultTitle,
