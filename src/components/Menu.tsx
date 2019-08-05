@@ -5,6 +5,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Container } from 'reactstrap';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { animated, useTransition } from 'react-spring';
 import SocialMediaIcons from './SocialMedia';
 
 interface MenuItem {
@@ -29,7 +30,7 @@ const SocialMedia = styled.div`
   height: fit-content;
 `;
 
-const Navigation = styled.nav`
+const Navigation = styled(animated.header)`
   grid-area: Menu;
   display: grid;
   grid-template-columns: auto;
@@ -53,26 +54,35 @@ const Navigation = styled.nav`
   }
 `;
 
-const Menu = ({ items, isMenu }: MenuProps): React.ReactNode | null | any =>
-  !isMenu || (
-    <Navigation>
-      <Toggle>
-        <button type="button">clicky</button>
-      </Toggle>
-      <Pages rows={items.length}>
-        {items.map(({ path, icon, text }) => (
-          <Link key={path} to={path}>
-            {icon ? <FontAwesomeIcon icon={icon} /> : null}
-            {text}
-          </Link>
-        ))}
-      </Pages>
-      <SocialMedia>
-        <Container>
-          <SocialMediaIcons />
-        </Container>
-      </SocialMedia>
-    </Navigation>
+const Menu = ({ items, isMenu }: MenuProps): React.ReactNode | null | any => {
+  const transitions = useTransition(isMenu, null, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
+  return transitions.map(
+    ({ item, key, props }) =>
+      item && (
+        <Navigation key={key} style={props}>
+          <Toggle>
+            <button type="button">clicky</button>
+          </Toggle>
+          <Pages rows={items.length}>
+            {items.map(({ path, icon, text }) => (
+              <Link key={path} to={path}>
+                {icon ? <FontAwesomeIcon icon={icon} /> : null}
+                {text}
+              </Link>
+            ))}
+          </Pages>
+          <SocialMedia>
+            <Container>
+              <SocialMediaIcons />
+            </Container>
+          </SocialMedia>
+        </Navigation>
+      ),
   );
+};
 
 export default Menu;
