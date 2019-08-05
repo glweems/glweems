@@ -1,24 +1,8 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { media } from '../utils/theme';
-import Card from '../components/Card';
-
-const Cards = styled.div`
-  display: grid;
-  gap: 1em;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  ${media.greaterThan('sm')`
-grid-template-columns: repeat(2, 1fr);
-`}
-  ${media.greaterThan('lg')`
-grid-template-columns: repeat(3, 1fr);
-`}
-`;
+import { Container } from 'reactstrap';
+import Card, { Cards } from '../components/Card';
 
 const Designs = () => {
   const { behanceImages, allBehanceProjects } = UseDesignsPageQuery();
@@ -31,7 +15,8 @@ const Designs = () => {
   });
 
   return (
-    <section className="container">
+    <Container>
+      <h1>Graphic Design Projects</h1>
       <Cards>
         {mergedBehance.map(node => (
           <Card
@@ -44,11 +29,11 @@ const Designs = () => {
           />
         ))}
       </Cards>
-    </section>
+    </Container>
   );
 };
-const UseDesignsPageQuery = () => {
-  const { behanceImages, allBehanceProjects } = useStaticQuery(graphql`
+const UseDesignsPageQuery = () =>
+  useStaticQuery(graphql`
     query DesignsPageQuery {
       allBehanceProjects {
         nodes {
@@ -75,11 +60,5 @@ const UseDesignsPageQuery = () => {
       }
     }
   `);
-
-  return {
-    behanceImages,
-    allBehanceProjects,
-  };
-};
 
 export default Designs;
