@@ -2540,7 +2540,7 @@ babel-plugin-dynamic-import-node@^2.3.0:
   dependencies:
     object.assign "^4.1.0"
 
-babel-plugin-macros@^2.4.2:
+babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.4.2:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/babel-plugin-macros/-/babel-plugin-macros-2.6.1.tgz#41f7ead616fc36f6a93180e89697f69f51671181"
   integrity sha512-6W2nwiXme6j1n2erPOnmRiWfObUhWH7Qw1LMi9XZy8cj+KtESu3T6asZvtk5bMQQjX8te35o7CFueiSdL/2NmQ==
@@ -2548,6 +2548,13 @@ babel-plugin-macros@^2.4.2:
     "@babel/runtime" "^7.4.2"
     cosmiconfig "^5.2.0"
     resolve "^1.10.0"
+
+babel-plugin-relay@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-relay/-/babel-plugin-relay-2.0.0.tgz#f5c408f81427f3e97b65ea3f6bccf6821f1615b9"
+  integrity sha512-NFQ+TzQtr4Wh1/FEpjeZqghS1Orpn0gAvksrBOgn606bMf2vd1YYed8z4gMAyAPkwSgWzsNtsLzq84pMJi6agQ==
+  dependencies:
+    babel-plugin-macros "^2.0.0"
 
 babel-plugin-remove-graphql-queries@^2.7.2:
   version "2.7.2"
@@ -6302,6 +6309,15 @@ gatsby-link@^2.2.4:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
+gatsby-node-helpers@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/gatsby-node-helpers/-/gatsby-node-helpers-0.3.0.tgz#3bdca3b7902a702a5834fef280ad66d51099d57c"
+  integrity sha1-O9yjt5AqcCpYNP7ygK1m1RCZ1Xw=
+  dependencies:
+    json-stringify-safe "^5.0.1"
+    lodash "^4.17.4"
+    p-is-promise "^1.1.0"
+
 gatsby-page-utils@^0.0.5:
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/gatsby-page-utils/-/gatsby-page-utils-0.0.5.tgz#faefc2ece9f14bfd161ddd0104d1e12b54ef7a70"
@@ -6315,6 +6331,18 @@ gatsby-page-utils@^0.0.5:
     lodash "^4.17.14"
     micromatch "^3.1.10"
     slash "^1.0.0"
+
+gatsby-plugin-emit-graphql-types@damassi/gatsby-plugin-emit-graphql-types:
+  version "0.1.0"
+  resolved "https://codeload.github.com/damassi/gatsby-plugin-emit-graphql-types/tar.gz/1e45a37cd14933d5da1adbf74c0f424f3fa4e80c"
+  dependencies:
+    babel-plugin-relay "^2.0.0"
+    graphql-compiler "^1.7.0"
+    minilog "^3.1.0"
+    relay "^0.8.0-1"
+    relay-compiler-language-typescript "^2.0.0"
+    typescript "^3.3.1"
+    write "^1.0.3"
 
 gatsby-plugin-favicon@^3.1.6:
   version "3.1.6"
@@ -6548,13 +6576,14 @@ gatsby-source-filesystem@^2.0.4, gatsby-source-filesystem@^2.1.6, gatsby-source-
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-source-git-remotes@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-source-git-remotes/-/gatsby-source-git-remotes-1.1.0.tgz#8f68f3eae9a87a63065e30fda774d112c8eba4ee"
-  integrity sha512-TRJ9wuvsZWw6ofqtbr5i+2bacXELjKKsYOfp13lMo4QrdicMeWXwJle2ZFPAfoQZyIY4Myx6wWWgkw8OljCAkw==
+gatsby-source-git-remotes@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-git-remotes/-/gatsby-source-git-remotes-1.1.1.tgz#81d3b177cdb1e1bd673e7e3b6fdb8bd946b03644"
+  integrity sha512-8dMbYhdDoiluNTrmzgBqrBotfD2DCpVNdOYGj7NFlKMltdS3fkmZPZj4SCYlQWvc+pdSGqSM0ZRzP/BBCVT5Lw==
   dependencies:
     fast-glob "^2.2.3"
     fs-extra "^5.0.0"
+    gatsby-node-helpers "^0.3.0"
     gatsby-source-filesystem "^2.0.4"
     git-url-parse "^11.1.1"
     rimraf "^2.6.2"
@@ -7160,6 +7189,15 @@ graceful-fs@^4.1.10, graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
   integrity sha1-TK+tdrxi8C+gObL5Tpo906ORpyU=
+
+graphql-compiler@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/graphql-compiler/-/graphql-compiler-1.7.0.tgz#19942b47325cd41f6f4f79e67ef0d75c379b6ba1"
+  integrity sha512-jC4PBo1ikFRiA2CLclNxMMFJTwhxPam1HxzIxJgWWHm26AXw0ZsN41a2t6vGfw7NxXCfnef4JCIHWFMgIm8iOQ==
+  dependencies:
+    chalk "^1.1.1"
+    fb-watchman "^2.0.0"
+    immutable "~3.7.6"
 
 graphql-compose@^6.3.2:
   version "6.3.5"
@@ -7845,6 +7883,11 @@ imagemin@^6.0.0:
     p-pipe "^1.1.0"
     pify "^4.0.1"
     replace-ext "^1.0.0"
+
+immutable@^3.8.2:
+  version "3.8.2"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+  integrity sha1-wkOZUUVbs5kT2vKBN28VMOEErfM=
 
 immutable@~3.7.6:
   version "3.7.6"
@@ -9598,6 +9641,11 @@ methods@~1.1.2:
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
   integrity sha1-VSmk1nZUE07cxSZmVoNbD4Ua/O4=
 
+microee@0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/microee/-/microee-0.0.6.tgz#a12bdb0103681e8b126a9b071eba4c467c78fffe"
+  integrity sha1-oSvbAQNoHosSapsHHrpMRnx4//4=
+
 micromatch@^3.1.10, micromatch@^3.1.4, micromatch@^3.1.8:
   version "3.1.10"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-3.1.10.tgz#70859bc95c9840952f359a068a3fc49f9ecfac23"
@@ -9700,6 +9748,13 @@ minify-css-string@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/minify-css-string/-/minify-css-string-1.0.0.tgz#201bd949271e19f6e0af0a1dc0ccc583de47c630"
   integrity sha1-IBvZSSceGfbgrwodwMzFg95HxjA=
+
+minilog@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/minilog/-/minilog-3.1.0.tgz#d2d0f1887ca363d1acf0ea86d5c4df293b3fb675"
+  integrity sha1-0tDxiHyjY9Gs8OqG1cTfKTs/tnU=
+  dependencies:
+    microee "0.0.6"
 
 minimalistic-assert@^1.0.0, minimalistic-assert@^1.0.1:
   version "1.0.1"
@@ -12397,6 +12452,14 @@ rehype-react@^4.0.1:
     "@mapbox/hast-util-table-cell-style" "^0.1.3"
     hast-to-hyperscript "^7.0.0"
 
+relay-compiler-language-typescript@^2.0.0:
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/relay-compiler-language-typescript/-/relay-compiler-language-typescript-2.6.0.tgz#df9f762abd350eab306a50d29793da34f5cb8c07"
+  integrity sha512-JKeYLgUMWjOIugEzIaIru3dL1v2N4PZwm5mDMgKqm5GR4iD8ao9lcZTxsPVfsM7nKRTvN7N564qkAVHnBCrdNA==
+  dependencies:
+    immutable "^3.8.2"
+    invariant "^2.2.2"
+
 relay-runtime@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-2.0.0.tgz#0e42df90365cc69f104f7e4b20fdcf975f5a9c0b"
@@ -12404,6 +12467,11 @@ relay-runtime@2.0.0:
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
+
+relay@^0.8.0-1:
+  version "0.8.0-1"
+  resolved "https://registry.yarnpkg.com/relay/-/relay-0.8.0-1.tgz#f2b632ea1be64bbe706c9351a99b27320ee89e07"
+  integrity sha1-8rYy6hvmS75wbJNRqZsnMg7ongc=
 
 remark-parse@^6.0.0:
   version "6.0.3"
@@ -14445,7 +14513,7 @@ typescript-template-language-service-decorator@^1.2.0:
   resolved "https://registry.yarnpkg.com/typescript-template-language-service-decorator/-/typescript-template-language-service-decorator-1.7.1.tgz#60f825b6b2bab725c9a73eaff65cb598e81a1bc8"
   integrity sha512-Gk0WBNe73T87lpiSj37Xmwzvt5zkKaHT1chY5+v2KP4uhpHktqIcV1hMpxmzAong38EIEhGZWeKtxjxGmTMbqg==
 
-typescript@^3.5.2:
+typescript@^3.3.1, typescript@^3.5.2:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.5.3.tgz#c830f657f93f1ea846819e929092f5fe5983e977"
   integrity sha512-ACzBtm/PhXBDId6a6sDJfroT2pOWt/oOnk4/dElG5G33ZL776N3Y6/6bKZJBFpd+b05F3Ct9qDjMeJmRWtE2/g==
@@ -15290,7 +15358,7 @@ write-file-atomic@^2.0.0:
     imurmurhash "^0.1.4"
     signal-exit "^3.0.2"
 
-write@1.0.3:
+write@1.0.3, write@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/write/-/write-1.0.3.tgz#0800e14523b923a387e415123c865616aae0f5c3"
   integrity sha512-/lg70HAjtkUgWPVZhZcm+T4hkL8Zbtp1nFNOn3lRrxnlv50SRBv7cR7RqR+GMsd3hUXy9hWBo4CHTbFTcOYwig==
