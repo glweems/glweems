@@ -79,4 +79,17 @@ const Card = ({ title, subtitle, img, link, tags }: Card) => {
   );
 };
 
+export const Cards = styled.div`
+  display: grid;
+  gap: 1em;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  ${media.greaterThan('sm')`
+    grid-template-columns: repeat(2, 1fr);
+`}
+  ${media.greaterThan('lg')`
+    grid-template-columns: repeat(3, 1fr);
+`}
+`;
+
 export default Card;
