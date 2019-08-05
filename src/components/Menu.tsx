@@ -2,48 +2,75 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 
 import React from 'react';
-import { IconProp, FontawesomeObject } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useTransition, animated, useSpring } from 'react-spring';
-
-const Navigation = styled(animated.nav)`
-  grid-area: Menu;
-  display: grid;
-  grid-template-columns: 1fr;
-  color: ${({ theme }: StyleProps) => theme.light};
-  background: ${({ theme }: StyleProps) => theme.dark};
-`;
+import { Container } from 'reactstrap';
+import SocialMediaIcons from './SocialMedia';
 
 interface MenuProps {
   isMenu?: boolean;
   items: {
-    text?: string;
-    path?: string;
-    icon?: IconProp;
+    text: string;
+    path: string;
+    icon: any;
   }[];
 }
 
-const Menu = ({ items, isMenu }: MenuProps): React.ReactNode | null | any => {
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+const Toggle = styled.div``;
 
-  const transitions = useTransition(isMenu, null, {
-    from: { opacity: 0, transform: 'translateY(-10%)' },
-    enter: { opacity: 1, transform: 'translateY(0%)' },
-    leave: { opacity: 0, transform: 'translateY(10%)' },
-  });
+const Pages = styled(Container)`
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+`;
 
-  return (
-    !isMenu || (
-      <Navigation style={props}>
+const SocialMedia = styled.div`
+  height: fit-content;
+`;
+
+const Navigation = styled.nav`
+  grid-area: Menu;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 3em auto auto;
+  grid-template-areas: 'Toggle' 'Pages' 'SocialMedia';
+
+  height: 100vh;
+  justify-items: space-between;
+  color: ${({ theme }: StyleProps) => theme.light};
+  background: ${({ theme }: StyleProps) => theme.bg};
+  ${Toggle} {
+    grid-area: Toggle;
+  }
+
+  ${Pages} {
+    grid-area: Pages;
+  }
+
+  ${SocialMedia} {
+    grid-area: SocialMedia;
+  }
+`;
+
+const Menu = ({ items, isMenu }: MenuProps): React.ReactNode | null | any =>
+  !isMenu || (
+    <Navigation>
+      <Toggle>
+        <button type="button">clicky</button>
+      </Toggle>
+      <Pages rows={items.length}>
         {items.map(({ path, icon, text }) => (
           <Link key={path} to={path}>
             {icon ? <FontAwesomeIcon icon={icon} /> : null}
             {text}
           </Link>
         ))}
-      </Navigation>
-    )
+      </Pages>
+      <SocialMedia>
+        <Container>
+          <SocialMediaIcons />
+        </Container>
+      </SocialMedia>
+    </Navigation>
   );
-};
 
 export default Menu;

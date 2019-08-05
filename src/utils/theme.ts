@@ -20,4 +20,25 @@ export const theme = {
   bg: `#1f242f`,
 };
 
-export const GlobalStyle = createGlobalStyle``;
+export const GlobalStyle = createGlobalStyle`
+body {
+  background: ${theme.dark};
+  color: ${theme.light};
+}
+
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
+button {
+  box-sizing: content-box;
+  padding: 0;
+  overflow: visible;
+  line-height: normal;
+  background: none;
+  border: 0;
+
+  :focus {
+    outline: none;
+  }
+}
+`;
