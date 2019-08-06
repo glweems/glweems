@@ -119,26 +119,30 @@ module.exports = {
     {
       resolve: `gatsby-source-git-remotes`,
       options: {
-        userDir: './.cache/',
         repos: [
           {
+            name: `dotenv`,
+            remote: `git@github.com:glweems/dotenv.git`,
+            patterns: [`*`],
+          },
+          {
             name: `react-peekaboo-navbar`,
-            remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
+            remote: `git@github.com:gwtuts/react-peekaboo-navbar.git`,
             patterns: [`*`],
           },
           {
             name: `react-navbar-scroller`,
-            remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
+            remote: `git@github.com:gwtuts/react-navbar-scroller.git`,
             patterns: [`*`],
           },
           {
             name: `gatsby-darkmode`,
-            remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
+            remote: `git@github.com:gwtuts/gatsby-darkmode.git`,
             patterns: [`*`],
           },
           {
             name: `styled-container`,
-            remote: `https://github.com/gwtuts/styled-container.git`,
+            remote: `git@github.com:gwtuts/styled-container.git`,
             patterns: [`*`],
           },
         ],

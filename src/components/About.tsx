@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
+import { animated, useSpring } from 'react-spring';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
 
@@ -18,10 +19,10 @@ const Image = styled.div`
 
 const SocialMedia = styled.div``;
 
-const Wrapper = styled(Container)`
+const Wrapper = styled(animated.div)`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: repeat(4, 1fr);
   grid-template-areas:
     'Title'
     'Subtitle'
@@ -44,15 +45,23 @@ const Wrapper = styled(Container)`
   }
 `;
 
-const About = () => (
-  <Wrapper>
-    <Title>Hi, I'm Garrett</Title>
-    <Image>
-      <Avitar />
-    </Image>
-    <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
-    <SocialMediaIcons horizontal noText />
-  </Wrapper>
-);
+const About = () => {
+  const props = useSpring({
+    opacity: 1,
+    height: `100vh`,
+    from: { opacity: 0 },
+  });
+
+  return (
+    <Wrapper style={props}>
+      <Title>Hi, I'm Garrett</Title>
+      <Image>
+        <Avitar />
+      </Image>
+      <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
+      <SocialMediaIcons horizontal noText />
+    </Wrapper>
+  );
+};
 
 export default About;

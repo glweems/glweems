@@ -4,18 +4,22 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import Card, { Cards } from '../components/Card';
 import About from '../components/About';
-import { mergedBehance } from '../utils/helpers';
+import { mergedBehance, filterProjectImages } from '../utils/helpers';
 import useIndexPageQuery from '../graphql/IndexPageQuery';
 
 const Section = styled(Container)`
-  border-top: 2px solid ${({ theme }) => theme.blue};
+  border-top: 2px solid ${props => props.theme.darkColors.light};
 `;
 
 const IndexPage = () => {
-  const { behanceCoverImages, markdownFiles, allBehanceProjects } = useIndexPageQuery();
+  const {
+    behanceCoverImages,
+    markdownFiles,
+    allBehanceProjects,
+    allBehanceImages,
+  } = useIndexPageQuery();
 
   const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
-
   return (
     <div>
       <Container>
@@ -28,7 +32,7 @@ const IndexPage = () => {
           {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
             <Card
               key={id}
-              title={childMarkdownRemark.frontmatter.title}
+              title={childMarkdownRemark.frontmatter.path}
               subtitle={childMarkdownRemark.excerpt}
               tags={childMarkdownRemark.frontmatter.tags}
               link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
@@ -46,9 +50,9 @@ const IndexPage = () => {
               key={node.slug}
               title={node.name}
               subtitle={node.description}
-              img={node}
               tags={node.tags}
               link={`designs/${node.slug}`}
+              images={filterProjectImages(node.slug, allBehanceImages.nodes)}
             />
           ))}
         </Cards>

@@ -1,11 +1,6 @@
 // import original module declarations
 import 'styled-components';
 
-declare module '*.png' {
-  const content: { [className: string]: string };
-  export default content;
-}
-
 declare module 'gatsby';
 declare module 'gatsby-image';
 
@@ -32,7 +27,7 @@ declare module 'styled-components' {
   }
 }
 
-interface LocalFile {
+export interface LocalFile {
   id: string;
   name: string;
   childImageSharp: {
@@ -63,7 +58,7 @@ export interface MarkdownRemark {
   };
 }
 
-interface BehanceProject {
+export interface BehanceProject {
   id: string;
   name: string;
   description: string;
@@ -80,8 +75,9 @@ interface BehanceProject {
   };
 }
 
-interface BehanceImage {
+export interface BehanceImage {
   id: string;
+  behanceProject: string;
   sourceInstanceName: string;
   relativeDirectory: string;
   name: string;
@@ -90,7 +86,7 @@ interface BehanceImage {
   };
 }
 
-interface GithubRepository {
+export interface GithubRepository {
   id: string;
   name: string;
   url: string;
