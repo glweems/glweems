@@ -114,27 +114,27 @@ module.exports = {
         repos: [
           {
             name: `dotenv`,
-            remote: `git@github.com:glweems/dotenv.git`,
+            remote: `https://github.com/glweems/dotenv.git`,
             patterns: [`*`],
           },
           {
             name: `react-peekaboo-navbar`,
-            remote: `git@github.com:gwtuts/react-peekaboo-navbar.git`,
+            remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
             patterns: [`*`],
           },
           {
             name: `react-navbar-scroller`,
-            remote: `git@github.com:gwtuts/react-navbar-scroller.git`,
+            remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
             patterns: [`*`],
           },
           {
             name: `gatsby-darkmode`,
-            remote: `git@github.com:gwtuts/gatsby-darkmode.git`,
+            remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
             patterns: [`*`],
           },
           {
             name: `styled-container`,
-            remote: `git@github.com:gwtuts/styled-container.git`,
+            remote: `https://github.com/gwtuts/styled-container.git`,
             patterns: [`*`],
           },
         ],

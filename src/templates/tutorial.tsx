@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Container } from 'reactstrap';
 import SEO from '../components/SEO';
 import { A, H1, H2, H3, H4, H5, H6, helperCss } from '../utils/theme';
+import '../../node_modules/gatsby-remark-vscode/styles.css';
 
 interface BlogTemplateProps {
   data: {
