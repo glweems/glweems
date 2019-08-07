@@ -151,6 +151,7 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          `gatsby-remark-unwrap-images`,
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -162,13 +163,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-vscode`,
             options: {
-              colorTheme: `Ayu Mirage Bordered`,
-              extensions: [
-                {
-                  identifier: `teabyii.ayu`,
-                  version: `0.18.0`,
-                },
-              ],
+              colorTheme: `Dark+ (default dark)`,
             },
           },
         ],
