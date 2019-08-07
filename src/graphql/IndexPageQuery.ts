@@ -12,7 +12,7 @@ const useIndexPageQuery = (): IndexPageQuery =>
   useStaticQuery(graphql`
     query IndexPageQuery {
       # Behance Projects info
-      allBehanceProjects(filter: { stats: { views: { gte: 20 } } }, limit: 4) {
+      allBehanceProjects(limit: 4) {
         nodes {
           ...BehanceCard
         }
