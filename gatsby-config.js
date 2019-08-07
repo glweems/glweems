@@ -21,7 +21,7 @@ module.exports = {
         background_color: `#ff5851`,
         theme_color: `#5687e8`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
+        icon: `src/assets/favicon.png`,
       },
     },
     `@rhysforyou/gatsby-plugin-react-helmet-async`,
@@ -58,7 +58,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: `./src/images/favicon.png`,
+        logo: `./src/assets/favicon.png`,
         appName: null,
         appDescription: null,
         developerName: null,
@@ -84,18 +84,10 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Roboto', 'Karla'],
-        },
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `image`,
-        path: `./src/images`,
+        path: `./src/assets`,
       },
     },
 

@@ -7,7 +7,7 @@ import clamp from 'lodash-es/clamp';
 import { useGesture } from 'react-use-gesture';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-import Cursor from '../images/cursor.png';
+import Cursor from '../assets/cursor.png';
 
 const Image = styled(animated(Img))``;
 
