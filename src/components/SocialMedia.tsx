@@ -8,7 +8,8 @@ import {
   faGithub,
   faCodepen,
 } from '@fortawesome/free-brands-svg-icons';
-// import { faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
+import styled from 'styled-components';
+import { ColorKeys, A } from '../utils/theme';
 
 interface IconData {
   name: string;
@@ -83,14 +84,15 @@ const SocialMediaIcon = ({
   noText,
   noIcon,
   size,
+  color,
 }: SocialMediaIconProps) => (
   <div style={{ fontSize, marginRight }}>
-    <a href={link} target="_blank_" className="icon-link">
+    <A href={link} target="_blank_" color={color}>
       {noIcon ? null : (
         <FontAwesomeIcon icon={icon} style={{ marginRight: '0.75em' }} size={size} />
       )}
       {noText ? null : name}
-    </a>
+    </A>
   </div>
 );
 
@@ -117,6 +119,7 @@ interface SocialMediaIcons {
     | '9x'
     | '10x'
     | undefined;
+  color: ColorKeys;
   horizontal?: boolean | undefined;
 }
 
@@ -126,6 +129,7 @@ const SocialMediaIcons = ({
   noIcon,
   size,
   horizontal = false,
+  color = 'blue',
 }: SocialMediaIcons) => (
   <div style={{ display: 'flex', flexDirection: horizontal ? 'horizontal' : 'column' }}>
     {data.map(item => (
@@ -136,6 +140,7 @@ const SocialMediaIcons = ({
         noIcon={noIcon}
         noText={noText}
         marginRight={marginRight}
+        color={color}
       />
     ))}
   </div>

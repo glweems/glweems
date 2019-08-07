@@ -6,7 +6,25 @@ import Card, { Cards } from '../components/Card';
 import About from '../components/About';
 import { mergedBehance, filterProjectImages } from '../utils/helpers';
 import useIndexPageQuery from '../graphql/IndexPageQuery';
-import { H2, Section } from '../utils/theme';
+import { H2, Section, media } from '../utils/theme';
+
+const Content = styled.div`
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr 1fr;
+  grid-template-areas: 'About' 'Tutorials' 'Designs';
+  gap: 10em;
+  margin-top: 1em;
+  section:nth-child(1) {
+    grid-area: About;
+  }
+  section:nth-child(2) {
+    grid-area: Tutorials;
+  }
+  section:nth-child(3) {
+    grid-area: Designs;
+  }
+`;
 
 const IndexPage = () => {
   const {
@@ -15,15 +33,17 @@ const IndexPage = () => {
     allBehanceProjects,
     allBehanceImages,
   } = useIndexPageQuery();
+
   const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
+
   return (
-    <div>
+    <Content bg="blue">
       <Section>
         <About />
       </Section>
 
       <Section>
-        <H2 color="blue">Blog Posts</H2>
+        <H2 color="purple">Blog Posts</H2>
         <Cards>
           {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
             <Card
@@ -53,7 +73,7 @@ const IndexPage = () => {
           ))}
         </Cards>
       </Section>
-    </div>
+    </Content>
   );
 };
 

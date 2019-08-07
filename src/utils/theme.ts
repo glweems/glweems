@@ -72,19 +72,29 @@ const theme: DefaultTheme = {
 
 export { theme };
 
-type ColorKeys = keyof Colors;
+export type ColorKeys = keyof Colors;
 
-interface StyledElementProps {
-  color: ColorKeys;
+export interface StyledElementProps extends DefaultTheme {
+  color?: ColorKeys;
   bg: ColorKeys;
   dark: boolean;
   light: boolean;
-  children: string;
 }
 
-const helperCss = css<StyledElementProps>`
-  color: ${props => props.theme.colors[props.color]};
+export const helperCss = css<StyledElementProps>`
+  color: ${props => (props.color ? props.theme.colors[props.color] : props.theme.colors.light)};
   background: ${props => props.theme.colors[props.bg]};
+`;
+
+export const A = styled.a<StyledElementProps>`
+  ${props => props && helperCss}
+  :hover {
+    color: ${props => props.theme.lightColors.red};
+  }
+`;
+
+export const Span = styled.span<StyledElementProps>`
+  ${props => props && helperCss}
 `;
 
 export const H1 = styled.h1<StyledElementProps>`
@@ -117,7 +127,7 @@ export const H6 = styled.h6<StyledElementProps>`
   margin-top: 0;
 `;
 
-export const Section = styled(Container)<StyledElementProps>`
+export const Section = styled.section<StyledElementProps>`
   ${props => props && helperCss}
 `;
 
@@ -141,9 +151,6 @@ export const Section = styled(Container)<StyledElementProps>`
 // export const Custom = componentFactory();
 
 export const GlobalStyle = createGlobalStyle`
-* {
-  color: inherit;
-}
 body {
   background: ${props => props.theme.colors.dark};
   color: ${props => props.theme.colors.light};

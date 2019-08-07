@@ -4,13 +4,7 @@ import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-
-const Title = styled.h1`
-  color: ${props => props.theme.colors.yellow};
-`;
-const Subtitle = styled.h4`
-  color: ${props => props.theme.colors.red};
-`;
+import { media, H1, H3, Span, Section } from '../utils/theme';
 
 const Image = styled.div`
   max-width: 12em;
@@ -18,20 +12,20 @@ const Image = styled.div`
 
 const SocialMedia = styled.div``;
 
-const Wrapper = styled(animated.div)`
+const Content = styled(Section)`
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: auto;
+  grid-template-rows: repeat(3, auto);
+  gap: 1em;
   grid-template-areas:
-    'Title'
-    'Subtitle'
     'Image'
+    'Title'
     'SocialMedia';
 
-  ${Title} {
+  ${H1} {
     grid-area: Title;
   }
-  ${Subtitle} {
+  ${H3} {
     grid-area: Subtitle;
   }
 
@@ -42,6 +36,15 @@ const Wrapper = styled(animated.div)`
   ${SocialMedia} {
     grid-area: SocialMedia;
   }
+
+  ${media.greaterThan('sm')`
+    grid-template-columns: 10em auto;
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas:
+      'Image Title'
+      'Image Subtitle'
+      'Image SocialMedia';
+  `}
 `;
 
 const About = () => {
@@ -51,14 +54,17 @@ const About = () => {
   });
 
   return (
-    <Wrapper style={props}>
-      <Title>Hi, I'm Garrett</Title>
+    <Content style={props}>
       <Image>
         <Avitar />
       </Image>
-      <Subtitle>Designer / Developer Based in Melbourne, FL.</Subtitle>
-      <SocialMediaIcons horizontal noText />
-    </Wrapper>
+      <H1>
+        Hello, I'm <Span color="yellow"> Garrett Weems</Span>.
+        <br />
+        <Span color="muted">I'm a full-stack web developer.</Span>
+      </H1>
+      <SocialMediaIcons horizontal noText size="2x" color="mint" />
+    </Content>
   );
 };
 
