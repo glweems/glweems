@@ -9,7 +9,7 @@ import SocialMediaIcons from './SocialMedia';
 import { media, heatMapTheme, H1, H3, Span, Section } from '../utils/theme';
 
 const Content = styled(Section)`
-  /* height: 80vh; */
+  height: 80vh;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;

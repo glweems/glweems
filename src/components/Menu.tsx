@@ -1,86 +1,81 @@
 import styled from 'styled-components';
-import { Link } from 'gatsby';
-
+import { Link, navigate } from 'gatsby';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Container } from 'reactstrap';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { animated, useTransition } from 'react-spring';
-import SocialMediaIcons from './SocialMedia';
+import { Container } from 'reactstrap';
 
 interface MenuItem {
   text: string;
   path: string;
-  icon?: IconDefinition;
+  icon: IconDefinition;
 }
 interface MenuProps {
-  isMenu?: boolean;
+  isMenu: boolean;
   items: MenuItem[];
+  setIsMenu: any;
 }
 
-const Toggle = styled.div``;
-
-const Pages = styled(Container)`
-  height: fit-content;
+const Pages = styled(animated.header)`
+  z-index: 90;
+  width: 100%;
+  padding: 1em;
+  background: ${props => props.theme.lightColors.dark};
+  border-bottom: 2px solid ${props => props.theme.colors.green};
   display: flex;
   flex-direction: column;
 `;
 
-const SocialMedia = styled.div`
-  height: fit-content;
-`;
+interface NavbarLink {
+  path: string;
+  icon: IconDefinition;
+  text: string;
+  setIsMenu: any;
+}
 
-const Navigation = styled(animated.header)`
-  grid-area: Menu;
+const StyledLink = styled.div`
+  font-size: 18px;
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: 3em auto auto;
-  grid-template-areas: 'Toggle' 'Pages' 'SocialMedia';
-
-  height: 100vh;
-  justify-items: space-between;
-  color: ${props => props.theme.colors.light};
-  background: ${props => props.theme.colors.bg};
-  ${Toggle} {
-    grid-area: Toggle;
-  }
-
-  ${Pages} {
-    grid-area: Pages;
-  }
-
-  ${SocialMedia} {
-    grid-area: SocialMedia;
+  grid-template-columns: 1em auto;
+  gap: 4em 1em;
+  align-items: center;
+  color: ${props => props.theme.colors.muted};
+  span {
+    color: ${props => props.theme.colors.purple};
   }
 `;
 
-const Menu = ({ items, isMenu }: MenuProps) => {
+const NavbarLink = ({ path, icon, text, setIsMenu }: NavbarLink) => {
+  const closeAndGo = () => {
+    setIsMenu(false);
+    navigate(path);
+  };
+  return (
+    <StyledLink role="presentation" onClick={closeAndGo}>
+      <FontAwesomeIcon icon={icon} />
+      <span>{text}</span>
+    </StyledLink>
+  );
+};
+
+const Menu = ({ items, isMenu, setIsMenu }: MenuProps) => {
   const transitions = useTransition(isMenu, null, {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    leave: { opacity: 0 },
+    from: { opacity: 0, transform: 'translateY(-8em)' },
+    enter: { opacity: 1, transform: 'translateY(0)' },
+    leave: { opacity: 0, transform: 'translateY(-8em)' },
   });
+
   return transitions.map(
     ({ item, key, props }) =>
       item && (
-        <Navigation key={key} style={props}>
-          <Toggle>
-            <button type="button">clicky</button>
-          </Toggle>
-          <Pages rows={items.length}>
-            {items.map(({ path, icon, text }) => (
-              <Link key={path} to={path}>
-                {icon ? <FontAwesomeIcon icon={icon} /> : null}
-                {text}
-              </Link>
+        <Pages key={key} style={props}>
+          <Container>
+            {items.map(navItem => (
+              <NavbarLink key={navItem.text} {...navItem} setIsMenu={setIsMenu} />
             ))}
-          </Pages>
-          <SocialMedia>
-            <Container>
-              <SocialMediaIcons />
-            </Container>
-          </SocialMedia>
-        </Navigation>
+          </Container>
+        </Pages>
       ),
   );
 };

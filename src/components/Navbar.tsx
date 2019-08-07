@@ -11,6 +11,7 @@ interface NavbarProps {
 }
 
 export const Header = styled.header`
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -4,14 +4,14 @@ import { theme, GlobalStyle } from '../utils/theme';
 import Layout from './Layout';
 import SEO from './SEO';
 
-const LayoutContext = createContext();
+const LayoutContext = createContext<{ isMenu: boolean }>({ isMenu: false });
 
 interface Props {
-  children: React.ReactChildren;
+  children: any;
 }
 
 const Providers = ({ children }: Props) => {
-  const [isMenu, setIsMenu] = useState(false);
+  const [isMenu, setIsMenu] = useState<boolean>(false);
   return (
     <>
       <SEO />
