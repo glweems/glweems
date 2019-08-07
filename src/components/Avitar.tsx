@@ -9,12 +9,9 @@ const Image = styled(Img)`
 `;
 
 const Avitar = () => {
-  const {
-    file: { childImageSharp },
-  } = useAvitarQuery();
+  const data = useAvitarQuery();
 
-  console.log('TCL: Avitar -> childImageSharp', childImageSharp);
-  return <Image {...childImageSharp} />;
+  return <Image {...data.file.childImageSharp} />;
 };
 
 export default styled(Avitar)``;

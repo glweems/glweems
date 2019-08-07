@@ -4,7 +4,7 @@ import { theme, GlobalStyle } from '../utils/theme';
 import Layout from './Layout';
 import SEO from './SEO';
 
-const LayoutContext = createContext<{ isMenu: boolean }>({ isMenu: false });
+const LayoutContext = createContext<{ isMenu: boolean }>();
 
 interface Props {
   children: any;
