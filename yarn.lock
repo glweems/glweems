@@ -1720,6 +1720,13 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
+"@types/react-tooltip@^3.9.3":
+  version "3.9.3"
+  resolved "https://registry.yarnpkg.com/@types/react-tooltip/-/react-tooltip-3.9.3.tgz#2eb1e08e128bb691197c5c7f9063fda9ffd5ea42"
+  integrity sha512-X9xuVWlZTLUQadIIrf5MnMPo/FE8izJPRo6c6f+XUs8eIaQ2vj+5Qw4Ttw9bMUPrqImmsJp7o7FY4t1qHLFf4g==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.8.12", "@types/react@^16.8.23", "@types/react@^16.8.6":
   version "16.8.24"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.24.tgz#8d1ea1fcbfa214220da3d3c04e506f1077b0deac"
@@ -3406,7 +3413,7 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-classnames@^2.2.3:
+classnames@^2.2.3, classnames@^2.2.5:
   version "2.2.6"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.6.tgz#43935bffdd291f326dad0a205309b38d00f650ce"
   integrity sha512-JR/iSQOSt+LQIWwrwEzJ9uk0xfN3mTVYMwt1Ir5mUcSN6pU+V4zQFFaJsclJbPuAUQH+yfWef6tm7l1quW3C8Q==
@@ -4292,6 +4299,11 @@ dashdash@^1.12.0:
   integrity sha1-hTz6D3y+L+1d4gMmuN1YEDX24vA=
   dependencies:
     assert-plus "^1.0.0"
+
+date-fns@^1.29.0:
+  version "1.30.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
+  integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -11511,7 +11523,7 @@ prompts@^2.1.0:
     kleur "^3.0.3"
     sisteransi "^1.0.3"
 
-prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -11786,6 +11798,18 @@ react-fast-compare@2.0.4, react-fast-compare@^2.0.2:
   resolved "https://registry.yarnpkg.com/react-fast-compare/-/react-fast-compare-2.0.4.tgz#e84b4d455b0fec113e0402c329352715196f81f9"
   integrity sha512-suNP+J1VU1MWFKcyt7RtjiSWUjvidmQSlqu+eHslq+342xCbGTYmC0mEhPCOHxlW0CywylOC1u2DFAT+bv4dBw==
 
+react-github-calendar@^0.14.0:
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/react-github-calendar/-/react-github-calendar-0.14.0.tgz#e877a894275ff34ff4aed94b82a963274a77b55b"
+  integrity sha512-nf679+oUJ+zBI2Eb8ycz/gGS/79DMBHDvS34gsziTfKLbZy79tNfKxZi02k/8LggsBJBQ5ytT0GKUBkH6rKulw==
+  dependencies:
+    date-fns "^1.29.0"
+    prop-types "^15.6.2"
+    react "^16.8.6"
+    react-dom "^16.8.6"
+    react-tooltip "^3.9.0"
+    tinycolor2 "^1.4.1"
+
 react-helmet-async@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-helmet-async/-/react-helmet-async-1.0.2.tgz#bb55dd8268f7b15aac69c6b22e2f950abda8cc44"
@@ -11875,6 +11899,14 @@ react-spring@^8.0.27:
   dependencies:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
+
+react-tooltip@^3.10.0, react-tooltip@^3.9.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.10.0.tgz#268b5ef519fd8a1369288d1f086f42c90d5da7ef"
+  integrity sha512-GGdxJvM1zSFztkTP7gCQbLTstWr1OOoMpJ5WZUGhimj0nhRY+MPz+92MpEnKmj0cftJ9Pd/M6FfSl0sfzmZWkg==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
 
 react-transition-group@^2.3.1:
   version "2.9.0"

@@ -3,6 +3,7 @@ import 'styled-components';
 
 declare module 'gatsby';
 declare module 'gatsby-image';
+declare module 'react-github-calendar';
 
 interface Colors {
   light: string;
