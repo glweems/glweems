@@ -2,48 +2,53 @@
 import React from 'react';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
+import HeatMap from 'react-github-calendar';
+import ReactTooltip from 'react-tooltip';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-import { media, H1, H3, Span, Section } from '../utils/theme';
-
-const Image = styled.div`
-  max-width: 12em;
-`;
-
-const SocialMedia = styled.div``;
+import { media, heatMapTheme, H1, H3, Span, Section } from '../utils/theme';
 
 const Content = styled(Section)`
+  /* height: 80vh; */
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: repeat(3, auto);
-  gap: 1em;
+  grid-template-rows: auto auto auto auto;
+  gap: 0 2em;
+  align-items: flex-start;
+  align-content: flex-start;
   grid-template-areas:
     'Image'
     'Title'
-    'SocialMedia';
+    'SocialMedia'
+    'HeatMap';
 
   ${H1} {
     grid-area: Title;
-  }
-  ${H3} {
-    grid-area: Subtitle;
+    margin: 0;
   }
 
-  ${Image} {
+  .Avitar {
     grid-area: Image;
   }
 
-  ${SocialMedia} {
+  .SocialMedia {
     grid-area: SocialMedia;
+    margin: 0;
+  }
+  .HeatMap {
+    grid-area: HeatMap;
   }
 
   ${media.greaterThan('sm')`
-    grid-template-columns: 10em auto;
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(4, auto);
+    align-content: center;
+    gap: 1em;
     grid-template-areas:
       'Image Title'
       'Image Subtitle'
-      'Image SocialMedia';
+      'Image SocialMedia'
+      'HeatMap HeatMap';
   `}
 `;
 
@@ -55,15 +60,20 @@ const About = () => {
 
   return (
     <Content style={props}>
-      <Image>
-        <Avitar />
-      </Image>
       <H1>
         Hello, I'm <Span color="yellow"> Garrett Weems</Span>.
         <br />
         <Span color="muted">I'm a full-stack web developer.</Span>
       </H1>
-      <SocialMediaIcons horizontal noText size="2x" color="mint" />
+
+      <Avitar className="Avitar" />
+      <div className="SocialMedia">
+        <SocialMediaIcons horizontal noText size="2x" color="mint" />
+      </div>
+      <div className="HeatMap">
+        <HeatMap username="glweems" theme={heatMapTheme} />
+        <ReactTooltip delayShow={50} />
+      </div>
     </Content>
   );
 };

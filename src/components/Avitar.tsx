@@ -13,6 +13,7 @@ const Avitar = () => {
     file: { childImageSharp },
   } = useAvitarQuery();
 
+  console.log('TCL: Avitar -> childImageSharp', childImageSharp);
   return <Image {...childImageSharp} />;
 };
 

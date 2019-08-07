@@ -41,7 +41,7 @@ const colors = {
 const lightColors = {
   light: lighten(0.2, colors.light),
   dark: lighten(0.05, colors.dark),
-  red: lighten(0.05, colors.red),
+  red: lighten(0.1, colors.red),
   green: lighten(0.05, colors.green),
   yellow: lighten(0.05, colors.yellow),
   blue: lighten(0.05, colors.blue),
@@ -61,6 +61,16 @@ const darkColors = {
   mint: darken(0.05, colors.mint),
   muted: darken(0.05, colors.muted),
   bg: darken(0.05, colors.bg),
+};
+
+export const heatMapTheme = {
+  background: lightColors.dark,
+  text: colors.yellow,
+  grade4: darken(0.5, colors.green),
+  grade3: darken(0.3, colors.green),
+  grade2: colors.green,
+  grade1: lighten(0.1, colors.green),
+  grade0: lightColors.red,
 };
 
 const theme: DefaultTheme = {

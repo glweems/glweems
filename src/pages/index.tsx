@@ -11,17 +11,20 @@ import { H2, Section, media } from '../utils/theme';
 const Content = styled.div`
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto 1fr 1fr;
-  grid-template-areas: 'About' 'Tutorials' 'Designs';
+  grid-template-rows: auto auto 1fr 1fr;
+  grid-template-areas: 'About' 'Calendar' 'Tutorials' 'Designs';
   gap: 10em;
   margin-top: 1em;
   section:nth-child(1) {
     grid-area: About;
   }
   section:nth-child(2) {
-    grid-area: Tutorials;
+    grid-area: Calendar;
   }
   section:nth-child(3) {
+    grid-area: Tutorials;
+  }
+  section:nth-child(4) {
     grid-area: Designs;
   }
 `;
@@ -37,7 +40,7 @@ const IndexPage = () => {
   const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
 
   return (
-    <Content bg="blue">
+    <Content>
       <Section>
         <About />
       </Section>
