@@ -119,22 +119,22 @@ module.exports = {
           },
           {
             name: `react-peekaboo-navbar`,
-            remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
+            remote: `https://github.com/glweems/react-peekaboo-navbar.git`,
             patterns: [`*`],
           },
           {
             name: `react-navbar-scroller`,
-            remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
+            remote: `https://github.com/glweems/react-navbar-scroller.git`,
             patterns: [`*`],
           },
           {
             name: `gatsby-darkmode`,
-            remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
+            remote: `https://github.com/glweems/gatsby-darkmode.git`,
             patterns: [`*`],
           },
           {
             name: `styled-container`,
-            remote: `https://github.com/gwtuts/styled-container.git`,
+            remote: `https://github.com/glweems/styled-container.git`,
             patterns: [`*`],
           },
         ],
