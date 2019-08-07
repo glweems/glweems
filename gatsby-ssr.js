@@ -1,1 +1,1 @@
-export { default as wrapRootElement } from './src/components/rootElementWrapper'
+import './node_modules/gatsby-remark-vscode/styles.css';

@@ -1,48 +1,42 @@
-const {
-  createFilePath,
-  createRemoteFileNode,
-} = require(`gatsby-source-filesystem`)
-const path = require(`path`)
-const slugify = require(`slugify`)
+/* eslint-disable consistent-return */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require(`path`);
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `BehanceProjects`) {
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slugify(node.name).toLowerCase(),
-    })
-  }
-}
-
-exports.createPages = ({ actions, graphql }) =>
-  graphql(`
-    {
+exports.createPages = ({ actions, graphql }) => {
+  return graphql(`
+    query CreatePagesQuery {
       allBehanceProjects {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-          }
+        nodes {
+          slug
+        }
+      }
+      allGitRemote {
+        nodes {
+          name
         }
       }
     }
   `)
-    .then(result => {
-      if (result.errors) {
-        return Promise.reject(result.errors)
-      }
-      result.data.allBehanceProjects.edges.forEach(({ node }) => {
+    .then(({ data: { allBehanceProjects, allGitRemote } }) => {
+      // Create Behance Pages
+      allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
-          path: `/designs/${node.fields.slug}`,
-          component: path.resolve(`src/templates/design.js`),
-          context: { slug: node.fields.slug },
-        })
-      })
+          path: `/designs/${slug}`,
+          component: path.resolve(`src/templates/design.tsx`),
+          context: { slug: `/${slug}/` },
+        });
+      });
+
+      // Create Git Pages
+      allGitRemote.nodes.forEach(({ name }) => {
+        actions.createPage({
+          path: `/tutorials/${name}`,
+          component: path.resolve(`src/templates/tutorial.tsx`),
+          context: { slug: `${name}` },
+        });
+      });
     })
     .catch(err => {
-      throw new Error(err)
-    })
+      throw new Error(err.message);
+    });
+};

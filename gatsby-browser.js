@@ -1,1 +1,1 @@
-export { default as wrapRootElement } from './src/components/rootElementWrapper'
+import './node_modules/bootstrap/scss/bootstrap-grid.scss';

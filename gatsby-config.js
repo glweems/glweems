@@ -1,18 +1,38 @@
-const path = require(`path`)
-require('dotenv').config()
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
-    title: `Glweems`,
-    description: `Full stack web developer / graphic designer.`,
-    author: `@glweems`,
-    sidebarLinks: [
-      { name: `About`, to: `/about` },
-      { name: `Tutorials`, to: `/tutorials` },
-      { name: `Graphic Design`, to: `/designs` },
-    ],
+    title: 'Garrett Weems',
+    titleTemplate: '%s · Glweems',
+    description: 'Full stack web developer / graphic designer.',
+    url: 'https://glweems.com',
+    image: './src/images/favicon.jpg',
+    languageCode: 'en',
+    countryCode: 'US',
   },
+
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Garrett Weems | Web Developer`,
+        short_name: `glweems`,
+        start_url: `/`,
+        background_color: `#ff5851`,
+        theme_color: `#5687e8`,
+        display: `minimal-ui`,
+        icon: `src/assets/favicon.png`,
+      },
+    },
+    `@rhysforyou/gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-typescript`,
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `./src/utils/typography.ts`,
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -25,23 +45,20 @@ module.exports = {
         cookieDomain: `glweems.com`,
       },
     },
-
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/layout.js`),
+        component: require.resolve(`./src/components/Providers.tsx`),
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-tags`,
+    `gatsby-plugin-sass`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-favicon`,
       options: {
-        logo: `./src/images/favicon.png`,
+        logo: `./src/assets/favicon.png`,
         appName: null,
         appDescription: null,
         developerName: null,
@@ -67,68 +84,19 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Garrett Weems | Web Developer`,
-        short_name: `glweems`,
-        start_url: `/`,
-        background_color: `#ff5851`,
-        theme_color: `#5687e8`,
-        display: `minimal-ui`,
-        icon: `src/images/favicon.png`,
-      },
-    },
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `image`,
-        path: `./src/images`,
+        path: `./src/assets`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/tutorials`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-root-import`,
-      options: {
-        src: path.join(__dirname, `src/`),
-        '@': path.join(__dirname, `src/components/`),
-        pages: path.join(__dirname, `src/pages/`),
-        styled: path.join(__dirname, `src/styled/`),
-        theme: path.join(__dirname, `src/styled/theme.js`),
-        elements: path.join(__dirname, `src/styled/elements.js`),
-        state: path.join(__dirname, `src/state`),
-        data: path.join(__dirname, `src/data.js`),
-        forms: path.join(__dirname, `src/components/forms/`),
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Roboto', 'Karla'],
-        },
-      },
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: { pathToConfigModule: `src/utils/typography` },
-    },
-    {
-      resolve: `gatsby-source-behance`,
-      options: { username: `glweems`, apiKey: process.env.BEHANCE_TOKEN },
-    },
+
     {
       resolve: `gatsby-plugin-sentry`,
       options: {
         dsn: process.env.SENTRY_TOKEN,
         environment: process.env.NODE_ENV,
-        enabled: (() =>
-          [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
+        enabled: (() => [`production`, `stage`].indexOf(process.env.NODE_ENV) !== -1)(),
       },
     },
     {
@@ -140,28 +108,71 @@ module.exports = {
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
       },
     },
-    `custom-markdown`,
+    {
+      resolve: `gatsby-source-git-remotes`,
+      options: {
+        repos: [
+          {
+            name: `dotenv`,
+            remote: `https://github.com/glweems/dotenv.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `react-peekaboo-navbar`,
+            remote: `https://github.com/gwtuts/react-peekaboo-navbar.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `react-navbar-scroller`,
+            remote: `https://github.com/gwtuts/react-navbar-scroller.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `gatsby-darkmode`,
+            remote: `https://github.com/gwtuts/gatsby-darkmode.git`,
+            patterns: [`*`],
+          },
+          {
+            name: `styled-container`,
+            remote: `https://github.com/gwtuts/styled-container.git`,
+            patterns: [`*`],
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-source-behance-images`,
+      options: {
+        username: `glweems`,
+        apiKey: process.env.BEHANCE_TOKEN,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-unwrap-images`,
-          `gatsby-remark-images`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-responsive-iframe`,
           {
-            resolve: `gatsby-remark-prismjs`,
+            resolve: `gatsby-remark-images`,
             options: {
-              classPrefix: `language-`,
-              inlineCodeMarker: null,
-              aliases: {},
-              showLineNumbers: false,
-              noInlineHighlight: false,
+              maxWidth: 800,
+            },
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-vscode`,
+            options: {
+              colorTheme: `Ayu Mirage Bordered`,
+              extensions: [
+                {
+                  identifier: `teabyii.ayu`,
+                  version: `0.18.0`,
+                },
+              ],
             },
           },
         ],
       },
     },
   ],
-}
+};
