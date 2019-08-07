@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from 'reactstrap';
 import { animated, useSpring } from 'react-spring';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
@@ -48,7 +47,6 @@ const Wrapper = styled(animated.div)`
 const About = () => {
   const props = useSpring({
     opacity: 1,
-    height: `100vh`,
     from: { opacity: 0 },
   });
 

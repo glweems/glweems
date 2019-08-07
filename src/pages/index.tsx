@@ -6,10 +6,7 @@ import Card, { Cards } from '../components/Card';
 import About from '../components/About';
 import { mergedBehance, filterProjectImages } from '../utils/helpers';
 import useIndexPageQuery from '../graphql/IndexPageQuery';
-
-const Section = styled(Container)`
-  border-top: 2px solid ${props => props.theme.darkColors.light};
-`;
+import { H2, Section } from '../utils/theme';
 
 const IndexPage = () => {
   const {
@@ -18,16 +15,15 @@ const IndexPage = () => {
     allBehanceProjects,
     allBehanceImages,
   } = useIndexPageQuery();
-
   const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
   return (
     <div>
-      <Container>
+      <Section>
         <About />
-      </Container>
+      </Section>
 
       <Section>
-        <h2>Blog Posts</h2>
+        <H2 color="blue">Blog Posts</H2>
         <Cards>
           {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
             <Card
@@ -43,7 +39,7 @@ const IndexPage = () => {
       </Section>
 
       <Section>
-        <h2>Design Projects</h2>
+        <H2 color="purple">Design Projects</H2>
         <Cards>
           {behance.map(node => (
             <Card
