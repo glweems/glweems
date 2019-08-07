@@ -35,7 +35,7 @@ const useIndexPageQuery = (): IndexPageQuery =>
           relativeDirectory
           behanceProject
           childImageSharp {
-            ...FluidSvg
+            ...FluidImage
           }
         }
       }

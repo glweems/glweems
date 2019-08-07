@@ -21,17 +21,25 @@ export const BehanceCovers = graphql`
       nodes {
         relativeDirectory
         childImageSharp {
-          ...FluidSvg
+          ...FluidImage
         }
       }
     }
   }
 `;
 
-export const FluidSvg = graphql`
-  fragment FluidSvg on ImageSharp {
-    fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
-      ...GatsbyImageSharpFluid_withWebp_tracedSVG
+export const FixedImage = graphql`
+  fragment FixedImage on ImageSharp {
+    fixed(width: 125, height: 125) {
+      ...GatsbyImageSharpFixed
+    }
+  }
+`;
+
+export const FluidImage = graphql`
+  fragment FluidImage on ImageSharp {
+    fluid {
+      ...GatsbyImageSharpFluid_withWebp_noBase64
     }
   }
 `;
@@ -48,7 +56,7 @@ export const Frontmater = graphql`
         tags
         thumbnail {
           childImageSharp {
-            ...FluidSvg
+            ...FluidImage
           }
         }
       }

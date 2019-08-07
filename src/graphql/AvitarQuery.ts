@@ -5,9 +5,7 @@ const useAvitarQuery = () =>
     query AvitarQuery {
       file(relativePath: { eq: "ghost.png" }) {
         childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
-          }
+          ...FixedImage
         }
       }
     }
