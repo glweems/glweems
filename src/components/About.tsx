@@ -2,7 +2,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-import HeatMap from 'react-github-calendar';
+import GithubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
@@ -50,6 +50,10 @@ const Content = styled(Section)`
   .HeatMap {
     grid-area: HeatMap;
   }
+
+  .react-github-calendar__title {
+    display: none;
+  }
 `;
 
 const About = () => {
@@ -77,7 +81,7 @@ const About = () => {
         <SocialMediaIcons horizontal noText size="2x" color="mint" />
       </div>
       <div className="HeatMap">
-        <HeatMap username="glweems" theme={heatMapTheme} />
+        <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme} />
         <ReactTooltip />
       </div>
     </Content>

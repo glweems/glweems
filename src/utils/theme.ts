@@ -50,15 +50,15 @@ const lightColors = {
 };
 const darkColors = {
   light: darken(0.2, colors.light),
-  dark: darken(0.05, colors.dark),
-  red: darken(0.05, colors.red),
-  green: darken(0.05, colors.green),
-  yellow: darken(0.05, colors.yellow),
-  blue: darken(0.05, colors.blue),
-  purple: darken(0.05, colors.purple),
-  mint: darken(0.05, colors.mint),
-  muted: darken(0.05, colors.muted),
-  bg: darken(0.05, colors.bg),
+  dark: darken(0.1, colors.dark),
+  red: darken(0.1, colors.red),
+  green: darken(0.1, colors.green),
+  yellow: darken(0.1, colors.yellow),
+  blue: darken(0.1, colors.blue),
+  purple: darken(0.1, colors.purple),
+  mint: darken(0.1, colors.mint),
+  muted: darken(0.1, colors.muted),
+  bg: darken(0.1, colors.bg),
 };
 
 export const heatMapTheme = {
