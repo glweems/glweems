@@ -90,7 +90,34 @@ module.exports = {
         path: `./src/assets`,
       },
     },
-
+    {
+      resolve: `gatsby-source-websites`,
+      options: {
+        websites: [
+          {
+            name: `prepress`,
+            slug: `prepress`,
+            description: `A website build for screen printing shop owners to calculate cost of printer shirts for consumers.`,
+            url: `https://prepress.now.sh/products`,
+            repo: `https://github.com/glweems/prepress`,
+          },
+          {
+            name: `Cheat Day Cheesecakes`,
+            slug: `cheatdaycheesecakes`,
+            description: `A website built for Denton, TX local food truck company.`,
+            url: `https://cheatdaycheesecakes.com`,
+            repo: `https://github.com/glweems/cheat-day-cheesecake`,
+          },
+          {
+            name: `Coin Market`,
+            slug: `coin-market`,
+            description: `Coinmarketcap like web app using Cryptocompare's API and React.js`,
+            url: `https://coin-market.now.sh`,
+            repo: `https://github.com/glweems/coin-market`,
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-sentry`,
       options: {
