@@ -1,10 +1,8 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-nested-ternary */
-import styled, { createGlobalStyle, DefaultTheme, css, StyledComponent } from 'styled-components';
+import styled, { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken } from 'polished';
-import { inherits } from 'util';
-import { Container } from 'reactstrap';
 
 export const media = generateMedia({
   lg: '960px',
@@ -105,6 +103,11 @@ export const A = styled.a<StyledElementProps>`
 
 export const Span = styled.span<StyledElementProps>`
   ${props => props && helperCss}
+`;
+
+export const P = styled.p<StyledElementProps>`
+  ${props => props && helperCss}
+  margin-top: 0;
 `;
 
 export const H1 = styled.h1<StyledElementProps>`
