@@ -1,10 +1,8 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable no-nested-ternary */
-import styled, { createGlobalStyle, DefaultTheme, css, StyledComponent } from 'styled-components';
+import styled, { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken } from 'polished';
-import { inherits } from 'util';
-import { Container } from 'reactstrap';
 
 export const media = generateMedia({
   lg: '960px',
@@ -52,15 +50,15 @@ const lightColors = {
 };
 const darkColors = {
   light: darken(0.2, colors.light),
-  dark: darken(0.05, colors.dark),
-  red: darken(0.05, colors.red),
-  green: darken(0.05, colors.green),
-  yellow: darken(0.05, colors.yellow),
-  blue: darken(0.05, colors.blue),
-  purple: darken(0.05, colors.purple),
-  mint: darken(0.05, colors.mint),
-  muted: darken(0.05, colors.muted),
-  bg: darken(0.05, colors.bg),
+  dark: darken(0.1, colors.dark),
+  red: darken(0.1, colors.red),
+  green: darken(0.1, colors.green),
+  yellow: darken(0.1, colors.yellow),
+  blue: darken(0.1, colors.blue),
+  purple: darken(0.1, colors.purple),
+  mint: darken(0.1, colors.mint),
+  muted: darken(0.1, colors.muted),
+  bg: darken(0.1, colors.bg),
 };
 
 export const heatMapTheme = {
@@ -105,6 +103,11 @@ export const A = styled.a<StyledElementProps>`
 
 export const Span = styled.span<StyledElementProps>`
   ${props => props && helperCss}
+`;
+
+export const P = styled.p<StyledElementProps>`
+  ${props => props && helperCss}
+  margin-top: 0;
 `;
 
 export const H1 = styled.h1<StyledElementProps>`

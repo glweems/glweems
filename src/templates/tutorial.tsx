@@ -22,15 +22,6 @@ interface BlogTemplateProps {
   };
 }
 
-const Code = styled<any>('code')``;
-
-const Pre = styled<any>('pre')`
-  border-radius: 0;
-  code {
-    border-radius: 0;
-  }
-`;
-
 const Article = styled<any>('article')`
   ${props => props && helperCss};
   padding-top: 3em;
@@ -39,7 +30,7 @@ const Article = styled<any>('article')`
   }
 
   h2 {
-    color: ${props => props.theme.colors.muted};
+    color: ${props => props.theme.colors.purple};
   }
   h3 {
     color: ${props => props.theme.colors.red};
@@ -47,6 +38,10 @@ const Article = styled<any>('article')`
 
   h4 {
     color: ${props => props.theme.colors.green};
+  }
+
+  blockquote {
+    color: ${props => props.theme.darkColors.muted};
   }
   max-width: 100%;
   pre {

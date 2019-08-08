@@ -1,34 +1,46 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { animated, useSpring } from 'react-spring';
-import HeatMap from 'react-github-calendar';
+import GithubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-import { media, heatMapTheme, H1, H3, Span, Section } from '../utils/theme';
+import { media, heatMapTheme, H1, H3, Span, Section, P } from '../utils/theme';
+
+// Create the keyframes
+const rotate = keyframes`
+    from  {transform: translateX(-50px); }
+    to {transform: translateX(100vw);}
+`;
 
 const Content = styled(Section)`
+  max-width: 100vw;
+  overflow: hidden;
   height: 80vh;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
   gap: 0 2em;
   align-items: flex-start;
-  align-content: flex-start;
+  align-content: space-between;
   grid-template-areas:
-    'Image'
-    'Title'
+    'Ghost'
+    'Message'
     'SocialMedia'
     'HeatMap';
 
-  ${H1} {
-    grid-area: Title;
+  .Message {
+    grid-area: Message;
     margin: 0;
   }
 
-  .Avitar {
-    grid-area: Image;
+  .Ghost {
+    grid-area: Ghost;
+
+    .img {
+      animation: ${rotate} 4s ease-in-out infinite;
+    }
   }
 
   .SocialMedia {
@@ -39,17 +51,9 @@ const Content = styled(Section)`
     grid-area: HeatMap;
   }
 
-  ${media.greaterThan('sm')`
-    grid-template-columns: auto auto;
-    grid-template-rows: repeat(4, auto);
-    align-content: center;
-    gap: 1em;
-    grid-template-areas:
-      'Image Title'
-      'Image Subtitle'
-      'Image SocialMedia'
-      'HeatMap HeatMap';
-  `}
+  .react-github-calendar__title {
+    display: none;
+  }
 `;
 
 const About = () => {
@@ -60,19 +64,25 @@ const About = () => {
 
   return (
     <Content style={props}>
-      <H1>
-        Hello, I'm <Span color="yellow"> Garrett Weems</Span>.
-        <br />
-        <Span color="muted">I'm a full-stack web developer.</Span>
-      </H1>
+      <div className="Message">
+        <H1 color="muted">
+          Hello, I'm <Span color="yellow"> Garrett Weems</Span>.
+        </H1>
+        <H3 color="muted">I'm a full-stack web developer.</H3>
+      </div>
 
-      <Avitar className="Avitar" />
+      <div className="Ghost">
+        <div className="img">
+          <Avitar />
+        </div>
+      </div>
+
       <div className="SocialMedia">
         <SocialMediaIcons horizontal noText size="2x" color="mint" />
       </div>
       <div className="HeatMap">
-        <HeatMap username="glweems" theme={heatMapTheme} />
-        <ReactTooltip delayShow={50} />
+        <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme} />
+        <ReactTooltip />
       </div>
     </Content>
   );
