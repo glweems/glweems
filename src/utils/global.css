@@ -1,0 +1,48 @@
+/*
+#f7f7f7
+#1a1e28
+#d65947
+#c3e28a
+#f8d58c
+#89cefa
+#d0c1fa
+#a7e3cc
+#c6c7c6
+#1f242f
+*/
+:root {
+  --light: #f7f7f7;
+  --dark: #1a1e28;
+  --red: #d65947;
+  --green: #c3e28a;
+  --yellow: #f8d58c;
+  --blue: #89cefa;
+  --purple: #d0c1fa;
+  --mint: #a7e3cc;
+  --bg: #1f242f;
+}
+html {
+  color: var(--light);
+}
+
+h1 {
+  color: var(--yellow);
+}
+
+h2 {
+  color: var(--purple);
+}
+
+h3 {
+  color: var(--green);
+}
+h4 {
+  color: var(--mint);
+}
+
+a {
+  color: var(--blue);
+}
+a:hover {
+  color: var(--red);
+}
