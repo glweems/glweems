@@ -2,11 +2,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Container } from 'reactstrap';
-import Card, { Cards } from '../components/Card';
 import About from '../components/About';
-import { mergedBehance, filterProjectImages } from '../utils/helpers';
-import useIndexPageQuery from '../graphql/IndexPageQuery';
-import { H2, Section } from '../utils/theme';
+import { Section } from '../utils/theme';
+import Websites from '../components/Websites';
+import Designs from '../components/Designs';
+import Tutorials from '../components/Tutorials';
 
 const Content = styled.div`
   display: grid;
@@ -29,61 +29,35 @@ const Content = styled.div`
   }
 `;
 
-const IndexPage = () => {
-  const {
-    behanceCoverImages,
-    markdownFiles,
-    allBehanceProjects,
-    allBehanceImages,
-  } = useIndexPageQuery();
+const IndexPage = () => (
+  <Content>
+    <Section>
+      <Container>
+        <About />
+      </Container>
+    </Section>
 
-  const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
+    <Section>
+      <Container>
+        <h2>Side Projects</h2>
+        <Websites limit={3} />
+      </Container>
+    </Section>
 
-  return (
-    <Content>
-      <Section>
-        <Container fluid>
-          <About />
-        </Container>
-      </Section>
+    <Section>
+      <Container>
+        <h2>Blog Posts</h2>
+        <Tutorials limit={3} />
+      </Container>
+    </Section>
 
-      <Section>
-        <Container fluid>
-          <H2 color="purple">Blog Posts</H2>
-          <Cards>
-            {markdownFiles.nodes.map(({ id, childMarkdownRemark }) => (
-              <Card
-                key={id}
-                title={childMarkdownRemark.frontmatter.path}
-                subtitle={childMarkdownRemark.excerpt}
-                tags={childMarkdownRemark.frontmatter.tags}
-                link={`tutorials/${childMarkdownRemark.frontmatter.path}`}
-                img={childMarkdownRemark.frontmatter.thumbnail.childImageSharp}
-              />
-            ))}
-          </Cards>
-        </Container>
-      </Section>
-
-      <Section>
-        <Container fluid>
-          <H2 color="purple">Design Projects</H2>
-          <Cards>
-            {behance.map(node => (
-              <Card
-                key={node.slug}
-                title={node.name}
-                subtitle={node.description}
-                tags={node.tags}
-                link={`designs/${node.slug}`}
-                images={filterProjectImages(node.slug, allBehanceImages.nodes)}
-              />
-            ))}
-          </Cards>
-        </Container>
-      </Section>
-    </Content>
-  );
-};
+    <Section>
+      <Container>
+        <h2>Design Projects</h2>
+        <Designs limit={3} />
+      </Container>
+    </Section>
+  </Content>
+);
 
 export default IndexPage;

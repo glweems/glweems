@@ -100,6 +100,7 @@ module.exports = {
             description: `A website build for screen printing shop owners to calculate cost of printer shirts for consumers.`,
             url: `https://prepress.now.sh/products`,
             repo: `https://github.com/glweems/prepress`,
+            tags: [`vue`, `screenprinting`, `calculator`],
           },
           {
             name: `Cheat Day Cheesecakes`,
@@ -107,6 +108,7 @@ module.exports = {
             description: `A website built for Denton, TX local food truck company.`,
             url: `https://cheatdaycheesecakes.com`,
             repo: `https://github.com/glweems/cheat-day-cheesecake`,
+            tags: [`google-maps`, `gatsby`, `typescript`, `react`],
           },
           {
             name: `Coin Market`,
@@ -114,6 +116,7 @@ module.exports = {
             description: `Coinmarketcap like web app using Cryptocompare's API and React.js`,
             url: `https://coin-market.now.sh`,
             repo: `https://github.com/glweems/coin-market`,
+            tags: [`cryptocompare`, `cryptocurrency`, `api`, `gatsby`],
           },
         ],
       },

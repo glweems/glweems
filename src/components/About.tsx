@@ -1,12 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { animated, useSpring } from 'react-spring';
 import GithubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-import { media, heatMapTheme, H1, H3, Span, Section, P } from '../utils/theme';
+import { heatMapTheme, Section } from '../utils/theme';
 
 // Create the keyframes
 const rotate = keyframes`
@@ -33,6 +32,15 @@ const Content = styled(Section)`
   .Message {
     grid-area: Message;
     margin: 0;
+    h1 {
+      color: ${props => props.theme.colors.muted};
+      span {
+        color: ${props => props.theme.colors.yellow};
+      }
+      h3 {
+        color: ${props => props.theme.colors.muted};
+      }
+    }
   }
 
   .Ghost {
@@ -56,36 +64,31 @@ const Content = styled(Section)`
   }
 `;
 
-const About = () => {
-  const props = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-  });
+const About = () => (
+  <Content>
+    <div className="Message">
+      <h1>
+        Hello, I'm <span> Garrett Weems</span>.
+      </h1>
+      <h3>I'm a full-stack web developer.</h3>
+    </div>
 
-  return (
-    <Content style={props}>
-      <div className="Message">
-        <H1 color="muted">
-          Hello, I'm <Span color="yellow"> Garrett Weems</Span>.
-        </H1>
-        <H3 color="muted">I'm a full-stack web developer.</H3>
+    <div className="Ghost">
+      <div className="img">
+        <Avitar />
       </div>
+    </div>
 
-      <div className="Ghost">
-        <div className="img">
-          <Avitar />
-        </div>
-      </div>
+    <div className="SocialMedia">
+      <SocialMediaIcons horizontal noText size="2x" color="mint" />
+    </div>
 
-      <div className="SocialMedia">
-        <SocialMediaIcons horizontal noText size="2x" color="mint" />
-      </div>
-      <div className="HeatMap">
-        <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme} />
+    <div className="HeatMap">
+      <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme}>
         <ReactTooltip />
-      </div>
-    </Content>
-  );
-};
+      </GithubCalendar>
+    </div>
+  </Content>
+);
 
 export default About;

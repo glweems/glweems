@@ -1,8 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface DesignsPageQuery {
-  allBehanceProjects: GQLNodes<BehanceProject>;
-  behanceImages: GQLNodes<BehanceImage>;
+  allBehanceProjects: Nodes<BehanceProject>;
+  behanceImages: Nodes<BehanceImage>;
 }
 
 const UseDesignsPageQuery = (): DesignsPageQuery =>

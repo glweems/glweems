@@ -44,7 +44,7 @@ export const FluidImage = graphql`
   }
 `;
 
-export const Frontmater = graphql`
+export const Frontmatter = graphql`
   fragment Frontmatter on File {
     childMarkdownRemark {
       excerpt(pruneLength: 100)
@@ -64,4 +64,4 @@ export const Frontmater = graphql`
   }
 `;
 
-export default { BehanceCard };
+export default { BehanceCard, BehanceCovers, FixedImage, FluidImage, Frontmatter };
