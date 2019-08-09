@@ -1,7 +1,6 @@
 import React from 'react';
 import Card, { Cards } from './Card';
 import useTutorialsQuery from '../graphql/TutorialsQuery';
-import { Image } from '../utils/theme';
 
 interface Props {
   limit?: number;
@@ -19,9 +18,8 @@ const Tutorials = ({ limit }: Props) => {
           subtitle={tutorial.excerpt}
           tags={tutorial.tags}
           link={tutorial.path}
-        >
-          <Image {...tutorial.thumbnail.childImageSharp} />
-        </Card>
+          img={tutorial.thumbnail.childImageSharp}
+        />
       ))}
     </Cards>
   );

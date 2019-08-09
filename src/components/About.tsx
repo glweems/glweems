@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
-import GithubCalendar from 'react-github-calendar';
 import ReactTooltip from 'react-tooltip';
+import GithubCalendar from 'react-github-calendar';
 import Avitar from './Avitar';
 import SocialMediaIcons from './SocialMedia';
-import { heatMapTheme, Section } from '../utils/theme';
+import { heatMapTheme } from '../utils/theme';
 
 // Create the keyframes
 const rotate = keyframes`
@@ -13,10 +13,10 @@ const rotate = keyframes`
     to {transform: translateX(100vw);}
 `;
 
-const Content = styled(Section)`
+const Content = styled.div`
   max-width: 100vw;
   overflow: hidden;
-  height: 80vh;
+  height: 30vh;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
@@ -34,6 +34,7 @@ const Content = styled(Section)`
     margin: 0;
     h1 {
       color: ${props => props.theme.colors.muted};
+      margin-bottom: 0;
       span {
         color: ${props => props.theme.colors.yellow};
       }
@@ -80,7 +81,7 @@ const About = () => (
     </div>
 
     <div className="SocialMedia">
-      <SocialMediaIcons horizontal noText size="2x" color="mint" />
+      <SocialMediaIcons horizontal noText size="2x" />
     </div>
 
     <div className="HeatMap">

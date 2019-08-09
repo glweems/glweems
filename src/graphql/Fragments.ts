@@ -47,7 +47,7 @@ export const FluidImage = graphql`
 export const Frontmatter = graphql`
   fragment Frontmatter on File {
     childMarkdownRemark {
-      excerpt(pruneLength: 100)
+      excerpt(pruneLength: 150)
       frontmatter {
         title
         path

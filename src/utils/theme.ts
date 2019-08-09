@@ -98,55 +98,55 @@ export const helperCss = css<ColorProps>`
 
 export const Image = styled(Img)<Img>``;
 
-export const A = styled<StyledFunction>('a')`
-  ${props => props && helperCss}
-  :hover {
-    color: ${props => props.theme.lightColors.red};
-  }
-`;
+// export const A = styled<StyledFunction>('a')`
+//   ${props => props && helperCss}
+//   :hover {
+//     color: ${props => props.theme.lightColors.red};
+//   }
+// `;
 
-export const Span = styled.span`
-  ${props => props && helperCss}
-`;
+// export const Span = styled.span`
+//   ${props => props && helperCss}
+// `;
 
-export const P = styled.p`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const P = styled.p`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H1 = styled('h1')`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H1 = styled('h1')`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H2 = styled('h2')`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H2 = styled('h2')`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H3 = styled.h3`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H3 = styled.h3`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H4 = styled.h4`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H4 = styled.h4`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H5 = styled.h5`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H5 = styled.h5`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H6 = styled.h6`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H6 = styled.h6`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const Section = styled.section`
-  ${props => props && helperCss}
-`;
+// export const Section = styled.section`
+//   ${props => props && helperCss}
+// `;
 
 // type CustomElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

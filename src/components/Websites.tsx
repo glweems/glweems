@@ -1,7 +1,6 @@
 import React from 'react';
 import useWebsiteQuery from '../graphql/WebsitesQuery';
 import Card, { Cards } from './Card';
-import { Image } from '../utils/theme';
 
 interface Props {
   limit?: number;
@@ -13,8 +12,16 @@ const Websites = ({ limit }: Props) => {
   return (
     <Cards>
       {shown.map(({ name, description, tags, url, screenshot }) => (
-        <Card key={name} title={name} subtitle={description} tags={tags} link={url}>
-          <Image fluid={screenshot.childImageSharp.fluid} />
+        <Card
+          key={name}
+          title={name}
+          subtitle={description}
+          tags={tags}
+          img={screenshot.childImageSharp}
+        >
+          <a href={url} target="_blank_">
+            View Site
+          </a>
         </Card>
       ))}
     </Cards>

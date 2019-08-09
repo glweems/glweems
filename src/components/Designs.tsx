@@ -13,9 +13,14 @@ const Designs = ({ limit }: Props) => {
   return (
     <Cards>
       {shown.map(({ slug, name, description, tags, cover }) => (
-        <Card key={slug} title={name} subtitle={description} tags={tags} link={`designs/${slug}`}>
-          <Image fluid={cover.childImageSharp.fluid} />
-        </Card>
+        <Card
+          key={slug}
+          title={name}
+          subtitle={description}
+          tags={tags}
+          link={`designs/${slug}`}
+          img={cover.childImageSharp}
+        />
       ))}
     </Cards>
   );

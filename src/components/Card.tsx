@@ -13,6 +13,7 @@ interface Card {
   link?: string;
   tags: string[];
   children: any;
+  img: any;
 }
 
 const Header = styled.h4`
@@ -22,11 +23,16 @@ const Header = styled.h4`
   padding: 0 0.5em;
   cursor: pointer;
 `;
-const Subtitle = styled.small`
+const Body = styled.div`
   padding: 0.5em 1em;
   margin: 0;
   color: ${props => props.theme.colors.muted};
   background: ${props => props.theme.colors.bg};
+  font-size: 15px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
 `;
 
@@ -45,15 +51,15 @@ const StyledCard = styled.div`
   gap: 0 0.25em;
   grid-template-areas:
     'Header Header'
-    'Subtitle Image'
+    'Body Image'
     'Footer Image';
 
   ${Header} {
     grid-area: Header;
   }
 
-  ${Subtitle} {
-    grid-area: Subtitle;
+  ${Body} {
+    grid-area: Body;
     border-top-left-radius: ${props => props.theme.borderRadius};
   }
 
@@ -75,10 +81,10 @@ const StyledCard = styled.div`
     grid-template-areas:
       'Header'
       'Image'
-      'Subtitle'
+      'Body'
       'Footer';
 
-    ${Subtitle} {
+    ${Body} {
       border-radius: 0;
     }
 
@@ -104,14 +110,18 @@ const Card = ({
   link,
   tags = ['one', 'two', 'three'],
   children,
+  img,
 }: Card) => {
   const go = () => (link ? navigate(link) : null);
 
   return (
     <StyledCard onClick={go}>
-      {children}
-      <Header>{truncate(title, 60)}</Header>
-      <Subtitle>{subtitle}</Subtitle>
+      <Image {...img} />
+      <Header>{title}</Header>
+      <Body>
+        <small>{subtitle}</small>
+        {children}
+      </Body>
       <Footer>{<Tags items={tags} />}</Footer>
     </StyledCard>
   );
