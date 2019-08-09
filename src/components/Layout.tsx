@@ -1,4 +1,4 @@
-import React, { ReactChild, ReactChildren } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { faPenNib } from '@fortawesome/free-solid-svg-icons';
 import { faReadme } from '@fortawesome/free-brands-svg-icons';

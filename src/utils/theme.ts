@@ -1,8 +1,7 @@
-/* eslint-disable no-return-assign */
-/* eslint-disable no-nested-ternary */
-import styled, { createGlobalStyle, DefaultTheme, css } from 'styled-components';
+import styled, { StyledFunction, createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken } from 'polished';
+import Img from 'gatsby-image';
 
 export const media = generateMedia({
   lg: '960px',
@@ -71,78 +70,83 @@ export const heatMapTheme = {
   grade0: lightColors.red,
 };
 
-const theme: DefaultTheme = {
+export interface Theme extends DefaultTheme {
+  borderRadius: `0.3em`;
+  colors: Colors;
+  lightColors: Colors;
+  darkColors: Colors;
+}
+
+export const theme: DefaultTheme = {
   borderRadius: `0.3em`,
   colors,
   lightColors,
   darkColors,
 };
 
-export { theme };
-
 export type ColorKeys = keyof Colors;
 
-export interface StyledElementProps extends DefaultTheme {
+export interface ColorProps extends DefaultTheme {
   color?: ColorKeys;
-  bg: ColorKeys;
-  dark: boolean;
-  light: boolean;
+  bg?: ColorKeys;
 }
 
-export const helperCss = css<StyledElementProps>`
+export const helperCss = css<ColorProps>`
   color: ${props => (props.color ? props.theme.colors[props.color] : props.theme.colors.light)};
-  background: ${props => props.theme.colors[props.bg]};
+  background: ${props => (props.bg ? props.theme.colors[props.bg] : null)};
 `;
 
-export const A = styled.a<StyledElementProps>`
-  ${props => props && helperCss}
-  :hover {
-    color: ${props => props.theme.lightColors.red};
-  }
-`;
+export const Image = styled(Img)<Img>``;
 
-export const Span = styled.span<StyledElementProps>`
-  ${props => props && helperCss}
-`;
+// export const A = styled<StyledFunction>('a')`
+//   ${props => props && helperCss}
+//   :hover {
+//     color: ${props => props.theme.lightColors.red};
+//   }
+// `;
 
-export const P = styled.p<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const Span = styled.span`
+//   ${props => props && helperCss}
+// `;
 
-export const H1 = styled.h1<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const P = styled.p`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H2 = styled.h2<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H1 = styled('h1')`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H3 = styled.h3<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H2 = styled('h2')`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H4 = styled.h4<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H3 = styled.h3`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H5 = styled.h5<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H4 = styled.h4`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const H6 = styled.h6<StyledElementProps>`
-  ${props => props && helperCss}
-  margin-top: 0;
-`;
+// export const H5 = styled.h5`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
 
-export const Section = styled.section<StyledElementProps>`
-  ${props => props && helperCss}
-`;
+// export const H6 = styled.h6`
+//   ${props => props && helperCss}
+//   margin-top: 0;
+// `;
+
+// export const Section = styled.section`
+//   ${props => props && helperCss}
+// `;
 
 // type CustomElements = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 

@@ -1,13 +1,12 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import { Container } from 'reactstrap';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-import { H1, H3, Section } from '../utils/theme';
-import Card, { Cards } from '../components/Card';
-import { BehanceProject, LocalFile } from '../declaration';
-import { mergedBehance, filterProjectImages } from '../utils/helpers';
+import { Cards } from '../components/Card';
+import { BehanceProject, ImageFile } from '../declaration';
+import Designs from '../components/Designs';
 
 const Image = styled(Img)`
   user-select: none;
@@ -28,54 +27,41 @@ const Content = styled.div`
 const DesignTemplate = ({
   data: {
     currentProject: { name, tags, description },
-    allBehanceProjects,
-    allBehanceImages,
-    behanceCoverImages,
-    allFile: { nodes: fileNodes },
+    allFile,
   },
-}: DesignTemplate) => {
-  const behance = mergedBehance(allBehanceProjects.nodes, behanceCoverImages.nodes);
-  return (
-    <>
-      <SEO title={name} keywords={tags} description={description} />
+}: DesignTemplate) => (
+  <>
+    <SEO title={name} keywords={tags} description={description} />
 
-      <Content>
-        <Container fluid>
-          <H1 color="yellow">{name}</H1>
-          <H3 color="blue">{description}</H3>
-        </Container>
+    <Content>
+      <Container fluid>
+        <h1>{name}</h1>
+        <h3>{description}</h3>
+      </Container>
 
-        <section>
-          {fileNodes.map(({ childImageSharp, id }) => (
-            <Image key={id} {...childImageSharp} />
-          ))}
-        </section>
+      <section>
+        {allFile.nodes.map(({ childImageSharp, id }) => (
+          <Image key={id} fluid={childImageSharp.fluid} />
+        ))}
+      </section>
 
-        <section>
-          <H3 color="blue">View Simular Projects</H3>
+      <section>
+        <Container>
+          <h3>View Simular Projects</h3>
           <Cards>
-            {behance.map(node => (
-              <Card
-                key={node.slug}
-                title={node.name}
-                subtitle={node.description}
-                tags={node.tags}
-                link={`designs/${node.slug}`}
-                images={filterProjectImages(node.slug, allBehanceImages.nodes)}
-              />
-            ))}
+            <Designs limit={3} />
           </Cards>
-        </section>
-      </Content>
-    </>
-  );
-};
+        </Container>
+      </section>
+    </Content>
+  </>
+);
 
 interface DesignTemplate {
   data: {
     currentProject: BehanceProject;
     allFile: {
-      nodes: LocalFile[];
+      nodes: ImageFile[];
       totalCount: number;
     };
   };

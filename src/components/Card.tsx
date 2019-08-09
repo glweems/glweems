@@ -1,22 +1,19 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState } from 'react';
+import React from 'react';
 import { navigate } from 'gatsby';
-import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { animated, useTransition } from 'react-spring';
+import styled, { StyledFunction } from 'styled-components';
 import { truncate } from '../utils/helpers';
-import { media } from '../utils/theme';
+import { media, Image } from '../utils/theme';
 import Tags from './Tags';
 import { BehanceImage } from '../declaration';
 
 interface Card {
   title: string;
   subtitle: string;
-  img: object;
   link?: string;
   tags: string[];
-  images?: BehanceImage[];
-  slider?: boolean;
+  children: any;
+  img: any;
 }
 
 const Header = styled.h4`
@@ -26,18 +23,17 @@ const Header = styled.h4`
   padding: 0 0.5em;
   cursor: pointer;
 `;
-const Subtitle = styled.small`
+const Body = styled.div`
   padding: 0.5em 1em;
   margin: 0;
   color: ${props => props.theme.colors.muted};
   background: ${props => props.theme.colors.bg};
+  font-size: 15px;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
-`;
-
-const AnimatedImg = animated(Img);
-
-const Image = styled(AnimatedImg)`
-  cursor: pointer;
 `;
 
 const Footer = styled.div`
@@ -55,15 +51,15 @@ const StyledCard = styled.div`
   gap: 0 0.25em;
   grid-template-areas:
     'Header Header'
-    'Subtitle Image'
+    'Body Image'
     'Footer Image';
 
   ${Header} {
     grid-area: Header;
   }
 
-  ${Subtitle} {
-    grid-area: Subtitle;
+  ${Body} {
+    grid-area: Body;
     border-top-left-radius: ${props => props.theme.borderRadius};
   }
 
@@ -85,10 +81,10 @@ const StyledCard = styled.div`
     grid-template-areas:
       'Header'
       'Image'
-      'Subtitle'
+      'Body'
       'Footer';
 
-    ${Subtitle} {
+    ${Body} {
       border-radius: 0;
     }
 
@@ -103,36 +99,35 @@ const StyledCard = styled.div`
       border-radius: 0;
       border-top-right-radius: ${props => props.theme.borderRadius};
       border-top-left-radius: ${props => props.theme.borderRadius};
-    }
+      }
 
   `};
 `;
 
-const Card = ({ title, subtitle, img, link, tags, images }: Card) => {
+const Card = ({
+  title = 'Card Title',
+  subtitle = 'This is the cards subtitle',
+  link,
+  tags = ['one', 'two', 'three'],
+  children,
+  img,
+}: Card) => {
   const go = () => (link ? navigate(link) : null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const nextIndex = img
-    ? null
-    : !images || currentIndex >= images.length - 1
-    ? 0
-    : currentIndex + 1;
-
-  const changeImage = () => (img ? null : setCurrentIndex(!img ? nextIndex : null));
 
   return (
-    <StyledCard onMouseEnter={changeImage} onMouseLeave={changeImage} onClick={go}>
-      <Header>{truncate(title, 60)}</Header>
-      <Subtitle>{subtitle}</Subtitle>
+    <StyledCard onClick={go}>
+      <Image {...img} />
+      <Header>{title}</Header>
+      <Body>
+        <small>{subtitle}</small>
+        {children}
+      </Body>
       <Footer>{<Tags items={tags} />}</Footer>
-      {img && !images ? (
-        <Image {...img} />
-      ) : (
-        <Image fluid={images[currentIndex].childImageSharp.fluid} />
-      )}
     </StyledCard>
   );
 };
+
+export default Card;
 
 export const Cards = styled.div`
   display: grid;
@@ -146,5 +141,3 @@ export const Cards = styled.div`
     grid-template-columns: repeat(3, 1fr);
 `}
 `;
-
-export default Card;
