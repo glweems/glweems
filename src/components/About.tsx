@@ -3,20 +3,22 @@ import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
+import animated from 'react-spring';
 import Avitar from './Avitar';
-import SocialMediaIcons from './SocialMedia';
+import { AnimatedSociaMedia } from './SocialMedia';
 import { heatMapTheme } from '../utils/theme';
+import Flex from './Flex';
 
 // Create the keyframes
 const rotate = keyframes`
-    from  {transform: translateX(-50px); }
-    to {transform: translateX(100vw);}
+    from  { transform: translateX(-50px); }
+    to { transform: translateX(100vw);}
 `;
 
 const Content = styled.div`
   max-width: 100vw;
   overflow: hidden;
-  height: 30vh;
+  height: 50vh;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
@@ -81,7 +83,7 @@ const About = () => (
     </div>
 
     <div className="SocialMedia">
-      <SocialMediaIcons horizontal noText size="2x" />
+      <AnimatedSociaMedia delay={1500} />
     </div>
 
     <div className="HeatMap">
