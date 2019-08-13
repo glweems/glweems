@@ -5,14 +5,13 @@ import styled, { StyledFunction } from 'styled-components';
 import { truncate } from '../utils/helpers';
 import { media, Image } from '../utils/theme';
 import Tags from './Tags';
-import { BehanceImage } from '../declaration';
 
 interface Card {
   title: string;
   subtitle: string;
   link?: string;
   tags: string[];
-  children: any;
+  children?: any;
   img: any;
 }
 

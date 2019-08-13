@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { animated, useSpring } from 'react-spring';
+import { Child } from '../declaration';
 
 interface Props {
   delay?: number;
-  children: Element | Element[] | React.ReactElement | React.ReactFragment | string;
+  children: Child;
   className?: string;
 }
 
