@@ -5,6 +5,7 @@ import { faReadme } from '@fortawesome/free-brands-svg-icons';
 import Menu from './Menu';
 import Navbar from './Navbar';
 import Footer from './Footer';
+import { Child } from '../declaration';
 
 interface LayoutProps {
   children: React.ReactChildren;
@@ -17,7 +18,11 @@ const menuItems = [
   { text: 'Code Tutorials', path: '/tutorials', icon: faReadme },
 ];
 
-const Sticky = styled.div`
+interface StickyProps {
+  children: Child;
+}
+
+const Sticky = styled.div<StickyProps>`
   z-index: 100;
   position: fixed;
   top: 0;
@@ -26,7 +31,7 @@ const Sticky = styled.div`
 `;
 
 const Main = styled.main`
-  margin-top: 4rem;
+  margin-top: 2em;
   padding-top: 2rem;
 `;
 

@@ -6,6 +6,14 @@ declare module 'gatsby';
 declare module 'react-github-calendar';
 declare module 'gatsby-image';
 
+export type Child =
+  | Element
+  | Element[]
+  | React.ReactElement
+  | React.ReactFragment
+  | React.ReactChildren
+  | string;
+
 interface Colors {
   light: string;
   dark: string;

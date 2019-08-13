@@ -66,17 +66,21 @@ const Menu = ({ items, isMenu, setIsMenu }: MenuProps) => {
     leave: { opacity: 0, transform: 'translateY(-8em)' },
   });
 
-  return transitions.map(
-    ({ item, key, props }) =>
-      item && (
-        <Pages key={key} style={props}>
-          <Container>
-            {items.map(navItem => (
-              <NavbarLink key={navItem.text} {...navItem} setIsMenu={setIsMenu} />
-            ))}
-          </Container>
-        </Pages>
-      ),
+  return (
+    <>
+      {transitions.map(
+        ({ item, key, props }) =>
+          item && (
+            <Pages key={key} style={props}>
+              <Container>
+                {items.map(navItem => (
+                  <NavbarLink key={navItem.text} {...navItem} setIsMenu={setIsMenu} />
+                ))}
+              </Container>
+            </Pages>
+          ),
+      )}
+    </>
   );
 };
 
