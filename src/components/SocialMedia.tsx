@@ -2,55 +2,9 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
-import {
-  faMediumM,
-  faBehance,
-  faLinkedinIn,
-  faCodepen,
-  faGithubAlt,
-} from '@fortawesome/free-brands-svg-icons';
 import { useTrail, animated as a } from 'react-spring';
+import { socialMedia } from '../utils/data';
 import Flex from './Flex';
-
-interface IconData {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  color: string;
-}
-
-const items: IconData[] = [
-  {
-    name: `Github`,
-    link: `https://github.com/glweems`,
-    icon: faGithubAlt,
-    color: `#333`,
-  },
-  {
-    name: `LinkedIn`,
-    link: `https://www.linkedin.com/in/glweems`,
-    icon: faLinkedinIn,
-    color: `#0077B5`,
-  },
-  {
-    name: `Medium`,
-    link: `https://medium.com/@glweems`,
-    icon: faMediumM,
-    color: `#00ab6c`,
-  },
-  {
-    name: `Behance`,
-    link: `https://www.behance.net/glweems`,
-    icon: faBehance,
-    color: `#1769ff`,
-  },
-  {
-    name: `Codepen`,
-    link: `https://codepen.io/glweems`,
-    icon: faCodepen,
-    color: `#ff3c41`,
-  },
-];
 
 interface SocialMediaIconProps {
   name: string;
@@ -100,7 +54,7 @@ const IconLink = styled('a')<{ iconColor: string }>`
 
 const SocialMediaIcons = () => (
   <>
-    {items.map(({ name, link, icon, color }) => (
+    {socialMedia.map(({ name, link, icon, color }) => (
       <IconLink key={name} href={link} target="_blank_" iconColor={color}>
         <FontAwesomeIcon icon={icon} size="lg" />
       </IconLink>
@@ -122,7 +76,7 @@ export const AnimatedSociaMedia = ({ delay = 1250 }: Props) => {
     return () => clearTimeout(timer);
   }, [delay]);
 
-  const trail = useTrail(items.length, {
+  const trail = useTrail(socialMedia.length, {
     config,
     opacity: toggle ? 1 : 0,
     x: toggle ? 0 : 20,
@@ -133,7 +87,7 @@ export const AnimatedSociaMedia = ({ delay = 1250 }: Props) => {
     <Flex>
       {trail.map(({ x, ...rest }, i) => (
         <a.div
-          key={items[i].name}
+          key={socialMedia[i].name}
           className="trails-text"
           style={{
             ...rest,
@@ -141,12 +95,12 @@ export const AnimatedSociaMedia = ({ delay = 1250 }: Props) => {
           }}
         >
           <IconLink
-            href={items[i].link}
+            href={socialMedia[i].link}
             target="_blank_"
-            iconColor={items[i].color}
+            iconColor={socialMedia[i].color}
             // style={{ width }}
           >
-            <FontAwesomeIcon icon={items[i].icon} size="lg" />
+            <FontAwesomeIcon icon={socialMedia[i].icon} size="lg" />
           </IconLink>
         </a.div>
       ))}
