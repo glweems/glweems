@@ -7,6 +7,7 @@ import About from '../components/About';
 import Websites from '../components/Websites';
 import Designs from '../components/Designs';
 import Tutorials from '../components/Tutorials';
+import CardTrail from '../components/CardTrail';
 
 const Content = styled.div`
   display: grid;
@@ -48,7 +49,7 @@ const IndexPage = () => (
     <section>
       <Container>
         <h2>Blog Posts</h2>
-        <Tutorials limit={3} />
+        <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
         <div className="link">
           <Link to="/tutorials">View All Tutorials</Link>
         </div>
@@ -58,7 +59,7 @@ const IndexPage = () => (
     <section>
       <Container>
         <h2>Design Projects</h2>
-        <Designs limit={3} />
+        <CardTrail cards={Designs({ limit: 3 })} delay={2000} />
         <div className="link">
           <Link to="/designs">View All Designs</Link>
         </div>
@@ -68,7 +69,7 @@ const IndexPage = () => (
     <section>
       <Container>
         <h2>Side Projects</h2>
-        <Websites limit={3} />
+        <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
       </Container>
     </section>
   </Content>
