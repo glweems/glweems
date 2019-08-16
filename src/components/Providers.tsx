@@ -1,30 +1,37 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, Dispatch, SetStateAction } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyle } from '../utils/theme';
 import Layout from './Layout';
 import SEO from './SEO';
 
-const LayoutContext = createContext<{ isMenu: boolean }>();
+interface LayoutContext {
+  isMenu: boolean;
+}
+
+const LayoutContext = createContext<Partial<LayoutContext>>({});
 
 interface Props {
-  children: any;
+  children: Element;
 }
 
 const Providers = ({ children }: Props) => {
   const [isMenu, setIsMenu] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setIsMenu(state => !state);
+  };
+
   return (
     <>
       <SEO />
-      <LayoutContext.Provider isMenu={[isMenu, setIsMenu]}>
-        <ThemeProvider theme={theme}>
-          <>
-            <GlobalStyle />
-            <Layout isMenu={isMenu} setIsMenu={setIsMenu}>
-              {children}
-            </Layout>
-          </>
-        </ThemeProvider>
-      </LayoutContext.Provider>
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
+          <Layout isMenu={isMenu} toggleMenu={toggleMenu}>
+            {children}
+          </Layout>
+        </>
+      </ThemeProvider>
     </>
   );
 };

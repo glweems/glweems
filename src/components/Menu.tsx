@@ -1,38 +1,20 @@
 import styled from 'styled-components';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { animated, useTransition } from 'react-spring';
 import { Container } from 'reactstrap';
 
-interface MenuItem {
-  text: string;
-  path: string;
-  icon: IconDefinition;
-}
-interface MenuProps {
-  isMenu: boolean;
-  items: MenuItem[];
-  setIsMenu: any;
-}
-
-const Pages = styled(animated.header)`
+const Dropdown = styled(animated.header)`
   z-index: 90;
   width: 100%;
   padding: 1em;
-  background: ${props => props.theme.lightColors.dark};
+  background: ${props => props.theme.colors.dark};
   border-bottom: 2px solid ${props => props.theme.colors.green};
   display: flex;
   flex-direction: column;
 `;
-
-interface NavbarLink {
-  path: string;
-  icon: IconDefinition;
-  text: string;
-  setIsMenu: any;
-}
 
 const StyledLink = styled.div`
   font-size: 18px;
@@ -44,12 +26,19 @@ const StyledLink = styled.div`
   span {
     color: ${props => props.theme.colors.purple};
   }
+  cursor: pointer;
 `;
+interface NavbarLink {
+  path: string;
+  icon: IconDefinition;
+  text: string;
+  toggleMenu(): void;
+}
 
-const NavbarLink = ({ path, icon, text, setIsMenu }: NavbarLink) => {
+const NavbarLink = ({ path, icon, text, toggleMenu }: NavbarLink) => {
   const closeAndGo = () => {
-    setIsMenu(false);
     navigate(path);
+    toggleMenu();
   };
   return (
     <StyledLink role="presentation" onClick={closeAndGo}>
@@ -59,11 +48,23 @@ const NavbarLink = ({ path, icon, text, setIsMenu }: NavbarLink) => {
   );
 };
 
-const Menu = ({ items, isMenu, setIsMenu }: MenuProps) => {
+interface MenuItem {
+  text: string;
+  path: string;
+  icon: IconDefinition;
+}
+
+interface Menu {
+  isMenu: boolean;
+  items: MenuItem[];
+  toggleMenu(): void;
+}
+
+const Menu = ({ items, isMenu, toggleMenu }: Menu) => {
   const transitions = useTransition(isMenu, null, {
-    from: { opacity: 0, transform: 'translateY(-8em)' },
-    enter: { opacity: 1, transform: 'translateY(0)' },
-    leave: { opacity: 0, transform: 'translateY(-8em)' },
+    from: { transform: 'translateY(-8em)', height: '1em' },
+    enter: { transform: 'translateY(0)', height: '100vh' },
+    leave: { transform: 'translateY(-8em)', height: '1em' },
   });
 
   return (
@@ -71,13 +72,13 @@ const Menu = ({ items, isMenu, setIsMenu }: MenuProps) => {
       {transitions.map(
         ({ item, key, props }) =>
           item && (
-            <Pages key={key} style={props}>
+            <Dropdown key={key} style={props}>
               <Container>
                 {items.map(navItem => (
-                  <NavbarLink key={navItem.text} {...navItem} setIsMenu={setIsMenu} />
+                  <NavbarLink key={navItem.text} {...navItem} toggleMenu={toggleMenu} />
                 ))}
               </Container>
-            </Pages>
+            </Dropdown>
           ),
       )}
     </>

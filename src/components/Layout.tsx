@@ -1,25 +1,19 @@
 import React from 'react';
 import styled from 'styled-components';
-import { faPenNib } from '@fortawesome/free-solid-svg-icons';
-import { faReadme } from '@fortawesome/free-brands-svg-icons';
 import Menu from './Menu';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Child } from '../declaration';
+import { menuItems } from '../utils/data';
 
 interface LayoutProps {
-  children: React.ReactChildren;
+  children: Child;
   isMenu: boolean;
-  setIsMenu: any;
+  toggleMenu(): void;
 }
 
-const menuItems = [
-  { text: 'Graphic Design', path: '/designs', icon: faPenNib },
-  { text: 'Code Tutorials', path: '/tutorials', icon: faReadme },
-];
-
 interface StickyProps {
-  children: Child;
+  children: JSX.Element[];
 }
 
 const Sticky = styled.div<StickyProps>`
@@ -31,15 +25,15 @@ const Sticky = styled.div<StickyProps>`
 `;
 
 const Main = styled.main`
-  margin-top: 2em;
-  padding-top: 2rem;
+  margin: 2em 0;
+  padding: 2rem 0;
 `;
 
-const Layout = ({ isMenu, setIsMenu, children }: LayoutProps) => (
+const Layout = ({ isMenu, toggleMenu, children }: LayoutProps) => (
   <>
     <Sticky>
-      <Navbar isMenu={isMenu} toggleMenu={setIsMenu} />
-      <Menu items={menuItems} setIsMenu={setIsMenu} isMenu={isMenu} />
+      <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
+      <Menu items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
     </Sticky>
     <Main>{children}</Main>
     <Footer />

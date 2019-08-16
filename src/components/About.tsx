@@ -7,7 +7,6 @@ import { animated, useTrail } from 'react-spring';
 import Avitar from './Avitar';
 import { AnimatedSociaMedia } from './SocialMedia';
 import { heatMapTheme } from '../utils/theme';
-import Slide from './Slide';
 
 // Create the keyframes
 const rotate = keyframes`
@@ -15,7 +14,7 @@ const rotate = keyframes`
     to { transform: translateX(100vw);}
 `;
 
-const Content = styled.div`
+const Content = styled(animated.div)`
   overflow: hidden;
   display: grid;
   height: 100vh;
