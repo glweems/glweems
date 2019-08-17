@@ -1,8 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-const useAvitarQuery = () =>
+const useAvatarQuery = () =>
   useStaticQuery(graphql`
-    query AvitarQuery {
+    query AvatarQuery {
       file(relativePath: { eq: "ghost.png" }) {
         childImageSharp {
           fixed(width: 50, height: 50) {
@@ -13,4 +13,4 @@ const useAvitarQuery = () =>
     }
   `);
 
-export default useAvitarQuery;
+export default useAvatarQuery;

@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
 import { animated, useTrail } from 'react-spring';
-import Avitar from './Avitar';
+import Avatar from './Avatar';
 import { AnimatedSociaMedia } from './SocialMedia';
 import { heatMapTheme } from '../utils/theme';
 
@@ -72,7 +72,7 @@ const sections = [
     component: (
       <>
         <div className="img">
-          <Avitar />
+          <Avatar />
         </div>
       </>
     ),
