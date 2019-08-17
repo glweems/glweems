@@ -13,6 +13,7 @@
 :root {
   --light: #f7f7f7;
   --dark: #1a1e28;
+  --muted: #c6c7c6;
   --red: #d65947;
   --green: #c3e28a;
   --yellow: #f8d58c;
@@ -23,6 +24,11 @@
 }
 html {
   color: var(--light);
+}
+
+main {
+  /* margin: 2em 0; */
+  /* padding: 2rem 0; */
 }
 
 h1 {
@@ -59,4 +65,30 @@ h6,
 a,
 p {
   margin-top: 0;
+}
+
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 1.5em 0;
+  section {
+    margin-bottom: 1.5em;
+  }
+  h4 {
+    color: var(--muted);
+    padding-bottom: 0.25em;
+    margin-bottom: 0.75em;
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    li {
+      text-align: left;
+      margin: 0;
+      span {
+        margin-left: 0.75em;
+      }
+    }
+  }
 }

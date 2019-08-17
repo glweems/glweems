@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Child } from '../declaration';
 import { menuItems } from '../utils/data';
+import About from './About';
 
 interface LayoutProps {
   children: Child;
@@ -18,26 +19,26 @@ interface StickyProps {
 
 const Sticky = styled.div<StickyProps>`
   z-index: 100;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
 `;
 
-const Main = styled.main`
-  margin: 2em 0;
-  padding: 2rem 0;
-`;
+const Layout = (props: LayoutProps) => {
+  const { isMenu, toggleMenu, children } = props;
 
-const Layout = ({ isMenu, toggleMenu, children }: LayoutProps) => (
-  <>
-    <Sticky>
-      <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
-      <Menu items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
-    </Sticky>
-    <Main>{children}</Main>
-    <Footer />
-  </>
-);
+  return (
+    <>
+      <About />
+      <Sticky>
+        <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
+        <Menu items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
+      </Sticky>
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+};
 
 export default Layout;

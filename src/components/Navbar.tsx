@@ -29,7 +29,7 @@ const Navbar = ({ toggleMenu, isMenu }: Navbar) => {
   };
 
   return (
-    <Header className="container-fluid" isMenu={isMenu}>
+    <Header className="container" isMenu={isMenu}>
       <div>
         <Link to="/">
           <Logo />

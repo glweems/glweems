@@ -18,6 +18,7 @@ const Content = styled(animated.div)`
   overflow: hidden;
   display: grid;
   height: 100vh;
+  padding: 1em 0;
   grid-template-columns: auto;
   grid-template-rows: repeat(4, auto);
   grid-template-areas:
@@ -123,7 +124,7 @@ const About = () => {
     from: { opacity: 0, x: 20 },
   });
   return (
-    <Content>
+    <Content className="container">
       {trail.map(({ x, ...rest }, i) => (
         <animated.div
           key={sections[i].className}

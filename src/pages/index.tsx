@@ -14,22 +14,18 @@ const Content = styled.div`
   grid-template-columns: auto;
   grid-template-rows: auto auto auto 1fr;
   grid-template-areas:
-    'About'
     'Tutorials'
     'Designs'
     'Websites';
   gap: 10em;
   margin-top: 1em;
-  section:nth-child(1) {
-    grid-area: About;
-  }
-  section:nth-child(2) {
+  .Tutorials {
     grid-area: Tutorials;
   }
-  section:nth-child(3) {
+  .Designs {
     grid-area: Designs;
   }
-  section:nth-child(4) {
+  .Websites {
     grid-area: Websites;
   }
 
@@ -40,37 +36,25 @@ const Content = styled.div`
 
 const IndexPage = () => (
   <Content>
-    <section>
-      <Container>
-        <About />
-      </Container>
+    <section className="Tutorials container">
+      <h2>Blog Posts</h2>
+      <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
+      <div className="link">
+        <Link to="/tutorials">View All Tutorials</Link>
+      </div>
     </section>
 
-    <section>
-      <Container>
-        <h2>Blog Posts</h2>
-        <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
-        <div className="link">
-          <Link to="/tutorials">View All Tutorials</Link>
-        </div>
-      </Container>
+    <section className="Designs container">
+      <h2>Design Projects</h2>
+      <CardTrail cards={Designs({ limit: 3 })} delay={2000} />
+      <div className="link">
+        <Link to="/designs">View All Designs</Link>
+      </div>
     </section>
 
-    <section>
-      <Container>
-        <h2>Design Projects</h2>
-        <CardTrail cards={Designs({ limit: 3 })} delay={2000} />
-        <div className="link">
-          <Link to="/designs">View All Designs</Link>
-        </div>
-      </Container>
-    </section>
-
-    <section>
-      <Container>
-        <h2>Side Projects</h2>
-        <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
-      </Container>
+    <section className="Websites container">
+      <h2>Side Projects</h2>
+      <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
     </section>
   </Content>
 );
