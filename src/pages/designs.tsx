@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { Container } from 'reactstrap';
 import Designs from '../components/Designs';
+import CardTrail from '../components/CardTrail';
 
 const DesignsPage = () => (
-  <Container>
+  <div className="container">
     <h1>Graphic Design Projects</h1>
-    <Designs />
-  </Container>
+    <CardTrail cards={Designs({})} />
+  </div>
 );
 
 export default DesignsPage;

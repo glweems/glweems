@@ -3,22 +3,24 @@ import Card from './Card';
 import UseDesignsQuery from '../graphql/DesignsQuery';
 
 interface Props {
-  limit?: number;
+  limit?: number | false;
 }
 
-const Designs = ({ limit }: Props) => {
+const Designs = ({ limit = false }: Props) => {
   const designs = UseDesignsQuery();
-  const shown = designs.slice(0, limit || designs.length);
-  return shown.map(({ slug, name, description, tags, cover }) => (
-    <Card
-      key={slug}
-      title={name}
-      subtitle={description}
-      tags={tags}
-      link={`designs/${slug}`}
-      img={cover.childImageSharp}
-    />
-  ));
+
+  return designs
+    .slice(0, limit || designs.length)
+    .map(({ slug, name, description, tags, cover }) => (
+      <Card
+        key={slug}
+        title={name}
+        subtitle={description}
+        tags={tags}
+        link={`designs/${slug}`}
+        img={cover.childImageSharp}
+      />
+    ));
 };
 
 export default Designs;

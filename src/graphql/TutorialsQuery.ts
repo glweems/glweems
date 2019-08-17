@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { Nodes, MarkdownRemark } from '../declaration';
 
-interface TutorialsQuery {
+export interface TutorialsQuery {
   allFile: Nodes<MarkdownRemark>;
 }
 

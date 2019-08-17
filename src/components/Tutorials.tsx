@@ -3,23 +3,24 @@ import Card from './Card';
 import useTutorialsQuery from '../graphql/TutorialsQuery';
 
 interface Props {
-  limit?: number;
+  limit?: number | false;
 }
 
-const Tutorials = ({ limit }: Props) => {
+const Tutorials = ({ limit = false }: Props) => {
   const tutorials = useTutorialsQuery();
-  const shown = tutorials.slice(0, limit || tutorials.length);
 
-  return shown.map(({ id, title, excerpt, tags, path, thumbnail }) => (
-    <Card
-      key={id}
-      title={title}
-      subtitle={excerpt}
-      tags={tags}
-      link={path}
-      img={thumbnail.childImageSharp}
-    />
-  ));
+  return tutorials
+    .slice(0, limit || tutorials.length)
+    .map(({ id, title, excerpt, tags, path, thumbnail }) => (
+      <Card
+        key={id}
+        title={title}
+        subtitle={excerpt}
+        tags={tags}
+        link={path}
+        img={thumbnail.childImageSharp}
+      />
+    ));
 };
 
 export default Tutorials;

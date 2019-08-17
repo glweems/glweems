@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import styled from 'styled-components';
-import { Container } from 'reactstrap';
 import { Link } from 'gatsby';
 import About from '../components/About';
 import Websites from '../components/Websites';

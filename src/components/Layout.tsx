@@ -30,7 +30,7 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <>
-      <About />
+      {/* <About /> */}
       <Sticky>
         <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
         <Menu items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />

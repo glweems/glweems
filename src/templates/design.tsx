@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import { Cards } from '../components/Card';
 import { BehanceProject, ImageFile } from '../declaration';
 import Designs from '../components/Designs';
+import CardTrail from '../components/CardTrail';
 
 const Image = styled(Img)`
   user-select: none;
@@ -34,24 +35,20 @@ const DesignTemplate = ({
     <SEO title={name} keywords={tags} description={description} />
 
     <Content>
-      <Container fluid>
+      <section className="container">
         <h1>{name}</h1>
         <h3>{description}</h3>
-      </Container>
+      </section>
 
-      <section>
+      <section className="container">
         {allFile.nodes.map(({ childImageSharp, id }) => (
           <Image key={id} fluid={childImageSharp.fluid} />
         ))}
       </section>
 
-      <section>
-        <Container>
-          <h3>View Simular Projects</h3>
-          <Cards>
-            <Designs limit={3} />
-          </Cards>
-        </Container>
+      <section className="container">
+        <h3>View Similar Projects</h3>
+        <CardTrail cards={Designs({ limit: 3 })} />
       </section>
     </Content>
   </>

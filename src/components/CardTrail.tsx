@@ -25,7 +25,7 @@ const CardTrail = ({ delay = 0, cards }: Props) => {
   });
 
   return (
-    <Cards>
+    <div className="Cards">
       {trail.map(({ x, ...rest }, i) => (
         <animated.div
           key={`card-trail-${cards[i].props.title}`}
@@ -34,7 +34,7 @@ const CardTrail = ({ delay = 0, cards }: Props) => {
           {cards[i]}
         </animated.div>
       ))}
-    </Cards>
+    </div>
   );
 };
 

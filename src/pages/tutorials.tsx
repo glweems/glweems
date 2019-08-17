@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import Tutorials from '../components/Tutorials';
+import CardTrail from '../components/CardTrail';
 
 export const TutorialsPage = () => (
-  <Container>
+  <div className="container">
     <h1>Code Tutorials</h1>
-    <Tutorials />
-  </Container>
+    <CardTrail cards={Tutorials({})} />
+  </div>
 );
 
 export default TutorialsPage;
