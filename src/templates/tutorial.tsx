@@ -1,7 +1,6 @@
 import * as React from 'react';
 import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-import { Container } from 'reactstrap';
 import SEO from '../components/SEO';
 
 interface BlogTemplateProps {
@@ -35,9 +34,7 @@ const BlogTemplate = ({
   return (
     <>
       <SEO title={title} keywords={tags} />
-      <Container>
-        <article>{renderAst(htmlAst)}</article>
-      </Container>
+      <article className="container">{renderAst(htmlAst)}</article>
     </>
   );
 };

@@ -34,28 +34,31 @@ const Content = styled.div`
 `;
 
 const IndexPage = () => (
-  <Content>
-    <section className="Tutorials container">
-      <h2>Blog Posts</h2>
-      <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
-      <div className="link">
-        <Link to="/tutorials">View All Tutorials</Link>
-      </div>
-    </section>
+  <>
+    <About />
+    <Content>
+      <section className="Tutorials container">
+        <h2>Blog Posts</h2>
+        <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
+        <div className="link">
+          <Link to="/tutorials">View All Tutorials</Link>
+        </div>
+      </section>
 
-    <section className="Designs container">
-      <h2>Design Projects</h2>
-      <CardTrail cards={Designs({ limit: 3 })} delay={2000} />
-      <div className="link">
-        <Link to="/designs">View All Designs</Link>
-      </div>
-    </section>
+      <section className="Designs container">
+        <h2>Design Projects</h2>
+        <CardTrail cards={Designs({ limit: 3 })} delay={2000} />
+        <div className="link">
+          <Link to="/designs">View All Designs</Link>
+        </div>
+      </section>
 
-    <section className="Websites container">
-      <h2>Side Projects</h2>
-      <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
-    </section>
-  </Content>
+      <section className="Websites container">
+        <h2>Side Projects</h2>
+        <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
+      </section>
+    </Content>
+  </>
 );
 
 export default IndexPage;

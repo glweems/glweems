@@ -6572,6 +6572,15 @@ gatsby-remark-images@^3.1.7:
     unist-util-select "^1.5.0"
     unist-util-visit-parents "^2.0.1"
 
+gatsby-remark-prismjs@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/gatsby-remark-prismjs/-/gatsby-remark-prismjs-3.3.5.tgz#0009a6677543706461516f8ab3e5cdedb9f09bd4"
+  integrity sha512-e0HhhpyHJ+PqDt6VcqXJ5Dzf63rK9VcvbXJvTCi9Tqn6k62C5cnNMUR7J43aVdQRH9dDkDCF6rgVfl6XID6TEA==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    parse-numeric-range "^0.0.2"
+    unist-util-visit "^1.3.0"
+
 gatsby-remark-social-cards@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/gatsby-remark-social-cards/-/gatsby-remark-social-cards-0.4.1.tgz#69ceb1235e80fe2f2001a244a92f7aa657b71296"
@@ -6695,10 +6704,10 @@ gatsby-telemetry@^1.1.11:
     stack-utils "1.0.2"
     uuid "3.3.2"
 
-gatsby-transformer-remark@^2.6.10:
-  version "2.6.11"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.11.tgz#396e64be10959fd2e84e5962ea68a4d2aa728683"
-  integrity sha512-Lb/l8T2FqDb9D9QoPmfywBmT4MM80xzJnxXQgn3ywa8FWFvLX5vDcTqyxl3O0asgLFmoa+4oU4kQ0+Yl37rtHA==
+gatsby-transformer-remark@^2.6.14:
+  version "2.6.14"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-2.6.14.tgz#6c2f6944b7d66414b808bd71622f2c3f06b14452"
+  integrity sha512-5GACTAFiw6R7eOLNBJsuoP1ZGiSxhSAXx/6y2RgKjkmT6jxKOalZfjKdrs1Es1gFkQrRoc/ghEhIGKs/3oPaww==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
@@ -10873,6 +10882,11 @@ parse-latin@^4.0.0:
     nlcst-to-string "^2.0.0"
     unist-util-modify-children "^1.0.0"
     unist-util-visit-children "^1.0.0"
+
+parse-numeric-range@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/parse-numeric-range/-/parse-numeric-range-0.0.2.tgz#b4f09d413c7adbcd987f6e9233c7b4b210c938e4"
+  integrity sha1-tPCdQTx6282Yf26SM8e0shDJOOQ=
 
 parse-passwd@^1.0.0:
   version "1.0.0"
