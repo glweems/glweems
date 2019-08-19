@@ -61,13 +61,13 @@ const darkColors = {
 };
 
 export const heatMapTheme = {
-  background: lightColors.dark,
+  background: colors.dark,
   text: colors.yellow,
-  grade4: darken(0.5, colors.green),
-  grade3: darken(0.3, colors.green),
-  grade2: colors.green,
+  grade0: colors.dark,
   grade1: lighten(0.1, colors.green),
-  grade0: lightColors.red,
+  grade2: colors.green,
+  grade3: darken(0.3, colors.green),
+  grade4: darken(0.5, colors.green),
 };
 
 export interface Theme extends DefaultTheme {
@@ -97,7 +97,6 @@ export const helperCss = css<ColorProps>`
 `;
 
 export const Image = styled(Img)<Img>``;
-
 
 export const GlobalStyle = createGlobalStyle`
 body {

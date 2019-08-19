@@ -3,34 +3,79 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { useTrail, animated as a } from 'react-spring';
-import { socialMedia } from '../utils/data';
+import {
+  faGithubAlt,
+  faLinkedinIn,
+  faMediumM,
+  faBehance,
+  faCodepen,
+} from '@fortawesome/free-brands-svg-icons';
+import { socialMedia, SocialMedia } from '../utils/data';
 import Flex from './Flex';
 
-interface SocialMediaIconProps {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  fontSize?: string;
-  marginRight?: string;
-  noText?: boolean;
-  noIcon?: boolean;
-  size?:
-    | 'xs'
-    | 'lg'
-    | 'sm'
-    | '1x'
-    | '2x'
-    | '3x'
-    | '4x'
-    | '5x'
-    | '6x'
-    | '7x'
-    | '8x'
-    | '9x'
-    | '10x'
-    | undefined;
-  horizontal?: boolean;
+export const socialMediaData = {
+  github: {
+    name: 'Github',
+    link: 'https://github.com/glweems',
+    icon: faGithubAlt,
+    color: '#333',
+    colors: {
+      light: '#f7f7f7',
+      dark: '#333',
+    },
+  },
+  linkedin: {
+    name: 'LinkedIn',
+    link: 'https://www.linkedin.com/in/glweems',
+    icon: faLinkedinIn,
+    color: '#0077B5',
+    colors: {
+      light: '#0077B5',
+      dark: '#0077B5',
+    },
+  },
+  medium: {
+    name: 'Medium',
+    link: 'https://medium.com/@glweems',
+    icon: faMediumM,
+    color: '#00ab6c',
+    colors: {
+      light: '#00ab6c',
+      dark: '#00ab6c',
+    },
+  },
+  behance: {
+    name: 'Behance',
+    link: 'https://www.behance.net/glweems',
+    icon: faBehance,
+    color: '#1769ff',
+    colors: {
+      light: '#1769ff',
+      dark: '#1769ff',
+    },
+  },
+  codepen: {
+    name: 'Codepen',
+    link: 'https://codepen.io/glweems',
+    icon: faCodepen,
+    color: '#ff3c41',
+    colors: {
+      light: '#ff3c41',
+      dark: '#ff3c41',
+    },
+  },
+};
+
+interface SocialIcon {
+  account: SocialMedia;
 }
+export const SocialIcon = ({ account: { name, link, icon, color } }: SocialIcon) => {
+  return (
+    <IconLink href={link} iconColor={color}>
+      <FontAwesomeIcon icon={icon} />
+    </IconLink>
+  );
+};
 
 const IconLink = styled('a')<{ iconColor: string }>`
   width: 3em;
@@ -66,7 +111,7 @@ const config = { mass: 5, tension: 2000, friction: 200 };
 interface Props {
   delay?: number;
 }
-export const AnimatedSociaMedia = ({ delay = 1250 }: Props) => {
+export const AnimatedSocialMedia = ({ delay = 1250 }: Props) => {
   const [toggle, set] = useState(false);
 
   useEffect(() => {
@@ -85,21 +130,15 @@ export const AnimatedSociaMedia = ({ delay = 1250 }: Props) => {
 
   return (
     <Flex>
-      {trail.map(({ x, ...rest }, i) => (
+      {trail.map(({ ...rest }, i) => (
         <a.div
           key={socialMedia[i].name}
           className="trails-text"
           style={{
             ...rest,
-            transform: x.interpolate(x => `translate3d(0,0,${x}px)`),
           }}
         >
-          <IconLink
-            href={socialMedia[i].link}
-            target="_blank_"
-            iconColor={socialMedia[i].color}
-            // style={{ width }}
-          >
+          <IconLink href={socialMedia[i].link} target="_blank_" iconColor={socialMedia[i].color}>
             <FontAwesomeIcon icon={socialMedia[i].icon} size="lg" />
           </IconLink>
         </a.div>
