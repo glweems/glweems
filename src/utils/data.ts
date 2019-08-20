@@ -29,7 +29,7 @@ export const email: SocialMedia = {
   name: 'gwgraphicdesign@gmail.com',
   link: 'mailto:gwgraphicdesign@gmail.com',
   icon: faEnvelope,
-  color: '#333',
+  color: '#f7f7f7',
   colors: {
     light: '#f7f7f7',
     dark: '#333',
@@ -41,7 +41,7 @@ export const socialMedia: SocialMedia[] = [
     name: 'Github',
     link: 'https://github.com/glweems',
     icon: faGithubAlt,
-    color: '#333',
+    color: '#f7f7f7',
     colors: {
       light: '#f7f7f7',
       dark: '#333',
@@ -81,7 +81,7 @@ export const socialMedia: SocialMedia[] = [
     name: 'Codepen',
     link: 'https://codepen.io/glweems',
     icon: faCodepen,
-    color: '#333',
+    color: '#f7f7f7',
     colors: {
       light: '#f7f7f7',
       dark: '#333',
