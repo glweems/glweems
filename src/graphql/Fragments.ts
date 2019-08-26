@@ -49,10 +49,11 @@ export const Frontmatter = graphql`
     childMarkdownRemark {
       excerpt(pruneLength: 150)
       frontmatter {
-        title
-        path
         date
+        path
+        title
         subtitle
+        codesandbox
         tags
         thumbnail {
           childImageSharp {

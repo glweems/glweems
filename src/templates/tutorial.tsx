@@ -3,7 +3,7 @@ import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import Image, { FluidObject } from 'gatsby-image';
 import styled from 'styled-components';
-import CodeSandbox from '../../../simple-codesandbox/dist/index';
+import CodeSandbox from 'simple-codesandbox';
 import SEO from '../components/SEO';
 
 type GitArray = [string, string, string, string?];
