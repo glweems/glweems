@@ -28,9 +28,7 @@
     "lint:es": "eslint --ignore-path .gitignore \"**/*.{ts,tsx,js}\"",
     "lint:fix": "eslint --ignore-path .gitignore \"**/*.{ts,tsx,js}\" --fix",
     "lint:style": "stylelint --ignore-path .gitignore \"src/**/*.{ts,tsx,js}\"",
-    "type-check": "tsc --noEmit",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^0.2.20",
@@ -94,12 +92,6 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@divyenduz/ts-graphql-plugin": "^0.1.0",
-    "@storybook/addon-actions": "^5.1.11",
-    "@storybook/addon-info": "^5.1.11",
-    "@storybook/addon-links": "^5.1.11",
-    "@storybook/addons": "^5.1.11",
-    "@storybook/react": "^5.1.11",
-    "@types/jest": "^24.0.17",
     "@types/lodash-es": "^4.17.3",
     "@types/react": "^16.8.23",
     "@types/react-helmet-async": "^1.0.0",
@@ -126,7 +118,6 @@
     "husky": "^3.0.1",
     "jest": "^24.9.0",
     "prettier": "^1.18.2",
-    "react-docgen-typescript-loader": "^3.1.1",
     "stylelint": "^10.1.0",
     "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-rational-order": "^0.1.2",
@@ -134,7 +125,6 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-order": "^3.0.0",
     "stylelint-processor-styled-components": "^1.8.0",
-    "ts-jest": "^24.0.2",
     "typescript": "^3.5.3"
   }
 }
