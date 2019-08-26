@@ -5,7 +5,7 @@ import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
 import { animated, useTrail } from 'react-spring';
 import Avatar from './Avatar';
-import { AnimatedSocialMedia } from './SocialMedia';
+import SocialMediaIcons from './SocialMedia';
 import { heatMapTheme } from '../utils/theme';
 
 // Create the keyframes
@@ -93,7 +93,7 @@ const sections = [
     className: `SocialMedia`,
     component: (
       <>
-        <AnimatedSocialMedia delay={0} />
+        <SocialMediaIcons show="text" />
       </>
     ),
   },
