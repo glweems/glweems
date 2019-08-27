@@ -5,8 +5,9 @@ import { Link } from 'gatsby';
 import About from '../components/About';
 import Websites from '../components/Websites';
 import Designs from '../components/Designs';
-import Tutorials from '../components/Tutorials';
+import Posts from '../components/Posts';
 import CardTrail from '../components/CardTrail';
+import usePostsQuery from '../graphql/PostsQuery';
 
 const Content = styled.div`
   display: grid;
@@ -35,11 +36,12 @@ const Content = styled.div`
 
 const IndexPage = () => (
   <>
+    {JSON.stringify(usePostsQuery())}
     <About />
     <Content>
       <section className="Tutorials container">
         <h2>Blog Posts</h2>
-        <CardTrail cards={Tutorials({ limit: 3 })} delay={1000} />
+        <CardTrail cards={Posts({ limit: 3 })} delay={1000} />
         <div className="link">
           <Link to="/tutorials">View All Tutorials</Link>
         </div>
