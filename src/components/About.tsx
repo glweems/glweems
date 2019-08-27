@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
 import { animated, useTrail } from 'react-spring';
 import Avatar from './Avatar';
@@ -99,11 +98,7 @@ const sections = [
   },
   {
     className: `HeatMap`,
-    component: (
-      <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme}>
-        <ReactTooltip html />
-      </GithubCalendar>
-    ),
+    component: <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme} />,
   },
 ];
 
