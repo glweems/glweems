@@ -161,4 +161,10 @@ pre[data-line] .line-highlight[data-end]:after {
 blockquote {
   font-style: italic;
   color: lighten($bg, 30%);
+  border-color: $yellow;
+}
+a.anchor {
+  svg {
+    fill: $light;
+  }
 }
