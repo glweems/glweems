@@ -86,6 +86,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `posts`,
+        path: `${__dirname}/posts/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `image`,
         path: `./src/assets`,
       },
@@ -136,38 +143,6 @@ module.exports = {
         fieldName: `github`,
         url: `https://api.github.com/graphql`,
         headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
-      },
-    },
-    {
-      resolve: `gatsby-source-git-remotes`,
-      options: {
-        repos: [
-          {
-            name: `dotenv`,
-            remote: `https://github.com/glweems/dotenv.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `react-peekaboo-navbar`,
-            remote: `https://github.com/glweems/react-peekaboo-navbar.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `react-navbar-scroller`,
-            remote: `https://github.com/glweems/react-navbar-scroller.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `gatsby-darkmode`,
-            remote: `https://github.com/glweems/gatsby-darkmode.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `styled-container`,
-            remote: `https://github.com/glweems/styled-container.git`,
-            patterns: [`*`],
-          },
-        ],
       },
     },
     {

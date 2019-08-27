@@ -7,7 +7,6 @@ import Websites from '../components/Websites';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
 import CardTrail from '../components/CardTrail';
-import usePostsQuery from '../graphql/PostsQuery';
 
 const Content = styled.div`
   display: grid;
@@ -36,7 +35,6 @@ const Content = styled.div`
 
 const IndexPage = () => (
   <>
-    {JSON.stringify(usePostsQuery())}
     <About />
     <Content>
       <section className="Tutorials container">

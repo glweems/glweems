@@ -10,7 +10,7 @@ type GitArray = [string, string, string, string?];
 
 interface Frontmatter {
   date: string;
-  path: string;
+  name: string;
   title: string;
   subtitle: string;
   codesandbox: GitArray;
@@ -25,80 +25,101 @@ interface Frontmatter {
 interface BlogTemplateProps {
   data: {
     markdownRemark: {
+      timeToRead: number;
       htmlAst: object;
       frontmatter: Frontmatter;
     };
   };
 }
 
-const Header = styled.header`
-  /* h1 {
-    color: ${props => props.theme.colors.dark};
-  } */
-`;
-
-const Article = styled.div`
+const Article = styled.article`
+  margin-top: 3em;
   display: grid;
   grid-template-columns: auto 720px auto;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: '. header .' '. article .';
+  grid-auto-rows: auto;
+  grid-template-areas: '. article .';
 
-  ${Header} {
-    grid-area: header;
+  > * {
+    grid-column: article;
+    width: 100%;
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    color: ${props => props.theme.darkColors.muted};
   }
 
-  * {
-    grid-column: article;
+  h1 {
+    color: ${props => props.theme.colors.light};
+    font-size: 1.75em;
+  }
+  h2 {
+    color: ${props => props.theme.colors.muted};
+    font-size: 1em;
+  }
+
+  img {
+    border-radius: 0.5em;
+  }
+  .gatsby-resp-image-wrapper {
+    margin-bottom: 2em;
   }
 `;
 
 const BlogTemplate = ({
   data: {
     markdownRemark: {
+      timeToRead,
       htmlAst,
       frontmatter: {
         date,
-        path,
         title,
         subtitle,
         codesandbox,
         tags,
         thumbnail: {
-          childImageSharp: { fluid: thumbnail },
+          childImageSharp: { fluid },
         },
       },
     },
   },
 }: BlogTemplateProps): JSX.Element => {
+  const ArticleInfo = () => (
+    <>
+      <div className="info">
+        <small>{timeToRead} Min Read</small>
+        <small>Published {date}</small>
+      </div>
+      {codesandbox ? (
+        <CodeSandbox
+          git={codesandbox}
+          editorSize={45}
+          codeMirror
+          hideNavigation
+          view="preview"
+          forceRefresh
+        />
+      ) : (
+        <Image fluid={fluid} />
+      )}
+    </>
+  );
+
   const PageElements = ({ elements }: { elements: unknown }) => {
     const renderAst = new RehypeReact({
       createElement: React.createElement,
-      components: {},
+      components: {
+        info: ArticleInfo,
+      },
     }).Compiler(elements);
     return <>{renderAst.props.children}</>;
   };
 
   return (
     <>
-      <SEO title={title} keywords={tags} />
-
+      <SEO title={title} keywords={tags} description={subtitle} />
       <Article>
-        <Header>
-          <h1>{title}</h1>
-          <h2>{subtitle}</h2>
-          {codesandbox ? (
-            <CodeSandbox
-              git={codesandbox}
-              editorSize={45}
-              codeMirror
-              hideNavigation
-              view="preview"
-              forceRefresh
-            />
-          ) : (
-            <Image fluid={thumbnail} />
-          )}
-        </Header>
         <PageElements elements={htmlAst} />
       </Article>
     </>
@@ -110,21 +131,22 @@ export default BlogTemplate;
 export const BlogPost = graphql`
   query PostQuery($slug: String!) {
     markdownRemark(frontmatter: { path: { eq: $slug } }) {
+      htmlAst
+      timeToRead
       frontmatter {
         date
-        path
+        name
         title
         subtitle
         codesandbox
+        tags
         thumbnail {
           id
           childImageSharp {
             ...FluidImage
           }
         }
-        tags
       }
-      htmlAst
     }
   }
 `;
