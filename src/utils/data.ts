@@ -11,7 +11,7 @@ import { faPenNib, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 export const menuItems = [
   { text: 'Graphic Design', path: '/designs', icon: faPenNib },
-  { text: 'Code Tutorials', path: '/tutorials', icon: faReadme },
+  { text: 'Code Tutorials', path: '/posts', icon: faReadme },
 ];
 
 export interface SocialMedia {

@@ -15,6 +15,11 @@ interface Frontmatter {
   subtitle: string;
   codesandbox: GitArray;
   tags: string[];
+  thumbnail: {
+    childImageSharp: {
+      fluid: FluidObject;
+    };
+  };
 }
 
 interface BlogTemplateProps {
@@ -22,11 +27,6 @@ interface BlogTemplateProps {
     markdownRemark: {
       htmlAst: object;
       frontmatter: Frontmatter;
-    };
-    file: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
     };
   };
 }
@@ -56,10 +56,17 @@ const BlogTemplate = ({
   data: {
     markdownRemark: {
       htmlAst,
-      frontmatter: { date, path, title, subtitle, codesandbox, tags },
-    },
-    file: {
-      childImageSharp: { fluid: thumbnail },
+      frontmatter: {
+        date,
+        path,
+        title,
+        subtitle,
+        codesandbox,
+        tags,
+        thumbnail: {
+          childImageSharp: { fluid: thumbnail },
+        },
+      },
     },
   },
 }: BlogTemplateProps): JSX.Element => {
@@ -82,10 +89,11 @@ const BlogTemplate = ({
           {codesandbox ? (
             <CodeSandbox
               git={codesandbox}
-              editorSize={40}
+              editorSize={45}
               codeMirror
               hideNavigation
               view="preview"
+              forceRefresh
             />
           ) : (
             <Image fluid={thumbnail} />
@@ -100,7 +108,7 @@ const BlogTemplate = ({
 export default BlogTemplate;
 
 export const BlogPost = graphql`
-  query MyQuery($slug: String!) {
+  query PostQuery($slug: String!) {
     markdownRemark(frontmatter: { path: { eq: $slug } }) {
       frontmatter {
         date
@@ -110,15 +118,13 @@ export const BlogPost = graphql`
         codesandbox
         thumbnail {
           id
+          childImageSharp {
+            ...FluidImage
+          }
         }
         tags
       }
       htmlAst
-    }
-    file(name: { in: ["tbn", $slug] }) {
-      childImageSharp {
-        ...FluidImage
-      }
     }
   }
 `;
