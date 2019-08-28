@@ -1,26 +1,22 @@
 ---
-path: react-peekaboo-navbar
-date: 03/18/2019
-name: react-peekaboo-navbar
-title: Simple navbar component using react, typescript, and styled-components.
-subtitle: This will create a react-component Navbar that will be hidden when the user scrolls down and visible when the user scrolls up.
-thumbnail: tbn.png
-codesandbox:
-  - github
-  - glweems
-  - react-peekaboo-navbar
+id: 1
+path: '/react-peekaboo-navbar'
+thumbnail: './tbn.png'
+date: 2019-03-18T01:00:01.889Z
+edited:
+next: '/react-navbar-scroller'
+title: 'Auto-hide on scroll navbar component'
 tags:
   - react
   - navbar
   - component
   - styled-components
+popular: false
 ---
 
-# Simple navbar component using react, typescript, and styled-components
+<iframe src="https://codesandbox.io/embed/react-peekaboo-navbar-0nsms?fontsize=14" title="react-peekaboo-navbar" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## This will create a react-component Navbar that will be hidden when the user scrolls down and visible when the user scrolls up
-
-<info></info>
 
 ---
 

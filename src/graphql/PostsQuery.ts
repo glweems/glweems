@@ -6,20 +6,16 @@ interface MarkdownRemark {
   id: string;
   excerpt: string;
   frontmatter: {
-    date: string;
+    id: number;
     path: string;
     title: string;
-    subtitle: string;
-    codesandbox: [string, string, string, string?];
     tags: string[];
+    next: string;
     thumbnail: {
       childImageSharp: {
         fluid: FluidObject;
       };
     };
-  };
-  fields: {
-    page: string;
   };
 }
 
@@ -35,11 +31,10 @@ const usePostsQuery = () => {
           id
           excerpt(pruneLength: 150)
           frontmatter {
+            id
             title
             path
             date
-            subtitle
-            codesandbox
             tags
             thumbnail {
               childImageSharp {
@@ -47,22 +42,12 @@ const usePostsQuery = () => {
               }
             }
           }
-          fields {
-            page
-          }
         }
       }
     }
   `);
 
-  return allMarkdownRemark.nodes.map(node => ({
-    id: node.id,
-    title: node.frontmatter.title,
-    subtitle: node.excerpt,
-    tags: node.frontmatter.tags,
-    path: node.fields.page,
-    thumbnail: node.frontmatter.thumbnail.childImageSharp,
-  }));
+  return allMarkdownRemark.nodes;
 };
 
 export default usePostsQuery;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card, { Cards } from './Card';
 import usePostsQuery from '../graphql/PostsQuery';
 
 interface Props {
@@ -9,11 +9,20 @@ interface Props {
 const Posts = ({ limit = false }: Props) => {
   const posts = usePostsQuery();
 
-  return posts
-    .slice(0, limit || posts.length)
-    .map(({ id, title, subtitle, tags, path, thumbnail }) => (
-      <Card key={id} title={title} subtitle={subtitle} tags={tags} link={path} img={thumbnail} />
-    ));
+  return (
+    <Cards>
+      {posts.slice(0, limit || posts.length).map(({ id, excerpt, frontmatter }) => (
+        <Card
+          key={id}
+          title={frontmatter.title}
+          subtitle={excerpt}
+          tags={frontmatter.tags}
+          link={frontmatter.path}
+          img={frontmatter.thumbnail.childImageSharp}
+        />
+      ))}
+    </Cards>
+  );
 };
 
 export default Posts;

@@ -6,7 +6,7 @@ import CardTrail from '../components/CardTrail';
 const DesignsPage = () => (
   <div className="container">
     <h1>Graphic Design Projects</h1>
-    <CardTrail cards={Designs({})} />
+    <Designs />
   </div>
 );
 
