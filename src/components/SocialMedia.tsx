@@ -5,14 +5,15 @@ import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { useTrail, animated as a } from 'react-spring';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { transparentize } from 'polished';
-import { socialMedia, SocialMedia } from '../utils/data';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import { socialMedia } from '../utils/data';
 import Flex from './Flex';
 
-const IconLink = styled('a')<{ color: string; mode?: 'light' | 'dark' }>`
-  text-align: center;
-  border-radius: 0.5em;
+const IconLink = styled(OutboundLink)<{ color: string; mode?: 'light' | 'dark' }>`
   padding: 0.5em;
   color: ${props => (props.mode ? props.theme.colors[props.mode] : props.color)};
+  text-align: center;
+  border-radius: 0.5em;
   :hover {
     background: ${props => transparentize(0.8, props.theme.lightColors.muted)};
   }
@@ -45,7 +46,7 @@ export const SocialIcon = ({ name, link, icon, color, size, mode, show }: Social
   };
 
   return (
-    <IconLink href={link} color={color} mode={mode}>
+    <IconLink href={link} color={color} mode={mode} target="_blank_">
       <WhatToShow decide={show} />
     </IconLink>
   );
