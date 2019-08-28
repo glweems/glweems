@@ -14311,10 +14311,10 @@ signedsource@^1.0.0:
   resolved "https://registry.yarnpkg.com/signedsource/-/signedsource-1.0.0.tgz#1ddace4981798f93bd833973803d80d52e93ad6a"
   integrity sha1-HdrOSYF5j5O9gzlzgD2A1S6TrWo=
 
-simple-codesandbox@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/simple-codesandbox/-/simple-codesandbox-1.1.0.tgz#411db10f6378bccca98d913d0b48570133ce2085"
-  integrity sha512-uXk1ibswbNLocpRN2oMrrz/OHnXqZNVoQ1OTm3DRsN0vS1NTUKbhGYz/rlHH92wlnDOYlXYhb4tmghQY+v/CBw==
+simple-codesandbox@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/simple-codesandbox/-/simple-codesandbox-1.1.1.tgz#2c5c91c82d196f5b28bf3044adb1160a052966ca"
+  integrity sha512-Ved/mi0iPELl+8ZqJdiyOVbZmFSQji2VVTi9TEezaw3gnGV16TbUtm2ZoKZCVrygj89D6juPfro+YJErXp2B2w==
   dependencies:
     "@types/query-string" "^6.3.0"
     csstype "^2.6.6"
