@@ -1,0 +1,28 @@
+- title: Prepress
+  image: '../src/assets/prepress.png'
+  link: https://prepress.now.sh/products
+  description: A website build for screen printing shop owners to calculate cost of printer shirts for consumers.
+  github: https://github.com/glweems/prepress
+  tags:
+    - vue
+    - screenprinting
+    - calculator
+- title: Cheat Day Cheesecakes
+  image: '../src/assets/cheatdaycheesecakes.png'
+  link: https://cheatdaycheesecakes.com
+  description: A website built for Denton, TX local food truck company.
+  github: https://github.com/glweems/cheat-day-cheesecake
+  tags:
+    - google-maps
+    - gatsby
+    - typescript
+- title: Coin Market
+  image: '../src/assets/coin-market.png'
+  link: https://coin-market.now.sh
+  description: Coinmarketcap like web app using Cryptocompare's API and React.js
+  github: https://github.com/glweems/coin-market
+  tags:
+    - cryptocompare
+    - cryptocurrency
+    - api
+    - gatsby

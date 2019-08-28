@@ -1,5 +1,5 @@
 ---
-path: dotenv
+path: /dotenv
 date: 07/01/2019
 name: dotenv
 title: Personal Dev Environment.

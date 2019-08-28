@@ -1,5 +1,5 @@
 ---
-path: gatsby-darkmode
+path: /gatsby-darkmode
 date: 04/16/2019
 name: gatsby-darkmode
 title: Gatsby Darkmode

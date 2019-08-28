@@ -1,5 +1,5 @@
 ---
-path: styled-container
+path: /styled-container
 date: 2019/03/19
 name: styled-container
 title: Responsive Container Component with React and Styled-Components.

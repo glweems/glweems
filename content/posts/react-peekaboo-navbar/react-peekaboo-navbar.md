@@ -1,5 +1,5 @@
 ---
-path: react-peekaboo-navbar
+path: /react-peekaboo-navbar
 date: 03/18/2019
 name: react-peekaboo-navbar
 title: Simple navbar component using react, typescript, and styled-components.

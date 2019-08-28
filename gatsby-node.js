@@ -1,9 +1,5 @@
-/* eslint-disable consistent-return */
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`);
-
-const DESIGNS_PATH = 'designs';
-const POSTS_PATH = 'posts';
 
 exports.onCreateNode = ({ node, actions }) => {
   const { createNodeField } = actions;
@@ -13,7 +9,7 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({
       node,
       name: `page`,
-      value: `/${POSTS_PATH}/${node.frontmatter.path}`,
+      value: node.frontmatter.path,
     });
   }
 
@@ -22,7 +18,7 @@ exports.onCreateNode = ({ node, actions }) => {
     createNodeField({
       node,
       name: `page`,
-      value: `/${DESIGNS_PATH}/${node.slug}`,
+      value: `/${node.slug}`,
     });
   }
 };
@@ -39,7 +35,7 @@ exports.createPages = ({ actions, graphql }) => {
       allMarkdownRemark {
         nodes {
           frontmatter {
-            name
+            path
           }
         }
       }
@@ -49,18 +45,18 @@ exports.createPages = ({ actions, graphql }) => {
       // Create Behance Pages
       allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
-          path: `/${DESIGNS_PATH}/${slug}`,
+          path: `/${slug}`,
           component: path.resolve(`src/templates/design.tsx`),
           context: { slug: `/${slug}/` },
         });
       });
 
       // Create Posts Pages
-      allMarkdownRemark.nodes.forEach(({ frontmatter: { name } }) => {
+      allMarkdownRemark.nodes.forEach(({ frontmatter }) => {
         actions.createPage({
-          path: `/${POSTS_PATH}/${name}`,
+          path: frontmatter.path,
           component: path.resolve(`src/templates/post.tsx`),
-          context: { slug: `${name}` },
+          context: { slug: frontmatter.path },
         });
       });
     })
