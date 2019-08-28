@@ -156,13 +156,6 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-unwrap-images`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-            },
-          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
           {
@@ -224,6 +217,13 @@ module.exports = {
                 host: 'localhost',
                 global: false,
               },
+            },
+          },
+          `gatsby-remark-unwrap-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
             },
           },
         ],

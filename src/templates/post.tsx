@@ -2,8 +2,7 @@ import * as React from 'react';
 import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import Image, { FluidObject } from 'gatsby-image';
-import styled from 'styled-components';
-import CodeSandbox from 'simple-codesandbox';
+import CodeSandbox from '../../../simple-codesandbox/src/index';
 import SEO from '../components/SEO';
 
 type GitArray = [string, string, string, string?];
@@ -31,41 +30,6 @@ interface BlogTemplateProps {
     };
   };
 }
-
-const Article = styled.article`
-  margin-top: 3em;
-  display: grid;
-  grid-template-columns: auto 720px auto;
-  grid-auto-rows: auto;
-  grid-template-areas: '. article .';
-
-  > * {
-    grid-column: article;
-    width: 100%;
-  }
-  .info {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1em;
-    color: ${props => props.theme.darkColors.muted};
-  }
-
-  h1 {
-    color: ${props => props.theme.colors.light};
-    font-size: 1.75em;
-  }
-  h2 {
-    color: ${props => props.theme.colors.muted};
-    font-size: 1em;
-  }
-
-  img {
-    border-radius: 0.5em;
-  }
-  .gatsby-resp-image-wrapper {
-    margin-bottom: 2em;
-  }
-`;
 
 const BlogTemplate = ({
   data: {
@@ -119,9 +83,9 @@ const BlogTemplate = ({
   return (
     <>
       <SEO title={title} keywords={tags} description={subtitle} />
-      <Article>
+      <article className="markdown">
         <PageElements elements={htmlAst} />
-      </Article>
+      </article>
     </>
   );
 };
