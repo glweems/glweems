@@ -52,8 +52,6 @@ export const Frontmatter = graphql`
         date
         path
         title
-        subtitle
-        codesandbox
         tags
         thumbnail {
           childImageSharp {

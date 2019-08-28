@@ -1,4 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { Nodes, BehanceProject, BehanceImage } from '../declaration';
 
 interface DesignsPageQuery {
   allBehanceProjects: Nodes<BehanceProject>;

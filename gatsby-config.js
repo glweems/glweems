@@ -12,8 +12,8 @@ module.exports = {
     image: `./src/images/favicon.jpg`,
     languageCode: `en`,
     countryCode: `US`,
+    siteUrl: config.url,
   },
-
   plugins: [
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
@@ -21,7 +21,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
     `gatsby-plugin-catch-links`,
-    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-transformer-yaml`,
     },
@@ -131,6 +130,6 @@ module.exports = {
         icon: `src/assets/favicon.png`,
       },
     },
-    `gatsby-plugin-offline`,
+    // `gatsby-plugin-offline`,
   ],
 };

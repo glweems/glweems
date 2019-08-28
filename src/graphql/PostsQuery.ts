@@ -31,20 +31,16 @@ const usePostsQuery = () => {
           id
           excerpt(pruneLength: 150)
           frontmatter {
+            id
             title
             path
             date
-            subtitle
-            codesandbox
             tags
             thumbnail {
               childImageSharp {
                 ...FluidImage
               }
             }
-          }
-          fields {
-            page
           }
         }
       }
