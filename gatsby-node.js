@@ -36,14 +36,16 @@ exports.createPages = ({ actions, graphql }) => {
           slug
         }
       }
-      allGitRemote {
+      allMarkdownRemark {
         nodes {
-          name
+          frontmatter {
+            name
+          }
         }
       }
     }
   `)
-    .then(({ data: { allBehanceProjects, allGitRemote } }) => {
+    .then(({ data: { allBehanceProjects, allMarkdownRemark } }) => {
       // Create Behance Pages
       allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
@@ -54,7 +56,7 @@ exports.createPages = ({ actions, graphql }) => {
       });
 
       // Create Posts Pages
-      allGitRemote.nodes.forEach(({ name }) => {
+      allMarkdownRemark.nodes.forEach(({ frontmatter: { name } }) => {
         actions.createPage({
           path: `/${POSTS_PATH}/${name}`,
           component: path.resolve(`src/templates/post.tsx`),

@@ -86,6 +86,13 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        name: `posts`,
+        path: `${__dirname}/posts/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
         name: `image`,
         path: `./src/assets`,
       },
@@ -139,38 +146,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-git-remotes`,
-      options: {
-        repos: [
-          {
-            name: `dotenv`,
-            remote: `https://github.com/glweems/dotenv.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `react-peekaboo-navbar`,
-            remote: `https://github.com/glweems/react-peekaboo-navbar.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `react-navbar-scroller`,
-            remote: `https://github.com/glweems/react-navbar-scroller.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `gatsby-darkmode`,
-            remote: `https://github.com/glweems/gatsby-darkmode.git`,
-            patterns: [`*`],
-          },
-          {
-            name: `styled-container`,
-            remote: `https://github.com/glweems/styled-container.git`,
-            patterns: [`*`],
-          },
-        ],
-      },
-    },
-    {
       resolve: `gatsby-source-behance-images`,
       options: {
         username: `glweems`,
@@ -181,13 +156,6 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-unwrap-images`,
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 800,
-            },
-          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-autolink-headers`,
           {
@@ -249,6 +217,13 @@ module.exports = {
                 host: 'localhost',
                 global: false,
               },
+            },
+          },
+          `gatsby-remark-unwrap-images`,
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 800,
             },
           },
         ],

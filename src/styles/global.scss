@@ -1,72 +1,48 @@
+@import 'variables';
 @import 'mixins';
+@import 'markdown';
+
 /*
-#f7f7f7
-#1a1e28
-#d65947
-#c3e28a
-#f8d58c
-#89cefa
-#d0c1fa
-#a7e3cc
-#c6c7c6
-#1f242f
+light     #f7f7f7
+dark      #1a1e28
+red       #d65947
+green     #c3e28a
+yellow    #f8d58c
+blue      #89cefa
+purple    #d0c1fa
+mint      #a7e3cc
+muted     #c6c7c6
+bg        #1f242f
 */
 
-$light: #f7f7f7;
-$dark: #1a1e28;
-$muted: #c6c7c6;
-$red: #d65947;
-$green: #c3e28a;
-$yellow: #f8d58c;
-$blue: #89cefa;
-$purple: #d0c1fa;
-$mint: #a7e3cc;
-$bg: #1f242f;
-
-:root {
-  --light: #f7f7f7;
-  --dark: #1a1e28;
-  --muted: #c6c7c6;
-  --red: #d65947;
-  --green: #c3e28a;
-  --yellow: #f8d58c;
-  --blue: #89cefa;
-  --purple: #d0c1fa;
-  --mint: #a7e3cc;
-  --bg: #1f242f;
-}
 html {
-  color: var(--light);
-}
-
-main {
-  /* margin: 2em 0; */
-  /* padding: 2rem 0; */
+  color: $light;
 }
 
 h1 {
-  color: var(--yellow);
+  color: $yellow;
 }
 
 h2 {
-  color: var(--purple);
+  color: $purple;
 }
 
 h3 {
-  color: var(--green);
+  color: $green;
 }
 h4 {
-  color: var(--mint);
+  color: $mint;
 }
 
 a {
-  color: var(--blue);
+  color: $blue;
   padding: 0;
   margin: 0;
 }
 
 a:hover {
-  color: var(--red);
+  color: darken($blue, 20%);
+  text-decoration: underline;
 }
 
 h1,
@@ -88,7 +64,7 @@ footer {
     margin-bottom: 1.5em;
   }
   h4 {
-    color: var(--muted);
+    color: $muted;
     padding-bottom: 0.25em;
     margin-bottom: 0.75em;
   }
@@ -108,194 +84,6 @@ footer {
 
 $br: 0.25em;
 
-/**
-* xonokai theme for JavaScript, CSS and HTML
-* based on: https://github.com/MoOx/sass-prism-theme-base by Maxime Thirouin ~ MoOx --> http://moox.fr/ , which is Loosely based on Monokai textmate theme by http://www.monokai.nl/
-* license: MIT; http://moox.mit-license.org/
-*/
-code[class*='language-'],
-pre[class*='language-'] {
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-  -webkit-hyphens: none;
-  -moz-hyphens: none;
-  -ms-hyphens: none;
-  hyphens: none;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: normal;
-  font-family: Menlo, Monaco, 'Courier New', monospace;
-  font-size: 14px;
-  color: var(--light);
-  text-shadow: none;
-}
-pre[class*='language-'],
-:not(pre) > code[class*='language-'] {
-  background: lighten($bg, 3%);
-}
-pre[class*='language-'] {
-  padding: 15px;
-  border-radius: 4px;
-  overflow: auto;
-}
-
-pre[class*='language-'] {
-  position: relative;
-}
-pre[class*='language-'] code {
-  white-space: pre;
-  display: block;
-}
-
-:not(pre) > code[class*='language-'] {
-  padding: 0.2em 0.4em;
-  border-radius: 0.3em;
-  color: var(--blue);
-  // box-shadow: 1px 1px 0.3em -0.1em #000 inset;
-}
-.token.namespace {
-  opacity: 0.7;
-}
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-  color: lighten($muted, 8);
-}
-.token.operator,
-.token.boolean,
-.token.number {
-  color: $purple;
-}
-.token.attr-name,
-.token.string {
-  color: #e6d06c;
-}
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string {
-  color: #e6d06c;
-}
-.token.selector,
-.token.inserted {
-  color: #a6e22d;
-}
-.token.atrule,
-.token.attr-value,
-.token.keyword,
-.token.important,
-.token.deleted {
-  color: #ef3b7d;
-}
-.token.regex,
-.token.statement {
-  color: #76d9e6;
-}
-.token.placeholder,
-.token.variable {
-  color: #fff;
-}
-.token.important,
-.token.statement,
-.token.bold {
-  font-weight: bold;
-}
-.token.punctuation {
-  color: #bebec5;
-}
-.token.entity {
-  cursor: help;
-}
-.token.italic {
-  font-style: italic;
-}
-
-code.language-markup {
-  color: #f9f9f9;
-}
-code.language-markup .token.tag {
-  color: #ef3b7d;
-}
-code.language-markup .token.attr-name {
-  color: #a6e22d;
-}
-code.language-markup .token.attr-value {
-  color: #e6d06c;
-}
-code.language-markup .token.style,
-code.language-markup .token.script {
-  color: #76d9e6;
-}
-code.language-markup .token.script .token.keyword {
-  color: #76d9e6;
-}
-
-/* Line highlight plugin */
-pre[class*='language-'][data-line] {
-  position: relative;
-  padding: 1em 0 1em 3em;
-}
-pre[data-line] .line-highlight {
-  position: absolute;
-  left: 0;
-  right: 0;
-  padding: 0;
-  margin-top: 1em;
-  background: var(--bg);
-  pointer-events: none;
-  line-height: inherit;
-  white-space: pre;
-}
-pre[data-line] .line-highlight:before,
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-start);
-  position: absolute;
-  top: 0.4em;
-  left: 0.6em;
-  min-width: 1em;
-  padding: 0.2em 0.5em;
-  // background-color: rgba(255, 255, 255, 0.4);
-  color: black;
-  font: bold 65%/1 sans-serif;
-  height: 1em;
-  line-height: 1em;
-  text-align: center;
-  border-radius: 999px;
-  text-shadow: none;
-  box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
-}
-pre[data-line] .line-highlight[data-end]:after {
-  content: attr(data-end);
-  top: auto;
-  bottom: 0.4em;
-}
-
-// .gatsby-highlight {
-//   background-color: #fdf6e3;
-//   border-radius: 0.3em;
-//   margin: 0.5em 0;
-//   padding: 1em;
-//   overflow: auto;
-// }
-
-/**
- * Remove the default PrismJS theme background-color, border-radius, margin,
- * padding and overflow.
- * 1. Make the element just wide enough to fit its content.
- * 2. Always fill the visible space in .gatsby-highlight.
- * 3. Adjust the position of the line numbers
- */
-// .gatsby-highlight pre[class*='language-'] {
-//   background-color: transparent;
-//   margin: 0;
-//   padding: 0;
-//   overflow: initial;
-//   float: left; /* 1 */
-//   min-width: 100%; /* 2 */
-// }
-
 .Cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -308,89 +96,3 @@ pre[data-line] .line-highlight[data-end]:after {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
-// .Card {
-//   display: grid;
-//   height: 100%;
-//   grid-template-columns: 3fr 1fr;
-//   grid-template-rows: 1fr auto auto 2em;
-//   gap: 0 0.25em;
-//   grid-template-areas:
-//     'Title Title'
-//     'Subtitle Image'
-//     'Body Image'
-//     'Footer Footer';
-
-//   .Title {
-//     grid-area: Title;
-//     // color: ${props => props.theme.colors.yellow};
-//     margin-top: 0;
-//     // margin-bottom: 0.5em;
-//     // padding: 0 0.5em;
-//     cursor: pointer;
-//   }
-//   .Subtitle {
-//     grid-area: Subtitle;
-//     // line-height: 1.5;
-//     // padding: 0.5em 0;
-//   }
-
-//   .Body {
-//     grid-area: Body;
-
-//     margin: 0;
-//     // color: ${props => props.theme.colors.muted};
-//     // background: ${props => props.theme.colors.bg};
-//     // font-size: 15px;
-
-//     overflow: hidden;
-//     // border-top-left-radius: ${props => props.theme.borderRadius};
-//   }
-
-//   .Footer {
-//     grid-area: Footer;
-//     // color: ${props => props.theme.colors.green};
-//     overflow: hidden;
-//     // margin: 0;
-//     // padding: 0 0.5em 0.25em 0.5em;
-//     // border: 2px solid ${props => props.theme.colors.bg};
-//     // border-bottom-left-radius: ${props => props.theme.borderRadius};
-//   }
-
-//   .Image {
-//     grid-area: Image;
-//     border-top-right-radius: $br;
-//     border-bottom-right-radius: $br;
-//   }
-
-//   $br: 0.25em;
-
-//   @include md {
-//     grid-template-columns: 1fr;
-//     grid-template-rows: auto 8em 1fr auto auto;
-//     grid-template-areas:
-//       'Title'
-//       'Image'
-//       'Subtitle'
-//       'Body'
-//       'Footer';
-
-//     .Title {
-//       white-space: nowrap;
-//       overflow: hidden;
-//       text-overflow: ellipsis;
-//     }
-
-//     .Subtitle {
-//       margin-top: 1em;
-//     }
-//   }
-// }
-
-// /* const Header = styled.h4`
-
-// `;
-// const Body = styled.div`
-// `;
-
-// const Footer = styled.div`
