@@ -1,27 +1,23 @@
 ---
-path: /gatsby-darkmode
-date: 04/16/2019
-name: gatsby-darkmode
-title: Gatsby Darkmode
-subtitle: Create a dynamic dark-mode theme in gatsby using redux, and styled components
-thumbnail: tbn.png
-codesandbox:
-  - github
-  - glweems
-  - gatsby-darkmode
+id: 4
+path: '/gatsby-darkmode'
+thumbnail: './tbn.png'
+date: 2019-04-16T01:00:01.889Z
+edited:
+next: '/dotenv'
+title: 'Create a dynamic dark-mode theme in gatsby using redux, and styled components.'
 tags:
   - gatsby
   - redux
   - styled-components
   - react
   - darkmode
+popular: false
 ---
 
-# Gatsby Darkmode
+![gatsby-darkmode](./tbn.png)
 
 ## Create a dynamic dark-mode theme in gatsby using redux, and styled components
-
-<info></info>
 
 ---
 

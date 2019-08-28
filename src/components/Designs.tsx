@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from './Card';
+import Card, { Cards } from './Card';
 import UseDesignsQuery from '../graphql/DesignsQuery';
 
 interface Props {
@@ -9,18 +9,20 @@ interface Props {
 const Designs = ({ limit = false }: Props) => {
   const designs = UseDesignsQuery();
 
-  return designs
-    .slice(0, limit || designs.length)
-    .map(({ slug, name, description, tags, cover }) => (
-      <Card
-        key={slug}
-        title={name}
-        subtitle={description}
-        tags={tags}
-        link={`designs/${slug}`}
-        img={cover.childImageSharp}
-      />
-    ));
+  return (
+    <Cards>
+      {designs.slice(0, limit || designs.length).map(({ slug, name, description, tags, cover }) => (
+        <Card
+          key={slug}
+          title={name}
+          subtitle={description}
+          tags={tags}
+          link={`/${slug}`}
+          img={cover.childImageSharp}
+        />
+      ))}
+    </Cards>
+  );
 };
 
 export default Designs;

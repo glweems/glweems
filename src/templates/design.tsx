@@ -1,28 +1,16 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { Container } from 'reactstrap';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-import { Cards } from '../components/Card';
 import { BehanceProject, ImageFile } from '../declaration';
-import Designs from '../components/Designs';
-import CardTrail from '../components/CardTrail';
-
-const Image = styled(Img)`
-  user-select: none;
-  position: fixed;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-`;
 
 const Content = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: 'Info' 'Images' 'Related';
-  gap: 3em;
+  margin-top: 2em;
+  .design-img {
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+  }
 `;
 
 const DesignTemplate = ({
@@ -42,13 +30,10 @@ const DesignTemplate = ({
 
       <section className="container">
         {allFile.nodes.map(({ childImageSharp, id }) => (
-          <Image key={id} fluid={childImageSharp.fluid} />
+          <div className="design-img">
+            <Img key={id} fluid={childImageSharp.fluid} />
+          </div>
         ))}
-      </section>
-
-      <section className="container">
-        <h3>View Similar Projects</h3>
-        <CardTrail cards={Designs({ limit: 3 })} />
       </section>
     </Content>
   </>
@@ -83,24 +68,6 @@ export const designQuery = graphql`
         }
       }
       totalCount
-    }
-    # Related Projects
-    allBehanceProjects(limit: 4) {
-      nodes {
-        ...BehanceCard
-      }
-    }
-    ...BehanceCoverImages
-    # All Behance covers
-    allBehanceImages: allFile(filter: { behanceProject: { ne: null }, name: { ne: "cover" } }) {
-      nodes {
-        id
-        relativeDirectory
-        behanceProject
-        childImageSharp {
-          ...FluidImage
-        }
-      }
     }
   }
 `;

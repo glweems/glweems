@@ -1,23 +1,23 @@
 ---
-path: /styled-container
-date: 2019/03/19
-name: styled-container
-title: Responsive Container Component with React and Styled-Components.
-subtitle: Bootstrap - like responsive fluid containers with styled-components, what more could you ask for.
-thumbnail: styled-container.png
+id: 3
+path: '/styled-container'
+thumbnail: './tbn.png'
+date: 2019-03-21T01:00:01.889Z
+edited:
+next: '/gatsby-darkmode'
+title: 'Responsive Container Component with React and Styled-Components.'
 tags:
   - react
   - component
   - container
   - responsive
   - styled-components
+popular: false
 ---
 
-# Responsive Container Component with React and Styled-Components
+![styled-container](./tbn.png)
 
 ## Bootstrap - like responsive fluid containers with styled-components, what more could you ask for
-
-<info></info>
 
 ---
 

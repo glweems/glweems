@@ -1,23 +1,21 @@
 ---
-path: /dotenv
-date: 07/01/2019
-name: dotenv
-title: Personal Dev Environment.
-subtitle: My favorite extensions, themes, tips for a beautifully productive development environment.
-thumbnail: tbn.png
+id: 5
+path: '/dotenv'
+thumbnail: './tbn.png'
+date: 2019-07-01T01:00:01.889Z
+edited:
+next: '/react-navbar-scroller'
+title: 'My favorite extensions, themes, tips for a beautifully productive development environment.'
 tags:
   - code
   - development
   - environment
   - plugins
   - tip
+popular: false
 ---
 
-# Personal Dev Environment
-
-## My favorite extensions, themes, tips for a beautifully productive development environment
-
-<info></info>
+![dotenv](tbn.png)
 
 ---
 

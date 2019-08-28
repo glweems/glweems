@@ -1,26 +1,22 @@
 ---
-path: /react-navbar-scroller
-date: 03/19/2019
-name: react-navbar-scroller
-title: Simple navbar using react, typescript, and styled-components.
-subtitle: In this project we will create a simple little Navbar component that looks cool / has a logo or brand name and features horizontal scrolling.
-thumbnail: tbn.png
-codesandbox:
-  - github
-  - glweems
-  - react-navbar-scroller
+id: 2
+path: '/react-navbar-scroller'
+thumbnail: './tbn.png'
+date: 2019-03-19T01:00:01.889Z
+edited:
+next: '/styled-container'
+title: 'Simple navbar using react, typescript, and styled-components.'
 tags:
   - react
   - typescript
   - styles-components
   - navbar
+popular: false
 ---
 
-# Simple navbar using react, typescript, and styled-components
+<iframe src="https://codesandbox.io/embed/react-navbar-scroller-44wd0?fontsize=14" title="react-navbar-scroller" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 ## In this project we will create a simple little Navbar component that looks cool / has a logo or brand name and features horizontal scrolling
-
-<info></info>
 
 ---
 
