@@ -3,7 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import About from '../components/About';
-import Websites from '../components/Websites';
+import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
 import CardTrail from '../components/CardTrail';
@@ -41,7 +41,7 @@ const IndexPage = () => (
         <h2>Blog Posts</h2>
         <CardTrail cards={Posts({ limit: 3 })} delay={1000} />
         <div className="link">
-          <Link to="/tutorials">View All Tutorials</Link>
+          <Link to="/blog">View All Tutorials</Link>
         </div>
       </section>
 
@@ -55,7 +55,7 @@ const IndexPage = () => (
 
       <section className="Websites container">
         <h2>Side Projects</h2>
-        <CardTrail cards={Websites({ limit: 3 })} delay={3000} />
+        <CardTrail cards={SideProjects({ limit: 3 })} delay={3000} />
       </section>
     </Content>
   </>
