@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import Menu from './Menu';
+import Navigation from './Navigation';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Child } from '../declaration';
 import { menuItems } from '../utils/data';
-import About from './About';
+import { Child } from '..';
 
 interface LayoutProps {
   children: Child;
@@ -18,10 +17,10 @@ interface StickyProps {
 }
 
 const Sticky = styled.div<StickyProps>`
-  z-index: 100;
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 100;
   width: 100%;
 `;
 
@@ -30,10 +29,9 @@ const Layout = (props: LayoutProps) => {
 
   return (
     <>
-      {/* <About /> */}
       <Sticky>
         <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
-        <Menu items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
+        <Navigation items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
       </Sticky>
       <main>{children}</main>
       <Footer />

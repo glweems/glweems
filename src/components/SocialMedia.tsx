@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { useTrail, animated as a } from 'react-spring';
-import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { transparentize } from 'polished';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { socialMedia } from '../utils/data';
 import Flex from './Flex';
+import { SocialMediaIconsProps, SocialIconProps } from '../index';
 
 const IconLink = styled(OutboundLink)<{ color: string; mode?: 'light' | 'dark' }>`
   padding: 0.5em;
@@ -18,19 +17,9 @@ const IconLink = styled(OutboundLink)<{ color: string; mode?: 'light' | 'dark' }
     background: ${props => transparentize(0.8, props.theme.lightColors.muted)};
   }
 `;
-type WhatToShow = 'text' | 'icon' | undefined;
-interface SocialIcon {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  size: SizeProp;
-  mode?: 'light' | 'dark';
-  color: string;
-  show?: WhatToShow;
-}
 
-export const SocialIcon = ({ name, link, icon, color, size, mode, show }: SocialIcon) => {
-  const WhatToShow = ({ decide }: { decide: WhatToShow }) => {
+export const SocialIcon = ({ name, link, icon, color, size, mode, show }: SocialIconProps) => {
+  const WhatToShow = ({ decide }: { decide: 'text' | 'icon' | undefined }) => {
     if (decide === 'icon') {
       return <FontAwesomeIcon icon={icon} size={size} style={{ marginRight: '.5em' }} />;
     }
@@ -51,14 +40,6 @@ export const SocialIcon = ({ name, link, icon, color, size, mode, show }: Social
     </IconLink>
   );
 };
-
-interface SocialMediaIconsProps {
-  delay?: number;
-  size?: SizeProp;
-  withAnimation?: boolean;
-  mode?: 'light' | 'dark';
-  show?: WhatToShow;
-}
 
 const SocialMediaIcons = ({
   withAnimation = true,

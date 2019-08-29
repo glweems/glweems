@@ -1,15 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-import { Nodes, BehanceProject, ImageFile } from '../declaration';
-
-interface DesignsQuery {
-  allBehanceProjects: Nodes<BehanceProject>;
-  allFile: Nodes<ImageFile>;
-}
-
-interface Design extends BehanceProject {
-  cover?: { childImageSharp: { fluid: FluidObject } } | FluidObject[] | any;
-}
+import { Design, DesignsQuery, BehanceProject, ImageFile } from '..';
 
 const UseDesignsQuery = (): Design[] => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`

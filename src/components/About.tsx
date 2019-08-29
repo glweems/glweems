@@ -14,17 +14,17 @@ const rotate = keyframes`
 `;
 
 const Content = styled(animated.div)`
-  overflow: hidden;
   display: grid;
-  height: 100vh;
-  padding: 1em 0;
-  grid-template-columns: auto;
-  grid-template-rows: repeat(4, auto);
   grid-template-areas:
     'Ghost'
     'Message'
     'SocialMedia'
     'HeatMap';
+  grid-template-rows: repeat(4, auto);
+  grid-template-columns: auto;
+  height: 100vh;
+  padding: 1em 0;
+  overflow: hidden;
 
   .Message {
     grid-area: Message;
@@ -33,8 +33,8 @@ const Content = styled(animated.div)`
       margin: 0;
     }
     h1 {
-      color: ${props => props.theme.colors.muted};
       margin-bottom: 0;
+      color: ${props => props.theme.colors.muted};
       span {
         color: ${props => props.theme.colors.yellow};
       }
@@ -54,8 +54,8 @@ const Content = styled(animated.div)`
 
   .SocialMedia {
     grid-area: SocialMedia;
-    margin: 0;
     height: 3em;
+    margin: 0;
   }
   .HeatMap {
     grid-area: HeatMap;

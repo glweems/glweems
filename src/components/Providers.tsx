@@ -1,4 +1,4 @@
-import React, { createContext, useState, Dispatch, SetStateAction } from 'react';
+import React, { createContext, useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme, GlobalStyle } from '../utils/theme';
 import Layout from './Layout';

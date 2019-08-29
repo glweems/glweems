@@ -1,26 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-import { Nodes, ImageFile } from '../declaration';
-
-interface SideProject {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  link: string;
-  repo: string;
-  tags: string[];
-  image: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
-}
+import { SideProject, AllSideprojectsYaml } from '..';
 
 const useSideProjectsQuery = (): SideProject[] => {
-  const {
-    allSideprojectsYaml,
-  }: { allSideprojectsYaml: Nodes<SideProject> } = useStaticQuery(graphql`
+  const { allSideprojectsYaml }: AllSideprojectsYaml = useStaticQuery(graphql`
     query WebsitesQuery {
       allSideprojectsYaml {
         nodes {

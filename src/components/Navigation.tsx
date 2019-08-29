@@ -8,21 +8,21 @@ import { Container } from 'reactstrap';
 
 const Dropdown = styled(animated.header)`
   z-index: 90;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   padding: 1em;
   background: ${props => props.theme.colors.dark};
   border-bottom: 2px solid ${props => props.theme.colors.green};
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledLink = styled.div`
-  font-size: 18px;
   display: grid;
   grid-template-columns: 1em auto;
   gap: 4em 1em;
   align-items: center;
   color: ${props => props.theme.colors.muted};
+  font-size: 18px;
   span {
     color: ${props => props.theme.colors.purple};
   }
@@ -60,29 +60,14 @@ interface Menu {
   toggleMenu(): void;
 }
 
-const Menu = ({ items, isMenu, toggleMenu }: Menu) => {
-  const transitions = useTransition(isMenu, null, {
-    from: { transform: 'translateY(-8em)', height: '1em' },
-    enter: { transform: 'translateY(0)', height: '100vh' },
-    leave: { transform: 'translateY(-8em)', height: '1em' },
-  });
-
+const Navigation = ({ items, isMenu, toggleMenu }: Menu) => {
   return (
     <>
-      {transitions.map(
-        ({ item, key, props }) =>
-          item && (
-            <Dropdown key={key} style={props}>
-              <Container>
-                {items.map(navItem => (
-                  <NavbarLink key={navItem.text} {...navItem} toggleMenu={toggleMenu} />
-                ))}
-              </Container>
-            </Dropdown>
-          ),
-      )}
+      {items.map(navItem => (
+        <NavbarLink key={navItem.text} {...navItem} toggleMenu={toggleMenu} />
+      ))}
     </>
   );
 };
 
-export default Menu;
+export default Navigation;

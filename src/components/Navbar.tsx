@@ -13,11 +13,11 @@ interface Navbar {
 export const Header = styled.header<{ isMenu: boolean }>`
   z-index: 1000;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  opacity: 0.9;
+  justify-content: space-between;
   padding: 0.25em;
   background: ${props => props.theme.colors.dark};
+  opacity: 0.9;
   button {
     color: ${props => props.theme.colors[!props.isMenu ? 'yellow' : 'red']};
   }
