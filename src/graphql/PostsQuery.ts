@@ -16,7 +16,9 @@ const usePostsQuery = () => {
             tags
             thumbnail {
               childImageSharp {
-                ...FluidImage
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }

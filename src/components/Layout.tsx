@@ -12,27 +12,12 @@ interface LayoutProps {
   toggleMenu(): void;
 }
 
-interface StickyProps {
-  children: JSX.Element[];
-}
-
-const Sticky = styled.div<StickyProps>`
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-`;
-
 const Layout = (props: LayoutProps) => {
   const { isMenu, toggleMenu, children } = props;
 
   return (
     <>
-      <Sticky>
-        <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
-        <Navigation items={menuItems} isMenu={isMenu} toggleMenu={toggleMenu} />
-      </Sticky>
+      <Navbar isMenu={isMenu} toggleMenu={toggleMenu} />
       <main>{children}</main>
       <Footer />
     </>

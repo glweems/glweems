@@ -2,8 +2,7 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
-import { FluidObject, FixedObject } from 'gatsby-image';
-import { media, Image } from '../utils/theme';
+import { media } from '../utils/theme';
 import Tags from './Tags';
 import { Child } from '..';
 
@@ -13,29 +12,42 @@ interface Card {
   link?: string;
   tags: string[];
   children?: Child;
-  img: {
-    fluid: FluidObject;
-    fixed: FixedObject;
-  };
+  Image?: React.ReactElement;
 }
 
-const Header = styled.h4`
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  padding: 0 0.5em;
-  color: ${props => props.theme.colors.yellow};
-  cursor: pointer;
-`;
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin: 0;
-  padding: 0.5em 1em;
-  overflow: hidden;
+const StyledCard = styled.div`
+  display: grid;
+  grid-template-rows: auto 12em 1fr auto;
+  grid-template-columns: 1fr;
+  align-content: flex-start;
   color: ${props => props.theme.colors.muted};
-  font-size: 15px;
-  line-height: 1.5;
+  background: ${props => props.theme.colors.bg};
+  border-radius: ${props => props.theme.borderRadius};
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.12) 0px 3px 1px -2px;
+  :hover {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 20px 0px;
+  }
+  transition: all 0.7s ease 0s;
+`;
+
+const Header = styled.div`
+  padding: 0 0.5em;
+  overflow: hidden;
+  .title {
+    margin: 0;
+    padding: 0.5em 0.25em;
+    overflow: hidden;
+    color: ${props => props.theme.colors.yellow};
+    font-size: 1.25em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+  }
+`;
+
+const Body = styled.div`
+  padding: 0.5em 0.5em;
   background: ${props => props.theme.colors.bg};
 `;
 
@@ -44,67 +56,6 @@ const Footer = styled.div`
   padding: 0 0.5em 0.25em 0.5em;
   overflow: hidden;
   color: ${props => props.theme.colors.green};
-  border: 2px solid ${props => props.theme.colors.bg};
-`;
-
-const StyledCard = styled.div`
-  display: grid;
-  grid-template-areas:
-    'Header Header'
-    'Body Image'
-    'Footer Image';
-  grid-template-rows: 1fr 4.5em 2em;
-  grid-template-columns: 3fr 1fr;
-  gap: 0 0.25em;
-
-  ${Header} {
-    grid-area: Header;
-  }
-
-  ${Body} {
-    grid-area: Body;
-    border-top-left-radius: ${props => props.theme.borderRadius};
-  }
-
-  ${Footer} {
-    grid-area: Footer;
-    border-bottom-left-radius: ${props => props.theme.borderRadius};
-  }
-
-  ${Image} {
-    grid-area: Image;
-    border-top-right-radius: ${props => props.theme.borderRadius};
-    border-bottom-right-radius: ${props => props.theme.borderRadius};
-  }
-
-  ${media.greaterThan('sm')`
-    grid-template-columns: 1fr;
-    grid-template-rows: 2.4em 8em  auto  auto;
-
-    grid-template-areas:
-      'Header'
-      'Image'
-      'Body'
-      'Footer';
-
-    ${Body} {
-      border-radius: 0;
-    }
-
-    ${Footer} {
-      border-radius: 0;
-      border-bottom-left-radius: ${props => props.theme.borderRadius};
-      border-bottom-right-radius: ${props => props.theme.borderRadius};
-    }
-
-    ${Image} {
-      grid-area: Image;
-      border-radius: 0;
-      border-top-right-radius: ${props => props.theme.borderRadius};
-      border-top-left-radius: ${props => props.theme.borderRadius};
-      }
-
-  `};
 `;
 
 const Card = ({
@@ -113,16 +64,19 @@ const Card = ({
   link,
   tags = ['one', 'two', 'three'],
   children,
-  img,
+  Image,
 }: Card) => {
   const go = () => (link ? navigate(link) : null);
 
   return (
     <StyledCard onClick={go}>
-      <Image {...img} />
-      <Header>{title}</Header>
+      <Header>
+        <h4 className="title">{title}</h4>
+      </Header>
+      {Image || { Image }}
+
       <Body>
-        <small>{subtitle}</small>
+        <p>{subtitle}</p>
         {children}
       </Body>
       <Footer>{<Tags items={tags} />}</Footer>

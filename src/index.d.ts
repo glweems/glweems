@@ -99,7 +99,7 @@ export interface DesignsQuery {
 }
 
 export interface Design extends BehanceProject {
-  cover?: { childImageSharp: { fluid: FluidObject } } | FluidObject[] | any;
+  cover: { childImageSharp: { fluid: FluidObject } };
 }
 
 export interface BehanceImage {

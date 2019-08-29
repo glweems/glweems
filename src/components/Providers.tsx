@@ -17,7 +17,7 @@ interface Props {
 const Providers = ({ children }: Props) => {
   const [isMenu, setIsMenu] = useState<boolean>(false);
 
-  const toggleMenu = () => {
+  const toggleMenu = (): void => {
     setIsMenu(state => !state);
   };
 

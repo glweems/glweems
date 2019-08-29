@@ -1,5 +1,6 @@
 import React from 'react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import Img from 'gatsby-image';
 import Card, { Cards } from './Card';
 import useSideProjectsQuery from '../graphql/SideProjectsQuery';
 
@@ -20,7 +21,14 @@ const Websites = ({ limit = false }: Props) => {
             title={title}
             subtitle={description}
             tags={tags}
-            img={image.childImageSharp}
+            Image={
+              <Img
+                // objectFit="cover"
+                // objectPosition="50% 50%"
+                // alt=""
+                fluid={image.childImageSharp.fluid}
+              />
+            }
           >
             <OutboundLink href={link} target="_blank_">
               View Site

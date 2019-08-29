@@ -1,9 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Logo } from './Icons';
+import { Child } from '..';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,25 +22,49 @@ export const Header = styled.header<{ isMenu: boolean }>`
   }
 `;
 
-const Navbar = ({ toggleMenu, isMenu }: Navbar) => {
-  const toggle = () => {
-    toggleMenu(state => !state);
-  };
+const Navigation = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25em;
+  background: ${props => props.theme.colors.dark};
+  opacity: 0.9;
+`;
+interface StickyProps {
+  children: Child;
+}
 
-  return (
-    <Header className="container" isMenu={isMenu}>
+const Sticky = styled.div<StickyProps>`
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+`;
+
+const Nav = styled.nav`
+  a {
+    margin-right: 1em;
+  }
+  a:last-child {
+    margin: 0;
+  }
+`;
+
+const Navbar = () => (
+  <Sticky>
+    <Navigation className="container">
       <div>
         <Link to="/">
           <Logo />
         </Link>
       </div>
-      <div>
-        <button type="button" onClick={toggle}>
-          <FontAwesomeIcon icon={isMenu ? faTimes : faBars} size="2x" />
-        </button>
-      </div>
-    </Header>
-  );
-};
+      <Nav>
+        <Link to="/blog">Blog</Link>
+        <Link to="/designs">Design</Link>
+      </Nav>
+    </Navigation>
+  </Sticky>
+);
 
 export default Navbar;
