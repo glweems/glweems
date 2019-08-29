@@ -6,7 +6,6 @@ import About from '../components/About';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
-import CardTrail from '../components/CardTrail';
 
 const Content = styled.div`
   display: grid;

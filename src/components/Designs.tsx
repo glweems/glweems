@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'gatsby-image';
 import Card, { Cards } from './Card';
 import UseDesignsQuery from '../graphql/DesignsQuery';
 
@@ -18,7 +19,7 @@ const Designs = ({ limit = false }: Props) => {
           subtitle={description}
           tags={tags}
           link={`/${slug}`}
-          img={cover.childImageSharp}
+          Image={<Img alt={name} fluid={cover.childImageSharp.fluid} />}
         />
       ))}
     </Cards>

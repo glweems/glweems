@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'gatsby-image';
 import Card, { Cards } from './Card';
 import usePostsQuery from '../graphql/PostsQuery';
 
@@ -18,7 +19,14 @@ const Posts = ({ limit = false }: Props) => {
           subtitle={excerpt}
           tags={frontmatter.tags}
           link={frontmatter.path}
-          img={frontmatter.thumbnail.childImageSharp}
+          Image={
+            <Img
+              objectFit="cover"
+              objectPosition="50% 50%"
+              alt=""
+              fluid={frontmatter.thumbnail.childImageSharp.fluid}
+            />
+          }
         />
       ))}
     </Cards>

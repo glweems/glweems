@@ -1,17 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-
-interface SeoQuery {
-  site: {
-    siteMetadata: {
-      defaultTitle: string;
-      titleTemplate: string;
-      defaultDescription: string;
-      url: string;
-      image: string;
-      defaultImage: string;
-    };
-  };
-}
+import { SeoQuery } from '..';
 
 const useSEOQuery = (): SeoQuery =>
   useStaticQuery(graphql`

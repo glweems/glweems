@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Child } from '..';
 
 interface Props {
   direction?: 'row' | 'column';
-  children: any;
+  children: Child;
 }
 
 const Flex = styled.div<Props>`

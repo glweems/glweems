@@ -1,17 +1,9 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable consistent-return */
 import { useStaticQuery, graphql } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-import { Nodes, BehanceProject, ImageFile } from '../declaration';
+import { Design, DesignsQuery, BehanceProject, ImageFile } from '..';
 
-interface DesignsQuery {
-  allBehanceProjects: Nodes<BehanceProject>;
-  allFile: Nodes<ImageFile>;
-}
-
-interface Design extends BehanceProject {
-  cover?: { childImageSharp: { fluid: FluidObject } } | FluidObject[] | any;
-}
-
-const UseDesignsQuery = (): Design[] => {
+const UseDesignsQuery = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
     query DesignsQuery {
       allBehanceProjects {
@@ -40,13 +32,17 @@ const UseDesignsQuery = (): Design[] => {
     }
   `);
 
-  const findDesignCover = (design: BehanceProject): ImageFile | any =>
+  const findDesignCover = (design: BehanceProject): ImageFile | undefined =>
     allFile.nodes.find(file => file.relativeDirectory.includes(design.slug));
 
-  const designs = allBehanceProjects.nodes.map(design => ({
-    ...design,
-    cover: findDesignCover(design),
-  }));
+  const designs = allBehanceProjects.nodes.map(design => {
+    if (findDesignCover(design)) {
+      return {
+        ...design,
+        cover: findDesignCover(design),
+      };
+    }
+  });
 
   return designs;
 };

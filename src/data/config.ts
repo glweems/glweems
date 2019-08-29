@@ -1,7 +1,7 @@
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
-  author: 'Garrett Weems (glweeems)',
+  author: 'Garrett Weems (glweems)',
   url: 'https://glweems.com',
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',

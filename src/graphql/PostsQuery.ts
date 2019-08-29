@@ -1,27 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { FluidObject } from 'gatsby-image';
-import { Nodes } from '../declaration';
-
-interface MarkdownRemark {
-  id: string;
-  excerpt: string;
-  frontmatter: {
-    id: number;
-    path: string;
-    title: string;
-    tags: string[];
-    next: string;
-    thumbnail: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
-    };
-  };
-}
-
-interface PostsQuery {
-  allMarkdownRemark: Nodes<MarkdownRemark>;
-}
+import { PostsQuery } from '..';
 
 const usePostsQuery = () => {
   const { allMarkdownRemark }: PostsQuery = useStaticQuery(graphql`
@@ -38,7 +16,9 @@ const usePostsQuery = () => {
             tags
             thumbnail {
               childImageSharp {
-                ...FluidImage
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
