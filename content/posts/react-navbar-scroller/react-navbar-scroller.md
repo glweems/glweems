@@ -1,11 +1,12 @@
 ---
 id: 2
-path: '/react-navbar-scroller'
-thumbnail: './tbn.png'
+path: /react-navbar-scroller
+thumbnail: tbn.png
 date: 2019-03-19T01:00:01.889Z
 edited:
-next: '/styled-container'
-title: 'Simple navbar using react, typescript, and styled-components.'
+next: /styled-container
+title: React Navbar Scroller
+subtitle: In this project we will create a simple little Navbar component that looks cool / has a logo or brand name and features horizontal scrolling
 tags:
   - react
   - typescript
@@ -14,13 +15,7 @@ tags:
 popular: false
 ---
 
-<iframe src="https://codesandbox.io/embed/react-navbar-scroller-44wd0?fontsize=14" title="react-navbar-scroller" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
-
-## In this project we will create a simple little Navbar component that looks cool / has a logo or brand name and features horizontal scrolling
-
----
-
-### Setup.
+### Setup
 
 The setup for a react app in `TypeScript` is almost the exact same if you’re already using `create-react-app` cli for your react applications.
 
@@ -53,6 +48,8 @@ Then create a `tslint.json` file in your root directory and add the following.
   ]
 }
 ```
+
+---
 
 ### Getting Started
 
@@ -315,6 +312,8 @@ const NavbarScroller = (props: {
 export default NavbarScroller;
 ```
 
+---
+
 ### Here is the styling I used for the styled-components
 
 ```tsx
@@ -408,3 +407,9 @@ const NavbarScroller = (props: {
   );
 };
 ```
+
+---
+
+## Demo
+
+<iframe src="https://codesandbox.io/embed/react-navbar-scroller-44wd0?fontsize=14" title="react-navbar-scroller" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>

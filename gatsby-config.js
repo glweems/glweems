@@ -72,6 +72,9 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // Optional: Remove the paragraph tag wrapping images
+          `gatsby-remark-unwrap-images`,
+          // Wrap images by pictures
           {
             resolve: `gatsby-remark-images`,
             options: {
@@ -94,13 +97,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        color: config.themeColor,
-        showSpinner: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-favicon`,
       options: {
         logo: `./src/assets/favicon.png`,
@@ -118,6 +114,7 @@ module.exports = {
         },
       },
     },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

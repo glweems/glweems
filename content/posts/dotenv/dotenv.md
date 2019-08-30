@@ -1,11 +1,12 @@
 ---
 id: 5
-path: '/dotenv'
-thumbnail: './tbn.png'
+path: /dotenv
+thumbnail: tbn.png
 date: 2019-07-01T01:00:01.889Z
 edited:
-next: '/react-navbar-scroller'
-title: 'My favorite extensions, themes, tips for a beautifully productive development environment.'
+next: /react-navbar-scroller
+title: Development Environment
+subtitle: My favorite extensions, themes, tips for a beautifully productive development environment.
 tags:
   - code
   - development
@@ -13,10 +14,6 @@ tags:
   - plugins
   - tip
 popular: false
----
-
-![dotenv](tbn.png)
-
 ---
 
 ### Programs

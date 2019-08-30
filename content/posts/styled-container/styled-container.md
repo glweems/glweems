@@ -1,11 +1,12 @@
 ---
 id: 3
-path: '/styled-container'
-thumbnail: './tbn.png'
+path: /styled-container
+thumbnail: tbn.png
 date: 2019-03-21T01:00:01.889Z
 edited:
-next: '/gatsby-darkmode'
-title: 'Responsive Container Component with React and Styled-Components.'
+next: /gatsby-darkmode
+title: Styled Container
+subtitle: Responsive Container Component with React and Styled-Components.
 tags:
   - react
   - component
@@ -13,12 +14,6 @@ tags:
   - responsive
   - styled-components
 popular: false
----
-
-![styled-container](./tbn.png)
-
-## Bootstrap - like responsive fluid containers with styled-components, what more could you ask for
-
 ---
 
 ### Setup
@@ -39,8 +34,9 @@ Now we are able to start creating our Theme object.
 
 This will act like sass / scss / less variables and we will be able use them across all of our components.
 
+> Theme.js
+
 ```javascript
-// Theme.js
 export const Theme = {
   colors: {
     dark: `#24292e`,
@@ -53,7 +49,9 @@ export const Theme = {
   },
   padding: '1rem 0.5rem',
 };
+```
 
+```javascript
 export const Breakpoints = {
   mobileS: 320,
   mobileM: 375,
@@ -63,7 +61,9 @@ export const Breakpoints = {
   laptopL: 1440,
   desktop: 2560,
 };
+```
 
+```javascript
 export const MQ = {};
 for (const key in ScreenSizes) {
   if (key) MQ[key] = styles => `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`;
