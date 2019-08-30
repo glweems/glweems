@@ -11,5 +11,7 @@ declare module 'styled-components' {
     colors: Colors;
     lightColors: Colors;
     darkColors: Colors;
+    shadow: string;
+    hoverShadow: string;
   }
 }
