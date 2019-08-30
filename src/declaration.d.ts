@@ -1,5 +1,6 @@
 // import original module declarations
 import 'styled-components';
+
 import { Colors } from '.';
 
 export type GitHubCalendar = React.Component;

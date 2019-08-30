@@ -1,7 +1,7 @@
 import Typography from 'typography';
-import grandViewTheme from 'typography-theme-grand-view';
+import Theme from 'typography-theme-github';
 
-const typography = new Typography(grandViewTheme);
+const typography = new Typography(Theme);
 
 // Export helper functions
 export const { scale, rhythm, options } = typography;

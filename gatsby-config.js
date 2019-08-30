@@ -94,13 +94,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-nprogress`,
-      options: {
-        color: config.themeColor,
-        showSpinner: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-favicon`,
       options: {
         logo: `./src/assets/favicon.png`,
@@ -118,6 +111,7 @@ module.exports = {
         },
       },
     },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -130,6 +124,6 @@ module.exports = {
         icon: `src/assets/favicon.png`,
       },
     },
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 };
