@@ -30,6 +30,7 @@ export interface Frontmatter {
   path: string;
   tags: string[];
   title: string;
+  subtitle: string;
   next: string;
   thumbnail: {
     id: string;
@@ -43,7 +44,7 @@ export interface MarkdownRemark {
   id: string;
   timeToRead: number;
   excerpt: string;
-  html: string;
+  htmlAst: object;
   frontmatter: Frontmatter;
 }
 

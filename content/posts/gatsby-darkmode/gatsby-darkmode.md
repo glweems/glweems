@@ -1,11 +1,12 @@
 ---
 id: 4
-path: '/gatsby-darkmode'
-thumbnail: './tbn.png'
+path: /gatsby-darkmode
+thumbnail: tbn.png
 date: 2019-04-16T01:00:01.889Z
 edited:
-next: '/dotenv'
-title: 'Create a dynamic dark-mode theme in gatsby using redux, and styled components.'
+next: /dotenv
+title: Gatsby Darkmode
+subtitle: Create a dynamic dark-mode theme in gatsby using redux, and styled components.
 tags:
   - gatsby
   - redux
@@ -13,12 +14,6 @@ tags:
   - react
   - darkmode
 popular: false
----
-
-![gatsby-darkmode](./tbn.png)
-
-## Create a dynamic dark-mode theme in gatsby using redux, and styled components
-
 ---
 
 ### Getting Starting
@@ -37,10 +32,12 @@ yarn add redux react-redux styled-components
 
 ### Step 1
 
+---
+
 Create a new folder in your src/ directory called _state_
 Within this folder create the following files
 
-```
+```text
 src/
 └── state/
     ├── reducers.js
@@ -49,6 +46,8 @@ src/
 ```
 
 ### Step 2
+
+---
 
 Create redux reducer
 
@@ -78,6 +77,8 @@ export default combineReducers({ theme });
 
 ### Step 3
 
+---
+
 create redux action to toggle current theme
 
 ```javascript
@@ -87,6 +88,8 @@ export const toggleTheme = () => ({ type: TOGGLE_THEME });
 ```
 
 ### Step 4
+
+---
 
 Create our Provider / ReduxWrapper Component
 Now we are able to go ahead a create the ReduxWrapper component
@@ -112,6 +115,8 @@ export { default as wrapRootElement } from './src/state/ReduxWrapper';
 ```
 
 ### Step 5
+
+---
 
 Create our ToggleTheme button component
 
@@ -140,6 +145,8 @@ export default connect(
   mapDispatchToProps,
 )(ToggleThemeButton);
 ```
+
+---
 
 ### Step 6
 
@@ -175,6 +182,8 @@ html,body {
 }`;
 ```
 
+---
+
 ### Step 7
 
 connecting everything together!
@@ -202,6 +211,10 @@ const mapStateToProps = state => ({
 
 export default connect(mapStateToProps)(Layout)
 ```
+
+## Demo
+
+<iframe src="https://codesandbox.io/embed/gatsby-darkmode-b7iil?autoresize=1&codemirror=1&fontsize=14&hidenavigation=1" title="gatsby-darkmode" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 
 And there you have it!
 

@@ -1,17 +1,12 @@
+/* eslint-disable react/no-danger */
+import { DiscussionEmbed } from 'disqus-react';
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import styled from 'styled-components';
-import { DiscussionEmbed, CommentCount } from 'disqus-react';
+import RehypeReact from 'rehype-react';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import SEO from '../components/SEO';
-import Flex from '../components/Flex';
 import { MarkdownRemark } from '..';
-
-interface BlogTemplateProps {
-  data: {
-    markdownRemark: MarkdownRemark;
-  };
-}
-const Content = styled.div``;
+import { PostHeader } from '../components/Post';
 
 const BlogTemplate = ({ data: { post } }: { data: { post: MarkdownRemark } }): JSX.Element => {
   const disqusShortName = 'https-glweems-com';
@@ -20,6 +15,13 @@ const BlogTemplate = ({ data: { post } }: { data: { post: MarkdownRemark } }): J
     identifier: String(post.frontmatter.id),
     title: post.frontmatter.title,
   };
+
+  const Post = ({ elements }: { elements: unknown }) =>
+    new RehypeReact({
+      createElement: React.createElement,
+      components: { a: OutboundLink },
+    }).Compiler(elements).props.children;
+
   return (
     <>
       <SEO
@@ -28,21 +30,10 @@ const BlogTemplate = ({ data: { post } }: { data: { post: MarkdownRemark } }): J
         description={post.excerpt}
       />
 
-      <article className="markdown">
-        <h1>{post.frontmatter.title}</h1>
+      <article className="blog-post">
+        <PostHeader post={post} />
 
-        <Flex>
-          <small>{post.frontmatter.date}</small>
-          <small>
-            <CommentCount shortname={disqusShortName} config={disqusConfig}>
-              Comments
-            </CommentCount>
-          </small>
-          <small>{post.timeToRead} Min Read</small>
-        </Flex>
-
-        <Content dangerouslySetInnerHTML={{ __html: post.html }} />
-
+        <Post elements={post.htmlAst} />
         <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </article>
     </>
@@ -55,6 +46,7 @@ export const BlogPost = graphql`
   query PostQuery($slug: String!) {
     post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       html
+      htmlAst
       timeToRead
       excerpt(pruneLength: 150)
       ...Frontmatter

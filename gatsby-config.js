@@ -72,6 +72,9 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
+          // Optional: Remove the paragraph tag wrapping images
+          `gatsby-remark-unwrap-images`,
+          // Wrap images by pictures
           {
             resolve: `gatsby-remark-images`,
             options: {

@@ -52,6 +52,7 @@ export const Frontmatter = graphql`
       date(formatString: "MMMM DD, YYYY")
       path
       title
+      subtitle
       tags
       next
       thumbnail {
