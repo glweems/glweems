@@ -1,7 +1,6 @@
-import styled, { StyledFunction, createGlobalStyle, DefaultTheme, css } from 'styled-components';
+import { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken } from 'polished';
-import Img from 'gatsby-image';
 
 export const media = generateMedia({
   lg: '960px',
@@ -32,7 +31,7 @@ const colors = {
   purple: `#d0c1fa`,
   mint: `#a7e3cc`,
   muted: `#c6c7c6`,
-  bg: `#1f242f`,
+  bg: `#181D2B`,
 };
 
 const lightColors = {
@@ -57,7 +56,7 @@ const darkColors = {
   purple: darken(0.1, colors.purple),
   mint: darken(0.1, colors.mint),
   muted: darken(0.1, colors.muted),
-  bg: darken(0.1, colors.bg),
+  bg: darken(0.07, colors.bg),
 };
 
 export const heatMapTheme = {
@@ -70,18 +69,28 @@ export const heatMapTheme = {
   grade4: darken(0.5, colors.green),
 };
 
+const makeShadow = (color: string) => `
+  ${darken(0.05, color)} 0px 1px 5px 0px,
+  ${darken(0.09, color)} 0px 2px 2px 0px,
+  ${darken(0.1, color)} 0px 3px 1px -2px`;
+
+const makeHoverShadow = (color: string) => `${darken(0.1, color)} 0px 3px 20px 0px`;
+
 export interface Theme extends DefaultTheme {
   borderRadius: `0.3em`;
   colors: Colors;
   lightColors: Colors;
   darkColors: Colors;
+  shadow: string;
 }
 
-export const theme: DefaultTheme = {
+export const theme: Theme = {
   borderRadius: `0.3em`,
   colors,
   lightColors,
   darkColors,
+  shadow: makeShadow(colors.bg),
+  hoverShadow: makeHoverShadow(colors.bg),
 };
 
 export type ColorKeys = keyof Colors;
@@ -96,27 +105,26 @@ export const helperCss = css<ColorProps>`
   background: ${props => (props.bg ? props.theme.colors[props.bg] : null)};
 `;
 
-export const Image = styled(Img)<Img>``;
-
 export const GlobalStyle = createGlobalStyle`
-body {
-  background: ${props => props.theme.colors.dark};
-  color: ${props => props.theme.colors.light};
-}
-
-input[type='submit'],
-input[type='reset'],
-input[type='button'],
-button {
-  box-sizing: content-box;
-  padding: 0;
-  overflow: visible;
-  line-height: normal;
-  background: none;
-  border: 0;
-cursor: pointer;
-  :focus {
-    outline: none;
+  body {
+    color: ${props => props.theme.colors.light};
+    background: ${props => props.theme.colors.bg};
   }
+
+  button,
+  input[type='reset'],
+  input[type='button'],
+  input[type='submit'] {
+    box-sizing: content-box;
+    padding: 0;
+    overflow: visible;
+    line-height: normal;
+    background: none;
+    border: 0;
+
+  cursor: pointer;
+    :focus {
+      outline: none;
+    }
 }
 `;

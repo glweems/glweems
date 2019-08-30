@@ -38,29 +38,28 @@ export const FixedImage = graphql`
 
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
-    fluid {
-      ...GatsbyImageSharpFluid_withWebp_noBase64
+    fluid(maxWidth: 630, traceSVG: { background: "#181D2B", color: "#d0c1fa", threshold: 6 }) {
+      ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }
 `;
 
 export const Frontmatter = graphql`
-  fragment Frontmatter on File {
-    childMarkdownRemark {
-      excerpt(pruneLength: 150)
-      frontmatter {
-        date
-        path
-        title
-        tags
-        thumbnail {
-          childImageSharp {
-            ...FluidImage
-          }
+  fragment Frontmatter on MarkdownRemark {
+    excerpt(pruneLength: 150)
+    frontmatter {
+      id
+      date(formatString: "MMMM DD, YYYY")
+      path
+      title
+      tags
+      next
+      thumbnail {
+        id
+        childImageSharp {
+          ...FluidImage
         }
       }
     }
   }
 `;
-
-export default { BehanceCard, BehanceCovers, FixedImage, FluidImage, Frontmatter };

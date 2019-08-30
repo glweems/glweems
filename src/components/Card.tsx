@@ -21,12 +21,12 @@ const StyledCard = styled.div`
   grid-template-columns: 1fr;
   align-content: flex-start;
   color: ${props => props.theme.colors.muted};
-  background: ${props => props.theme.colors.bg};
+  background: ${props => props.theme.colors.dark};
   border-radius: ${props => props.theme.borderRadius};
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
-    rgba(0, 0, 0, 0.12) 0px 3px 1px -2px;
+  box-shadow: ${props => props.theme.shadow};
   :hover {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 20px 0px;
+    box-shadow: ${props => props.theme.hoverShadow};
+    transform: scale(1.0125);
   }
   transition: all 0.7s ease 0s;
 `;
