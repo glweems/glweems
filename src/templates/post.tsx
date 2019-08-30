@@ -1,66 +1,47 @@
 import * as React from 'react';
-import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
-import Image, { FluidObject } from 'gatsby-image';
 import styled from 'styled-components';
 import { DiscussionEmbed, CommentCount } from 'disqus-react';
 import SEO from '../components/SEO';
 import Flex from '../components/Flex';
-
-type GitArray = [string, string, string, string?];
-
-interface Frontmatter {
-  date: string;
-  name: string;
-  title: string;
-  subtitle: string;
-  codesandbox: GitArray;
-  tags: string[];
-  thumbnail: {
-    childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
-}
+import { MarkdownRemark } from '..';
 
 interface BlogTemplateProps {
   data: {
-    markdownRemark: {
-      timeToRead: number;
-      htmlAst: object;
-      frontmatter: Frontmatter;
-    };
+    markdownRemark: MarkdownRemark;
   };
 }
 const Content = styled.div``;
 
-const BlogTemplate = ({
-  data: {
-    markdownRemark: { timeToRead, html, excerpt, frontmatter },
-  },
-}: BlogTemplateProps): JSX.Element => {
-  const disqusShortName = 'glweems';
+const BlogTemplate = ({ data: { post } }: { data: { post: MarkdownRemark } }): JSX.Element => {
+  const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
-    url: `https://glweems.com${frontmatter.path}`,
-    identifier: frontmatter.id,
-    title: frontmatter.title,
+    url: `https://glweems.com${post.frontmatter.path}`,
+    identifier: String(post.frontmatter.id),
+    title: post.frontmatter.title,
   };
   return (
     <>
-      <SEO title={frontmatter.title} keywords={frontmatter.tags} description={excerpt} />
+      <SEO
+        title={post.frontmatter.title}
+        keywords={post.frontmatter.tags}
+        description={post.excerpt}
+      />
+
       <article className="markdown">
-        <h1>{frontmatter.title}</h1>
+        <h1>{post.frontmatter.title}</h1>
+
         <Flex>
-          <small>{frontmatter.date}</small>
+          <small>{post.frontmatter.date}</small>
           <small>
             <CommentCount shortname={disqusShortName} config={disqusConfig}>
               Comments
             </CommentCount>
           </small>
-          <small>{timeToRead} Min Read</small>
+          <small>{post.timeToRead} Min Read</small>
         </Flex>
 
-        <Content dangerouslySetInnerHTML={{ __html: html }} />
+        <Content dangerouslySetInnerHTML={{ __html: post.html }} />
 
         <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </article>
@@ -72,24 +53,11 @@ export default BlogTemplate;
 
 export const BlogPost = graphql`
   query PostQuery($slug: String!) {
-    markdownRemark(frontmatter: { path: { eq: $slug } }) {
+    post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       html
       timeToRead
       excerpt(pruneLength: 150)
-      frontmatter {
-        id
-        path
-        date(formatString: "MMMM DD, YYYY")
-        title
-        next
-        tags
-        thumbnail {
-          id
-          childImageSharp {
-            ...FluidImage
-          }
-        }
-      }
+      ...Frontmatter
     }
   }
 `;

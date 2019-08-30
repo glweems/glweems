@@ -1,7 +1,6 @@
-import styled, { createGlobalStyle, DefaultTheme, css } from 'styled-components';
+import { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken } from 'polished';
-import Img from 'gatsby-image';
 
 export const media = generateMedia({
   lg: '960px',
@@ -105,8 +104,6 @@ export const helperCss = css<ColorProps>`
   color: ${props => (props.color ? props.theme.colors[props.color] : props.theme.colors.light)};
   background: ${props => (props.bg ? props.theme.colors[props.bg] : null)};
 `;
-
-export const Image = styled(Img)<Img>``;
 
 export const GlobalStyle = createGlobalStyle`
   body {

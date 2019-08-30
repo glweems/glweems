@@ -1,6 +1,10 @@
 import { FluidObject, FixedObject } from 'gatsby-image';
 import { SizeProp, IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
+export interface Nodes<T> {
+  nodes: T[];
+}
+
 export interface SideProject {
   id: string;
   title: string;
@@ -20,21 +24,27 @@ export interface AllSideprojectsYaml {
   allSideprojectsYaml: Nodes<SideProject>;
 }
 
-export interface MarkdownRemark {
-  id: string;
-  excerpt: string;
-  frontmatter: {
-    id: number;
-    path: string;
-    title: string;
-    tags: string[];
-    next: string;
-    thumbnail: {
-      childImageSharp: {
-        fluid: FluidObject;
-      };
+export interface Frontmatter {
+  id: number;
+  date(formatString: 'MMMM DD, YYYY'): Date;
+  path: string;
+  tags: string[];
+  title: string;
+  next: string;
+  thumbnail: {
+    id: string;
+    childImageSharp: {
+      fluid: FluidObject;
     };
   };
+}
+
+export interface MarkdownRemark {
+  id: string;
+  timeToRead: number;
+  excerpt: string;
+  html: string;
+  frontmatter: Frontmatter;
 }
 
 export interface PostsQuery {
@@ -70,10 +80,6 @@ export interface ImageFile {
     fluid: FluidObject;
     fixed: FixedObject;
   };
-}
-
-export interface Nodes<T> {
-  nodes: T[];
 }
 
 export interface BehanceProject {

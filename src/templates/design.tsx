@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import SEO from '../components/SEO';
-import { BehanceProject, ImageFile } from '../declaration';
+import { BehanceProject, ImageFile } from '..';
 
 const Content = styled.div`
   margin-top: 2em;

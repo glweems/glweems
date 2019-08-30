@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import { useStaticQuery, graphql } from 'gatsby';
-import { Design, DesignsQuery, BehanceProject, ImageFile } from '..';
+import { DesignsQuery, BehanceProject, ImageFile } from '..';
 
 const UseDesignsQuery = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
