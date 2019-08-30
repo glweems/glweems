@@ -2,9 +2,10 @@ import * as React from 'react';
 import RehypeReact from 'rehype-react';
 import { graphql } from 'gatsby';
 import Image, { FluidObject } from 'gatsby-image';
-import CodeSandbox from 'simple-codesandbox';
 import styled from 'styled-components';
+import { DiscussionEmbed, CommentCount } from 'disqus-react';
 import SEO from '../components/SEO';
+import Flex from '../components/Flex';
 
 type GitArray = [string, string, string, string?];
 
@@ -35,26 +36,33 @@ const Content = styled.div``;
 
 const BlogTemplate = ({
   data: {
-    markdownRemark: {
-      timeToRead,
-      html,
-      excerpt,
-      frontmatter: {
-        date,
-        title,
-        tags,
-        thumbnail: {
-          childImageSharp: { fluid },
-        },
-      },
-    },
+    markdownRemark: { timeToRead, html, excerpt, frontmatter },
   },
 }: BlogTemplateProps): JSX.Element => {
+  const disqusShortName = 'glweems';
+  const disqusConfig = {
+    url: `https://glweems.com${frontmatter.path}`,
+    identifier: frontmatter.id,
+    title: frontmatter.title,
+  };
   return (
     <>
-      <SEO title={title} keywords={tags} description={excerpt} />
+      <SEO title={frontmatter.title} keywords={frontmatter.tags} description={excerpt} />
       <article className="markdown">
+        <h1>{frontmatter.title}</h1>
+        <Flex>
+          <small>{frontmatter.date}</small>
+          <small>
+            <CommentCount shortname={disqusShortName} config={disqusConfig}>
+              Comments
+            </CommentCount>
+          </small>
+          <small>{timeToRead} Min Read</small>
+        </Flex>
+
         <Content dangerouslySetInnerHTML={{ __html: html }} />
+
+        <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
       </article>
     </>
   );
@@ -71,7 +79,7 @@ export const BlogPost = graphql`
       frontmatter {
         id
         path
-        date
+        date(formatString: "MMMM DD, YYYY")
         title
         next
         tags
