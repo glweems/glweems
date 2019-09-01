@@ -1,6 +1,6 @@
 import { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { lighten, darken } from 'polished';
+import { lighten, darken, transparentize } from 'polished';
 
 export const media = generateMedia({
   lg: '960px',
@@ -60,13 +60,13 @@ const darkColors = {
 };
 
 export const heatMapTheme = {
-  background: colors.dark,
+  background: colors.bg,
   text: colors.yellow,
-  grade0: colors.dark,
-  grade1: lighten(0.1, colors.green),
-  grade2: colors.green,
-  grade3: darken(0.3, colors.green),
-  grade4: darken(0.5, colors.green),
+  grade0: transparentize(0.95, colors.purple),
+  grade1: transparentize(0.75, colors.purple),
+  grade2: transparentize(0.5, colors.purple),
+  grade3: transparentize(0.25, colors.purple),
+  grade4: colors.purple,
 };
 
 const makeShadow = (color: string) => `
