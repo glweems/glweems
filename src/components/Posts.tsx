@@ -20,12 +20,7 @@ const Posts = ({ limit = false }: Props) => {
           tags={frontmatter.tags}
           link={frontmatter.path}
           Image={
-            <Img
-              objectFit="cover"
-              objectPosition="50% 50%"
-              alt=""
-              fluid={frontmatter.thumbnail.childImageSharp.fluid}
-            />
+            <Img alt={frontmatter.title} fluid={frontmatter.thumbnail.childImageSharp.fluid} />
           }
         />
       ))}

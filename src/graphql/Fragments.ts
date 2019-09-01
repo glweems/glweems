@@ -46,7 +46,6 @@ export const FluidImage = graphql`
 
 export const Frontmatter = graphql`
   fragment Frontmatter on MarkdownRemark {
-    excerpt(pruneLength: 150)
     frontmatter {
       id
       date(formatString: "MMMM DD, YYYY")

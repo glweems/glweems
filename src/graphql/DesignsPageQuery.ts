@@ -21,9 +21,7 @@ const UseDesignsPageQuery = (): DesignsPageQuery =>
         nodes {
           relativeDirectory
           childImageSharp {
-            fluid(maxWidth: 700, traceSVG: { background: "#1a1e28", color: "#c6c7c6" }) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
-            }
+            ...FluidImage
           }
         }
       }
