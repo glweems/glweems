@@ -8,7 +8,11 @@ import SEO from '../components/SEO';
 import { MarkdownRemark } from '..';
 import { PostHeader } from '../components/Post';
 
-const BlogTemplate = ({ data: { post } }: { data: { post: MarkdownRemark } }): JSX.Element => {
+const BlogTemplate = ({
+  data: { post },
+}: {
+  data: { post: MarkdownRemark };
+}): JSX.Element => {
   const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
     url: `https://glweems.com${post.frontmatter.path}`,

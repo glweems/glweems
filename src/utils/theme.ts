@@ -91,7 +91,8 @@ const makeShadow = (color: string) => `
   ${darken(0.09, color)} 0px 2px 2px 0px,
   ${darken(0.1, color)} 0px 3px 1px -2px`;
 
-const makeHoverShadow = (color: string) => `${darken(0.1, color)} 0px 3px 20px 0px`;
+const makeHoverShadow = (color: string) =>
+  `${darken(0.1, color)} 0px 3px 20px 0px`;
 
 export interface Theme extends DefaultTheme {
   borderRadius: `0.3em`;
@@ -140,7 +141,8 @@ export const makeTheme = (mode: 'light' | 'dark') => {
 export type ColorKeys = keyof Colors;
 
 export const helperCss = css<ColorProps>`
-  color: ${props => (props.color ? props.theme.colors[props.color] : props.theme.colors.text)};
+  color: ${props =>
+    props.color ? props.theme.colors[props.color] : props.theme.colors.text};
   background: ${props => (props.bg ? props.theme.colors[props.bg] : null)};
 `;
 

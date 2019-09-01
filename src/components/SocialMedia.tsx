@@ -8,9 +8,13 @@ import { socialMedia } from '../utils/data';
 import Flex from './Flex';
 import { SocialMediaIconsProps, SocialIconProps } from '../index';
 
-const IconLink = styled(OutboundLink)<{ color: string; mode?: 'light' | 'dark' }>`
+const IconLink = styled(OutboundLink)<{
+  color: string;
+  mode?: 'light' | 'dark';
+}>`
   padding: 0.5em;
-  color: ${props => (props.mode ? props.theme.colors[props.mode] : props.color)};
+  color: ${props =>
+    props.mode ? props.theme.colors[props.mode] : props.color};
   text-align: center;
   border-radius: 0.5em;
   :hover {
@@ -18,17 +22,35 @@ const IconLink = styled(OutboundLink)<{ color: string; mode?: 'light' | 'dark' }
   }
 `;
 
-export const SocialIcon = ({ name, link, icon, color, size, mode, show }: SocialIconProps) => {
+export const SocialIcon = ({
+  name,
+  link,
+  icon,
+  color,
+  size,
+  mode,
+  show,
+}: SocialIconProps) => {
   const WhatToShow = ({ decide }: { decide: 'text' | 'icon' | undefined }) => {
     if (decide === 'icon') {
-      return <FontAwesomeIcon icon={icon} size={size} style={{ marginRight: '.5em' }} />;
+      return (
+        <FontAwesomeIcon
+          icon={icon}
+          size={size}
+          style={{ marginRight: '.5em' }}
+        />
+      );
     }
     if (decide === 'text') {
       return <span>{name}</span>;
     }
     return (
       <>
-        <FontAwesomeIcon icon={icon} size={size} style={{ marginRight: '.5em' }} />
+        <FontAwesomeIcon
+          icon={icon}
+          size={size}
+          style={{ marginRight: '.5em' }}
+        />
         <span>{name}</span>
       </>
     );
@@ -86,7 +108,13 @@ const SocialMediaIcons = ({
   ) : (
     <>
       {socialMedia.map(icon => (
-        <SocialIcon key={icon.name} {...icon} mode={mode} size={size} show={show} />
+        <SocialIcon
+          key={icon.name}
+          {...icon}
+          mode={mode}
+          size={size}
+          show={show}
+        />
       ))}
     </>
   );

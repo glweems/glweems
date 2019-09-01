@@ -12,16 +12,18 @@ const Designs = ({ limit = false }: Props) => {
 
   return (
     <Cards>
-      {designs.slice(0, limit || designs.length).map(({ slug, name, description, tags, cover }) => (
-        <Card
-          key={slug}
-          title={name}
-          subtitle={description}
-          tags={tags}
-          link={`/${slug}`}
-          Image={<Img alt={name} fluid={cover.childImageSharp.fluid} />}
-        />
-      ))}
+      {designs
+        .slice(0, limit || designs.length)
+        .map(({ slug, name, description, tags, cover }) => (
+          <Card
+            key={slug}
+            title={name}
+            subtitle={description}
+            tags={tags}
+            link={`/${slug}`}
+            Image={<Img alt={name} fluid={cover.childImageSharp.fluid} />}
+          />
+        ))}
     </Cards>
   );
 };
