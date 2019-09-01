@@ -8,20 +8,7 @@ const usePostsQuery = () => {
         nodes {
           id
           excerpt(pruneLength: 150)
-          frontmatter {
-            id
-            title
-            path
-            date
-            tags
-            thumbnail {
-              childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
+          ...Frontmatter
         }
       }
     }

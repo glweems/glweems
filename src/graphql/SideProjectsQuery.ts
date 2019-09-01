@@ -13,9 +13,7 @@ const useSideProjectsQuery = (): SideProject[] => {
           description
           image {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
+              ...FluidImage
             }
           }
           tags
