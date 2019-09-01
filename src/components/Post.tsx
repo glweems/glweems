@@ -75,7 +75,7 @@ export const Article = styled.article`
   }
 
   h1 {
-    color: ${props => props.theme.colors.light};
+    color: ${props => props.theme.colors.text};
     font-size: 1.75em;
   }
 
@@ -92,7 +92,7 @@ export const Article = styled.article`
   blockquote {
     /* width: 100%; */
     /* grid-column: a / article; */
-    color: ${props => props.theme.darkColors.light};
+    color: ${props => props.theme.colors.text};
     font-style: italic;
     border-color: ${props => props.theme.colors.yellow};
     *,
@@ -103,7 +103,7 @@ export const Article = styled.article`
 
   a.anchor {
     svg {
-      fill: ${props => props.theme.colors.light};
+      fill: ${props => props.theme.colors.text};
     }
   }
 

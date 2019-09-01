@@ -12,7 +12,7 @@ const Content = styled.div`
   }
 
   h1 {
-    color: ${props => props.theme.colors.light};
+    color: ${props => props.theme.light};
   }
 
   h3 {

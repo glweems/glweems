@@ -21,7 +21,7 @@ const StyledCard = styled.div`
   grid-template-columns: 1fr;
   align-content: flex-start;
   color: ${props => props.theme.colors.muted};
-  background: ${props => props.theme.colors.dark};
+  background: ${props => props.theme.colors.bg};
   border-radius: ${props => props.theme.borderRadius};
   box-shadow: ${props => props.theme.shadow};
   :hover {

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 import { Logo } from './Icons';
 import { Child } from '..';
+import useTheme from '../hooks/useTheme';
+import { ThemeProvider, ThemeContext } from './Providers';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +17,7 @@ export const Header = styled.header<{ isMenu: boolean }>`
   align-items: center;
   justify-content: space-between;
   padding: 0.25em;
-  background: ${props => props.theme.colors.dark};
+  background: ${props => props.theme.colors.bg};
   opacity: 0.9;
   button {
     color: ${props => props.theme.colors[!props.isMenu ? 'yellow' : 'red']};
@@ -27,7 +29,7 @@ const Navigation = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0.25em;
-  background: ${props => props.theme.colors.dark};
+  background: ${props => props.theme.colors.bg};
   opacity: 0.9;
 `;
 interface StickyProps {
@@ -51,20 +53,25 @@ const Nav = styled.nav`
   }
 `;
 
-const Navbar = () => (
-  <Sticky>
-    <Navigation className="container">
-      <div>
-        <Link to="/">
-          <Logo />
-        </Link>
-      </div>
-      <Nav>
-        <Link to="/blog">Blog</Link>
-        <Link to="/designs">Design</Link>
-      </Nav>
-    </Navigation>
-  </Sticky>
-);
+const Navbar = () => {
+  const [theme, toggleTheme] = React.useContext(ThemeContext);
+
+  return (
+    <Sticky>
+      <Navigation className="container">
+        <div>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </div>
+        <Nav>
+          <Link to="/blog">Blog</Link>
+          <Link to="/designs">Design</Link>
+          <button onClick={toggleTheme}> mode</button>
+        </Nav>
+      </Navigation>
+    </Sticky>
+  );
+};
 
 export default Navbar;
