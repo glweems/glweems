@@ -57,7 +57,9 @@ export const designQuery = graphql`
         title
       }
     }
-    allFile(filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }) {
+    allFile(
+      filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }
+    ) {
       nodes {
         id
         name

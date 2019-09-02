@@ -1,6 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Img from 'gatsby-image';
+import { lighten, darken, transparentize } from 'polished';
+import RehypeReact from 'rehype-react';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { media } from '../utils/theme';
 import { MarkdownRemark } from '..';
 
@@ -10,8 +13,14 @@ interface PostInfo {
   comments: number;
 }
 
+export const Content = ({ elements }: { elements: unknown }) =>
+  new RehypeReact({
+    createElement: React.createElement,
+    components: { a: OutboundLink },
+  }).Compiler(elements).props.children;
+
 const Header = styled.header`
-  margin-top: 2em;
+  margin: 2em 0;
   .subtitle {
     margin-top: 0.5em;
     color: ${props => props.theme.colors.muted};
@@ -52,14 +61,41 @@ export const Article = styled.article`
   display: grid;
   grid-auto-rows: auto;
   grid-template-areas: 'a article z';
-  grid-template-columns: 0.25em 1fr 0.25em;
-  /* * {
-    width: 100%;
-  } */
+  grid-template-columns: 1em 1fr 1em;
+
+  * {
+    color: ${props => props.theme.colors.text};
+  }
+
   > * {
     grid-column: article;
-    /* max-width: 100%; */
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
+
+  blockquote {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-column: a / z;
+    grid-template-areas: 'a article z';
+    grid-template-columns: 1em 1fr 1em;
+    padding-left: 0;
+    color: ${props => lighten(0.5, props.theme.colors.bg)};
+    border-color: ${props => props.theme.colors.primary};
+    p {
+      color: ${props => darken(0.2, props.theme.colors.muted)} !important;
+    }
+    > * {
+      grid-area: article;
+    }
+  }
+
+  .gatsby-highlight {
+    grid-column: a / z;
+    }
+  }
+
   iframe {
     grid-column: a / z;
   }
@@ -69,58 +105,49 @@ export const Article = styled.article`
     margin-bottom: 2em;
   }
 
-  .gatsby-highlight,
-  p {
-    margin-top: 2.25em;
-  }
-
-  h1 {
-    color: ${props => props.theme.colors.light};
-    font-size: 1.75em;
-  }
-
-  h2 {
-    margin-top: 3em;
-    color: ${props => props.theme.colors.muted};
-    font-size: 1em;
-  }
-
   img {
-    border-radius: 0.25em;
+    border-radius: ${props => props.theme.borderRadius};
   }
 
-  blockquote {
-    /* width: 100%; */
-    /* grid-column: a / article; */
-    color: ${props => props.theme.darkColors.light};
-    font-style: italic;
-    border-color: ${props => props.theme.colors.yellow};
-    *,
-    p {
-      margin: 0;
-    }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: ${props => props.theme.colors.primary};
   }
 
-  a.anchor {
-    svg {
-      fill: ${props => props.theme.colors.light};
-    }
-  }
-
-  ${media.greaterThan('md')`
-
+  ${media.greaterThan('sm')`
+    grid-template-columns: 0.5em 1fr 1fr 1em 720px 1em 1fr 1fr 0.5em;
     grid-template-areas: 'a b c d article w x y z';
-    grid-template-columns: 0.5em 1fr 1fr .5em 720px .5em 1fr 1fr 0.5em;
+    * >  {
+      grid-column: article;
+    }
     iframe {
       grid-column: c / x;
     }
     .gatsby-resp-image-wrapper {
       grid-column: b / y;
     }
-    blockquote {
-      grid-column-start: d;
+
+    .gatsby-highlight {
+      border-radius: ${props => props.theme.borderRadius};
+      grid-column: article;
     }
-  `}
+
+    blockquote {
+      display: grid;
+      grid-auto-rows: auto;
+      grid-column: d / w;
+      grid-template-areas: 'a article z';
+      grid-template-columns: 1em 1fr 1em;
+      padding-left: 0;
+      > * {
+        grid-area: article;
+      }
+    }
+`}
 `;
 
 export default PostInfo;

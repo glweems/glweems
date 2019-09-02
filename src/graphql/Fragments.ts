@@ -38,7 +38,10 @@ export const FixedImage = graphql`
 
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
-    fluid(maxWidth: 630, traceSVG: { background: "#181D2B", color: "#d0c1fa", threshold: 6 }) {
+    fluid(
+      maxWidth: 630
+      traceSVG: { background: "#181D2B", color: "#d0c1fa", threshold: 6 }
+    ) {
       ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }

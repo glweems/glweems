@@ -12,18 +12,23 @@ const Posts = ({ limit = false }: Props) => {
 
   return (
     <Cards>
-      {posts.slice(0, limit || posts.length).map(({ id, excerpt, frontmatter }) => (
-        <Card
-          key={id}
-          title={frontmatter.title}
-          subtitle={excerpt}
-          tags={frontmatter.tags}
-          link={frontmatter.path}
-          Image={
-            <Img alt={frontmatter.title} fluid={frontmatter.thumbnail.childImageSharp.fluid} />
-          }
-        />
-      ))}
+      {posts
+        .slice(0, limit || posts.length)
+        .map(({ id, excerpt, frontmatter }) => (
+          <Card
+            key={id}
+            title={frontmatter.title}
+            subtitle={excerpt}
+            tags={frontmatter.tags}
+            link={frontmatter.path}
+            Image={
+              <Img
+                alt={frontmatter.title}
+                fluid={frontmatter.thumbnail.childImageSharp.fluid}
+              />
+            }
+          />
+        ))}
     </Cards>
   );
 };

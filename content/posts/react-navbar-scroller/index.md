@@ -333,7 +333,7 @@ const Theme = {
 const Navbar = styled.nav`
   background: ${Theme.colors.dark};
   font-family: ${Theme.fonts.heading};
-  color: ${Theme.colors.light};
+  color: ${Theme..light};
   display: flex;
   align-items: center;
   justify-content: space-between;

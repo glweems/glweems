@@ -1,39 +1,31 @@
-import React, { createContext, useState } from 'react';
-import { ThemeProvider } from 'styled-components';
-import { theme, GlobalStyle } from '../utils/theme';
-import Layout from './Layout';
-import SEO from './SEO';
+import React, { createContext } from 'react';
+import useTheme from '../hooks/useTheme';
 
-interface LayoutContext {
-  isMenu: boolean;
-}
-
-const LayoutContext = createContext<Partial<LayoutContext>>({});
-
-interface Props {
-  children: Element;
-}
-
-const Providers = ({ children }: Props) => {
-  const [isMenu, setIsMenu] = useState<boolean>(false);
-
-  const toggleMenu = (): void => {
-    setIsMenu(state => !state);
-  };
-
-  return (
-    <>
-      <SEO />
-      <ThemeProvider theme={theme}>
-        <>
-          <GlobalStyle />
-          <Layout isMenu={isMenu} toggleMenu={toggleMenu}>
-            {children}
-          </Layout>
-        </>
-      </ThemeProvider>
-    </>
+function ProviderComposer({ contexts, children }: any) {
+  return contexts.reduceRight(
+    (kids: any, parent: any) =>
+      React.cloneElement(parent, {
+        children: kids,
+      }),
+    children,
   );
-};
+}
 
-export default Providers;
+export const ThemeContext = createContext([{}, () => {}]);
+
+export function ThemeProvider({ children }: any) {
+  const [theme, toggleTheme] = useTheme();
+  return (
+    <ThemeContext.Provider value={[theme, toggleTheme]}>
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function ContextProvider({ children }: any) {
+  return (
+    <ProviderComposer contexts={[<ThemeProvider />]}>
+      {children}
+    </ProviderComposer>
+  );
+}

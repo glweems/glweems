@@ -21,14 +21,7 @@ const Websites = ({ limit = false }: Props) => {
             title={title}
             subtitle={description}
             tags={tags}
-            Image={
-              <Img
-                // objectFit="cover"
-                // objectPosition="50% 50%"
-                // alt=""
-                fluid={image.childImageSharp.fluid}
-              />
-            }
+            Image={<Img alt={title} fluid={image.childImageSharp.fluid} />}
           >
             <OutboundLink href={link} target="_blank_">
               View Site

@@ -26,7 +26,10 @@ const Footer = () => (
           {socialMedia.map(({ name, link, icon, color }) => (
             <li key={name}>
               <a href={link} target="_blank_">
-                <FontAwesomeIcon icon={icon} color={color === '#333' ? '#f7f7f7' : color} />
+                <FontAwesomeIcon
+                  icon={icon}
+                  color={color === '#333' ? '#f7f7f7' : color}
+                />
                 <span>{name}</span>
               </a>
             </li>
