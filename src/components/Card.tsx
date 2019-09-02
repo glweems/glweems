@@ -6,16 +6,7 @@ import { media } from '../utils/theme';
 import Tags from './Tags';
 import { Child } from '..';
 
-interface Card {
-  title: string;
-  subtitle: string;
-  link?: string;
-  tags: string[];
-  children?: Child;
-  Image?: React.ReactElement;
-}
-
-const StyledCard = styled.div`
+export const Wrapper = styled.div`
   display: grid;
   grid-template-rows: auto 12em 1fr auto;
   grid-template-columns: 1fr;
@@ -31,14 +22,14 @@ const StyledCard = styled.div`
   transition: all 0.7s ease 0s;
 `;
 
-const Header = styled.div`
+export const Header = styled.div`
   padding: 0 0.5em;
   overflow: hidden;
   .title {
     margin: 0;
     padding: 0.5em 0.25em;
     overflow: hidden;
-    color: ${props => props.theme.colors.yellow};
+    color: ${props => props.theme.colors.primary};
     font-size: 1.25em;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -46,17 +37,26 @@ const Header = styled.div`
   }
 `;
 
-const Body = styled.div`
+export const Body = styled.div`
   padding: 0.5em 0.5em;
   background: ${props => props.theme.colors.bg};
 `;
 
-const Footer = styled.div`
+export const Footer = styled.div`
   margin: 0;
   padding: 0 0.5em 0.25em 0.5em;
   overflow: hidden;
   color: ${props => props.theme.colors.green};
 `;
+
+interface Card {
+  title: string;
+  subtitle: string;
+  link?: string;
+  tags: string[];
+  children?: Child;
+  Image?: React.ReactElement;
+}
 
 const Card = ({
   title = 'Card Title',
@@ -69,7 +69,7 @@ const Card = ({
   const go = () => (link ? navigate(link) : null);
 
   return (
-    <StyledCard onClick={go}>
+    <Wrapper onClick={go}>
       <Header>
         <h4 className="title">{title}</h4>
       </Header>
@@ -80,7 +80,7 @@ const Card = ({
         {children}
       </Body>
       <Footer>{<Tags items={tags} />}</Footer>
-    </StyledCard>
+    </Wrapper>
   );
 };
 

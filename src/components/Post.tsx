@@ -94,7 +94,7 @@ export const Article = styled.article`
     /* grid-column: a / article; */
     color: ${props => props.theme.colors.text};
     font-style: italic;
-    border-color: ${props => props.theme.colors.yellow};
+    border-color: ${props => props.theme.colors.primary};
     *,
     p {
       margin: 0;

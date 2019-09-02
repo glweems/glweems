@@ -1,10 +1,9 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import GithubCalendar from 'react-github-calendar';
 import Avatar from './Avatar';
 import SocialMediaIcons from './SocialMedia';
-import { heatMapTheme } from '../utils/theme';
 
 const Content = styled.div`
   .img {
@@ -12,7 +11,7 @@ const Content = styled.div`
   }
 
   h1 {
-    color: ${props => props.theme.light};
+    color: ${props => props.theme.text};
   }
 
   h3 {
@@ -33,7 +32,7 @@ const Content = styled.div`
   }
 `;
 
-const About = () => (
+const About = ({ theme: { heatMap } }) => (
   <Content className="container">
     <div className="img">
       <Avatar />
@@ -43,7 +42,7 @@ const About = () => (
     </h1>
     <h3>I'm a full-stack web developer.</h3>
     <div className="map">
-      <GithubCalendar username="glweems" years={[2019]} theme={heatMapTheme} />
+      <GithubCalendar username="glweems" years={[2019]} theme={heatMap} />
     </div>
     <div className="icons">
       <SocialMediaIcons show="icon" />
@@ -51,4 +50,4 @@ const About = () => (
   </Content>
 );
 
-export default About;
+export default withTheme(About);

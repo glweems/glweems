@@ -1,4 +1,4 @@
-import { createGlobalStyle, DefaultTheme, css } from 'styled-components';
+import { createGlobalStyle, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { lighten, darken, transparentize } from 'polished';
 
@@ -8,148 +8,112 @@ export const media = generateMedia({
   sm: '540px',
 });
 
-interface Colors {
-  light: string;
-  dark: string;
-  red: string;
-  green: string;
-  yellow: string;
-  blue: string;
-  purple: string;
-  mint: string;
-  muted: string;
-  bg: string;
+interface SharedColors {
+  blue: `#89cefa`;
+  green: `#c3e28a`;
+  mint: `#a7e3cc`;
+  purple: `#d0c1fa`;
+  red: `#d65947`;
+  yellow: `#f8d58c`;
 }
 
 const sharedColors = {
-  red: `#d65947`,
-  green: `#c3e28a`,
-  yellow: `#f8d58c`,
   blue: `#89cefa`,
-  purple: `#d0c1fa`,
+  green: `#c3e28a`,
   mint: `#a7e3cc`,
-  muted: `#c6c7c6`,
+  purple: `#d0c1fa`,
+  red: `#d65947`,
+  yellow: `#f8d58c`,
 };
 
 const darkModeColors = {
-  light: `#f7f7f7`,
-  dark: `#1a1e28`,
-  bg: `#181D2B`,
-
-  text: `#f7f7f7`,
-  rootBg: `#181D2B`,
   ...sharedColors,
+  primary: `#f8d58c`,
+  bg: `#181D2B`,
+  muted: `#c6c7c6`,
+  rootBg: `#181D2B`,
+  text: `#f7f7f7`,
 };
 
 const lightModeColors = {
-  dark: `#f7f7f7`,
-  light: `#1a1e28`,
-  bg: `white`,
-
-  text: `#1a1e28`,
-  rootBg: `#ffffff`,
   ...sharedColors,
+  primary: `#1e88e5`,
+  bg: `#f7f7f7`,
+  muted: `#5a5a5a`,
+  rootBg: `#ededef`,
+  text: `#1a1e28`,
 };
 
-const lightColors = {
-  light: lighten(0.2, lightModeColors.light),
-  dark: lighten(0.05, lightModeColors.dark),
-  red: lighten(0.1, lightModeColors.red),
-  green: lighten(0.05, lightModeColors.green),
-  yellow: lighten(0.05, lightModeColors.yellow),
-  blue: lighten(0.05, lightModeColors.blue),
-  purple: lighten(0.05, lightModeColors.purple),
-  mint: lighten(0.05, lightModeColors.mint),
-  muted: lighten(0.05, lightModeColors.muted),
-  bg: lighten(0.3, lightModeColors.bg),
-};
-const darkColors = {
-  light: darken(0.2, darkModeColors.light),
-  dark: darken(0.1, darkModeColors.dark),
-  red: darken(0.1, darkModeColors.red),
-  green: darken(0.1, darkModeColors.green),
-  yellow: darken(0.1, darkModeColors.yellow),
-  blue: darken(0.1, darkModeColors.blue),
-  purple: darken(0.1, darkModeColors.purple),
-  mint: darken(0.1, darkModeColors.mint),
-  muted: darken(0.1, darkModeColors.muted),
-  bg: darken(0.07, darkModeColors.bg),
-};
+export const makeTheme = (mode: 'light' | 'dark') => {
+  const isDarkMode = mode === 'dark';
+  const colors = isDarkMode ? darkModeColors : lightModeColors;
 
-export const heatMapTheme = {
-  background: `transparent`,
-  text: sharedColors.yellow,
-  grade0: transparentize(0.95, sharedColors.purple),
-  grade1: transparentize(0.75, sharedColors.purple),
-  grade2: transparentize(0.5, sharedColors.purple),
-  grade3: transparentize(0.25, sharedColors.purple),
-  grade4: sharedColors.purple,
-};
-
-const makeShadow = (color: string) => `
+  const makeShadow = (color: string) => `
   ${darken(0.05, color)} 0px 1px 5px 0px,
   ${darken(0.09, color)} 0px 2px 2px 0px,
   ${darken(0.1, color)} 0px 3px 1px -2px`;
 
-const makeHoverShadow = (color: string) =>
-  `${darken(0.1, color)} 0px 3px 20px 0px`;
-
-export interface Theme extends DefaultTheme {
-  borderRadius: `0.3em`;
-  colors: Colors;
-  lightColors: Colors;
-  darkColors: Colors;
-  shadow: string;
-}
-
-export const makeTheme = (mode: 'light' | 'dark') => {
-  const colors = mode === 'dark' ? darkModeColors : lightModeColors;
+  const makeHoverShadow = (color: string) =>
+    `${darken(0.1, color)} 0px 3px 20px 0px`;
 
   return {
     mode,
+    isDarkMode,
     colors,
     borderRadius: `0.3em`,
     darkColors: {
-      light: darken(0.2, colors.light),
-      dark: darken(0.1, colors.dark),
-      red: darken(0.1, colors.red),
+      bg: darken(0.3, colors.bg),
+      blue: darken(0.25, colors.blue),
       green: darken(0.1, colors.green),
-      yellow: darken(0.1, colors.yellow),
-      blue: darken(0.1, colors.blue),
-      purple: darken(0.1, colors.purple),
       mint: darken(0.1, colors.mint),
       muted: darken(0.1, colors.muted),
-      bg: darken(0.07, colors.bg),
+      purple: darken(0.1, colors.purple),
+      red: darken(0.1, colors.red),
+      text: darken(0.2, colors.text),
+      primary: darken(0.2, colors.primary),
     },
     lightColors: {
-      light: lighten(0.2, colors.light),
-      dark: lighten(0.05, colors.dark),
-      red: lighten(0.1, colors.red),
-      green: lighten(0.05, colors.green),
-      yellow: lighten(0.05, colors.yellow),
+      bg: lighten(0.3, colors.bg),
       blue: lighten(0.05, colors.blue),
-      purple: lighten(0.05, colors.purple),
+      green: lighten(0.05, colors.green),
       mint: lighten(0.05, colors.mint),
       muted: lighten(0.05, colors.muted),
-      bg: lighten(0.3, colors.bg),
+      purple: lighten(0.05, colors.purple),
+      red: lighten(0.1, colors.red),
+      text: lighten(0.2, colors.text),
+      primary: lighten(0.1, colors.primary),
     },
-    shadow: makeShadow(colors.bg),
+    shadow: isDarkMode
+      ? `${darken(0.05, colors.bg)} 0px 1px 5px 0px,
+         ${darken(0.09, colors.bg)} 0px 2px 2px 0px,
+         ${darken(0.1, colors.bg)} 0px 3px 1px -2px`
+      : `${darken(0.05, colors.bg)} 0px 1px 5px 0px,
+         ${darken(0.09, colors.bg)} 0px 2px 2px 0px,
+         ${darken(0.1, colors.bg)} 0px 3px 1px -2px`,
     hoverShadow: makeHoverShadow(colors.bg),
+    heatMap: {
+      background: `transparent`,
+      grade0: transparentize(0.95, colors.primary),
+      grade1: transparentize(0.75, colors.primary),
+      grade2: transparentize(0.5, colors.primary),
+      grade3: transparentize(0.25, colors.primary),
+      grade4: colors.primary,
+      text: colors.text,
+    },
   };
 };
 
-export type ColorKeys = keyof Colors;
+// export interface Theme extends DefaultTheme {}
 
-export const helperCss = css<ColorProps>`
-  color: ${props =>
-    props.color ? props.theme.colors[props.color] : props.theme.colors.text};
-  background: ${props => (props.bg ? props.theme.colors[props.bg] : null)};
-`;
+declare module 'styled-components' {
+  export interface DefaultTheme {}
+}
 
 export const GlobalStyle = createGlobalStyle`
+  html,
   body {
     color: ${props => props.theme.colors.text};
-    background: ${props => props.theme.colors.bg};
+    background: ${props => props.theme.colors.rootBg};
   }
 
   button,
@@ -167,5 +131,64 @@ export const GlobalStyle = createGlobalStyle`
     :focus {
       outline: none;
     }
+
+    margin: 0 auto;
+    padding: 0.4em 1em;
+    color: ${props => props.theme.colors.bg};
+    text-decoration: none;
+    background: ${props => props.theme.colors.text};
+    border-radius: ${props => props.theme.borderRadius};
 }
+
+
+
+a {
+  margin: 0;
+  padding: 0;
+  color:${props => props.theme.colors.primary};
+}
+
+a:hover {
+  color: ${props => props.theme.darkColors.primary};
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+}
+
+footer {
+  width: 100%;
+  margin: 0;
+  padding: 1.5em 0;
+  section {
+    margin-bottom: 1.5em;
+  }
+  h4 {
+    margin-bottom: 0.75em;
+    padding-bottom: 0.25em;
+    color: ${props => props.theme.colors.muted};
+  }
+
+  ul {
+    margin: 0;
+    list-style: none;
+    li {
+      margin: 0;
+      text-align: left;
+      span {
+        margin-left: 0.75em;
+      }
+    }
+  }
+}
+
+
+
 `;

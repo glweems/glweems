@@ -87,7 +87,7 @@
     "reactstrap": "^8.0.1",
     "rehype-react": "^4.0.1",
     "simple-codesandbox": "^1.1.1",
-    "styled-components": "^4.3.2",
+    "styled-components": "^5.0.0-beta.8",
     "styled-media-query": "^2.1.2",
     "typescript-require": "^0.2.10",
     "typography": "^0.16.19",

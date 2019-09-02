@@ -1,6 +1,7 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import Card, { Cards } from './Card';
+
 import UseDesignsQuery from '../graphql/DesignsQuery';
 
 interface Props {

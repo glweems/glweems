@@ -1,42 +1,42 @@
 import React, { useContext } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
+import { transparentize } from 'polished';
 import { Logo } from './Icons';
 import { Child } from '..';
-import useTheme from '../hooks/useTheme';
-import { ThemeProvider, ThemeContext } from './Providers';
+import { ThemeContext } from './Providers';
+import Button from './Button';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   isMenu: boolean;
 }
 
-export const Header = styled.header<{ isMenu: boolean }>`
+export const Header = styled.header`
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100vw;
   padding: 0.25em;
   background: ${props => props.theme.colors.bg};
   opacity: 0.9;
-  button {
-    color: ${props => props.theme.colors[!props.isMenu ? 'yellow' : 'red']};
-  }
 `;
 
 const Navigation = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.25em;
-  background: ${props => props.theme.colors.bg};
-  opacity: 0.9;
+  background: ${props => transparentize(0.1, props.theme.colors.bg)};
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.25em;
+  }
 `;
 interface StickyProps {
   children: Child;
 }
 
-const Sticky = styled.div<StickyProps>`
+const Sticky = styled.div`
   position: sticky;
   top: 0;
   left: 0;
@@ -58,17 +58,21 @@ const Navbar = () => {
 
   return (
     <Sticky>
-      <Navigation className="container">
-        <div>
-          <Link to="/">
-            <Logo />
-          </Link>
+      <Navigation>
+        <div className="container">
+          <div>
+            <Link to="/">
+              <Logo />
+            </Link>
+          </div>
+          <Nav>
+            <Link to="/blog">Blog</Link>
+            <Link to="/designs">Design</Link>
+            <Button type="button" className="button" onClick={toggleTheme}>
+              {`${theme.mode} mode`}
+            </Button>
+          </Nav>
         </div>
-        <Nav>
-          <Link to="/blog">Blog</Link>
-          <Link to="/designs">Design</Link>
-          <button onClick={toggleTheme}> mode</button>
-        </Nav>
       </Navigation>
     </Sticky>
   );

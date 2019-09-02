@@ -9,7 +9,10 @@ const StyledTags = styled.div`
 const Tag = styled.small`
   margin-right: 0.25em;
   padding: 0 0.4em 0.3em;
-  color: ${props => props.theme.lightColors.bg};
+  color: ${props =>
+    props.theme.isDarkMode
+      ? props.theme.lightColors.bg
+      : props.theme.darkColors.bg};
   border-radius: 0.5em;
 `;
 
