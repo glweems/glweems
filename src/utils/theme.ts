@@ -76,6 +76,7 @@ declare module 'styled-components' {
     borderRadius: `0.3em`;
     shadow: BoxShadowProperty;
     hoverShadow: BoxShadowProperty;
+    borderWidth: `3px`;
     heatMap: {
       background: `transparent`;
       grade0: ColorProperty;
@@ -135,6 +136,7 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
          ${darken(0.2, lightModeColors.bg)} 0px 2px 2px 0px,
          ${darken(0.4, lightModeColors.bg)} 0px 3px 1px -2px`,
     hoverShadow: makeHoverShadow(colors.bg),
+    borderWidth: `3px`,
     heatMap: {
       background: `transparent`,
       grade0: transparentize(0.95, colors.primary),
@@ -152,9 +154,7 @@ export const GlobalStyle = createGlobalStyle`
     /* Base values */
     --typography__fontSize: 18px;
     --spacing__rhythmUnit: 1.778rem; /* 1.778rem * 18px = 32px */
-
     --border__width--default: 0.111rem; /* 2px */
-
     /* Calculations */
     --spacing__vertical--1: var(--spacing__rhythmUnit);
     --spacing__vertical--2: calc(2 * var(--spacing__rhythmUnit));
@@ -180,18 +180,31 @@ export const GlobalStyle = createGlobalStyle`
   input[type='reset'],
   input[type='button'],
   input[type='submit'] {
+    display: inline-block;
     box-sizing: content-box;
     margin: 0 auto;
-    padding: 0.4em 1em;
+    padding: .5em 1em;
     overflow: visible;
     color: ${props => props.theme.colors.bg};
+    font: inherit;
+    font-weight: 600;
     line-height: normal;
+    white-space: normal;
+    text-align: center;
     text-decoration: none;
     background: ${props => props.theme.colors.text};
-    border: 0;
+    border-color:  ${props => props.theme.darkColors.bg};
+    border-style: solid;
+    border-width: ${props => props.theme.borderWidth};
     border-radius: ${props => props.theme.borderRadius};
-
     cursor: pointer;
+    transition-timing-function: ease;
+    transition-duration: .3s;
+    transition-property: background-color,border-color,color;
+    user-select: none;
+    *, :after, :before {
+    box-sizing: inherit;
+    }
     :focus {
       outline: none;
     }
@@ -201,11 +214,6 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     color:${props => props.theme.colors.primary};
-  }
-
-  a:hover {
-    color: ${props => props.theme.darkColors.primary};
-    text-decoration: underline;
   }
 
   footer {
@@ -234,9 +242,9 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
-    #disqus_thread {
-      padding: 1em;
-      background: ${darkModeColors.bg};
-      border-radius: ${props => props.theme.borderRadius};
+  #disqus_thread {
+    padding: 1em;
+    background: ${darkModeColors.bg};
+    border-radius: ${props => props.theme.borderRadius};
     }
 `;

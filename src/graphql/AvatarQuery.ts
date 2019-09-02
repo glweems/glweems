@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { FluidObject, FixedObject } from 'gatsby-image';
+import { FixedObject } from 'gatsby-image';
 
 interface Props {
   file: {

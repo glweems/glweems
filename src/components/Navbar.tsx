@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'gatsby';
+import React from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
+import { Link } from './Common';
 import { Logo } from './Icons';
 import { Child } from '..';
 import { ThemeContext } from './Providers';
-import Button from './Button';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -54,7 +53,7 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-  const [theme, toggleTheme] = React.useContext(ThemeContext);
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
 
   return (
     <Sticky>
@@ -68,9 +67,9 @@ const Navbar = () => {
           <Nav>
             <Link to="/blog">Blog</Link>
             <Link to="/designs">Design</Link>
-            <Button type="button" className="button" onClick={toggleTheme}>
+            <button type="button" className="button" onClick={toggleTheme}>
               {`${theme.mode} mode`}
-            </Button>
+            </button>
           </Nav>
         </div>
       </Navigation>

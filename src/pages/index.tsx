@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'gatsby';
+import { Link } from '../components/Common';
 import About from '../components/About';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';

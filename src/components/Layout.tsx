@@ -7,7 +7,7 @@ import { ThemeContext } from './Providers';
 import { GlobalStyle, makeTheme } from '../utils/theme';
 
 const Layout = ({ children }: { children: Child }) => {
-  const [theme] = React.useContext(ThemeContext);
+  const { theme } = React.useContext(ThemeContext);
   return (
     <StyledThemeProvider theme={theme}>
       <>

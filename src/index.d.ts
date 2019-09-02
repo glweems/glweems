@@ -1,5 +1,4 @@
 import { FluidObject, FixedObject } from 'gatsby-image';
-import { SizeProp, IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface Nodes<T> {
   nodes: T[];
@@ -122,24 +121,6 @@ export interface BehanceImage {
 export interface DesignsPageQuery {
   allBehanceProjects: Nodes<BehanceProject>;
   behanceImages: Nodes<BehanceImage>;
-}
-
-export interface SocialMediaIconsProps {
-  delay?: number;
-  size?: SizeProp;
-  withAnimation?: boolean;
-  mode?: 'light' | 'dark';
-  show?: 'text' | 'icon' | undefined;
-}
-
-export interface SocialIconProps {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  size: SizeProp;
-  mode?: 'light' | 'dark';
-  color: string;
-  show?: 'text' | 'icon' | undefined;
 }
 
 export interface GithubRepository {

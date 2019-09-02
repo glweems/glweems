@@ -1,9 +1,16 @@
 import React, { createContext } from 'react';
-import useTheme from '../hooks/useTheme';
+import useTheme, { UseTheme } from '../hooks/useTheme';
+import { Child } from '..';
 
-function ProviderComposer({ contexts, children }: any) {
+function ProviderComposer({
+  contexts,
+  children,
+}: {
+  contexts: [React.ChildContextProvider<any>];
+  children: Child;
+}) {
   return contexts.reduceRight(
-    (kids: any, parent: any) =>
+    (kids, parent) =>
       React.cloneElement(parent, {
         children: kids,
       }),
@@ -11,12 +18,15 @@ function ProviderComposer({ contexts, children }: any) {
   );
 }
 
-export const ThemeContext = createContext([{}, () => {}]);
+export const ThemeContext = createContext<UseTheme>({
+  theme: {},
+  toggleTheme: null,
+});
 
-export function ThemeProvider({ children }: any) {
-  const [theme, toggleTheme] = useTheme();
+export function ThemeProvider({ children }: { children: any }) {
+  const { theme, toggleTheme } = useTheme();
   return (
-    <ThemeContext.Provider value={[theme, toggleTheme]}>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
