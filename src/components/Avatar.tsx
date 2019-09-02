@@ -3,14 +3,10 @@ import React from 'react';
 import styled from 'styled-components';
 import useAvatarQuery from '../graphql/AvatarQuery';
 
-const Image = styled(Img)`
-  border-radius: ${props => props.theme.borderRadius};
-`;
-
 const Avatar = () => {
-  const data = useAvatarQuery();
+  const { file } = useAvatarQuery();
 
-  return <Image {...data.file.childImageSharp} />;
+  return <Img fixed={file.childImageSharp.fixed} />;
 };
 
 export default styled(Avatar)``;

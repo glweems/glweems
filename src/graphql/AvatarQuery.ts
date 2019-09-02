@@ -1,6 +1,15 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { FluidObject, FixedObject } from 'gatsby-image';
 
-const useAvatarQuery = () =>
+interface Props {
+  file: {
+    childImageSharp: {
+      fixed: FixedObject;
+    };
+  };
+}
+
+const useAvatarQuery = (): Props =>
   useStaticQuery(graphql`
     query AvatarQuery {
       file(relativePath: { eq: "ghost.png" }) {

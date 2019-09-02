@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from 'react';
-import styled, { withTheme } from 'styled-components';
+import styled, { withTheme, DefaultTheme } from 'styled-components';
 import GithubCalendar from 'react-github-calendar';
 import Avatar from './Avatar';
 import SocialMediaIcons from './SocialMedia';
@@ -10,8 +10,8 @@ const Content = styled.div`
     margin-bottom: 3em;
   }
 
-  h1 {
-    color: ${props => props.theme.text};
+  span {
+    color: ${props => props.theme.colors.primary};
   }
 
   h3 {
@@ -32,7 +32,7 @@ const Content = styled.div`
   }
 `;
 
-const About = ({ theme: { heatMap } }) => (
+const About = ({ theme: { heatMap } }: { theme: DefaultTheme }) => (
   <Content className="container">
     <div className="img">
       <Avatar />

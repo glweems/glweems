@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Button = props => {
+interface Props
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  outlined?: boolean;
+}
+
+const Button = (props: Props) => {
   const { children } = props;
   return (
     <button type="button" className="button" {...props}>

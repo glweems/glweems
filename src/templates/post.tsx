@@ -1,30 +1,23 @@
 /* eslint-disable react/no-danger */
 import { DiscussionEmbed } from 'disqus-react';
-import * as React from 'react';
+import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
-import RehypeReact from 'rehype-react';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import SEO from '../components/SEO';
 import { MarkdownRemark } from '..';
-import { PostHeader } from '../components/Post';
+import { PostHeader, Content, Article } from '../components/Post';
+import { ThemeContext } from '../components/Providers';
 
-const BlogTemplate = ({
-  data: { post },
-}: {
+interface Props {
   data: { post: MarkdownRemark };
-}): JSX.Element => {
+}
+const BlogTemplate = ({ data: { post } }: Props): JSX.Element => {
+  const [theme] = useContext(ThemeContext);
   const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
     url: `https://glweems.com${post.frontmatter.path}`,
     identifier: String(post.frontmatter.id),
     title: post.frontmatter.title,
   };
-
-  const Post = ({ elements }: { elements: unknown }) =>
-    new RehypeReact({
-      createElement: React.createElement,
-      components: { a: OutboundLink },
-    }).Compiler(elements).props.children;
 
   return (
     <>
@@ -33,13 +26,11 @@ const BlogTemplate = ({
         keywords={post.frontmatter.tags}
         description={post.excerpt}
       />
-
-      <article className="blog-post">
+      <Article className={theme.mode}>
         <PostHeader post={post} />
-
-        <Post elements={post.htmlAst} />
+        <Content elements={post.htmlAst} />
         <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-      </article>
+      </Article>
     </>
   );
 };

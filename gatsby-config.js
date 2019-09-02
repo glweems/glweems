@@ -82,7 +82,12 @@ module.exports = {
               linkImagesToOriginal: true,
             },
           },
-          `gatsby-remark-prismjs`,
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: { sh: 'bash', js: 'javascript' },
+            },
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
           `gatsby-remark-autolink-headers`,
