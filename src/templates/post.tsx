@@ -11,7 +11,7 @@ interface Props {
   data: { post: MarkdownRemark };
 }
 const BlogTemplate = ({ data: { post } }: Props): JSX.Element => {
-  const [theme] = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
     url: `https://glweems.com${post.frontmatter.path}`,

@@ -1,6 +1,21 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from 'styled-components';
 import { email, socialMedia } from '../utils/data';
+
+interface ColorOptions {
+  colors: {
+    light: string;
+    dark: string;
+  };
+}
+
+const Li = styled.li<ColorOptions>`
+  svg {
+    color: ${props =>
+      !props.theme.isDarkMode ? props.colors.dark : props.colors.light};
+  }
+`;
 
 const Footer = () => (
   <footer>
@@ -23,16 +38,13 @@ const Footer = () => (
       <section>
         <h4>Social Media</h4>
         <ul>
-          {socialMedia.map(({ name, link, icon, color }) => (
-            <li key={name}>
+          {socialMedia.map(({ name, link, icon, colors }) => (
+            <Li key={name} colors={colors}>
               <a href={link} target="_blank_">
-                <FontAwesomeIcon
-                  icon={icon}
-                  color={color === '#333' ? '#f7f7f7' : color}
-                />
+                <FontAwesomeIcon icon={icon} />
                 <span>{name}</span>
               </a>
-            </li>
+            </Li>
           ))}
         </ul>
       </section>

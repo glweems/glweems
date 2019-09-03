@@ -5,15 +5,22 @@ import Footer from './Footer';
 import { Child } from '..';
 import { ThemeContext } from './Providers';
 import { GlobalStyle, makeTheme } from '../utils/theme';
+import Landing from './Landing';
 
-const Layout = ({ children }: { children: Child }) => {
-  const [theme] = React.useContext(ThemeContext);
+interface LayoutProps {
+  children: React.ReactElement;
+}
+const Layout = (props: LayoutProps) => {
+  const { children } = props;
+  const { theme } = React.useContext(ThemeContext);
+  const showLanding = children.props.path === '/';
   return (
     <StyledThemeProvider theme={theme}>
       <>
         <GlobalStyle />
+        <Landing show={showLanding} />
         <Navbar />
-        <main>{children}</main>
+        {children}
         <Footer />
       </>
     </StyledThemeProvider>

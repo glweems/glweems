@@ -14,14 +14,12 @@ interface Props {
 }
 
 const Providers = ({ children }: Props) => {
-  return (
-    <>
-      <SEO />
-      <ContextProvider>
-        <Layout>{children}</Layout>
-      </ContextProvider>
-    </>
-  );
+  return [
+    <SEO />,
+    <ContextProvider>
+      <Layout>{children}</Layout>
+    </ContextProvider>,
+  ];
 };
 
 export default Providers;

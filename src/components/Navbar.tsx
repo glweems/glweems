@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
-import { Link } from 'gatsby';
+import React from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
+import { Link } from './Common';
 import { Logo } from './Icons';
 import { Child } from '..';
-import { ThemeContext } from './Providers';
-import Button from './Button';
+import { ThemeContext, NavContext } from './Providers';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -24,13 +23,12 @@ export const Header = styled.header`
 `;
 
 const Navigation = styled.div`
-  background: ${props => transparentize(0.1, props.theme.colors.bg)};
-  .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.25em;
-  }
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+  height: ${props => props.theme.navbarHeight};
 `;
 interface StickyProps {
   children: Child;
@@ -42,6 +40,7 @@ const Sticky = styled.div`
   left: 0;
   z-index: 100;
   width: 100%;
+  background: ${props => transparentize(0.1, props.theme.colors.bg)};
 `;
 
 const Nav = styled.nav`
@@ -54,25 +53,27 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-  const [theme, toggleTheme] = React.useContext(ThemeContext);
+  const { theme, toggleTheme } = React.useContext(ThemeContext);
+  // const { isNavOpen, toggleNav } = React.useContext(NavContext);
 
   return (
     <Sticky>
-      <Navigation>
-        <div className="container">
-          <div>
-            <Link to="/">
-              <Logo />
-            </Link>
-          </div>
-          <Nav>
-            <Link to="/blog">Blog</Link>
-            <Link to="/designs">Design</Link>
-            <Button type="button" className="button" onClick={toggleTheme}>
-              {`${theme.mode} mode`}
-            </Button>
-          </Nav>
+      <Navigation className="container">
+        <div>
+          <Link to="/">
+            <Logo />
+          </Link>
         </div>
+        <Nav>
+          <Link to="/blog">Blog</Link>
+          <Link to="/designs">Design</Link>
+          <button type="button" className="button" onClick={toggleTheme}>
+            {!theme.isDarkMode ? 'dark' : 'light'}
+          </button>
+          {/* <button type="button" className="button" onClick={toggleNav}>
+            {isNavOpen ? 'open' : 'closed'}
+          </button> */}
+        </Nav>
       </Navigation>
     </Sticky>
   );

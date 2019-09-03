@@ -1,7 +1,14 @@
 import { useEffect, useState } from 'react';
+import { DefaultTheme } from 'styled-components';
 import { makeTheme } from '../utils/theme';
 
-export default () => {
+export interface UseTheme {
+  theme: DefaultTheme;
+  toggleTheme: (theme: DefaultTheme) => void;
+}
+
+// type themeCookie = 'light' | 'dark' | undefined | string;
+export default (): UseTheme => {
   const [theme, setTheme] = useState(makeTheme('light'));
 
   const toggleTheme = () => {
@@ -15,9 +22,8 @@ export default () => {
   };
 
   useEffect(() => {
-    let localTheme: 'light' | 'dark' | null | string;
+    const localTheme = window.localStorage.getItem('theme');
 
-    localTheme = window.localStorage.getItem('theme');
     if (localTheme) {
       setTheme(makeTheme(localTheme));
     } else {
@@ -26,5 +32,5 @@ export default () => {
     }
   }, []);
 
-  return [theme, toggleTheme];
+  return { theme, toggleTheme };
 };
