@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import useTheme, { UseTheme } from '../hooks/useTheme';
+import useNav, { UseNav } from '../hooks/useNav';
 import { Child } from '..';
 
 function ProviderComposer({
@@ -32,9 +33,22 @@ export function ThemeProvider({ children }: { children: any }) {
   );
 }
 
+export const NavContext = createContext({});
+
+export function NavProvider({ children }: any) {
+  const { isNavOpen, setNav, toggleNav } = useNav();
+  return (
+    <NavContext.Provider value={{ isNavOpen, setNav, toggleNav }}>
+      {children}
+    </NavContext.Provider>
+  );
+}
+
 export function ContextProvider({ children }: any) {
   return (
-    <ProviderComposer contexts={[<ThemeProvider />]}>
+    <ProviderComposer
+      contexts={[<ThemeProvider key="ThemeProvider" />, <NavProvider />]}
+    >
       {children}
     </ProviderComposer>
   );

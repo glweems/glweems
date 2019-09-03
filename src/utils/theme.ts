@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { lighten, darken, transparentize } from 'polished';
+import { lighten, darken } from 'polished';
 import { BoxShadowProperty, ColorProperty } from 'csstype';
 
 export const media = generateMedia({
@@ -11,8 +11,8 @@ export const media = generateMedia({
 });
 
 const sharedColors = {
-  blue: `#89cefa`,
-  green: `#c3e28a`,
+  blue: `#1769ff`,
+  green: `#4caf50`,
   mint: `#a7e3cc`,
   purple: `#d0c1fa`,
   red: `#d65947`,
@@ -30,11 +30,19 @@ const darkModeColors = {
 
 const lightModeColors = {
   ...sharedColors,
-  primary: `#1e88e5`,
+  primary: `#1769ff`,
   bg: `#f7f7f7`,
   muted: `#5a5a5a`,
   rootBg: `#ededef`,
   text: `#1a1e28`,
+};
+
+const socialColors = {
+  github: '#333333',
+  linkedin: '#0077B5',
+  medium: '#00ab6c',
+  behance: '#1769ff',
+  instagram: '#E1306C',
 };
 
 interface Colors {
@@ -58,12 +66,22 @@ interface ColorsShades {
   mint: string;
   purple: string;
   red: string;
-  yellow?: string;
+  yellow: string;
   primary: string;
   bg: string;
   muted: string;
   text: string;
   rootBg?: string;
+}
+
+interface HeatMap {
+  background: ColorProperty;
+  grade0: ColorProperty;
+  grade1: ColorProperty;
+  grade2: ColorProperty;
+  grade3: ColorProperty;
+  grade4: ColorProperty;
+  text: ColorProperty;
 }
 
 declare module 'styled-components' {
@@ -76,16 +94,13 @@ declare module 'styled-components' {
     borderRadius: `0.3em`;
     shadow: BoxShadowProperty;
     hoverShadow: BoxShadowProperty;
-    borderWidth: `3px`;
-    heatMap: {
-      background: `transparent`;
-      grade0: ColorProperty;
-      grade1: ColorProperty;
-      grade2: ColorProperty;
-      grade3: ColorProperty;
-      grade4: ColorProperty;
-      text: ColorProperty;
-    };
+    borderWidth: `3px` | string;
+    navbarHeight: `4em` | string;
+    github: `#333333` | string;
+    linkedin: `#0077B5` | string;
+    medium: `#00ab6c` | string;
+    behance: `#1769ff` | string;
+    instagram: `#E1306C` | string;
   }
 }
 
@@ -106,6 +121,7 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
     isDarkMode,
     colors,
     borderRadius: `0.3em`,
+    ...socialColors,
     darkColors: {
       bg: darken(0.3, colors.bg),
       blue: darken(0.25, colors.blue),
@@ -116,6 +132,7 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
       red: darken(0.1, colors.red),
       text: darken(0.2, colors.text),
       primary: darken(0.2, colors.primary),
+      yellow: darken(0.08, colors.yellow),
     },
     lightColors: {
       bg: lighten(0.3, colors.bg),
@@ -127,6 +144,7 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
       red: lighten(0.1, colors.red),
       text: lighten(0.2, colors.text),
       primary: lighten(0.1, colors.primary),
+      yellow: lighten(0.08, colors.yellow),
     },
     shadow: isDarkMode
       ? `${darken(0.05, colors.bg)} 0px 1px 5px 0px,
@@ -137,15 +155,7 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
          ${darken(0.4, lightModeColors.bg)} 0px 3px 1px -2px`,
     hoverShadow: makeHoverShadow(colors.bg),
     borderWidth: `3px`,
-    heatMap: {
-      background: `transparent`,
-      grade0: transparentize(0.95, colors.primary),
-      grade1: transparentize(0.75, colors.primary),
-      grade2: transparentize(0.5, colors.primary),
-      grade3: transparentize(0.25, colors.primary),
-      grade4: colors.primary,
-      text: colors.text,
-    },
+    navbarHeight: `4em`,
   };
 };
 
@@ -176,6 +186,7 @@ export const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.colors.rootBg};
   }
 
+  .button,
   button,
   input[type='reset'],
   input[type='button'],
@@ -193,21 +204,15 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     text-decoration: none;
     background: ${props => props.theme.colors.text};
-    border-color:  ${props => props.theme.darkColors.bg};
-    border-style: solid;
-    border-width: ${props => props.theme.borderWidth};
+    /* border-color:  ${props => props.theme.darkColors.bg}; */
+    /* border-style: solid; */
+    /* border-width: ${props => props.theme.borderWidth}; */
     border-radius: ${props => props.theme.borderRadius};
     cursor: pointer;
     transition-timing-function: ease;
     transition-duration: .3s;
     transition-property: background-color,border-color,color;
     user-select: none;
-    *, :after, :before {
-    box-sizing: inherit;
-    }
-    :focus {
-      outline: none;
-    }
   }
 
   a {
@@ -242,9 +247,41 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
 
+
+  .github{
+   color: ${props => props.theme.github};
+   :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
+  .linkedin{
+   color: ${props => props.theme.linkedin};
+   :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
+  .medium{
+   color: ${props => props.theme.medium};
+   :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
+  .behance{
+   color: ${props => props.theme.behance};
+   :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
+  .instagram{
+   color: ${props => props.theme.instagram};
+   :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
+
   #disqus_thread {
     padding: 1em;
     background: ${darkModeColors.bg};
     border-radius: ${props => props.theme.borderRadius};
-    }
+  }
 `;

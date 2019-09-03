@@ -8,18 +8,6 @@ import { SizeProp, IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { socialMedia } from '../utils/data';
 import Flex from './Flex';
 
-// const IconLink = styled(OutboundLink)<IconLinkProps>`
-//   display: flex;
-//   align-content: center;
-//   margin: 0 auto;
-//   padding: 0.5em 0.25em;
-//   text-align: center;
-//   border-radius: 0.5em;
-//   :hover {
-//     background: ${props => transparentize(0.8, props.theme.lightColors.muted)};
-//   }
-// `;
-
 export interface SocialMediaIconsProps {
   delay?: number;
   size?: SizeProp;
@@ -60,7 +48,6 @@ export const SocialIcon = ({
   name,
   link,
   icon,
-  color,
   size,
   show,
   colors,
@@ -91,7 +78,7 @@ export const SocialIcon = ({
   };
 
   return (
-    <IconLink href={link} color={color} colors={colors} target="_blank_">
+    <IconLink href={link} colors={colors} target="_blank_">
       <WhatToShow decide={show} />
     </IconLink>
   );
@@ -130,7 +117,9 @@ const SocialMediaIcons = ({
         >
           <SocialIcon
             key={socialMedia[i].name}
-            {...socialMedia[i]}
+            name={socialMedia[i].name}
+            link={socialMedia[i].link}
+            icon={socialMedia[i].icon}
             size={size}
             show={show}
             colors={socialMedia[i].colors}
@@ -139,17 +128,21 @@ const SocialMediaIcons = ({
       ))}
     </Flex>
   ) : (
-    socialMedia.map(({ name, link, icon, colors }) => (
-      <SocialIcon
-        key={name}
-        name={name}
-        link={link}
-        icon={icon}
-        colors={colors}
-        size={size}
-        show={show}
-      />
-    ))
+    <div>
+      <>
+        {socialMedia.map(({ name, link, icon, colors }) => (
+          <SocialIcon
+            key={name}
+            name={name}
+            link={link}
+            icon={icon}
+            colors={colors}
+            size={size}
+            show={show}
+          />
+        ))}
+      </>
+    </div>
   );
 };
 
