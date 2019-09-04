@@ -1,30 +1,15 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { Child } from '..';
-import { ThemeContext } from './Providers';
-import { GlobalStyle, makeTheme } from '../utils/theme';
-import Landing from './Landing';
 
 interface LayoutProps {
-  children: React.ReactElement;
+  children: React.ReactNode;
 }
-const Layout = (props: LayoutProps) => {
-  const { children } = props;
-  const { theme } = React.useContext(ThemeContext);
-  const showLanding = children.props.path === '/';
-  return (
-    <StyledThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <Landing show={showLanding} />
-        <Navbar />
-        {children}
-        <Footer />
-      </>
-    </StyledThemeProvider>
-  );
-};
+const Layout = ({ children }: LayoutProps): any => [
+  <Navbar />,
+  children,
+  <Footer />,
+];
 
 export default Layout;
