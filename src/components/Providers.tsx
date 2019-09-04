@@ -1,55 +1,53 @@
 import React, { createContext } from 'react';
-import useTheme, { UseTheme } from '../hooks/useTheme';
-import useNav, { UseNav } from '../hooks/useNav';
+import useTheme from '../hooks/useTheme';
+import useNav from '../hooks/useNav';
 import { Child } from '..';
+import { makeTheme } from '../utils/theme';
 
-function ProviderComposer({
+const ProviderComposer = ({
   contexts,
   children,
 }: {
-  contexts: [React.ChildContextProvider<any>];
+  contexts: any[];
   children: Child;
-}) {
-  return contexts.reduceRight(
+}): JSX.Element =>
+  contexts.reduceRight(
     (kids, parent) =>
       React.cloneElement(parent, {
         children: kids,
       }),
     children,
   );
-}
 
-export const ThemeContext = createContext<UseTheme>({
-  theme: {},
-  toggleTheme: null,
+export const ThemeContext = createContext({
+  theme: makeTheme('light'),
+  toggleTheme: () => {},
 });
 
-export function ThemeProvider({ children }: { children: any }) {
+export const ThemeProvider = ({ children }: any) => {
   const { theme, toggleTheme } = useTheme();
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
-}
+};
 
 export const NavContext = createContext({});
 
-export function NavProvider({ children }: any) {
+export const NavProvider = ({ children }: any) => {
   const { isNavOpen, setNav, toggleNav } = useNav();
   return (
     <NavContext.Provider value={{ isNavOpen, setNav, toggleNav }}>
       {children}
     </NavContext.Provider>
   );
-}
+};
 
-export function ContextProvider({ children }: any) {
-  return (
-    <ProviderComposer
-      contexts={[<ThemeProvider key="ThemeProvider" />, <NavProvider />]}
-    >
+export default ({ children }: any) => (
+  <div>
+    <ProviderComposer contexts={[<ThemeProvider />, <NavProvider />]}>
       {children}
     </ProviderComposer>
-  );
-}
+  </div>
+);

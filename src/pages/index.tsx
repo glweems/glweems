@@ -5,6 +5,7 @@ import { Link } from '../components/Common';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
+import Landing from '../components/Landing';
 
 const Wrapper = styled.div`
   display: grid;
@@ -17,7 +18,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const IndexPage = () => (
+const IndexPage = () => [
+  <Landing />,
   <Wrapper>
     <section className="Tutorials ">
       <h2>Blog Posts</h2>
@@ -39,7 +41,7 @@ const IndexPage = () => (
       <h2>Side Projects</h2>
       <SideProjects limit={3} />
     </section>
-  </Wrapper>
-);
+  </Wrapper>,
+];
 
 export default IndexPage;
