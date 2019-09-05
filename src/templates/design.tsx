@@ -1,44 +1,33 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
 import SEO from '../components/SEO';
 import { BehanceProject, ImageFile } from '..';
+import { Container } from '../components/Common';
 
-const Content = styled.div`
-  margin-top: 2em;
-  .design-img {
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-  }
-`;
-
-const DesignTemplate = ({
-  data: {
-    currentProject: { name, tags, description },
-    allFile,
-  },
-}: DesignTemplate) => (
-  <>
-    <SEO title={name} keywords={tags} description={description} />
-
-    <Content>
-      <section className="container">
+export default function DesignTemplate({ data }: DesignTemplate) {
+  const { currentProject, allFile } = data;
+  const { name, tags, description } = currentProject;
+  return [
+    <SEO
+      key={`seo-design-${name}`}
+      title={name}
+      keywords={tags}
+      description={description}
+    />,
+    <section key={`content-design-${name}-1`}>
+      <Container>
         <h1>{name}</h1>
         <h3>{description}</h3>
-      </section>
-
-      <section className="container">
-        {allFile.nodes.map(({ childImageSharp, id }) => (
-          <div className="design-img">
-            <Img key={id} fluid={childImageSharp.fluid} />
-          </div>
-        ))}
-      </section>
-    </Content>
-  </>
-);
-
+      </Container>
+    </section>,
+    allFile.nodes.map(({ childImageSharp, id }) => (
+      <Container key={`design-${name}-${id}`}>
+        <Img fluid={childImageSharp.fluid} />
+      </Container>
+    )),
+  ];
+}
 interface DesignTemplate {
   data: {
     currentProject: BehanceProject;
@@ -73,5 +62,3 @@ export const designQuery = graphql`
     }
   }
 `;
-
-export default DesignTemplate;

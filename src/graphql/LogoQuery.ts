@@ -1,18 +1,19 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { FixedObject } from 'gatsby-image';
 
-const useGlweemsQuery = () =>
-  useStaticQuery(graphql`
+const useLogoQuery = (): { childImageSharp: { fixed: FixedObject } } => {
+  const { logo } = useStaticQuery(graphql`
     query GlweemsQuery {
-      file(relativePath: { eq: "favicon.png" }) {
+      logo: file(relativePath: { eq: "favicon.png" }) {
         childImageSharp {
-          # Specify the image processing specifications right in the query.
-          # Makes it trivial to update as your page's design changes.
-          fixed(height: 30) {
-            ...GatsbyImageSharpFixed
+          fixed(height: 45) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }
     }
   `);
+  return logo;
+};
 
-export default useGlweemsQuery;
+export default useLogoQuery;

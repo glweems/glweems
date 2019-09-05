@@ -86,6 +86,12 @@ const Card = ({
 
 export default Card;
 
+// export const Cards = ({ children }: { children: Child }) => (
+//   <Container>
+//     <CardsWrapper>{children}</CardsWrapper>
+//   </Container>
+// );
+
 export const Cards = styled.div`
   display: grid;
   grid-template-rows: 1fr;
@@ -93,8 +99,5 @@ export const Cards = styled.div`
   gap: 1.5em;
   ${media.greaterThan('sm')`
     grid-template-columns: repeat(2, 1fr);
-`}
-  ${media.greaterThan('lg')`
-    grid-template-columns: repeat(3, 1fr);
 `}
 `;

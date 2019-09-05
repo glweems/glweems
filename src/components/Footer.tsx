@@ -1,52 +1,33 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styled from 'styled-components';
-import { email, socialMedia } from '../utils/data';
-
-interface ColorOptions {
-  colors: {
-    light: string;
-    dark: string;
-  };
-}
-
-const Li = styled.li<ColorOptions>`
-  svg {
-    color: ${props =>
-      !props.theme.isDarkMode ? props.colors.dark : props.colors.light};
-  }
-`;
+import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
+import { Container, SocialIcon, OutboundLink } from './Common';
+import { accounts } from '../utils/data';
 
 const Footer = () => (
   <footer>
-    <div className="container">
+    <Container>
       <section>
         <h4>Contact</h4>
-        <ul>
-          <li>
-            <p>Garrett Weems</p>
-          </li>
-          <li>
-            <a href={email.link}>
-              <FontAwesomeIcon icon={email.icon} />
-              <span>{email.name}</span>
-            </a>
-          </li>
-        </ul>
+        <p>Garrett Weems</p>
+        <div>
+          <OutboundLink href={accounts.email.link} target="_blank_">
+            <span>
+              <FaIcon icon={accounts.email.icon} />{' '}
+            </span>
+            <span>{accounts.email.username} </span>
+          </OutboundLink>
+        </div>
       </section>
       <hr />
       <section>
-        <h4>Social Media</h4>
-        <ul>
-          {socialMedia.map(({ name, link, icon, colors }) => (
-            <Li key={name} colors={colors}>
-              <a href={link} target="_blank_">
-                <FontAwesomeIcon icon={icon} />
-                <span>{name}</span>
-              </a>
-            </Li>
-          ))}
-        </ul>
+        <h4>Find Me On The Web</h4>
+        <div>
+          <SocialIcon size="2x" account={accounts.github} />
+          <SocialIcon size="2x" account={accounts.linkedin} />
+          <SocialIcon size="2x" account={accounts.medium} />
+          <SocialIcon size="2x" account={accounts.instagram} />
+          <SocialIcon size="2x" account={accounts.behance} />
+        </div>
       </section>
       <hr />
       <section>
@@ -58,7 +39,7 @@ const Footer = () => (
           <li>styled-components</li>
         </ul>
       </section>
-    </div>
+    </Container>
   </footer>
 );
 

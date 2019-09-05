@@ -1,60 +1,62 @@
 import {
   faMediumM,
   faBehance,
-  faLinkedinIn,
-  faCodepen,
-  faGithubAlt,
-  IconDefinition,
   faReadme,
+  faGithub,
+  faLinkedin,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { faPenNib, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { Account } from '../index';
 
 export const menuItems = [
   { text: 'Graphic Design', path: '/designs', icon: faPenNib },
   { text: 'Code Tutorials', path: '/blog', icon: faReadme },
 ];
 
-export interface SocialMedia {
-  name: string;
-  link: string;
-  icon: IconDefinition;
-  colors: {
-    light: string;
-    dark: string;
-  };
+interface Accounts {
+  email: Account;
+  github: Account;
+  linkedin: Account;
+  medium: Account;
+  behance: Account;
+  instagram: Account;
 }
 
-export const email: SocialMedia = {
-  name: 'gwgraphicdesign@gmail.com',
-  link: 'mailto:gwgraphicdesign@gmail.com',
-  icon: faEnvelope,
-  colors: {
-    light: '#f7f7f7',
-    dark: '#333',
-  },
-};
-
-export const socialMedia: SocialMedia[] = [
-  {
-    name: 'Github',
-    link: 'https://github.com/glweems',
-    icon: faGithubAlt,
+export const accounts: Accounts = {
+  email: {
+    name: 'Email',
+    username: 'gwgraphicdesign@gmail.com',
+    link: 'mailto:gwgraphicdesign@gmail.com',
+    icon: faEnvelope,
     colors: {
       light: '#f7f7f7',
-      dark: '#333',
+      dark: '#333333',
     },
   },
-  {
+  github: {
+    name: 'Github',
+    username: 'glweems',
+    link: 'https://github.com/glweems',
+    icon: faGithub,
+    colors: {
+      light: '#333333',
+      dark: '#333333',
+    },
+  },
+  linkedin: {
     name: 'LinkedIn',
+    username: 'glweems',
     link: 'https://www.linkedin.com/in/glweems',
-    icon: faLinkedinIn,
+    icon: faLinkedin,
     colors: {
       light: '#0077B5',
       dark: '#0077B5',
     },
   },
-  {
+  medium: {
     name: 'Medium',
+    username: 'glweems',
     link: 'https://medium.com/@glweems',
     icon: faMediumM,
     colors: {
@@ -62,8 +64,9 @@ export const socialMedia: SocialMedia[] = [
       dark: '#00ab6c',
     },
   },
-  {
+  behance: {
     name: 'Behance',
+    username: 'glweems',
     link: 'https://www.behance.net/glweems',
     icon: faBehance,
     colors: {
@@ -71,15 +74,16 @@ export const socialMedia: SocialMedia[] = [
       dark: '#1769ff',
     },
   },
-  {
-    name: 'Codepen',
-    link: 'https://codepen.io/glweems',
-    icon: faCodepen,
+  instagram: {
+    name: 'Instagram',
+    username: 'glweems',
+    link: 'https://instagram.com/glweems',
+    icon: faInstagram,
     colors: {
-      light: '#f7f7f7',
-      dark: '#333',
+      light: '#5851DB',
+      dark: '#5851DB',
     },
   },
-];
+};
 
-export default { menuItems, socialMedia, email };
+export default { menuItems, accounts };

@@ -21,6 +21,7 @@ const config = {
   siteRss: '/rss.xml',
   contact: {
     email: 'gwgraphicdeesign@gmail.com',
+    twitter: 'devglweems',
   },
 };
 

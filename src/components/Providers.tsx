@@ -1,27 +1,29 @@
 import React, { createContext } from 'react';
+import { DefaultTheme } from 'styled-components';
 import useTheme from '../hooks/useTheme';
 import useNav from '../hooks/useNav';
 import { Child } from '..';
 import { makeTheme } from '../utils/theme';
 
-const ProviderComposer = ({
-  contexts,
-  children,
-}: {
+interface PCP {
   contexts: any[];
   children: Child;
-}): JSX.Element =>
-  contexts.reduceRight(
-    (kids, parent) =>
-      React.cloneElement(parent, {
-        children: kids,
-      }),
-    children,
-  );
+}
+const ProviderComposer = ({ contexts, children }: PCP): JSX.Element =>
+  contexts.reduceRight((kids, parent) => {
+    return React.cloneElement(parent, {
+      children: kids,
+    });
+  }, children);
 
-export const ThemeContext = createContext({
+type ThemeContext = {
+  theme: DefaultTheme;
+  toggleTheme: () => void | any;
+};
+
+export const ThemeContext = createContext<ThemeContext>({
   theme: makeTheme('light'),
-  toggleTheme: () => {},
+  toggleTheme: () => null,
 });
 
 export const ThemeProvider = ({ children }: any) => {
@@ -33,7 +35,17 @@ export const ThemeProvider = ({ children }: any) => {
   );
 };
 
-export const NavContext = createContext({});
+type NavContext = {
+  isNavOpen: boolean | null;
+  setNav: React.Dispatch<React.SetStateAction<boolean>> | null;
+  toggleNav: () => void | null;
+};
+
+export const NavContext = createContext<NavContext>({
+  isNavOpen: null,
+  setNav: () => null,
+  toggleNav: () => null,
+});
 
 export const NavProvider = ({ children }: any) => {
   const { isNavOpen, setNav, toggleNav } = useNav();
@@ -45,9 +57,12 @@ export const NavProvider = ({ children }: any) => {
 };
 
 export default ({ children }: any) => (
-  <div>
-    <ProviderComposer contexts={[<ThemeProvider />, <NavProvider />]}>
-      {children}
-    </ProviderComposer>
-  </div>
+  <ProviderComposer
+    contexts={[
+      <ThemeProvider key="theme-provider" />,
+      <NavProvider key="nav-provider" />,
+    ]}
+  >
+    {children}
+  </ProviderComposer>
 );
