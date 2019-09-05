@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
-import GithubCalendar from 'react-github-calendar';
-import Avatar from './Avatar';
+import GHCalendar from 'react-github-calendar';
+import { animated, useSpring } from 'react-spring';
+import { Ghost } from './Icons';
 import { SocialIcon } from './Common';
 import { accounts } from '../utils/data';
+
+const GithubCalendar = animated(GHCalendar);
 
 const Wrapper = styled.div`
   display: grid;
@@ -64,31 +67,31 @@ interface Props {
   show: boolean;
 }
 
-const Landing = (): React.ReactElement => (
-  <Wrapper>
-    <div />
-    <div />
-    <div className="img">
-      <Avatar />
-    </div>
-    <div>
-      <h1>
-        Hello, I&apos;m <span>Garrett Weems</span>.
-      </h1>
-      <h3>I&apos;m a full-stack web developer.</h3>
-      <p>I specialize in javascript / react.js web developement.</p>
-    </div>
-    <div className="icons">
-      <SocialIcon size="2x" account={accounts.github} />
-      <SocialIcon size="2x" account={accounts.linkedin} />
-      <SocialIcon size="2x" account={accounts.medium} />
-      <SocialIcon size="2x" account={accounts.instagram} />
-      <SocialIcon size="2x" account={accounts.behance} />
-    </div>
-    <GithubCalendar username="glweems" years={[2019]}>
-      <ReactTooltip delayShow={50} html />
-    </GithubCalendar>
-  </Wrapper>
-);
+const Landing = (): React.ReactElement => {
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
+  return (
+    <Wrapper>
+      <div />
+      <Ghost />
+      <div>
+        <h1>
+          Hello, I&apos; m <span>Garrett Weems</span>.
+        </h1>
+        <h3>I&apos;m a full-stack web developer.</h3>
+        <p>I specialize in javascript / react.js web developement.</p>
+      </div>
+      <animated.div className="icons" style={props}>
+        <SocialIcon size="2x" account={accounts.github} />
+        <SocialIcon size="2x" account={accounts.linkedin} />
+        <SocialIcon size="2x" account={accounts.medium} />
+        <SocialIcon size="2x" account={accounts.instagram} />
+        <SocialIcon size="2x" account={accounts.behance} />
+      </animated.div>
+      <GithubCalendar username="glweems" years={[2019]} style={props}>
+        <ReactTooltip delayShow={50} html />
+      </GithubCalendar>
+    </Wrapper>
+  );
+};
 
 export default Landing;

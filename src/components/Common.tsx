@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import styled from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
@@ -19,8 +20,48 @@ export const Container = styled.div`
     grid-column: main;
   }
 `;
+// Since DOM elements <a> cannot receive activeClassName
+// and partiallyActive, destructure the prop here and
+// pass it only to GatsbyLink
 
-export const Link = styled(GatsbyLink)`
+interface WhichLinkProps {
+  children: React.ReactNode;
+}
+
+const WhichLink = ({
+  children,
+  to,
+  activeClassName,
+  partiallyActive,
+  ...other
+}: WhichLinkProps) => {
+  // Tailor the following test to your environment.
+  // This example assumes that any internal link (intended for Gatsby)
+  // will start with exactly one slash, and that anything else is external.
+  const internal = /^\/(?!\/)/.test(to);
+  // Use Gatsby Link for internal links, and <a> for others
+  if (internal) {
+    return (
+      <GatsbyLink
+        to={to}
+        activeClassName={activeClassName}
+        partiallyActive={partiallyActive}
+        {...other}
+      >
+        {children}
+      </GatsbyLink>
+    );
+  }
+  return (
+    <OutboundLink href={to} {...other} target="_blank_">
+      {children}
+    </OutboundLink>
+  );
+};
+
+// export const Link = styled(WhichLink)``;
+
+export const Link = styled(WhichLink)`
   padding: 2px 6px 2px 6px;
   color: ${props => props.theme.colors.text};
   letter-spacing: 0.08rem;

@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { Link as GatsbyLink } from 'gatsby';
 import { Link, Container } from './Common';
 import { Logo } from './Icons';
 import { Child } from '..';
 import { ThemeContext } from './Providers';
 // import { ThemeContext, NavContext } from './Providers';
-
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
   isMenu: boolean;
@@ -31,6 +29,9 @@ const Navigation = styled.div`
   justify-content: center;
   justify-content: space-between;
   height: ${props => props.theme.navbarHeight};
+  .logo {
+    cursor: pointer;
+  }
 `;
 interface StickyProps {
   children: Child;
@@ -55,13 +56,14 @@ const Nav = styled.nav`
 
 const Navbar = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
   return (
     <Wrapper>
       <Navigation className="container">
-        <GatsbyLink to="/">
-          <Logo />
-        </GatsbyLink>
+        <div>
+          <Link to="/">
+            <Logo />
+          </Link>
+        </div>
         <Nav>
           <Link to="/blog">Blog</Link>
           <Link to="/designs">Design</Link>
