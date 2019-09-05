@@ -3,7 +3,8 @@ import styled from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
 import Avatar from './Avatar';
-import { social, SocialIcon } from './Common';
+import { SocialIcon } from './Common';
+import { accounts } from '../utils/data';
 
 const Wrapper = styled.div`
   display: grid;
@@ -16,6 +17,10 @@ const Wrapper = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   > * {
     grid-column: main;
+  }
+
+  p {
+    color: #333333;
   }
 
   .icons {
@@ -62,6 +67,7 @@ interface Props {
 const Landing = (): React.ReactElement => (
   <Wrapper>
     <div />
+    <div />
     <div className="img">
       <Avatar />
     </div>
@@ -73,11 +79,11 @@ const Landing = (): React.ReactElement => (
       <p>I specialize in javascript / react.js web developement.</p>
     </div>
     <div className="icons">
-      <SocialIcon size="2x" account={social.github} />
-      <SocialIcon size="2x" account={social.linkedin} />
-      <SocialIcon size="2x" account={social.medium} />
-      <SocialIcon size="2x" account={social.instagram} />
-      <SocialIcon size="2x" account={social.behance} />
+      <SocialIcon size="2x" account={accounts.github} />
+      <SocialIcon size="2x" account={accounts.linkedin} />
+      <SocialIcon size="2x" account={accounts.medium} />
+      <SocialIcon size="2x" account={accounts.instagram} />
+      <SocialIcon size="2x" account={accounts.behance} />
     </div>
     <GithubCalendar username="glweems" years={[2019]}>
       <ReactTooltip delayShow={50} html />

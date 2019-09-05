@@ -1,4 +1,5 @@
 import { FluidObject, FixedObject } from 'gatsby-image';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface Nodes<T> {
   nodes: T[];
@@ -16,6 +17,17 @@ export interface SideProject {
     childImageSharp: {
       fluid: FluidObject;
     };
+  };
+}
+
+export interface Account {
+  name: string;
+  username: string;
+  link: string;
+  icon: IconDefinition;
+  colors: {
+    light: string;
+    dark: string;
   };
 }
 

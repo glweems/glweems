@@ -22,8 +22,8 @@ const Styles = ({ children }: any) => {
 };
 
 const Providers = ({ children }: Props) => [
-  <SEO />,
-  <ContextProvider>
+  <SEO key="root-element-1" />,
+  <ContextProvider key="root-element-2">
     <Styles>
       <Layout>{children}</Layout>
     </Styles>

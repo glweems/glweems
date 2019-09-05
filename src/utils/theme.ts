@@ -160,29 +160,13 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
 };
 
 export const GlobalStyle = createGlobalStyle`
-  :root {
-    /* Base values */
-    --typography__fontSize: 18px;
-    --spacing__rhythmUnit: 1.778rem; /* 1.778rem * 18px = 32px */
-    --border__width--default: 0.111rem; /* 2px */
-    /* Calculations */
-    --spacing__vertical--1: var(--spacing__rhythmUnit);
-    --spacing__vertical--2: calc(2 * var(--spacing__rhythmUnit));
-    --spacing__vertical--3: calc(3 * var(--spacing__rhythmUnit));
-  }
-
-  html {
+html {
     font-size: var(--typography__fontSize);
   }
 
   body {
-    line-height: var(--spacing__vertical--1);
-  }
-
-
-  html,
-  body {
     color: ${props => props.theme.colors.text};
+    line-height: var(--spacing__vertical--1);
     background: ${props => props.theme.colors.rootBg};
   }
 
@@ -194,7 +178,7 @@ export const GlobalStyle = createGlobalStyle`
     display: inline-block;
     box-sizing: content-box;
     margin: 0 auto;
-    padding: .5em 1em;
+    padding: 0.5em 1em;
     overflow: visible;
     color: ${props => props.theme.colors.bg};
     font: inherit;
@@ -204,30 +188,29 @@ export const GlobalStyle = createGlobalStyle`
     text-align: center;
     text-decoration: none;
     background: ${props => props.theme.colors.text};
-    /* border-color:  ${props => props.theme.darkColors.bg}; */
-    /* border-style: solid; */
-    /* border-width: ${props => props.theme.borderWidth}; */
     border-radius: ${props => props.theme.borderRadius};
     cursor: pointer;
     transition-timing-function: ease;
-    transition-duration: .3s;
-    transition-property: background-color,border-color,color;
+    transition-duration: 0.3s;
+    transition-property: background-color, border-color, color;
     user-select: none;
   }
 
   a {
     margin: 0;
     padding: 0;
-    color:${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.primary};
   }
 
   footer {
     width: 100%;
     margin: 0;
     padding: 1.5em 0;
+
     section {
       margin-bottom: 1.5em;
     }
+
     h4 {
       margin-bottom: 0.75em;
       padding-bottom: 0.25em;
@@ -237,44 +220,49 @@ export const GlobalStyle = createGlobalStyle`
     ul {
       margin: 0;
       list-style: none;
-      li {
-        margin: 0;
-        text-align: left;
-        span {
-          margin-left: 0.75em;
-        }
-      }
+    }
+
+    li {
+      margin: 0;
+      text-align: left;
+    }
+
+    span {
+      margin-left: 0.75em;
     }
   }
 
+  .github {
+    color: ${props => props.theme.github};
+    :hover {
+      color: ${props => props.theme.colors.text};
+    }
+  }
 
-  .github{
-   color: ${props => props.theme.github};
-   :hover {
+  .linkedin {
+    color: ${props => props.theme.linkedin};
+    :hover {
       color: ${props => props.theme.colors.text};
     }
   }
-  .linkedin{
-   color: ${props => props.theme.linkedin};
-   :hover {
+
+  .medium {
+    color: ${props => props.theme.medium};
+    :hover {
       color: ${props => props.theme.colors.text};
     }
   }
-  .medium{
-   color: ${props => props.theme.medium};
-   :hover {
+
+  .behance {
+    color: ${props => props.theme.behance};
+    :hover {
       color: ${props => props.theme.colors.text};
     }
   }
-  .behance{
-   color: ${props => props.theme.behance};
-   :hover {
-      color: ${props => props.theme.colors.text};
-    }
-  }
-  .instagram{
-   color: ${props => props.theme.instagram};
-   :hover {
+
+  .instagram {
+    color: ${props => props.theme.instagram};
+    :hover {
       color: ${props => props.theme.colors.text};
     }
   }
@@ -284,4 +272,4 @@ export const GlobalStyle = createGlobalStyle`
     background: ${darkModeColors.bg};
     border-radius: ${props => props.theme.borderRadius};
   }
-`;
+  `;

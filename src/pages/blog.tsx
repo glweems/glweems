@@ -1,11 +1,10 @@
 import React from 'react';
 import Posts from '../components/Posts';
+import { Container } from '../components/Common';
 
-export const TutorialsPage = () => (
-  <div className="container">
+export default () => (
+  <Container>
     <h1>Blog Posts</h1>
     <Posts />
-  </div>
+  </Container>
 );
-
-export default TutorialsPage;

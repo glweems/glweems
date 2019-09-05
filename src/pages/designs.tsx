@@ -1,11 +1,10 @@
 import React from 'react';
 import Designs from '../components/Designs';
+import { Container } from '../components/Common';
 
-const DesignsPage = () => (
-  <div className="container">
+export default () => (
+  <Container>
     <h1>Graphic Design Projects</h1>
     <Designs />
-  </div>
+  </Container>
 );
-
-export default DesignsPage;

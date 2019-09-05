@@ -7,9 +7,9 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 const Layout = ({ children }: LayoutProps): any => [
-  <Navbar />,
+  <Navbar key="navbar" />,
   children,
-  <Footer />,
+  <Footer key="footer" />,
 ];
 
 export default Layout;

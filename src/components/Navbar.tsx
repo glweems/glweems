@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { Link } from './Common';
+import { Link as GatsbyLink } from 'gatsby';
+import { Link, Container } from './Common';
 import { Logo } from './Icons';
 import { Child } from '..';
-import { ThemeContext, NavContext } from './Providers';
+import { ThemeContext } from './Providers';
+// import { ThemeContext, NavContext } from './Providers';
 
 interface Navbar {
   toggleMenu: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,12 +36,11 @@ interface StickyProps {
   children: Child;
 }
 
-const Sticky = styled.div`
+const Wrapper = styled(Container)`
   position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
-  width: 100%;
   background: ${props => transparentize(0.1, props.theme.colors.bg)};
 `;
 
@@ -53,29 +54,26 @@ const Nav = styled.nav`
 `;
 
 const Navbar = () => {
-  const { theme, toggleTheme } = React.useContext(ThemeContext);
-  // const { isNavOpen, toggleNav } = React.useContext(NavContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
-    <Sticky>
+    <Wrapper>
       <Navigation className="container">
-        <div>
-          <Link to="/">
-            <Logo />
-          </Link>
-        </div>
+        <GatsbyLink to="/">
+          <Logo />
+        </GatsbyLink>
         <Nav>
           <Link to="/blog">Blog</Link>
           <Link to="/designs">Design</Link>
           <button type="button" className="button" onClick={toggleTheme}>
-            {!theme.isDarkMode ? 'dark' : 'light'}
+            {theme && !theme.isDarkMode ? 'dark' : 'light'}
           </button>
           {/* <button type="button" className="button" onClick={toggleNav}>
             {isNavOpen ? 'open' : 'closed'}
           </button> */}
         </Nav>
       </Navigation>
-    </Sticky>
+    </Wrapper>
   );
 };
 

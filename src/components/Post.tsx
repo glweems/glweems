@@ -1,7 +1,7 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { lighten, darken, transparentize } from 'polished';
+import { lighten, darken } from 'polished';
 import RehypeReact from 'rehype-react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import { media } from '../utils/theme';
@@ -93,7 +93,6 @@ export const Article = styled.article`
 
   .gatsby-highlight {
     grid-column: a / z;
-    }
   }
 
   iframe {

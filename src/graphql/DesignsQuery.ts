@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import { useStaticQuery, graphql } from 'gatsby';
-import { DesignsQuery, BehanceProject, ImageFile } from '..';
+import { DesignsQuery, BehanceProject, Design } from '..';
 
 const UseDesignsQuery = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
@@ -32,15 +32,21 @@ const UseDesignsQuery = () => {
     }
   `);
 
-  const findDesignCover = (design: BehanceProject): ImageFile | undefined =>
-    allFile.nodes.find(file => file.relativeDirectory.includes(design.slug));
+  const findDesignCover = (design: BehanceProject): any => {
+    const image = allFile.nodes.find(file =>
+      file.relativeDirectory.includes(design.slug),
+    );
+    if (image) return image;
+  };
 
-  const designs = allBehanceProjects.nodes.map(design => {
+  let designs: Design[] = [];
+
+  allBehanceProjects.nodes.forEach(design => {
     if (findDesignCover(design)) {
-      return {
+      designs.push({
         ...design,
         cover: findDesignCover(design),
-      };
+      });
     }
   });
 

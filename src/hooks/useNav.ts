@@ -1,12 +1,7 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 
-export interface UseNav {
-  isNavOpen: boolean;
-  setNav: (to: boolean) => void;
-  toggleNav: () => void;
-}
-const useNav = (): UseNav => {
-  const [isNavOpen, setNav] = useState(false);
+const useNav = () => {
+  const [isNavOpen, setNav] = React.useState(false);
   const toggleNav = () => setNav(state => !state);
 
   return { isNavOpen, setNav, toggleNav };

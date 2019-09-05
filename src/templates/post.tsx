@@ -10,7 +10,10 @@ import { ThemeContext } from '../components/Providers';
 interface Props {
   data: { post: MarkdownRemark };
 }
-const BlogTemplate = ({ data: { post } }: Props): JSX.Element => {
+
+type BlogTemplate = [JSX.Element, JSX.Element];
+
+const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
   const { theme } = useContext(ThemeContext);
   const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
@@ -19,23 +22,19 @@ const BlogTemplate = ({ data: { post } }: Props): JSX.Element => {
     title: post.frontmatter.title,
   };
 
-  return (
-    <>
-      <SEO
-        title={post.frontmatter.title}
-        keywords={post.frontmatter.tags}
-        description={post.excerpt}
-      />
-      <Article className={theme.mode}>
-        <PostHeader post={post} />
-        <Content elements={post.htmlAst} />
-        <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
-      </Article>
-    </>
-  );
+  return [
+    <SEO
+      title={post.frontmatter.title}
+      keywords={post.frontmatter.tags}
+      description={post.excerpt}
+    />,
+    <Article className={theme.mode}>
+      <PostHeader post={post} />
+      <Content elements={post.htmlAst} />
+      <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
+    </Article>,
+  ];
 };
-
-export default BlogTemplate;
 
 export const BlogPost = graphql`
   query PostQuery($slug: String!) {
@@ -48,3 +47,5 @@ export const BlogPost = graphql`
     }
   }
 `;
+
+export default BlogTemplate;
