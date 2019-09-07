@@ -11,7 +11,7 @@ interface Props {
   data: { post: MarkdownRemark };
 }
 
-type BlogTemplate = [JSX.Element, JSX.Element];
+type BlogTemplate = [JSX.Element, JSX.Element, JSX.Element];
 
 const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
   const { theme } = useContext(ThemeContext);
@@ -24,15 +24,20 @@ const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
 
   return [
     <SEO
+      key="SEO"
       title={post.frontmatter.title}
       keywords={post.frontmatter.tags}
       description={post.excerpt}
     />,
-    <Article className={theme.mode}>
+    <Article key="Article" className={theme.mode}>
       <PostHeader post={post} />
       <Content elements={post.htmlAst} />
-      <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
     </Article>,
+    <DiscussionEmbed
+      key="Diqus"
+      shortname={disqusShortName}
+      config={disqusConfig}
+    />,
   ];
 };
 

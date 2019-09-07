@@ -7,25 +7,21 @@ import Posts from '../components/Posts';
 import Landing from '../components/Landing';
 
 const IndexPage = () => [
-  <Landing />,
-  <Container>
-    <section className="Tutorials">
+  <Landing key="Landing" />,
+  <Container key="Content">
+    <section>
       <h2>Blog Posts</h2>
       <Posts limit={3} />
-      <div className="link">
-        <Link to="/blog">View All Blog Posts</Link>
-      </div>
+      <Link to="/blog">View All Blog Posts</Link>
     </section>
 
-    <section className="Designs ">
+    <section>
       <h2>Design Projects</h2>
       <Designs limit={3} />
-      <div className="link">
-        <Link to="/designs">View All Designs</Link>
-      </div>
+      <Link to="/designs">View All Designs</Link>
     </section>
 
-    <section className="Websites ">
+    <section>
       <h2>Side Projects</h2>
       <SideProjects limit={3} />
     </section>
