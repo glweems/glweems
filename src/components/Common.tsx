@@ -1,43 +1,77 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { transparentize } from 'polished';
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { Account } from '..';
+import { Account, Child } from '..';
+import { media } from '../utils/theme';
 
 export const Container = styled.div`
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(1em, 1fr)
-    [main-start] minmax(0, 40em) [main-end]
-    minmax(1em, 1fr) [full-end];
-  width: 100%;
+  ${({ theme: { container } }) =>
+    container &&
+    css`
+      display: grid;
+      grid-template-columns:
+        [full-start] 1fr
+        [fluid-start] minmax(1em, 1fr)
+        [main-start] minmax(0, ${container.sm}) [main-end]
+        minmax(1em, 1fr) [fluid-end]
+        1fr [full-end];
+      width: 100%;
 
-  > * {
-    grid-column: main;
-  }
+      > {
+        * {
+          grid-column: main;
+        }
+        .fluid {
+          grid-column: fluid;
+        }
+        .full {
+          grid-column: full;
+        }
+      }
+
+      ${media.greaterThan(`sm`)`
+        grid-template-columns:
+          [full-start] 1fr
+          [fluid-start] minmax(1em, 1fr)
+          [main-start] minmax(0, ${container.md}) [main-end]
+          minmax(1em, 1fr) [fluid-end]
+          1fr [full-end];
+      `}
+      ${media.greaterThan(`md`)`
+        grid-template-columns:
+          [full-start] 1fr
+          [fluid-start] minmax(1em, 1fr)
+          [main-start] minmax(0, ${container.lg}) [main-end]
+          minmax(1em, 1fr) [fluid-end]
+          1fr [full-end];
+      `}
+    `}
 `;
-// Since DOM elements <a> cannot receive activeClassName
-// and partiallyActive, destructure the prop here and
-// pass it only to GatsbyLink
 
 interface WhichLinkProps {
-  children: React.ReactNode;
+  children?: string | Child | any;
+  to: string;
+  [key: string]: any;
+  partiallyActive?: boolean;
+  activeClassName?: string;
 }
 
-const WhichLink = ({
+export const Link = ({
   children,
   to,
-  activeClassName,
+  activeClassName = 'activeLink',
   partiallyActive,
   ...other
 }: WhichLinkProps) => {
   // Tailor the following test to your environment.
   // This example assumes that any internal link (intended for Gatsby)
   // will start with exactly one slash, and that anything else is external.
+
   const internal = /^\/(?!\/)/.test(to);
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
@@ -53,81 +87,52 @@ const WhichLink = ({
     );
   }
   return (
-    <OutboundLink href={to} {...other} target="_blank_">
+    <GoogleLink href={to} {...other} target="_blank">
       {children}
-    </OutboundLink>
+    </GoogleLink>
   );
 };
 
 // export const Link = styled(WhichLink)``;
-
-export const Link = styled(WhichLink)`
-  padding: 2px 6px 2px 6px;
+/*
+    padding: 2px 6px 2px 6px;
   color: ${props => props.theme.colors.text};
   letter-spacing: 0.08rem;
-  /* text-decoration: none; */
+  text-decoration: none;
   background: ${props => `linear-gradient(to bottom, transparent 62%,
    ${transparentize(0.5, props.theme.colors.primary)} 0) center
     center/0% 75% no-repeat`};
   cursor: pointer;
   transition: background-size 0.4s ease;
+
   &:hover {
-    text-decoration: none;
-    background-size: 100% 100%;
+    background-size: 90% 100%;
   }
-  &:active {
-    /* text-decoration: none; */
+
+  *:active {
+    text-decoration: none;
     background-size: 80% 100%;
   }
+
   &-container {
     position: relative;
     z-index: 1;
     padding: 60px;
-    /* background-color: #fff; */
-    /* box-shadow: 0 0 90px 10px rgba(95, 124, 179, 0.15); */
+    border-radius: 3px;
   }
-`;
-
-export const OutboundLink = styled(GoogleLink)`
-  padding: 2px 6px 2px 6px;
-  color: ${props => props.theme.colors.blue};
-  font-size: 18px;
-  letter-spacing: 0.08rem;
-  /* text-decoration: none; */
-  background: ${props => `linear-gradient(to bottom, transparent 62%,
-   ${transparentize(0.2, props.theme.colors.bg)} 0) center
-   center/0% 75% no-repeat`};
-  cursor: pointer;
-  transition: background-size 0.4s ease;
-  &:hover {
-    text-decoration: none;
-    background-size: 100% 100%;
-    transform: scale(1.125, 1.125);
-    /* font-size: 3em; */
-  }
-  &:active {
-    /* text-decoration: none; */
-    background-size: 80% 100%;
-  }
-  &-container {
-    position: relative;
-    z-index: 1;
-    padding: 60px;
-  }
-`;
-
+*/
 interface SocialIconProps {
   account: Account;
   size?: SizeProp;
 }
 
 export const SocialIcon = ({ account, size }: SocialIconProps) => (
-  <OutboundLink href={account.link} alt={account.name} target="_blank">
+  <Link to={account.link} alt={account.name} target="_blank">
     <FaIcon
       icon={account.icon}
       size={size}
       className={account.name.toLowerCase()}
     />
-  </OutboundLink>
+  </Link>
 );
 export default { Link };
