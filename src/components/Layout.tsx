@@ -1,17 +1,21 @@
 import React from 'react';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
-import { Child } from '..';
+import { HeaderContext } from './Providers';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: any;
   isNavOpen: boolean;
 }
 
-const Layout = ({ children }: LayoutProps) => [
-  <Navbar key="navbar" />,
-  children,
-  <Footer key="footer" />,
-];
+const Layout = (props: LayoutProps): any => {
+  const { Header } = React.useContext(HeaderContext);
+  return [
+    <Header key="Header" />,
+    <Navbar key="navbar" />,
+    props.children,
+    <Footer key="footer" />,
+  ];
+};
 
 export default Layout;

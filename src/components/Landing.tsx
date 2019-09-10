@@ -15,6 +15,7 @@ const Wrapper = styled(Container)`
     [full-start] minmax(1em, 1fr)
     [main-start] minmax(0, 40em) [main-end]
     minmax(1em, 1fr) [full-end];
+  align-content: space-around;
   height: ${props => `calc(100vh - ${props.theme.navbarHeight})`};
   background: ${props => props.theme.colors.yellow};
   border-radius: ${props => props.theme.borderRadius};
@@ -76,7 +77,7 @@ interface Props {
 const Landing = (): React.ReactElement => {
   const { heatMap } = React.useContext(ThemeContext);
   const one = useSpring({
-    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+    from: { transform: 'translate3d(0, -90vh, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 600,
     config: config.wobbly,
@@ -84,16 +85,22 @@ const Landing = (): React.ReactElement => {
   const two = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 700,
+    delay: 600,
     config: config.wobbly,
   });
   const three = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 900,
+    delay: 700,
     config: config.wobbly,
   });
   const four = useSpring({
+    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+    delay: 900,
+    config: config.wobbly,
+  });
+  const five = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 1250,
@@ -101,34 +108,35 @@ const Landing = (): React.ReactElement => {
   });
 
   return (
-    <Wrapper>
-      <div />
-      <animated.div style={one}>
-        <Ghost />
-      </animated.div>
-      <animated.div style={two}>
-        <h1>
-          Hello, I&apos; m <span>Garrett Weems</span>.
-        </h1>
-        <h3>I&apos;m a full-stack web developer.</h3>
-        <p>I specialize in javascript / react.js web developement.</p>
-      </animated.div>
-      <animated.div className="icons" style={three}>
-        <SocialIcon size="2x" account={accounts.github} />
-        <SocialIcon size="2x" account={accounts.linkedin} />
-        <SocialIcon size="2x" account={accounts.medium} />
-        <SocialIcon size="2x" account={accounts.instagram} />
-        <SocialIcon size="2x" account={accounts.behance} />
-      </animated.div>
-      <GithubCalendar
-        username="glweems"
-        years={[2019]}
-        theme={heatMap}
-        style={four}
-      >
-        <ReactTooltip delayShow={50} html />
-      </GithubCalendar>
-    </Wrapper>
+    <animated.div style={one}>
+      <Wrapper>
+        <animated.div style={two}>
+          <Ghost />
+        </animated.div>
+        <animated.div style={three}>
+          <h1>
+            Hello, I&apos; m <span>Garrett Weems</span>.
+          </h1>
+          <h3>I&apos;m a full-stack web developer.</h3>
+          <p>I specialize in javascript / react.js web developement.</p>
+        </animated.div>
+        <animated.div className="icons" style={four}>
+          <SocialIcon size="2x" account={accounts.github} />
+          <SocialIcon size="2x" account={accounts.linkedin} />
+          <SocialIcon size="2x" account={accounts.medium} />
+          <SocialIcon size="2x" account={accounts.instagram} />
+          <SocialIcon size="2x" account={accounts.behance} />
+        </animated.div>
+        <GithubCalendar
+          username="glweems"
+          years={[2019]}
+          theme={heatMap}
+          style={five}
+        >
+          <ReactTooltip delayShow={50} html />
+        </GithubCalendar>
+      </Wrapper>
+    </animated.div>
   );
 };
 

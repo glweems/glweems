@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import { createGlobalStyle, DefaultTheme, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { lighten, darken, tint, shade, transparentize } from 'polished';
+import { darken, tint, shade, transparentize } from 'polished';
 import { BoxShadowProperty, ColorProperty } from 'csstype';
 import theme from 'styled-theming';
 

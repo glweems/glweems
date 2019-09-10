@@ -1,14 +1,17 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
-import { transparentize, tint } from 'polished';
+import { transparentize } from 'polished';
 import { media } from '../../utils/theme';
 import { Container } from '../Common';
 
-export const NavbarStyles = styled(animated(Container))`
+export const Wrapper = styled.div`
   position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
+`;
+
+export const NavbarStyles = styled(animated(Container))`
   align-content: center;
   align-items: center;
   justify-content: space-between;
@@ -93,14 +96,14 @@ export const NavLinks = styled(animated.ul)`
 `;
 
 export const DropdownWrapper = styled(animated.div)`
-  position: fixed;
-  top: ${props => props.theme.navbarHeight};
-  right: 0;
-  left: 0;
-  z-index: 2;
+  margin: 1em;
   padding: 1em;
   background: ${props => transparentize(0.03, props.theme.colors.text)};
   ${media.greaterThan('md')`
       display: none;
     `}
+  button {
+    float: right;
+  }
+  border-radius: ${props => props.theme.borderRadius};
 `;

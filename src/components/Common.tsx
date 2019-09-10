@@ -3,7 +3,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { Link as GatsbyLink } from 'gatsby';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
-import { transparentize } from 'polished';
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
 import { Account, Child } from '..';

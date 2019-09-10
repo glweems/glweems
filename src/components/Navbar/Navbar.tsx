@@ -1,11 +1,9 @@
 import * as React from 'react';
-import styled, { ThemeContext as StyledThemeContext } from 'styled-components';
-// import { transparentize } from 'polished';
-import { useSpring, animated, config } from 'react-spring';
-import { transparentize } from 'polished';
-import { Link, Container } from '../Common';
+import { useSpring, config } from 'react-spring';
+import { Link } from '../Common';
 import { NavContext, ThemeContext } from '../Providers';
 import {
+  Wrapper,
   NavbarStyles,
   Navigation,
   BurgerStyles,
@@ -27,7 +25,7 @@ export const BurgerMenu = () => {
   );
 };
 
-export const Dropdown = (props: any) => {
+export const Dropdown = () => {
   const { isNavOpen, toggleNav } = React.useContext(NavContext);
   const { theme, toggleTheme } = React.useContext(ThemeContext);
   const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
@@ -38,11 +36,18 @@ export const Dropdown = (props: any) => {
         range: [0, 0.2, 0.3, 1],
         output: [0, -20, 0, -200],
       })
-      .interpolate(openValue => `translate3d(0, ${openValue}px, 0`),
+      .interpolate(
+        openValue => `translate3d(${openValue}px, 0, ${openValue}px`,
+      ),
   };
   return isNavOpen ? (
     <DropdownWrapper style={dropdown}>
       <NavLinks>
+        <li>
+          <button type="button" className="button" onClick={toggleTheme}>
+            {theme.mode}
+          </button>
+        </li>
         <li>
           <Link to="/blog" onClick={toggleNav}>
             Blog
@@ -53,17 +58,12 @@ export const Dropdown = (props: any) => {
             Design
           </Link>
         </li>
-        <li>
-          <button type="button" className="button" onClick={toggleTheme}>
-            {theme.mode}
-          </button>
-        </li>
       </NavLinks>
     </DropdownWrapper>
   ) : null;
 };
 
-const Navbar = (): any[] => {
+const Navbar = (): any => {
   const { theme, toggleTheme } = React.useContext(ThemeContext);
   const barAnimation = useSpring({
     from: { transform: `translate3d(0, -10rem, 0)` },
@@ -77,28 +77,30 @@ const Navbar = (): any[] => {
     config: config.wobbly,
   });
 
-  return [
-    <NavbarStyles key="navbar" style={linkAnimation}>
-      <Navigation>
-        <Link to="/" className="logo">
-          glweems
-        </Link>
-        <NavLinks>
-          <Link to="/blog/" className="link">
-            Blog
+  return (
+    <Wrapper>
+      <NavbarStyles key="navbar" style={linkAnimation}>
+        <Navigation>
+          <Link to="/" className="logo">
+            glweems
           </Link>
-          <Link to="/designs/" className="link">
-            Designs
-          </Link>
-          <button type="button" className="button" onClick={toggleTheme}>
-            {theme.mode}
-          </button>
-        </NavLinks>
-        <BurgerMenu />
-      </Navigation>
-    </NavbarStyles>,
-    <Dropdown key="collapse" style={barAnimation} />,
-  ];
+          <NavLinks>
+            <Link to="/blog/" className="link">
+              Blog
+            </Link>
+            <Link to="/designs/" className="link">
+              Designs
+            </Link>
+            <button type="button" className="button" onClick={toggleTheme}>
+              {theme.mode}
+            </button>
+          </NavLinks>
+          <BurgerMenu />
+        </Navigation>
+      </NavbarStyles>
+      <Dropdown key="collapse" style={barAnimation} />
+    </Wrapper>
+  );
 };
 
 export default Navbar;
