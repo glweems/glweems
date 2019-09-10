@@ -4,10 +4,13 @@ import Img from 'gatsby-image';
 import SEO from '../components/SEO';
 import { BehanceProject, ImageFile } from '..';
 import { Container } from '../components/Common';
+import { HeaderContext } from '../components/Providers';
 
 export default function DesignTemplate({ data }: DesignTemplate) {
   const { currentProject, allFile } = data;
   const { name, tags, description } = currentProject;
+  const { noHeader } = React.useContext(HeaderContext);
+  noHeader();
   return [
     <SEO
       key={`seo-design-${name}`}
@@ -18,9 +21,12 @@ export default function DesignTemplate({ data }: DesignTemplate) {
     <section key={`content-design-${name}-1`}>
       <Container>
         <h1>{name}</h1>
-        <h3>{description}</h3>
+        <h2>{description}</h2>
       </Container>
     </section>,
+    <br key="br-0" />,
+    <hr key="hr-0" />,
+    <br key="br-1" />,
     allFile.nodes.map(({ childImageSharp, id }) => (
       <Container key={`design-${name}-${id}`}>
         <Img fluid={childImageSharp.fluid} />
