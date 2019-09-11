@@ -1,4 +1,3 @@
-/* eslint-disable react/no-danger */
 import { DiscussionEmbed } from 'disqus-react';
 import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
