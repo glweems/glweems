@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable consistent-return */
 import { useStaticQuery, graphql } from 'gatsby';
 import { DesignsQuery, BehanceProject, Design } from '..';
@@ -6,7 +5,7 @@ import { DesignsQuery, BehanceProject, Design } from '..';
 const UseDesignsQuery = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
     query DesignsQuery {
-      allBehanceProjects {
+      allBehanceProjects(sort: { fields: stats___views, order: DESC }) {
         nodes {
           slug
           name

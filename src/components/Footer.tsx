@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
-import { Container, SocialIcon, OutboundLink } from './Common';
+import { Container, SocialIcon, Link } from './Common';
 import { accounts } from '../utils/data';
 
 const Footer = () => (
@@ -10,12 +10,12 @@ const Footer = () => (
         <h4>Contact</h4>
         <p>Garrett Weems</p>
         <div>
-          <OutboundLink href={accounts.email.link} target="_blank_">
+          <Link to={accounts.email.link}>
             <span>
               <FaIcon icon={accounts.email.icon} />{' '}
             </span>
             <span>{accounts.email.username} </span>
-          </OutboundLink>
+          </Link>
         </div>
       </section>
       <hr />

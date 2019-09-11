@@ -1,15 +1,21 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
+import { HeaderContext } from './Providers';
 
 interface LayoutProps {
-  children: React.ReactNode;
+  children: any;
+  isNavOpen: boolean;
 }
-const Layout = ({ children }: LayoutProps): any => [
-  <Navbar key="navbar" />,
-  children,
-  <Footer key="footer" />,
-];
+
+const Layout = (props: LayoutProps): any => {
+  const { Header } = React.useContext(HeaderContext);
+  return [
+    <Header key="Header" />,
+    <Navbar key="navbar" />,
+    props.children,
+    <Footer key="footer" />,
+  ];
+};
 
 export default Layout;

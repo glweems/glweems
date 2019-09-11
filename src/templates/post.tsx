@@ -5,15 +5,18 @@ import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import { MarkdownRemark } from '..';
 import { PostHeader, Content, Article } from '../components/Post';
-import { ThemeContext } from '../components/Providers';
+import { ThemeContext, HeaderContext } from '../components/Providers';
 
 interface Props {
   data: { post: MarkdownRemark };
 }
 
-type BlogTemplate = [JSX.Element, JSX.Element];
+type BlogTemplate = [JSX.Element, JSX.Element, JSX.Element];
 
 const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
+  const { noHeader } = React.useContext(HeaderContext);
+  noHeader();
+
   const { theme } = useContext(ThemeContext);
   const disqusShortName = 'https-glweems-com';
   const disqusConfig = {
@@ -24,15 +27,20 @@ const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
 
   return [
     <SEO
+      key="SEO"
       title={post.frontmatter.title}
       keywords={post.frontmatter.tags}
       description={post.excerpt}
     />,
-    <Article className={theme.mode}>
+    <Article key="Article" className={theme.mode}>
       <PostHeader post={post} />
       <Content elements={post.htmlAst} />
-      <DiscussionEmbed shortname={disqusShortName} config={disqusConfig} />
     </Article>,
+    <DiscussionEmbed
+      key="Diqus"
+      shortname={disqusShortName}
+      config={disqusConfig}
+    />,
   ];
 };
 
