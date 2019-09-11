@@ -1,39 +1,61 @@
-# ⚛️ gatsby-starter-ultra-modern
-[hello world example](embedded-codesandbox://hello-world-example)
+# [glweems](https://glweems.com/)
 
-[![Edit react-peekaboo-navbar](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/gwtuts/react-peekaboo-navbar/tree/master/?autoresize=1&fontsize=14&view=preview)
-A Gatsby starter with typescript, redux boilerplate, styled-components, strict linting and auto-formatting rules.
+> ## Personal Portfolio
 
-## 🚀 Getting started
+<p>
+  <a href="https://app.netlify.com/sites/glweems/deploys">
+    <img alt="Netlify Deploys: glweems" src="https://api.netlify.com/api/v1/badges/9c9aba4f-abf3-45f6-b160-3445a4a9db1f/deploy-status" target="_blank" />
+  </a>
+  <a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank"><img src="https://api.codacy.com/project/badge/Grade/8775db3efa4f46d3a2a33a7c93a98596"/></a>
+  <a href="https://twitter.com/garrettlweems">
+    <img alt="Twitter: devglweems" src="https://img.shields.io/twitter/follow/devglweems.svg?style=social" target="_blank" />
+  </a>
+</p>
 
-- Clone this project and install all the required dependencies _(e.g. with `npx gatsby new gatsby-example-site https://github.com/glweems/gatsby-starter-ultra-modern`)_
-- Start a development server with `yarn develop` or `npm run develop`
-  - _Other scripts like `build`, [`format`](#automatic-code-formatting), [`type-check`](#static-type-checking) and [`lint`](#linting) are also available_
+---
 
-### Deploy
+### 🏠 [Homepage](https://glweems.com)
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/glweemsgatsby-starter-ultra-modern)
+Built with:
 
-## ✨ Developer experience
+- [React](https://reactjs.org/)
+- [Gatsby](https://www.gatsbyjs.org/)
+- [Styled Components](https://www.styled-components.com/)
+- [Typescript](https://www.typescriptlang.org/)
 
-### Automatic code formatting
+## Install
 
-[Prettier][] aims to provide codebase consistency when multiple developers work on the same project. The main reason behind adopting it is to [stop all the on-going debates over coding styles][].
+```sh
+npm install
+```
 
-[prettier]: https://prettier.io/
-[stop all the on-going debates over coding styles]: https://prettier.io/docs/en/why-prettier.html
+## Usage
 
-### Static type checking
+```sh
+yarn start
+```
 
-[TypeScript][] adds optional types to JavaScript, preventing several programming mistakes. For a quick guide about using React with it, please refer to the [React TypeScript Cheatsheet][].
+## Run tests
 
-[typescript]: https://www.typescriptlang.org/
-[react typescript cheatsheet]: https://github.com/sw-yx/react-typescript-cheatsheet
+```sh
+yarn type-check
+```
 
-### Linting
+## Author
 
-Source code is linted by [ESLint][], enforcing the [Airbnb JavaScript Style Guide][] through an overridable set of rules provided by [eslint-config-airbnb][].
+👤 **Garrett Weems <gwgraphicdesign@gmail.com> (https://glweems.com)**
 
-[eslint]: https://eslint.org/
-[airbnb javascript style guide]: https://github.com/airbnb/javascript
-[eslint-config-airbnb]: https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb
+- Twitter: [@devglweems](https://twitter.com/devglweems)
+- Github: [@glweems](https://github.com/glweems)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/glweems/glweems).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+---
+
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
