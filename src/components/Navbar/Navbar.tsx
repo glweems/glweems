@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useSpring, config } from 'react-spring';
-import { Link } from '../Common';
+import { useSpring, config, animated } from 'react-spring';
+import { Link, Button } from '../Common';
 import { NavContext, ThemeContext } from '../Providers';
 import {
   Wrapper,
@@ -25,7 +25,7 @@ export const BurgerMenu = () => {
   );
 };
 
-export const Dropdown = () => {
+export const Dropdown = animated(() => {
   const { isNavOpen, toggleNav } = React.useContext(NavContext);
   const { theme, toggleTheme } = React.useContext(ThemeContext);
   const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
@@ -61,7 +61,7 @@ export const Dropdown = () => {
       </NavLinks>
     </DropdownWrapper>
   ) : null;
-};
+});
 
 const Navbar = (): any => {
   const { theme, toggleTheme } = React.useContext(ThemeContext);
@@ -91,14 +91,14 @@ const Navbar = (): any => {
             <Link to="/designs/" className="link">
               Designs
             </Link>
-            <button type="button" className="button" onClick={toggleTheme}>
+            <Button type="button" className="button" onClick={toggleTheme}>
               {theme.mode}
-            </button>
+            </Button>
           </NavLinks>
           <BurgerMenu />
         </Navigation>
       </NavbarStyles>
-      <Dropdown key="collapse" style={barAnimation} />
+      <Dropdown style={barAnimation} />
     </Wrapper>
   );
 };

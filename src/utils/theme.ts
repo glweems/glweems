@@ -4,6 +4,7 @@ import { generateMedia } from 'styled-media-query';
 import { darken, tint, shade, transparentize } from 'polished';
 import { BoxShadowProperty, ColorProperty } from 'csstype';
 import theme from 'styled-theming';
+import { anchorStyles } from '../components/Common/Link';
 
 const sameColors = {
   blue: `#1769ff`,
@@ -213,43 +214,6 @@ export const makeTheme = (mode: 'light' | 'dark'): DefaultTheme => {
   };
 };
 
-const anchorStyles = css`
-  a {
-    position: relative;
-    margin: 2px 6px 2px 6px;
-    color: ${props => props.theme.colors.blue};
-    font: inherit;
-    font-weight: 500;
-    font-size: 115% !important;
-    letter-spacing: 0.08rem;
-    text-decoration: none !important;
-    vertical-align: baseline;
-    border: 0;
-    cursor: pointer;
-  }
-
-  a:hover {
-    ::before {
-      position: absolute;
-      top: calc(100% - 6px);
-      right: 0;
-      bottom: -1px;
-      left: 0;
-      z-index: -1;
-      background: ${props => `
-    linear-gradient(to bottom, transparent 62%,
-    ${darken(0.5, props.theme.colors.bg)} 0)
-    center center/0% 75% no-repeat`};
-      background-size: 95% 100%;
-      transition: all 120ms ease-in-out;
-      content: '';
-    }
-  }
-  .activeLink {
-    color: ${props => props.theme.colors.muted};
-  }
-`;
-
 const buttonStyles = css`
   .button,
   button,
@@ -258,23 +222,15 @@ const buttonStyles = css`
   input[type='submit'] {
     display: inline-block;
     box-sizing: content-box;
-    margin: 0 auto;
-    padding: 0.5em 1em;
-    overflow: visible;
-    color: ${props => props.theme.colors.bg};
     font: inherit;
     font-weight: 600;
     line-height: normal;
     white-space: normal;
     text-align: center;
     text-decoration: none;
-    background: ${props => props.theme.colors.text};
     border: none;
-    border-radius: ${props => props.theme.borderRadius};
+    outline: none;
     cursor: pointer;
-    transition-timing-function: ease;
-    transition-duration: 0.3s;
-    transition-property: background-color, border-color, color;
     user-select: none;
   }
 `;
@@ -290,6 +246,15 @@ export const GlobalStyle = createGlobalStyle`
     line-height: var(--spacing__vertical--1);
     background: ${props => props.theme.colors.bg};
   }
+
+  main {
+    margin-top: 2em;
+  }
+
+  section {
+    margin: 1em 0;
+  }
+
   ${anchorStyles};
   ${buttonStyles};
 

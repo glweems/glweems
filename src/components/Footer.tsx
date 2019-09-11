@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
-import { Container, SocialIcon, Link } from './Common';
+import { Container, Link, SocialIcon } from './Common';
+
 import { accounts } from '../utils/data';
 
 const Footer = () => (

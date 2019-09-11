@@ -5,15 +5,14 @@ import { HeaderContext } from './Providers';
 
 interface LayoutProps {
   children: any;
-  isNavOpen: boolean;
 }
 
-const Layout = (props: LayoutProps): any => {
+const Layout = ({ children }: LayoutProps): any => {
   const { Header } = React.useContext(HeaderContext);
   return [
     <Header key="Header" />,
     <Navbar key="navbar" />,
-    props.children,
+    <main key="main">{children}</main>,
     <Footer key="footer" />,
   ];
 };
