@@ -3,7 +3,7 @@ import { ThemeProvider } from 'styled-components';
 import Layout from './Layout';
 import SEO from './SEO';
 import ContextProvider, { ThemeContext } from './Providers';
-import { GlobalStyle } from '../utils/theme';
+import { GlobalStyle } from '../style';
 
 interface Props {
   children: any;

@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import { lighten, darken } from 'polished';
 import RehypeReact from 'rehype-react';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import { media } from '../utils/theme';
 import { MarkdownRemark } from '..';
+import * as config from '../style';
 
 interface PostInfo {
   date: Date;
@@ -23,10 +22,10 @@ const Header = styled.header`
   margin: 2em 0;
   .subtitle {
     margin-top: 0.5em;
-    color: ${props => props.theme.colors.muted};
+    color: ${config.muted};
   }
   small {
-    color: ${props => props.theme.darkColors.muted};
+    color: ${config.muted};
     font-style: italic;
   }
   img {
@@ -81,10 +80,11 @@ export const Article = styled.article`
     grid-template-areas: 'a article z';
     grid-template-columns: 1em 1fr 1em;
     padding-left: 0;
-    color: ${props => lighten(0.5, props.theme.colors.bg)};
-    border-color: ${props => props.theme.colors.primary};
+    color: ${config.text};
+    font-style: italic;
+    border-color: ${config.primary};
     p {
-      color: ${props => darken(0.2, props.theme.colors.muted)} !important;
+      color: ${config.muted} !important;
     }
     > * {
       grid-area: article;
@@ -105,7 +105,7 @@ export const Article = styled.article`
   }
 
   img {
-    border-radius: ${props => props.theme.borderRadius};
+    border-radius: ${config.borderRadius};
   }
 
   h1,
@@ -114,10 +114,10 @@ export const Article = styled.article`
   h4,
   h5,
   h6 {
-    color: ${props => props.theme.colors.primary};
+    color: ${config.primary};
   }
 
-  ${media.greaterThan('sm')`
+  ${config.media.greaterThan('sm')`
     grid-template-columns: 0.5em 1fr 1fr 1em 720px 1em 1fr 1fr 0.5em;
     grid-template-areas: 'a b c d article w x y z';
     * >  {
@@ -131,7 +131,7 @@ export const Article = styled.article`
     }
 
     .gatsby-highlight {
-      border-radius: ${props => props.theme.borderRadius};
+      border-radius: ${config.borderRadius};
       grid-column: article;
     }
 

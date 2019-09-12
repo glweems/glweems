@@ -19,7 +19,7 @@ const IndexPage = () => {
         <h2>Blog Posts</h2>
         <Posts limit={3} />
       </section>
-      <Link to="/blog">
+      <Link to="/blog" unstyled>
         <Button>View All Blog Posts</Button>
       </Link>
     </Container>,
@@ -29,7 +29,7 @@ const IndexPage = () => {
         <h2>Design Projects</h2>
         <Designs limit={3} />
       </section>
-      <Link to="/designs">
+      <Link to="/designs" unstyled>
         <Button>View All Designs</Button>
       </Link>
     </Container>,

@@ -3,7 +3,6 @@ import { DefaultTheme } from 'styled-components';
 import useTheme from '../hooks/useTheme';
 import useNav from '../hooks/useNav';
 import { Child } from '..';
-import { makeTheme } from '../utils/theme';
 import useHeader from '../hooks/useHeader';
 
 interface PCP {
@@ -23,7 +22,7 @@ type ThemeContext = {
 };
 
 export const ThemeContext = createContext<ThemeContext>({
-  theme: makeTheme('light'),
+  theme: { mode: 'dark' },
   toggleTheme: () => null,
 });
 
