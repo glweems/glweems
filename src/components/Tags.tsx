@@ -24,7 +24,7 @@ const Tag = styled.small`
 const Tags = ({ items }: { items: string[] }) => (
   <StyledTags>
     {items.slice(0, 3).map(item => (
-      <Tag key={item} className="tag">
+      <Tag key={item} className="hashtag">
         {item.toLocaleLowerCase()}
       </Tag>
     ))}
