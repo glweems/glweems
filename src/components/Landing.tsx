@@ -2,26 +2,19 @@ import React from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import ReactTooltip from 'react-tooltip';
 import GHCalendar from 'react-github-calendar';
-import { animated, useSpring, config } from 'react-spring';
+import { animated, useSpring, config as springConfig } from 'react-spring';
 import { Ghost } from './Icons';
-import { SocialIcon, Container } from './Common';
+import { SocialIcon, Container, Button, Link } from './Common';
 import { accounts } from '../utils/data';
+import * as config from '../style';
 
 const GithubCalendar = animated(GHCalendar);
 
-const Wrapper = styled(Container)`
-  display: grid;
-  grid-template-columns:
-    [full-start] minmax(1em, 1fr)
-    [main-start] minmax(0, 40em) [main-end]
-    minmax(1em, 1fr) [full-end];
+const Wrapper = styled(animated(Container))`
   align-content: space-around;
-  height: ${props => `calc(100vh - ${props.theme.navbarHeight})`};
-  background: ${props => props.theme.colors.yellow};
-  border-radius: ${props => props.theme.borderRadius};
-  > * {
-    grid-column: main;
-  }
+  height: calc(65vh - ${config.navbarHeight});
+  background: ${config.yellow};
+  border-radius: ${config.borderRadius};
 
   p {
     color: #333333;
@@ -77,66 +70,64 @@ interface Props {
 const Landing = (): React.ReactElement => {
   const { heatMap } = React.useContext(ThemeContext);
   const one = useSpring({
-    from: { transform: 'translate3d(0, -90vh, 0)', opacity: 0 },
-    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+    from: { opacity: 0 },
+    to: { opacity: 1 },
     delay: 600,
-    config: config.wobbly,
+    config: springConfig.wobbly,
   });
-  const two = useSpring({
-    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
-    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 600,
-    config: config.wobbly,
-  });
-  const three = useSpring({
-    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
-    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 700,
-    config: config.wobbly,
-  });
+  // const two = useSpring({
+  //   from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+  //   to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+  //   delay: 600,
+  //   config: springConfig.wobbly,
+  // });
+  // const three = useSpring({
+  //   from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+  //   to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
+  //   delay: 700,
+  //   config: springConfig.wobbly,
+  // });
   const four = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 900,
-    config: config.wobbly,
+    config: springConfig.wobbly,
   });
   const five = useSpring({
-    from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
+    from: { transform: 'translate3d(-100%, 0, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
-    delay: 1250,
-    config: config.wobbly,
+    // delay: 1250,
   });
 
   return (
-    <animated.div style={one}>
-      <Wrapper>
-        <animated.div style={two}>
-          <Ghost />
-        </animated.div>
-        <animated.div style={three}>
-          <h1>
-            Hello, I&apos; m <span>Garrett Weems</span>.
-          </h1>
-          <h3>I&apos;m a full-stack web developer.</h3>
-          <p>I specialize in javascript / react.js web developement.</p>
-        </animated.div>
-        <animated.div className="icons" style={four}>
-          <SocialIcon size="2x" account={accounts.github} />
-          <SocialIcon size="2x" account={accounts.linkedin} />
-          <SocialIcon size="2x" account={accounts.medium} />
-          <SocialIcon size="2x" account={accounts.instagram} />
-          <SocialIcon size="2x" account={accounts.behance} />
-        </animated.div>
-        <GithubCalendar
-          username="glweems"
-          years={[2019]}
-          theme={heatMap}
-          style={five}
-        >
-          <ReactTooltip delayShow={50} html />
-        </GithubCalendar>
-      </Wrapper>
-    </animated.div>
+    <Wrapper style={one}>
+      <Ghost />
+      <h1>
+        Hello, I&apos; m <span>Garrett Weems</span>.
+      </h1>
+      <h3>I&apos;m a full-stack web developer.</h3>
+      <p>I specialize in javascript / react.js web developement.</p>
+      <div>
+        <Link to="https://docs.google.com/document/d/14e2XLcPLXcNLetW7QvosoBAU5N6ONE-uU1c4VyMjsCA/edit#heading=h.ahxu4umdkayn">
+          <Button>Resume</Button>
+        </Link>
+      </div>
+      <animated.div className="icons" style={four}>
+        <SocialIcon size="2x" account={accounts.github} />
+        <SocialIcon size="2x" account={accounts.linkedin} />
+        <SocialIcon size="2x" account={accounts.medium} />
+        <SocialIcon size="2x" account={accounts.instagram} />
+        <SocialIcon size="2x" account={accounts.behance} />
+      </animated.div>
+      <GithubCalendar
+        username="glweems"
+        years={[2019]}
+        theme={heatMap}
+        style={five}
+      >
+        <ReactTooltip delayShow={50} html />
+      </GithubCalendar>
+    </Wrapper>
   );
 };
 

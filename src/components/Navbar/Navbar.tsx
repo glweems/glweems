@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { useSpring, config, animated } from 'react-spring';
-import { Link, Button } from '../Common';
+import { useSpring, config } from 'react-spring';
+import { Link, Button, ToogleThemeSwitch } from '../Common';
 import { NavContext, ThemeContext } from '../Providers';
 import {
   Wrapper,
@@ -25,35 +25,29 @@ export const BurgerMenu = () => {
   );
 };
 
-export const Dropdown = animated(() => {
+export const Dropdown = () => {
   const { isNavOpen, toggleNav } = React.useContext(NavContext);
-  const { theme, toggleTheme } = React.useContext(ThemeContext);
-  const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
+  // const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
 
-  const dropdown = {
-    transform: open
-      .interpolate({
-        range: [0, 0.2, 0.3, 1],
-        output: [0, -20, 0, -200],
-      })
-      .interpolate(
-        openValue => `translate3d(${openValue}px, 0, ${openValue}px`,
-      ),
-  };
+  // const { theme, toggleTheme } = React.useContext(ThemeContext);
+  // const dropdown = {
+  //   transform: open
+  //     .interpolate({
+  //       range: [0, 0.2, 0.3, 1],
+  //       output: [0, -20, 0, -200],
+  //     })
+  //     .interpolate(
+  //       openValue => `translate3d(${openValue}px, 0, ${openValue}px`,
+  //     ),
+  // };
   return isNavOpen ? (
-    <DropdownWrapper style={dropdown}>
+    <DropdownWrapper style={{}}>
       <NavLinks>
         <li>
-          <button type="button" className="button" onClick={toggleTheme}>
-            {theme.mode}
-          </button>
+          <Link to="/blog">Blog</Link>
         </li>
         <li>
-          <Link to="/blog" onClick={toggleNav}>
-            Blog
-          </Link>
-        </li>
-        <li>
+          <ToogleThemeSwitch />
           <Link to="/designs" onClick={toggleNav}>
             Design
           </Link>
@@ -61,14 +55,14 @@ export const Dropdown = animated(() => {
       </NavLinks>
     </DropdownWrapper>
   ) : null;
-});
+};
 
 const Navbar = (): any => {
   const { theme, toggleTheme } = React.useContext(ThemeContext);
-  const barAnimation = useSpring({
-    from: { transform: `translate3d(0, -10rem, 0)` },
-    transform: `translate3d(0, 0, 0)`,
-  });
+  // const barAnimation = useSpring({
+  //   from: { transform: `translate3d(0, -10rem, 0)` },
+  //   transform: `translate3d(0, 0, 0)`,
+  // });
 
   const linkAnimation = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
@@ -85,10 +79,10 @@ const Navbar = (): any => {
             glweems
           </Link>
           <NavLinks>
-            <Link to="/blog/" className="link">
+            <Link to="/blog/" className="nav-item">
               Blog
             </Link>
-            <Link to="/designs/" className="link">
+            <Link to="/designs/" className="nav-item">
               Designs
             </Link>
             <Button type="button" className="button" onClick={toggleTheme}>
@@ -98,7 +92,7 @@ const Navbar = (): any => {
           <BurgerMenu />
         </Navigation>
       </NavbarStyles>
-      <Dropdown style={barAnimation} />
+      <Dropdown />
     </Wrapper>
   );
 };

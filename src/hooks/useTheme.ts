@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react';
-import { makeTheme } from '../utils/theme';
 
-export default () => {
-  const [theme, setTheme] = useState(makeTheme('light'));
+export default (): {
+  theme: { mode: 'light' | 'dark' | string };
+  toggleTheme: () => void;
+} => {
+  const [mode, setMode] = useState('dark');
 
   const toggleTheme = () => {
-    if (theme.mode === 'light') {
+    if (mode === 'light') {
       window.localStorage.setItem('theme', 'dark');
-      setTheme(makeTheme('dark'));
+      setMode('dark');
     } else {
       window.localStorage.setItem('theme', 'light');
-      setTheme(makeTheme('light'));
+      setMode('light');
     }
   };
 
@@ -18,12 +20,12 @@ export default () => {
     const localTheme: any = window.localStorage.getItem('theme');
 
     if (localTheme) {
-      setTheme(makeTheme(localTheme));
+      setMode(localTheme);
     } else {
       window.localStorage.setItem('theme', 'light');
-      setTheme(makeTheme('light'));
+      setMode('light');
     }
   }, []);
 
-  return { theme, toggleTheme };
+  return { theme: { mode }, toggleTheme };
 };
