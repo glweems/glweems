@@ -1,11 +1,10 @@
-/* eslint-disable react/no-danger */
 import { DiscussionEmbed } from 'disqus-react';
 import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import { MarkdownRemark } from '..';
 import { PostHeader, Content, Article } from '../components/Post';
-import { ThemeContext, HeaderContext } from '../components/Providers';
+import { HeaderContext, ThemeContext } from '../components/Providers';
 
 interface Props {
   data: { post: MarkdownRemark };

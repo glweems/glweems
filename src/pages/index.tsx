@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import { Link, Container } from '../components/Common';
+import { Link, Container, Button } from '../components/Common';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
@@ -13,26 +13,34 @@ const IndexPage = () => {
     setHeader(<Landing />);
   }, [setHeader]);
 
-  return (
-    <Container key="Content">
+  return [
+    <Container key="Blog">
       <section>
         <h2>Blog Posts</h2>
         <Posts limit={3} />
-        <Link to="/blog">View All Blog Posts</Link>
       </section>
+      <Link to="/blog" unstyled>
+        <Button>View All Blog Posts</Button>
+      </Link>
+    </Container>,
 
+    <Container key="Design">
       <section>
         <h2>Design Projects</h2>
         <Designs limit={3} />
-        <Link to="/designs">View All Designs</Link>
       </section>
+      <Link to="/designs" unstyled>
+        <Button>View All Designs</Button>
+      </Link>
+    </Container>,
 
+    <Container key="Projects">
       <section>
         <h2>Side Projects</h2>
         <SideProjects limit={3} />
       </section>
-    </Container>
-  );
+    </Container>,
+  ];
 };
 
 export default IndexPage;
