@@ -33,13 +33,13 @@ $dark-bg: #212735;
 //   overflow: initial;
 // }
 
-.heading--primary {
-  border-bottom: var(--border__width--default) solid #aaa; /* 2px */
-  padding-bottom: calc(
-    var(--spacing__vertical--1) - var(--border__width--default)
-  ); /* 32px - 2px */
-  line-height: var(--spacing__vertical--3); /* 96px */
-}
+// .heading--primary {
+//   border-bottom: var(--border__width--default) solid #aaa; /* 2px */
+//   padding-bottom: calc(
+//     var(--spacing__vertical--1) - var(--border__width--default)
+//   ); /* 32px - 2px */
+//   line-height: var(--spacing__vertical--3); /* 96px */
+// }
 
 article.dark {
   pre::-webkit-scrollbar {

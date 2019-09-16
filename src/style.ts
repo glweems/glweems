@@ -1,7 +1,7 @@
 import theme from 'styled-theming';
 import { createGlobalStyle, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
@@ -18,6 +18,11 @@ export const rootBg = theme('mode', { light: '#fff', dark: '#181D2B' });
 // export const shadow = `#0f121b 0px 1px 5px 0px,
 // #08090e 0px 2px 2px 0px,
 // #06070a 0px 3px 1px -2px;`;
+
+export const base = {
+  light: `#f7f7f7`,
+  dark: `#0f121b`,
+};
 
 export const navbarHeight = `4em`;
 export const borderRadius = `0.3em`;
@@ -51,14 +56,22 @@ export const media = generateMedia({
 });
 
 export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' });
+export const githubHover = theme('mode', {
+  light: lighten(0.5, `#333333`),
+  dark: darken(0.3, `#f7f7f7`),
+});
 
 export const linkedin = `#0077B5`;
+export const linkedinHover = darken(0.1, linkedin);
 
 export const medium = `#00ab6c`;
+export const mediumHover = darken(0.1, medium);
 
 export const behance = `#1769ff`;
+export const behanceHover = darken(0.1, behance);
 
 export const instagram = `#E1306C`;
+export const instagramHover = darken(0.1, instagram);
 
 const buttonStyles = css`
   .button,
@@ -110,6 +123,17 @@ export const GlobalStyle = createGlobalStyle`
   ${anchorStyles}
   ${buttonStyles}
 
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border: none;
+  }
+
+
   html {
     font-size: var(--typography__fontSize);
   }
@@ -118,6 +142,13 @@ export const GlobalStyle = createGlobalStyle`
     color: ${text};
     line-height: var(--spacing__vertical--1);
     background: ${bg};
+  }
+
+  ul {
+    color: ${text} !important;
+    :before {
+      color: ${text}
+    };
   }
 
   main {
@@ -136,38 +167,42 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1.5em 0;
   }
 
+  .social-icon {
+    transition: all 0.25s ease;
+  }
+
   .github {
     color: ${github};
     :hover {
-      color: ${text};
+      color: ${githubHover};
     }
   }
 
   .linkedin {
     color: ${linkedin};
     :hover {
-      color: ${text};
+      color: ${linkedinHover};
     }
   }
 
   .medium {
     color: ${medium};
     :hover {
-      color: ${text};
+      color: ${mediumHover};
     }
   }
 
   .behance {
     color: ${behance};
     :hover {
-      color: ${text};
+      color: ${behanceHover};
     }
   }
 
   .instagram {
     color: ${instagram};
     :hover {
-      color: ${text};
+      color: ${instagramHover};
     }
   }
 
@@ -175,5 +210,29 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1em;
     background: ${bg};
     border-radius: ${borderRadius};
+  }
+  .react-github-calendar {
+    grid-column: full;
+    align-self: end;
+    width: 100%;
+    min-height: 7em;
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+    text-align: center;
+  }
+
+  .react-github-calendar__title {
+    display: none;
+  }
+  .react-github-calendar__chart {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .react-github-calendar__meta {
+    display: none;
+    margin: 0;
+    padding: 0;
   }
 `;

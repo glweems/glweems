@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
+import ReactTooltip from 'react-tooltip';
+import GithubCalendar from 'react-github-calendar';
 import { Link, Container, Button } from '../components/Common';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
@@ -39,6 +41,12 @@ const IndexPage = () => {
         <h2>Side Projects</h2>
         <SideProjects limit={3} />
       </section>
+    </Container>,
+
+    <Container key="github-callendar">
+      <GithubCalendar username="glweems" years={[2019]}>
+        <ReactTooltip delayShow={35} html />
+      </GithubCalendar>
     </Container>,
   ];
 };
