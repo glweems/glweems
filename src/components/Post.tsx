@@ -63,7 +63,7 @@ export const Article = styled.article`
   grid-template-columns: 1em 1fr 1em;
 
   * {
-    color: ${props => props.theme.colors.text};
+    color: ${config.text};
   }
 
   > * {

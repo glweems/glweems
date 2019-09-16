@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr;
   align-content: flex-start;
   color: ${config.muted};
-  background: ${config.bg};
+  background: ${config.rootBg};
   border-radius: ${config.borderRadius};
   box-shadow: ${config.shadow};
   :hover {
@@ -39,7 +39,6 @@ export const Header = styled.div`
 
 export const Body = styled.div`
   padding: 0.5em 0.5em;
-  background: ${config.bg};
 `;
 
 export const Footer = styled.div`
