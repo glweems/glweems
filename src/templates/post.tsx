@@ -3,7 +3,9 @@ import React, { useContext } from 'react';
 import { graphql } from 'gatsby';
 import SEO from '../components/SEO';
 import { MarkdownRemark } from '..';
-import { PostHeader, Content, Article } from '../components/Post';
+import { PostHeader, Content } from '../components/Post/Post';
+import { Article } from '../components/Post/PostStyles';
+
 import { HeaderContext, ThemeContext } from '../components/Providers';
 
 interface Props {

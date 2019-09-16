@@ -37,14 +37,6 @@ const Wrapper = styled(Container)`
     background: ${config.blue};
     border-color: ${darken(0.05, config.blue)};
   }
-
-  /* h1 {
-    color: #333;
-  } */
-  /*
-  h3 {
-    color: #5a5a5a;
-  } */
 `;
 
 const AnimatedWrapper = animated(Wrapper);
@@ -54,7 +46,7 @@ const Landing = (): React.ReactElement => {
     from: { transform: 'translate3d(0, -100%, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
     delay: 900,
-    // config: springConfig.wobbly,
+    config: springConfig.gentle,
   });
 
   return (
