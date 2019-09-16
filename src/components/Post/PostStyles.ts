@@ -26,10 +26,10 @@ export const Article = styled.article`
     0 [quote-end]
     minmax(0, 1fr) [fluid-end]
     1em [flush-end];
-
   gap: 3em 0;
   width: 100%;
-
+  color: ${config.text};
+  
   * {
     grid-column: main;
     max-width: 100%;
@@ -37,6 +37,7 @@ export const Article = styled.article`
     overflow-y: hidden;
     color: ${config.text};
   }
+
 
   iframe {
     grid-column: fluid;
