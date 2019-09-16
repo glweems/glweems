@@ -12,8 +12,8 @@ export const yellow = `#f8d58c`;
 export const primary = theme('mode', { light: red, dark: yellow });
 export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
-export const bg = theme('mode', { light: '#fff', dark: '#111' });
-export const rootBg = theme('mode', { light: '#fff', dark: '#181D2B' });
+export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
+export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
 
 // export const shadow = `#0f121b 0px 1px 5px 0px,
 // #08090e 0px 2px 2px 0px,
@@ -44,15 +44,17 @@ export const hoverShadow = theme('mode', {
   dark: makeHoverShadow(`#111`),
 });
 export const containerWidths = {
-  sm: `40em`,
-  md: `45em`,
-  lg: `50em`,
+  sm: `540px`,
+  md: `720px`,
+  lg: `960px`,
+  xl: `1200px`,
 };
 
 export const media = generateMedia({
-  lg: `960px`,
-  md: `720px`,
-  sm: `540px`,
+  sm: containerWidths.sm,
+  md: containerWidths.md,
+  lg: containerWidths.lg,
+  xl: containerWidths.xl,
 });
 
 export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' });
@@ -166,6 +168,11 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 1.5em 0;
   }
+
+  .tag {
+    color: ${bg} !important;
+  }
+
 
   .social-icon {
     transition: all 0.25s ease;
