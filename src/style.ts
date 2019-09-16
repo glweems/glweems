@@ -169,8 +169,8 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1.5em 0;
   }
 
-  .tag {
-    color: ${bg} !important;
+  .hashtag {
+    color: ${bg};
   }
 
 
