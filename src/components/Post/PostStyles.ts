@@ -29,13 +29,13 @@ export const Article = styled.article`
   gap: 3em 0;
   width: 100%;
   color: ${config.text};
+  background: ${config.bg};
   
   * {
     grid-column: main;
     max-width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
-    color: ${config.text};
   }
 
 
