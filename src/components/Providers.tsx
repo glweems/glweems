@@ -58,8 +58,8 @@ export const NavProvider = ({ children }: any) => {
 
 type HeaderContext = {
   Header: null | Child;
-  setHeader: () => React.Dispatch<React.SetStateAction<null>>;
-  noHeader: () => React.Dispatch<React.SetStateAction<null>>;
+  setHeader: Function;
+  noHeader: React.Dispatch<React.SetStateAction<void>>;
 };
 
 export const HeaderContext = createContext<HeaderContext>({
@@ -83,6 +83,7 @@ export default ({ children }: any) => (
       <ThemeProvider key="theme-provider" />,
       <NavProvider key="nav-provider" />,
       <HeaderProvider key="header-provider" />,
+      // <HighlightProvider key="header-provider" />,
     ]}
   >
     {children}
