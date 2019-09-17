@@ -1,5 +1,6 @@
 import { FluidObject, FixedObject } from 'gatsby-image';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { MxRecord } from 'dns';
 
 export interface Nodes<T> {
   nodes: T[];
@@ -51,16 +52,16 @@ export interface Frontmatter {
   };
 }
 
-export interface MarkdownRemark {
+export interface MDX {
   id: string;
   timeToRead: number;
   excerpt: string;
-  htmlAst: object;
+  body: object;
   frontmatter: Frontmatter;
 }
 
 export interface PostsQuery {
-  allMarkdownRemark: Nodes<MarkdownRemark>;
+  allMarkdownRemark: Nodes<MDX>;
 }
 
 export type Child =

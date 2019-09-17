@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 require('dotenv').config();
 
 const config = {
@@ -42,7 +43,8 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    `gatsby-plugin-catch-links`,
+    // `gatsby-plugin-catch-links`,
+
     {
       resolve: `gatsby-transformer-yaml`,
     },
@@ -74,6 +76,9 @@ module.exports = {
         component: require.resolve(`./src/components/RootElementWrapper.tsx`),
       },
     },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -88,30 +93,39 @@ module.exports = {
         path: `${__dirname}/src/assets/`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-transformer-remark`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        plugins: [
-          // Optional: Remove the paragraph tag wrapping images
+        extensions: ['.mdx', '.md'],
+
+        mdPlugins: [
+          // require('remark-images'),
+          // require('remark-unwrap-images'),
+          require('remark-emoji'),
+          require('remark-slug'),
+          require('remark-autolink-headings'),
+        ],
+        gatsbyRemarkPlugins: [
+          `gatsby-remark-relative-images`,
           `gatsby-remark-unwrap-images`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-autolink-headers`,
           // Wrap images by pictures
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1080,
-              linkImagesToOriginal: true,
+              maxWidth: 720,
+              // linkImagesToOriginal: true,
             },
           },
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
               aliases: { sh: 'bash', js: 'javascript' },
+              classPrefix: 'language-',
+              inlineCodeMarker: null,
             },
           },
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-autolink-headers`,
         ],
       },
     },
@@ -140,7 +154,6 @@ module.exports = {
         },
       },
     },
-
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

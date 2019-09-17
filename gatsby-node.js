@@ -10,7 +10,7 @@ exports.createPages = ({ actions, graphql }) => {
           slug
         }
       }
-      allMarkdownRemark {
+      allMdx {
         nodes {
           frontmatter {
             path
@@ -19,7 +19,7 @@ exports.createPages = ({ actions, graphql }) => {
       }
     }
   `)
-    .then(({ data: { allBehanceProjects, allMarkdownRemark } }) => {
+    .then(({ data: { allBehanceProjects, allMdx } }) => {
       // Create Behance Pages
       allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
@@ -30,7 +30,7 @@ exports.createPages = ({ actions, graphql }) => {
       });
 
       // Create Posts Pages
-      allMarkdownRemark.nodes.forEach(({ frontmatter }) => {
+      allMdx.nodes.forEach(({ frontmatter }) => {
         actions.createPage({
           path: frontmatter.path,
           component: path.resolve(`src/templates/post.tsx`),

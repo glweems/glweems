@@ -1,57 +1,57 @@
-import { DiscussionEmbed } from 'disqus-react';
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from '../components/SEO';
-import { MarkdownRemark } from '..';
-import { PostHeader, Content } from '../components/Post/Post';
+import { MDX } from '..';
+import { PostHeader, Comments } from '../components/Post/Post';
 import { Article } from '../components/Post/PostStyles';
-
 import { HeaderContext, ThemeContext } from '../components/Providers';
 
 interface Props {
-  data: { post: MarkdownRemark };
+  data: { post: MDX };
 }
 
-type BlogTemplate = [JSX.Element, JSX.Element, JSX.Element];
+type BlogTemplate = React.ReactFragment;
+
+const components = {
+  a: (props: any) => <Link {...props} />,
+};
 
 const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
   const { noHeader } = React.useContext(HeaderContext);
   noHeader();
-
   const { theme } = useContext(ThemeContext);
-  const disqusShortName = 'https-glweems-com';
-  const disqusConfig = {
-    url: `https://glweems.com${post.frontmatter.path}`,
-    identifier: String(post.frontmatter.id),
-    title: post.frontmatter.title,
-  };
 
-  return [
-    <SEO
-      key="SEO"
-      title={post.frontmatter.title}
-      keywords={post.frontmatter.tags}
-      description={post.excerpt}
-    />,
-    <Article key="Article" className={theme.mode}>
-      <PostHeader post={post} />
-      <Content elements={post.htmlAst} />
-    </Article>,
-    <DiscussionEmbed
-      key="Diqus"
-      shortname={disqusShortName}
-      config={disqusConfig}
-    />,
-  ];
+  return (
+    <>
+      <SEO
+        key="SEO"
+        title={post.frontmatter.title}
+        keywords={post.frontmatter.tags}
+        description={post.excerpt}
+      />
+      <Article key="Article" className={theme.mode}>
+        <PostHeader
+          frontmatter={post.frontmatter}
+          timeToRead={post.timeToRead}
+        />
+        <MDXRenderer components={components}>{post.body}</MDXRenderer>
+        <Comments
+          title={post.frontmatter.title}
+          identifier={post.frontmatter.id}
+          path={post.frontmatter.path}
+        />
+      </Article>
+    </>
+  );
 };
 
 export const BlogPost = graphql`
   query PostQuery($slug: String!) {
-    post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
-      html
-      htmlAst
+    post: mdx(frontmatter: { path: { eq: $slug } }) {
+      body
       timeToRead
-      excerpt(pruneLength: 150)
       ...Frontmatter
     }
   }

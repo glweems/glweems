@@ -2,19 +2,33 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { PostsQuery } from '..';
 
 const usePostsQuery = () => {
-  const { allMarkdownRemark }: PostsQuery = useStaticQuery(graphql`
+  const { allMdx }: PostsQuery = useStaticQuery(graphql`
     query PostsQuery {
-      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           id
           excerpt(pruneLength: 150)
-          ...Frontmatter
+          frontmatter {
+            id
+            date(formatString: "MMMM DD, YYYY")
+            path
+            title
+            subtitle
+            tags
+            next
+            thumbnail {
+              id
+              childImageSharp {
+                ...FluidImage
+              }
+            }
+          }
         }
       }
     }
   `);
 
-  return allMarkdownRemark.nodes;
+  return allMdx.nodes;
 };
 
 export default usePostsQuery;

@@ -58,8 +58,8 @@ export const NavProvider = ({ children }: any) => {
 
 type HeaderContext = {
   Header: null | Child;
-  setHeader: () => React.Dispatch<React.SetStateAction<null>>;
-  noHeader: () => React.Dispatch<React.SetStateAction<null>>;
+  setHeader: Function;
+  noHeader: React.Dispatch<React.SetStateAction<void>>;
 };
 
 export const HeaderContext = createContext<HeaderContext>({
