@@ -14,7 +14,7 @@ export const SocialIcon = ({ account, size }: SocialIconProps) => (
     <FaIcon
       icon={account.icon}
       size={size}
-      className={account.name.toLowerCase()}
+      className={`social-icon ${account.name.toLowerCase()}`}
     />
   </Link>
 );

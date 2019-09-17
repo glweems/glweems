@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useSpring, config } from 'react-spring';
-import { Link, Button, ToogleThemeSwitch } from '../Common';
-import { NavContext, ThemeContext } from '../Providers';
+import { Link, ToogleThemeSwitch } from '../Common';
+import { NavContext } from '../Providers';
 import {
   Wrapper,
   NavbarStyles,
@@ -27,21 +27,20 @@ export const BurgerMenu = () => {
 
 export const Dropdown = () => {
   const { isNavOpen, toggleNav } = React.useContext(NavContext);
-  // const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
+  const { open } = useSpring({ open: isNavOpen ? 0 : 1 });
 
-  // const { theme, toggleTheme } = React.useContext(ThemeContext);
-  // const dropdown = {
-  //   transform: open
-  //     .interpolate({
-  //       range: [0, 0.2, 0.3, 1],
-  //       output: [0, -20, 0, -200],
-  //     })
-  //     .interpolate(
-  //       openValue => `translate3d(${openValue}px, 0, ${openValue}px`,
-  //     ),
-  // };
+  const dropdown = {
+    transform: open
+      .interpolate({
+        range: [0, 0.2, 0.3, 1],
+        output: [0, -20, 0, -200],
+      })
+      .interpolate(
+        openValue => `translate3d(${openValue}px, 0, ${openValue}px`,
+      ),
+  };
   return isNavOpen ? (
-    <DropdownWrapper style={{}}>
+    <DropdownWrapper style={dropdown}>
       <NavLinks>
         <li>
           <Link to="/blog">Blog</Link>
@@ -58,12 +57,6 @@ export const Dropdown = () => {
 };
 
 const Navbar = (): any => {
-  const { theme, toggleTheme } = React.useContext(ThemeContext);
-  // const barAnimation = useSpring({
-  //   from: { transform: `translate3d(0, -10rem, 0)` },
-  //   transform: `translate3d(0, 0, 0)`,
-  // });
-
   const linkAnimation = useSpring({
     from: { transform: 'translate3d(0, 30px, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 },
@@ -85,9 +78,7 @@ const Navbar = (): any => {
             <Link to="/designs/" className="nav-item">
               Designs
             </Link>
-            <Button type="button" className="button" onClick={toggleTheme}>
-              {theme.mode}
-            </Button>
+            <ToogleThemeSwitch />
           </NavLinks>
           <BurgerMenu />
         </Navigation>

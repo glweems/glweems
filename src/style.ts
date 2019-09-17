@@ -1,7 +1,7 @@
 import theme from 'styled-theming';
 import { createGlobalStyle, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
@@ -12,12 +12,17 @@ export const yellow = `#f8d58c`;
 export const primary = theme('mode', { light: red, dark: yellow });
 export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
-export const bg = theme('mode', { light: '#fff', dark: '#111' });
-export const rootBg = theme('mode', { light: '#fff', dark: '#181D2B' });
+export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
+export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
 
 // export const shadow = `#0f121b 0px 1px 5px 0px,
 // #08090e 0px 2px 2px 0px,
 // #06070a 0px 3px 1px -2px;`;
+
+export const base = {
+  light: `#f7f7f7`,
+  dark: `#0f121b`,
+};
 
 export const navbarHeight = `4em`;
 export const borderRadius = `0.3em`;
@@ -39,26 +44,36 @@ export const hoverShadow = theme('mode', {
   dark: makeHoverShadow(`#111`),
 });
 export const containerWidths = {
-  sm: `40em`,
-  md: `45em`,
-  lg: `50em`,
+  sm: `540px`,
+  md: `720px`,
+  lg: `960px`,
+  xl: `1200px`,
 };
 
 export const media = generateMedia({
-  lg: `960px`,
-  md: `720px`,
-  sm: `540px`,
+  sm: containerWidths.sm,
+  md: containerWidths.md,
+  lg: containerWidths.lg,
+  xl: containerWidths.xl,
 });
 
 export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' });
+export const githubHover = theme('mode', {
+  light: lighten(0.5, `#333333`),
+  dark: darken(0.3, `#f7f7f7`),
+});
 
 export const linkedin = `#0077B5`;
+export const linkedinHover = darken(0.1, linkedin);
 
 export const medium = `#00ab6c`;
+export const mediumHover = darken(0.1, medium);
 
 export const behance = `#1769ff`;
+export const behanceHover = darken(0.1, behance);
 
 export const instagram = `#E1306C`;
+export const instagramHover = darken(0.1, instagram);
 
 const buttonStyles = css`
   .button,
@@ -110,6 +125,17 @@ export const GlobalStyle = createGlobalStyle`
   ${anchorStyles}
   ${buttonStyles}
 
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    border: none;
+  }
+
+
   html {
     font-size: var(--typography__fontSize);
   }
@@ -118,6 +144,13 @@ export const GlobalStyle = createGlobalStyle`
     color: ${text};
     line-height: var(--spacing__vertical--1);
     background: ${bg};
+  }
+
+  ul {
+    color: ${text} !important;
+    :before {
+      color: ${text}
+    };
   }
 
   main {
@@ -136,38 +169,47 @@ export const GlobalStyle = createGlobalStyle`
     padding: 1.5em 0;
   }
 
+  .hashtag {
+    color: ${bg};
+  }
+
+
+  .social-icon {
+    transition: all 0.25s ease;
+  }
+
   .github {
     color: ${github};
     :hover {
-      color: ${text};
+      color: ${githubHover};
     }
   }
 
   .linkedin {
     color: ${linkedin};
     :hover {
-      color: ${text};
+      color: ${linkedinHover};
     }
   }
 
   .medium {
     color: ${medium};
     :hover {
-      color: ${text};
+      color: ${mediumHover};
     }
   }
 
   .behance {
     color: ${behance};
     :hover {
-      color: ${text};
+      color: ${behanceHover};
     }
   }
 
   .instagram {
     color: ${instagram};
     :hover {
-      color: ${text};
+      color: ${instagramHover};
     }
   }
 
@@ -176,4 +218,347 @@ export const GlobalStyle = createGlobalStyle`
     background: ${bg};
     border-radius: ${borderRadius};
   }
+  .react-github-calendar {
+    grid-column: full;
+    align-self: end;
+    width: 100%;
+    min-height: 7em;
+    margin: 0;
+    padding: 0;
+    padding-top: 1em;
+    text-align: center;
+  }
+
+  .react-github-calendar__title {
+    display: none;
+  }
+  .react-github-calendar__chart {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  .react-github-calendar__meta {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  article.dark {
+code[class*="language-"],
+pre[class*="language-"] {
+	font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+	font-size: 14px;
+	line-height: 1.375;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	background: #2a2734;
+	color: #afa0fe
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #6a51e6
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #6a51e6
+}
+
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto
+}
+
+:not(pre)>code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #6c6783
+}
+
+.token.punctuation {
+	color: #6c6783
+}
+
+.token.namespace {
+	opacity: .7
+}
+
+.token.tag,
+.token.operator,
+.token.number {
+	color: #e09142
+}
+
+.token.property,
+.token.function {
+	color: #c4b9fe
+}
+
+.token.tag-id,
+.token.selector,
+.token.atrule-id {
+	color: #eeebff
+}
+
+code.language-javascript,
+.token.attr-name {
+	color: #c4b9fe
+}
+
+code.language-css,
+code.language-scss,
+.token.boolean,
+.token.string,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.language-scss .token.string,
+.style .token.string,
+.token.attr-value,
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.regex,
+.token.atrule {
+	color: #fc9
+}
+
+.token.placeholder,
+.token.variable {
+	color: #fc9
+}
+
+.token.deleted {
+	text-decoration: line-through
+}
+
+.token.inserted {
+	border-bottom: 1px dotted #eeebff;
+	text-decoration: none
+}
+
+.token.italic {
+	font-style: italic
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold
+}
+
+.token.important {
+	color: #c4b9fe
+}
+
+.token.entity {
+	cursor: help
+}
+
+pre>code.highlight {
+	outline: 0.4em solid #8a75f5;
+	outline-offset: .4em
+}
+
+.line-numbers .line-numbers-rows {
+	border-right-color: #2c2937
+}
+
+.line-numbers-rows>span:before {
+	color: #3c3949
+}
+
+.line-highlight {
+	background: rgba(224, 145, 66, 0.2);
+	background: -webkit-gradient(linear, left top, right top, color-stop(70%, rgba(224, 145, 66, 0.2)), to(rgba(224, 145, 66, 0)));
+	background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0))
+}
+
+
+/*# sourceMappingURL=prism-base2tone-evening-dark.css.map */
+}
+
+article.light {
+code[class*="language-"],
+pre[class*="language-"] {
+	font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+	font-size: 14px;
+	line-height: 1.375;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	background: #fbfaf9;
+	color: #9a86fd
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #fbfaf9
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #fbfaf9
+}
+
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto
+}
+
+:not(pre)>code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #c3bdb6
+}
+
+.token.punctuation {
+	color: #c3bdb6
+}
+
+.token.namespace {
+	opacity: .7
+}
+
+.token.tag,
+.token.operator,
+.token.number {
+	color: #6a51e6
+}
+
+.token.property,
+.token.function {
+	color: #e09142
+}
+
+.token.tag-id,
+.token.selector,
+.token.atrule-id {
+	color: #b37537
+}
+
+code.language-javascript,
+.token.attr-name {
+	color: #e09142
+}
+
+code.language-css,
+code.language-scss,
+.token.boolean,
+.token.string,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.language-scss .token.string,
+.style .token.string,
+.token.attr-value,
+.token.keyword,
+.token.control,
+.token.directive,
+.token.unit,
+.token.statement,
+.token.regex,
+.token.atrule {
+	color: #8a75f5
+}
+
+.token.placeholder,
+.token.variable {
+	color: #c4b9fe
+}
+
+.token.deleted {
+	text-decoration: line-through
+}
+
+.token.inserted {
+	border-bottom: 1px dotted #b37537;
+	text-decoration: none
+}
+
+.token.italic {
+	font-style: italic
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold
+}
+
+.token.important {
+	color: #e09142
+}
+
+.token.entity {
+	cursor: help
+}
+
+pre>code.highlight {
+	outline: 0.4em solid #e09142;
+	outline-offset: .4em
+}
+
+.line-numbers .line-numbers-rows {
+	border-right-color: #f5f3f0
+}
+
+.line-numbers-rows>span:before {
+	color: #d8d1ca
+}
+
+.line-highlight {
+	background: rgba(179, 117, 55, 0.2);
+	background: -webkit-gradient(linear, left top, right top, color-stop(70%, rgba(179, 117, 55, 0.2)), to(rgba(179, 117, 55, 0)));
+	background: linear-gradient(to right, rgba(179, 117, 55, 0.2) 70%, rgba(179, 117, 55, 0))
+}
+
+
+/*# sourceMappingURL=prism-base2tone-evening-light.css.map */
+}
+
 `;
