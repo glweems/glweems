@@ -83,7 +83,6 @@ export default ({ children }: any) => (
       <ThemeProvider key="theme-provider" />,
       <NavProvider key="nav-provider" />,
       <HeaderProvider key="header-provider" />,
-      // <HighlightProvider key="header-provider" />,
     ]}
   >
     {children}

@@ -2,19 +2,21 @@ import styled from 'styled-components';
 import * as config from '../../style';
 
 export const Header = styled.header`
-  /* margin: 2em 0; */
-  /* background: ${config.text}; */
-  h1 {
+  margin-top: -2em;
+  padding: 4em 1em;
+  padding-bottom: 10em;
+  background: ${config.text};
+  background-clip: 1em;
+  .title {
     font-weight: bold;
   }
-  h2 {
-    margin-top: 0.5em;
+  .subtitle {
+    margin-top: 0.75em;
     color: ${config.muted} !important;
     font-weight: light;
   }
-
-  img {
-    /* margin-top: 1.5em; */
+  div {
+    margin-top: 0.5em !important;
   }
 `;
 export const StyledInfo = styled.small`
@@ -49,6 +51,13 @@ export const Article = styled.article`
       grid-column: main;
     `};
   }
+  ${Header} {
+    grid-column: flush;
+    & > * {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+  }
 
   .gatsby-highlight {
     grid-column: flush;
@@ -73,6 +82,7 @@ export const Article = styled.article`
   .thumbnail {
     grid-column: flush;
     max-height: 35vh;
+    margin-top: -10em;
     ${config.media.greaterThan('sm')`
       grid-column: larger;
   `};
