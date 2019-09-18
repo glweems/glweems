@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import theme from 'styled-theming';
 import * as config from '../../style';
-
+// const headerTitleColor =
 export const Header = styled.header`
   margin-top: -2em;
   padding: 4em 1em;
@@ -8,11 +9,19 @@ export const Header = styled.header`
   background: ${config.text};
   background-clip: 1em;
   .title {
+    color: ${theme('mode', {
+      light: config.yellow,
+      dark: config.red,
+    })};
     font-weight: bold;
   }
   .subtitle {
     margin-top: 0.75em;
-    color: ${config.muted} !important;
+    color: ${theme('mode', {
+      light: config.yellow,
+      dark: config.red,
+    })} !important;
+
     font-weight: light;
   }
   div {
@@ -36,9 +45,10 @@ export const Article = styled.article`
     minmax(0, 0.5fr) [larger-end]
     minmax(0, 1fr) [fluid-end]
     1em [flush-end];
-  gap: 3em 0;
+  gap: 2em 0;
   width: 100%;
   color: ${config.text};
+  font-size: 120%;
   background: ${config.bg};
 
   * {

@@ -53,7 +53,7 @@ const Landing = (): React.ReactElement => {
     <AnimatedWrapper style={animation}>
       <Ghost />
       <h1>
-        Hello, I&apos; m <span>Garrett Weems</span>.
+        Hello, I&apos;m <span>Garrett Weems</span>.
       </h1>
       <h3>I&apos;m a full-stack web developer.</h3>
       <p>I specialize in javascript / react.js web developement.</p>

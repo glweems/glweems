@@ -65,6 +65,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Roboto Mono', 'Roboto'],
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `./src/utils/typography.ts`,
@@ -126,6 +134,7 @@ module.exports = {
               inlineCodeMarker: null,
             },
           },
+          `gatsby-remark-smartypants`,
         ],
       },
     },
@@ -166,6 +175,7 @@ module.exports = {
         icon: `src/assets/favicon.png`,
       },
     },
+    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-offline`,
   ],
 };

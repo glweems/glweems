@@ -2,6 +2,7 @@
 import React from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
+import theme from 'styled-theming';
 import Tags from './Tags';
 import { Child } from '..';
 import * as config from '../style';
@@ -29,7 +30,10 @@ export const Header = styled.div`
     margin: 0;
     padding: 0.5em 0.25em;
     overflow: hidden;
-    color: ${config.text};
+    color: ${theme('mode', {
+      light: config.red,
+      dark: config.yellow,
+    })};
     font-size: 1.25em;
     white-space: nowrap;
     text-overflow: ellipsis;
