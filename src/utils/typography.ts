@@ -1,12 +1,10 @@
 import Typography, { TypographyOptions } from 'typography';
-import gray from 'gray-percentage';
-import * as config from '../style';
+import CodePlugin from 'typography-plugin-code';
 
 const theme: TypographyOptions = {
   baseFontSize: '18px',
   baseLineHeight: 1.5,
   headerFontFamily: [
-    'Roboto Mono',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -19,7 +17,6 @@ const theme: TypographyOptions = {
     'Segoe UI Symbol',
   ],
   bodyFontFamily: [
-    'Roboto',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -36,6 +33,8 @@ const theme: TypographyOptions = {
   bodyWeight: 'normal',
   boldWeight: 600,
 };
+
+theme.plugins = [new CodePlugin()];
 
 const typography = new Typography(theme);
 

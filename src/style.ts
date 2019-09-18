@@ -2,6 +2,7 @@ import theme from 'styled-theming';
 import { createGlobalStyle, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { darken, lighten } from 'polished';
+import { rhythm } from './utils/typography';
 
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
@@ -126,9 +127,6 @@ export const anchorStyles = css`
 
 export const GlobalStyle = createGlobalStyle`
 
-:root{
-  font-size: 16px;
-}
 
   ${anchorStyles}
   ${buttonStyles}
@@ -156,19 +154,18 @@ export const GlobalStyle = createGlobalStyle`
 
 
   main {
-    padding-top: 2em;
+    padding-top: ${rhythm(1)};
   }
 
   section {
-    margin: 1em 0;
-    margin-bottom: 1.5em;
+    margin: ${rhythm(1)} 0;
   }
 
 
   footer {
     width: 100%;
     margin: 0;
-    padding: 1.5em 0;
+    padding: ${rhythm(1)} 0;
   }
 
   .hashtag {

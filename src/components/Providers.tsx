@@ -3,7 +3,6 @@ import { DefaultTheme } from 'styled-components';
 import useTheme from '../hooks/useTheme';
 import useNav from '../hooks/useNav';
 import { Child } from '..';
-import useHeader from '../hooks/useHeader';
 
 interface PCP {
   contexts: any[];
@@ -56,33 +55,11 @@ export const NavProvider = ({ children }: any) => {
   );
 };
 
-type HeaderContext = {
-  Header: null | Child;
-  setHeader: Function;
-  noHeader: React.Dispatch<React.SetStateAction<void>>;
-};
-
-export const HeaderContext = createContext<HeaderContext>({
-  Header: null,
-  setHeader: () => null,
-  noHeader: () => null,
-});
-
-export const HeaderProvider = ({ children }: any) => {
-  const { Header, setHeader, noHeader } = useHeader();
-  return (
-    <HeaderContext.Provider value={{ Header, setHeader, noHeader }}>
-      {children}
-    </HeaderContext.Provider>
-  );
-};
-
 export default ({ children }: any) => (
   <ProviderComposer
     contexts={[
       <ThemeProvider key="theme-provider" />,
       <NavProvider key="nav-provider" />,
-      <HeaderProvider key="header-provider" />,
     ]}
   >
     {children}
