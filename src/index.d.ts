@@ -1,6 +1,5 @@
 import { FluidObject, FixedObject } from 'gatsby-image';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { MxRecord } from 'dns';
 
 export interface Nodes<T> {
   nodes: T[];

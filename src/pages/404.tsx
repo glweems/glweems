@@ -1,15 +1,11 @@
 import React from 'react';
-import { HeaderContext } from '../components/Providers';
+import { Container } from '../components/Common';
 
-const NotFoundPage = () => {
-  const { noHeader } = React.useContext(HeaderContext);
-  noHeader();
-  return (
-    <div>
-      <h1>Page not found</h1>
-      <p>The requested page is unavailable.</p>
-    </div>
-  );
-};
+const NotFoundPage = () => (
+  <Container>
+    <h1>Page not found</h1>
+    <p>The requested page is unavailable.</p>
+  </Container>
+);
 
 export default NotFoundPage;

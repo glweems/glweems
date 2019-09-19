@@ -4,13 +4,10 @@ import Img from 'gatsby-image';
 import SEO from '../components/SEO';
 import { BehanceProject, ImageFile } from '..';
 import { Container } from '../components/Common';
-import { HeaderContext } from '../components/Providers';
 
 export default function DesignTemplate({ data }: DesignTemplate) {
   const { currentProject, allFile } = data;
   const { name, tags, description } = currentProject;
-  const { noHeader } = React.useContext(HeaderContext);
-  noHeader();
   return [
     <SEO
       key={`seo-design-${name}`}

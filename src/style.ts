@@ -2,6 +2,7 @@ import theme from 'styled-theming';
 import { createGlobalStyle, css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { darken, lighten } from 'polished';
+import { rhythm } from './utils/typography';
 
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
@@ -14,6 +15,9 @@ export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
 export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
 export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
+
+export const lightMuted = '#5a5a5a';
+export const darkMuted = '#c6c7c6';
 
 // export const shadow = `#0f121b 0px 1px 5px 0px,
 // #08090e 0px 2px 2px 0px,
@@ -122,6 +126,8 @@ export const anchorStyles = css`
 `;
 
 export const GlobalStyle = createGlobalStyle`
+
+
   ${anchorStyles}
   ${buttonStyles}
 
@@ -137,36 +143,29 @@ export const GlobalStyle = createGlobalStyle`
 
 
   html {
-    font-size: var(--typography__fontSize);
+    /* font-size: var(--typography__fontSize); */
   }
 
   body {
     color: ${text};
-    line-height: var(--spacing__vertical--1);
+    /* line-height: var(--spacing__vertical--1); */
     background: ${bg};
   }
 
-  ul {
-    color: ${text} !important;
-    :before {
-      color: ${text}
-    };
-  }
 
   main {
-    margin-top: 2em;
+    padding-top: ${rhythm(1)};
   }
 
   section {
-    margin: 1em 0;
-    margin-bottom: 1.5em;
+    margin: ${rhythm(1)} 0;
   }
 
 
   footer {
     width: 100%;
     margin: 0;
-    padding: 1.5em 0;
+    padding: ${rhythm(1)} 0;
   }
 
   .hashtag {

@@ -7,20 +7,16 @@ import { Ghost } from './Icons';
 import { SocialIcon, Container, Button, Link } from './Common';
 import { accounts } from '../utils/data';
 import * as config from '../style';
+import { rhythm } from '../utils/typography';
 
 const wrapperBg = theme('mode', { light: config.yellow, dark: config.bg });
 const garrettWeems = theme('mode', { light: config.blue, dark: config.yellow });
 
 const Wrapper = styled(Container)`
-  align-content: space-around;
-  height: calc(65vh - ${config.navbarHeight});
-  margin-bottom: 1em;
-  padding: 1em 0;
-  background: ${wrapperBg};
-  border-radius: 0 0 1em 1em;
-  * {
-    margin: 0;
+  .gatsby-image-wrapper {
+    margin: ${rhythm(1)} 0;
   }
+  background: ${wrapperBg};
   p {
     color: ${config.muted};
   }
@@ -28,11 +24,13 @@ const Wrapper = styled(Container)`
     color: ${garrettWeems};
   }
   .icons {
+    margin-bottom: ${rhythm(1)};
     > a {
-      margin-right: 1em;
+      margin-right: ${rhythm(1)};
     }
   }
   button {
+    margin-bottom: ${rhythm(1)};
     color: ${config.base.light};
     background: ${config.blue};
     border-color: ${darken(0.05, config.blue)};
@@ -52,11 +50,13 @@ const Landing = (): React.ReactElement => {
   return (
     <AnimatedWrapper style={animation}>
       <Ghost />
-      <h1>
-        Hello, I&apos; m <span>Garrett Weems</span>.
-      </h1>
-      <h3>I&apos;m a full-stack web developer.</h3>
-      <p>I specialize in javascript / react.js web developement.</p>
+      <div>
+        <h1>
+          Hello, I&apos;m <span>Garrett Weems</span>.
+        </h1>
+        <h3>I&apos;m a full-stack web developer.</h3>
+        <p>I specialize in javascript / react.js web developement.</p>
+      </div>
       <div>
         <Link to="https://docs.google.com/document/d/14e2XLcPLXcNLetW7QvosoBAU5N6ONE-uU1c4VyMjsCA/edit#heading=h.ahxu4umdkayn">
           <Button>Resume</Button>
