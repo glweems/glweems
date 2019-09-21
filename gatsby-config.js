@@ -81,7 +81,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/RootElementWrapper.tsx`),
+        component: require.resolve(`./src/components/Layout.tsx`),
       },
     },
     `gatsby-plugin-sharp`,
@@ -105,7 +105,9 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-
+        defaultLayouts: {
+          // default: require.resolve('./src/templates/post.tsx'),
+        },
         mdPlugins: [
           // require('remark-images'),
           // require('remark-unwrap-images'),
@@ -124,14 +126,6 @@ module.exports = {
             options: {
               maxWidth: 720,
               // linkImagesToOriginal: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              aliases: { sh: 'bash', js: 'javascript' },
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
             },
           },
           `gatsby-remark-smartypants`,

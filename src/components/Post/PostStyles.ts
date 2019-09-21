@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
-import * as config from '../../style';
+import * as config from '../../theme';
 // const headerTitleColor =
 export const Header = styled.header`
   margin-top: -2em;

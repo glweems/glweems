@@ -1,10 +1,9 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import { DiscussionEmbed } from 'disqus-react';
-import { MDX, Frontmatter } from '../..';
+import { Frontmatter } from '../..';
 import { Header, StyledInfo } from './PostStyles';
 import Tags from '../Tags';
-import { Container } from '../Common';
 
 interface PostInfo {
   date: Date | string | any;
@@ -17,20 +16,22 @@ export const PostHeader = ({
 }: {
   frontmatter: Frontmatter;
   timeToRead: number;
-}) => [
-  <Header>
-    <h1 className="title">{frontmatter.title}</h1>
-    <h2 className="subtitle">{frontmatter.subtitle}</h2>
-    <div className="info">
-      <Tags items={frontmatter.tags} />
-      <Info date={frontmatter.date} time={timeToRead} />
-    </div>
-  </Header>,
-  <Img
-    className="thumbnail"
-    fluid={frontmatter.thumbnail.childImageSharp.fluid}
-  />,
-];
+}) => (
+  <>
+    <Header>
+      <h1 className="title">{frontmatter.title}</h1>
+      <h2 className="subtitle">{frontmatter.subtitle}</h2>
+      <div className="info">
+        <Tags items={frontmatter.tags} />
+        <Info date={frontmatter.date} time={timeToRead} />
+      </div>
+    </Header>
+    <Img
+      className="thumbnail"
+      fluid={frontmatter.thumbnail.childImageSharp.fluid}
+    />
+  </>
+);
 
 export const Info = ({ date, time }: PostInfo) => {
   return (

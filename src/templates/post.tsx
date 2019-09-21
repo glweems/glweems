@@ -1,6 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useContext } from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import SEO from '../components/SEO';
 import { MDX } from '..';
@@ -12,13 +11,7 @@ interface Props {
   data: { post: MDX };
 }
 
-type BlogTemplate = React.ReactFragment;
-
-const components = {
-  a: (props: any) => <Link {...props} />,
-};
-
-const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
+const BlogTemplate = ({ data: { post } }: Props) => {
   const { theme } = useContext(ThemeContext);
 
   return [
@@ -30,7 +23,7 @@ const BlogTemplate = ({ data: { post } }: Props): BlogTemplate => {
     />,
     <Article key="Article" className={theme.mode}>
       <PostHeader frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
-      <MDXRenderer components={components}>{post.body}</MDXRenderer>
+      <MDXRenderer>{post.body}</MDXRenderer>
       <Comments
         title={post.frontmatter.title}
         identifier={post.frontmatter.id}

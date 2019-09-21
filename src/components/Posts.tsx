@@ -2,9 +2,15 @@ import React from 'react';
 import Img from 'gatsby-image';
 import Card, { Cards } from './Card';
 import usePostsQuery from '../graphql/PostsQuery';
+import { Frontmatter } from '..';
 
 interface Props {
   limit?: number | false;
+}
+interface Data {
+  id: string;
+  excerpt: string;
+  frontmatter: Frontmatter;
 }
 
 const Posts = ({ limit = false }: Props) => {
@@ -14,7 +20,7 @@ const Posts = ({ limit = false }: Props) => {
     <Cards>
       {posts
         .slice(0, limit || posts.length)
-        .map(({ id, excerpt, frontmatter }) => (
+        .map(({ id, excerpt, frontmatter }: Data) => (
           <Card
             key={id}
             title={frontmatter.title}
