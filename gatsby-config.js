@@ -65,14 +65,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Roboto Mono', 'Roboto'],
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `./src/utils/typography.ts`,
@@ -105,9 +97,6 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-        defaultLayouts: {
-          // default: require.resolve('./src/templates/post.tsx'),
-        },
         mdPlugins: [
           // require('remark-images'),
           // require('remark-unwrap-images'),
