@@ -6,7 +6,7 @@ import { darken } from 'polished';
 import { Ghost } from './Icons';
 import { SocialIcon, Container, Button, Link } from './Common';
 import { accounts } from '../utils/data';
-import * as config from '../style';
+import * as config from '../theme';
 import { rhythm } from '../utils/typography';
 
 const wrapperBg = theme('mode', { light: config.yellow, dark: config.bg });

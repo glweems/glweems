@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as theme from '../../style';
+import * as theme from '../../theme';
 
 export const Button = styled.button`
   display: inline-block;

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import theme from 'styled-theming';
 import Tags from './Tags';
 import { Child } from '..';
-import * as config from '../style';
+import * as config from '../theme';
 
 export const Wrapper = styled.div`
   display: grid;

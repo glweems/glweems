@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 import { Container } from '../Common';
-import * as config from '../../style';
+import * as config from '../../theme';
 
 export const Wrapper = styled.div`
   position: sticky;
