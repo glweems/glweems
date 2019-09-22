@@ -17,6 +17,8 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "prefer-const": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prefer-stateless-function": "off",
     "prefer-arrow-callback": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
