@@ -60,7 +60,7 @@ export interface MDX {
 }
 
 export interface PostsQuery {
-  allMarkdownRemark: Nodes<MDX>;
+  allMdx: Nodes<MDX>;
 }
 
 export type Child =
