@@ -1,52 +1,61 @@
-import styled from 'styled-components';
-import * as config from '../../theme';
+import styled, { css } from 'styled-components';
+import { media, containerWidths, gridGap } from '../../theme';
 
-export const Container = styled.div`
+const { sm, md, lg, xl } = containerWidths;
+interface Props {
+  gap?: 1 | 2 | 3;
+  smFlush?: boolean;
+}
+
+const containerCss = css`
   display: grid;
   grid-template-columns:
-    [full-start] 1em
+    [flush-start] 1em
     [fluid-start] minmax(0, 1fr)
-    [main-start] minmax(0, ${config.containerWidths.sm}) [main-end]
+    [main-start] minmax(0, ${sm}) [main-end]
     minmax(0, 1fr) [fluid-end]
-    1em [full-end];
+    1em [flush-end];
+  gap: ${(props: Props) => (props.gap ? gridGap(props.gap) : 0)};
   width: 100%;
+
   > * {
     grid-column: main;
   }
   .fluid {
     grid-column: fluid;
   }
-  .full {
-    grid-column: full;
+  .flush {
+    grid-column: flush;
   }
-  ${config.media.greaterThan('md')`
+
+  ${media.greaterThan('md')`
     grid-template-columns:
-    [full-start] 1em
+    [flush-start] 1em
     [fluid-start] minmax(0, 1fr)
-    [main-start] minmax(0, ${config.containerWidths.md}) [main-end]
+    [main-start] minmax(0, ${md}) [main-end]
     minmax(0, 1fr) [fluid-end]
-    1em [full-end]; !important;
+    1em [flush-end]; !important;
     `}
 
-  ${config.media.greaterThan('lg')`
+  ${media.greaterThan('lg')`
     grid-template-columns:
-      [full-start] 1em
+      [flush-start] 1em
       [fluid-start] minmax(0, 1fr)
-      [main-start] minmax(0, ${config.containerWidths.lg}) [main-end]
+      [main-start] minmax(0, ${lg}) [main-end]
       minmax(0, 1fr) [fluid-end]
-      1em [full-end];
+      1em [flush-end];
     `}
-  ${config.media.greaterThan('xl')`
+
+  ${media.greaterThan('xl')`
     grid-template-columns:
-      [full-start] 1em
+      [flush-start] 1em
       [fluid-start] minmax(0, 1fr)
-      [main-start] minmax(0, ${config.containerWidths.xl}) [main-end]
+      [main-start] minmax(0, ${xl}) [main-end]
       minmax(0, 1fr) [fluid-end]
-      1em [full-end];
+      1em [flush-end];
     `}
+`;
 
-  ${config.media.lessThan('sm')`
-
-
-    }`}
+export const Container = styled.div`
+  ${containerCss}
 `;

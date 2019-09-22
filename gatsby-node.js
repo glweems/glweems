@@ -24,7 +24,7 @@ exports.createPages = ({ actions, graphql }) => {
       allBehanceProjects.nodes.forEach(({ slug }) => {
         actions.createPage({
           path: `/${slug}`,
-          component: path.resolve(`src/templates/design.tsx`),
+          component: path.resolve(`src/templates/Design/DesignTemplate.tsx`),
           context: { slug: `/${slug}/` },
         });
       });
@@ -33,7 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
       allMdx.nodes.forEach(({ frontmatter }) => {
         actions.createPage({
           path: frontmatter.path,
-          component: path.resolve(`src/templates/post.tsx`),
+          component: path.resolve(`src/templates/Blog/BlogTemplate.tsx`),
           context: { slug: frontmatter.path },
         });
       });

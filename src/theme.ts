@@ -4,6 +4,7 @@ import { generateMedia } from 'styled-media-query';
 import { darken, lighten } from 'polished';
 import { rhythm } from './utils/typography';
 
+export { rhythm, scale, options } from './utils/typography';
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
 export const mint = `#a7e3cc`;
@@ -28,6 +29,7 @@ export const base = {
   dark: `#0f121b`,
 };
 
+export const gridGap = (num: number) => rhythm(num * 0.25);
 export const navbarHeight = `4em`;
 export const borderRadius = `0.3em`;
 
