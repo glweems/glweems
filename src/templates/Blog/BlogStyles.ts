@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import theme from 'styled-theming';
 import * as config from '../../theme';
-// const headerTitleColor =
+
+const { media } = config;
 export const Header = styled.header`
   margin-top: -2em;
   padding: 4em 1em;
@@ -88,7 +89,11 @@ export const Article = styled.article`
     margin: 0;
     padding: 0;
   }
-
+  .code-block {
+    grid-column: flush;
+    max-width: 100vw;
+    overflow: auto;
+  }
   .thumbnail {
     grid-column: flush;
     max-height: 35vh;
@@ -108,10 +113,12 @@ export const Article = styled.article`
 
   blockquote {
     width: 100%;
+    margin: 0;
     padding-left: 1em;
     color: ${config.text};
     font-style: italic;
     border-color: ${config.primary};
+    border-left: 3px solid ${config.primary};
     p {
       color: ${config.muted} !important;
     }
@@ -138,9 +145,14 @@ export const Article = styled.article`
   }
 
   #disqus_thread {
-    grid-column: larger;
-    /* grid-column: larger !important; */
     width: 100% !important;
     background: ${config.base.dark};
   }
+  ${media.lessThan('sm')`
+    #disqus_thread,
+    iframe,
+    pre {
+      grid-column: flush;
+    }
+  `}
 `;

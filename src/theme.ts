@@ -10,12 +10,19 @@ export const green = `#4caf50`;
 export const mint = `#a7e3cc`;
 export const purple = `#d0c1fa`;
 export const red = `#d65947`;
+export const darkRed = darken(0.1, red);
 export const yellow = `#f8d58c`;
+export const darkYellow = darken(0.1, yellow);
 export const primary = theme('mode', { light: red, dark: yellow });
+export const darkPrimary = theme('mode', { light: darkRed, dark: darkYellow });
 export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
 export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
 export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
+export const borderColor = theme('mode', {
+  light: '#c6c7c6',
+  dark: darken(0.1, '#252d3d'),
+});
 
 export const lightMuted = '#5a5a5a';
 export const darkMuted = '#c6c7c6';

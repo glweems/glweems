@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
 import SEO from '../../components/SEO';
 import { BehanceProject, ImageFile } from '../..';
-import { Container } from '../../components/Common';
-import { navbarHeight, media, gridGap, rhythm, bg } from '../../theme';
+import { Container, Text } from '../../components/Common';
+import { Header, ImageGrid, Images } from './DesignStyles';
 
 interface DesignTemplate {
   data: {
@@ -23,48 +22,6 @@ interface ImageGridProps {
   fullGallery: boolean;
 }
 
-const Header = styled.div`
-  position: fixed;
-  top: ${navbarHeight};
-  left: 0;
-  width: 100%;
-  padding: ${rhythm(1)} 0;
-`;
-
-const ImageGrid = styled.div`
-  display: grid;
-  width: 100%;
-  background: ${bg};
-  ${media.greaterThan('sm')`
-    grid-template-rows: repeat(4, 5vw);
-    grid-template-columns: repeat(8, 1fr);
-    gap: ${gridGap(1)};
-    margin-bottom: ${gridGap(1)};
-    .design-img:first-child {
-      grid-row: 1/3;
-      grid-column: 1/3;
-    }
-    .design-img:nth-child(2) {
-      grid-row: 1/3;
-      grid-column: 3/5;
-    }
-    .design-img:nth-child(3) {
-      grid-row: 1/6;
-      grid-column: 5/9;
-    }
-    .design-img:nth-child(4) {
-      grid-row: 3/6;
-      grid-column: 1/5;
-    }
-  `}
-`;
-
-const Images = styled.div`
-  z-index: 100;
-  margin-top: 10em;
-  background: pink;
-`;
-
 const DesignImages = ({ images }: { images: ImageFile[] }) => {
   function chunkArray(myArray: any[], chunk_size: number) {
     let results = [];
@@ -77,7 +34,7 @@ const DesignImages = ({ images }: { images: ImageFile[] }) => {
   }
 
   return (
-    <Images>
+    <Images smFlush bg>
       {chunkArray(images, 4).map(chunk => (
         <ImageGrid>
           {chunk.map(({ childImageSharp, id }) => (
@@ -105,8 +62,10 @@ export default function DesignTemplate({ data }: DesignTemplate) {
     />,
     <section key={`content-design-${name}-1`}>
       <Container>
-        <Header>
-          <h1>{name}</h1>
+        <Header inverted>
+          <Text variant="title" theme={{ mode: 'light' }}>
+            {name}
+          </Text>
           <h2>{description}</h2>
         </Header>
       </Container>

@@ -7,9 +7,10 @@ import { GlobalStyle } from '../theme';
 import Navbar from './Navbar/Navbar';
 import Footer from './Footer';
 import CodeBlock from './CodeBlock';
+import Landing from './Landing';
 
 const components = {
-  pre: (props: any) => <div {...props} />,
+  pre: (props: any) => <div className="code-block" {...props} />,
   code: CodeBlock,
 };
 
@@ -17,11 +18,12 @@ const CodeWrapper = ({ children }: any) => (
   <MDXProvider components={components}>{children}</MDXProvider>
 );
 
-const Styles = ({ children }: { children: React.ReactChildren }) => {
+const Styles = ({ children }: { children: any }) => {
   const { theme } = useContext(ThemeContext);
   return (
     <ThemeProvider theme={theme}>
       <>
+        {children.props.path === '/' ? <Landing /> : null}
         <Navbar key="navbar" />
         <main>{children}</main>
         <Footer key="footer" />

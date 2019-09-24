@@ -38,12 +38,12 @@ module.exports = {
     siteUrl: config.url,
   },
   plugins: [
+    `gatsby-plugin-ngrok-tunneling`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    // `gatsby-plugin-catch-links`,
 
     {
       resolve: `gatsby-transformer-yaml`,

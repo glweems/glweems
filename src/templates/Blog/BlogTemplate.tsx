@@ -8,9 +8,14 @@ import { MDX, Frontmatter } from '../..';
 import { Article, Header, StyledInfo } from './BlogStyles';
 import { ThemeContext } from '../../components/Providers';
 import Tags from '../../components/Tags';
+import SwitchPages from '../../components/SwitchPages';
 
 interface Props {
-  data: { post: MDX };
+  data: {
+    post: MDX;
+    prev: { frontmatter: { path: string | null } };
+    next: { frontmatter: { path: string | null } };
+  };
 }
 
 interface PostInfo {
@@ -71,9 +76,10 @@ const Comments = ({ title, identifier, path }: CommentsProps) => {
   );
 };
 
-export default function BlogTemplate({ data: { post } }: Props) {
+export default function BlogTemplate({ data: { post, prev, next } }: Props) {
   const { theme } = useContext(ThemeContext);
-
+  const prevPath = prev && prev.frontmatter.path;
+  const nextPath = next && next.frontmatter.path;
   return [
     <SEO
       key="SEO"
@@ -84,6 +90,7 @@ export default function BlogTemplate({ data: { post } }: Props) {
     <Article key="Article" className={theme.mode}>
       <PostHeader frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
       <MDXRenderer>{post.body}</MDXRenderer>
+      <SwitchPages prev={prevPath} next={nextPath} />
       <Comments
         title={post.frontmatter.title}
         identifier={post.frontmatter.id}
@@ -93,12 +100,22 @@ export default function BlogTemplate({ data: { post } }: Props) {
   ];
 }
 
-export const BlogPost = graphql`
-  query PostQuery($slug: String!) {
+export const BlogTemplateQuery = graphql`
+  query BlogTemplateQuery($slug: String!, $prev: String, $next: String) {
     post: mdx(frontmatter: { path: { eq: $slug } }) {
       body
       timeToRead
       ...Frontmatter
+    }
+    prev: mdx(frontmatter: { path: { eq: $prev } }) {
+      frontmatter {
+        path
+      }
+    }
+    next: mdx(frontmatter: { path: { eq: $next } }) {
+      frontmatter {
+        path
+      }
     }
   }
 `;

@@ -2,8 +2,11 @@ import React from 'react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from 'react-live';
 import { mdx } from '@mdx-js/react';
+import styled from 'styled-components';
 
-export default ({ children, className, live, render }: any) => {
+const Editor = styled.div``;
+
+export default function CodeBlock({ children, className, live, render }: any) {
   const language = className.replace(/language-/, '');
   if (live) {
     return (
@@ -12,9 +15,11 @@ export default ({ children, className, live, render }: any) => {
         transformCode={code => `/** @jsx mdx */${code}`}
         scope={{ mdx }}
       >
-        <LivePreview />
-        <LiveEditor />
-        <LiveError />
+        <Editor>
+          <LiveEditor />
+          <LivePreview />
+          <LiveError />
+        </Editor>
       </LiveProvider>
     );
   }
@@ -49,4 +54,4 @@ export default ({ children, className, live, render }: any) => {
       )}
     </Highlight>
   );
-};
+}
