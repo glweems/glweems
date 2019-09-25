@@ -38,7 +38,6 @@ module.exports = {
     siteUrl: config.url,
   },
   plugins: [
-    `gatsby-plugin-ngrok-tunneling`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
