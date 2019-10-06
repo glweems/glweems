@@ -2,7 +2,9 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
+import styled from 'styled-components';
 import { Child } from '../..';
+import { text, purple } from '../../theme';
 
 interface WhichLinkProps {
   children?: string | Child | any;
@@ -10,7 +12,6 @@ interface WhichLinkProps {
   [key: string]: any;
   partiallyActive?: boolean;
   activeClassName?: string;
-  unstyled?: boolean;
   className?: string;
 }
 
@@ -19,7 +20,6 @@ export const Link = ({
   to,
   activeClassName = 'active',
   partiallyActive,
-  unstyled = false,
   className = '',
   ...other
 }: WhichLinkProps) => {
@@ -31,19 +31,23 @@ export const Link = ({
       to={to}
       activeClassName={activeClassName}
       partiallyActive={partiallyActive}
-      className={`${className} ${unstyled || 'link'}`}
+      className={className}
       {...other}
     >
       {children}
     </GatsbyLink>
   ) : (
-    <GoogleLink
-      href={to}
-      target="_blank"
-      className={`${className} ${unstyled || 'link'}`}
-      {...other}
-    >
+    <GoogleLink href={to} target="_blank" className={className} {...other}>
       {children}
     </GoogleLink>
   );
 };
+
+export const StyledLink = styled(Link)`
+  color: ${text};
+  text-decoration: none;
+  border-bottom: 3px solid ${purple};
+  :hover {
+    background: ${purple};
+  }
+`;

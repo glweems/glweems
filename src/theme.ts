@@ -23,7 +23,8 @@ export const borderColor = theme('mode', {
   light: '#c6c7c6',
   dark: darken(0.1, '#252d3d'),
 });
-
+export const linkBg = theme('mode', { light: mint, dark: yellow });
+export const linkColor = theme('mode', { light: text, dark: bg });
 export const lightMuted = '#5a5a5a';
 export const darkMuted = '#c6c7c6';
 
@@ -110,27 +111,14 @@ const buttonStyles = css`
 `;
 
 export const anchorStyles = css`
-  .link {
-    position: relative;
-    margin: 2px 6px 2px 6px;
-    color: ${blue};
-    font: inherit;
-    font-weight: 500;
-    font-size: 115% !important;
-    letter-spacing: 0.08rem;
-    text-transform: uppercase;
-    text-decoration: none !important;
-    vertical-align: baseline;
-    border: 0;
-    cursor: pointer;
-  }
-
-  .link:hover {
+  a {
     color: ${text};
-  }
-
-  .link.active {
-    color: ${red};
+    text-decoration: none;
+    border-bottom: 3px solid ${linkBg};
+    :hover {
+      color: ${linkColor};
+      background: ${linkBg};
+    }
   }
 `;
 
@@ -140,7 +128,6 @@ export const GlobalStyle = createGlobalStyle`
   ${anchorStyles}
   ${buttonStyles}
 
-
   h1,
   h2,
   h3,
@@ -148,6 +135,42 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     border: none;
+
+    .anchor {
+      float: left;
+      margin-left: -20px;
+      padding-right: 4px;
+      color: ${muted};
+      line-height: 1;
+      visibility: hidden;
+    }
+    .anchor:focus {
+      outline: none;
+    }
+    /* h1 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.25;
+  } */
+    .octicon-link {
+      color: ${muted};
+      vertical-align: middle;
+      visibility: hidden;
+    }
+    :hover {
+
+      .anchor {
+        text-decoration: none;
+        visibility: visible;
+      }
+      .octicon-link {
+        padding-bottom: 0.3em;
+        font-size: 2em;
+        border-bottom: 1px solid #eaecef;
+        visibility: visible;
+      }
+    }
   }
 
 
@@ -251,6 +274,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-
+  #resume {
+    max-width: 720px;
+    margin: 0 auto;
+  }
 
 `;

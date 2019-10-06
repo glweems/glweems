@@ -13,9 +13,11 @@ const IndexPage = () => [
       <h2>Blog Posts</h2>
       <Posts limit={3} />
     </section>
-    <Link to="/blog" unstyled>
-      <Button>View All Blog Posts</Button>
-    </Link>
+    <div>
+      <Link to="/blog" unstyled>
+        View All Blog Posts
+      </Link>
+    </div>
   </Container>,
   <Container key="Design">
     <section>

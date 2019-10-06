@@ -34,7 +34,15 @@ export const Navigation = styled.nav`
   justify-content: space-between;
   height: ${config.navbarHeight};
   .logo {
+    font-weight: bolder;
+    text-transform: uppercase;
     cursor: pointer;
+  }
+`;
+
+export const Links = styled.div`
+  a:not(:last-child) {
+    margin-right: 1em;
   }
 `;
 

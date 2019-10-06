@@ -1,81 +1,59 @@
 import styled from 'styled-components';
-import theme from 'styled-theming';
-import * as config from '../../theme';
+import {
+  rhythm,
+  media,
+  muted,
+  text,
+  bg,
+  primary,
+  base,
+  borderRadius,
+} from '../../theme';
 
-const { media } = config;
 export const Header = styled.header`
-  margin-top: -2em;
-  padding: 4em 1em;
-  padding-bottom: 10em;
-  background: ${config.text};
-  background-clip: 1em;
-  .title {
-    color: ${theme('mode', {
-      light: config.yellow,
-      dark: config.red,
-    })};
-    font-weight: bold;
-  }
-  .subtitle {
-    margin-top: 0.75em;
-    color: ${theme('mode', {
-      light: config.yellow,
-      dark: config.red,
-    })} !important;
-
-    font-weight: light;
-  }
-  div {
-    margin-top: 0.5em !important;
-  }
+  padding: 4em 0;
 `;
+
 export const StyledInfo = styled.small`
-  color: ${config.muted};
+  color: ${muted};
+  font-weight: bold;
   font-style: italic;
 `;
 
 export const Article = styled.article`
   display: grid;
   grid-template-columns:
-    [flush-start]
-    1em
+    [flush-start] 1em
     [fluid-start] minmax(0, 1fr)
     [larger-start] minmax(0, 0.5fr)
     [main-start] minmax(0, 728px) [main-end]
-    0 [quote-end]
     minmax(0, 0.5fr) [larger-end]
     minmax(0, 1fr) [fluid-end]
     1em [flush-end];
-  gap: 2em 0;
-  width: 100%;
-  color: ${config.text};
-  font-size: 120%;
-  background: ${config.bg};
 
-  * {
+  width: 100%;
+  color: ${text};
+  background: ${bg};
+
+  & > * {
     grid-column: main;
     max-width: 100%;
+    margin: 0 0 ${rhythm(2)} 0;
     overflow-x: auto;
     overflow-y: hidden;
 
-    ${config.media.greaterThan('sm')`
+    ${media.greaterThan('sm')`
       grid-column: main;
     `};
   }
-  ${Header} {
-    grid-column: flush;
-    & > * {
-      max-width: 720px;
-      margin: 0 auto;
-    }
-  }
 
-  .gatsby-highlight {
-    grid-column: flush;
-    ${config.media.greaterThan('sm')`
-      grid-column: larger;
-    `};
-  }
+  ${media.greaterThan('sm')`
+    img,
+    iframe {
+      border: 2px solid ${bg};
+      border-radius: ${borderRadius};
+    }
+  `};
 
   iframe {
     grid-column: larger;
@@ -89,70 +67,48 @@ export const Article = styled.article`
     margin: 0;
     padding: 0;
   }
-  .code-block {
-    grid-column: flush;
-    max-width: 100vw;
-    overflow: auto;
+  .larger {
+    grid-column: larger;
   }
+
+  .cp_embed_wrapper {
+    grid-column: larger;
+  }
+
   .thumbnail {
     grid-column: flush;
     max-height: 35vh;
-    margin-top: -10em;
-    ${config.media.greaterThan('sm')`
+    ${media.greaterThan('sm')`
       grid-column: larger;
   `};
   }
 
-  ${config.media.greaterThan('sm')`
-    iframe,
-    img {
-      border: 2px solid ${config.bg};
-      border-radius: ${config.borderRadius};
-    }
-  `};
-
   blockquote {
     width: 100%;
-    margin: 0;
-    padding-left: 1em;
-    color: ${config.text};
-    font-style: italic;
-    border-color: ${config.primary};
-    border-left: 3px solid ${config.primary};
-    p {
-      color: ${config.muted} !important;
-    }
-  }
+    margin: 0 0 ${rhythm(2)} -1em;
+    padding: 0.25em 0 0.25em 1em;
+    border-left: 4px solid ${primary};
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: ${config.primary};
-  }
-  .comments {
-    grid-column: flush;
-    width: 100% !important;
-  }
-
-  .codepen-embed-body,
-  #the-body {
-    padding: 5em;
-    background: #3d3d3e;
-    border: none;
+    ${media.greaterThan('sm')`
+      margin-left: -1em;
+    `};
   }
 
   #disqus_thread {
-    width: 100% !important;
-    background: ${config.base.dark};
+    background: ${base.dark};
+    border-radius: 0;
+
+    ${media.greaterThan('sm')`
+      border-radius: ${borderRadius};
+    `};
   }
+
   ${media.lessThan('sm')`
     #disqus_thread,
+    blockquote,
     iframe,
     pre {
       grid-column: flush;
     }
-  `}
+  `};
 `;

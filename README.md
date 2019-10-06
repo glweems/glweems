@@ -1,6 +1,28 @@
 # [glweems](https://glweems.com/)
 
-> ## Personal Portfolio
+## Personal Portfolio
+
+<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
+  <img src="./test_results/lighthouse_accessibility.svg"/>
+</a>
+<br/>
+
+<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
+  <img src="./test_results/lighthouse_best-practices.svg"/>
+</a>
+<br/>
+<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
+  <img src="./test_results/lighthouse_performance.svg"/>
+</a>
+<br/>
+<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
+  <img src="./test_results/lighthouse_pwa.svg"/>
+</a>
+<br/>
+<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
+  <img src="./test_results/lighthouse_seo.svg"/>
+</a>
+<br/>
 
 <p>
   <a href="https://app.netlify.com/sites/glweems/deploys">
@@ -25,13 +47,13 @@ Built with:
 
 ## Install
 
-```sh
-npm install
+```bash
+yarn
 ```
 
 ## Usage
 
-```sh
+```bash
 yarn start
 ```
 

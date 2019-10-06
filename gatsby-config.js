@@ -43,7 +43,27 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [
+              `100`,
+              `200`,
+              `300`,
+              `400`,
+              `500`,
+              `600`,
+              `700`,
+              `800`,
+              `900`,
+            ],
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-transformer-yaml`,
     },

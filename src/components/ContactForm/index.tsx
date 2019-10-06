@@ -1,6 +1,4 @@
 import * as React from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
-import * as qs from 'query-string';
 import useContactForm from '../../hooks/useContactForm';
 import { Form } from './ContactFormStyles';
 import { Button } from '../Common';

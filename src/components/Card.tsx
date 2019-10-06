@@ -6,7 +6,6 @@ import theme from 'styled-theming';
 import Tags from './Tags';
 import { Child } from '..';
 import {
-  muted,
   rootBg,
   borderRadius,
   shadow,
@@ -16,6 +15,7 @@ import {
   green,
   media,
   borderColor,
+  text,
 } from '../theme';
 
 export const Wrapper = styled.div`
@@ -23,15 +23,20 @@ export const Wrapper = styled.div`
   grid-template-rows: auto 12em 1fr auto;
   grid-template-columns: 1fr;
   align-content: flex-start;
-  color: ${muted};
-  background: ${rootBg};
-  border: 2px solid ${borderColor};
+  color: ${text};
   border-radius: ${borderRadius};
   cursor: pointer;
   /* box-shadow: ${shadow}; */
   :hover {
     /* box-shadow: ${hoverShadow}; */
-    transform: translate3d(0, -5px, 0);
+
+  background: ${rootBg};
+    .gatsby-image-wrapper {
+      /* border: 2px solid ${borderColor}; */
+      transform: scale(1.01);
+    }
+
+    /* transform: translate3d(0, -5px, 0); */
   }
   transition: all 0.25s ease 0s;
 `;
@@ -55,7 +60,11 @@ export const Header = styled.div`
 `;
 
 export const Body = styled.div`
-  padding: 0.5em 0.5em;
+  padding: 1em 0.5em;
+
+  p {
+    margin-bottom: 0;
+  }
 `;
 
 export const Footer = styled.div`

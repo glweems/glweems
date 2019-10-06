@@ -9,7 +9,9 @@ interface InitialState {
 const useSignUpForm = () => {
   const [inputs, setInputs] = React.useState({ email: '', msg: '' });
 
-  const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleChange = (
+    e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>,
+  ) => {
     e.persist();
     const { name, value } = e.currentTarget;
     setInputs(
@@ -21,7 +23,7 @@ const useSignUpForm = () => {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<any>) => {
     if (e) e.preventDefault();
 
     axios({
