@@ -2,36 +2,42 @@
 import React from 'react';
 import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
-import { Link, Container, Button } from '../components/Common';
+import styled from 'styled-components';
+import { Link, Container } from '../components/Common';
 import SideProjects from '../components/SideProjects';
 import Designs from '../components/Designs';
 import Posts from '../components/Posts';
+import { primary } from '../theme';
+
+const FadedTitle = styled.h2`
+  color: ${primary};
+  font-size: 2em;
+  opacity: 0.5;
+`;
 
 const IndexPage = () => [
   <Container key="Blog">
     <section>
-      <h2>Blog Posts</h2>
+      <FadedTitle>Blog Posts</FadedTitle>
       <Posts limit={3} />
     </section>
     <div>
-      <Link to="/blog" unstyled>
-        View All Blog Posts
-      </Link>
+      <Link to="/blog">View All Blog Posts</Link>
     </div>
   </Container>,
   <Container key="Design">
     <section>
-      <h2>Design Projects</h2>
+      <FadedTitle>Design Projects</FadedTitle>
       <Designs limit={3} />
     </section>
-    <Link to="/designs" unstyled>
-      <Button>View All Designs</Button>
-    </Link>
+    <div>
+      <Link to="/designs">View All Designs</Link>
+    </div>
   </Container>,
   <Container key="Projects">
     <section>
-      <h2>Side Projects</h2>
-      <SideProjects limit={3} />
+      <FadedTitle>Side Projects</FadedTitle>
+      <SideProjects limit={2} />
     </section>
   </Container>,
   <Container key="github-callendar">

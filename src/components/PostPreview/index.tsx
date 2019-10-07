@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Img, { FluidObject } from 'gatsby-image';
-import { Link } from 'gatsby';
+import { Link } from '../Common';
 import Tags from '../Tags';
-import { muted } from '../../theme';
+import { muted, borderColor } from '../../theme';
 
 const Title = styled.h2`
   grid-area: title;
@@ -40,8 +40,9 @@ const Wrapper = styled.div`
     'link link';
   grid-template-rows: repeat(5, auto);
   grid-template-columns: 1fr 25%;
-
   gap: 0 1em;
+  padding-bottom: 1em;
+  border-bottom: 2px solid ${borderColor};
 
   .tags {
     grid-area: tags;
@@ -72,7 +73,7 @@ const PostPreview = ({ path, title, date, tags, excerpt, fluid }: Props) => (
       <Tags items={tags} />
     </div>
 
-    <Link to={path} className="img">
+    <Link to={path} className="img" unstyled>
       <Img fluid={fluid} />
     </Link>
 

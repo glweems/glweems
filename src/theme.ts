@@ -28,10 +28,6 @@ export const linkColor = theme('mode', { light: text, dark: bg });
 export const lightMuted = '#5a5a5a';
 export const darkMuted = '#c6c7c6';
 
-// export const shadow = `#0f121b 0px 1px 5px 0px,
-// #08090e 0px 2px 2px 0px,
-// #06070a 0px 3px 1px -2px;`;
-
 export const base = {
   light: `#f7f7f7`,
   dark: `#0f121b`,
@@ -111,14 +107,19 @@ const buttonStyles = css`
 `;
 
 export const anchorStyles = css`
-  a {
+  a.link {
     color: ${text};
     text-decoration: none;
     border-bottom: 3px solid ${linkBg};
     :hover {
       color: ${linkColor};
       background: ${linkBg};
+      border: 3px solid ${linkBg};
+      border-radius: 2px;
     }
+  }
+  a.link.active {
+    border-bottom: 3px solid ${primary};
   }
 `;
 
@@ -143,28 +144,19 @@ export const GlobalStyle = createGlobalStyle`
       color: ${muted};
       line-height: 1;
       visibility: hidden;
+      :hover{
+        text-decoration: none;
+        visibility: visible;
+      }
     }
     .anchor:focus {
       outline: none;
     }
-    /* h1 {
-    margin-top: 24px;
-    margin-bottom: 16px;
-    font-weight: 600;
-    line-height: 1.25;
-  } */
     .octicon-link {
       color: ${muted};
       vertical-align: middle;
       visibility: hidden;
-    }
-    :hover {
-
-      .anchor {
-        text-decoration: none;
-        visibility: visible;
-      }
-      .octicon-link {
+      :hover {
         padding-bottom: 0.3em;
         font-size: 2em;
         border-bottom: 1px solid #eaecef;
@@ -211,35 +203,35 @@ export const GlobalStyle = createGlobalStyle`
 
   .github {
     color: ${github};
-    :hover {
+    &:hover {
       color: ${githubHover};
     }
   }
 
   .linkedin {
     color: ${linkedin};
-    :hover {
+    &:hover {
       color: ${linkedinHover};
     }
   }
 
   .medium {
     color: ${medium};
-    :hover {
+    &:hover {
       color: ${mediumHover};
     }
   }
 
   .behance {
     color: ${behance};
-    :hover {
+    &:hover {
       color: ${behanceHover};
     }
   }
 
   .instagram {
     color: ${instagram};
-    :hover {
+    &:hover {
       color: ${instagramHover};
     }
   }
