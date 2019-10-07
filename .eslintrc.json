@@ -1,8 +1,6 @@
 {
   "root": true,
-  "plugins": [
-    "react-hooks"
-  ],
+  "plugins": ["react-hooks"],
   "extends": [
     "airbnb",
     "plugin:@typescript-eslint/recommended",
@@ -17,6 +15,8 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "prefer-const": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/prefer-stateless-function": "off",
     "prefer-arrow-callback": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
@@ -26,9 +26,7 @@
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [
-          ".tsx"
-        ]
+        "extensions": [".tsx"]
       }
     ]
   }

@@ -7,7 +7,7 @@ const usePostsQuery = () => {
       allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           id
-          excerpt(pruneLength: 150)
+          excerpt
           frontmatter {
             id
             date(formatString: "MMMM DD, YYYY")

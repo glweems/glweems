@@ -4,30 +4,36 @@ import { generateMedia } from 'styled-media-query';
 import { darken, lighten } from 'polished';
 import { rhythm } from './utils/typography';
 
+export { rhythm, scale, options } from './utils/typography';
 export const blue = `#1769ff`;
 export const green = `#4caf50`;
 export const mint = `#a7e3cc`;
 export const purple = `#d0c1fa`;
 export const red = `#d65947`;
+export const darkRed = darken(0.1, red);
 export const yellow = `#f8d58c`;
+export const darkYellow = darken(0.1, yellow);
 export const primary = theme('mode', { light: red, dark: yellow });
+export const darkPrimary = theme('mode', { light: darkRed, dark: darkYellow });
 export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
 export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
 export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
-
+export const borderColor = theme('mode', {
+  light: '#c6c7c6',
+  dark: darken(0.1, '#252d3d'),
+});
+export const linkBg = theme('mode', { light: mint, dark: yellow });
+export const linkColor = theme('mode', { light: text, dark: bg });
 export const lightMuted = '#5a5a5a';
 export const darkMuted = '#c6c7c6';
-
-// export const shadow = `#0f121b 0px 1px 5px 0px,
-// #08090e 0px 2px 2px 0px,
-// #06070a 0px 3px 1px -2px;`;
 
 export const base = {
   light: `#f7f7f7`,
   dark: `#0f121b`,
 };
 
+export const gridGap = (num: number) => rhythm(num * 0.25);
 export const navbarHeight = `4em`;
 export const borderRadius = `0.3em`;
 
@@ -101,27 +107,19 @@ const buttonStyles = css`
 `;
 
 export const anchorStyles = css`
-  .link {
-    position: relative;
-    margin: 2px 6px 2px 6px;
-    color: ${blue};
-    font: inherit;
-    font-weight: 500;
-    font-size: 115% !important;
-    letter-spacing: 0.08rem;
-    text-transform: uppercase;
-    text-decoration: none !important;
-    vertical-align: baseline;
-    border: 0;
-    cursor: pointer;
-  }
-
-  .link:hover {
+  a.link {
     color: ${text};
+    text-decoration: none;
+    border-bottom: 3px solid ${linkBg};
+    :hover {
+      color: ${linkColor};
+      background: ${linkBg};
+      border: 3px solid ${linkBg};
+      border-radius: 2px;
+    }
   }
-
-  .link.active {
-    color: ${red};
+  a.link.active {
+    border-bottom: 3px solid ${primary};
   }
 `;
 
@@ -131,7 +129,6 @@ export const GlobalStyle = createGlobalStyle`
   ${anchorStyles}
   ${buttonStyles}
 
-
   h1,
   h2,
   h3,
@@ -139,6 +136,33 @@ export const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     border: none;
+
+    .anchor {
+      float: left;
+      margin-left: -20px;
+      padding-right: 4px;
+      color: ${muted};
+      line-height: 1;
+      visibility: hidden;
+      :hover{
+        text-decoration: none;
+        visibility: visible;
+      }
+    }
+    .anchor:focus {
+      outline: none;
+    }
+    .octicon-link {
+      color: ${muted};
+      vertical-align: middle;
+      visibility: hidden;
+      :hover {
+        padding-bottom: 0.3em;
+        font-size: 2em;
+        border-bottom: 1px solid #eaecef;
+        visibility: visible;
+      }
+    }
   }
 
 
@@ -179,35 +203,35 @@ export const GlobalStyle = createGlobalStyle`
 
   .github {
     color: ${github};
-    :hover {
+    &:hover {
       color: ${githubHover};
     }
   }
 
   .linkedin {
     color: ${linkedin};
-    :hover {
+    &:hover {
       color: ${linkedinHover};
     }
   }
 
   .medium {
     color: ${medium};
-    :hover {
+    &:hover {
       color: ${mediumHover};
     }
   }
 
   .behance {
     color: ${behance};
-    :hover {
+    &:hover {
       color: ${behanceHover};
     }
   }
 
   .instagram {
     color: ${instagram};
-    :hover {
+    &:hover {
       color: ${instagramHover};
     }
   }
@@ -242,6 +266,9 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
   }
 
-
+  #resume {
+    max-width: 720px;
+    margin: 0 auto;
+  }
 
 `;

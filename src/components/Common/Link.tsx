@@ -10,8 +10,8 @@ interface WhichLinkProps {
   [key: string]: any;
   partiallyActive?: boolean;
   activeClassName?: string;
-  unstyled?: boolean;
   className?: string;
+  unstyled?: boolean;
 }
 
 export const Link = ({
@@ -19,19 +19,19 @@ export const Link = ({
   to,
   activeClassName = 'active',
   partiallyActive,
-  unstyled = false,
   className = '',
+  unstyled = false,
   ...other
 }: WhichLinkProps) => {
   const internal = /^\/(?!\/)/.test(to);
   // Use Gatsby Link for internal links, and <a> for others
-
+  const displayedClassName = unstyled ? className : `link ${className}`;
   return internal ? (
     <GatsbyLink
       to={to}
       activeClassName={activeClassName}
       partiallyActive={partiallyActive}
-      className={`${className} ${unstyled || 'link'}`}
+      className={displayedClassName}
       {...other}
     >
       {children}
@@ -40,7 +40,7 @@ export const Link = ({
     <GoogleLink
       href={to}
       target="_blank"
-      className={`${className} ${unstyled || 'link'}`}
+      className={displayedClassName}
       {...other}
     >
       {children}

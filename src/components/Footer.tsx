@@ -1,8 +1,15 @@
 import React from 'react';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
-import { Container, Link, SocialIcon } from './Common';
-
+import styled from 'styled-components';
+import { Container, Link } from './Common';
 import { accounts } from '../utils/data';
+
+const { github, linkedin, medium, instagram, behance } = accounts;
+
+const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Footer = () => (
   <footer>
@@ -22,13 +29,13 @@ const Footer = () => (
       <hr />
       <section>
         <h4>Find Me On The Web</h4>
-        <div>
-          <SocialIcon size="2x" account={accounts.github} />
-          <SocialIcon size="2x" account={accounts.linkedin} />
-          <SocialIcon size="2x" account={accounts.medium} />
-          <SocialIcon size="2x" account={accounts.instagram} />
-          <SocialIcon size="2x" account={accounts.behance} />
-        </div>
+        <Flex>
+          <Link to={github.link}>{github.name}</Link>
+          <Link to={linkedin.link}>{linkedin.name}</Link>
+          <Link to={medium.link}>{medium.name}</Link>
+          <Link to={instagram.link}>{instagram.name}</Link>
+          <Link to={behance.link}>{behance.name}</Link>
+        </Flex>
       </section>
       <hr />
       <section>

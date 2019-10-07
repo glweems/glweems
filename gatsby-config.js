@@ -43,8 +43,27 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-netlify`,
-    // `gatsby-plugin-catch-links`,
-
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [
+              `100`,
+              `200`,
+              `300`,
+              `400`,
+              `500`,
+              `600`,
+              `700`,
+              `800`,
+              `900`,
+            ],
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-transformer-yaml`,
     },
@@ -65,14 +84,6 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-web-font-loader',
-      options: {
-        google: {
-          families: ['Roboto Mono', 'Roboto'],
-        },
-      },
-    },
-    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `./src/utils/typography.ts`,
@@ -81,7 +92,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/RootElementWrapper.tsx`),
+        component: require.resolve(`./src/components/Layout.tsx`),
       },
     },
     `gatsby-plugin-sharp`,
@@ -105,7 +116,6 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: ['.mdx', '.md'],
-
         mdPlugins: [
           // require('remark-images'),
           // require('remark-unwrap-images'),
@@ -124,14 +134,6 @@ module.exports = {
             options: {
               maxWidth: 720,
               // linkImagesToOriginal: true,
-            },
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              aliases: { sh: 'bash', js: 'javascript' },
-              classPrefix: 'language-',
-              inlineCodeMarker: null,
             },
           },
           `gatsby-remark-smartypants`,

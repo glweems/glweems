@@ -6,10 +6,6 @@ import useGhostQuery from '../graphql/GhostQuery';
 
 const SVG = styled.svg`
   margin-top: 0.75em;
-  fill: ${props =>
-    props.theme.isDarkMode
-      ? props.theme.colors.yellow
-      : props.theme.colors.text};
 `;
 
 export const Ghost = () => {
@@ -34,5 +30,3 @@ export const PaintBrush = (props: any) => (
 );
 
 export default Logo;
-
-// export default Logo;

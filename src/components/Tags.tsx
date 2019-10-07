@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import * as config from '../style';
+import * as config from '../theme';
 
 const StyledTags = styled.div`
   display: flex;

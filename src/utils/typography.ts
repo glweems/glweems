@@ -2,9 +2,10 @@ import Typography, { TypographyOptions } from 'typography';
 import CodePlugin from 'typography-plugin-code';
 
 const theme: TypographyOptions = {
-  baseFontSize: '18px',
+  baseFontSize: '16px',
   baseLineHeight: 1.5,
   headerFontFamily: [
+    'Montserrat',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -17,6 +18,7 @@ const theme: TypographyOptions = {
     'Segoe UI Symbol',
   ],
   bodyFontFamily: [
+    'Montserrat',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',
@@ -29,9 +31,9 @@ const theme: TypographyOptions = {
     'Segoe UI Symbol',
   ],
   scaleRatio: 2,
-  headerWeight: 700,
+  headerWeight: 800,
   bodyWeight: 'normal',
-  boldWeight: 600,
+  boldWeight: 500,
 };
 
 theme.plugins = [new CodePlugin()];
