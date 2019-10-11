@@ -1,54 +1,39 @@
 import React from 'react';
-import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
-import { Container, Link } from './Common';
+import { Link } from './Common';
 import { accounts } from '../utils/data';
+import { media, rhythm, borderColor, rootBg } from '../theme';
 
 const { github, linkedin, medium, instagram, behance } = accounts;
 
-const Flex = styled.div`
-  display: flex;
-  justify-content: space-between;
+const FooterStyles = styled.footer`
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: 1fr;
+  gap: ${rhythm(0.5)};
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin-top: ${rhythm(1)};
+  padding: ${rhythm(1)};
+  background: ${rootBg};
+  border-top: 2px solid ${borderColor};
+  ${media.greaterThan('sm')`
+    grid-template-columns: repeat(5, auto);
+  `};
 `;
 
 const Footer = () => (
-  <footer>
-    <Container>
-      <section>
-        <h4>Contact</h4>
-        <p>Garrett Weems</p>
-        <div>
-          <Link to={accounts.email.link}>
-            <span>
-              <FaIcon icon={accounts.email.icon} />{' '}
-            </span>
-            <span>{accounts.email.username} </span>
-          </Link>
-        </div>
-      </section>
-      <hr />
-      <section>
-        <h4>Find Me On The Web</h4>
-        <Flex>
-          <Link to={github.link}>{github.name}</Link>
-          <Link to={linkedin.link}>{linkedin.name}</Link>
-          <Link to={medium.link}>{medium.name}</Link>
-          <Link to={instagram.link}>{instagram.name}</Link>
-          <Link to={behance.link}>{behance.name}</Link>
-        </Flex>
-      </section>
-      <hr />
-      <section>
-        <h4>Proudly built with</h4>
-        <ul>
-          <li>react</li>
-          <li>gatsby</li>
-          <li>typescript</li>
-          <li>styled-components</li>
-        </ul>
-      </section>
-    </Container>
-  </footer>
+  <FooterStyles>
+    <div>
+      <Link to={github.link}>{github.name}</Link>
+    </div>
+    <Link to={linkedin.link}>{linkedin.name}</Link>
+    <Link to={medium.link}>{medium.name}</Link>
+    <Link to={instagram.link}>{instagram.name}</Link>
+    <Link to={behance.link}>{behance.name}</Link>
+  </FooterStyles>
 );
 
 export default Footer;
