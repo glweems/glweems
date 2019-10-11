@@ -9,6 +9,7 @@ import { Article, Header, StyledInfo } from './BlogStyles'
 import { ThemeContext } from '../../components/Providers'
 import Tags from '../../components/Tags'
 import SwitchPages from '../../components/SwitchPages'
+import Share from '../../components/Share'
 
 interface Props {
   data: {
@@ -32,6 +33,7 @@ const PostHeader = ({ frontmatter, timeToRead }: { frontmatter: Frontmatter; tim
         <Tags items={frontmatter.tags} />
         <Info date={frontmatter.date} time={timeToRead} />
       </div>
+      <Share />
     </Header>
     <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
   </>

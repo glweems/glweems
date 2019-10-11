@@ -14,13 +14,14 @@ export const StyledInfo = styled.small`
 export const Article = styled.article`
   display: grid;
   grid-template-columns:
-    [flush-start] 1em
-    [fluid-start] minmax(0, 1fr)
-    [larger-start] minmax(0, 0.5fr)
+    [flush-start] minmax(1em, 1fr)
     [main-start] minmax(0, 728px) [main-end]
-    minmax(0, 0.5fr) [larger-end]
-    minmax(0, 1fr) [fluid-end]
-    1em [flush-end];
+    minmax(1em, 1fr) [flush-end];
+
+  ::before,
+  ::after {
+    content: '';
+  }
 
   width: 100%;
   color: ${text};
@@ -86,7 +87,7 @@ export const Article = styled.article`
   }
 
   #disqus_thread {
-    background: ${base.dark};
+    background: ${base.light};
     border-radius: 0;
 
     ${media.greaterThan('sm')`
