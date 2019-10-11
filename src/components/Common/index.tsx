@@ -5,3 +5,6 @@ export { Container } from './Container';
 export { Link } from './Link';
 export { Button } from './Button';
 export { Text } from './Text';
+export { Flex } from './Flex';
+export { Divider } from './Divider';
+export { List } from './List';
