@@ -1,33 +1,33 @@
-import React from 'react';
-import styled from 'styled-components';
-import Img, { FluidObject } from 'gatsby-image';
-import { Link } from '../Common';
-import Tags from '../Tags';
-import { muted, borderColor } from '../../theme';
+import React from 'react'
+import styled from 'styled-components'
+import Img, { FluidObject } from 'gatsby-image'
+import { Link } from '../Common'
+import Tags from '../Tags'
+import { muted, borderColor } from '../../theme'
 
 const Title = styled.h2`
   grid-area: title;
-`;
+`
 const Date = styled.small`
   grid-area: date;
   color: ${muted};
   font-weight: bold;
   font-style: italic;
-`;
+`
 
 const Excerpt = styled.p`
   grid-area: excerpt;
   margin-bottom: 0.5em;
   font-size: 13px;
-`;
+`
 
 interface Props {
-  path: string;
-  title: string;
-  date: any;
-  tags: string[];
-  excerpt: string;
-  fluid: FluidObject;
+  path: string
+  title: string
+  date: any
+  tags: string[]
+  excerpt: string
+  fluid: FluidObject
 }
 
 const Wrapper = styled.div`
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
     grid-area: link;
     margin-top: 1em;
   }
-`;
+`
 
 const PostPreview = ({ path, title, date, tags, excerpt, fluid }: Props) => (
   <Wrapper>
@@ -81,5 +81,5 @@ const PostPreview = ({ path, title, date, tags, excerpt, fluid }: Props) => (
       <Link to={path}>Read More</Link>
     </div>
   </Wrapper>
-);
-export default PostPreview;
+)
+export default PostPreview

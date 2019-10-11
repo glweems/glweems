@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby';
-import { SeoQuery } from '..';
+import { graphql, useStaticQuery } from 'gatsby'
+import { SeoQuery } from '..'
 
 const useSEOQuery = (): SeoQuery =>
   useStaticQuery(graphql`
@@ -14,6 +14,6 @@ const useSEOQuery = (): SeoQuery =>
         }
       }
     }
-  `);
+  `)
 
-export default useSEOQuery;
+export default useSEOQuery

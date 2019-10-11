@@ -1,5 +1,5 @@
-import Typography, { TypographyOptions } from 'typography';
-import CodePlugin from 'typography-plugin-code';
+import Typography, { TypographyOptions } from 'typography'
+import CodePlugin from 'typography-plugin-code'
 
 const theme: TypographyOptions = {
   baseFontSize: '16px',
@@ -15,7 +15,7 @@ const theme: TypographyOptions = {
     'sans-serif',
     'Apple Color Emoji',
     'Segoe UI Emoji',
-    'Segoe UI Symbol',
+    'Segoe UI Symbol'
   ],
   bodyFontFamily: [
     'Montserrat',
@@ -28,18 +28,18 @@ const theme: TypographyOptions = {
     'sans-serif',
     'Apple Color Emoji',
     'Segoe UI Emoji',
-    'Segoe UI Symbol',
+    'Segoe UI Symbol'
   ],
   scaleRatio: 2,
   headerWeight: 800,
   bodyWeight: 'normal',
-  boldWeight: 500,
-};
+  boldWeight: 500
+}
 
-theme.plugins = [new CodePlugin()];
+theme.plugins = [new CodePlugin()]
 
-const typography = new Typography(theme);
+const typography = new Typography(theme)
 
 // Export helper functions
-export const { scale, rhythm, options } = typography;
-export default typography;
+export const { scale, rhythm, options } = typography
+export default typography

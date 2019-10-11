@@ -1,24 +1,15 @@
-import styled from 'styled-components';
-import {
-  rhythm,
-  media,
-  muted,
-  text,
-  bg,
-  primary,
-  base,
-  borderRadius,
-} from '../../theme';
+import styled from 'styled-components'
+import { rhythm, media, muted, text, bg, primary, base, borderRadius } from '../../theme'
 
 export const Header = styled.header`
   padding: 4em 0;
-`;
+`
 
 export const StyledInfo = styled.small`
   color: ${muted};
   font-weight: bold;
   font-style: italic;
-`;
+`
 
 export const Article = styled.article`
   display: grid;
@@ -111,4 +102,4 @@ export const Article = styled.article`
       grid-column: flush;
     }
   `};
-`;
+`

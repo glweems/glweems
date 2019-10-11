@@ -1,165 +1,159 @@
-import { FluidObject, FixedObject } from 'gatsby-image';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { FluidObject, FixedObject } from 'gatsby-image'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core'
 
 export interface Nodes<T> {
-  nodes: T[];
+  nodes: T[]
 }
 
 export interface SideProject {
-  id: string;
-  title: string;
-  slug: string;
-  description: string;
-  link: string;
-  repo: string;
-  tags: string[];
+  id: string
+  title: string
+  slug: string
+  description: string
+  link: string
+  repo: string
+  tags: string[]
   image: {
     childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
+      fluid: FluidObject
+    }
+  }
 }
 
 export interface Account {
-  name: string;
-  username: string;
-  link: string;
-  icon: IconDefinition;
+  name: string
+  username: string
+  link: string
+  icon: IconDefinition
   colors: {
-    light: string;
-    dark: string;
-  };
+    light: string
+    dark: string
+  }
 }
 
 export interface AllSideprojectsYaml {
-  allSideprojectsYaml: Nodes<SideProject>;
+  allSideprojectsYaml: Nodes<SideProject>
 }
 
 export interface Frontmatter {
-  id: number;
-  date(formatString: 'MMMM DD, YYYY'): Date;
-  path: string;
-  tags: string[];
-  title: string;
-  subtitle: string;
-  next: string;
+  id: number
+  date(formatString: 'MMMM DD, YYYY'): Date
+  path: string
+  tags: string[]
+  title: string
+  subtitle: string
+  next: string
   thumbnail: {
-    id: string;
+    id: string
     childImageSharp: {
-      fluid: FluidObject;
-    };
-  };
+      fluid: FluidObject
+    }
+  }
 }
 
 export interface MDX {
-  id: string;
-  timeToRead: number;
-  excerpt: string;
-  body: object;
-  frontmatter: Frontmatter;
+  id: string
+  timeToRead: number
+  excerpt: string
+  body: object
+  frontmatter: Frontmatter
 }
 
 export interface PostsQuery {
-  allMdx: Nodes<MDX>;
+  allMdx: Nodes<MDX>
 }
 
-export type Child =
-  | Element
-  | Element[]
-  | React.ReactElement
-  | React.ReactFragment
-  | React.ReactChildren
-  | string;
+export type Child = Element | Element[] | React.ReactElement | React.ReactFragment | React.ReactChildren | string
 
 export interface Colors {
-  light: string;
-  dark: string;
-  red: string;
-  green: string;
-  yellow: string;
-  blue: string;
-  purple: string;
-  mint: string;
-  muted: string;
-  bg: string;
+  light: string
+  dark: string
+  red: string
+  green: string
+  yellow: string
+  blue: string
+  purple: string
+  mint: string
+  muted: string
+  bg: string
 }
 
 export interface ImageFile {
-  id: string;
-  name: string;
-  relativeDirectory: string;
+  id: string
+  name: string
+  relativeDirectory: string
   childImageSharp: {
-    fluid: FluidObject;
-    fixed: FixedObject;
-  };
+    fluid: FluidObject
+    fixed: FixedObject
+  }
 }
 
 export interface BehanceProject {
-  id: string;
-  name: string;
-  description: string;
-  slug: string;
-  published: number;
-  created: number;
-  tags: string[];
+  id: string
+  name: string
+  description: string
+  slug: string
+  published: number
+  created: number
+  tags: string[]
   tools: {
-    title: string;
+    title: string
     synonym: {
-      icon_url: string;
-    }[];
-    areas: string[];
-  };
+      icon_url: string
+    }[]
+    areas: string[]
+  }
 }
 
 export interface DesignsQuery {
-  allBehanceProjects: Nodes<BehanceProject>;
-  allFile: Nodes<ImageFile>;
+  allBehanceProjects: Nodes<BehanceProject>
+  allFile: Nodes<ImageFile>
 }
 
 export interface Design extends BehanceProject {
-  cover: { childImageSharp: { fluid: FluidObject } };
+  cover: { childImageSharp: { fluid: FluidObject } }
 }
 
 export interface BehanceImage {
-  id: string;
-  sourceInstanceName: string;
-  relativeDirectory: string;
-  name: string;
+  id: string
+  sourceInstanceName: string
+  relativeDirectory: string
+  name: string
   childImageSharp: {
-    fluid: {};
-  };
+    fluid: {}
+  }
 }
 
 export interface DesignsPageQuery {
-  allBehanceProjects: Nodes<BehanceProject>;
-  behanceImages: Nodes<BehanceImage>;
+  allBehanceProjects: Nodes<BehanceProject>
+  behanceImages: Nodes<BehanceImage>
 }
 
 export interface GithubRepository {
-  id: string;
-  name: string;
-  url: string;
-  updatedAt: string;
-  description: string;
-  homepageUrl: string;
+  id: string
+  name: string
+  url: string
+  updatedAt: string
+  description: string
+  homepageUrl: string
   languages: {
     nodes: {
-      color: string;
-      id: string;
-      name: string;
-    }[];
-  };
+      color: string
+      id: string
+      name: string
+    }[]
+  }
 }
 
 export interface SeoQuery {
   site: {
     siteMetadata: {
-      defaultTitle: string;
-      titleTemplate: string;
-      defaultDescription: string;
-      url: string;
-      image: string;
-      defaultImage: string;
-    };
-  };
+      defaultTitle: string
+      titleTemplate: string
+      defaultDescription: string
+      url: string
+      image: string
+      defaultImage: string
+    }
+  }
 }

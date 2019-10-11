@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React from 'react';
-import ReactTooltip from 'react-tooltip';
-import GithubCalendar from 'react-github-calendar';
-import styled from 'styled-components';
-import { Link, Container } from '../components/Common';
-import SideProjects from '../components/SideProjects';
-import Designs from '../components/Designs';
-import Posts from '../components/Posts';
-import { primary } from '../theme';
+import React from 'react'
+import ReactTooltip from 'react-tooltip'
+import GithubCalendar from 'react-github-calendar'
+import styled from 'styled-components'
+import { Link, Container } from '../components/Common'
+import SideProjects from '../components/SideProjects'
+import Designs from '../components/Designs'
+import Posts from '../components/Posts'
+import { primary } from '../theme'
 
 const FadedTitle = styled.h2`
   color: ${primary};
   font-size: 2em;
   opacity: 0.5;
-`;
+`
 
 const IndexPage = () => [
   <Container key="Blog">
@@ -44,7 +44,7 @@ const IndexPage = () => [
     <GithubCalendar username="glweems" years={[2019]}>
       <ReactTooltip delayShow={35} html />
     </GithubCalendar>
-  </Container>,
-];
+  </Container>
+]
 
-export default IndexPage;
+export default IndexPage

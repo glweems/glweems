@@ -1,5 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby';
-import { FixedObject } from 'gatsby-image';
+import { useStaticQuery, graphql } from 'gatsby'
+import { FixedObject } from 'gatsby-image'
 
 const useGhostQuery = (): { childImageSharp: { fixed: FixedObject } } => {
   const { ghost } = useStaticQuery(graphql`
@@ -12,8 +12,8 @@ const useGhostQuery = (): { childImageSharp: { fixed: FixedObject } } => {
         }
       }
     }
-  `);
-  return ghost;
-};
+  `)
+  return ghost
+}
 
-export default useGhostQuery;
+export default useGhostQuery

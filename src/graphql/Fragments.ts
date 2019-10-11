@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
 export const BehanceCard = graphql`
   fragment BehanceCard on behanceProjects {
@@ -8,16 +8,11 @@ export const BehanceCard = graphql`
     description
     tags
   }
-`;
+`
 
 export const BehanceCovers = graphql`
   fragment BehanceCoverImages on Query {
-    behanceCoverImages: allFile(
-      filter: {
-        relativeDirectory: { regex: "/gatsby-source-behance-images/" }
-        name: { eq: "cover" }
-      }
-    ) {
+    behanceCoverImages: allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
       nodes {
         relativeDirectory
         childImageSharp {
@@ -26,7 +21,7 @@ export const BehanceCovers = graphql`
       }
     }
   }
-`;
+`
 
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
@@ -34,18 +29,15 @@ export const FixedImage = graphql`
       ...GatsbyImageSharpFixed
     }
   }
-`;
+`
 
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
-    fluid(
-      maxWidth: 630
-      traceSVG: { background: "#181D2B", color: "#d0c1fa", threshold: 6 }
-    ) {
+    fluid(maxWidth: 630, traceSVG: { background: "#181D2B", color: "#d0c1fa", threshold: 6 }) {
       ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }
-`;
+`
 
 export const Frontmatter = graphql`
   fragment Frontmatter on Mdx {
@@ -65,4 +57,4 @@ export const Frontmatter = graphql`
       }
     }
   }
-`;
+`

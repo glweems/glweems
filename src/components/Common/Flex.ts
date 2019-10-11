@@ -1,23 +1,18 @@
-import styled, { css } from 'styled-components';
-import { media } from '../../theme';
+import styled, { css } from 'styled-components'
+import { media } from '../../theme'
 
-type FlexProperty =
-  | 'flex-start'
-  | 'flex-end'
-  | 'center'
-  | 'space-between'
-  | 'space-evenly';
+type FlexProperty = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-evenly'
 
 export interface FlexCssProps {
-  alignContent?: FlexProperty;
-  alignItems?: FlexProperty;
-  justifyContent?: FlexProperty;
-  justifyItems?: FlexProperty;
-  flexDirection?: 'row' | 'column';
+  alignContent?: FlexProperty
+  alignItems?: FlexProperty
+  justifyContent?: FlexProperty
+  justifyItems?: FlexProperty
+  flexDirection?: 'row' | 'column'
 }
 
 interface FlexProps extends FlexCssProps {
-  sm?: FlexCssProps;
+  sm?: FlexCssProps
 }
 
 export const createFlexProps = ({
@@ -25,14 +20,14 @@ export const createFlexProps = ({
   alignItems = 'center',
   justifyContent = 'center',
   justifyItems = 'center',
-  flexDirection = 'row',
+  flexDirection = 'row'
 }: FlexCssProps) => css`
   flex-direction: ${flexDirection};
   align-content: ${alignContent || alignContent};
   align-items: ${alignItems || alignItems};
   justify-content: ${justifyContent || justifyContent};
   justify-items: ${justifyItems || justifyItems};
-`;
+`
 
 export const flexStyles = css<FlexProps>`
   display: flex;
@@ -43,8 +38,8 @@ export const flexStyles = css<FlexProps>`
     media.lessThan('md')`
       ${createFlexProps(sm)}
     `};
-`;
+`
 
 export const Flex = styled.div<FlexProps>`
   ${flexStyles}
-`;
+`

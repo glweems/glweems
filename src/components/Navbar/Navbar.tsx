@@ -1,8 +1,8 @@
-import * as React from 'react';
-import styled from 'styled-components';
-import { Link, ToogleThemeSwitch, Container } from '../Common';
-import { Navigation, Links } from './NavbarStyles';
-import { bg, navbarHeight } from '../../theme';
+import * as React from 'react'
+import styled from 'styled-components'
+import { Link, ToogleThemeSwitch, Container } from '../Common'
+import { Navigation, Links } from './NavbarStyles'
+import { bg, navbarHeight } from '../../theme'
 
 const Wrap = styled.nav`
   position: sticky;
@@ -15,7 +15,7 @@ const Wrap = styled.nav`
   > * {
     grid-column: main;
   }
-`;
+`
 
 const Navbar = () => (
   <Wrap>
@@ -39,6 +39,6 @@ const Navbar = () => (
       </Navigation>
     </Container>
   </Wrap>
-);
+)
 
-export default Navbar;
+export default Navbar

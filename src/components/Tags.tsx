@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import * as config from '../theme';
+import React from 'react'
+import styled from 'styled-components'
+import * as config from '../theme'
 
 const StyledTags = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const StyledTags = styled.div`
     margin-right: 0.75em;
   }
   margin-bottom: 0.5em;
-`;
+`
 
 const Tag = styled.small`
   padding: 0.3em 0.5em;
@@ -19,15 +19,9 @@ const Tag = styled.small`
   vertical-align: middle;
   background: ${config.purple};
   border-radius: 0.5em;
-`;
+`
 
-const Tags = ({
-  items,
-  className,
-}: {
-  items: string[];
-  className?: string;
-}) => (
+const Tags = ({ items, className }: { items: string[]; className?: string }) => (
   <StyledTags className={`hashtags ${className}`}>
     {items.slice(0, 3).map(item => (
       <Tag key={item} className="hashtag">
@@ -35,6 +29,6 @@ const Tags = ({
       </Tag>
     ))}
   </StyledTags>
-);
+)
 
-export default Tags;
+export default Tags
