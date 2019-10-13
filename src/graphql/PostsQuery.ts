@@ -1,10 +1,10 @@
-import { useStaticQuery, graphql } from 'gatsby';
-import { PostsQuery } from '..';
+import { useStaticQuery, graphql } from 'gatsby'
+import { PostsQuery } from '..'
 
 const usePostsQuery = () => {
-  const { allMdx }: PostsQuery = useStaticQuery(graphql`
+  const { allMarkdownRemark }: PostsQuery = useStaticQuery(graphql`
     query PostsQuery {
-      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
+      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           id
           excerpt
@@ -26,9 +26,9 @@ const usePostsQuery = () => {
         }
       }
     }
-  `);
+  `)
 
-  return allMdx.nodes;
-};
+  return allMarkdownRemark.nodes
+}
 
-export default usePostsQuery;
+export default usePostsQuery

@@ -15,8 +15,6 @@ tags:
 popular: false
 ---
 
-import Codepen from 'react-codepen-embed';
-
 If you're anything like me chances are you hate css libraries like `bootstrap` but love their containers.
 
 > I don't actually hate bootstrap. But it appears that developers who use bootstrap know bootstrap, not css.
@@ -25,13 +23,13 @@ also, I'm very weird about containers and try to have the least amount of nested
 
 > Cmon, I cant be the only one who wants vomit at the site of this
 
-```js
+```html
 <div>
   <div>
     <div>
       <div>
         <div>
-          <div>💩You 💩gotta 💩be 💩kidding 💩me 💩</div>
+          <div>You gotta be kidding me</div>
         </div>
       </div>
     </div>
@@ -56,7 +54,22 @@ Ok jokes aside lemme show you my current solution
 }
 ```
 
-<Codepen hash="xxKJQOq" user="glweems" height={500} preview={false} />
+<iframe
+  height="265"
+  style="width: 100%;"
+  scrolling="no"
+  title="css grid container 1"
+  src="//codepen.io/glweems/embed/xxKJQOq/?height=265&theme-id=0&default-tab=result"
+  frameborder="no"
+  allowtransparency="true"
+  allowfullscreen="true">
+    See the Pen
+    <a href='https://codepen.io/glweems/pen/xxKJQOq/'>
+    css grid container 1
+    </a> by Garrett Weems
+    (<a href='https://codepen.io/glweems'>@glweems</a>) on
+    <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 That's pretty cool and all but what if you wanted something like _bootstraps_ `container-fluid` class?
 
@@ -86,7 +99,18 @@ Well, we would need to add couple things...
 }
 ```
 
-<Codepen hash="jONpQpb" user="glweems" height={500} preview={false} />
+<iframe
+  height="400"
+  style="width: 100%;"
+  scrolling="no"
+  title="css grid container 2"
+  src="//codepen.io/glweems/embed/jONpQpb/?height=265&theme-id=0&default-tab=result"
+  frameborder="no"
+  allowtransparency="true"
+  allowfullscreen="true">
+    See the Pen <a href='https://codepen.io/glweems/pen/jONpQpb/'>css grid container 2</a> by Garrett Weems
+    (<a href='https://codepen.io/glweems'>@glweems</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 This already makes it better than _bootstrap's_ solution because now we can just create a container add `.fluid` _or_ `.flush` to anything within and it will just work.
 
@@ -149,6 +173,22 @@ $xl: 1140px;
 }
 ```
 
-<Codepen hash="xxKJmPQ" user="glweems" height={500} preview={false} />
+<iframe
+  height="400"
+  style="width: 100%;"
+  scrolling="no"
+  title="css grid container"
+  src="//codepen.io/glweems/embed/xxKJmPQ/?height=265&theme-id=0&default-tab=result"
+  frameborder="no"
+  allowtransparency="true"
+  allowfullscreen="true">
+    See the Pen
+    <a href='https://codepen.io/glweems/pen/xxKJmPQ/'>
+      css grid container
+    </a>
+    by Garrett Weems
+    (<a href='https://codepen.io/glweems'>@glweems</a>) on
+     <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 Now our content width is based on our breakpoints

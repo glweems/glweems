@@ -1,7 +1,7 @@
 ---
 id: 1
 path: '/react-peekaboo-navbar'
-thumbnail: './tbn.png'
+thumbnail: tbn.png
 date: 2019-03-18T01:00:01.889Z
 edited:
 next: '/react-navbar-scroller'
@@ -32,15 +32,11 @@ In your App.js create the following constants;
 
 ```javascript
 // App.js
-import Navbar from './Navbar';
+import Navbar from './Navbar'
 
-const navlinks = [
-  { name: 'Home', to: '/' },
-  { name: 'About', to: '/about' },
-  { name: 'Contact', to: '/contact' },
-];
+const navlinks = [{ name: 'Home', to: '/' }, { name: 'About', to: '/about' }, { name: 'Contact', to: '/contact' }]
 
-const brand = { name: 'peekaboo', to: 'home' };
+const brand = { name: 'peekaboo', to: 'home' }
 
 export default class App extends Component {
   render() {
@@ -48,7 +44,7 @@ export default class App extends Component {
       <div className="App">
         <Navbar brand={brand} links={navlinks} />
       </div>
-    );
+    )
   }
 }
 ```
@@ -106,22 +102,22 @@ render() {
 Now let’s go ahead and add some validation to our props with `PropTypes`.
 
 ```javascript
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 //...
 
 export default class Navbar extends Component {
   static propTypes = {
     brand: PropTypes.shape({
       name: PropTypes.string.isRequired,
-      to: PropTypes.string.isRequired,
+      to: PropTypes.string.isRequired
     }),
     links: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        to: PropTypes.string.isRequired,
-      }),
-    ),
-  };
+        to: PropTypes.string.isRequired
+      })
+    )
+  }
 }
 ```
 

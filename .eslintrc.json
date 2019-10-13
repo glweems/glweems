@@ -1,32 +1,60 @@
 {
-  "root": true,
-  "plugins": ["react-hooks"],
-  "extends": [
-    "airbnb",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:import/typescript",
-    "plugin:prettier/recommended",
-    "prettier/@typescript-eslint",
-    "prettier/react"
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "react-hooks"
   ],
-  "env": {
-    "browser": true
+  "extends": [
+    "eslint-config-blvd/react",
+    "prettier/@typescript-eslint",
+    "prettier/react",
+    "plugin:prettier/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   },
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
-    "prefer-const": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prefer-stateless-function": "off",
     "prefer-arrow-callback": "warn",
-    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/rules-of-hooks": "warn",
     "react-hooks/exhaustive-deps": "warn",
-    "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/camelcase": "off",
     "import/prefer-default-export": "off",
-    "react/jsx-filename-extension": [
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "max-len": [
       "error",
       {
-        "extensions": [".tsx"]
+        "code": 140,
+        "ignoreUrls": true
+      }
+    ],
+    "react/no-unescaped-entities": [
+      "error",
+      {
+        "forbid": [
+          {
+            "char": ">",
+            "alternatives": [
+              "&gt;"
+            ]
+          },
+          {
+            "char": "}",
+            "alternatives": [
+              "&#125;"
+            ]
+          }
+        ]
       }
     ]
   }

@@ -1,18 +1,12 @@
-import styled, { css } from 'styled-components';
-import {
-  media,
-  containerWidths,
-  gridGap,
-  text,
-  bg as background,
-} from '../../theme';
+import styled, { css } from 'styled-components'
+import { media, containerWidths, gridGap, text, bg as background } from '../../theme'
 
-const { sm, md, lg, xl } = containerWidths;
+const { sm, md, lg, xl } = containerWidths
 interface Props {
-  gap?: 1 | 2 | 3;
-  smFlush?: boolean;
-  bg?: boolean;
-  inverted?: boolean;
+  gap?: 1 | 2 | 3
+  smFlush?: boolean
+  bg?: boolean
+  inverted?: boolean
 }
 
 const containerCss = css`
@@ -61,7 +55,7 @@ const containerCss = css`
       minmax(0, 1fr) [fluid-end]
       1em [flush-end];
     `}
-`;
+`
 
 export const Container = styled.div<Props>`
   ${containerCss};
@@ -86,4 +80,4 @@ export const Container = styled.div<Props>`
         color: ${background};
         background: ${text};
       `}
-`;
+`

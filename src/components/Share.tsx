@@ -1,90 +1,51 @@
-// import React from 'react';
-// import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
-// import {
-//   FacebookShareButton,
-//   GooglePlusShareButton,
-//   LinkedinShareButton,
-//   TwitterShareButton,
-//   WhatsappShareButton,
-//   RedditShareButton,
-// } from 'react-share';
+import React from 'react'
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  LinkedinIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  WhatsappShareButton,
+  WhatsappIcon,
+  RedditShareButton,
+  RedditIcon
+} from 'react-share'
+import { Flex } from './Common'
 
-// // import './Share.scss';
+// import './Share.scss';
 
-// interface Props {
-//   socialConfig: {
-//     twitterHandle: `devglweems`;
-//     config: {
-//       url: string;
-//       title: string;
-//     };
-//   };
-//   tags: string[];
-// }
+interface Props {
+  url: string
+  twitterHandle: string
+  title: string
+  tags: string[]
+}
 
-// const Share = ({ socialConfig, tags }: Props) => (
-//   <div className="post-social">
-//     <FacebookShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded facebook"
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'facebook-f']} />
-//       </span>
-//       <span className="text">Facebook</span>
-//     </FacebookShareButton>
-//     <TwitterShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded twitter"
-//       title={socialConfig.config.title}
-//       via={socialConfig.twitterHandle.split('@').join('')}
-//       hashtags={tags}
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'twitter']} />
-//       </span>
-//       <span className="text">Twitter</span>
-//     </TwitterShareButton>
-//     <GooglePlusShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded googleplus"
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'google-plus-g']} />
-//       </span>
-//       <span className="text">Google+</span>
-//     </GooglePlusShareButton>
-//     <LinkedinShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded linkedin"
-//       title={socialConfig.config.title}
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'linkedin-in']} />
-//       </span>
-//       <span className="text">LinkedIn</span>
-//     </LinkedinShareButton>
-//     <RedditShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded reddit"
-//       title={socialConfig.config.title}
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'reddit-alien']} />
-//       </span>
-//       <span className="text">Reddit</span>
-//     </RedditShareButton>
-//     <WhatsappShareButton
-//       url={socialConfig.config.url}
-//       className="button is-outlined is-rounded whatsapp"
-//       title={socialConfig.config.title}
-//     >
-//       <span className="icon">
-//         <FaIcon icon={['fab', 'whatsapp']} />
-//       </span>
-//       <span className="text">WhatsApp</span>
-//     </WhatsappShareButton>
-//   </div>
-// );
+const iconBg = { fill: '#fff' }
 
-// export default Share;
+export const ShareButtons = ({ twitterHandle, url, title, tags }: Props) => (
+  <Flex justifyContent="space-between">
+    <FacebookShareButton url={url}>
+      <FacebookIcon logoFillColor="#3b5997" iconBgStyle={iconBg} />
+    </FacebookShareButton>
+
+    <TwitterShareButton url={url} title={title} via={twitterHandle} hashtags={tags}>
+      <TwitterIcon logoFillColor="#00aced" iconBgStyle={iconBg} />
+    </TwitterShareButton>
+
+    <LinkedinShareButton url={url}>
+      <LinkedinIcon logoFillColor="#007fb1" iconBgStyle={iconBg} />
+    </LinkedinShareButton>
+
+    <RedditShareButton url={url} title={title}>
+      <RedditIcon logoFillColor="#5f99cf" iconBgStyle={iconBg} />
+    </RedditShareButton>
+
+    <WhatsappShareButton url={url} title={title}>
+      <WhatsappIcon logoFillColor="#2cb742" iconBgStyle={iconBg} />
+    </WhatsappShareButton>
+  </Flex>
+)
+
+export default ShareButtons

@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
-import { useStaticQuery, graphql } from 'gatsby';
-import { DesignsQuery, BehanceProject, Design } from '..';
+import { useStaticQuery, graphql } from 'gatsby'
+import { DesignsQuery, BehanceProject, Design } from '..'
 
 const UseDesignsQuery = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
@@ -13,12 +13,7 @@ const UseDesignsQuery = () => {
           tags
         }
       }
-      allFile(
-        filter: {
-          relativeDirectory: { regex: "/gatsby-source-behance-images/" }
-          name: { eq: "cover" }
-        }
-      ) {
+      allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
         nodes {
           id
           name
@@ -29,27 +24,25 @@ const UseDesignsQuery = () => {
         }
       }
     }
-  `);
+  `)
 
   const findDesignCover = (design: BehanceProject): any => {
-    const image = allFile.nodes.find(file =>
-      file.relativeDirectory.includes(design.slug),
-    );
-    if (image) return image;
-  };
+    const image = allFile.nodes.find(file => file.relativeDirectory.includes(design.slug))
+    if (image) return image
+  }
 
-  let designs: Design[] = [];
+  const designs: Design[] = []
 
   allBehanceProjects.nodes.forEach(design => {
     if (findDesignCover(design)) {
       designs.push({
         ...design,
-        cover: findDesignCover(design),
-      });
+        cover: findDesignCover(design)
+      })
     }
-  });
+  })
 
-  return designs;
-};
+  return designs
+}
 
-export default UseDesignsQuery;
+export default UseDesignsQuery

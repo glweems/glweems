@@ -1,5 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby';
-import { DesignsPageQuery } from '..';
+import { useStaticQuery, graphql } from 'gatsby'
+import { DesignsPageQuery } from '..'
 
 const UseDesignsPageQuery = (): DesignsPageQuery =>
   useStaticQuery(graphql`
@@ -12,12 +12,7 @@ const UseDesignsPageQuery = (): DesignsPageQuery =>
           tags
         }
       }
-      behanceImages: allFile(
-        filter: {
-          relativeDirectory: { regex: "/gatsby-source-behance-images/" }
-          name: { eq: "cover" }
-        }
-      ) {
+      behanceImages: allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
         nodes {
           relativeDirectory
           childImageSharp {
@@ -26,6 +21,6 @@ const UseDesignsPageQuery = (): DesignsPageQuery =>
         }
       }
     }
-  `);
+  `)
 
-export default UseDesignsPageQuery;
+export default UseDesignsPageQuery

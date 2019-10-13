@@ -3,14 +3,11 @@ id: 6
 path: /gatsby-graphql-approach
 thumbnail: tbn.png
 date: 2019-09-01T01:00:01.889Z
-edited:
-next: /
 title: My approach on GraphQL queries in Gatsby
 subtitle: Get you graphql queries simple, organized, and clean
 tags:
   - gatsby
   - graphql
-popular: false
 ---
 
 I’ve tried a few different ways to keep my GraphQL queries clean and organized in gatsby.js and think I have found my winner.
@@ -62,7 +59,7 @@ All you need to do is pass your graphql query into useStaticQuery
 
 ```tsx
 // src/queries/PostsQuery.js
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby'
 
 const usePostsQuery = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -82,11 +79,11 @@ const usePostsQuery = () => {
         }
       }
     }
-  `);
-  return allMarkdownRemark.nodes;
-};
+  `)
+  return allMarkdownRemark.nodes
+}
 
-export default usePostsQuery;
+export default usePostsQuery
 ```
 
 Now we can create a new `blog` page and import the query
@@ -130,7 +127,7 @@ Create a new file `src/queries/fragments.js`
 
 ```javascript
 // src/queries/fragments.js
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
 const Frontmatter = graphql`
   fragment Frontmatter on File {
@@ -146,9 +143,9 @@ const Frontmatter = graphql`
       }
     }
   }
-`;
+`
 
-export default { Frontmatter };
+export default { Frontmatter }
 ```
 
 ### Refactoring
@@ -253,10 +250,12 @@ const usePostsQuery = () => {
         }
       }
     }
-  `);
+  `)
 
-  return allMarkdownRemark.nodes;
-};
+  return allMarkdownRemark.nodes
+}
 ```
 
 Using queries like this and ever need to update a field you only need to do so in your original fragment, not every single use case of the query.
+
+[image-1]: https://raw.githubusercontent.com/glweems/glweems/master/content/posts/gatsby-graphql-approach/tbn.png
