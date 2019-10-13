@@ -3,17 +3,19 @@ import { graphql } from 'gatsby'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Img from 'gatsby-image'
 import { DiscussionEmbed } from 'disqus-react'
+import RehypeReact from 'rehype-react'
 import SEO from '../../components/SEO'
-import { MDX, Frontmatter } from '../..'
+import { MarkdownRemark, Frontmatter } from '../..'
 import { Article, Header, StyledInfo } from './BlogStyles'
 import { ThemeContext } from '../../components/Providers'
 import Tags from '../../components/Tags'
 import SwitchPages from '../../components/SwitchPages'
-import Share from '../../components/Share'
+import ShareButtons from '../../components/Share'
+import { Link } from '../../components/Common'
 
 interface Props {
   data: {
-    post: MDX
+    post: MarkdownRemark
     prev: { frontmatter: { path: string | null } }
     next: { frontmatter: { path: string | null } }
   }
@@ -24,6 +26,12 @@ interface PostInfo {
   time: number
 }
 
+const Content = ({ elements }: { elements: unknown }) =>
+  new RehypeReact({
+    createElement: React.createElement,
+    components: { a: Link }
+  }).Compiler(elements).props.children
+
 const PostHeader = ({ frontmatter, timeToRead }: { frontmatter: Frontmatter; timeToRead: number }) => (
   <>
     <Header>
@@ -33,7 +41,6 @@ const PostHeader = ({ frontmatter, timeToRead }: { frontmatter: Frontmatter; tim
         <Tags items={frontmatter.tags} />
         <Info date={frontmatter.date} time={timeToRead} />
       </div>
-      <Share />
     </Header>
     <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
   </>
@@ -50,13 +57,13 @@ const Info = ({ date, time }: PostInfo) => {
 interface CommentsProps {
   title: string
   identifier: number
-  path: string
+  url: string
 }
 
-const Comments = ({ title, identifier, path }: CommentsProps) => {
+const Comments = ({ title, identifier, url }: CommentsProps) => {
   const disqusShortName = 'https-glweems-com'
   const disqusConfig = {
-    url: `https://glweems.com${path}`,
+    url,
     identifier: String(identifier),
     title
   }
@@ -65,32 +72,42 @@ const Comments = ({ title, identifier, path }: CommentsProps) => {
 
 export default function BlogTemplate({ data: { post, prev, next } }: Props) {
   const { theme } = useContext(ThemeContext)
+  const { title, path, tags } = post.frontmatter
+  const url = `https://glweems.com${path}`
+
   const prevPath = prev && prev.frontmatter.path
   const nextPath = next && next.frontmatter.path
+  const shareConfig = {
+    url,
+    twitterHandle: 'garrettlweems',
+    title,
+    tags
+  }
   return [
-    <SEO key="SEO" title={post.frontmatter.title} keywords={post.frontmatter.tags} description={post.excerpt} />,
+    <SEO key="SEO" title={title} keywords={tags} description={post.excerpt} />,
     <Article key="Article" className={theme.mode}>
       <PostHeader frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
-      <MDXRenderer>{post.body}</MDXRenderer>
+      <Content elements={post.htmlAst} />
       <SwitchPages prev={prevPath} next={nextPath} />
-      <Comments title={post.frontmatter.title} identifier={post.frontmatter.id} path={post.frontmatter.path} />
+      <ShareButtons {...shareConfig} />
+      <Comments title={title} identifier={post.frontmatter.id} url={url} />
     </Article>
   ]
 }
 
 export const BlogTemplateQuery = graphql`
   query BlogTemplateQuery($slug: String!, $prev: String, $next: String) {
-    post: mdx(frontmatter: { path: { eq: $slug } }) {
-      body
+    post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
+      htmlAst
       timeToRead
       ...Frontmatter
     }
-    prev: mdx(frontmatter: { path: { eq: $prev } }) {
+    prev: markdownRemark(frontmatter: { path: { eq: $prev } }) {
       frontmatter {
         path
       }
     }
-    next: mdx(frontmatter: { path: { eq: $next } }) {
+    next: markdownRemark(frontmatter: { path: { eq: $next } }) {
       frontmatter {
         path
       }

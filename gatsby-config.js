@@ -1,5 +1,5 @@
 /* eslint-disable global-require */
-require('dotenv').config();
+require('dotenv').config()
 
 const config = {
   defaultTitle: 'Glweems',
@@ -14,7 +14,7 @@ const config = {
     instagram: 'https://instagram.com/glweems',
     behance: 'https://www.behance.net/glweems',
     codepen: 'https://codepen.io/glweems',
-    medium: 'https://medium.com/@glweems',
+    medium: 'https://medium.com/@glweems'
   },
   googleAnalyticsID: 'UA-140456624-1',
   themeColor: '#f8d58c',
@@ -22,9 +22,9 @@ const config = {
   siteRss: '/rss.xml',
   contact: {
     email: 'gwgraphicdeesign@gmail.com',
-    twitter: 'devglweems',
-  },
-};
+    twitter: 'garrettlweems'
+  }
+}
 
 module.exports = {
   siteMetadata: {
@@ -35,7 +35,7 @@ module.exports = {
     image: `./src/images/favicon.jpg`,
     languageCode: `en`,
     countryCode: `US`,
-    siteUrl: config.url,
+    siteUrl: config.url
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -49,23 +49,13 @@ module.exports = {
         fonts: [
           {
             family: `Montserrat`,
-            variants: [
-              `100`,
-              `200`,
-              `300`,
-              `400`,
-              `500`,
-              `600`,
-              `700`,
-              `800`,
-              `900`,
-            ],
-          },
-        ],
-      },
+            variants: [`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`]
+          }
+        ]
+      }
     },
     {
-      resolve: `gatsby-transformer-yaml`,
+      resolve: `gatsby-transformer-yaml`
     },
     {
       resolve: `gatsby-source-graphql`,
@@ -73,27 +63,27 @@ module.exports = {
         typeName: `GitHub`,
         fieldName: `github`,
         url: `https://api.github.com/graphql`,
-        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` },
-      },
+        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
+      }
     },
     {
       resolve: `gatsby-source-behance-images`,
       options: {
         username: `glweems`,
-        apiKey: process.env.BEHANCE_TOKEN,
-      },
+        apiKey: process.env.BEHANCE_TOKEN
+      }
     },
     {
       resolve: `gatsby-plugin-typography`,
       options: {
-        pathToConfigModule: `./src/utils/typography.ts`,
-      },
+        pathToConfigModule: `./src/utils/typography.ts`
+      }
     },
     {
       resolve: `gatsby-plugin-layout`,
       options: {
-        component: require.resolve(`./src/components/Layout.tsx`),
-      },
+        component: require.resolve(`./src/components/Layout.tsx`)
+      }
     },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -102,50 +92,47 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/content`,
-        name: `posts`,
-      },
+        name: `posts`
+      }
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/src/assets/`,
-      },
+        path: `${__dirname}/src/assets/`
+      }
     },
     {
-      resolve: `gatsby-plugin-mdx`,
+      resolve: `gatsby-transformer-remark`,
       options: {
-        extensions: ['.mdx', '.md'],
-        mdPlugins: [
-          // require('remark-images'),
-          // require('remark-unwrap-images'),
-          require('remark-emoji'),
-          require('remark-slug'),
-          require('remark-autolink-headings'),
-        ],
-        gatsbyRemarkPlugins: [
-          `gatsby-remark-relative-images`,
+        plugins: [
+          // Optional: Remove the paragraph tag wrapping images
           `gatsby-remark-unwrap-images`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-autolink-headers`,
           // Wrap images by pictures
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 720,
-              // linkImagesToOriginal: true,
-            },
+              maxWidth: 1080,
+              linkImagesToOriginal: true
+            }
           },
-          `gatsby-remark-smartypants`,
-        ],
-      },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              aliases: { sh: 'bash', js: 'javascript' }
+            }
+          },
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-autolink-headers`
+        ]
+      }
     },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
         trackingId: config.googleAnalyticsID,
-        head: true,
-      },
+        head: true
+      }
     },
     {
       resolve: `gatsby-plugin-favicon`,
@@ -161,9 +148,9 @@ module.exports = {
           firefox: true,
           twitter: false,
           yandex: false,
-          windows: false,
-        },
-      },
+          windows: false
+        }
+      }
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -174,10 +161,10 @@ module.exports = {
         background_color: config.background_color,
         theme_color: config.theme_color,
         display: `minimal-ui`,
-        icon: `src/assets/favicon.png`,
-      },
+        icon: `src/assets/favicon.png`
+      }
     },
     `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-offline`,
-  ],
-};
+    `gatsby-plugin-offline`
+  ]
+}

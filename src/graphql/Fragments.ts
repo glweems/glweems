@@ -40,7 +40,7 @@ export const FluidImage = graphql`
 `
 
 export const Frontmatter = graphql`
-  fragment Frontmatter on Mdx {
+  fragment Frontmatter on MarkdownRemark {
     frontmatter {
       id
       date(formatString: "MMMM DD, YYYY")

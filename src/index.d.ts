@@ -51,16 +51,16 @@ export interface Frontmatter {
   }
 }
 
-export interface MDX {
+export interface MarkdownRemark {
   id: string
   timeToRead: number
   excerpt: string
-  body: object
+  htmlAst: object
   frontmatter: Frontmatter
 }
 
 export interface PostsQuery {
-  allMdx: Nodes<MDX>
+  allMarkdownRemark: Nodes<MarkdownRemark>
 }
 
 export type Child = Element | Element[] | React.ReactElement | React.ReactFragment | React.ReactChildren | string
