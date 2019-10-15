@@ -2,10 +2,9 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics'
-import { Child } from '../..'
 
 interface WhichLinkProps {
-  children?: string | Child | any
+  children?: React.ReactNode
   to: string
   [key: string]: any
   partiallyActive?: boolean
@@ -27,7 +26,13 @@ export const Link = ({
   // Use Gatsby Link for internal links, and <a> for others
   const displayedClassName = unstyled ? className : `link ${className}`
   return internal ? (
-    <GatsbyLink to={to} activeClassName={activeClassName} partiallyActive={partiallyActive} className={displayedClassName} {...other}>
+    <GatsbyLink
+      to={to}
+      activeClassName={activeClassName}
+      partiallyActive={partiallyActive}
+      className={displayedClassName}
+      {...other}
+    >
       {children}
     </GatsbyLink>
   ) : (

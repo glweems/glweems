@@ -12,7 +12,9 @@ const UseDesignsPageQuery = (): DesignsPageQuery =>
           tags
         }
       }
-      behanceImages: allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
+      behanceImages: allFile(
+        filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }
+      ) {
         nodes {
           relativeDirectory
           childImageSharp {

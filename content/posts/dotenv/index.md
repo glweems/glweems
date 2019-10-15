@@ -34,15 +34,17 @@ popular: false
 
 ### VS Code Setup
 
-![vscode](vscode.png)
+![](vscode.png)
 
 My vscode setup isn’t anything super crazy but I have managed to get it looking pretty snazzy.
 
 ### Font
 
-[Fira Code](https://github.com/tonsky/FiraCode)
+[Cascadia Code](https://github.com/tonsky/FiraCode)
 
-![Fira Code Font](font.png)_Fira Code Font_
+![Cascadia Code](cascadia-code.png)
+
+![Cascadia Code Characters](cascadia-code-characters.png)
 
 ### Extensions
 

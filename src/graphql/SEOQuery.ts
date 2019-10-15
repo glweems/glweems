@@ -1,19 +1,25 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { SeoQuery } from '..'
 
-const useSEOQuery = (): SeoQuery =>
-  useStaticQuery(graphql`
+const useSEOQuery = () => {
+  const {
+    site: {
+      siteMetadata: { defaultTitle, titleTemplate, defaultDescription, url, defaultImage }
+    }
+  } = useStaticQuery(graphql`
     query SEO {
       site {
         siteMetadata {
           defaultTitle: title
           titleTemplate
           defaultDescription: description
-          url
+          url: siteUrl
           defaultImage: image
         }
       }
     }
   `)
+
+  return { defaultTitle, titleTemplate, defaultDescription, url, defaultImage }
+}
 
 export default useSEOQuery

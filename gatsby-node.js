@@ -1,7 +1,25 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { GraphQLString } = require(`gatsby/graphql`)
-
 const path = require(`path`)
+const { siteMetadata } = require('./gatsby-config')
+
+exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+  if (type.name === `MarkdownRemark`) {
+    return {
+      url: {
+        type: GraphQLString,
+        resolve: source => `${siteMetadata.siteUrl}${source.frontmatter.path}`
+      },
+      disqusIdentifier: {
+        type: GraphQLString,
+        resolve: source => String(source.frontmatter.id)
+      }
+    }
+  }
+
+  // by default return empty object
+  return {}
+}
 
 // Create Pages
 exports.createPages = async ({ actions, graphql, reporter }) => {
@@ -46,7 +64,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   allMarkdownRemark.nodes.forEach(({ frontmatter }, index) => {
     actions.createPage({
       path: frontmatter.path,
-      component: path.resolve(`src/templates/Blog/BlogTemplate.tsx`),
+      component: path.resolve(`src/templates/Post/index.tsx`),
       context: {
         slug: frontmatter.path,
         prev: allMarkdownRemark.nodes[index - 1] && allMarkdownRemark.nodes[index - 1].frontmatter.path,

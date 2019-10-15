@@ -14,7 +14,13 @@ const Websites = ({ limit = false }: Props) => {
   return (
     <Cards>
       {websites.slice(0, limit || websites.length).map(({ id, title, description, tags, link, image }) => (
-        <Card key={id} title={title} subtitle={description} tags={tags} Image={<Img alt={title} fluid={image.childImageSharp.fluid} />}>
+        <Card
+          key={id}
+          title={title}
+          subtitle={description}
+          tags={tags}
+          Image={<Img alt={title} fluid={image.childImageSharp.fluid} />}
+        >
           <Link to={link}>View Site</Link>
         </Card>
       ))}
