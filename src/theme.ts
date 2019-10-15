@@ -82,25 +82,19 @@ export const behanceHover = darken(0.1, behance)
 export const instagram = `#E1306C`
 export const instagramHover = darken(0.1, instagram)
 
-const buttonStyles = css`
-  .button,
-  button,
-  input[type='reset'],
-  input[type='button'],
-  input[type='submit'] {
-    display: inline-block;
-    box-sizing: content-box;
-    font: inherit;
-    font-weight: 600;
-    line-height: normal;
-    white-space: normal;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    user-select: none;
-  }
+export const buttonStyles = css`
+  display: inline-block;
+  box-sizing: content-box;
+  font: inherit;
+  font-weight: 600;
+  line-height: normal;
+  white-space: normal;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  user-select: none;
 `
 
 export const anchorStyles = css`
@@ -132,44 +126,14 @@ export const GlobalStyle = createGlobalStyle`
 
 
   ${anchorStyles}
-  ${buttonStyles}
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    border: none;
-
-    .anchor {
-      float: left;
-      margin-left: -20px;
-      padding-right: 4px;
-      color: ${muted};
-      line-height: 1;
-      visibility: hidden;
-      :hover{
-        text-decoration: none;
-        visibility: visible;
-      }
-    }
-    .anchor:focus {
-      outline: none;
-    }
-    .octicon-link {
-      color: ${muted};
-      vertical-align: middle;
-      visibility: hidden;
-      :hover {
-        padding-bottom: 0.3em;
-        font-size: 2em;
-        border-bottom: 1px solid #eaecef;
-        visibility: visible;
-      }
-    }
+  .button,
+  button,
+  input[type='reset'],
+  input[type='button'],
+  input[type='submit'] {
+    ${buttonStyles}
   }
-
 
   html {
     /* font-size: var(--typography__fontSize); */

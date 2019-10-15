@@ -20,6 +20,7 @@ const config = {
   themeColor: '#f8d58c',
   backgroundColor: '#f8d58c',
   siteRss: '/rss.xml',
+  disqusShortName: 'https-glweems-com',
   contact: {
     email: 'gwgraphicdeesign@gmail.com',
     twitter: 'garrettlweems'
@@ -31,11 +32,12 @@ module.exports = {
     title: `Garrett Weems`,
     titleTemplate: `%s · Glweems`,
     description: `Full stack web developer / graphic designer.`,
-    url: `https://glweems.com`,
     image: `./src/images/favicon.jpg`,
     languageCode: `en`,
     countryCode: `US`,
-    siteUrl: config.url
+    siteUrl: config.url,
+    twitterHandle: config.contact.twitter,
+    disqusShortName: config.disqusShortName
   },
   plugins: [
     `gatsby-plugin-typescript`,
@@ -112,8 +114,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1080,
-              linkImagesToOriginal: true
+              maxWidth: 720
+              // linkImagesToOriginal: true
             }
           },
           {

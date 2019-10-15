@@ -45,6 +45,7 @@ export interface Frontmatter {
   next: string
   thumbnail: {
     id: string
+    publicUrl: string
     childImageSharp: {
       fluid: FluidObject
     }
@@ -62,8 +63,6 @@ export interface MarkdownRemark {
 export interface PostsQuery {
   allMarkdownRemark: Nodes<MarkdownRemark>
 }
-
-export type Child = Element | Element[] | React.ReactElement | React.ReactFragment | React.ReactChildren | string
 
 export interface Colors {
   light: string

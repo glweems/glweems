@@ -2,11 +2,10 @@ import React, { createContext } from 'react'
 import { DefaultTheme } from 'styled-components'
 import useTheme from '../hooks/useTheme'
 import useNav from '../hooks/useNav'
-import { Child } from '..'
 
 interface PCP {
   contexts: any[]
-  children: Child
+  children: React.ReactNode
 }
 const ProviderComposer = ({ contexts, children }: PCP): JSX.Element =>
   contexts.reduceRight((kids, parent) => {
@@ -48,5 +47,7 @@ export const NavProvider = ({ children }: any) => {
 }
 
 export default ({ children }: any) => (
-  <ProviderComposer contexts={[<ThemeProvider key="theme-provider" />, <NavProvider key="nav-provider" />]}>{children}</ProviderComposer>
+  <ProviderComposer contexts={[<ThemeProvider key="theme-provider" />, <NavProvider key="nav-provider" />]}>
+    {children}
+  </ProviderComposer>
 )

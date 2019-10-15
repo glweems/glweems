@@ -1,8 +1,8 @@
 ---
-id: 6
+id: 7
 path: /better-containers
 thumbnail: css-grid-container.png
-date: 2019-10-16T01:00:01.889Z
+date: 2019-9-16T01:00:01.889Z
 edited:
 next: /dotenv
 title: Better Containers

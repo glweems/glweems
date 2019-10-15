@@ -12,7 +12,9 @@ export const BehanceCard = graphql`
 
 export const BehanceCovers = graphql`
   fragment BehanceCoverImages on Query {
-    behanceCoverImages: allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
+    behanceCoverImages: allFile(
+      filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }
+    ) {
       nodes {
         relativeDirectory
         childImageSharp {
@@ -51,6 +53,8 @@ export const Frontmatter = graphql`
       next
       thumbnail {
         id
+        relativePath
+        publicURL
         childImageSharp {
           ...FluidImage
         }
