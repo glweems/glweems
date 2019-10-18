@@ -55,14 +55,11 @@ Ok jokes aside lemme show you my current solution
 ```
 
 <iframe
-  height="265"
-  style="width: 100%;"
-  scrolling="no"
+  height="500"
+  width="100%"
   title="css grid container 1"
-  src="//codepen.io/glweems/embed/xxKJQOq/?height=265&theme-id=0&default-tab=result"
-  frameborder="no"
-  allowtransparency="true"
-  allowfullscreen="true">
+  src="//codepen.io/glweems/embed/xxKJQOq/"
+  >
     See the Pen
     <a href='https://codepen.io/glweems/pen/xxKJQOq/'>
     css grid container 1
@@ -100,14 +97,12 @@ Well, we would need to add couple things...
 ```
 
 <iframe
-  height="400"
-  style="width: 100%;"
+  height="500"
+  width="100%"
   scrolling="no"
   title="css grid container 2"
-  src="//codepen.io/glweems/embed/jONpQpb/?height=265&theme-id=0&default-tab=result"
-  frameborder="no"
-  allowtransparency="true"
-  allowfullscreen="true">
+  src="//codepen.io/glweems/embed/jONpQpb/"
+  frameborder="no">
     See the Pen <a href='https://codepen.io/glweems/pen/jONpQpb/'>css grid container 2</a> by Garrett Weems
     (<a href='https://codepen.io/glweems'>@glweems</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
@@ -174,14 +169,11 @@ $xl: 1140px;
 ```
 
 <iframe
-  height="400"
-  style="width: 100%;"
-  scrolling="no"
+  height="500"
+  width="100%"
   title="css grid container"
-  src="//codepen.io/glweems/embed/xxKJmPQ/?height=265&theme-id=0&default-tab=result"
-  frameborder="no"
-  allowtransparency="true"
-  allowfullscreen="true">
+  src="//codepen.io/glweems/embed/xxKJmPQ/"
+  frameborder="no">
     See the Pen
     <a href='https://codepen.io/glweems/pen/xxKJmPQ/'>
       css grid container

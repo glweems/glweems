@@ -1,10 +1,9 @@
 import * as React from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import { Frontmatter } from '../..'
 import SEO from '../../components/SEO'
 import { Article } from './styles'
-import { ThemeContext } from '../../components/Providers'
+import { ThemeContext } from '../../hooks/Providers'
 import { SwitchPages, PostDirection } from './SwitchPages'
 import { Header, ShareButtons, Content, Comments } from './components'
 
@@ -37,17 +36,14 @@ const BlogTemplate: React.FC<Props> = ({ data: { post, prev, next, site } }) => 
   const disqusConfig = { disqusShortName, identifier: disqusIdentifier, url, title }
 
   return (
-    <>
+    <Article className={theme.mode}>
       <SEO config={seoConfig} />
-      <Article className={theme.mode}>
-        <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
-        <Img className="thumbnail" fluid={post.frontmatter.thumbnail.childImageSharp.fluid} />
-        <Content elements={post.htmlAst} />
-        <SwitchPages config={{ prev, next }} />
-        <ShareButtons config={shareConfig} />
-        <Comments config={disqusConfig} />
-      </Article>
-    </>
+      <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
+      <Content elements={post.htmlAst} />
+      <SwitchPages config={{ prev, next }} />
+      <ShareButtons config={shareConfig} />
+      <Comments config={disqusConfig} />
+    </Article>
   )
 }
 

@@ -2,10 +2,11 @@ import styled from 'styled-components'
 import { rhythm, media, muted, text, bg, base, borderRadius, borderColor, navbarHeight } from '../../theme'
 
 export const StyledHeader = styled.header`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: calc(30vh - ${navbarHeight} - ${rhythm(1.5)});
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-evenly; */
+  /* height: 30vh; */
+  padding-bottom: ${rhythm(1)};
   border-bottom: 1px solid ${borderColor};
 `
 

@@ -15,36 +15,39 @@ const FadedTitle = styled.h2`
   opacity: 0.5;
 `
 
-const IndexPage = () => [
-  <Container key="Blog">
-    <section>
-      <FadedTitle>Blog Posts</FadedTitle>
-      <Posts limit={3} />
-    </section>
-    <div>
-      <Link to="/blog">View All Blog Posts</Link>
-    </div>
-  </Container>,
-  <Container key="Design">
-    <section>
-      <FadedTitle>Design Projects</FadedTitle>
-      <Designs limit={3} />
-    </section>
-    <div>
-      <Link to="/designs">View All Designs</Link>
-    </div>
-  </Container>,
-  <Container key="Projects">
-    <section>
-      <FadedTitle>Side Projects</FadedTitle>
-      <SideProjects limit={2} />
-    </section>
-  </Container>,
-  <Container key="github-callendar">
+const IndexPage = () => (
+  <>
+    <Container key="Blog">
+      <section>
+        <FadedTitle>Blog Posts</FadedTitle>
+        <Posts limit={3} />
+      </section>
+      <div>
+        <Link to="/blog">View All Blog Posts</Link>
+      </div>
+    </Container>
+
+    <Container key="Design">
+      <section>
+        <FadedTitle>Design Projects</FadedTitle>
+        <Designs limit={3} />
+      </section>
+      <div>
+        <Link to="/designs">View All Designs</Link>
+      </div>
+    </Container>
+
+    <Container key="Projects">
+      <section>
+        <FadedTitle>Side Projects</FadedTitle>
+        <SideProjects limit={2} />
+      </section>
+    </Container>
+
     <GithubCalendar username="glweems" years={[2019]}>
       <ReactTooltip delayShow={35} html />
     </GithubCalendar>
-  </Container>
-]
+  </>
+)
 
 export default IndexPage

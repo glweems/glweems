@@ -81,12 +81,12 @@ module.exports = {
         pathToConfigModule: `./src/utils/typography.ts`
       }
     },
-    {
-      resolve: `gatsby-plugin-layout`,
-      options: {
-        component: require.resolve(`./src/components/Layout.tsx`)
-      }
-    },
+    // {
+    //   resolve: `gatsby-plugin-layout`,
+    //   options: {
+    //     component: require.resolve(`./src/components/Layout.tsx`)
+    //   }
+    // },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
@@ -110,6 +110,7 @@ module.exports = {
         plugins: [
           // Optional: Remove the paragraph tag wrapping images
           `gatsby-remark-unwrap-images`,
+          `gatsby-remark-responsive-iframe`,
           // Wrap images by pictures
           {
             resolve: `gatsby-remark-images`,

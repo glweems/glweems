@@ -1,7 +1,9 @@
 import React, { createContext } from 'react'
 import { DefaultTheme } from 'styled-components'
-import useTheme from '../hooks/useTheme'
-import useNav from '../hooks/useNav'
+import useTheme from './useTheme'
+import useNav from './useNav'
+
+import Layout from '../components/Layout'
 
 interface PCP {
   contexts: any[]
@@ -46,8 +48,22 @@ export const NavProvider = ({ children }: any) => {
   return <NavContext.Provider value={{ isNavOpen, setNav, toggleNav }}>{children}</NavContext.Provider>
 }
 
-export default ({ children }: any) => (
-  <ProviderComposer contexts={[<ThemeProvider key="theme-provider" />, <NavProvider key="nav-provider" />]}>
-    {children}
+interface Props {
+  element: React.ReactNode | React.ReactFragment
+}
+
+export const wrapRootElement: React.FC<Props> = ({ element }) => (
+  <ProviderComposer
+    contexts={[
+      <ThemeProvider key="theme" />,
+      // <StyledThemeProvider key="styled" theme={theme} />,
+      <NavProvider key="nav" />
+    ]}
+  >
+    <>{element}</>
   </ProviderComposer>
 )
+
+export const wrapPageElement: React.FC<Props> = ({ element, props }) => {
+  return <Layout {...props}>{element}</Layout>
+}

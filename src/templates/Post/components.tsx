@@ -1,6 +1,7 @@
 import { DiscussionEmbed } from 'disqus-react'
 import * as React from 'react'
 import RehypeReact from 'rehype-react'
+import Img from 'gatsby-image'
 import { Frontmatter } from '../..'
 import { Blockquote, Subtitle, Title } from '../../components/Common'
 import Tags from '../../components/Tags'
@@ -31,6 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
         <Tags items={frontmatter.tags} />
         <Info date={frontmatter.date} time={timeToRead} />
       </div>
+      <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
     </div>
   </StyledHeader>
 )

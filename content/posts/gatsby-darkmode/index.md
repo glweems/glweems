@@ -215,4 +215,4 @@ export default connect(mapStateToProps)(Layout)
 
 And there you have it!
 
-a fully functional dark-mode site using gatsby, redux, and styles-components
+a fully functional dark-mode site using gatsby, redux, and styled-components
