@@ -2,35 +2,13 @@
 
 ## Personal Portfolio
 
-<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
-  <img src="./test_results/lighthouse_accessibility.svg"/>
-</a>
-<br/>
-
-<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
-  <img src="./test_results/lighthouse_best-practices.svg"/>
-</a>
-<br/>
-<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
-  <img src="./test_results/lighthouse_performance.svg"/>
-</a>
-<br/>
-<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
-  <img src="./test_results/lighthouse_pwa.svg"/>
-</a>
-<br/>
-<a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank">
-  <img src="./test_results/lighthouse_seo.svg"/>
-</a>
-<br/>
-
 <p>
   <a href="https://app.netlify.com/sites/glweems/deploys">
     <img alt="Netlify Deploys: glweems" src="https://api.netlify.com/api/v1/badges/9c9aba4f-abf3-45f6-b160-3445a4a9db1f/deploy-status" target="_blank" />
   </a>
   <a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank"><img src="https://api.codacy.com/project/badge/Grade/8775db3efa4f46d3a2a33a7c93a98596"/></a>
   <a href="https://twitter.com/garrettlweems">
-    <img alt="Twitter: devglweems" src="https://img.shields.io/twitter/follow/devglweems.svg?style=social" target="_blank" />
+    <img alt="Twitter: garrettlweems" src="https://img.shields.io/twitter/follow/devglweems.svg?style=social" target="_blank" />
   </a>
 </p>
 
@@ -67,7 +45,7 @@ yarn type-check
 
 👤 **Garrett Weems <gwgraphicdesign@gmail.com> (https://glweems.com)**
 
-- Twitter: [@devglweems](https://twitter.com/devglweems)
+- Twitter: [@garrettlweems](https://twitter.com/garrettlweems)
 - Github: [@glweems](https://github.com/glweems)
 
 ## 🤝 Contributing
