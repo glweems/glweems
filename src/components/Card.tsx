@@ -84,7 +84,9 @@ const Card = ({
         <p>{subtitle}</p>
         {children}
       </Body>
-      <Footer>{<Tags items={tags} />}</Footer>
+      <Footer>
+        <Tags items={tags} />
+      </Footer>
     </Wrapper>
   )
 }

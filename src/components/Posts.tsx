@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../theme'
 import usePostsQuery from '../graphql/PostsQuery'
 import { Frontmatter } from '..'
 import PostPreview from './PostPreview'
@@ -18,9 +17,6 @@ const Grid = styled.div<{ columns: number }>`
   grid-template-columns: 1fr;
   gap: 4em 3em;
   justify-content: space-between;
-  ${media.greaterThan('sm')`
-    grid-template-columns: repeat(2, minmax(auto, 1fr));
-  `};
 `
 
 const Posts = ({ limit = false }: Props) => {

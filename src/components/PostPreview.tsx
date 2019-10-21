@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
-import { Link } from '../Common'
-import Tags from '../Tags'
-import { muted, borderColor } from '../../theme'
+import { Link } from './Common'
+import Tags from './Tags'
+import { muted } from '../theme'
 
 const Title = styled.h2`
   grid-area: title;
@@ -34,15 +34,14 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
     'title title'
-    'date date'
-    'excerpt img'
-    'tags img'
+    'img date'
+    'img excerpt'
+    'img tags'
     'link link';
   grid-template-rows: repeat(5, auto);
-  grid-template-columns: 1fr 25%;
+  grid-template-columns: 25% auto;
   gap: 0 1em;
   padding-bottom: 1em;
-  border-bottom: 2px solid ${borderColor};
 
   .tags {
     grid-area: tags;
@@ -50,6 +49,7 @@ const Wrapper = styled.div`
 
   .img {
     grid-area: img;
+    align-self: flex-start;
     .gatsby-image-wrapper {
       height: 100%;
       border-radius: 0.125em;
