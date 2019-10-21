@@ -31,8 +31,8 @@ const Navbar = () => (
           <Link to="/designs" className="nav-item">
             Designs
           </Link>
-          <Link to="/resume" className="nav-item">
-            Resume
+          <Link to="/about" className="nav-item">
+            About
           </Link>
           <ToogleThemeSwitch />
         </Links>
