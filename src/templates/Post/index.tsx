@@ -6,6 +6,7 @@ import { Article } from './styles'
 import { ThemeContext } from '../../hooks/Providers'
 import { SwitchPages, PostDirection } from './SwitchPages'
 import { Header, ShareButtons, Content, Comments } from './components'
+import { HtmlAst } from '../../utils/HtmlAst'
 
 interface Post {
   id: string
@@ -36,14 +37,16 @@ const BlogTemplate: React.FC<Props> = ({ data: { post, prev, next, site } }) => 
   const disqusConfig = { disqusShortName, identifier: disqusIdentifier, url, title }
 
   return (
-    <Article className={theme.mode}>
+    <>
       <SEO config={seoConfig} />
-      <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
-      <Content elements={post.htmlAst} />
+      <Article className={theme.mode}>
+        <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
+        <HtmlAst elements={post.htmlAst} />
+      </Article>
       <SwitchPages config={{ prev, next }} />
       <ShareButtons config={shareConfig} />
       <Comments config={disqusConfig} />
-    </Article>
+    </>
   )
 }
 

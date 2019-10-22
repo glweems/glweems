@@ -40,9 +40,21 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
         }
       }
 
-      tagsGroup: allMarkdownRemark(limit: 2000) {
+      blogTags: allMarkdownRemark(limit: 2000) {
         group(field: frontmatter___tags) {
-          fieldValue
+          tag: fieldValue
+        }
+      }
+
+      designTags: allBehanceProjects(limit: 2000) {
+        group(field: tags) {
+          tag: fieldValue
+        }
+      }
+
+      sideProjectTags: allSideprojectsYaml(limit: 2000) {
+        group(field: tags) {
+          tag: fieldValue
         }
       }
     }
@@ -85,16 +97,27 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
   })
 
   // Extract tag data from query
-  const tags = result.data.tagsGroup.group
+  const { blogTags, designTags, sideProjectTags } = result.data
+  // Combine all tags
+  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce((acc, d) => {
+    const found = acc.find(a => a.tag === d.tag)
+
+    if (found) {
+      found.qty += d.qty
+      found.tag = _.kebabCase(found.tag)
+    }
+    acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })
+
+    return acc
+  }, [])
+  // Component for each page
   const tagComponent = path.resolve(`src/templates/tags.tsx`)
   // Make tag pages
-  tags.forEach(tag => {
+  tags.forEach(({ tag }) => {
     createPage({
-      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
+      path: `/tags/${_.kebabCase(tag)}/`,
       component: tagComponent,
-      context: {
-        tag: tag.fieldValue
-      }
+      context: { tag }
     })
   })
 }

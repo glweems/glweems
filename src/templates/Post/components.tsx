@@ -3,25 +3,14 @@ import * as React from 'react'
 import RehypeReact from 'rehype-react'
 import Img from 'gatsby-image'
 import { Frontmatter } from '../..'
-import { Blockquote, Subtitle, Title } from '../../components/Common'
+import { Blockquote, Subtitle, Title, Date } from '../../components/Common'
 import Tags from '../../components/Tags'
-import { ImgDetail, StyledHeader, StyledInfo } from './styles'
+import { ImgDetail, StyledHeader } from './styles'
 
 interface HeaderProps {
   frontmatter: Frontmatter
   timeToRead: number
 }
-
-interface PostInfo {
-  date: Date | string | any
-  time: number
-}
-
-const Info: React.FC<PostInfo> = ({ date, time }) => (
-  <StyledInfo>
-    {date} - {time} min read
-  </StyledInfo>
-)
 
 export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
   <StyledHeader>
@@ -29,8 +18,10 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
       <Title>{frontmatter.title}</Title>
       <Subtitle>{frontmatter.subtitle}</Subtitle>
       <div className="info">
+        <Date>
+          {frontmatter.date} - {timeToRead} min read
+        </Date>
         <Tags items={frontmatter.tags} />
-        <Info date={frontmatter.date} time={timeToRead} />
       </div>
       <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
     </div>

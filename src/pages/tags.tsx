@@ -6,8 +6,10 @@ import kebabCase from 'lodash/kebabCase'
 // Components
 import { graphql } from 'gatsby'
 import styled from 'styled-components'
+import uuid from 'uuid/v4'
 import { Container, Link } from '../components/Common'
 import SEO from '../components/SEO'
+import useSiteTags from '../graphql/useAllSiteTags'
 
 interface Props {
   data: {
@@ -16,27 +18,26 @@ interface Props {
     }
   }
 }
-const TagsPage: React.FC<Props> = ({
-  data: {
-    allMarkdownRemark: { tags }
-  }
-}) => (
-  <Container>
-    <SEO config={{ title: 'tags' }} />
-    <div>
-      <h1>Tags</h1>
-      <Grid>
-        {tags.map(({ tag, totalCount }) => (
-          <li key={tag}>
-            <Link to={`/tags/${kebabCase(tag)}/`}>
-              {tag} ({totalCount})
-            </Link>
-          </li>
-        ))}
-      </Grid>
-    </div>
-  </Container>
-)
+const TagsPage: React.FC<Props> = () => {
+  const { tags, qty } = useSiteTags()
+  return (
+    <Container>
+      <SEO config={{ title: 'tags' }} />
+      <div>
+        <h1>{qty} - Tags</h1>
+        <Grid>
+          {tags.map(({ tag, qty }) => (
+            <li key={uuid()}>
+              <Link to={`/tags/${kebabCase(tag)}/`}>
+                {tag} ({qty})
+              </Link>
+            </li>
+          ))}
+        </Grid>
+      </div>
+    </Container>
+  )
+}
 
 const Grid = styled.ul`
   display: grid;
@@ -49,14 +50,3 @@ const Grid = styled.ul`
 `
 
 export default TagsPage
-
-export const TagsPageQuery = graphql`
-  query TagsPageQuery {
-    allMarkdownRemark(limit: 2000) {
-      tags: group(field: frontmatter___tags) {
-        tag: fieldValue
-        totalCount
-      }
-    }
-  }
-`

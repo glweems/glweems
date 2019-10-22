@@ -3,31 +3,39 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Container, Link } from '../components/Common'
 import { Frontmatter } from '..'
+import BlogPosts from '../components/Posts'
 
-interface Props extends TagsPageQuery {
+interface Props extends TagPageQuery {
   pageContext: {
     tag: string
   }
 }
 
+const sectionTitle = (tag, qty, type) => `${qty} ${type}${qty === 1 ? '' : 's'} tagged with "${tag}"`
+
+const PostsSection = ({ qty, posts }) => (
+  <section>
+    <h2>{qty} Blog Posts</h2>
+    <ul>
+      {posts.map(({ frontmatter }) => {
+        const { title, path } = frontmatter
+        return (
+          <li key={path}>
+            <Link to={path}>{title}</Link>
+          </li>
+        )
+      })}
+    </ul>
+  </section>
+)
 const Tags: React.FC<Props> = ({ pageContext, data }) => {
+  console.log('TCL: data', data)
   const { tag } = pageContext
-  const { posts, totalCount } = data.allMarkdownRemark
-  const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`
 
   return (
     <Container>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {posts.map(({ frontmatter }) => {
-          const { title, path } = frontmatter
-          return (
-            <li key={path}>
-              <Link to={path}>{title}</Link>
-            </li>
-          )
-        })}
-      </ul>
+      <BlogPosts posts={data.matchedPosts.posts} />
+
       <div>
         <Link to="/tags">All tags</Link>
       </div>
@@ -37,27 +45,45 @@ const Tags: React.FC<Props> = ({ pageContext, data }) => {
 
 export default Tags
 
-interface TagsPageQuery {
+interface TagPageQuery {
   data: {
-    allMarkdownRemark: {
+    matchedPosts: {
       totalCount: number
       posts: {
+        id: string
+        excerptAst: object
         frontmatter: Frontmatter
       }[]
     }
   }
 }
 
-export const TagsPageQuery = graphql`
-  query TagsPageTemplate($tag: String) {
-    allMarkdownRemark(
+export const TagPageQuery = graphql`
+  query TagPageTemplate($tag: String) {
+    matchedPosts: allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
-      totalCount
+      qty: totalCount
       posts: nodes {
+        excerpt
         ...Frontmatter
+      }
+    }
+    matchedDesigns: allBehanceProjects(limit: 2000, filter: { tags: { in: [$tag] } }) {
+      qty: totalCount
+      designs: nodes {
+        description
+      }
+    }
+    matchedSideProjects: allSideprojectsYaml(filter: { tags: { in: [$tag] } }) {
+      qty: totalCount
+      projects: nodes {
+        link
+        title
+        github
+        description
       }
     }
   }
