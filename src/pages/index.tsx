@@ -9,14 +9,21 @@ import SideProjects from '../components/SideProjects'
 import Designs from '../components/Designs'
 import Posts from '../components/Posts'
 import { primary } from '../theme'
+import { BlogPost } from '..'
 
 const FadedTitle = styled.h2`
   color: ${primary};
   font-size: 2em;
   opacity: 0.5;
 `
-
-const IndexPage: React.FC<> = ({ data }) => {
+interface Props {
+  data: {
+    allMarkdownRemark: {
+      posts: BlogPost[]
+    }
+  }
+}
+const IndexPage: React.FC<Props> = ({ data }) => {
   const { posts } = data.allMarkdownRemark
   return (
     <>

@@ -4,7 +4,6 @@ import React from 'react'
 import kebabCase from 'lodash/kebabCase'
 
 // Components
-import { graphql } from 'gatsby'
 import styled from 'styled-components'
 import uuid from 'uuid/v4'
 import { Container, Link } from '../components/Common'
@@ -26,10 +25,10 @@ const TagsPage: React.FC<Props> = () => {
       <div>
         <h1>{qty} - Tags</h1>
         <Grid>
-          {tags.map(({ tag, qty }) => (
+          {tags.map((item: { tag: string; qty: number }) => (
             <li key={uuid()}>
-              <Link to={`/tags/${kebabCase(tag)}/`}>
-                {tag} ({qty})
+              <Link to={`/tags/${kebabCase(item.tag)}/`}>
+                {item.tag} ({item.qty})
               </Link>
             </li>
           ))}

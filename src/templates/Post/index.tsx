@@ -5,7 +5,7 @@ import SEO from '../../components/SEO'
 import { Article } from './styles'
 import { ThemeContext } from '../../hooks/Providers'
 import { SwitchPages, PostDirection } from './SwitchPages'
-import { Header, ShareButtons, Content, Comments } from './components'
+import { Header, ShareButtons, Comments } from './components'
 import { HtmlAst } from '../../utils/HtmlAst'
 
 interface Post {

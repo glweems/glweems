@@ -11,23 +11,8 @@ interface Props extends TagPageQuery {
   }
 }
 
-const sectionTitle = (tag, qty, type) => `${qty} ${type}${qty === 1 ? '' : 's'} tagged with "${tag}"`
+// const sectionTitle = (tag, qty, type) => `${qty} ${type}${qty === 1 ? '' : 's'} tagged with "${tag}"`
 
-const PostsSection = ({ qty, posts }) => (
-  <section>
-    <h2>{qty} Blog Posts</h2>
-    <ul>
-      {posts.map(({ frontmatter }) => {
-        const { title, path } = frontmatter
-        return (
-          <li key={path}>
-            <Link to={path}>{title}</Link>
-          </li>
-        )
-      })}
-    </ul>
-  </section>
-)
 const Tags: React.FC<Props> = ({ pageContext, data }) => {
   console.log('TCL: data', data)
   const { tag } = pageContext

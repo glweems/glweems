@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { Link, Date } from './Common'
 import Tags from './Tags'
-import { muted, rhythm } from '../theme'
+import { rhythm } from '../theme'
 
 const Title = styled.h3`
   grid-area: title;
@@ -64,25 +64,6 @@ const Wrapper = styled.div`
     margin-top: 1em;
   }
 `
-
-const PostPreview = ({ path, title, date, tags, excerpt, fluid }: Props) => (
-  <Wrapper>
-    <Title>
-      <Link to={path}>{title}</Link>
-    </Title>
-    <Date className="date">{date}</Date>
-    <Excerpt>{excerpt}</Excerpt>
-    <div className="tags">
-      <Tags items={tags} />
-    </div>
-
-    <Link to={path} className="img" unstyled>
-      <Img fluid={fluid} />
-    </Link>
-
-    <Link to={path}>Read More</Link>
-  </Wrapper>
-)
 
 export const BlogPostPreview: React.FC<Props> = ({ path, title, date, tags, excerpt, fluid }) => (
   <Wrapper>
