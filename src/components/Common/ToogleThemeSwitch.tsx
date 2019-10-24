@@ -4,7 +4,7 @@ import styled, { ThemeContext as StyledThemeContext } from 'styled-components'
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons'
 import { Button } from './Button'
-import { ThemeContext } from '../Providers'
+import { ThemeContext } from '../../hooks/Providers'
 import { yellow, bg, text, darkYellow } from '../../theme'
 
 const Toggle = styled(Button)`

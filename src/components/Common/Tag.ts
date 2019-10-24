@@ -1,19 +1,8 @@
 import styled from 'styled-components'
-import { muted, primary } from '../../theme'
+import { Link } from 'gatsby'
 
-export const Title = styled.h1``
-export const Subtitle = styled.h2`
-  color: ${muted};
-  font-weight: 500;
-  font-size: 1.25em;
-`
-export const Blockquote = styled.blockquote`
-  padding: 0.25em 0 0.25em 1em;
-  color: ${muted};
-  font-style: italic;
-  border-left: 4px solid ${primary};
-`
-export const Date = styled.small`
+export const Tag = styled(Link)`
+  /*! CSS Used from: Embedded */
   *,
   *:before,
   *:after {
@@ -28,5 +17,6 @@ export const Date = styled.small`
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 22px;
   text-decoration: none;
+  background: rgba(0, 0, 0, 0.05);
   border-radius: 3px;
 `

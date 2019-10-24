@@ -25,6 +25,8 @@ export const borderColor = theme('mode', {
   light: '#c6c7c6',
   dark: '#1b2027'
 })
+export const tagBg = theme('mode', { light: 'rgba(37, 45, 61, 30)', dark: 'rgba(248, 248, 248, 10)' })
+export const tagColor = theme('mode', { light: base.light, dark: base.dark })
 
 export const linkBg = theme('mode', { light: mint, dark: yellow })
 export const linkColor = theme('mode', { light: text, dark: bg })

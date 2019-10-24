@@ -1,9 +1,13 @@
+body {
+  height: 100%;
+  max-height: 100vh;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
-  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-    'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-    'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-    'Courier New', Courier, monospace;
+  font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+    'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
+    monospace;
   font-size: 14px;
   line-height: 1.375;
   direction: ltr;
@@ -158,11 +162,7 @@ pre > code.highlight {
     color-stop(70%, rgba(224, 145, 66, 0.2)),
     to(rgba(224, 145, 66, 0))
   );
-  background: linear-gradient(
-    to right,
-    rgba(224, 145, 66, 0.2) 70%,
-    rgba(224, 145, 66, 0)
-  );
+  background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
 }
 
 /*# sourceMappingURL=prism-base2tone-evening-dark.css.map */
@@ -170,10 +170,9 @@ pre > code.highlight {
 article.light {
   code[class*='language-'],
   pre[class*='language-'] {
-    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono',
-      'Lucida Console', 'Lucida Sans Typewriter', 'DejaVu Sans Mono',
-      'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L',
-      'Courier New', Courier, monospace;
+    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
+      'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
+      monospace;
     font-size: 14px;
     line-height: 1.375;
     direction: ltr;
@@ -328,11 +327,7 @@ article.light {
       color-stop(70%, rgba(179, 117, 55, 0.2)),
       to(rgba(179, 117, 55, 0))
     );
-    background: linear-gradient(
-      to right,
-      rgba(179, 117, 55, 0.2) 70%,
-      rgba(179, 117, 55, 0)
-    );
+    background: linear-gradient(to right, rgba(179, 117, 55, 0.2) 70%, rgba(179, 117, 55, 0));
   }
 
   /*# sourceMappingURL=prism-base2tone-evening-light.css.map */

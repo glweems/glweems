@@ -1,0 +1,8 @@
+[build]
+  command = "yarn run build"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "12.7.0"
+  YARN_VERSION = "1.1.9"
+  YARN_FLAGS = "--no-ignore-optional"

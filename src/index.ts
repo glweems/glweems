@@ -52,16 +52,18 @@ export interface Frontmatter {
   }
 }
 
+export interface BlogPost {
+  id: string
+  excerpt: string
+  timeToRead: string
+  frontmatter: Frontmatter
+}
 export interface MarkdownRemark {
   id: string
   timeToRead: number
   excerpt: string
   htmlAst: object
   frontmatter: Frontmatter
-}
-
-export interface PostsQuery {
-  allMarkdownRemark: Nodes<MarkdownRemark>
 }
 
 export interface Colors {
