@@ -15,7 +15,7 @@ interface Props extends TagPageQuery {
 
 const Tags: React.FC<Props> = ({ pageContext, data }) => {
   console.log('TCL: data', data)
-  const { tag } = pageContext
+  // const { tag } = pageContext
 
   return (
     <Container>
