@@ -1582,6 +1582,16 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.7.0.tgz#9a06f4f137ee84d7df0460c1fdb1135ffa6c50fd"
   integrity sha512-ONhaKPIufzzrlNbqtWFFd+jlnemX6lJAgq9ZeiZtS7I1PIf/la7CW4m83rTXRnVnsMbW2k56pGYu7AUFJD9Pow==
 
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
+=======
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+  dependencies:
+    axios "*"
+
+>>>>>>> :lipstick: minor style updates
 "@types/caseless@*":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@types/caseless/-/caseless-0.12.2.tgz#f65d3d6389e01eeb458bd54dc8f52b95a9463bc8"
@@ -1596,6 +1606,13 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-0.0.29.tgz#a1e514adfbd92f03a224ba54d693111dbf1f3754"
   integrity sha1-oeUUrfvZLwOiJLpU1pMRHb8fN1Q=
+
+"@types/dotenv@^8.2.0":
+  version "8.2.0"
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/@types/dotenv/-/dotenv-8.2.0.tgz#5cd64710c3c98e82d9d15844375a33bf1b45d053"
+  integrity sha1-XNZHEMPJjoLZ0VhEN1ozvxtF0FM=
+  dependencies:
+    dotenv "*"
 
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
@@ -1642,8 +1659,13 @@
 
 "@types/lodash@^4.14.144":
   version "4.14.144"
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.144.tgz#12e57fc99064bce45e5ab3c8bc4783feb75eab8e"
   integrity sha512-ogI4g9W5qIQQUhXAclq6zhqgqNUr7UlFaqDHbch7WLSLeeM/7d3CRaw7GLajxvyFvhJqw4Rpcz5bhoaYtIx6Tg==
+=======
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/@types/lodash/-/lodash-4.14.144.tgz#12e57fc99064bce45e5ab3c8bc4783feb75eab8e"
+  integrity sha1-EuV/yZBkvOReWrPIvEeD/rdeq44=
+>>>>>>> :lipstick: minor style updates
 
 "@types/minimatch@*":
   version "3.0.3"
@@ -1747,8 +1769,8 @@
 
 "@types/rehype-react@^3.1.0":
   version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@types/rehype-react/-/rehype-react-3.1.0.tgz#889bd406e5f182725a810466a11bdc6bf6443d59"
-  integrity sha512-0/jP0c1XJZnSMexemgvj1pXjUYsGeuWQGc1kR7Cei2YMxQq6Jh1zS/587fZhjAtCs22yfFk9vKPA4Z5gJc6M6g==
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/@types/rehype-react/-/rehype-react-3.1.0.tgz#889bd406e5f182725a810466a11bdc6bf6443d59"
+  integrity sha1-iJvUBuXxgnJagQRmoRvca/ZEPVk=
   dependencies:
     "@types/react" "*"
 
@@ -1773,8 +1795,8 @@
 
 "@types/styled-theming@^2.2.2":
   version "2.2.2"
-  resolved "https://registry.yarnpkg.com/@types/styled-theming/-/styled-theming-2.2.2.tgz#e9cd824be4d6bcdb95315c5a86ae3ae0a46ba731"
-  integrity sha512-O8h8DFtY8IfxIOt2fDZqlqNk3aTbOsvdwU7gaFa4o7OfRRE5bBsehHZMxI1aSawq8AuISQJP4xOoz9P2imx/FQ==
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/@types/styled-theming/-/styled-theming-2.2.2.tgz#e9cd824be4d6bcdb95315c5a86ae3ae0a46ba731"
+  integrity sha1-6c2CS+TWvNuVMVxahq464KRrpzE=
   dependencies:
     "@types/styled-components" "*"
     csstype "^2.2.0"
@@ -2837,6 +2859,11 @@ better-queue@^3.8.10:
     better-queue-memory "^1.0.1"
     node-eta "^0.9.0"
     uuid "^3.0.0"
+
+big.js@^3.1.3:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/big.js/-/big.js-3.2.0.tgz#a5fc298b81b9e0dca2e458824784b65c52ba588e"
+  integrity sha512-+hN/Zh2D08Mx65pZ/4g5bsmNiZUuChDiQfTUQ7qJr4/kuopCr88xZsAXv6mBoZEsUI4OuGHlX59qE94K2mMW8Q==
 
 big.js@^5.2.2:
   version "5.2.2"
@@ -4501,7 +4528,7 @@ csso@^3.5.1:
   dependencies:
     css-tree "1.0.0-alpha.29"
 
-csstype@^2.2.0:
+csstype@^2.2.0, csstype@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
   integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
@@ -5065,6 +5092,19 @@ dot-prop@^5.1.0:
   dependencies:
     is-obj "^2.0.0"
 
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
+=======
+dotenv@*:
+  version "8.2.0"
+  resolved "https://pkgs.dev.azure.com/catalystcorpfcu/_packaging/LPMarketplace.NugetFeed/npm/registry/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
+  integrity sha1-l+YZJZradQ7qPk6j4mvO6lQksWo=
+
+dotenv@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-4.0.0.tgz#864ef1379aced55ce6f95debecdce179f7a0cd1d"
+  integrity sha1-hk7xN5rO1Vzm+V3r7NzhefegzR0=
+
+>>>>>>> :lipstick: minor style updates
 dotenv@^8.1.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
@@ -6743,6 +6783,13 @@ gatsby-plugin-react-helmet@^3.1.5:
   integrity sha512-O3Fvxm76t58RPVUz0Fo2tbXeJnXV6vmlLnKBPMz+smr0Mtx8vnGP1Pi6DuWdRepJsnVespNNth/L8n7iucQCYQ==
   dependencies:
     "@babel/runtime" "^7.6.3"
+
+gatsby-plugin-react-svg@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-react-svg/-/gatsby-plugin-react-svg-2.1.2.tgz#e5aa026ece1a8aa3319bf10a8e20cf4595aec932"
+  integrity sha512-y2vqiI/+bW8UPNL8628NwoX6kHtM4WJz6CiHPc9fhvSUa2Y8wriFJnGl1K249/9RXomOUQhl7r7JOuVhweSl1w==
+  dependencies:
+    svg-react-loader "^0.4.4"
 
 gatsby-plugin-robots-txt@^1.5.0:
   version "1.5.0"
@@ -9336,6 +9383,11 @@ json3@^3.3.2:
   resolved "https://registry.yarnpkg.com/json3/-/json3-3.3.3.tgz#7fc10e375fc5ae42c4705a5cc0aa6f62be305b81"
   integrity sha512-c7/8mbUsKigAbLkD5B010BK4D9LZm7A1pNItkEwiUZRpIN66exu/e7YQWysGun+TRKaJp8MhemM+VkfWv42aCA==
 
+json5@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/json5/-/json5-0.5.1.tgz#1eade7acc012034ad84e2396767ead9fa5495821"
+  integrity sha1-Hq3nrMASA0rYTiOWdn6tn6VJWCE=
+
 json5@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/json5/-/json5-1.0.1.tgz#779fb0018604fa854eacbf6252180d83543e3dbe"
@@ -9565,7 +9617,20 @@ loader-runner@^2.4.0:
   resolved "https://registry.yarnpkg.com/loader-runner/-/loader-runner-2.4.0.tgz#ed47066bfe534d7e84c4c7b9998c2a75607d9357"
   integrity sha512-Jsmr89RcXGIwivFY21FcRrisYZfvLMTWx5kOLc+JTxtpBOG6xML0vzbc6SEQG2FO9/4Fc3wW4LVcB5DmGflaRw==
 
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
 loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
+=======
+loader-utils@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.1.0.tgz#c98aef488bcceda2ffb5e2de646d6a754429f5cd"
+  integrity sha1-yYrvSIvM7aL/teLeZG1qdUQp9c0=
+  dependencies:
+    big.js "^3.1.3"
+    emojis-list "^2.0.0"
+    json5 "^0.5.0"
+
+loader-utils@1.2.3, loader-utils@^1.0.1, loader-utils@^1.0.2, loader-utils@^1.1.0, loader-utils@^1.2.3:
+>>>>>>> :lipstick: minor style updates
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-1.2.3.tgz#1ff5dc6911c9f0a062531a4c04b609406108c2c7"
   integrity sha512-fkpz8ejdnEMG3s37wGL07iSBDg99O9D5yflE9RGNH3hRdx9SOwYfnGYdZOUIZitN8E+E2vkq3MUMYMvPYl5ZZA==
@@ -12542,6 +12607,11 @@ quick-lru@^1.0.0:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-1.1.0.tgz#4360b17c61136ad38078397ff11416e186dcfbb8"
   integrity sha1-Q2CxfGETatOAeDl/8RQW4Ybc+7g=
 
+ramda@0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
+  integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
+
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -12751,10 +12821,32 @@ react-spring@^8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
 react-tooltip@^3.11.0, react-tooltip@^3.9.0:
   version "3.11.1"
   resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.11.1.tgz#7b4ce48ed26a46e996662b19a2afebbfd483513b"
   integrity sha512-YCMVlEC2KuHIzOQhPplTK5jmBBwoL+PYJJdJKXj7M/h7oevupd/QSVq6z5U7/ehIGXyHsAqvwpdxexDfyQ0o3A==
+=======
+react-switch@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/react-switch/-/react-switch-5.0.1.tgz#449277f4c3aed5286fffd0f50d5cbc2a23330406"
+  integrity sha512-Pa5kvqRfX85QUCK1Jv0rxyeElbC3aNpCP5hV0LoJpU/Y6kydf0t4kRriQ6ZYA4kxWwAYk/cH51T4/sPzV9mCgQ==
+  dependencies:
+    prop-types "^15.6.2"
+
+react-tooltip@^3.11.0:
+  version "3.11.0"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.11.0.tgz#32d365b1bf8b5d563c24eee511f92e8d8e1d3f50"
+  integrity sha512-crzW/Ad7vXXil2AubksJC5dZym5Y635F+VYPGERV9yI9T4erX5cLz5ow3hmCBkS4oCMyJjW+ETmmxpfl8SDN4w==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.0"
+
+react-tooltip@^3.9.0:
+  version "3.10.0"
+  resolved "https://registry.yarnpkg.com/react-tooltip/-/react-tooltip-3.10.0.tgz#268b5ef519fd8a1369288d1f086f42c90d5da7ef"
+  integrity sha512-GGdxJvM1zSFztkTP7gCQbLTstWr1OOoMpJ5WZUGhimj0nhRY+MPz+92MpEnKmj0cftJ9Pd/M6FfSl0sfzmZWkg==
+>>>>>>> :lipstick: minor style updates
   dependencies:
     classnames "^2.2.5"
     prop-types "^15.6.0"
@@ -13521,6 +13613,11 @@ rx-lite@*, rx-lite@^4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/rx-lite/-/rx-lite-4.0.8.tgz#0b1e11af8bc44836f04a6407e92da42467b79444"
   integrity sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=
+
+rx@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
+  integrity sha1-pfE/957zt0D+MKqAP7CfmIBdR4I=
 
 rxjs@^6.4.0:
   version "6.5.3"
@@ -14911,6 +15008,18 @@ supports-color@^6.1.0:
   dependencies:
     has-flag "^3.0.0"
 
+svg-react-loader@^0.4.4:
+  version "0.4.6"
+  resolved "https://registry.yarnpkg.com/svg-react-loader/-/svg-react-loader-0.4.6.tgz#b263efb3e3d2fff4c682a729351aba5f185051a1"
+  integrity sha512-HVEypjWQsQuJdBIPzXGxpmQsQts7QwfQuYgK1rah6BVCMoLNSCh/ESKVNd7/tHq8DkWYHHTyaUMDA1FjqZYrgA==
+  dependencies:
+    css "2.2.4"
+    loader-utils "1.1.0"
+    ramda "0.21.0"
+    rx "4.1.0"
+    traverse "0.6.6"
+    xml2js "0.4.17"
+
 svg-tags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
@@ -15249,6 +15358,11 @@ tough-cookie@~2.4.3:
   dependencies:
     psl "^1.1.24"
     punycode "^1.4.1"
+
+traverse@0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/traverse/-/traverse-0.6.6.tgz#cbdf560fd7b9af632502fed40f918c157ea97137"
+  integrity sha1-y99WD9e5r2MlAv7UD5GMFX6pcTc=
 
 "traverse@>=0.3.0 <0.4":
   version "0.3.9"
@@ -16494,6 +16608,14 @@ xml-parse-from-string@^1.0.0:
   resolved "https://registry.yarnpkg.com/xml-parse-from-string/-/xml-parse-from-string-1.0.1.tgz#a9029e929d3dbcded169f3c6e28238d95a5d5a28"
   integrity sha1-qQKekp09vN7RafPG4oI42VpdWig=
 
+xml2js@0.4.17:
+  version "0.4.17"
+  resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.17.tgz#17be93eaae3f3b779359c795b419705a8817e868"
+  integrity sha1-F76T6q4/O3eTWceVtBlwWogX6Gg=
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "^4.1.0"
+
 xml2js@^0.4.19, xml2js@^0.4.5:
   version "0.4.22"
   resolved "https://registry.yarnpkg.com/xml2js/-/xml2js-0.4.22.tgz#4fa2d846ec803237de86f30aa9b5f70b6600de02"
@@ -16503,10 +16625,24 @@ xml2js@^0.4.19, xml2js@^0.4.5:
     util.promisify "~1.0.0"
     xmlbuilder "~11.0.0"
 
+<<<<<<< e6e0a9c89523c16f54b0050d194b9757d6485e66
 xmlbuilder@~11.0.0:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
   integrity sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==
+=======
+xmlbuilder@^4.1.0:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-4.2.1.tgz#aa58a3041a066f90eaa16c2f5389ff19f3f461a5"
+  integrity sha1-qlijBBoGb5DqoWwvU4n/GfP0YaU=
+  dependencies:
+    lodash "^4.0.0"
+
+xmlbuilder@~9.0.1:
+  version "9.0.7"
+  resolved "https://registry.yarnpkg.com/xmlbuilder/-/xmlbuilder-9.0.7.tgz#132ee63d2ec5565c557e20f4c22df9aca686b10d"
+  integrity sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=
+>>>>>>> :lipstick: minor style updates
 
 xmlhttprequest-ssl@~1.5.4:
   version "1.5.5"

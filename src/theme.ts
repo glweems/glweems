@@ -25,6 +25,15 @@ export const borderColor = theme('mode', {
   light: '#c6c7c6',
   dark: '#1b2027'
 })
+
+export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' })
+export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' })
+
+export const secondaryTheme = css`
+  color: ${secondaryText};
+  background: ${secondaryBg};
+`
+
 export const tagBg = theme('mode', { light: 'rgba(37, 45, 61, 30)', dark: 'rgba(248, 248, 248, 10)' })
 export const tagColor = theme('mode', { light: base.light, dark: base.dark })
 
@@ -100,7 +109,7 @@ export const buttonStyles = css`
 `
 
 export const anchorStyles = css`
-  a.link {
+  .link {
     padding: 3px 3px 0 3px;
     color: ${text};
     text-decoration: none;
@@ -113,10 +122,13 @@ export const anchorStyles = css`
       border-radius: 2px;
     }
   }
-  a.link.active {
+
+  .link.active {
+    padding: 0;
     border-bottom: 3px solid ${primary};
     :hover {
-      background: none;
+      background: #f2f2f2;
+      border-color: #f2f2f2;
       border-top: none;
       border-right: none;
       border-left: none;

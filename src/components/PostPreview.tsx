@@ -38,7 +38,6 @@ const Wrapper = styled.div`
   gap: 0 1em;
   justify-content: space-between;
   max-width: 720px;
-  margin: ${rhythm(3)} 0;
 
   .tags {
     grid-area: tags;

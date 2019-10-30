@@ -103,7 +103,6 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
     const found = acc.find(a => a.tag === d.tag)
 
     if (found) {
-      found.qty += d.qty
       found.tag = _.kebabCase(found.tag)
     }
     acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })

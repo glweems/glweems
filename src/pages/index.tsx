@@ -27,7 +27,7 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   const { posts } = data.allMarkdownRemark
   return (
     <>
-      <Container key="Blog">
+      <Container justifyContent="">
         <section>
           <FadedTitle>Blog Posts</FadedTitle>
           <Posts posts={posts} />

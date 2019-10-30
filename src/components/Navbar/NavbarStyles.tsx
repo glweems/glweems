@@ -3,17 +3,14 @@ import { animated } from 'react-spring'
 import { Container } from '../Common'
 import * as config from '../../theme'
 
-export const Wrapper = styled.div`
+export const Sticky = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
 `
 
-export const NavbarStyles = styled(animated(Container))`
-  align-content: center;
-  align-items: center;
-  justify-content: space-between;
+export const NavbarStyles = styled.div`
   width: 100%;
   background: ${config.rootBg};
   > * {
@@ -26,14 +23,25 @@ export const NavbarStyles = styled(animated(Container))`
   }
 `
 
-export const Navigation = styled.nav`
-  display: flex;
+export const Navigation = styled(Sticky)`
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1em max-content 1fr max-content 1em;
   align-content: center;
   align-items: center;
-  justify-content: center;
-  justify-content: space-between;
+  justify-content: stretch;
+  justify-items: flex-start;
+
+  width: 100%;
   height: ${config.navbarHeight};
+  background: ${config.bg};
+  ::before,
+  ::after {
+    content: '';
+  }
+
   .logo {
+    margin-right: ${config.rhythm(1)};
     font-weight: bolder;
     text-transform: uppercase;
     cursor: pointer;
@@ -97,7 +105,7 @@ export const NavLinks = styled(animated.ul)`
   }
 
   .nav-item:last-child {
-    margin: 0;
+    padding: 1em;
   }
 `
 

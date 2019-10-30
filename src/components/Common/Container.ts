@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { FlexProperty } from '../../../node_modules/csstype/index.d'
 import { media, containerWidths, gridGap, text, bg as background } from '../../theme'
 
 const { sm, md, lg, xl } = containerWidths
@@ -7,6 +8,7 @@ interface Props {
   smFlush?: boolean
   bg?: boolean
   inverted?: boolean
+  justifyContent?: FlexProperty<'show'>
 }
 
 const containerCss = css`
@@ -17,6 +19,9 @@ const containerCss = css`
     [main-start] minmax(0, ${sm}) [main-end]
     minmax(0, 1fr) [fluid-end]
     1em [flush-end];
+
+
+
   width: 100%;
 
   > * {
@@ -60,6 +65,7 @@ const containerCss = css`
 export const Container = styled.div<Props>`
   ${containerCss};
   gap: ${(props: Props) => (props.gap ? gridGap(props.gap) : 0)};
+  justify-content: ${props => props.justifyContent};
   ${({ smFlush }) =>
     smFlush &&
     css`
