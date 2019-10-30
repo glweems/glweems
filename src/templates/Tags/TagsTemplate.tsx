@@ -1,9 +1,9 @@
 import React from 'react'
 // Components
 import { graphql } from 'gatsby'
-import { Container, Link } from '../components/Common'
-import { Frontmatter } from '..'
-import BlogPosts from '../components/Posts'
+import { Container, Link } from '../../components/Common'
+import { Frontmatter, BlogPost } from '../..'
+import { BlogPosts } from '../../components/BlogPosts'
 
 interface Props extends TagPageQuery {
   pageContext: {
@@ -11,19 +11,35 @@ interface Props extends TagPageQuery {
   }
 }
 
-// const sectionTitle = (tag, qty, type) => `${qty} ${type}${qty === 1 ? '' : 's'} tagged with "${tag}"`
+interface SectionProps {
+  name: string
+  tag: string
+  qty: number
+  children: React.ReactNode
+}
+const Section: React.FC<SectionProps> = ({ tag, qty, name, children }) => (
+  <section>
+    <h2>
+      {qty} {name} tagged <span>{tag}</span>
+    </h2>
+    {children}
+  </section>
+)
 
 const Tags: React.FC<Props> = ({ pageContext, data }) => {
-  console.log('TCL: data', data)
   const { tag } = pageContext
 
   return (
     <Container>
-      <BlogPosts posts={data.matchedPosts.posts} />
-
-      <div>
+      <h2>
         <Link to="/tags">All tags</Link>
-      </div>
+      </h2>
+
+      <Section name="blog posts" tag={tag} qty={data.matchedPosts.posts.length}>
+        <BlogPosts posts={data.matchedPosts.posts} />
+      </Section>
+
+      <div></div>
     </Container>
   )
 }
@@ -34,11 +50,7 @@ interface TagPageQuery {
   data: {
     matchedPosts: {
       totalCount: number
-      posts: {
-        id: string
-        excerptAst: object
-        frontmatter: Frontmatter
-      }[]
+      posts: BlogPost[]
     }
   }
 }

@@ -68,7 +68,7 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
 
   // Create Blog Posts
   const blogPosts = result.data.allMarkdownRemark.nodes
-  const blogPostComponent = path.resolve(`src/templates/Post/index.tsx`)
+  const blogPostComponent = path.resolve(`src/templates/BlogPost/BlogPostTemplate.tsx`)
   blogPosts.forEach(({ frontmatter }, index) => {
     createPage({
       path: frontmatter.path,
@@ -99,18 +99,21 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
   // Extract tag data from query
   const { blogTags, designTags, sideProjectTags } = result.data
   // Combine all tags
-  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce((acc, d) => {
-    const found = acc.find(a => a.tag === d.tag)
+  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce(
+    (acc, d) => {
+      const found = acc.find(a => a.tag === d.tag)
 
-    if (found) {
-      found.tag = _.kebabCase(found.tag)
-    }
-    acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })
+      if (found) {
+        found.tag = _.kebabCase(found.tag)
+      }
+      acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })
 
-    return acc
-  }, [])
+      return acc
+    },
+    []
+  )
   // Component for each page
-  const tagComponent = path.resolve(`src/templates/tags.tsx`)
+  const tagComponent = path.resolve(`src/templates/Tags/TagsTemplate.tsx`)
   // Make tag pages
   tags.forEach(({ tag }) => {
     createPage({

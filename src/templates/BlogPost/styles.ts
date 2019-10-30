@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { rhythm, media, muted, text, bg, base, borderRadius, borderColor, navbarHeight } from '../../theme'
+import { rhythm, media, muted, text, bg, base, borderRadius, borderColor, navbarHeight, codeSyntax } from '../../theme'
 
 export const StyledHeader = styled.header`
   padding-bottom: ${rhythm(1)};
@@ -16,6 +16,7 @@ export const ImgDetail = styled.em`
   text-align: center;
 `
 export const Article = styled.article`
+  ${codeSyntax}
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns:

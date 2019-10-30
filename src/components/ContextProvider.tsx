@@ -1,9 +1,10 @@
 import React, { createContext } from 'react'
 import { DefaultTheme } from 'styled-components'
-import useTheme from './useTheme'
-import useNav from './useNav'
-
+import useTheme from '../hooks/useTheme'
+import useNav from '../hooks/useNav'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import Layout from '../components/Layout'
+import { GlobalStyle } from '../theme'
 
 interface PCP {
   contexts: any[]
@@ -50,20 +51,33 @@ export const NavProvider = ({ children }: any) => {
 
 interface Props {
   element: React.ReactNode | React.ReactFragment
+  props?: any
 }
 
-export const wrapRootElement: React.FC<Props> = ({ element }) => (
-  <ProviderComposer
-    contexts={[
-      <ThemeProvider key="theme" />,
-      // <StyledThemeProvider key="styled" theme={theme} />,
-      <NavProvider key="nav" />
-    ]}
-  >
-    <>{element}</>
-  </ProviderComposer>
-)
+export const wrapRootElement: React.FC<Props> = ({ element }) => {
+  return (
+    <ProviderComposer contexts={[<ThemeProvider key="theme" />, <NavProvider key="nav" />]}>
+      <>{element}</>
+    </ProviderComposer>
+  )
+}
+
+const StylesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { theme } = React.useContext(ThemeContext)
+  return (
+    <StyledThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        {children}
+      </>
+    </StyledThemeProvider>
+  )
+}
 
 export const wrapPageElement: React.FC<Props> = ({ element, props }) => {
-  return <Layout {...props}>{element}</Layout>
+  return (
+    <StylesProvider>
+      <Layout {...props}>{element}</Layout>
+    </StylesProvider>
+  )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from '../components/Common'
-import Posts from '../components/Posts'
+import { BlogPosts } from '../components/BlogPosts'
 import usePostsQuery from '../graphql/PostsQuery'
 
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
   return (
     <Container>
       <h1>Blog Posts</h1>
-      <Posts posts={posts} />
+      <BlogPosts posts={posts} />
     </Container>
   )
 }

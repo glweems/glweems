@@ -7,7 +7,7 @@ import { graphql } from 'gatsby'
 import { Link, Container } from '../components/Common'
 import SideProjects from '../components/SideProjects'
 import Designs from '../components/Designs'
-import Posts from '../components/Posts'
+import { BlogPosts } from '../components/BlogPosts'
 import { primary } from '../theme'
 import { BlogPost } from '..'
 
@@ -23,14 +23,24 @@ interface Props {
     }
   }
 }
+
+export const IndexMain = styled.main`
+  .blog {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+`
+
 const IndexPage: React.FC<Props> = ({ data }) => {
   const { posts } = data.allMarkdownRemark
   return (
     <>
       <Container justifyContent="">
-        <section>
+        <section className="blog">
           <FadedTitle>Blog Posts</FadedTitle>
-          <Posts posts={posts} />
+          <BlogPosts posts={posts} />
         </section>
         <div>
           <Link to="/blog">View All Blog Posts</Link>
@@ -67,9 +77,7 @@ export const IndexPageQuery = graphql`
   query IndexPageQuery {
     allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
       posts: nodes {
-        id
-        excerpt
-        ...Frontmatter
+        ...BlogPost
       }
     }
   }

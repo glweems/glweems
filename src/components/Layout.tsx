@@ -1,35 +1,37 @@
-import React, { useContext } from 'react'
-import { ThemeProvider } from 'styled-components'
-import { ThemeContext } from '../hooks/Providers'
-import { GlobalStyle } from '../theme'
+import * as React from 'react'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer'
 import Landing from './Landing'
 
-const LayoutWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { theme } = useContext(ThemeContext)
-  return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        {children}
-      </>
-    </ThemeProvider>
-  )
-}
 interface Props {
   children: React.ReactNode
   path: string
+  [key: string]: any
 }
 
-const Layout: React.FC<Props> = ({ children, path }) => {
+const DefaultLayout: React.FC<Props> = ({ children }) => (
+  <>
+    <Navbar key="navbar" />
+    <main>{children}</main>
+    <Footer key="footer" />
+  </>
+)
+
+const IndexLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <>
+    <Landing />
+    <Navbar key="navbar" />
+    <main>{children}</main>
+    <Footer key="footer" />
+  </>
+)
+
+const Layout: React.FC<Props> = ({ children, path, ...rest }) => {
+  if (path === '/') return <IndexLayout {...rest}>{children}</IndexLayout>
   return (
-    <LayoutWrapper>
-      {path === '/' ? <Landing /> : null}
-      <Navbar key="navbar" />
-      <main>{children}</main>
-      <Footer key="footer" />
-    </LayoutWrapper>
+    <DefaultLayout path={path} {...rest}>
+      {children}
+    </DefaultLayout>
   )
 }
 

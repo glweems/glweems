@@ -62,3 +62,12 @@ export const Frontmatter = graphql`
     }
   }
 `
+
+export const BlogPost = graphql`
+  fragment BlogPost on MarkdownRemark {
+    id
+    excerpt(pruneLength: 75)
+    timeToRead
+    ...Frontmatter
+  }
+`

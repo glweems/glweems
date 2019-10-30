@@ -6,10 +6,7 @@ const usePostsQuery = (): BlogPost[] => {
     query PostsQuery {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
-          id
-          excerpt
-          timeToRead
-          ...Frontmatter
+          ...BlogPost
         }
       }
     }

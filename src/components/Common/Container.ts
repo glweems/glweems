@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { FlexProperty } from '../../../node_modules/csstype/index.d'
+import { FlexProperty } from 'csstype'
 import { media, containerWidths, gridGap, text, bg as background } from '../../theme'
 
 const { sm, md, lg, xl } = containerWidths

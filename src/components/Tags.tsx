@@ -17,7 +17,7 @@ interface Props {
   limit?: number
 }
 const Tags: React.FC<Props> = ({ items, className, limit }) => (
-  <StyledTags className={`hashtags ${className}`}>
+  <StyledTags className={`tags ${className}`}>
     {items.slice(0, limit || items.length).map(item => (
       <Tag key={uuid()} to={`/tags/${_.kebabCase(item)}`}>
         {item.toLocaleLowerCase()}

@@ -5,14 +5,15 @@ import { Link, Date } from './Common'
 import Tags from './Tags'
 import { rhythm } from '../theme'
 
-const Title = styled.h3`
-  grid-area: title;
+const Title = styled.h2`
+  margin: 0;
+  line-height: 28px;
 `
 
 const Excerpt = styled.p`
   grid-area: excerpt;
   align-self: flex-start;
-  margin-bottom: 0.5em;
+  margin-bottom: 0;
   font-size: 15px;
 `
 
@@ -28,24 +29,30 @@ interface Props {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'title title'
-    'date img'
+    'title img'
     'excerpt img'
-    'tags img'
-    'link img';
-  grid-template-rows: auto auto auto max-content auto;
+    'date img'
+    'tags tags';
+  grid-template-rows: auto max-content auto auto;
+
   grid-template-columns: minmax(0, 450px) minmax(0, 30%);
-  gap: 0 1em;
+  gap: 1em;
   justify-content: space-between;
-  max-width: 720px;
+
+  h2 {
+    grid-area: title;
+    font-size: 1.125em;
+  }
 
   .tags {
     grid-area: tags;
     align-self: flex-end;
   }
-  .date {
+
+  ${Date} {
     grid-area: date;
-    align-self: flex-start;
+    margin: 0;
+    padding: 0;
   }
 
   .img {
@@ -53,7 +60,7 @@ const Wrapper = styled.div`
     /* align-self: flex-start; */
     .gatsby-image-wrapper {
       height: 100%;
-      border-radius: 0.125em;
+      /* border-radius: 0.125em; */
     }
   }
 
@@ -69,6 +76,7 @@ export const BlogPostPreview: React.FC<Props> = ({ path, title, date, tags, exce
     <Title>
       <Link to={path}>{title}</Link>
     </Title>
+
     <Date>{date}</Date>
 
     <Excerpt>{excerpt}</Excerpt>
@@ -78,8 +86,6 @@ export const BlogPostPreview: React.FC<Props> = ({ path, title, date, tags, exce
     <Link to={path} className="img" unstyled>
       <Img fluid={fluid} />
     </Link>
-
-    <Link to={path}>Read More</Link>
   </Wrapper>
 )
 export default BlogPostPreview

@@ -7,7 +7,7 @@ interface Props {
   posts: BlogPost[]
 }
 
-const Posts: React.FC<Props> = ({ posts }) => (
+export const BlogPosts: React.FC<Props> = ({ posts }) => (
   <>
     {posts.map(({ excerpt, frontmatter }) => (
       <PostPreview
@@ -19,5 +19,3 @@ const Posts: React.FC<Props> = ({ posts }) => (
     ))}
   </>
 )
-
-export default Posts
