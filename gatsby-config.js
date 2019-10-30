@@ -81,12 +81,6 @@ module.exports = {
         pathToConfigModule: `./src/utils/typography.ts`
       }
     },
-    // {
-    //   resolve: `gatsby-plugin-layout`,
-    //   options: {
-    //     component: require.resolve(`./src/components/Layout.tsx`)
-    //   }
-    // },
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-transformer-remark`,
@@ -126,7 +120,8 @@ module.exports = {
             }
           },
           `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-autolink-headers`
+          `gatsby-remark-autolink-headers`,
+          `gatsby-remark-smartypants`
         ]
       }
     },
