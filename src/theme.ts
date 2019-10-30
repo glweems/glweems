@@ -1,5 +1,5 @@
 import theme from 'styled-theming'
-import { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 import { generateMedia } from 'styled-media-query'
 import { darken, lighten } from 'polished'
 import { rhythm } from './utils/typography'
@@ -44,6 +44,7 @@ export const darkMuted = '#c6c7c6'
 
 export const gridGap = (num: number) => rhythm(num * 0.25)
 export const navbarHeight = `4em`
+export const remainingHeight = `calc(100vh - 64px)`
 export const borderRadius = `0.3em`
 
 const makeShadow = (color: string) => `
@@ -108,6 +109,10 @@ export const buttonStyles = css`
   user-select: none;
 `
 
+export const Main = styled.main`
+  padding-top: ${rhythm(1)};
+`
+
 export const anchorStyles = css`
   .link {
     padding: 3px 3px 0 3px;
@@ -160,9 +165,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
-  main {
-    padding-top: ${rhythm(1)};
-  }
+
 
   section {
     margin: ${rhythm(1)} 0;

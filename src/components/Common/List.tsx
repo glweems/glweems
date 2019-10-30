@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FlexCssProps } from './Flex'
 
 interface Props extends FlexCssProps {
@@ -7,7 +7,12 @@ interface Props extends FlexCssProps {
   children: React.ReactNode
 }
 const Ul = styled.ul<Props>`
-  list-style-type: ${({ listStyleNone }) => (listStyleNone ? 'none' : 'unset')};
+  ${props =>
+    props.listStyleNone &&
+    css`
+      list-style: none;
+      margin: 0;
+    `}
 `
 const Li = styled.li`
   max-width: fit-content;

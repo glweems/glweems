@@ -1,14 +1,9 @@
-import React from 'react'
-
-// Utilities
-import kebabCase from 'lodash/kebabCase'
-
-// Components
+import * as React from 'react'
 import styled from 'styled-components'
-import uuid from 'uuid/v4'
-import { Container, Link } from '../components/Common'
+import { Container } from '../components/Common'
 import SEO from '../components/SEO'
-import useSiteTags from '../graphql/useAllSiteTags'
+import { TagBar } from '../components/TagBar'
+import { remainingHeight, Main } from '../theme'
 
 interface Props {
   data: {
@@ -17,35 +12,41 @@ interface Props {
     }
   }
 }
+
 const TagsPage: React.FC<Props> = () => {
-  const { tags, qty } = useSiteTags()
   return (
-    <Container>
+    <>
       <SEO config={{ title: 'tags' }} />
-      <div>
-        <h1>{qty} - Tags</h1>
-        <Grid>
-          {tags.map((item: { tag: string; qty: number }) => (
-            <li key={uuid()}>
-              <Link to={`/tags/${kebabCase(item.tag)}/`}>
-                {item.tag} ({item.qty})
-              </Link>
-            </li>
-          ))}
-        </Grid>
-      </div>
-    </Container>
+      <TagBar />
+      <Container className="content"></Container>
+    </>
   )
 }
 
-const Grid = styled.ul`
+export const TagsMain = styled(Main)`
   display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(4, 1fr);
-  align-content: center;
-  align-items: center;
-  justify-content: space-evenly;
-  justify-items: flex-start;
+  grid-template-areas: 'tagbar content' 'tagbar footer';
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 250px 1fr;
+  height: 100%;
+  max-height: ${remainingHeight};
+  overflow: auto;
+
+  .tagbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    grid-area: tagbar;
+  }
+
+  .content {
+    grid-area: content;
+  }
+
+  footer {
+    grid-area: footer;
+    align-self: flex-end;
+  }
 `
 
 export default TagsPage

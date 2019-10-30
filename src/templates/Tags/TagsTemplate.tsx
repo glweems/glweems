@@ -1,9 +1,10 @@
 import React from 'react'
 // Components
 import { graphql } from 'gatsby'
-import { Container, Link } from '../../components/Common'
-import { Frontmatter, BlogPost } from '../..'
+import { Container } from '../../components/Common'
+import { BlogPost } from '../..'
 import { BlogPosts } from '../../components/BlogPosts'
+import { TagBar } from '../../components/TagBar'
 
 interface Props extends TagPageQuery {
   pageContext: {
@@ -30,17 +31,16 @@ const Tags: React.FC<Props> = ({ pageContext, data }) => {
   const { tag } = pageContext
 
   return (
-    <Container>
-      <h2>
-        <Link to="/tags">All tags</Link>
-      </h2>
+    <>
+      <TagBar />
+      <Container>
+        <Section name="blog posts" tag={tag} qty={data.matchedPosts.posts.length}>
+          <BlogPosts posts={data.matchedPosts.posts} />
+        </Section>
 
-      <Section name="blog posts" tag={tag} qty={data.matchedPosts.posts.length}>
-        <BlogPosts posts={data.matchedPosts.posts} />
-      </Section>
-
-      <div></div>
-    </Container>
+        <div></div>
+      </Container>
+    </>
   )
 }
 

@@ -10,6 +10,7 @@ import Designs from '../components/Designs'
 import { BlogPosts } from '../components/BlogPosts'
 import { primary } from '../theme'
 import { BlogPost } from '..'
+import { rhythm } from '../utils/typography'
 
 const FadedTitle = styled.h2`
   color: ${primary};
@@ -27,9 +28,10 @@ interface Props {
 export const IndexMain = styled.main`
   .blog {
     display: grid;
-    grid-template-rows: 1fr;
+    grid-auto-rows: 1fr;
+    grid-template-rows: max-content;
     grid-template-columns: 1fr;
-    gap: 1em;
+    gap: ${rhythm(3)} 0;
   }
 `
 

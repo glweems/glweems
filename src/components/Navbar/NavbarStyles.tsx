@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { animated } from 'react-spring'
-import { Container } from '../Common'
 import * as config from '../../theme'
 
 export const Sticky = styled.nav`

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
 import { Link, Date } from './Common'
 import Tags from './Tags'
-import { rhythm } from '../theme'
 
 const Title = styled.h2`
   margin: 0;
@@ -29,7 +28,7 @@ interface Props {
 const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
-    'title img'
+    'title title'
     'excerpt img'
     'date img'
     'tags tags';
@@ -37,8 +36,8 @@ const Wrapper = styled.div`
 
   grid-template-columns: minmax(0, 450px) minmax(0, 30%);
   gap: 1em;
-  justify-content: space-between;
-
+  align-items: flex-start;
+  justify-content: flex-start;
   h2 {
     grid-area: title;
     font-size: 1.125em;
