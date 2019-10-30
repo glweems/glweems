@@ -3,8 +3,7 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import styled from 'styled-components'
 import Tags from './Tags'
-import { Child } from '..'
-import { rootBg, borderRadius, helloSpring, media, text } from '../theme'
+import { rootBg, borderRadius, text, media } from '../theme'
 import { Link } from './Common'
 
 export const Wrapper = styled.div`
@@ -50,7 +49,7 @@ export const Footer = styled.div`
   margin: 0;
   padding: 0 0.5em 0.25em 0.5em;
   overflow: hidden;
-  color: ${helloSpring};
+  color: ${text};
 `
 
 interface Card {
@@ -58,7 +57,7 @@ interface Card {
   subtitle: string
   link?: string
   tags: string[]
-  children?: Child
+  children?: React.ReactNode
   Image?: React.ReactElement
 }
 
