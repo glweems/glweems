@@ -3,8 +3,9 @@ import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics'
 
-interface WhichLinkProps {
+interface Props {
   children?: React.ReactNode
+  href?: string
   to: string
   [key: string]: any
   partiallyActive?: boolean
@@ -13,18 +14,28 @@ interface WhichLinkProps {
   unstyled?: boolean
 }
 
-export const Link = ({
+export const Link: React.FC<Props> = ({
   children,
   to,
+  href,
   activeClassName = 'active',
   partiallyActive,
   className = '',
   unstyled = false,
   ...other
-}: WhichLinkProps) => {
+}) => {
+  if (href) {
+    return (
+      <GoogleLink href={href} target="_blank" className="link" {...other}>
+        {children}
+      </GoogleLink>
+    )
+  }
+
   const internal = /^\/(?!\/)/.test(to)
   // Use Gatsby Link for internal links, and <a> for others
   const displayedClassName = unstyled ? className : `link ${className}`
+
   return internal ? (
     <GatsbyLink
       to={to}

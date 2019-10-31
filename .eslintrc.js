@@ -1,7 +1,6 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['react-hooks'],
-  extends: ['eslint-config-blvd/react', 'prettier/@typescript-eslint', 'prettier/react', 'plugin:prettier/recommended'],
+  extends: ['react-app', 'prettier/@typescript-eslint', 'prettier/react', 'plugin:prettier/recommended'],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -12,7 +11,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['hooks', 'src/hooks'], ['types', 'src/index.ts']],
+        map: [['hooks', 'src/hooks'], ['types', 'src/index.ts'], ['common', 'src/components/Common/index.ts']],
         extensions: ['.ts', '.js', '.jsx', '.json']
       }
     },

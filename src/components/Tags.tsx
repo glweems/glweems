@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import * as config from '../theme'
+import _ from 'lodash'
+import uuid from 'uuid/v4'
+import { Tag } from './Common'
 
 const StyledTags = styled.div`
   display: flex;
@@ -9,26 +11,23 @@ const StyledTags = styled.div`
   }
   margin-bottom: 0.5em;
 `
-
-const Tag = styled.small`
-  padding: 0.3em 0.5em;
-  color: ${config.base.dark};
-  font-weight: bold;
-  font-size: 65%;
-  text-transform: uppercase;
-  vertical-align: middle;
-  background: ${config.purple};
-  border-radius: 0.5em;
-`
-
-const Tags = ({ items, className }: { items: string[]; className?: string }) => (
-  <StyledTags className={`hashtags ${className}`}>
-    {items.slice(0, 3).map(item => (
-      <Tag key={item} className="hashtag">
+interface Props {
+  items: string[]
+  className?: string
+  limit?: number
+}
+const Tags: React.FC<Props> = ({ items, className, limit }) => (
+  <StyledTags className={`tags ${className}`}>
+    {items.slice(0, limit || items.length).map(item => (
+      <Tag key={uuid()} to={`/tags/${_.kebabCase(item)}`}>
         {item.toLocaleLowerCase()}
       </Tag>
     ))}
   </StyledTags>
 )
+
+Tags.defaultProps = {
+  limit: 4
+}
 
 export default Tags

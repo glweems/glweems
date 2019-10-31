@@ -8,8 +8,8 @@ interface Props {
     description?: string
     image?: string
     path?: string
-    article: boolean
-    tags: string[]
+    article?: boolean
+    tags?: string[]
   }
 }
 

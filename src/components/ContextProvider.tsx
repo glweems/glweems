@@ -2,6 +2,9 @@ import React, { createContext } from 'react'
 import { DefaultTheme } from 'styled-components'
 import useTheme from '../hooks/useTheme'
 import useNav from '../hooks/useNav'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
+import Layout from '../components/Layout'
+import { GlobalStyle } from '../theme'
 
 interface PCP {
   contexts: any[]
@@ -46,8 +49,35 @@ export const NavProvider = ({ children }: any) => {
   return <NavContext.Provider value={{ isNavOpen, setNav, toggleNav }}>{children}</NavContext.Provider>
 }
 
-export default ({ children }: any) => (
-  <ProviderComposer contexts={[<ThemeProvider key="theme-provider" />, <NavProvider key="nav-provider" />]}>
-    {children}
-  </ProviderComposer>
-)
+interface Props {
+  element: React.ReactNode | React.ReactFragment
+  props?: any
+}
+
+export const wrapRootElement: React.FC<Props> = ({ element }) => {
+  return (
+    <ProviderComposer contexts={[<ThemeProvider key="theme" />, <NavProvider key="nav" />]}>
+      <>{element}</>
+    </ProviderComposer>
+  )
+}
+
+const StylesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { theme } = React.useContext(ThemeContext)
+  return (
+    <StyledThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        {children}
+      </>
+    </StyledThemeProvider>
+  )
+}
+
+export const wrapPageElement: React.FC<Props> = ({ element, props }) => {
+  return (
+    <StylesProvider>
+      <Layout {...props}>{element}</Layout>
+    </StylesProvider>
+  )
+}

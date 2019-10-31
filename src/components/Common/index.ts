@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-export { ToogleThemeSwitch } from './ToogleThemeSwitch'
+export { ToogleThemeSwitch } from '../ToogleThemeSwitch'
 export { SocialIcon } from './SocialIcon'
 export { Container } from './Container'
 export { Link } from './Link'
@@ -9,3 +9,4 @@ export { Flex } from './Flex'
 export { Divider } from './Divider'
 export { List } from './List'
 export * from './Typography'
+export { Tag } from './Tag'

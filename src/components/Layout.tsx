@@ -1,34 +1,55 @@
-import React, { useContext } from 'react'
-import { ThemeProvider } from 'styled-components'
-import SEO from './SEO'
-import ContextProvider, { ThemeContext } from './Providers'
-import { GlobalStyle } from '../theme'
+import * as React from 'react'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer'
 import Landing from './Landing'
+import { IndexMain } from '../pages'
+import { TagsMain } from '../pages/tags'
+import { Main } from '../theme'
 
-const Styles = ({ children }: { children: any }) => {
-  const { theme } = useContext(ThemeContext)
-  return (
-    <ThemeProvider theme={theme}>
-      <>
-        {children.props.path === '/' ? <Landing /> : null}
-        <Navbar key="navbar" />
-        <main>{children}</main>
-        <Footer key="footer" />
-        <GlobalStyle />
-      </>
-    </ThemeProvider>
-  )
+interface Props extends LayoutProps {
+  path: string
+  [key: string]: any
 }
 
-const Layout = ({ children }: { children: React.ReactChildren }) => [
-  <SEO key="root-element-1" />,
-  <ContextProvider key="root-element-2">
-    <>
-      <Styles>{children}</Styles>
-    </>
-  </ContextProvider>
-]
+const DefaultLayout: React.FC<Props> = ({ children }) => (
+  <>
+    <Navbar key="navbar" />
+    <Main>{children}</Main>
+    <Footer key="footer" />
+  </>
+)
+
+const IndexLayout: React.FC<LayoutProps> = ({ children }) => (
+  <>
+    <Landing />
+    <Navbar key="navbar" />
+    <IndexMain>{children}</IndexMain>
+    <Footer key="footer" />
+  </>
+)
+
+interface LayoutProps {
+  children: React.ReactNode
+}
+
+const TagsLayout: React.FC<LayoutProps> = ({ children }) => (
+  <React.Fragment>
+    <Navbar />
+    <TagsMain>
+      {children}
+      <Footer />
+    </TagsMain>
+  </React.Fragment>
+)
+
+const Layout: React.FC<Props> = ({ children, path, ...rest }) => {
+  if (path === '/') return <IndexLayout {...rest}>{children}</IndexLayout>
+  if (path === '/tags/') return <TagsLayout {...rest}>{children}</TagsLayout>
+  return (
+    <DefaultLayout path={path} {...rest}>
+      {children}
+    </DefaultLayout>
+  )
+}
 
 export default Layout

@@ -1,24 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img, { FluidObject } from 'gatsby-image'
-import { Link } from '../Common'
-import Tags from '../Tags'
-import { muted, borderColor } from '../../theme'
+import { Link, Date } from './Common'
+import Tags from './Tags'
 
 const Title = styled.h2`
-  grid-area: title;
-`
-const Date = styled.small`
-  grid-area: date;
-  color: ${muted};
-  font-weight: bold;
-  font-style: italic;
+  margin: 0;
+  line-height: 28px;
 `
 
 const Excerpt = styled.p`
   grid-area: excerpt;
-  margin-bottom: 0.5em;
-  font-size: 13px;
+  align-self: flex-start;
+  margin-bottom: 0;
+  font-size: 15px;
 `
 
 interface Props {
@@ -34,52 +29,62 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-areas:
     'title title'
-    'date date'
     'excerpt img'
-    'tags img'
-    'link link';
-  grid-template-rows: repeat(5, auto);
-  grid-template-columns: 1fr 25%;
-  gap: 0 1em;
-  padding-bottom: 1em;
-  border-bottom: 2px solid ${borderColor};
+    'date img'
+    'tags tags';
+  grid-template-rows: auto max-content auto auto;
+
+  grid-template-columns: minmax(0, 450px) minmax(0, 30%);
+  gap: 1em;
+  align-items: flex-start;
+  justify-content: flex-start;
+  h2 {
+    grid-area: title;
+    font-size: 1.125em;
+  }
 
   .tags {
     grid-area: tags;
+    align-self: flex-end;
+  }
+
+  ${Date} {
+    grid-area: date;
+    margin: 0;
+    padding: 0;
   }
 
   .img {
     grid-area: img;
+    /* align-self: flex-start; */
     .gatsby-image-wrapper {
       height: 100%;
-      border-radius: 0.125em;
+      /* border-radius: 0.125em; */
     }
   }
 
-  .readmore {
+  .link {
     grid-area: link;
+    justify-self: flex-start;
     margin-top: 1em;
   }
 `
 
-const PostPreview = ({ path, title, date, tags, excerpt, fluid }: Props) => (
+export const BlogPostPreview: React.FC<Props> = ({ path, title, date, tags, excerpt, fluid }) => (
   <Wrapper>
     <Title>
       <Link to={path}>{title}</Link>
     </Title>
+
     <Date>{date}</Date>
+
     <Excerpt>{excerpt}</Excerpt>
-    <div className="tags">
-      <Tags items={tags} />
-    </div>
+
+    <Tags items={tags} />
 
     <Link to={path} className="img" unstyled>
       <Img fluid={fluid} />
     </Link>
-
-    <div className="readmore">
-      <Link to={path}>Read More</Link>
-    </div>
   </Wrapper>
 )
-export default PostPreview
+export default BlogPostPreview

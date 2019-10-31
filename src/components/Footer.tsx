@@ -20,7 +20,7 @@ const FooterStyles = styled.footer`
   background: ${rootBg};
   border-top: 2px solid ${borderColor};
   ${media.greaterThan('sm')`
-    height: 200px;
+    height: 100px;
     grid-template-rows: auto;
     grid-template-columns: repeat(5, 1fr);
   `};
