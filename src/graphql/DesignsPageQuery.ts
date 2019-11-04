@@ -3,7 +3,7 @@ import { DesignsPageQuery } from '..'
 
 const UseDesignsPageQuery = (): DesignsPageQuery =>
   useStaticQuery(graphql`
-    query DesignsPageQuery {
+    query {
       allBehanceProjects {
         nodes {
           slug

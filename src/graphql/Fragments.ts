@@ -66,7 +66,7 @@ export const Frontmatter = graphql`
 export const BlogPost = graphql`
   fragment BlogPost on MarkdownRemark {
     id
-    excerpt(pruneLength: 75)
+    description: excerpt(pruneLength: 175)
     timeToRead
     ...Frontmatter
   }

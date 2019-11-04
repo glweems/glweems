@@ -1,26 +1,24 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import Card, { Cards } from './Card'
-
+import uuid from 'uuid/v4'
 import UseDesignsQuery from '../graphql/DesignsQuery'
+import { Design } from '..'
 
 interface Props {
-  limit?: number | false
+  designs: Design[]
 }
 
-const Designs = ({ limit = false }: Props) => {
-  const designs = UseDesignsQuery()
-
+const Designs: React.FC<Props> = ({ designs }) => {
   return (
     <Cards>
-      {designs.slice(0, limit || designs.length).map(({ slug, name, description, tags, cover }) => (
+      {designs.map(({ slug, name, description, cover }) => (
         <Card
-          key={slug}
+          key={uuid()}
           title={name}
-          subtitle={description}
-          tags={tags}
-          link={`/${slug}`}
-          Image={<Img alt={name} fluid={cover.childImageSharp.fluid} />}
+          description={description}
+          path={`/${slug}`}
+          fluid={cover.childImageSharp.fluid}
         />
       ))}
     </Cards>

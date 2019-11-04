@@ -3,89 +3,45 @@ import React from 'react'
 import { navigate } from 'gatsby'
 import styled from 'styled-components'
 import Tags from './Tags'
-import { rootBg, borderRadius, text, media } from '../theme'
-import { Link } from './Common'
-
-export const Wrapper = styled.div`
-  display: grid;
-  grid-template-rows: auto 12em 1fr auto;
-  grid-template-columns: 1fr;
-  align-content: flex-start;
-  color: ${text};
-  border-radius: ${borderRadius};
-  cursor: pointer;
-  :hover {
-    background: ${rootBg};
-    .gatsby-image-wrapper {
-      transform: scale(1.01);
-    }
-  }
-  transition: all 0.25s ease 0s;
-`
-
-export const Header = styled.div`
-  padding: 0 0.5em;
-  overflow: hidden;
-  .title {
-    margin-bottom: 0.5em;
-    padding: 0.5em 0.25em;
-    overflow: hidden;
-    font-size: 1.25em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-  }
-`
-
-export const Body = styled.div`
-  padding: 1em 0.5em;
-
-  p {
-    margin-bottom: 0;
-  }
-`
-
-export const Footer = styled.div`
-  margin: 0;
-  padding: 0 0.5em 0.25em 0.5em;
-  overflow: hidden;
-  color: ${text};
-`
-
-interface Card {
-  title: string
-  subtitle: string
-  link?: string
-  tags: string[]
+import { rootBg, borderRadius, text, media, rhythm } from '../theme'
+import { Link, Date } from './Common'
+import Img, { FluidObject } from 'gatsby-image'
+interface Props {
+  title?: string
+  subtitle?: string
+  path?: string
+  tags?: string[]
   children?: React.ReactNode
-  Image?: React.ReactElement
+  description?: string
+  fluid?: FluidObject
+  date?: any
 }
 
-const Card = ({
-  title = 'Card Title',
-  subtitle = 'This is the cards subtitle',
-  link,
-  tags = ['one', 'two', 'three'],
-  children,
-  Image
-}: Card) => {
+const Card: React.FC<Props> = ({ title, description, fluid, path, tags, children, date }) => {
   const go = () => (link ? navigate(link) : null)
 
   return (
-    <Wrapper onClick={go}>
-      <Header>
-        <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
-      </Header>
+    <Wrapper>
+      {fluid && (
+        <div className="img">
+          {path ? (
+            <Link to={path} unstyled>
+              <Img fluid={fluid} />
+            </Link>
+          ) : (
+            <Img fluid={fluid} />
+          )}
+        </div>
+      )}
 
-      {Image || Image}
+      {title && <h2 className="title">{path ? <Link to={path}>{title}</Link> : title}</h2>}
 
-      <Body>
-        <p>{subtitle}</p>
-        {children}
-      </Body>
-      <Footer>
-        <Tags items={tags} />
-      </Footer>
+      <p className="description">{description}</p>
+
+      {date && <Date className="date">{date}</Date>}
+
+      <div className="body">{children}</div>
+      {tags && <Tags items={tags} />}
     </Wrapper>
   )
 }
@@ -94,10 +50,99 @@ export default Card
 
 export const Cards = styled.div`
   display: grid;
-  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
   grid-template-columns: 1fr;
-  gap: 1.5em;
+  gap: ${rhythm(1)};
+
   ${media.greaterThan('md')`
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-`}
+      grid-template-columns: repeat(2, 1fr);
+    `}
+
+  ${media.greaterThan('lg')`
+      grid-template-columns: repeat(3, 1fr);
+    `}
+`
+export const Wrapper = styled.div`
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-areas:
+    'img'
+    'title'
+    'description'
+    'body'
+    'date'
+    'tags';
+  grid-template-rows: 250px;
+  grid-template-columns: auto;
+  gap: 1em;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.25s ease 0s;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .title,
+  .tags,
+  .date,
+  .description,
+  .body {
+    margin: 0;
+    padding: 0 1em;
+  }
+  .title,
+  .description {
+    align-self: flex-start;
+  }
+
+  .date,
+  .tags {
+    align-self: flex-end;
+  }
+
+  .body {
+    grid-area: body;
+  }
+
+  .title {
+    grid-area: title;
+    font-size: 1.125em;
+    line-height: 2em;
+  }
+
+  .description {
+    grid-area: description;
+    align-self: flex-start;
+    /* font-size: 15px; */
+  }
+
+  .tags {
+    grid-area: tags;
+    padding-bottom: 1em;
+  }
+
+  ${Date} {
+    grid-area: date;
+  }
+
+  .img {
+    grid-area: img;
+    /* align-self: flex-start; */
+    height: 100%;
+    cursor: pointer;
+    .gatsby-image-wrapper {
+      height: 100%;
+      /* height: 100%; */
+      /* border-radius: 0.125em; */
+    }
+  }
+
+  ${media.greaterThan(`sm`)`
+    grid-template-rows: 150px;
+  `}
 `

@@ -54,7 +54,7 @@ export interface Frontmatter {
 
 export interface BlogPost {
   id: string
-  excerpt: string
+  description: string
   timeToRead: string
   frontmatter: Frontmatter
 }

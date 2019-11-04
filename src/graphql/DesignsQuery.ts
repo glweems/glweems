@@ -1,11 +1,12 @@
 /* eslint-disable consistent-return */
 import { useStaticQuery, graphql } from 'gatsby'
-import { DesignsQuery, BehanceProject, Design } from '..'
+import { DesignsQuery } from '..'
+import { mapDesignCovers } from '../utils/helpers'
 
-const UseDesignsQuery = () => {
+export const useDesigns = () => {
   const { allBehanceProjects, allFile }: DesignsQuery = useStaticQuery(graphql`
     query DesignsQuery {
-      allBehanceProjects(sort: { fields: stats___views, order: DESC }) {
+      allBehanceProjects(sort: { fields: stats___views, order: DESC }, limit: 4) {
         nodes {
           slug
           name
@@ -26,23 +27,7 @@ const UseDesignsQuery = () => {
     }
   `)
 
-  const findDesignCover = (design: BehanceProject): any => {
-    const image = allFile.nodes.find(file => file.relativeDirectory.includes(design.slug))
-    if (image) return image
-  }
-
-  const designs: Design[] = []
-
-  allBehanceProjects.nodes.forEach(design => {
-    if (findDesignCover(design)) {
-      designs.push({
-        ...design,
-        cover: findDesignCover(design)
-      })
-    }
-  })
-
-  return designs
+  return mapDesignCovers({ allBehanceProjects, allFile })
 }
 
-export default UseDesignsQuery
+export default useDesigns

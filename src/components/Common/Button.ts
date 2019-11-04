@@ -1,19 +1,21 @@
 import styled from 'styled-components'
-import { bg, rootBg } from '../../theme'
+import { bg, rootBg, text } from '../../theme'
 
 export const Button = styled.button`
   display: inline-block;
   padding: 5px 10px;
+  color: ${text};
   text-transform: uppercase;
+  background: ${bg};
   border-style: solid;
   border-width: 3px;
   border-radius: 6px;
   transition: all 0.3s ease 0s;
-
   :hover {
     border-radius: 50px;
     transition: all 0.4s ease 0s;
   }
+
   :disabled {
     color: ${bg};
     background: ${rootBg};

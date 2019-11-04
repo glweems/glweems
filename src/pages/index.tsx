@@ -4,14 +4,15 @@ import ReactTooltip from 'react-tooltip'
 import GithubCalendar from 'react-github-calendar'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
-import { Link, Container } from '../components/Common'
+import { Link, Container, Divider, Button } from '../components/Common'
 import SideProjects from '../components/SideProjects'
 import Designs from '../components/Designs'
 import { BlogPosts } from '../components/BlogPosts'
-import { primary } from '../theme'
-import { BlogPost } from '..'
+import { primary, media, text } from '../theme'
+import { BlogPost, Nodes, BehanceProject, ImageFile } from '..'
 import { rhythm } from '../utils/typography'
-
+import useDesigns from '../graphql/DesignsQuery'
+import { mapDesignCovers } from '../utils/helpers'
 const FadedTitle = styled.h2`
   color: ${primary};
   font-size: 2em;
@@ -22,54 +23,70 @@ interface Props {
     allMarkdownRemark: {
       posts: BlogPost[]
     }
+    allBehanceProjects: Nodes<BehanceProject>
+    allFile: Nodes<ImageFile>
   }
 }
 
 export const IndexMain = styled.main`
-  .blog {
+  section {
     display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-rows: max-content;
-    grid-template-columns: 1fr;
-    gap: ${rhythm(3)} 0;
+    grid-template-rows: auto 1fr auto;
+    gap: ${rhythm(1)};
+    a {
+      color: ${text};
+      text-decoration: none;
+    }
   }
 `
 
 const IndexPage: React.FC<Props> = ({ data }) => {
-  const { posts } = data.allMarkdownRemark
+  const {
+    allMarkdownRemark: { posts },
+    allBehanceProjects,
+    allFile
+  } = data
+  const designs = mapDesignCovers({ allBehanceProjects, allFile })
+
   return (
-    <>
-      <Container justifyContent="">
-        <section className="blog">
-          <FadedTitle>Blog Posts</FadedTitle>
-          <BlogPosts posts={posts} />
-        </section>
-        <div>
-          <Link to="/blog">View All Blog Posts</Link>
-        </div>
-      </Container>
+    <Container className="wrapper">
+      <section className="blog">
+        <h2>
+          <Link to="/blog">Blog Posts</Link>
+        </h2>
+        <BlogPosts posts={posts} />
+        <Button>
+          <Link to="/blog" unstyled>
+            View All Blog Posts
+          </Link>
+        </Button>
+      </section>
 
-      <Container key="Design">
-        <section>
-          <FadedTitle>Design Projects</FadedTitle>
-          <Designs limit={3} />
-        </section>
-        <div>
-          <Link to="/designs">View All Designs</Link>
-        </div>
-      </Container>
+      <Divider />
 
-      <Container key="Projects">
-        <section>
-          <FadedTitle>Side Projects</FadedTitle>
-          <SideProjects limit={2} />
-        </section>
-      </Container>
+      <section>
+        <FadedTitle>Design Projects</FadedTitle>
+        <Designs designs={designs} />
+        <Button>
+          <Link to="/designs" unstyled>
+            View All Designs
+          </Link>
+        </Button>
+      </section>
 
-      <GithubCalendar username="glweems" years={[2019]}>
-        <ReactTooltip delayShow={35} html />
-      </GithubCalendar>
-    </>
+      <Divider />
+
+      <section>
+        <FadedTitle>Side Projects</FadedTitle>
+        <SideProjects limit={2} />
+      </section>
+
+      <section>
+        <GithubCalendar username="glweems" years={[2019]}>
+          <ReactTooltip delayShow={35} html />
+        </GithubCalendar>
+      </section>
+    </Container>
   )
 }
 
@@ -80,6 +97,25 @@ export const IndexPageQuery = graphql`
     allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
       posts: nodes {
         ...BlogPost
+      }
+    }
+    allBehanceProjects(limit: 3, sort: { fields: stats___views, order: DESC }) {
+      nodes {
+        slug
+        name
+        description
+        tags
+        published_on
+      }
+    }
+    allFile(filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }) {
+      nodes {
+        id
+        name
+        relativeDirectory
+        childImageSharp {
+          ...FluidImage
+        }
       }
     }
   }
