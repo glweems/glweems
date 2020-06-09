@@ -79,7 +79,7 @@
     "gatsby-source-graphql": "^2.1.3",
     "gatsby-transformer-remark": "^2.6.14",
     "gatsby-transformer-sharp": "^2.2.3",
-    "gatsby-transformer-yaml": "^2.2.7",
+    "gatsby-transformer-yaml": "^2.4.4",
     "gray-percentage": "^2.0.0",
     "libvips": "^0.0.2",
     "lodash": "^4.17.15",
