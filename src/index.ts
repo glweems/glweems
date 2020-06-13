@@ -103,7 +103,7 @@ export interface BehanceProject {
       icon_url: string
     }[]
     areas: string[]
-  }
+  }[]
 }
 
 export interface DesignsQuery {

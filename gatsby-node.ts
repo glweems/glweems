@@ -1,15 +1,14 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const { GraphQLString } = require(`gatsby/graphql`)
-const path = require(`path`)
-const _ = require('lodash')
-const { siteMetadata } = require('./gatsby-config')
+import { GatsbyNode } from 'gatsby'
+import { GraphQLString } from 'gatsby/graphql'
+import * as path from 'path'
+import { siteMetadata } from './gatsby-config'
 
-exports.setFieldsOnGraphQLNodeType = ({ type }) => {
+export const setFieldsOnGraphQLNodeType = ({ type }) => {
   if (type.name === `MarkdownRemark`) {
     return {
       url: {
         type: GraphQLString,
-        resolve: source => `${siteMetadata.siteUrl}${source.frontmatter.path}`
+        resolve: (source: any) => `${siteMetadata.siteUrl}${source.frontmatter.path}`
       },
       disqusIdentifier: {
         type: GraphQLString,
@@ -21,10 +20,35 @@ exports.setFieldsOnGraphQLNodeType = ({ type }) => {
   // by default return empty object
   return {}
 }
+/* export const createPagesExample: GatsbyNode['createPages'] = async ({ graphql, actions }) => {
+  const { createPage } = actions
 
+  const blogPost = path.resolve(`../src/templates/blog-post.tsx`)
+  const result = await graphql<any>(`
+    {
+      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  if (result.errors) {
+    throw result.errors
+  }
+}
+ */
 // Create Pages
-exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => {
-  const result = await graphql(`
+export const createPages: GatsbyNode['createPages'] = async ({ actions: { createPage }, graphql, reporter }) => {
+  const result = await graphql<any>(`
     query CreatePagesQuery {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
@@ -34,7 +58,7 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
         }
       }
 
-      allBehanceProjects {
+      allBehanceProjects: allDesignsYaml {
         nodes {
           slug
         }
@@ -46,7 +70,7 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
         }
       }
 
-      designTags: allBehanceProjects(limit: 2000) {
+      designTags: allDesignsYaml(limit: 2000) {
         group(field: tags) {
           tag: fieldValue
         }
@@ -82,7 +106,7 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
   })
 
   // Create Design Pages
-  const designs = result.data.allBehanceProjects.nodes
+  const designs: any = result.data.allBehanceProjects.nodes
   const designComponent = path.resolve(`src/templates/Design/DesignTemplate.tsx`)
   designs.forEach(({ slug }, index) => {
     createPage({
@@ -96,30 +120,33 @@ exports.createPages = async ({ actions: { createPage }, graphql, reporter }) => 
     })
   })
 
+  /*
+ * Tag Pages
+
+
   // Extract tag data from query
   const { blogTags, designTags, sideProjectTags } = result.data
   // Combine all tags
-  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce(
-    (acc, d) => {
-      const found = acc.find(a => a.tag === d.tag)
+  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce((acc, d) => {
+    const found = acc.find(a => a.tag === d.tag)
 
-      if (found) {
-        found.tag = _.kebabCase(found.tag)
-      }
-      acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })
+    if (found) {
+      found.tag = kebabCase(found.tag)
+    }
+    acc.push({ tag: kebabCase(d.tag), qty: d.qty })
 
-      return acc
-    },
-    []
-  )
+    return acc
+  }, [])
+
   // Component for each page
   const tagComponent = path.resolve(`src/templates/Tags/TagsTemplate.tsx`)
   // Make tag pages
   tags.forEach(({ tag }) => {
     createPage({
-      path: `/tags/${_.kebabCase(tag)}/`,
+      path: `/tags/${kebabCase(tag)}/`,
       component: tagComponent,
       context: { tag }
     })
   })
+ */
 }

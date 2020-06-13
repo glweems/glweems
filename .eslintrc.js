@@ -11,7 +11,11 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['hooks', 'src/hooks'], ['types', 'src/index.ts'], ['common', 'src/components/Common/index.ts']],
+        map: [
+          ['hooks', 'src/hooks'],
+          ['types', 'src/index.ts'],
+          ['common', 'src/components/Common/index.ts']
+        ],
         extensions: ['.ts', '.js', '.jsx', '.json']
       }
     },

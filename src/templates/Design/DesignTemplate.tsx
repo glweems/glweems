@@ -1,15 +1,14 @@
-import * as React from 'react'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import SEO from '../../components/SEO'
+import * as React from 'react'
 import { BehanceProject, ImageFile } from '../..'
 import { Container, Text } from '../../components/Common'
-import { Header, ImageGrid, Images } from './DesignStyles'
+import SEO from '../../components/SEO'
 
 interface DesignTemplate {
   data: {
-    currentProject: BehanceProject
-    allFile: {
+    design: BehanceProject
+    images: {
       nodes: ImageFile[]
       totalCount: number
     }
@@ -22,58 +21,41 @@ interface ImageGridProps {
   fullGallery: boolean
 }
 
-const DesignImages = ({ images }: { images: ImageFile[] }) => {
-  function chunkArray(myArray: any[], chunk_size: number) {
-    const results = []
-
-    while (myArray.length) {
-      results.push(myArray.splice(0, chunk_size))
-    }
-
-    return results
-  }
-
-  return (
-    <Images smFlush bg>
-      {chunkArray(images, 4).map(chunk => (
-        <ImageGrid>
-          {chunk.map(({ childImageSharp, id }) => (
-            <Img key={`design-${id}`} className="design-img" fluid={childImageSharp.fluid} />
-          ))}
-        </ImageGrid>
-      ))}
-    </Images>
-  )
-}
-
 export default function DesignTemplate({ data }: DesignTemplate) {
-  const { currentProject, allFile } = data
-  const { name, tags, description } = currentProject
-  return [
-    <SEO key={`seo-design-${name}`} title={name} keywords={tags} description={description} />,
-    <section key={`content-design-${name}-1`}>
-      <Container>
-        <Header inverted>
-          <Text variant="title" theme={{ mode: 'light' }}>
-            {name}
-          </Text>
-          <h2>{description}</h2>
-        </Header>
+  const { design, images } = data
+  const { name, tags, description } = design
+  return (
+    <React.Fragment>
+      <SEO key={`seo-design-${name}`} title={name} tags={tags} description={description} />,
+      <Container smFlush>
+        <Text variant="title">{design.name}</Text>
+        <Text>{design.description}</Text>
+        <div>tags</div>
+        {design.tags.map((tag, index) => (
+          <div>{tag}</div>
+        ))}
+        <div>tools</div>
+        {design.tools.map(tool => (
+          <div>{tool.title}</div>
+        ))}
+        {images.nodes.map(image => (
+          <Img fluid={image.childImageSharp.fluid} />
+        ))}
       </Container>
-    </section>,
-    <DesignImages key="design-grid" images={allFile.nodes} />
-  ]
+    </React.Fragment>
+  )
 }
 
 export const designQuery = graphql`
   query SingleDesign($slug: String!) {
-    currentProject: behanceProjects(slug: { regex: $slug }) {
+    design: behanceProjects(slug: { regex: $slug }) {
       ...BehanceCard
       tools {
         title
       }
     }
-    allFile(filter: { relativeDirectory: { regex: $slug }, name: { ne: "cover" } }) {
+
+    images: allFile(filter: { relativePath: { regex: $slug }, sourceInstanceName: { eq: "designs" } }) {
       nodes {
         id
         name
