@@ -1,18 +1,21 @@
-import { GatsbyNode } from 'gatsby'
-import { GraphQLString } from 'gatsby/graphql'
+import { GatsbyNode, SetFieldsOnGraphQLNodeTypeArgs, PluginOptions } from 'gatsby'
+import { GraphQLString } from 'graphql'
 import * as path from 'path'
-import { siteMetadata } from './gatsby-config'
+import { kebabCase } from 'lodash'
 
-export const setFieldsOnGraphQLNodeType = ({ type }) => {
-  if (type.name === `MarkdownRemark`) {
+export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'] = async (
+  args: SetFieldsOnGraphQLNodeTypeArgs,
+  options: PluginOptions
+) => {
+  if (args.type.name === `MarkdownRemark`) {
     return {
       url: {
         type: GraphQLString,
-        resolve: (source: any) => `${siteMetadata.siteUrl}${source.frontmatter.path}`
+        resolve: (source: any) => `https://glweems.com${source.frontmatter.path}`
       },
       disqusIdentifier: {
         type: GraphQLString,
-        resolve: source => String(source.frontmatter.id)
+        resolve: (source: any) => String(source.frontmatter.id)
       }
     }
   }
@@ -20,37 +23,12 @@ export const setFieldsOnGraphQLNodeType = ({ type }) => {
   // by default return empty object
   return {}
 }
-/* export const createPagesExample: GatsbyNode['createPages'] = async ({ graphql, actions }) => {
-  const { createPage } = actions
 
-  const blogPost = path.resolve(`../src/templates/blog-post.tsx`)
-  const result = await graphql<any>(`
-    {
-      allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  if (result.errors) {
-    throw result.errors
-  }
-}
- */
 // Create Pages
 export const createPages: GatsbyNode['createPages'] = async ({ actions: { createPage }, graphql, reporter }) => {
-  const result = await graphql<any>(`
+  const result = await graphql<Data>(`
     query CreatePagesQuery {
-      allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      posts: allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           frontmatter {
             path
@@ -58,7 +36,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
         }
       }
 
-      allBehanceProjects: allDesignsYaml {
+      designs: allDesignsYaml {
         nodes {
           slug
         }
@@ -91,12 +69,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
   }
 
   // Create Blog Posts
-  const blogPosts = result.data.allMarkdownRemark.nodes
-  const blogPostComponent = path.resolve(`src/templates/BlogPost/BlogPostTemplate.tsx`)
-  blogPosts.forEach(({ frontmatter }, index) => {
+  const blogPosts = result?.data?.posts.nodes
+
+  blogPosts?.forEach(({ frontmatter }, index) => {
     createPage({
       path: frontmatter.path,
-      component: blogPostComponent,
+      component: path.resolve(`src/templates/BlogPost/BlogPostTemplate.tsx`),
       context: {
         slug: frontmatter.path,
         prev: blogPosts[index - 1] && blogPosts[index - 1].frontmatter.path,
@@ -106,12 +84,12 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
   })
 
   // Create Design Pages
-  const designs: any = result.data.allBehanceProjects.nodes
-  const designComponent = path.resolve(`src/templates/Design/DesignTemplate.tsx`)
-  designs.forEach(({ slug }, index) => {
+  const designs = result?.data?.designs?.nodes
+
+  designs?.forEach(({ slug }, index) => {
     createPage({
       path: `/${slug}`,
-      component: designComponent,
+      component: path.resolve(`src/templates/Design/DesignTemplate.tsx`),
       context: {
         slug: `/${slug}/`,
         prev: designs[index - 1] && designs[index - 1].slug,
@@ -121,32 +99,80 @@ export const createPages: GatsbyNode['createPages'] = async ({ actions: { create
   })
 
   /*
- * Tag Pages
-
+   * Tag Pages
+   */
 
   // Extract tag data from query
-  const { blogTags, designTags, sideProjectTags } = result.data
+
+  const blogTags = result?.data?.blogTags
+  const designTags = result?.data?.designTags
+  const sideProjectTags = result?.data?.sideProjectTags
+  const grouped: Group[] = [
+    ...(blogTags?.group as Group[]),
+    ...(designTags?.group as Group[]),
+    ...(sideProjectTags?.group as Group[])
+  ]
   // Combine all tags
-  const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce((acc, d) => {
-    const found = acc.find(a => a.tag === d.tag)
+  const tags: any = grouped.reduce((acc: any[], d) => {
+    const found = (acc as any).find((a: any) => a.tag === d.tag) as Group
 
     if (found) {
       found.tag = kebabCase(found.tag)
     }
-    acc.push({ tag: kebabCase(d.tag), qty: d.qty })
+    ;(acc as any).push({ tag: kebabCase(d.tag), qty: (d as any).qty })
 
     return acc
   }, [])
 
   // Component for each page
-  const tagComponent = path.resolve(`src/templates/Tags/TagsTemplate.tsx`)
   // Make tag pages
-  tags.forEach(({ tag }) => {
+  tags.forEach(({ tag }: Group) => {
     createPage({
       path: `/tags/${kebabCase(tag)}/`,
-      component: tagComponent,
+      component: path.resolve(`src/templates/Tags/TagsTemplate.tsx`),
       context: { tag }
     })
   })
- */
+}
+
+// Generated by https://quicktype.io
+
+export interface Results {
+  data: Data
+}
+
+export interface Data {
+  posts: Posts
+  designs: Designs
+  blogTags: Tags
+  designTags: Tags
+  sideProjectTags: Tags
+}
+
+export interface Tags {
+  group: Group[]
+}
+
+export interface Group {
+  tag: string
+}
+
+export interface Designs {
+  nodes: DesignsNode[]
+}
+
+export interface DesignsNode {
+  slug: string
+}
+
+export interface Posts {
+  nodes: PostsNode[]
+}
+
+export interface PostsNode {
+  frontmatter: Frontmatter
+}
+
+export interface Frontmatter {
+  path: string
 }

@@ -1,6 +1,8 @@
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Fox Vapor Branding
   slug: fox-vapor-branding
   description: 'Company Branding for Fox Vapor Company and the project we have worked on. '
+
   tags:
     - logo
     - design
@@ -11,6 +13,8 @@
   url: 'https://www.behance.net/gallery/47323047/Fox-Vapor-Branding'
   short_url: 'http://be.net/gallery/47323047/Fox-Vapor-Branding'
   tools: []
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Peace Run Design
   slug: peace-run-design
   description: >-
@@ -27,9 +31,11 @@
   tools:
     - title: Behance Mobile
       synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Misc T-Shirt Designs
   slug: misc-t-shirt-designs
-  description: Random T-Shirt Designs I have created over the years.
+  description: 'Random T-Shirt Designs I have created over the years.'
   tags:
     - tshirt
     - Screenprinting
@@ -50,10 +56,12 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
         name: photoshop
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: EntTex Logo Design
   slug: enttex-logo-design
   description: >-
-    A clean and simple logo design for Entex. Here is my work process and also
+    A clean and simple logo design for Enttex. Here is my work process and also
     how I displayed my work to the client.
   tags:
     - Logo Design
@@ -81,6 +89,8 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
         name: lightroom
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Company Branding
   slug: company-branding
   description: >-
@@ -111,6 +121,8 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
         name: lightroom
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Pokédex Dashboard
   slug: pokdex-dashboard
   description: Lambda School Build Week 1 Project
@@ -133,6 +145,8 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/xd.png
         name: xd
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: No rhyme or reason
   slug: no-rhyme-or-reason
   description: |
@@ -157,6 +171,8 @@
         name: photoshop
     - title: IPad Pro
       synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Poker Night T-Shirt Design
   slug: poker-night-t-shirt-design
   description: >-
@@ -199,6 +215,8 @@
   tools:
     - title: Behance Mobile
       synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Prepress UI
   slug: prepress-ui
   description: 'Website I created to calculate cost of getting a t-shirt printed. '

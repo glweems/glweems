@@ -8,9 +8,10 @@
     "jsx": "react",
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "plugins": []
   },
-  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.svg", "createPages.ts"],
+  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.svg", "gatsby-config.ts", "gatsby-node.ts"],
   "exclude": ["node_modules/"]
 }

@@ -1,10 +1,10 @@
-import { useStaticQuery, graphql } from 'gatsby'
-import { DesignsPageQuery } from '..'
+import { graphql, useStaticQuery } from 'gatsby'
+import { DesignsPageQuery } from './_types/DesignsPageQuery'
 
-const UseDesignsPageQuery = (): DesignsPageQuery =>
-  useStaticQuery(graphql`
+const UseDesignsPageQuery = () =>
+  useStaticQuery<DesignsPageQuery>(graphql`
     query DesignsPageQuery {
-      allBehanceProjects {
+      allBehanceProjects: allDesignsYaml {
         nodes {
           slug
           name

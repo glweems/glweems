@@ -10,7 +10,7 @@ export default function useSiteTags() {
           qty: totalCount
         }
       }
-      designTags: allBehanceProjects(limit: 2000, sort: { fields: tags, order: ASC }) {
+      designTags: allDesignsYaml(limit: 2000, sort: { fields: tags, order: ASC }) {
         group(field: tags) {
           tag: fieldValue
           qty: totalCount

@@ -1,7 +1,7 @@
+import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
-import Img, { FluidObject } from 'gatsby-image'
-import { Link, Date } from './Common'
+import { Date, Link } from './Common'
 import Tags from './Tags'
 
 const Title = styled.h2`
@@ -16,14 +16,32 @@ const Excerpt = styled.p`
   font-size: 15px;
 `
 
-interface Props {
+interface BlogPostPreviewProps {
   path: string
   title: string
   date: any
   tags: string[]
   excerpt: string
-  fluid: FluidObject
+  fluid?: any
 }
+
+export const BlogPostPreview: React.FC<BlogPostPreviewProps> = ({ path, title, date, tags, excerpt, fluid }) => (
+  <Wrapper>
+    <Title>
+      <Link to={path}>{title}</Link>
+    </Title>
+
+    <Date>{date}</Date>
+
+    <Excerpt>{excerpt}</Excerpt>
+
+    <Tags items={tags} />
+
+    <Link to={path} className="img" unstyled>
+      <Img fluid={fluid as any} />
+    </Link>
+  </Wrapper>
+)
 
 const Wrapper = styled.div`
   display: grid;
@@ -69,22 +87,4 @@ const Wrapper = styled.div`
     margin-top: 1em;
   }
 `
-
-export const BlogPostPreview: React.FC<Props> = ({ path, title, date, tags, excerpt, fluid }) => (
-  <Wrapper>
-    <Title>
-      <Link to={path}>{title}</Link>
-    </Title>
-
-    <Date>{date}</Date>
-
-    <Excerpt>{excerpt}</Excerpt>
-
-    <Tags items={tags} />
-
-    <Link to={path} className="img" unstyled>
-      <Img fluid={fluid} />
-    </Link>
-  </Wrapper>
-)
 export default BlogPostPreview

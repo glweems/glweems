@@ -1,9 +1,8 @@
-import React from 'react'
 // Components
 import { graphql } from 'gatsby'
-import { Container } from '../../components/Common'
-import { BlogPost } from '../..'
+import React from 'react'
 import { BlogPosts } from '../../components/BlogPosts'
+import { Container } from '../../components/Common'
 import { TagBar } from '../../components/TagBar'
 
 interface Props extends TagPageQuery {
@@ -50,7 +49,7 @@ interface TagPageQuery {
   data: {
     matchedPosts: {
       totalCount: number
-      posts: BlogPost[]
+      posts: any[]
     }
   }
 }
@@ -68,7 +67,7 @@ export const TagPageQuery = graphql`
         ...Frontmatter
       }
     }
-    matchedDesigns: allBehanceProjects(limit: 2000, filter: { tags: { in: [$tag] } }) {
+    matchedDesigns: allDesignsYaml(limit: 2000, filter: { tags: { in: [$tag] } }) {
       qty: totalCount
       designs: nodes {
         description

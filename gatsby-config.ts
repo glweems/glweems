@@ -1,12 +1,13 @@
 import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config'
-
-require('dotenv').config()
+import packageJson from './package.json'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
-  author: 'Garrett Weems (glweems)',
-  url: 'https://glweems.com',
+  author: packageJson.author,
+  url: packageJson.homepage,
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
   socialLinks: {
@@ -27,7 +28,8 @@ const config = {
     twitter: 'garrettlweems'
   }
 }
-export const siteMetadata = {
+
+const siteMetadata = {
   title: `Garrett Weems`,
   titleTemplate: `%s · Glweems`,
   description: `Full stack web developer / graphic designer.`,
@@ -39,154 +41,152 @@ export const siteMetadata = {
   disqusShortName: config.disqusShortName
 }
 
-const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot }) => ({
-  siteMetadata,
-  plugins: [
-    `gatsby-plugin-typescript`,
-    `gatsby-plugin-react-helmet`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-netlify`,
-    {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
-      options: {
-        fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900`]
+const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot }) => {
+  return {
+    siteMetadata,
+    plugins: [
+      'gatsby-plugin-typescript',
+      'gatsby-plugin-react-helmet',
+      'gatsby-plugin-sass',
+      'gatsby-plugin-styled-components',
+      'gatsby-plugin-netlify',
+      'gatsby-plugin-generate-types',
+      // 'gatsby-plugin-use-dark-mode',
+      // 'use-dark-mode',
+      {
+        resolve: 'gatsby-plugin-prefetch-google-fonts',
+        options: {
+          fonts: [
+            {
+              family: 'Montserrat',
+              variants: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+            }
+          ]
+        }
+      },
+      'gatsby-transformer-yaml',
+      {
+        resolve: 'gatsby-source-graphql',
+        options: {
+          typeName: 'GitHub',
+          fieldName: 'github',
+          url: 'https://api.github.com/graphql',
+          headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
+        }
+      },
+      {
+        resolve: 'gatsby-plugin-typography',
+        options: {
+          pathToConfigModule: `${projectRoot}/src/utils/typography.ts`
+        }
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/content`,
+          name: 'content'
+        }
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/posts`,
+          name: `posts`
+        }
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/designs`,
+          name: 'designs'
+        }
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'images',
+          path: `${projectRoot}/src/assets/`
+        }
+      },
+      'gatsby-plugin-sharp',
+      'gatsby-transformer-sharp',
+      'gatsby-transformer-remark',
+      {
+        resolve: 'gatsby-transformer-remark',
+        options: {
+          plugins: [
+            // Optional: Remove the paragraph tag wrapping images
+            'gatsby-remark-unwrap-images',
+            'gatsby-remark-responsive-iframe',
+            // Wrap images by pictures
+            {
+              resolve: 'gatsby-remark-images',
+              options: {
+                maxWidth: 720
+                // linkImagesToOriginal: true
+              }
+            },
+            {
+              resolve: 'gatsby-remark-prismjs',
+              options: {
+                aliases: { sh: 'bash', js: 'javascript' }
+              }
+            },
+            'gatsby-remark-copy-linked-files',
+            'gatsby-remark-autolink-headers',
+            'gatsby-remark-smartypants'
+          ]
+        }
+      },
+      {
+        resolve: 'gatsby-plugin-google-analytics',
+        options: {
+          trackingId: config.googleAnalyticsID,
+          head: true
+        }
+      },
+      {
+        resolve: 'gatsby-plugin-favicon',
+        options: {
+          logo: `${projectRoot}/src/assets/favicon.png`,
+          injectHTML: true,
+          icons: {
+            android: true,
+            appleIcon: true,
+            appleStartup: true,
+            coast: false,
+            favicons: true,
+            firefox: true,
+            twitter: false,
+            yandex: false,
+            windows: false
           }
-        ]
-      }
-    },
-    'gatsby-transformer-yaml',
-    {
-      resolve: `gatsby-source-graphql`,
-      options: {
-        typeName: `GitHub`,
-        fieldName: `github`,
-        url: `https://api.github.com/graphql`,
-        headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
-      }
-    },
-    {
-      resolve: `gatsby-source-behance-images`,
-      options: {
-        username: `glweems`,
-        apiKey: process.env.BEHANCE_TOKEN
-      }
-    },
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `./src/utils/typography.ts`
-      }
-    },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-remark`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./content`,
-        name: `content`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./posts`,
-        name: `posts`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `./designs`,
-        name: `designs`
-      }
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `./src/assets/`
-      }
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
-          // Optional: Remove the paragraph tag wrapping images
-          `gatsby-remark-unwrap-images`,
-          `gatsby-remark-responsive-iframe`,
-          // Wrap images by pictures
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 720
-              // linkImagesToOriginal: true
-            }
-          },
-          {
-            resolve: `gatsby-remark-prismjs`,
-            options: {
-              aliases: { sh: 'bash', js: 'javascript' }
-            }
-          },
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-autolink-headers`,
-          `gatsby-remark-smartypants`
-        ]
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        trackingId: config.googleAnalyticsID,
-        head: true
-      }
-    },
-    {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: `./src/assets/favicon.png`,
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false
         }
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-react-svg',
-      options: {
-        rule: {
-          include: /assets/
+      },
+      {
+        resolve: 'gatsby-plugin-react-svg',
+        options: {
+          rule: {
+            include: /assets/
+          }
         }
-      }
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `Garrett Weems | Web Developer`,
-        short_name: `glweems`,
-        start_url: `/`,
-        background_color: config.backgroundColor,
-        theme_color: config.themeColor,
-        display: `minimal-ui`,
-        icon: `src/assets/favicon.png`
-      }
-    },
-    `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-offline`
-  ]
-})
+      },
+      {
+        resolve: 'gatsby-plugin-manifest',
+        options: {
+          name: 'Garrett Weems | Web Developer',
+          short_name: packageJson.name,
+          start_url: '/',
+          background_color: config.backgroundColor,
+          theme_color: config.themeColor,
+          display: 'minimal-ui',
+          icon: `${projectRoot}/src/assets/favicon.png`
+        }
+      },
+      'gatsby-plugin-robots-txt',
+      'gatsby-plugin-offline'
+    ]
+  }
+}
 
 export default gatsbyConfig

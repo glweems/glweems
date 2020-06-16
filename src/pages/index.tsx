@@ -9,33 +9,10 @@ import SideProjects from '../components/SideProjects'
 import Designs from '../components/Designs'
 import { BlogPosts } from '../components/BlogPosts'
 import { primary } from '../theme'
-import { BlogPost } from '..'
 import { rhythm } from '../utils/typography'
+import { IndexPageQuery } from './_types/IndexPageQuery'
 
-const FadedTitle = styled.h2`
-  color: ${primary};
-  font-size: 2em;
-  opacity: 0.5;
-`
-interface Props {
-  data: {
-    allMarkdownRemark: {
-      posts: BlogPost[]
-    }
-  }
-}
-
-export const IndexMain = styled.main`
-  .blog {
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-rows: max-content;
-    grid-template-columns: 1fr;
-    gap: ${rhythm(3)} 0;
-  }
-`
-
-const IndexPage: React.FC<Props> = ({ data }) => {
+const IndexPage = ({ data }: { data: IndexPageQuery }) => {
   const { posts } = data.allMarkdownRemark
   return (
     <>
@@ -73,9 +50,24 @@ const IndexPage: React.FC<Props> = ({ data }) => {
   )
 }
 
+const FadedTitle = styled.h2`
+  color: ${primary};
+  font-size: 2em;
+  opacity: 0.5;
+`
+
+export const IndexMain = styled.main`
+  .blog {
+    display: grid;
+    grid-auto-rows: 1fr;
+    grid-template-rows: max-content;
+    grid-template-columns: 1fr;
+    gap: ${rhythm(3)} 0;
+  }
+`
 export default IndexPage
 
-export const IndexPageQuery = graphql`
+export const Query = graphql`
   query IndexPageQuery {
     allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
       posts: nodes {

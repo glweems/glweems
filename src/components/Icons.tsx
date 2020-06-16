@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
 import Img from 'gatsby-image'
+import React from 'react'
 import styled from 'styled-components'
 import useGhostQuery from '../graphql/GhostQuery'
 
@@ -11,7 +11,7 @@ const SVG = styled.svg`
 export const Ghost = () => {
   const ghost = useGhostQuery()
 
-  return <Img fixed={ghost.childImageSharp.fixed} alt="red-pacman-ghost" />
+  return <Img fixed={ghost?.childImageSharp?.fixed as any} alt="red-pacman-ghost" />
 }
 
 export const Logo = () => (

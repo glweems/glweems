@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import _ from 'lodash'
 import uuid from 'uuid/v4'
 import Tag from './Tag'
 

@@ -30,8 +30,8 @@ export default function SEO({ title, description, image, article, path, tags }: 
   }
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
-      <meta name="description" content={seo.description} />
+    <Helmet title={seo.title as any} titleTemplate={titleTemplate as any}>
+      <meta name="description" content={seo?.description as any} />
       <meta name="image" content={seo.image} />
       {seo.url && <meta property="og:url" content={seo.url} />}
       {(article ? true : null) && <meta property="og:type" content="article" />}

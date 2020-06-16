@@ -1,21 +1,24 @@
 import React from 'react'
-import uuid from 'uuid/v4'
+import { PostsQuery_allMarkdownRemark_nodes } from '../graphql/_types/PostsQuery'
 import PostPreview from './PostPreview'
-import { BlogPost } from '..'
 
 interface Props {
-  posts: BlogPost[]
+  posts: PostsQuery_allMarkdownRemark_nodes[]
 }
 
 export const BlogPosts: React.FC<Props> = ({ posts }) => (
   <>
-    {posts.map(({ excerpt, frontmatter }) => (
-      <PostPreview
-        key={uuid()}
-        {...frontmatter}
-        excerpt={excerpt}
-        fluid={frontmatter.thumbnail.childImageSharp.fluid}
-      />
-    ))}
+    {posts.map(({ excerpt, frontmatter }) => {
+      const { path, title, date, tags } = frontmatter as any
+      const props = {
+        path,
+        title,
+        date,
+        tags,
+        excerpt: excerpt ?? '',
+        fluid: frontmatter?.thumbnail?.childImageSharp?.fluid
+      }
+      return <PostPreview {...props} />
+    })}
   </>
 )
