@@ -1,19 +1,18 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import React from 'react';
-import ReactTooltip from 'react-tooltip';
 import GithubCalendar from 'react-github-calendar';
+import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
-import { graphql } from 'gatsby';
-import { Link, Container } from '../components/Common';
-import SideProjects from '../components/SideProjects';
-import Designs from '../components/Designs';
 import { BlogPosts } from '../components/BlogPosts';
+import { Container, Link } from '../components/Common';
+import Designs from '../components/Designs';
+import SideProjects from '../components/SideProjects';
+import useIndexPageQuery from '../graphql/useIndexPageQuery';
 import { primary } from '../theme';
 import { rhythm } from '../utils/typography';
-import { IndexPageQuery } from './_types/IndexPageQuery';
 
-const IndexPage = ({ data }: { data: IndexPageQuery }) => {
-  const { posts } = data.allMarkdownRemark;
+const IndexPage = () => {
+  const posts = useIndexPageQuery();
   return (
     <>
       <Container justifyContent="">
@@ -66,13 +65,3 @@ export const IndexMain = styled.main`
   }
 `;
 export default IndexPage;
-
-export const Query = graphql`
-  query IndexPageQuery {
-    allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
-      posts: nodes {
-        ...BlogPost
-      }
-    }
-  }
-`;
