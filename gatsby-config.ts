@@ -1,7 +1,7 @@
-import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config'
-import packageJson from './package.json'
-import dotenv from 'dotenv'
-dotenv.config()
+import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config';
+import packageJson from './package.json';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const config = {
   defaultTitle: 'Glweems',
@@ -27,7 +27,7 @@ const config = {
     email: 'gwgraphicdeesign@gmail.com',
     twitter: 'garrettlweems'
   }
-}
+};
 
 const siteMetadata = {
   title: `Garrett Weems`,
@@ -39,11 +39,21 @@ const siteMetadata = {
   siteUrl: config.url,
   twitterHandle: config.contact.twitter,
   disqusShortName: config.disqusShortName
-}
+};
 
 const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot }) => {
   return {
-    siteMetadata,
+    siteMetadata: {
+      title: `Garrett Weems`,
+      titleTemplate: `%s · Glweems`,
+      description: `Full stack web developer / graphic designer.`,
+      image: `./src/images/favicon.jpg`,
+      languageCode: `en`,
+      countryCode: `US`,
+      siteUrl: config.url,
+      twitterHandle: config.contact.twitter,
+      disqusShortName: config.disqusShortName
+    },
     plugins: [
       'gatsby-plugin-typescript',
       'gatsby-plugin-react-helmet',
@@ -51,8 +61,8 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot 
       'gatsby-plugin-styled-components',
       'gatsby-plugin-netlify',
       'gatsby-plugin-generate-types',
-      // 'gatsby-plugin-use-dark-mode',
-      // 'use-dark-mode',
+      'gatsby-plugin-use-dark-mode',
+      'use-dark-mode',
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
@@ -186,7 +196,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot 
       'gatsby-plugin-robots-txt',
       'gatsby-plugin-offline'
     ]
-  }
-}
+  };
+};
 
-export default gatsbyConfig
+export default gatsbyConfig;

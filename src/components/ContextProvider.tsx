@@ -1,3 +1,4 @@
+import useDarkMode from 'use-dark-mode';
 import React, { createContext } from 'react';
 import { DefaultTheme } from 'styled-components';
 import useTheme from '../hooks/useTheme';
@@ -16,21 +17,6 @@ const ProviderComposer = ({ contexts, children }: PCP): JSX.Element =>
       children: kids
     });
   }, children);
-
-type ThemeContext = {
-  theme: DefaultTheme;
-  toggleTheme: () => void | any;
-};
-
-export const ThemeContext = createContext<ThemeContext>({
-  theme: { mode: 'dark' },
-  toggleTheme: () => null
-});
-
-export const ThemeProvider = ({ children }: any) => {
-  const { theme, toggleTheme } = useTheme();
-  return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>;
-};
 
 type NavContext = {
   isNavOpen: boolean | null;
@@ -56,16 +42,18 @@ interface Props {
 
 export const wrapRootElement: React.FC<Props> = ({ element }) => {
   return (
-    <ProviderComposer contexts={[<ThemeProvider key="theme" />, <NavProvider key="nav" />]}>
+    <ProviderComposer contexts={[<StylesProvider key="theme" />, <NavProvider key="nav" />]}>
       <>{element}</>
     </ProviderComposer>
   );
 };
 
-const StylesProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { theme } = React.useContext(ThemeContext);
+const StylesProvider: React.FC = ({ children }) => {
+  const { value, toggle, enable, disable } = useDarkMode();
+  const mode = value ? 'dark' : 'light';
+
   return (
-    <StyledThemeProvider theme={theme}>
+    <StyledThemeProvider theme={{ isDarkMode: value, isLightMode: !value, mode, toggle, enable, disable }}>
       <>
         <GlobalStyle />
         {children}

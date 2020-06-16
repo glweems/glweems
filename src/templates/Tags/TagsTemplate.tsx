@@ -1,7 +1,7 @@
 // Components
 import { graphql } from 'gatsby';
 import React from 'react';
-import { BlogPosts } from '../../components/BlogPosts';
+import BlogPosts from '../../components/BlogPosts';
 import { Container } from '../../components/Common';
 import { TagBar } from '../../components/TagBar';
 

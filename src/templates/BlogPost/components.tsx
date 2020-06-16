@@ -21,7 +21,7 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
         <Date>
           {frontmatter.date} - {timeToRead} min read
         </Date>
-        <Tags items={frontmatter.tags} />
+        <Tags tags={frontmatter.tags} />
       </div>
       <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
     </div>

@@ -1,13 +1,12 @@
+import Img from 'gatsby-image';
 import React from 'react';
 import { PostsQuery_allMarkdownRemark_nodes } from '../graphql/_types/PostsQuery';
-import PostPreview from './PostPreview';
-
-interface Props {
+import Card, { Cards } from './Card';
+interface BlogPostsProps {
   posts: PostsQuery_allMarkdownRemark_nodes[];
 }
-
-export const BlogPosts: React.FC<Props> = ({ posts }) => (
-  <>
+const BlogPosts: React.FC<BlogPostsProps> = ({ posts }) => (
+  <Cards>
     {posts.map(({ excerpt, frontmatter }) => {
       const { path, title, date, tags } = frontmatter as any;
       const props = {
@@ -18,7 +17,18 @@ export const BlogPosts: React.FC<Props> = ({ posts }) => (
         excerpt: excerpt ?? '',
         fluid: frontmatter?.thumbnail?.childImageSharp?.fluid
       };
-      return <PostPreview {...props} />;
+      return (
+        <Card
+          key={path}
+          title={title}
+          subtitle={excerpt ?? ''}
+          link={path}
+          tags={tags}
+          Image={<Img fluid={frontmatter?.thumbnail?.childImageSharp?.fluid} />}
+        />
+      );
     })}
-  </>
+  </Cards>
 );
+
+export default BlogPosts;

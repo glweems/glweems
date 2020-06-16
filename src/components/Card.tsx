@@ -3,8 +3,38 @@ import React from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import Tags from './Tags';
-import { rootBg, borderRadius, text, media } from '../theme';
+import { rootBg, borderRadius, text, media, rhythm } from '../theme';
 import { Link } from './Common';
+
+export interface CardProps {
+  title: string;
+  subtitle: string;
+  link?: string;
+  tags: string[];
+  children?: React.ReactNode;
+  Image?: React.ReactElement;
+}
+
+export default function Card({ title, subtitle, link, tags, children, Image }: CardProps) {
+  const go = () => (link ? navigate(link) : null);
+
+  return (
+    <Wrapper onClick={go}>
+      <div className="header">
+        <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
+      </div>
+
+      {Image || Image}
+
+      <div className="body">
+        {subtitle && <p className="header">{subtitle}</p>}
+        {children}
+      </div>
+
+      {tags && <Tags tags={tags} />}
+    </Wrapper>
+  );
+}
 
 export const Wrapper = styled.div`
   display: grid;
@@ -21,83 +51,52 @@ export const Wrapper = styled.div`
     }
   }
   transition: all 0.25s ease 0s;
-`;
-
-export const Header = styled.div`
-  padding: 0 0.5em;
-  overflow: hidden;
-  .title {
-    margin-bottom: 0.5em;
-    padding: 0.5em 0.25em;
+  .header {
+    padding: 0 0.5em;
     overflow: hidden;
-    font-size: 1.25em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
+    .title {
+      margin-bottom: 0.5em;
+      padding: 0.5em 0.25em;
+      overflow: hidden;
+      font-size: 1.25em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      cursor: pointer;
+    }
+  }
+  .body {
+    padding: 1em 0.5em;
+
+    .subtitle {
+      margin-bottom: 0;
+    }
+  }
+
+  .tags {
+    margin: 0;
+    padding: 0 0.5em 0.25em 0.5em;
+    overflow: hidden;
+    color: ${text};
   }
 `;
 
-export const Body = styled.div`
-  padding: 1em 0.5em;
+export const Header = styled.div``;
 
-  p {
-    margin-bottom: 0;
-  }
-`;
+export const Body = styled.div``;
 
-export const Footer = styled.div`
-  margin: 0;
-  padding: 0 0.5em 0.25em 0.5em;
-  overflow: hidden;
-  color: ${text};
-`;
-
-interface Card {
-  title: string;
-  subtitle: string;
-  link?: string;
-  tags: string[];
-  children?: React.ReactNode;
-  Image?: React.ReactElement;
-}
-
-const Card = ({
-  title = 'Card Title',
-  subtitle = 'This is the cards subtitle',
-  link,
-  tags = ['one', 'two', 'three'],
-  children,
-  Image
-}: Card) => {
-  const go = () => (link ? navigate(link) : null);
-
-  return (
-    <Wrapper onClick={go}>
-      <Header>
-        <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
-      </Header>
-
-      {Image || Image}
-
-      <Body>
-        <p>{subtitle}</p>
-        {children}
-      </Body>
-      <Footer>
-        <Tags items={tags} />
-      </Footer>
-    </Wrapper>
-  );
-};
-
-export default Card;
+export const Footer = styled.div``;
 
 export const Cards = styled.div`
   display: grid;
-  grid-template-rows: 1fr;
+  grid-auto-rows: 1fr;
   grid-template-columns: 1fr;
-  gap: 1.5em;
+  gap: ${rhythm(1)};
+
   ${media.greaterThan('md')`
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-`}
+      grid-template-columns: repeat(2, 1fr);
+    `}
+
+  ${media.greaterThan('lg')`
+      grid-template-columns: repeat(3, 1fr);
+    `}
 `;

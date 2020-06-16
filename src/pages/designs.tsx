@@ -1,6 +1,8 @@
 import React from 'react';
-import Designs from '../components/Designs';
 import { Container } from '../components/Common';
+import LoadingSpinner from '../components/Common/LoadingSpinner';
+import loadable from '@loadable/component';
+const Designs = loadable(() => import('../components/Designs'), { fallback: <LoadingSpinner /> });
 
 export default () => (
   <Container>

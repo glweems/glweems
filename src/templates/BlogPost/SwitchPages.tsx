@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, faHandPointLeft, faHandPointRight } from '@fortawesome/free-solid-svg-icons';
-import { Link } from '../../components/Common';
+import { Link, Container } from '../../components/Common';
 import { muted } from '../../theme';
 import { rhythm } from '../../utils/typography';
 
@@ -38,10 +38,12 @@ const PostLink: React.FC<PostLinkProps> = ({ info, direction, icon }) => {
 
 export const SwitchPages: React.FC<Props> = ({ config: { prev, next } }) => {
   return (
-    <Wrapper>
-      <PostLink info={prev} direction="prev" icon={faHandPointLeft} />
-      <PostLink info={next} direction="next" icon={faHandPointRight} />
-    </Wrapper>
+    <Container>
+      <Wrapper>
+        <PostLink info={prev} direction="prev" icon={faHandPointLeft} />
+        <PostLink info={next} direction="next" icon={faHandPointRight} />
+      </Wrapper>
+    </Container>
   );
 };
 

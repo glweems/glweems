@@ -1,19 +1,19 @@
-import * as React from 'react';
 import { graphql } from 'gatsby';
-import { Frontmatter } from '../..';
+import * as React from 'react';
+import { useTheme } from 'styled-components';
+import { Container } from '../../components/Common';
 import SEO from '../../components/SEO';
-import { Article } from './styles';
-import { ThemeContext } from '../../components/ContextProvider';
-import { SwitchPages, PostDirection } from './SwitchPages';
-import { Header, ShareButtons, Comments } from './components';
 import { HtmlAst } from '../../utils/HtmlAst';
+import { Comments, Header, ShareButtons } from './components';
+import { Article } from './styles';
+import { PostDirection, SwitchPages } from './SwitchPages';
 
 interface Post {
   id: string;
   timeToRead: number;
   excerpt: string;
   htmlAst: object;
-  frontmatter: Frontmatter;
+  frontmatter: any;
   url: string;
   disqusIdentifier: string;
 }
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const BlogTemplate: React.FC<Props> = ({ data: { post, prev, next, site } }) => {
-  const { theme } = React.useContext(ThemeContext);
+  const { mode } = useTheme();
   const { twitterHandle, disqusShortName } = site.siteMetadata;
   const { url, disqusIdentifier } = post;
   const { title, path, tags, subtitle: description, thumbnail } = post.frontmatter;
@@ -39,13 +39,15 @@ const BlogTemplate: React.FC<Props> = ({ data: { post, prev, next, site } }) => 
   return (
     <>
       <SEO config={seoConfig} />
-      <Article className={theme.mode}>
+      <Article className={mode}>
         <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
         <HtmlAst elements={post.htmlAst} />
       </Article>
-      <SwitchPages config={{ prev, next }} />
-      <ShareButtons config={shareConfig} />
-      <Comments config={disqusConfig} />
+      <Container style={{ maxWidth: '720px', margin: '0 auto' }}>
+        <SwitchPages config={{ prev, next }} />
+        <ShareButtons config={shareConfig} />
+        <Comments config={disqusConfig} />
+      </Container>
     </>
   );
 };

@@ -3,18 +3,21 @@ import styled from 'styled-components';
 import uuid from 'uuid/v4';
 import Tag from './Tag';
 
-interface Props {
-  items: string[];
+interface TagsProps {
+  tags?: string[];
   className?: string;
   limit?: number;
 }
-const Tags: React.FC<Props> = ({ items, className, limit }) => (
-  <Wrapper className={`tags ${className}`}>
-    {items.slice(0, limit || items.length).map(tag => (
-      <Tag key={uuid()} tag={tag} />
-    ))}
-  </Wrapper>
-);
+const Tags: React.FC<TagsProps> = ({ tags, className, limit }) => {
+  if (!tags) return null;
+  return (
+    <Wrapper className={`tags ${className}`}>
+      {tags.slice(0, limit || tags.length).map(tag => (
+        <Tag key={tag} tag={tag} />
+      ))}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   display: flex;

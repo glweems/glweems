@@ -1,11 +1,12 @@
 import Typography, { TypographyOptions } from 'typography';
 import CodePlugin from 'typography-plugin-code';
-
+import './style.css';
 const theme: TypographyOptions = {
   baseFontSize: '16px',
   baseLineHeight: 1.5,
   headerFontFamily: [
     'Montserrat',
+    'MADE Dillan Regular',
     '-apple-system',
     'BlinkMacSystemFont',
     'Segoe UI',

@@ -15,6 +15,7 @@ const useSEOQuery = () => {
       }
     }
   `);
+
   const defaultTitle = data.site?.siteMetadata?.defaultTitle;
   const titleTemplate = data.site?.siteMetadata?.titleTemplate;
   const defaultDescription = data.site?.siteMetadata?.defaultDescription;

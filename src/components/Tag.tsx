@@ -22,6 +22,8 @@ const Wrapper = styled(Link)`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
     'Helvetica Neue', sans-serif;
   line-height: 22px;
+  white-space: nowrap;
+  text-transform: lowercase;
   text-decoration: none;
   border-radius: 3px;
 `;

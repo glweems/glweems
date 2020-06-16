@@ -110,6 +110,7 @@ export const buttonStyles = css`
 `;
 
 export const Main = styled.main`
+  min-height: calc(100vh - ${navbarHeight});
   padding-top: ${rhythm(1)};
 `;
 
@@ -152,6 +153,14 @@ export const GlobalStyle = createGlobalStyle`
   input[type='button'],
   input[type='submit'] {
     ${buttonStyles}
+  }
+
+  .light-mode {
+    background-color: #fff;
+  }
+
+  .dark-mode {
+    /* background-color: #0f121b; */
   }
 
   html {
@@ -384,7 +393,7 @@ const darkModeSyntax = css`
   }
 
   .token.important {
-    color: #c4b9fe;
+    color: #8a75f5;
   }
 
   .token.entity {
@@ -392,7 +401,7 @@ const darkModeSyntax = css`
   }
 
   pre > code.highlight {
-    outline: 0.4em solid #8a75f5;
+    outline: 0.4em solid #c4b9fe;
     outline-offset: 0.4em;
   }
 

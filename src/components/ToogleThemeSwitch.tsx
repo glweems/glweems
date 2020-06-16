@@ -1,24 +1,23 @@
 /* eslint-disable import/no-named-default */
 import React from 'react';
-import { ThemeContext as StyledThemeContext } from 'styled-components';
 import Switch from 'react-switch';
-import { ThemeContext } from './ContextProvider';
-import Sun from '../assets/sun.svg';
+import { useTheme } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
 import Moon from '../assets/moon.svg';
+import Sun from '../assets/sun.svg';
 
 interface Props {
   className?: string;
 }
 
 export const ToogleThemeSwitch: React.FC<Props> = ({ className }) => {
-  const { mode } = React.useContext(StyledThemeContext);
-  const { toggleTheme } = React.useContext(ThemeContext);
+  const { isDarkMode, toggle } = useTheme();
 
   return (
     <Switch
       className={className}
-      onChange={toggleTheme}
-      checked={mode === 'dark'}
+      onChange={toggle}
+      checked={isDarkMode}
       onColor="#222"
       offColor="#333"
       checkedIcon={<Moon />}
