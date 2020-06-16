@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -8,16 +8,16 @@ import {
   TwitterIcon,
   RedditShareButton,
   RedditIcon
-} from 'react-share'
-import { Flex } from '../../components/Common'
+} from 'react-share';
+import { Flex } from '../../components/Common';
 
 interface Props {
   config: {
-    url: string
-    twitterHandle: string
-    title: string
-    tags: string[]
-  }
+    url: string;
+    twitterHandle: string;
+    title: string;
+    tags: string[];
+  };
 }
 
 const iconConfig = {
@@ -25,7 +25,7 @@ const iconConfig = {
   round: false,
   borderRadius: 2,
   iconBgStyle: { fill: 'transparent' }
-}
+};
 export const ShareButtons: React.FC<Props> = ({ config: { twitterHandle, url, title, tags } }) => (
   <Flex>
     <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
@@ -44,6 +44,6 @@ export const ShareButtons: React.FC<Props> = ({ config: { twitterHandle, url, ti
       <RedditIcon logoFillColor="#5f99cf" {...iconConfig} />
     </RedditShareButton>
   </Flex>
-)
+);
 
-export default ShareButtons
+export default ShareButtons;

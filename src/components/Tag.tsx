@@ -1,16 +1,16 @@
-import React, { ReactElement } from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import { secondaryTheme } from '../theme'
-import kebabCase from 'lodash/kebabCase'
+import React, { ReactElement } from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import { secondaryTheme } from '../theme';
+import kebabCase from 'lodash/kebabCase';
 
 interface TagProps {
-  tag: string
-  prefix?: string
+  tag: string;
+  prefix?: string;
 }
 
 export default function Tag({ tag, prefix = '/tags/' }: TagProps): ReactElement {
-  return <Wrapper to={`${prefix}${kebabCase(tag)}`}>{tag}</Wrapper>
+  return <Wrapper to={`${prefix}${kebabCase(tag)}`}>{tag}</Wrapper>;
 }
 
 const Wrapper = styled(Link)`
@@ -24,4 +24,4 @@ const Wrapper = styled(Link)`
   line-height: 22px;
   text-decoration: none;
   border-radius: 3px;
-`
+`;

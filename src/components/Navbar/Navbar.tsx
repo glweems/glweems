@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { Link, ToogleThemeSwitch } from '../Common'
-import { Navigation, Links } from './NavbarStyles'
+import * as React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { Link, ToogleThemeSwitch } from '../Common';
+import { Navigation, Links } from './NavbarStyles';
 
 const Navbar: React.FC = () => (
   <Navigation>
@@ -22,6 +22,6 @@ const Navbar: React.FC = () => (
     </Links>
     <ToogleThemeSwitch />
   </Navigation>
-)
+);
 
-export default Navbar
+export default Navbar;

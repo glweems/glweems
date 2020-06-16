@@ -1,17 +1,17 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
-import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics'
+import React from 'react';
+import { Link as GatsbyLink } from 'gatsby';
+import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
 
 interface Props {
-  children?: React.ReactNode
-  href?: string
-  to: string
-  [key: string]: any
-  partiallyActive?: boolean
-  activeClassName?: string
-  className?: string
-  unstyled?: boolean
+  children?: React.ReactNode;
+  href?: string;
+  to: string;
+  [key: string]: any;
+  partiallyActive?: boolean;
+  activeClassName?: string;
+  className?: string;
+  unstyled?: boolean;
 }
 
 export const Link: React.FC<Props> = ({
@@ -29,12 +29,12 @@ export const Link: React.FC<Props> = ({
       <GoogleLink href={href} target="_blank" className="link" {...other}>
         {children}
       </GoogleLink>
-    )
+    );
   }
 
-  const internal = /^\/(?!\/)/.test(to)
+  const internal = /^\/(?!\/)/.test(to);
   // Use Gatsby Link for internal links, and <a> for others
-  const displayedClassName = unstyled ? className : `link ${className}`
+  const displayedClassName = unstyled ? className : `link ${className}`;
 
   return internal ? (
     <GatsbyLink
@@ -50,5 +50,5 @@ export const Link: React.FC<Props> = ({
     <GoogleLink href={to} target="_blank" className={displayedClassName} {...other}>
       {children}
     </GoogleLink>
-  )
-}
+  );
+};

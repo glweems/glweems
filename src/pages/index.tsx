@@ -1,19 +1,19 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import React from 'react'
-import ReactTooltip from 'react-tooltip'
-import GithubCalendar from 'react-github-calendar'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import { Link, Container } from '../components/Common'
-import SideProjects from '../components/SideProjects'
-import Designs from '../components/Designs'
-import { BlogPosts } from '../components/BlogPosts'
-import { primary } from '../theme'
-import { rhythm } from '../utils/typography'
-import { IndexPageQuery } from './_types/IndexPageQuery'
+import React from 'react';
+import ReactTooltip from 'react-tooltip';
+import GithubCalendar from 'react-github-calendar';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { Link, Container } from '../components/Common';
+import SideProjects from '../components/SideProjects';
+import Designs from '../components/Designs';
+import { BlogPosts } from '../components/BlogPosts';
+import { primary } from '../theme';
+import { rhythm } from '../utils/typography';
+import { IndexPageQuery } from './_types/IndexPageQuery';
 
 const IndexPage = ({ data }: { data: IndexPageQuery }) => {
-  const { posts } = data.allMarkdownRemark
+  const { posts } = data.allMarkdownRemark;
   return (
     <>
       <Container justifyContent="">
@@ -47,14 +47,14 @@ const IndexPage = ({ data }: { data: IndexPageQuery }) => {
         <ReactTooltip delayShow={35} html />
       </GithubCalendar>
     </>
-  )
-}
+  );
+};
 
 const FadedTitle = styled.h2`
   color: ${primary};
   font-size: 2em;
   opacity: 0.5;
-`
+`;
 
 export const IndexMain = styled.main`
   .blog {
@@ -64,8 +64,8 @@ export const IndexMain = styled.main`
     grid-template-columns: 1fr;
     gap: ${rhythm(3)} 0;
   }
-`
-export default IndexPage
+`;
+export default IndexPage;
 
 export const Query = graphql`
   query IndexPageQuery {
@@ -75,4 +75,4 @@ export const Query = graphql`
       }
     }
   }
-`
+`;

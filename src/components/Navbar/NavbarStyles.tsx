@@ -1,13 +1,13 @@
-import styled from 'styled-components'
-import { animated } from 'react-spring'
-import * as config from '../../theme'
+import styled from 'styled-components';
+import { animated } from 'react-spring';
+import * as config from '../../theme';
 
 export const Sticky = styled.nav`
   position: sticky;
   top: 0;
   left: 0;
   z-index: 100;
-`
+`;
 
 export const NavbarStyles = styled.div`
   width: 100%;
@@ -20,7 +20,7 @@ export const NavbarStyles = styled.div`
       display: none;
     `}
   }
-`
+`;
 
 export const Navigation = styled(Sticky)`
   display: grid;
@@ -45,13 +45,13 @@ export const Navigation = styled(Sticky)`
     text-transform: uppercase;
     cursor: pointer;
   }
-`
+`;
 
 export const Links = styled.div`
   a:not(:last-child) {
     margin-right: 1em;
   }
-`
+`;
 
 export const BurgerStyles = styled.div`
   position: relative;
@@ -84,7 +84,7 @@ export const BurgerStyles = styled.div`
   ${config.media.greaterThan('md')`
       display: none;
   `}
-`
+`;
 
 export const NavLinks = styled(animated.ul)`
   justify-self: end;
@@ -106,7 +106,7 @@ export const NavLinks = styled(animated.ul)`
   .nav-item:last-child {
     padding: 1em;
   }
-`
+`;
 
 export const DropdownWrapper = styled(animated.div)`
   margin: 1em;
@@ -119,4 +119,4 @@ export const DropdownWrapper = styled(animated.div)`
     float: right;
   }
   border-radius: ${config.borderRadius};
-`
+`;

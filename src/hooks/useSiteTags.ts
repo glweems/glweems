@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import _ from 'lodash'
+import { graphql, useStaticQuery } from 'gatsby';
+import _ from 'lodash';
 
 export default function useSiteTags() {
   const { blogTags, designTags, sideProjectTags } = useStaticQuery(graphql`
@@ -23,18 +23,18 @@ export default function useSiteTags() {
         }
       }
     }
-  `)
+  `);
 
   const tags = [...blogTags.group, ...designTags.group, ...sideProjectTags.group].reduce((acc, d) => {
-    const found = acc.find((a: { tag: string; qty: number }) => a.tag === d.tag)
+    const found = acc.find((a: { tag: string; qty: number }) => a.tag === d.tag);
 
     if (found) {
-      found.tag = _.kebabCase(found.tag)
+      found.tag = _.kebabCase(found.tag);
     }
-    acc.push({ tag: _.kebabCase(d.tag), qty: d.qty })
+    acc.push({ tag: _.kebabCase(d.tag), qty: d.qty });
 
-    return acc
-  }, [])
+    return acc;
+  }, []);
 
-  return { tags, qty: tags.length }
+  return { tags, qty: tags.length };
 }

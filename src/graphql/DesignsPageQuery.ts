@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import { DesignsPageQuery } from './_types/DesignsPageQuery'
+import { graphql, useStaticQuery } from 'gatsby';
+import { DesignsPageQuery } from './_types/DesignsPageQuery';
 
 const UseDesignsPageQuery = () =>
   useStaticQuery<DesignsPageQuery>(graphql`
@@ -23,6 +23,6 @@ const UseDesignsPageQuery = () =>
         }
       }
     }
-  `)
+  `);
 
-export default UseDesignsPageQuery
+export default UseDesignsPageQuery;

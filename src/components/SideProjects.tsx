@@ -1,15 +1,15 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import { Link } from './Common'
-import Card, { Cards } from './Card'
-import useSideProjectsQuery from '../graphql/SideProjectsQuery'
+import React from 'react';
+import Img from 'gatsby-image';
+import { Link } from './Common';
+import Card, { Cards } from './Card';
+import useSideProjectsQuery from '../graphql/SideProjectsQuery';
 
 interface Props {
-  limit?: number | false
+  limit?: number | false;
 }
 
 const Websites = ({ limit = false }: Props) => {
-  const websites = useSideProjectsQuery()
+  const websites = useSideProjectsQuery();
 
   return (
     <Cards>
@@ -25,7 +25,7 @@ const Websites = ({ limit = false }: Props) => {
         </Card>
       ))}
     </Cards>
-  )
-}
+  );
+};
 
-export default Websites
+export default Websites;

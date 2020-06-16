@@ -1,10 +1,10 @@
-import * as React from 'react'
-import useContactForm from '../../hooks/useContactForm'
-import { Form } from './ContactFormStyles'
-import { Button } from '../Common'
+import * as React from 'react';
+import useContactForm from '../../hooks/useContactForm';
+import { Form } from './ContactFormStyles';
+import { Button } from '../Common';
 
 const ContactForm = () => {
-  const { inputs, handleChange, handleSubmit } = useContactForm()
+  const { inputs, handleChange, handleSubmit } = useContactForm();
   return (
     <Form data-netlify="true" onSubmit={handleSubmit}>
       <div>
@@ -23,7 +23,7 @@ const ContactForm = () => {
         <Button type="submit">Sign Up</Button>
       </div>
     </Form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

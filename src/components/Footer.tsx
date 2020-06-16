@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from './Common'
-import { accounts } from '../utils/data'
-import { media, rhythm, borderColor, rootBg } from '../theme'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from './Common';
+import { accounts } from '../utils/data';
+import { media, rhythm, borderColor, rootBg } from '../theme';
 
-const { github, linkedin, medium, instagram, behance } = accounts
+const { github, linkedin, medium, instagram, behance } = accounts;
 
 const FooterStyles = styled.footer`
   display: grid;
@@ -24,7 +24,7 @@ const FooterStyles = styled.footer`
     grid-template-rows: auto;
     grid-template-columns: repeat(5, 1fr);
   `};
-`
+`;
 
 const Footer = () => (
   <FooterStyles>
@@ -36,6 +36,6 @@ const Footer = () => (
     <Link to={instagram.link}>{instagram.name}</Link>
     <Link to={behance.link}>{behance.name}</Link>
   </FooterStyles>
-)
+);
 
-export default Footer
+export default Footer;

@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { bg, rootBg } from '../../theme'
+import styled from 'styled-components';
+import { bg, rootBg } from '../../theme';
 
 export const Button = styled.button`
   display: inline-block;
@@ -24,4 +24,4 @@ export const Button = styled.button`
   :disabled:hover {
     transition: none;
   }
-`
+`;

@@ -1,28 +1,28 @@
-import Img from 'gatsby-image'
-import React from 'react'
-import styled from 'styled-components'
-import { Date, Link } from './Common'
-import Tags from './Tags'
+import Img from 'gatsby-image';
+import React from 'react';
+import styled from 'styled-components';
+import { Date, Link } from './Common';
+import Tags from './Tags';
 
 const Title = styled.h2`
   margin: 0;
   line-height: 28px;
-`
+`;
 
 const Excerpt = styled.p`
   grid-area: excerpt;
   align-self: flex-start;
   margin-bottom: 0;
   font-size: 15px;
-`
+`;
 
 interface BlogPostPreviewProps {
-  path: string
-  title: string
-  date: any
-  tags: string[]
-  excerpt: string
-  fluid?: any
+  path: string;
+  title: string;
+  date: any;
+  tags: string[];
+  excerpt: string;
+  fluid?: any;
 }
 
 export const BlogPostPreview: React.FC<BlogPostPreviewProps> = ({ path, title, date, tags, excerpt, fluid }) => (
@@ -41,7 +41,7 @@ export const BlogPostPreview: React.FC<BlogPostPreviewProps> = ({ path, title, d
       <Img fluid={fluid as any} />
     </Link>
   </Wrapper>
-)
+);
 
 const Wrapper = styled.div`
   display: grid;
@@ -86,5 +86,5 @@ const Wrapper = styled.div`
     justify-self: flex-start;
     margin-top: 1em;
   }
-`
-export default BlogPostPreview
+`;
+export default BlogPostPreview;

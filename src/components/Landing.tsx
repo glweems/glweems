@@ -1,16 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { animated, useSpring } from 'react-spring'
-import theme from 'styled-theming'
-import { darken } from 'polished'
-import { Ghost } from './Icons'
-import { SocialIcon, Container, Button, Link } from './Common'
-import { accounts } from '../utils/data'
-import { rhythm } from '../utils/typography'
-import { blue, base, yellow, purple, red, navbarHeight } from '../theme'
+import React from 'react';
+import styled from 'styled-components';
+import { animated, useSpring } from 'react-spring';
+import theme from 'styled-theming';
+import { darken } from 'polished';
+import { Ghost } from './Icons';
+import { SocialIcon, Container, Button, Link } from './Common';
+import { accounts } from '../utils/data';
+import { rhythm } from '../utils/typography';
+import { blue, base, yellow, purple, red, navbarHeight } from '../theme';
 
-const wrapperBg = theme('mode', { light: yellow, dark: purple })
-const garrettWeems = theme('mode', { light: blue, dark: red })
+const wrapperBg = theme('mode', { light: yellow, dark: purple });
+const garrettWeems = theme('mode', { light: blue, dark: red });
 
 const Wrapper = styled(Container)`
   height: calc(100vh - ${navbarHeight});
@@ -52,15 +52,15 @@ const Wrapper = styled(Container)`
     background: ${blue};
     border-color: ${darken(0.05, blue)};
   }
-`
+`;
 
-const AnimatedWrapper = animated(Wrapper)
+const AnimatedWrapper = animated(Wrapper);
 
 const Landing = (): React.ReactElement => {
   const animation = useSpring({
     from: { transform: 'translate3d(0, 0, 0)', opacity: 0 },
     to: { transform: 'translate3d(0, 0, 0)', opacity: 1 }
-  })
+  });
 
   return (
     <AnimatedWrapper style={animation}>
@@ -83,7 +83,7 @@ const Landing = (): React.ReactElement => {
         <SocialIcon size="2x" account={accounts.behance} />
       </animated.div>
     </AnimatedWrapper>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

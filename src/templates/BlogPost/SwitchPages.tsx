@@ -1,23 +1,23 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome'
-import { IconDefinition, faHandPointLeft, faHandPointRight } from '@fortawesome/free-solid-svg-icons'
-import { Link } from '../../components/Common'
-import { muted } from '../../theme'
-import { rhythm } from '../../utils/typography'
+import * as React from 'react';
+import styled from 'styled-components';
+import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
+import { IconDefinition, faHandPointLeft, faHandPointRight } from '@fortawesome/free-solid-svg-icons';
+import { Link } from '../../components/Common';
+import { muted } from '../../theme';
+import { rhythm } from '../../utils/typography';
 
-export type PostDirection = { frontmatter: { title: string; path: string } }
+export type PostDirection = { frontmatter: { title: string; path: string } };
 
 interface Props {
   config: {
-    prev: PostDirection
-    next: PostDirection
-  }
+    prev: PostDirection;
+    next: PostDirection;
+  };
 }
 interface PostLinkProps {
-  info: PostDirection
-  direction: 'prev' | 'next'
-  icon: IconDefinition
+  info: PostDirection;
+  direction: 'prev' | 'next';
+  icon: IconDefinition;
 }
 
 const PostLink: React.FC<PostLinkProps> = ({ info, direction, icon }) => {
@@ -33,8 +33,8 @@ const PostLink: React.FC<PostLinkProps> = ({ info, direction, icon }) => {
     </div>
   ) : (
     <div />
-  )
-}
+  );
+};
 
 export const SwitchPages: React.FC<Props> = ({ config: { prev, next } }) => {
   return (
@@ -42,8 +42,8 @@ export const SwitchPages: React.FC<Props> = ({ config: { prev, next } }) => {
       <PostLink info={prev} direction="prev" icon={faHandPointLeft} />
       <PostLink info={next} direction="next" icon={faHandPointRight} />
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   display: grid;
@@ -79,4 +79,4 @@ const Wrapper = styled.div`
       margin-left: ${rhythm(0.5)};
     }
   }
-`
+`;

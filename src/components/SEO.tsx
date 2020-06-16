@@ -1,33 +1,33 @@
-import * as React from 'react'
-import { Helmet } from 'react-helmet'
-import useSEOQuery from '../graphql/SEOQuery'
+import * as React from 'react';
+import { Helmet } from 'react-helmet';
+import useSEOQuery from '../graphql/SEOQuery';
 
 interface SEOProps {
-  title?: string
-  description?: string
-  image?: string
-  path?: string
-  article?: boolean
-  tags?: string[]
+  title?: string;
+  description?: string;
+  image?: string;
+  path?: string;
+  article?: boolean;
+  tags?: string[];
   config: {
-    title?: string
-    description?: string
-    image?: string
-    path?: string
-    article?: boolean
-    tags?: string[]
-  }
+    title?: string;
+    description?: string;
+    image?: string;
+    path?: string;
+    article?: boolean;
+    tags?: string[];
+  };
 }
 
 export default function SEO({ title, description, image, article, path, tags }: SEOProps) {
-  const { defaultTitle, titleTemplate, defaultDescription, url, defaultImage } = useSEOQuery()
+  const { defaultTitle, titleTemplate, defaultDescription, url, defaultImage } = useSEOQuery();
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${url}${image || defaultImage}`,
     url: `${url}${path || '/'}`
-  }
+  };
 
   return (
     <Helmet title={seo.title as any} titleTemplate={titleTemplate as any}>
@@ -43,14 +43,14 @@ export default function SEO({ title, description, image, article, path, tags }: 
       {seo.description && <meta name="twitter:description" content={seo.description} />}
       {seo.image && <meta name="twitter:image" content={seo.image} />}
     </Helmet>
-  )
+  );
 }
 
 const defaultConfig = {
   article: false,
   tags: ['designer', 'developer', 'react', 'gatsby']
-}
+};
 
 SEO.defaultProps = {
   config: defaultConfig
-}
+};

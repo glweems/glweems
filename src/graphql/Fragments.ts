@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
@@ -11,7 +11,7 @@ export const FixedImage = graphql`
       originalName
     }
   }
-`
+`;
 
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
@@ -30,7 +30,7 @@ export const FluidImage = graphql`
       srcSet
     }
   }
-`
+`;
 
 export const Frontmatter = graphql`
   fragment Frontmatter on MarkdownRemark {
@@ -52,7 +52,7 @@ export const Frontmatter = graphql`
       }
     }
   }
-`
+`;
 
 export const BlogPost = graphql`
   fragment BlogPost on MarkdownRemark {
@@ -61,4 +61,4 @@ export const BlogPost = graphql`
     timeToRead
     ...Frontmatter
   }
-`
+`;

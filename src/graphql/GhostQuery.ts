@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import { GhostQuery } from './_types/GhostQuery'
+import { graphql, useStaticQuery } from 'gatsby';
+import { GhostQuery } from './_types/GhostQuery';
 
 const useGhostQuery = () => {
   const { ghost } = useStaticQuery<GhostQuery>(graphql`
@@ -21,8 +21,8 @@ const useGhostQuery = () => {
         }
       }
     }
-  `)
-  return ghost
-}
+  `);
+  return ghost;
+};
 
-export default useGhostQuery
+export default useGhostQuery;

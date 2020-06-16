@@ -1,21 +1,21 @@
 // Components
-import { graphql } from 'gatsby'
-import React from 'react'
-import { BlogPosts } from '../../components/BlogPosts'
-import { Container } from '../../components/Common'
-import { TagBar } from '../../components/TagBar'
+import { graphql } from 'gatsby';
+import React from 'react';
+import { BlogPosts } from '../../components/BlogPosts';
+import { Container } from '../../components/Common';
+import { TagBar } from '../../components/TagBar';
 
 interface Props extends TagPageQuery {
   pageContext: {
-    tag: string
-  }
+    tag: string;
+  };
 }
 
 interface SectionProps {
-  name: string
-  tag: string
-  qty: number
-  children: React.ReactNode
+  name: string;
+  tag: string;
+  qty: number;
+  children: React.ReactNode;
 }
 const Section: React.FC<SectionProps> = ({ tag, qty, name, children }) => (
   <section>
@@ -24,10 +24,10 @@ const Section: React.FC<SectionProps> = ({ tag, qty, name, children }) => (
     </h2>
     {children}
   </section>
-)
+);
 
 const Tags: React.FC<Props> = ({ pageContext, data }) => {
-  const { tag } = pageContext
+  const { tag } = pageContext;
 
   return (
     <>
@@ -40,18 +40,18 @@ const Tags: React.FC<Props> = ({ pageContext, data }) => {
         <div></div>
       </Container>
     </>
-  )
-}
+  );
+};
 
-export default Tags
+export default Tags;
 
 interface TagPageQuery {
   data: {
     matchedPosts: {
-      totalCount: number
-      posts: any[]
-    }
-  }
+      totalCount: number;
+      posts: any[];
+    };
+  };
 }
 
 export const TagPageQuery = graphql`
@@ -83,4 +83,4 @@ export const TagPageQuery = graphql`
       }
     }
   }
-`
+`;

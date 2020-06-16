@@ -1,5 +1,5 @@
-import React from 'react'
-import { Container } from '../components/Common'
+import React from 'react';
+import { Container } from '../components/Common';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -24,7 +24,7 @@ export const AboutPage: React.FC = () => {
         meetups.
       </p>
     </Container>
-  )
-}
+  );
+};
 
-export default AboutPage
+export default AboutPage;

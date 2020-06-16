@@ -1,15 +1,15 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import Card, { Cards } from './Card'
+import React from 'react';
+import Img from 'gatsby-image';
+import Card, { Cards } from './Card';
 
-import useDesignsQuery from '../graphql/useDesignsQuery'
+import useDesignsQuery from '../graphql/useDesignsQuery';
 
 interface Props {
-  limit?: number | false
+  limit?: number | false;
 }
 
 const Designs = ({ limit = false }: Props) => {
-  const designs = useDesignsQuery()
+  const designs = useDesignsQuery();
 
   return (
     <Cards>
@@ -24,7 +24,7 @@ const Designs = ({ limit = false }: Props) => {
         />
       ))}
     </Cards>
-  )
-}
+  );
+};
 
-export default Designs
+export default Designs;

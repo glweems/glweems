@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { navbarHeight, media, gridGap, rhythm } from '../../theme'
-import { Container } from '../../components/Common'
+import styled from 'styled-components';
+import { navbarHeight, media, gridGap, rhythm } from '../../theme';
+import { Container } from '../../components/Common';
 
 export const Header = styled(Container)`
   position: fixed;
@@ -9,7 +9,7 @@ export const Header = styled(Container)`
   z-index: -1;
   width: 100%;
   padding: ${rhythm(1)} 0;
-`
+`;
 
 export const ImageGrid = styled.div`
   display: grid;
@@ -37,11 +37,11 @@ export const ImageGrid = styled.div`
       grid-column: 1/5;
     }
   `}
-`
+`;
 
 export const Images = styled(Container)`
   z-index: 100;
   width: 100%;
   margin-top: 10em;
   padding: ${rhythm(1)} 0;
-`
+`;

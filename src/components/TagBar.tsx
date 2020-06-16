@@ -1,14 +1,14 @@
-import React from 'react'
-import uuid from 'uuid/v4'
-import _ from 'lodash'
-import { List, Tag, Container, Divider } from './Common'
-import styled from 'styled-components'
-import { remainingHeight, secondaryTheme, rhythm } from '../theme'
-import useSiteTags from '../hooks/useSiteTags'
+import React from 'react';
+import uuid from 'uuid/v4';
+import _ from 'lodash';
+import { List, Tag, Container, Divider } from './Common';
+import styled from 'styled-components';
+import { remainingHeight, secondaryTheme, rhythm } from '../theme';
+import useSiteTags from '../hooks/useSiteTags';
 
 interface Tag {
-  tag: string
-  qty: number
+  tag: string;
+  qty: number;
 }
 
 const Wrapper = styled.div`
@@ -20,10 +20,10 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 0;
   }
-`
+`;
 
 export const TagBar: React.FC<{}> = () => {
-  const { tags, qty } = useSiteTags()
+  const { tags, qty } = useSiteTags();
   return (
     <Wrapper className="tagbar">
       <Container>
@@ -38,5 +38,5 @@ export const TagBar: React.FC<{}> = () => {
         </List>
       </Container>
     </Wrapper>
-  )
-}
+  );
+};

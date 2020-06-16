@@ -1,98 +1,98 @@
-import theme from 'styled-theming'
-import styled, { createGlobalStyle, css } from 'styled-components'
-import { generateMedia } from 'styled-media-query'
-import { darken, lighten } from 'polished'
-import { rhythm } from './utils/typography'
+import theme from 'styled-theming';
+import styled, { createGlobalStyle, css } from 'styled-components';
+import { generateMedia } from 'styled-media-query';
+import { darken, lighten } from 'polished';
+import { rhythm } from './utils/typography';
 
-export { rhythm, scale, options } from './utils/typography'
+export { rhythm, scale, options } from './utils/typography';
 
-export const base = { light: `#f7f7f7`, dark: `#0f121b` }
-export const blue = '#1769ff'
-export const green = '#4caf50'
-export const mint = '#a7e3cc'
-export const purple = '#d0c1fa'
-export const red = `#d65947`
-export const darkRed = darken(0.1, red)
-export const yellow = '#f8d58c'
-export const darkYellow = darken(0.1, yellow)
-export const primary = theme('mode', { light: red, dark: yellow })
-export const darkPrimary = theme('mode', { light: darkRed, dark: darkYellow })
-export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' })
-export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' })
-export const bg = theme('mode', { light: '#fff', dark: '#0f121b' })
-export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' })
+export const base = { light: `#f7f7f7`, dark: `#0f121b` };
+export const blue = '#1769ff';
+export const green = '#4caf50';
+export const mint = '#a7e3cc';
+export const purple = '#d0c1fa';
+export const red = `#d65947`;
+export const darkRed = darken(0.1, red);
+export const yellow = '#f8d58c';
+export const darkYellow = darken(0.1, yellow);
+export const primary = theme('mode', { light: red, dark: yellow });
+export const darkPrimary = theme('mode', { light: darkRed, dark: darkYellow });
+export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
+export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
+export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
+export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
 export const borderColor = theme('mode', {
   light: '#c6c7c6',
   dark: '#1b2027'
-})
+});
 
-export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' })
-export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' })
+export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' });
+export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' });
 
 export const secondaryTheme = css`
   color: ${secondaryText};
   background: ${secondaryBg};
-`
+`;
 
-export const tagBg = theme('mode', { light: 'rgba(37, 45, 61, 30)', dark: 'rgba(248, 248, 248, 10)' })
-export const tagColor = theme('mode', { light: base.light, dark: base.dark })
+export const tagBg = theme('mode', { light: 'rgba(37, 45, 61, 30)', dark: 'rgba(248, 248, 248, 10)' });
+export const tagColor = theme('mode', { light: base.light, dark: base.dark });
 
-export const linkBg = theme('mode', { light: mint, dark: yellow })
-export const linkColor = theme('mode', { light: text, dark: bg })
-export const lightMuted = '#5a5a5a'
-export const darkMuted = '#c6c7c6'
+export const linkBg = theme('mode', { light: mint, dark: yellow });
+export const linkColor = theme('mode', { light: text, dark: bg });
+export const lightMuted = '#5a5a5a';
+export const darkMuted = '#c6c7c6';
 
-export const gridGap = (num: number) => rhythm(num * 0.25)
-export const navbarHeight = `4em`
-export const remainingHeight = `calc(100vh - 64px)`
-export const borderRadius = `0.3em`
+export const gridGap = (num: number) => rhythm(num * 0.25);
+export const navbarHeight = `4em`;
+export const remainingHeight = `calc(100vh - 64px)`;
+export const borderRadius = `0.3em`;
 
 const makeShadow = (color: string) => `
 ${darken(0.05, color)} 0px 1px 5px 0px,
 ${darken(0.09, color)} 0px 2px 2px 0px,
-${darken(0.1, color)} 0px 3px 1px -2px`
+${darken(0.1, color)} 0px 3px 1px -2px`;
 
-const makeHoverShadow = (color: string) => `${darken(0.1, color)} 0px 3px 20px 0px`
+const makeHoverShadow = (color: string) => `${darken(0.1, color)} 0px 3px 20px 0px`;
 
 export const shadow = theme('mode', {
   light: makeShadow(`#c6c7c6`),
   dark: makeShadow(`#111`)
-})
+});
 export const hoverShadow = theme('mode', {
   light: makeHoverShadow(`#c6c7c6`),
   dark: makeHoverShadow(`#111`)
-})
+});
 export const containerWidths = {
   sm: `540px`,
   md: `720px`,
   lg: `960px`,
   xl: `1200px`
-}
+};
 
 export const media = generateMedia({
   sm: containerWidths.sm,
   md: containerWidths.md,
   lg: containerWidths.lg,
   xl: containerWidths.xl
-})
+});
 
-export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' })
+export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' });
 export const githubHover = theme('mode', {
   light: lighten(0.5, `#333333`),
   dark: darken(0.3, `#f7f7f7`)
-})
+});
 
-export const linkedin = `#0077B5`
-export const linkedinHover = darken(0.1, linkedin)
+export const linkedin = `#0077B5`;
+export const linkedinHover = darken(0.1, linkedin);
 
-export const medium = `#00ab6c`
-export const mediumHover = darken(0.1, medium)
+export const medium = `#00ab6c`;
+export const mediumHover = darken(0.1, medium);
 
-export const behance = `#1769ff`
-export const behanceHover = darken(0.1, behance)
+export const behance = `#1769ff`;
+export const behanceHover = darken(0.1, behance);
 
-export const instagram = `#E1306C`
-export const instagramHover = darken(0.1, instagram)
+export const instagram = `#E1306C`;
+export const instagramHover = darken(0.1, instagram);
 
 export const buttonStyles = css`
   display: inline-block;
@@ -107,11 +107,11 @@ export const buttonStyles = css`
   outline: none;
   cursor: pointer;
   user-select: none;
-`
+`;
 
 export const Main = styled.main`
   padding-top: ${rhythm(1)};
-`
+`;
 
 export const anchorStyles = css`
   .link {
@@ -139,7 +139,7 @@ export const anchorStyles = css`
       border-left: none;
     }
   }
-`
+`;
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -262,7 +262,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-`
+`;
 
 const sameSyntax = css`
   pre[class*='language-'] {
@@ -288,7 +288,7 @@ const sameSyntax = css`
     hyphens: none;
     background: #2a2734;
   }
-`
+`;
 const darkModeSyntax = css`
   ${sameSyntax};
   /* stylelint-disable */
@@ -415,7 +415,7 @@ const darkModeSyntax = css`
     );
     background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
   }
-`
+`;
 const lightModeSyntax = css`
   ${sameSyntax}
   pre[class*='language-'],
@@ -550,6 +550,6 @@ const lightModeSyntax = css`
     );
     background: linear-gradient(to right, rgba(179, 117, 55, 0.2) 70%, rgba(179, 117, 55, 0));
   }
-`
+`;
 
-export const codeSyntax = theme('mode', { light: lightModeSyntax, dark: darkModeSyntax })
+export const codeSyntax = theme('mode', { light: lightModeSyntax, dark: darkModeSyntax });

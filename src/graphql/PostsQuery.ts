@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import { PostsQuery } from './_types/PostsQuery'
+import { graphql, useStaticQuery } from 'gatsby';
+import { PostsQuery } from './_types/PostsQuery';
 
 const usePostsQuery = () => {
   const { allMarkdownRemark } = useStaticQuery<PostsQuery>(graphql`
@@ -10,9 +10,9 @@ const usePostsQuery = () => {
         }
       }
     }
-  `)
+  `);
 
-  return allMarkdownRemark.nodes
-}
+  return allMarkdownRemark.nodes;
+};
 
-export default usePostsQuery
+export default usePostsQuery;

@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
 const useNav = () => {
-  const [isNavOpen, setNav] = React.useState(false)
-  const toggleNav = () => setNav(state => !state)
+  const [isNavOpen, setNav] = React.useState(false);
+  const toggleNav = () => setNav(state => !state);
 
-  return { isNavOpen, setNav, toggleNav }
-}
+  return { isNavOpen, setNav, toggleNav };
+};
 
-export default useNav
+export default useNav;

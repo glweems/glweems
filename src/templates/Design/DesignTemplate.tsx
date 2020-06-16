@@ -1,13 +1,13 @@
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import * as React from 'react'
-import { Container, Text } from '../../components/Common'
-import SEO from '../../components/SEO'
-import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery'
+import { graphql } from 'gatsby';
+import Img from 'gatsby-image';
+import * as React from 'react';
+import { Container, Text } from '../../components/Common';
+import SEO from '../../components/SEO';
+import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery';
 
 export default function DesignTemplate({ data }: { data: DesignsTemplateQuery }) {
-  const { design, images } = data
-  const { name, tags, description, tools } = design as Required<DesignsTemplateQuery_design>
+  const { design, images } = data;
+  const { name, tags, description, tools } = design as Required<DesignsTemplateQuery_design>;
 
   return [
     <SEO key={`seo-design-${name}`} title={name as any} tags={tags as any} description={description as any} />,
@@ -26,7 +26,7 @@ export default function DesignTemplate({ data }: { data: DesignsTemplateQuery })
         <Img fluid={image?.childImageSharp?.fluid as any} />
       ))}
     </Container>
-  ]
+  ];
 }
 
 export const designQuery = graphql`
@@ -53,4 +53,4 @@ export const designQuery = graphql`
       totalCount
     }
   }
-`
+`;

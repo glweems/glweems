@@ -1,16 +1,16 @@
-import * as React from 'react'
-import styled from 'styled-components'
-import { Container } from '../components/Common'
-import SEO from '../components/SEO'
-import { TagBar } from '../components/TagBar'
-import { remainingHeight, Main } from '../theme'
+import * as React from 'react';
+import styled from 'styled-components';
+import { Container } from '../components/Common';
+import SEO from '../components/SEO';
+import { TagBar } from '../components/TagBar';
+import { remainingHeight, Main } from '../theme';
 
 interface Props {
   data: {
     allMarkdownRemark: {
-      tags: { tag: string; totalCount: number }[]
-    }
-  }
+      tags: { tag: string; totalCount: number }[];
+    };
+  };
 }
 
 const TagsPage: React.FC<Props> = () => {
@@ -20,8 +20,8 @@ const TagsPage: React.FC<Props> = () => {
       <TagBar />
       <Container className="content"></Container>
     </>
-  )
-}
+  );
+};
 
 export const TagsMain = styled(Main)`
   display: grid;
@@ -47,6 +47,6 @@ export const TagsMain = styled(Main)`
     grid-area: footer;
     align-self: flex-end;
   }
-`
+`;
 
-export default TagsPage
+export default TagsPage;

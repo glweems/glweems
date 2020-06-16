@@ -1,5 +1,5 @@
-import { useStaticQuery, graphql } from 'gatsby'
-import { SideProject, AllSideprojectsYaml } from '..'
+import { useStaticQuery, graphql } from 'gatsby';
+import { SideProject, AllSideprojectsYaml } from '..';
 
 const useSideProjectsQuery = (): SideProject[] => {
   const { allSideprojectsYaml }: AllSideprojectsYaml = useStaticQuery(graphql`
@@ -20,8 +20,8 @@ const useSideProjectsQuery = (): SideProject[] => {
         }
       }
     }
-  `)
-  return allSideprojectsYaml.nodes
-}
+  `);
+  return allSideprojectsYaml.nodes;
+};
 
-export default useSideProjectsQuery
+export default useSideProjectsQuery;

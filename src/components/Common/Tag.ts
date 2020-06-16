@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import { secondaryTheme } from '../../theme'
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import { secondaryTheme } from '../../theme';
 
 export const Tag = styled(Link)`
   ${secondaryTheme};
@@ -13,4 +13,4 @@ export const Tag = styled(Link)`
   line-height: 22px;
   text-decoration: none;
   border-radius: 3px;
-`
+`;

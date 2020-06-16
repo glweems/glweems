@@ -1,20 +1,20 @@
-import styled from 'styled-components'
-import { rhythm, media, muted, text, bg, base, borderRadius, borderColor, navbarHeight, codeSyntax } from '../../theme'
+import styled from 'styled-components';
+import { rhythm, media, muted, text, bg, base, borderRadius, borderColor, navbarHeight, codeSyntax } from '../../theme';
 
 export const StyledHeader = styled.header`
   padding-bottom: ${rhythm(1)};
   border-bottom: 1px solid ${borderColor};
-`
+`;
 
 export const StyledInfo = styled.small`
   color: ${muted};
   font-weight: bold;
   font-style: italic;
-`
+`;
 export const ImgDetail = styled.em`
   width: 100%;
   text-align: center;
-`
+`;
 export const Article = styled.article`
   ${codeSyntax}
   display: grid;
@@ -55,4 +55,4 @@ export const Article = styled.article`
       border-radius: ${borderRadius};
     `};
   }
-`
+`;

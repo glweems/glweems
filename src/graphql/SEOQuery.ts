@@ -1,5 +1,5 @@
-import { graphql, useStaticQuery } from 'gatsby'
-import { SEOQuery } from './_types/SEOQuery'
+import { graphql, useStaticQuery } from 'gatsby';
+import { SEOQuery } from './_types/SEOQuery';
 
 const useSEOQuery = () => {
   const data = useStaticQuery<SEOQuery>(graphql`
@@ -14,14 +14,14 @@ const useSEOQuery = () => {
         }
       }
     }
-  `)
-  const defaultTitle = data.site?.siteMetadata?.defaultTitle
-  const titleTemplate = data.site?.siteMetadata?.titleTemplate
-  const defaultDescription = data.site?.siteMetadata?.defaultDescription
-  const url = data.site?.siteMetadata?.url
-  const defaultImage = data.site?.siteMetadata?.defaultImage
+  `);
+  const defaultTitle = data.site?.siteMetadata?.defaultTitle;
+  const titleTemplate = data.site?.siteMetadata?.titleTemplate;
+  const defaultDescription = data.site?.siteMetadata?.defaultDescription;
+  const url = data.site?.siteMetadata?.url;
+  const defaultImage = data.site?.siteMetadata?.defaultImage;
 
-  return { defaultTitle, titleTemplate, defaultDescription, url, defaultImage }
-}
+  return { defaultTitle, titleTemplate, defaultDescription, url, defaultImage };
+};
 
-export default useSEOQuery
+export default useSEOQuery;

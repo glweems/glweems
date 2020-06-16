@@ -1,6 +1,6 @@
-import React from 'react'
-import { Container } from '../components/Common'
-import Layout from '../components/Layout'
+import React from 'react';
+import { Container } from '../components/Common';
+import Layout from '../components/Layout';
 
 const NotFoundPage = () => (
   <Layout>
@@ -9,6 +9,6 @@ const NotFoundPage = () => (
       <p>The requested page is unavailable.</p>
     </Container>
   </Layout>
-)
+);
 
-export default NotFoundPage
+export default NotFoundPage;

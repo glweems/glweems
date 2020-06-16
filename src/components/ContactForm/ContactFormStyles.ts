@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Form = styled.form`
   margin: 0;
@@ -38,4 +38,4 @@ export const Form = styled.form`
     border: 1px solid #aaa;
     transition: border-color 0.3s ease-in-out;
   }
-`
+`;
