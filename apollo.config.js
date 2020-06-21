@@ -1,10 +1,16 @@
-module.exports = {
-  client: {
-    tagName: 'graphql',
-    service: {
-      name: 'glweems',
-      localSchemaFile: './schema.json'
-      // url: 'http://localhost:8000/___graphql'
-    }
-  }
+export const client = {
+  addTypename: false,
+  excludes: [],
+  includes: [
+    './src/**/*.tsx',
+    './src/**/*.ts',
+    './plugins/**/*.js',
+    './node_modules/gatsby-transformer-sharp/src/*.js',
+    './node_modules/gatsby-image/src/*.js'
+  ],
+  service: {
+    name: 'gatsbySchema',
+    localSchemaFile: './schema.json'
+  },
+  tagName: 'graphql'
 };

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Tags from './Tags';
 import { rootBg, borderRadius, text, media, rhythm } from '../theme';
 import { Link } from './Common';
+import Box from './Common/Box';
 
 export interface CardProps {
   title: string;
@@ -12,7 +13,7 @@ export interface CardProps {
   link?: string;
   tags: string[];
   children?: React.ReactNode;
-  Image?: React.ReactElement;
+  Image?: any;
 }
 
 export default function Card({ title, subtitle, link, tags, children, Image }: CardProps) {
@@ -24,7 +25,7 @@ export default function Card({ title, subtitle, link, tags, children, Image }: C
         <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
       </div>
 
-      {Image || Image}
+      {Image || <Box onClick={go}>{Image}</Box>}
 
       <div className="body">
         {subtitle && <p className="header">{subtitle}</p>}

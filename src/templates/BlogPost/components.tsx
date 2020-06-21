@@ -1,14 +1,13 @@
-import { DiscussionEmbed } from 'disqus-react';
+import Img from 'gatsby-image';
 import * as React from 'react';
 import RehypeReact from 'rehype-react';
-import Img from 'gatsby-image';
-import { Frontmatter } from '../..';
-import { Blockquote, Subtitle, Title, Date } from '../../components/Common';
+import { Blockquote, Date, Subtitle, Title, Link } from '../../components/Common';
 import Tags from '../../components/Tags';
+import { BlogTemplateQuery } from '../../types/generated';
 import { ImgDetail, StyledHeader } from './styles';
 
 interface HeaderProps {
-  frontmatter: Frontmatter;
+  frontmatter: BlogTemplateQuery['post']['frontmatter'];
   timeToRead: number;
 }
 
@@ -31,20 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
 export const Content: React.FC<{ elements: object }> = ({ elements }) =>
   new RehypeReact({
     createElement: React.createElement,
-    components: { em: ImgDetail, blockquote: Blockquote }
+    components: { em: ImgDetail, blockquote: Blockquote, a: Link }
   }).Compiler(elements).props.children;
-
-interface CommentsProps {
-  config: {
-    disqusShortName: string;
-    title: string;
-    identifier: string;
-    url: string;
-  };
-}
-
-export const Comments: React.FC<CommentsProps> = ({ config: { title, identifier, url, disqusShortName } }) => (
-  <DiscussionEmbed shortname={disqusShortName} config={{ url, identifier, title }} />
-);
 
 export { ShareButtons } from './ShareButtons';

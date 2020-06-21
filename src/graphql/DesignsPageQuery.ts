@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { DesignsPageQuery } from './_types/DesignsPageQuery';
-
+import { DesignsPageQuery } from '../types/generated';
 const UseDesignsPageQuery = () =>
   useStaticQuery<DesignsPageQuery>(graphql`
-    query DesignsPageQuery {
+    query DesignsPage {
       allBehanceProjects: allDesignsYaml {
         nodes {
           slug
@@ -19,7 +18,7 @@ const UseDesignsPageQuery = () =>
           relativeDirectory
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              ...GatsbyImageSharpFluid
             }
           }
         }

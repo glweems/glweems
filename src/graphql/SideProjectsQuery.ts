@@ -1,9 +1,9 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { SideProject, AllSideprojectsYaml } from '..';
+import { SideProjectsQuery } from '../types/generated';
 
-const useSideProjectsQuery = (): SideProject[] => {
-  const { allSideprojectsYaml }: AllSideprojectsYaml = useStaticQuery(graphql`
-    query WebsitesQuery {
+const useSideProjectsQuery = () => {
+  const { allSideprojectsYaml } = useStaticQuery<SideProjectsQuery>(graphql`
+    query SideProjects {
       allSideprojectsYaml {
         nodes {
           id

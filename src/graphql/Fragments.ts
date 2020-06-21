@@ -2,13 +2,20 @@ import { graphql } from 'gatsby';
 
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
-    fixed(width: 125, height: 125) {
+    fixed(width: $width, height: $height) {
+      originalName
       base64
       tracedSVG
       aspectRatio
       srcWebp
       srcSetWebp
       originalName
+      width
+      height
+      srcSet
+      srcSetWebp
+      base64
+      aspectRatio
     }
   }
 `;

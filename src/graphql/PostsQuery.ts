@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { PostsQuery } from './_types/PostsQuery';
+import { PostsQuery } from '../types/generated';
 
 const usePostsQuery = () => {
   const { allMarkdownRemark } = useStaticQuery<PostsQuery>(graphql`
-    query PostsQuery {
+    query Posts {
       allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
         nodes {
           ...BlogPost

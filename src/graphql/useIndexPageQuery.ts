@@ -1,9 +1,8 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { IndexPageQuery } from './_types/IndexPageQuery';
-
+import { IndexPageQuery } from '../types/generated';
 const useIndexPageQuery = () => {
   const data = useStaticQuery<IndexPageQuery>(graphql`
-    query IndexPageQuery {
+    query IndexPage {
       allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
         posts: nodes {
           ...BlogPost

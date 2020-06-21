@@ -1,14 +1,13 @@
+import { graphql, useStaticQuery } from 'gatsby';
+import Img, { FixedObject } from 'gatsby-image';
 import * as React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { Link, ToogleThemeSwitch } from '../Common';
-import { Navigation, Links } from './NavbarStyles';
-import { Ghost } from '../Icons';
-import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { Links, Navigation } from './NavbarStyles';
+import { NavbarGhostQuery } from '../../types/generated';
+
 const Navbar: React.FC = () => {
-  const { file } = useStaticQuery(graphql`
-    query NavbarGhostQuery {
+  const { file } = useStaticQuery<NavbarGhostQuery>(graphql`
+    query NavbarGhost {
       file(relativePath: { eq: "ghost.png" }) {
         childImageSharp {
           fixed(height: 25) {
@@ -22,7 +21,7 @@ const Navbar: React.FC = () => {
   return (
     <Navigation>
       <Link to="/" className="logo">
-        <Img fixed={file?.childImageSharp?.fixed} alt="red-pacman-ghost" draggable={false} />
+        <Img fixed={file.childImageSharp.fixed as FixedObject} alt="red-pacman-ghost" draggable={false} />
       </Link>
       <Links>
         <Link to="/blog" className="nav-item">

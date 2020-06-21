@@ -1,9 +1,9 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { DesignsQuery } from './_types/DesignsQuery';
+import { UseDesignsQuery } from '../types/generated';
 
 export default function useDesignsQuery() {
-  const { projects, images } = useStaticQuery<DesignsQuery>(graphql`
-    query DesignsQuery {
+  const { projects, images } = useStaticQuery<UseDesignsQuery>(graphql`
+    query UseDesigns {
       projects: allDesignsYaml {
         nodes {
           slug
@@ -19,18 +19,7 @@ export default function useDesignsQuery() {
           relativeDirectory
           childImageSharp {
             fluid {
-              base64
-              tracedSVG
-              srcWebp
-              srcSetWebp
-              originalImg
-              originalName
-              aspectRatio
-              sizes
-              presentationWidth
-              presentationHeight
-              src
-              srcSet
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
             }
           }
         }

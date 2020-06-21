@@ -1,64 +1,85 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { useStaticQuery, graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import { motion } from 'framer-motion';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img, { FixedObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
+import { GhostImageQuery } from '../types/generated';
 import Box from './Common/Box';
-import { motion } from 'framer-motion';
 
-export const Moon = () => (
-  <Box
-    as={motion.svg}
-    className="bi bi-moon"
-    width="1em"
-    height="1em"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <motion.path
-      fill-rule="evenodd"
-      d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z"
-    />
-  </Box>
-);
+const icon = {
+  hidden: {
+    pathLength: 0,
+    fill: 'rgba(255, 255, 255, 0)'
+  },
+  visible: {
+    pathLength: 1,
+    fill: 'rgba(255, 255, 255, 1)'
+  }
+};
+export const Moon = () => {
+  return (
+    <Box
+      as={motion.svg}
+      className="svg-item"
+      width="2em"
+      height="2em"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <motion.path
+        fill-rule="evenodd"
+        variants={icon}
+        initial="hidden"
+        animate="visible"
+        d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z"
+      />
+    </Box>
+  );
+};
 
-export const Sun = () => (
-  <Box
-    as={motion.svg}
-    className="bi bi-sun"
-    width="1em"
-    height="1em"
-    viewBox="0 0 16 16"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <motion.path d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
-    <motion.path
-      fill-rule="evenodd"
-      d="M8.202.28a.25.25 0 0 0-.404 0l-.91 1.255a.25.25 0 0 1-.334.067L5.232.79a.25.25 0 0 0-.374.155l-.36 1.508a.25.25 0 0 1-.282.19l-1.532-.245a.25.25 0 0 0-.286.286l.244 1.532a.25.25 0 0 1-.189.282l-1.509.36a.25.25 0 0 0-.154.374l.812 1.322a.25.25 0 0 1-.067.333l-1.256.91a.25.25 0 0 0 0 .405l1.256.91a.25.25 0 0 1 .067.334L.79 10.768a.25.25 0 0 0 .154.374l1.51.36a.25.25 0 0 1 .188.282l-.244 1.532a.25.25 0 0 0 .286.286l1.532-.244a.25.25 0 0 1 .282.189l.36 1.508a.25.25 0 0 0 .374.155l1.322-.812a.25.25 0 0 1 .333.067l.91 1.256a.25.25 0 0 0 .405 0l.91-1.256a.25.25 0 0 1 .334-.067l1.322.812a.25.25 0 0 0 .374-.155l.36-1.508a.25.25 0 0 1 .282-.19l1.532.245a.25.25 0 0 0 .286-.286l-.244-1.532a.25.25 0 0 1 .189-.282l1.508-.36a.25.25 0 0 0 .155-.374l-.812-1.322a.25.25 0 0 1 .067-.333l1.256-.91a.25.25 0 0 0 0-.405l-1.256-.91a.25.25 0 0 1-.067-.334l.812-1.322a.25.25 0 0 0-.155-.374l-1.508-.36a.25.25 0 0 1-.19-.282l.245-1.532a.25.25 0 0 0-.286-.286l-1.532.244a.25.25 0 0 1-.282-.189l-.36-1.508a.25.25 0 0 0-.374-.155l-1.322.812a.25.25 0 0 1-.333-.067L8.203.28zM8 2.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z"
-    />
-  </Box>
-);
+export const Sun = () => {
+  return (
+    <Box
+      as={motion.svg}
+      className="bi bi-sun"
+      width="1em"
+      height="1em"
+      viewBox="0 0 16 16"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <motion.path variants={icon} initial="hidden" animate="visible" d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
+      <motion.path
+        variants={icon}
+        initial="hidden"
+        animate="visible"
+        fill-rule="evenodd"
+        d="M8.202.28a.25.25 0 0 0-.404 0l-.91 1.255a.25.25 0 0 1-.334.067L5.232.79a.25.25 0 0 0-.374.155l-.36 1.508a.25.25 0 0 1-.282.19l-1.532-.245a.25.25 0 0 0-.286.286l.244 1.532a.25.25 0 0 1-.189.282l-1.509.36a.25.25 0 0 0-.154.374l.812 1.322a.25.25 0 0 1-.067.333l-1.256.91a.25.25 0 0 0 0 .405l1.256.91a.25.25 0 0 1 .067.334L.79 10.768a.25.25 0 0 0 .154.374l1.51.36a.25.25 0 0 1 .188.282l-.244 1.532a.25.25 0 0 0 .286.286l1.532-.244a.25.25 0 0 1 .282.189l.36 1.508a.25.25 0 0 0 .374.155l1.322-.812a.25.25 0 0 1 .333.067l.91 1.256a.25.25 0 0 0 .405 0l.91-1.256a.25.25 0 0 1 .334-.067l1.322.812a.25.25 0 0 0 .374-.155l.36-1.508a.25.25 0 0 1 .282-.19l1.532.245a.25.25 0 0 0 .286-.286l-.244-1.532a.25.25 0 0 1 .189-.282l1.508-.36a.25.25 0 0 0 .155-.374l-.812-1.322a.25.25 0 0 1 .067-.333l1.256-.91a.25.25 0 0 0 0-.405l-1.256-.91a.25.25 0 0 1-.067-.334l.812-1.322a.25.25 0 0 0-.155-.374l-1.508-.36a.25.25 0 0 1-.19-.282l.245-1.532a.25.25 0 0 0-.286-.286l-1.532.244a.25.25 0 0 1-.282-.189l-.36-1.508a.25.25 0 0 0-.374-.155l-1.322.812a.25.25 0 0 1-.333-.067L8.203.28zM8 2.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z"
+      />
+    </Box>
+  );
+};
 
 const SVG = styled.svg`
   margin-top: 0.75em;
 `;
 
 export const Ghost = () => {
-  const { file } = useStaticQuery(graphql`
-    query GhostQuery {
+  const { file } = useStaticQuery<GhostImageQuery>(graphql`
+    query GhostImage {
       file(relativePath: { eq: "ghost.png" }) {
         childImageSharp {
-          fixed(height: 40) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          fixed(width: 30, height: 30) {
+            ...GatsbyImageSharpFixed
           }
         }
       }
     }
   `);
 
-  return <Img fixed={file?.childImageSharp?.fixed} alt="red-pacman-ghost" draggable={false} />;
+  return <Img fixed={file.childImageSharp.fixed as FixedObject} alt="red-pacman-ghost" draggable={false} />;
 };
 
 export const Logo = () => (

@@ -1,9 +1,9 @@
-import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config';
-import packageJson from '../package.json';
 import dotenv from 'dotenv';
+import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
 import { FileSystemNode } from 'gatsby-source-filesystem';
-
+import packageJson from '../package.json';
 dotenv.config();
+
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
@@ -52,12 +52,22 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       'gatsby-plugin-netlify',
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
-      // {
-      //   resolve: `gatsby-plugin-graphql-codegen`,
-      //   options: {
-      //     fileName: `./src/types/generated.ts`
-      //   }
-      // },
+      'gatsby-plugin-purgecss',
+      {
+        resolve: `gatsby-plugin-graphql-codegen`,
+        options: {
+          fileName: `./src/types/generated.ts`
+          // documentPaths: [
+          //   './src/**/*.tsx',
+          //   './src/**/*.ts',
+          //   './plugins/**/*.js',
+          //   './node_modules/gatsby-source-contentful/src/*.js',
+          //   './node_modules/gatsby-source-datocms/fragments/*.js',
+          //   './node_modules/gatsby-transformer-sharp/src/*.js',
+          //   './node_modules/gatsby-image/src/*.js'
+          // ]
+        }
+      },
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {

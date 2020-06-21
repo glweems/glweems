@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { graphql, useStaticQuery } from 'gatsby';
-import Img from 'gatsby-image';
+import Img, { FixedObject } from 'gatsby-image';
 import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
@@ -10,6 +10,7 @@ import { accounts } from '../utils/data';
 import { rhythm } from '../utils/typography';
 import { Button, Link, SocialIcon } from './Common';
 import Box from './Common/Box';
+import { LandingGhostsQuery } from '../types/generated';
 
 const garrettWeems = theme('mode', { light: blue, dark: red });
 
@@ -48,23 +49,14 @@ export default function Landing() {
     }
   };
 
-  const { ghost, ghosts } = useStaticQuery(graphql`
-    query {
-      ghost: file(relativePath: { eq: "ghost.png" }) {
-        childImageSharp {
-          fixed(height: 90) {
-            ...GatsbyImageSharpFixed_tracedSVG
-          }
-        }
-      }
-      ghosts: allFile(filter: { relativeDirectory: { eq: "ghost" } }) {
+  const { ghosts } = useStaticQuery<LandingGhostsQuery>(graphql`
+    query LandingGhosts {
+      ghosts: allFile(filter: { relativeDirectory: { eq: "ghost" }, name: { nin: ["ghost-yellow", "ghost-purple"] } }) {
         nodes {
-          relativeDirectory
+          name
           childImageSharp {
             fixed(height: 90) {
-              tracedSVG
-              height
-              width
+              ...GatsbyImageSharpFixed_withWebp_tracedSVG
             }
           }
         }
@@ -75,10 +67,9 @@ export default function Landing() {
   return (
     <Box padding={3} height="100vh" position="relative">
       <AnimatedWrapper container height="100%">
-        <Img fixed={ghost?.childImageSharp?.fixed} draggable={false} />
-        <Box>
+        <Box as={motion.div}>
           {ghosts.nodes.map((node) => (
-            <Img fixed={node?.childImageSharp?.fixed} draggable={false} />
+            <Img key={node.name} fixed={node.childImageSharp.fixed as FixedObject} draggable={false} />
           ))}
         </Box>
         <motion.div className="container" variants={container} initial="hidden" animate="visible">
@@ -88,7 +79,7 @@ export default function Landing() {
           <motion.h2 variants={item}>I&apos;m a full-stack web developer.</motion.h2>
           <motion.p>I specialize in javascript / react.js web developement.</motion.p>
           <motion.div>
-            <Link to="https://docs.google.com/document/d/14e2XLcPLXcNLetW7QvosoBAU5N6ONE-uU1c4VyMjsCA/edit#heading=h.ahxu4umdkayn">
+            <Link to="/resume">
               <Button>Resume</Button>
             </Link>
           </motion.div>
@@ -104,7 +95,7 @@ export default function Landing() {
           right="1rem"
         >
           {Object.entries(accounts).map(([key, value]) => (
-            <SocialIcon size="2x" account={value} />
+            <SocialIcon key={key} size="2x" account={value} />
           ))}
         </Box>
       </AnimatedWrapper>

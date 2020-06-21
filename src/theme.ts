@@ -26,25 +26,6 @@ export const borderColor = theme('mode', {
   dark: '#1b2027'
 });
 
-const siteTheme = {
-  base,
-  blue,
-  green,
-  mint,
-  purple,
-  red,
-  darkRed,
-  yellow,
-  darkYellow,
-  primary,
-  darkPrimary,
-  muted,
-  text,
-  bg,
-  rootBg,
-  borderColor
-};
-
 export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' });
 export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' });
 
@@ -94,24 +75,26 @@ export const media = generateMedia({
   lg: containerWidths.lg,
   xl: containerWidths.xl
 });
-
-export const github = theme('mode', { light: '#333333', dark: '#f7f7f7' });
-export const githubHover = theme('mode', {
-  light: lighten(0.5, `#333333`),
-  dark: darken(0.3, `#f7f7f7`)
-});
-
-export const linkedin = `#0077B5`;
-export const linkedinHover = darken(0.1, linkedin);
-
-export const medium = `#00ab6c`;
-export const mediumHover = darken(0.1, medium);
-
-export const behance = `#1769ff`;
-export const behanceHover = darken(0.1, behance);
-
-export const instagram = `#E1306C`;
-export const instagramHover = darken(0.1, instagram);
+const siteTheme = {
+  base,
+  blue,
+  green,
+  mint,
+  purple,
+  red,
+  darkRed,
+  yellow,
+  darkYellow,
+  primary,
+  darkPrimary,
+  muted,
+  text,
+  bg,
+  rootBg,
+  borderColor,
+  media
+};
+export default siteTheme;
 
 export const buttonStyles = css`
   display: inline-block;
@@ -210,7 +193,13 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
-
+.svg-item{
+  overflow: visible;
+  stroke: #fff;
+  stroke-width: 2;
+  /* stroke-linejoin: round;
+  stroke-linecap: round; */
+}
 
   section {
     margin: ${rhythm(1)} 0;
@@ -314,6 +303,7 @@ const sameSyntax = css`
     background: #2a2734;
   }
 `;
+
 const darkModeSyntax = css`
   ${sameSyntax};
   /* stylelint-disable */

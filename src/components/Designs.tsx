@@ -1,5 +1,5 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import Img, { FluidObject } from 'gatsby-image';
 import Card, { Cards } from './Card';
 
 import useDesignsQuery from '../graphql/useDesignsQuery';
@@ -15,12 +15,12 @@ const Designs = ({ limit = false }: Props) => {
     <Cards>
       {designs.slice(0, limit || designs.length).map(({ slug, name, description, tags, childImageSharp }) => (
         <Card
-          key={slug}
+          key={`${slug}-${name}`}
           title={name}
           subtitle={description}
           tags={tags}
           link={`/${slug}`}
-          Image={<Img alt={name} fluid={childImageSharp.fluid} draggable={false} />}
+          Image={<Img alt={name} fluid={childImageSharp.fluid as FluidObject} draggable={false} />}
         />
       ))}
     </Cards>

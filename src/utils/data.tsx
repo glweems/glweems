@@ -20,7 +20,7 @@ export const accounts: Record<string, Account> = {
     name: 'Email',
     username: 'gwgraphicdesign@gmail.com',
     link: 'mailto:gwgraphicdesign@gmail.com',
-    icon: <svg src="../../node_modules/bootstrap-icons/icons/envelope.svg" width="32" height="32" title="Bootstrap" />
+    icon: faEnvelope
   },
   github: {
     name: 'Github',

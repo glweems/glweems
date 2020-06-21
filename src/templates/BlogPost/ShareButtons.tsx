@@ -10,6 +10,7 @@ import {
   RedditIcon
 } from 'react-share';
 import { Flex } from '../../components/Common';
+import Box from '../../components/Common/Box';
 
 interface Props {
   config: {
@@ -27,23 +28,23 @@ const iconConfig = {
   iconBgStyle: { fill: 'transparent' }
 };
 export const ShareButtons: React.FC<Props> = ({ config: { twitterHandle, url, title, tags } }) => (
-  <Flex>
+  <Box display="flex" justifyContent="space-evenly" marginY={4}>
     <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
-      <FacebookIcon logoFillColor="#3b5997" {...iconConfig} />
+      <FacebookIcon {...iconConfig} />
     </FacebookShareButton>
 
     <TwitterShareButton url={url} title={title} via={twitterHandle} hashtags={tags}>
-      <TwitterIcon logoFillColor="#00aced" {...iconConfig} />
+      <TwitterIcon {...iconConfig} />
     </TwitterShareButton>
 
     <LinkedinShareButton url={url}>
-      <LinkedinIcon logoFillColor="#007fb1" {...iconConfig} />
+      <LinkedinIcon {...iconConfig} />
     </LinkedinShareButton>
 
     <RedditShareButton url={url} title={title}>
-      <RedditIcon logoFillColor="#5f99cf" {...iconConfig} />
+      <RedditIcon {...iconConfig} />
     </RedditShareButton>
-  </Flex>
+  </Box>
 );
 
 export default ShareButtons;

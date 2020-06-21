@@ -1,61 +1,62 @@
+import loadable from '@loadable/component';
 import { graphql } from 'gatsby';
 import * as React from 'react';
 import { useTheme } from 'styled-components';
 import { Container } from '../../components/Common';
 import SEO from '../../components/SEO';
-import { HtmlAst } from '../../utils/HtmlAst';
-import { Comments, Header, ShareButtons } from './components';
+import { base, borderRadius, media } from '../../theme';
+import { BlogTemplateQuery } from '../../types/generated';
+import { Content, Header, ShareButtons } from './components';
 import { Article } from './styles';
-import { PostDirection, SwitchPages } from './SwitchPages';
+import { SwitchPages } from './SwitchPages';
+import { DiscussionEmbedProps } from '../../types/disqus-react';
+import Box from '../../components/Common/Box';
 
-interface Post {
-  id: string;
-  timeToRead: number;
-  excerpt: string;
-  htmlAst: object;
-  frontmatter: any;
-  url: string;
-  disqusIdentifier: string;
+const DiscussionEmbed = loadable<DiscussionEmbedProps>(() =>
+  import('disqus-react').then((module) => module.DiscussionEmbed)
+);
+interface BlogPostTemplateProps {
+  data: BlogTemplateQuery;
 }
 
-interface Props {
-  data: {
-    post: Post;
-    prev: PostDirection;
-    next: PostDirection;
-    site: { siteMetadata: { twitterHandle: string; disqusShortName: string } };
-  };
-}
-
-const BlogTemplate: React.FC<Props> = ({ data: { post, prev, next, site } }) => {
+export default function BlogTemplate({ data: { post, prev, next, site } }: BlogPostTemplateProps) {
   const { mode } = useTheme();
   const { twitterHandle, disqusShortName } = site.siteMetadata;
   const { url, disqusIdentifier } = post;
   const { title, path, tags, subtitle: description, thumbnail } = post.frontmatter;
-  const seoConfig = { title, path, tags, description, article: true, image: thumbnail.publicUrl };
+  const seoConfig = { title, path, tags, description, article: true, image: thumbnail };
   const shareConfig = { url, twitterHandle, title, tags };
-  const disqusConfig = { disqusShortName, identifier: disqusIdentifier, url, title };
 
-  return (
-    <>
-      <SEO config={seoConfig} />
-      <Article className={mode}>
-        <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
-        <HtmlAst elements={post.htmlAst} />
-      </Article>
-      <Container style={{ maxWidth: '720px', margin: '0 auto' }}>
-        <SwitchPages config={{ prev, next }} />
-        <ShareButtons config={shareConfig} />
-        <Comments config={disqusConfig} />
-      </Container>
-    </>
-  );
-};
+  return [
+    <SEO {...seoConfig} />,
+    <Article className={mode}>
+      <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
+      <Content elements={post.htmlAst} />
+    </Article>,
+    <Box
+      marginY={3}
+      container
+      css={`
+        max-width: 720px;
+        margin: 0 auto;
+        #disqus_thread {
+          background: ${base.light};
+          border-radius: 0;
+          ${media.greaterThan('sm')`
+            border-radius: ${borderRadius};
+          `};
+        }
+      `}
+    >
+      <SwitchPages config={{ prev, next }} />
+      <ShareButtons config={shareConfig} />
+      <DiscussionEmbed shortname={disqusShortName} config={{ url, identifier: disqusIdentifier, title }} />
+    </Box>
+  ];
+}
 
-export default BlogTemplate;
-
-export const BlogTemplateQuery = graphql`
-  query BlogTemplateQuery($slug: String!, $prev: String, $next: String) {
+export const Query = graphql`
+  query BlogTemplate($slug: String!, $prev: String, $next: String) {
     post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       url
       disqusIdentifier

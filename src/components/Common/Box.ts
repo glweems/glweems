@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
-import { space, SpaceProps, layout, LayoutProps, position, PositionProps } from 'styled-system';
+import { FlexboxProps, layout, LayoutProps, position, PositionProps, space, SpaceProps, flexbox } from 'styled-system';
 import { containerCss } from './Container';
 
-export type BoxProps = SpaceProps & LayoutProps & PositionProps & { container?: boolean };
+export type BoxProps = SpaceProps & LayoutProps & PositionProps & FlexboxProps & { container?: boolean };
 
 const Box = styled.div<BoxProps>`
+  ${flexbox};
   ${space};
   ${layout};
   ${position};

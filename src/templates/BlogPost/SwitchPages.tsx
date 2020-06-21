@@ -5,20 +5,19 @@ import { IconDefinition, faHandPointLeft, faHandPointRight } from '@fortawesome/
 import { Link, Container } from '../../components/Common';
 import { muted } from '../../theme';
 import { rhythm } from '../../utils/typography';
-
-export type PostDirection = { frontmatter: { title: string; path: string } };
+import { BlogTemplateQuery } from '../../types/generated';
 
 interface Props {
   config: {
-    prev: PostDirection;
-    next: PostDirection;
+    prev: BlogTemplateQuery['prev'];
+    next: BlogTemplateQuery['next'];
   };
 }
-interface PostLinkProps {
-  info: PostDirection;
+type PostLinkProps = {
+  info: { prev: BlogTemplateQuery['prev']; next: BlogTemplateQuery['next'] };
   direction: 'prev' | 'next';
   icon: IconDefinition;
-}
+} & any;
 
 const PostLink: React.FC<PostLinkProps> = ({ info, direction, icon }) => {
   return info && info.frontmatter && info.frontmatter.path && info.frontmatter.title ? (
