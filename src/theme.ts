@@ -11,7 +11,7 @@ export const blue = '#1769ff';
 export const green = '#4caf50';
 export const mint = '#a7e3cc';
 export const purple = '#d0c1fa';
-export const red = `#d65947`;
+export const red = `#e44932`;
 export const darkRed = darken(0.1, red);
 export const yellow = '#f8d58c';
 export const darkYellow = darken(0.1, yellow);
@@ -25,6 +25,25 @@ export const borderColor = theme('mode', {
   light: '#c6c7c6',
   dark: '#1b2027'
 });
+
+const siteTheme = {
+  base,
+  blue,
+  green,
+  mint,
+  purple,
+  red,
+  darkRed,
+  yellow,
+  darkYellow,
+  primary,
+  darkPrimary,
+  muted,
+  text,
+  bg,
+  rootBg,
+  borderColor
+};
 
 export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' });
 export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' });
@@ -160,7 +179,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   .dark-mode {
-    /* background-color: #0f121b; */
+    background-color: #0f121b;
   }
 
   html {
@@ -170,7 +189,24 @@ export const GlobalStyle = createGlobalStyle`
   body {
     color: ${text};
     /* line-height: var(--spacing__vertical--1); */
-    background: ${bg};
+    /* background: ${bg}; */
+    --bg-color: ${({ theme: { mode } }) => (mode === 'light' ? darken(0.1, '#fff') : darken(0.1, '#0f121b'))};
+  /* height: calc(100vh - ${navbarHeight}); */
+  color: ${base.dark};
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(-45deg, transparent 49%, var(--bg-color) 50%, var(--bg-color) 50%, transparent 51%, transparent);
+  background-color: ${({ theme: { mode } }) => (mode === 'dark' ? purple : yellow)};
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+  border: 1px var(--bg-color) solid;
+  border-radius: 4px;
   }
 
 
@@ -197,44 +233,24 @@ export const GlobalStyle = createGlobalStyle`
   }
 
 
+
   .social-icon {
-    transition: all 0.25s ease;
-  }
-
-  .github {
-    color: ${github};
+    color:#333333;
+    fill:#333333;
+    * {
+      color: #333333;
+      fill: #333333;
+      }
     &:hover {
-      color: ${githubHover};
+      color: ${blue};
+      fill: ${blue};
+      * {
+        color: ${blue};
+        fill: ${blue};
+      }
     }
   }
 
-  .linkedin {
-    color: ${linkedin};
-    &:hover {
-      color: ${linkedinHover};
-    }
-  }
-
-  .medium {
-    color: ${medium};
-    &:hover {
-      color: ${mediumHover};
-    }
-  }
-
-  .behance {
-    color: ${behance};
-    &:hover {
-      color: ${behanceHover};
-    }
-  }
-
-  .instagram {
-    color: ${instagram};
-    &:hover {
-      color: ${instagramHover};
-    }
-  }
 
   #disqus_thread {
     padding: 1em;

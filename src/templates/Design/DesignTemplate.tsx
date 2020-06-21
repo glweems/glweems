@@ -4,10 +4,12 @@ import * as React from 'react';
 import { Container, Text } from '../../components/Common';
 import SEO from '../../components/SEO';
 import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery';
-
+import Tags from '../../components/Tags';
 export default function DesignTemplate({ data }: { data: DesignsTemplateQuery }) {
   const { design, images } = data;
-  const { name, tags, description, tools } = design as Required<DesignsTemplateQuery_design>;
+  const { name, description, tools } = design as Required<DesignsTemplateQuery_design>;
+
+  const tags = design?.tags ?? [];
 
   return [
     <SEO key={`seo-design-${name}`} title={name as any} tags={tags as any} description={description as any} />,
@@ -15,15 +17,13 @@ export default function DesignTemplate({ data }: { data: DesignsTemplateQuery })
       <Text variant="title">{name}</Text>
       <Text>{description}</Text>
       <div>tags</div>
-      {tags?.map((tag, index) => (
-        <div>{tag}</div>
-      ))}
+      {tags && <Tags tags={tags as string[]} />}
       <div>tools</div>
-      {tools?.map(tool => (
+      {tools?.map((tool) => (
         <div>{tool?.title}</div>
       ))}
-      {images.nodes.map(image => (
-        <Img fluid={image?.childImageSharp?.fluid as any} />
+      {images.nodes.map((image) => (
+        <Img fluid={image?.childImageSharp?.fluid as any} draggable={false} />
       ))}
     </Container>
   ];

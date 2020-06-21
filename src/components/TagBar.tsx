@@ -1,10 +1,9 @@
-import React from 'react';
-import uuid from 'uuid/v4';
 import _ from 'lodash';
-import { List, Tag, Container, Divider } from './Common';
+import React from 'react';
 import styled from 'styled-components';
-import { remainingHeight, secondaryTheme, rhythm } from '../theme';
 import useSiteTags from '../hooks/useSiteTags';
+import { remainingHeight, rhythm, secondaryTheme } from '../theme';
+import { Divider, Tag } from './Common';
 
 interface Tag {
   tag: string;
@@ -20,23 +19,26 @@ const Wrapper = styled.div`
   h2 {
     margin-bottom: 0;
   }
+
+  .tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+  }
 `;
 
 export const TagBar: React.FC<{}> = () => {
   const { tags, qty } = useSiteTags();
   return (
     <Wrapper className="tagbar">
-      <Container>
-        <h2>{qty} tags</h2>
-        <Divider />
-        <List listStyleNone>
-          {tags.map(({ tag, qty }: Tag) => (
-            <Tag key={uuid()} to={`/tags/${_.kebabCase(tag)}/`}>
-              {tag} ({qty})
-            </Tag>
-          ))}
-        </List>
-      </Container>
+      <h2>{qty} tags</h2>
+      <Divider />
+      <div className="tags-wrapper">
+        {tags.map(({ tag, qty }: Tag) => (
+          <Tag key={tag} to={`/tags/${_.kebabCase(tag)}/`}>
+            {tag} ({qty})
+          </Tag>
+        ))}
+      </div>
     </Wrapper>
   );
 };

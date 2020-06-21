@@ -7,7 +7,7 @@ interface Props extends FlexCssProps {
   children: React.ReactNode;
 }
 const Ul = styled.ul<Props>`
-  ${props =>
+  ${(props) =>
     props.listStyleNone &&
     css`
       list-style: none;

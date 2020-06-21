@@ -19,14 +19,12 @@ const DefaultLayout: React.FC<Props> = ({ children }) => (
   </>
 );
 
-const IndexLayout: React.FC<LayoutProps> = ({ children }) => (
-  <>
-    <Landing />
-    <Navbar key="navbar" />
-    <IndexMain>{children}</IndexMain>
-    <Footer key="footer" />
-  </>
-);
+const IndexLayout = ({ children }) => [
+  <Landing key="landing" />,
+  <Navbar key="navbar" />,
+  <IndexMain key="main">{children}</IndexMain>,
+  <Footer key="footer" />
+];
 
 interface LayoutProps {
   children: React.ReactNode;

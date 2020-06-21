@@ -1,5 +1,14 @@
-import { faMediumM, faBehance, faReadme, faGithub, faLinkedin, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import React from 'react';
+import {
+  faMedium,
+  faBehanceSquare,
+  faReadme,
+  faGithubSquare,
+  faLinkedin,
+  faInstagramSquare
+} from '@fortawesome/free-brands-svg-icons';
 import { faPenNib, faEnvelope, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+// import 'bootstrap-icons';
 
 export const menuItems = [
   { text: 'Graphic Design', path: '/designs', icon: faPenNib },
@@ -11,61 +20,37 @@ export const accounts: Record<string, Account> = {
     name: 'Email',
     username: 'gwgraphicdesign@gmail.com',
     link: 'mailto:gwgraphicdesign@gmail.com',
-    icon: faEnvelope,
-    colors: {
-      light: '#f7f7f7',
-      dark: '#333333'
-    }
+    icon: <svg src="../../node_modules/bootstrap-icons/icons/envelope.svg" width="32" height="32" title="Bootstrap" />
   },
   github: {
     name: 'Github',
     username: 'glweems',
     link: 'https://github.com/glweems',
-    icon: faGithub,
-    colors: {
-      light: '#333333',
-      dark: '#333333'
-    }
+    icon: faGithubSquare
   },
   linkedin: {
     name: 'LinkedIn',
     username: 'glweems',
     link: 'https://www.linkedin.com/in/glweems',
-    icon: faLinkedin,
-    colors: {
-      light: '#0077B5',
-      dark: '#0077B5'
-    }
+    icon: faLinkedin
   },
   medium: {
     name: 'Medium',
     username: 'glweems',
     link: 'https://medium.com/@glweems',
-    icon: faMediumM,
-    colors: {
-      light: '#00ab6c',
-      dark: '#00ab6c'
-    }
+    icon: faMedium
   },
   behance: {
     name: 'Behance',
     username: 'glweems',
     link: 'https://www.behance.net/glweems',
-    icon: faBehance,
-    colors: {
-      light: '#1769ff',
-      dark: '#1769ff'
-    }
+    icon: faBehanceSquare
   },
   instagram: {
     name: 'Instagram',
     username: 'glweems',
     link: 'https://instagram.com/glweems',
-    icon: faInstagram,
-    colors: {
-      light: '#5851DB',
-      dark: '#5851DB'
-    }
+    icon: faInstagramSquare
   }
 };
 
@@ -76,11 +61,5 @@ interface Account {
   name: string;
   username: string;
   link: string;
-  icon: IconDefinition;
-  colors: Colors;
-}
-
-interface Colors {
-  light: string;
-  dark: string;
+  icon: IconDefinition | React.ReactNode;
 }

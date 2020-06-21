@@ -13,7 +13,7 @@ const useSignUpForm = () => {
     e.persist();
     const { name, value } = e.currentTarget;
     setInputs(
-      state =>
+      (state) =>
         ({
           ...state,
           [name]: value
@@ -31,13 +31,13 @@ const useSignUpForm = () => {
       data: qs.stringify({ 'form-name': 'contact', ...inputs })
     })
       .then(() => {
-        setInputs(state => ({
+        setInputs((state) => ({
           ...state,
           success: 'Form submitted successfully!'
         }));
       })
       .catch(() =>
-        setInputs(state => ({
+        setInputs((state) => ({
           ...state,
           error: 'Form could not be submitted.'
         }))

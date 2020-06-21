@@ -20,7 +20,7 @@ const Designs = ({ limit = false }: Props) => {
           subtitle={description}
           tags={tags}
           link={`/${slug}`}
-          Image={<Img alt={name} fluid={childImageSharp.fluid} />}
+          Image={<Img alt={name} fluid={childImageSharp.fluid} draggable={false} />}
         />
       ))}
     </Cards>

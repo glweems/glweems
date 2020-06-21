@@ -2,8 +2,15 @@ import Typography, { TypographyOptions } from 'typography';
 import CodePlugin from 'typography-plugin-code';
 import './style.css';
 const theme: TypographyOptions = {
-  baseFontSize: '16px',
+  baseFontSize: '18px',
   baseLineHeight: 1.5,
+
+  googleFonts: [
+    {
+      name: 'Montserrat',
+      styles: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+    }
+  ],
   headerFontFamily: [
     'Montserrat',
     'MADE Dillan Regular',
@@ -33,8 +40,8 @@ const theme: TypographyOptions = {
   ],
   scaleRatio: 2,
   headerWeight: 800,
-  bodyWeight: 'normal',
-  boldWeight: 500
+  bodyWeight: 500,
+  boldWeight: 700
 };
 
 theme.plugins = [new CodePlugin()];

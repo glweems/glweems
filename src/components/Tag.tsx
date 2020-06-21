@@ -9,13 +9,18 @@ interface TagProps {
   prefix?: string;
 }
 
-export default function Tag({ tag, prefix = '/tags/' }: TagProps): ReactElement {
-  return <Wrapper to={`${prefix}${kebabCase(tag)}`}>{tag}</Wrapper>;
+export default function Tag({ tag, prefix = '/tags/', ...props }: TagProps): ReactElement {
+  return (
+    <Wrapper to={`${prefix}${kebabCase(tag)}`} {...props}>
+      {tag}
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled(Link)`
   ${secondaryTheme};
   display: block;
+  height: auto;
   padding: 5px 10px;
   color: inherit;
   font-size: 15px;

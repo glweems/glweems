@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import uuid from 'uuid/v4';
 import Tag from './Tag';
 
 interface TagsProps {
@@ -8,11 +7,12 @@ interface TagsProps {
   className?: string;
   limit?: number;
 }
+
 const Tags: React.FC<TagsProps> = ({ tags, className, limit }) => {
   if (!tags) return null;
   return (
-    <Wrapper className={`tags ${className}`}>
-      {tags.slice(0, limit || tags.length).map(tag => (
+    <Wrapper className={`tags keen-slider ${className}`}>
+      {tags.slice(0, limit || tags.length).map((tag) => (
         <Tag key={tag} tag={tag} />
       ))}
     </Wrapper>
@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 `;
 
 Tags.defaultProps = {
-  limit: 4
+  limit: 3
 };
 
 export default Tags;

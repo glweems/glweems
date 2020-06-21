@@ -18,7 +18,9 @@ const UseDesignsPageQuery = () =>
         nodes {
           relativeDirectory
           childImageSharp {
-            ...FluidImage
+            fluid {
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            }
           }
         }
       }

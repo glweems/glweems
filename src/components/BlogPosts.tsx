@@ -24,7 +24,7 @@ const BlogPosts: React.FC<BlogPostsProps> = ({ posts }) => (
           subtitle={excerpt ?? ''}
           link={path}
           tags={tags}
-          Image={<Img fluid={frontmatter?.thumbnail?.childImageSharp?.fluid} />}
+          Image={<Img fluid={frontmatter?.thumbnail?.childImageSharp?.fluid} draggable={false} />}
         />
       );
     })}

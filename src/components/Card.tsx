@@ -19,7 +19,7 @@ export default function Card({ title, subtitle, link, tags, children, Image }: C
   const go = () => (link ? navigate(link) : null);
 
   return (
-    <Wrapper onClick={go}>
+    <Wrapper>
       <div className="header">
         <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
       </div>
@@ -38,7 +38,7 @@ export default function Card({ title, subtitle, link, tags, children, Image }: C
 
 export const Wrapper = styled.div`
   display: grid;
-  grid-template-rows: auto 12em 1fr auto;
+  grid-template-rows: auto 12em 1fr max-content;
   grid-template-columns: 1fr;
   align-content: flex-start;
   color: ${text};
@@ -75,16 +75,9 @@ export const Wrapper = styled.div`
   .tags {
     margin: 0;
     padding: 0 0.5em 0.25em 0.5em;
-    overflow: hidden;
     color: ${text};
   }
 `;
-
-export const Header = styled.div``;
-
-export const Body = styled.div``;
-
-export const Footer = styled.div``;
 
 export const Cards = styled.div`
   display: grid;

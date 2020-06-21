@@ -18,7 +18,7 @@ interface BlogPostPreviewProps {
 export const BlogPostPreview: React.FC<BlogPostPreviewProps> = ({ path, title, date, tags, excerpt, fluid }) => (
   <Wrapper>
     <div className="img" onClick={() => navigate(path)}>
-      <Img fluid={fluid} />
+      <Img fluid={fluid} draggable={false} />
     </div>
 
     <h2 className="title">

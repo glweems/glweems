@@ -31,7 +31,7 @@ export const createFlexProps = ({
 
 export const flexStyles = css<FlexProps>`
   display: flex;
-  ${props => props && createFlexProps(props)}
+  ${(props) => props && createFlexProps(props)}
 
   ${({ sm }) =>
     sm &&

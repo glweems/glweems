@@ -11,7 +11,7 @@ interface Props {
   justifyContent?: FlexProperty<'show'>;
 }
 
-const containerCss = css`
+export const containerCss = css`
   display: grid;
   grid-template-columns:
     [flush-start] 1em
@@ -65,7 +65,7 @@ const containerCss = css`
 export const Container = styled.div<Props>`
   ${containerCss};
   gap: ${(props: Props) => (props.gap ? gridGap(props.gap) : 0)};
-  justify-content: ${props => props.justifyContent};
+  justify-content: ${(props) => props.justifyContent};
   ${({ smFlush }) =>
     smFlush &&
     css`

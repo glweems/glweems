@@ -1,24 +1,21 @@
 import loadable from '@loadable/component';
 import React from 'react';
-import GithubCalendar from 'react-github-calendar';
-import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
+import BlogPosts from '../components/BlogPosts';
 import { Container, Link } from '../components/Common';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
+import Designs from '../components/Designs';
+import SideProjects from '../components/SideProjects';
 import useIndexPageQuery from '../graphql/useIndexPageQuery';
 import { primary } from '../theme';
 import { rhythm } from '../utils/typography';
 
-const BlogPosts = loadable(() => import('../components/BlogPosts'), { fallback: <LoadingSpinner /> });
-
-const Designs = loadable(() => import('../components/Designs'), { fallback: <LoadingSpinner /> });
-
-const SideProjects = loadable(() => import('../components/SideProjects'), { fallback: <LoadingSpinner /> });
+const Heatmap = loadable(() => import('../components/Heatmap'), { fallback: <LoadingSpinner /> });
 
 const IndexPage = () => {
   const posts = useIndexPageQuery();
   return [
-    <Container justifyContent="">
+    <Container key="Blog" justifyContent="">
       <section className="blog">
         <FadedTitle>Blog Posts</FadedTitle>
         <BlogPosts posts={posts} />
@@ -45,11 +42,10 @@ const IndexPage = () => {
       </section>
     </Container>,
 
-    <GithubCalendar username="glweems" years={[2019]}>
-      <ReactTooltip delayShow={35} html />
-    </GithubCalendar>
+    <Heatmap key="heatmap" />
   ];
 };
+IndexPage.pathContext = { idk: 'true' };
 
 const FadedTitle = styled.h2`
   color: ${primary};

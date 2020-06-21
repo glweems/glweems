@@ -38,7 +38,7 @@ export default function useDesignsQuery() {
     }
   `);
 
-  return projects.nodes.map(project => {
-    return { ...images.nodes.find(image => image.relativeDirectory === project.slug), ...project };
+  return projects.nodes.map((project) => {
+    return { ...images.nodes.find((image) => image.relativeDirectory === project.slug), ...project };
   });
 }

@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "strict": true,
     "types": ["node"],
     "target": "esnext",
     "module": "commonjs",
@@ -10,8 +9,7 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "plugins": []
-  },
-  "include": ["src/**/*.tsx", "src/**/*.ts", "src/**/*.svg", "gatsby-config.ts", "gatsby-node.ts"],
-  "exclude": ["node_modules/"]
+    "pretty": true,
+    "noEmit": true
+  }
 }

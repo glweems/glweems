@@ -2,6 +2,7 @@
 import React from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
+import Underline from './Underline';
 
 interface Props {
   children?: React.ReactNode;
@@ -47,8 +48,10 @@ export const Link: React.FC<Props> = ({
       {children}
     </GatsbyLink>
   ) : (
-    <GoogleLink href={to} target="_blank" className={displayedClassName} {...other}>
-      {children}
-    </GoogleLink>
+    <Underline>
+      <GoogleLink href={to} target="_blank" className={displayedClassName} {...other}>
+        {children}
+      </GoogleLink>
+    </Underline>
   );
 };

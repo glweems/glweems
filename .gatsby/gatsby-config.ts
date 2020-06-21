@@ -1,8 +1,9 @@
 import { ITSConfigFn, IMergePluginOptions } from 'gatsby-plugin-ts-config';
-import packageJson from './package.json';
+import packageJson from '../package.json';
 import dotenv from 'dotenv';
-dotenv.config();
+import { FileSystemNode } from 'gatsby-source-filesystem';
 
+dotenv.config();
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
@@ -29,25 +30,15 @@ const config = {
   }
 };
 
-const siteMetadata = {
-  title: `Garrett Weems`,
-  titleTemplate: `%s · Glweems`,
-  description: `Full stack web developer / graphic designer.`,
-  image: `./src/images/favicon.jpg`,
-  languageCode: `en`,
-  countryCode: `US`,
-  siteUrl: config.url,
-  twitterHandle: config.contact.twitter,
-  disqusShortName: config.disqusShortName
-};
-
-const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot }) => {
+const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>> = ({
+  projectRoot
+}) => {
   return {
     siteMetadata: {
       title: `Garrett Weems`,
       titleTemplate: `%s · Glweems`,
       description: `Full stack web developer / graphic designer.`,
-      image: `./src/images/favicon.jpg`,
+      image: `${projectRoot}/src/assets/ghost.png`,
       languageCode: `en`,
       countryCode: `US`,
       siteUrl: config.url,
@@ -57,12 +48,16 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot 
     plugins: [
       'gatsby-plugin-typescript',
       'gatsby-plugin-react-helmet',
-      'gatsby-plugin-sass',
       'gatsby-plugin-styled-components',
       'gatsby-plugin-netlify',
-      'gatsby-plugin-generate-types',
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
+      // {
+      //   resolve: `gatsby-plugin-graphql-codegen`,
+      //   options: {
+      //     fileName: `./src/types/generated.ts`
+      //   }
+      // },
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
@@ -72,6 +67,12 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot 
               variants: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
             }
           ]
+        }
+      },
+      {
+        resolve: 'gatsby-source-medium',
+        options: {
+          username: '@glweems'
         }
       },
       'gatsby-transformer-yaml',
@@ -190,11 +191,11 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions> = ({ projectRoot 
           background_color: config.backgroundColor,
           theme_color: config.themeColor,
           display: 'minimal-ui',
-          icon: `${projectRoot}/src/assets/favicon.png`
+          icon: `${projectRoot}/src/assets/ghost.png`
         }
       },
-      'gatsby-plugin-robots-txt',
-      'gatsby-plugin-offline'
+      'gatsby-plugin-robots-txt'
+      // 'gatsby-plugin-offline'
     ]
   };
 };

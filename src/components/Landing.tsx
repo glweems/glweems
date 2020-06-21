@@ -1,21 +1,137 @@
+import { motion } from 'framer-motion';
+import { graphql, useStaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
-import { animated, useSpring } from 'react-spring';
 import theme from 'styled-theming';
-import { darken } from 'polished';
-import { Ghost } from './Icons';
-import { SocialIcon, Container, Button, Link } from './Common';
+import { base, blue, purple, red, yellow } from '../theme';
 import { accounts } from '../utils/data';
 import { rhythm } from '../utils/typography';
-import { blue, base, yellow, purple, red, navbarHeight } from '../theme';
+import { Button, Link, SocialIcon } from './Common';
+import Box from './Common/Box';
 
-const wrapperBg = theme('mode', { light: yellow, dark: purple });
 const garrettWeems = theme('mode', { light: blue, dark: red });
 
-const Wrapper = styled(Container)`
-  height: calc(100vh - ${navbarHeight});
+export default function Landing() {
+  const icons = {
+    hidden: { opacity: 1, scale: 0, justifyContent: 'space-between' },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 1,
+        when: 'beforeChildren',
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.3,
+        when: 'beforeChildren',
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const item = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
+  const { ghost, ghosts } = useStaticQuery(graphql`
+    query {
+      ghost: file(relativePath: { eq: "ghost.png" }) {
+        childImageSharp {
+          fixed(height: 90) {
+            ...GatsbyImageSharpFixed_tracedSVG
+          }
+        }
+      }
+      ghosts: allFile(filter: { relativeDirectory: { eq: "ghost" } }) {
+        nodes {
+          relativeDirectory
+          childImageSharp {
+            fixed(height: 90) {
+              tracedSVG
+              height
+              width
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  return (
+    <Box padding={3} height="100vh" position="relative">
+      <AnimatedWrapper container height="100%">
+        <Img fixed={ghost?.childImageSharp?.fixed} draggable={false} />
+        <Box>
+          {ghosts.nodes.map((node) => (
+            <Img fixed={node?.childImageSharp?.fixed} draggable={false} />
+          ))}
+        </Box>
+        <motion.div className="container" variants={container} initial="hidden" animate="visible">
+          <motion.h1 variants={item}>
+            Hello, I&apos;m <span>Garrett Weems</span>.
+          </motion.h1>
+          <motion.h2 variants={item}>I&apos;m a full-stack web developer.</motion.h2>
+          <motion.p>I specialize in javascript / react.js web developement.</motion.p>
+          <motion.div>
+            <Link to="https://docs.google.com/document/d/14e2XLcPLXcNLetW7QvosoBAU5N6ONE-uU1c4VyMjsCA/edit#heading=h.ahxu4umdkayn">
+              <Button>Resume</Button>
+            </Link>
+          </motion.div>
+        </motion.div>
+        <Box
+          as={motion.div}
+          variants={icons}
+          initial="hidden"
+          animate="visible"
+          display="flex"
+          position="absolute"
+          bottom="1rem"
+          right="1rem"
+        >
+          {Object.entries(accounts).map(([key, value]) => (
+            <SocialIcon size="2x" account={value} />
+          ))}
+        </Box>
+      </AnimatedWrapper>
+    </Box>
+  );
+}
+
+const Wrapper = styled(Box)`
+  --bg-color: ${(props) => (props.theme.mode === 'dark' ? darken(0.1, purple) : darken(0.3, yellow))};
+
+  position: relative;
   color: ${base.dark};
-  background: ${wrapperBg};
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(-45deg, transparent 49%, var(--bg-color) 50%, var(--bg-color) 50%, transparent 51%, transparent);
+  background-color: ${({ theme: { mode } }) => (mode === 'dark' ? purple : yellow)};
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+  border: 1px var(--bg-color) solid;
+  border-radius: 4px;
+  animation: spTexture 2s infinite linear;
 
   h2 {
     opacity: 0.5;
@@ -30,8 +146,9 @@ const Wrapper = styled(Container)`
   }
 
   .icons {
+    display: flex;
     margin-bottom: ${rhythm(1)};
-    > a {
+    > div {
       margin-right: ${rhythm(1)};
       color: black !important;
       border: none;
@@ -54,36 +171,4 @@ const Wrapper = styled(Container)`
   }
 `;
 
-const AnimatedWrapper = animated(Wrapper);
-
-const Landing = (): React.ReactElement => {
-  const animation = useSpring({
-    from: { transform: 'translate3d(0, 0, 0)', opacity: 0 },
-    to: { transform: 'translate3d(0, 0, 0)', opacity: 1 }
-  });
-
-  return (
-    <AnimatedWrapper style={animation}>
-      <Ghost />
-      <div>
-        <h1>
-          Hello, I&apos;m <span>Garrett Weems</span>.
-        </h1>
-        <h2>I&apos;m a full-stack web developer.</h2>
-        <p>I specialize in javascript / react.js web developement.</p>
-        <Link to="https://docs.google.com/document/d/14e2XLcPLXcNLetW7QvosoBAU5N6ONE-uU1c4VyMjsCA/edit#heading=h.ahxu4umdkayn">
-          <Button>Resume</Button>
-        </Link>
-      </div>
-      <animated.div className="icons">
-        <SocialIcon size="2x" account={accounts.github} />
-        <SocialIcon size="2x" account={accounts.linkedin} />
-        <SocialIcon size="2x" account={accounts.medium} />
-        <SocialIcon size="2x" account={accounts.instagram} />
-        <SocialIcon size="2x" account={accounts.behance} />
-      </animated.div>
-    </AnimatedWrapper>
-  );
-};
-
-export default Landing;
+const AnimatedWrapper = motion.custom(Wrapper);
