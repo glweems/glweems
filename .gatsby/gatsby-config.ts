@@ -3,33 +3,7 @@ import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
 dotenv.config();
-
-const config = {
-  defaultTitle: 'Glweems',
-  logo: 'https://glweems.com/favicon/logo-48.png',
-  author: packageJson.author,
-  url: packageJson.homepage,
-  legalName: 'Garrett Weems',
-  defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
-  socialLinks: {
-    github: 'https://github.com/glweeems',
-    linkedin: 'https://www.linkedin.com/in/glweems',
-    instagram: 'https://instagram.com/glweems',
-    behance: 'https://www.behance.net/glweems',
-    codepen: 'https://codepen.io/glweems',
-    medium: 'https://medium.com/@glweems'
-  },
-  googleAnalyticsID: 'UA-140456624-1',
-  themeColor: '#f8d58c',
-  backgroundColor: '#f8d58c',
-  siteRss: '/rss.xml',
-  disqusShortName: 'https-glweems-com',
-  contact: {
-    email: 'gwgraphicdeesign@gmail.com',
-    twitter: 'garrettlweems'
-  }
-};
-
+import config from './config';
 const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>> = ({
   projectRoot
 }) => {
@@ -57,15 +31,6 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         resolve: `gatsby-plugin-graphql-codegen`,
         options: {
           fileName: `./src/types/generated.ts`
-          // documentPaths: [
-          //   './src/**/*.tsx',
-          //   './src/**/*.ts',
-          //   './plugins/**/*.js',
-          //   './node_modules/gatsby-source-contentful/src/*.js',
-          //   './node_modules/gatsby-source-datocms/fragments/*.js',
-          //   './node_modules/gatsby-transformer-sharp/src/*.js',
-          //   './node_modules/gatsby-image/src/*.js'
-          // ]
         }
       },
       {
@@ -74,15 +39,9 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
           fonts: [
             {
               family: 'Montserrat',
-              variants: ['100', '200', '300', '400', '500', '600', '700', '800', '900']
+              variants: ['400', '500', '600', '700', '800']
             }
           ]
-        }
-      },
-      {
-        resolve: 'gatsby-source-medium',
-        options: {
-          username: '@glweems'
         }
       },
       'gatsby-transformer-yaml',
@@ -136,6 +95,37 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
+            'gatsby-remark-relative-images',
+            /*  {
+              resolve: 'gatsby-remark-katex',
+              options: {
+                strict: 'ignore'
+              }
+            }, */
+            {
+              resolve: 'gatsby-remark-images',
+              options: {
+                maxWidth: 960,
+                withWebp: true,
+                ignoreFileExtensions: []
+              }
+            },
+            {
+              resolve: 'gatsby-remark-responsive-iframe',
+              options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
+            },
+            'gatsby-remark-autolink-headers',
+            'gatsby-remark-prismjs',
+            'gatsby-remark-copy-linked-files',
+            'gatsby-remark-smartypants',
+            'gatsby-remark-external-links'
+          ]
+        }
+      },
+      /*  {
+        resolve: 'gatsby-transformer-remark',
+        options: {
+          plugins: [
             // Optional: Remove the paragraph tag wrapping images
             'gatsby-remark-unwrap-images',
             'gatsby-remark-responsive-iframe',
@@ -148,9 +138,9 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
               }
             },
             {
-              resolve: 'gatsby-remark-prismjs',
+              resolve: 'gatsby-remark-tree-sitter',
               options: {
-                aliases: { sh: 'bash', js: 'javascript' }
+                grammarPackages: ['@atom-languages/language-typescript']
               }
             },
             'gatsby-remark-copy-linked-files',
@@ -158,7 +148,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
             'gatsby-remark-smartypants'
           ]
         }
-      },
+      }, */
       {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
@@ -169,7 +159,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       {
         resolve: 'gatsby-plugin-favicon',
         options: {
-          logo: `${projectRoot}/src/assets/favicon.png`,
+          logo: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
           injectHTML: true,
           icons: {
             android: true,
