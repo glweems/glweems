@@ -1,10 +1,11 @@
-import theme from 'styled-theming';
-import styled, { createGlobalStyle, css } from 'styled-components';
+import { darken } from 'polished';
+import { createGlobalStyle, css, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { darken, lighten } from 'polished';
+import { Theme as SystemTheme } from 'styled-system';
+import theme from 'styled-theming';
+import useDarkMode from 'use-dark-mode';
 import { rhythm } from './utils/typography';
-
-export { rhythm, scale, options } from './utils/typography';
+export { options, rhythm, scale } from './utils/typography';
 
 export const base = { light: `#f7f7f7`, dark: `#0f121b` };
 export const blue = '#1769ff';
@@ -21,19 +22,13 @@ export const muted = theme('mode', { light: '#5a5a5a', dark: '#c6c7c6' });
 export const text = theme('mode', { light: '#252d3d', dark: '#f7f7f7' });
 export const bg = theme('mode', { light: '#fff', dark: '#0f121b' });
 export const rootBg = theme('mode', { light: '#f8f8f8', dark: '#181D2B' });
-export const borderColor = theme('mode', {
-  light: '#c6c7c6',
-  dark: '#1b2027'
-});
-
+export const borderColor = theme('mode', { light: '#c6c7c6', dark: '#1b2027' });
 export const secondaryText = theme('mode', { light: 'rgba(0, 0, 0, 0.54)', dark: 'rgba(255, 255, 255, 0.54)' });
 export const secondaryBg = theme('mode', { light: 'rgba(0, 0, 0, 0.05)', dark: 'rgba(255, 255, 255, 0.05)' });
-
 export const secondaryTheme = css`
   color: ${secondaryText};
   background: ${secondaryBg};
 `;
-
 export const tagBg = theme('mode', { light: 'rgba(37, 45, 61, 30)', dark: 'rgba(248, 248, 248, 10)' });
 export const tagColor = theme('mode', { light: base.light, dark: base.dark });
 
@@ -47,21 +42,47 @@ export const navbarHeight = `4em`;
 export const remainingHeight = `calc(100vh - 64px)`;
 export const borderRadius = `0.3em`;
 
-const makeShadow = (color: string) => `
-${darken(0.05, color)} 0px 1px 5px 0px,
-${darken(0.09, color)} 0px 2px 2px 0px,
-${darken(0.1, color)} 0px 3px 1px -2px`;
+const baseColors = {
+  blue: '#1769ff',
+  green: '#4caf50',
+  mint: '#a7e3cc',
+  purple: '#d0c1fa',
+  red: '#e44932',
+  yellow: '#f8d58c'
+};
 
-const makeHoverShadow = (color: string) => `${darken(0.1, color)} 0px 3px 20px 0px`;
+type ColorObject = typeof baseColors & {
+  primary: string;
+  muted: string;
+  text: string;
+  bg: string;
+  rootBg: string;
+  borderColor: string;
+  secondaryText: string;
+};
 
-export const shadow = theme('mode', {
-  light: makeShadow(`#c6c7c6`),
-  dark: makeShadow(`#111`)
-});
-export const hoverShadow = theme('mode', {
-  light: makeHoverShadow(`#c6c7c6`),
-  dark: makeHoverShadow(`#111`)
-});
+const lightMode: ColorObject = {
+  ...baseColors,
+  primary: baseColors.red,
+  muted: '#5a5a5a',
+  text: '#252d3d',
+  bg: '#fff',
+  rootBg: '#f8f8f8',
+  borderColor: '#c6c7c6',
+  secondaryText: 'rgba(0, 0, 0, 0.54)'
+};
+
+const darkmode: ColorObject = {
+  ...baseColors,
+  primary: baseColors.yellow,
+  muted: '#c6c7c6',
+  text: '#f7f7f7',
+  bg: '#0f121b',
+  rootBg: '#181D2B',
+  borderColor: '#1b2027',
+  secondaryText: 'rgba(255, 255, 255, 0.54)'
+};
+
 export const containerWidths = {
   sm: `540px`,
   md: `720px`,
@@ -75,496 +96,43 @@ export const media = generateMedia({
   lg: containerWidths.lg,
   xl: containerWidths.xl
 });
-const siteTheme = {
-  base,
-  blue,
-  green,
-  mint,
-  purple,
-  red,
-  darkRed,
-  yellow,
-  darkYellow,
-  primary,
-  darkPrimary,
-  muted,
-  text,
-  bg,
-  rootBg,
-  borderColor,
-  media
-};
-export default siteTheme;
 
-export const buttonStyles = css`
-  display: inline-block;
-  box-sizing: content-box;
-  font: inherit;
-  font-weight: 600;
-  line-height: normal;
-  white-space: normal;
-  text-align: center;
-  text-decoration: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  user-select: none;
-`;
-
-export const Main = styled.main`
-  min-height: calc(100vh - ${navbarHeight});
-  padding-top: ${rhythm(1)};
-`;
-
-export const anchorStyles = css`
-  .link {
-    padding: 3px 3px 0 3px;
-    color: ${text};
-    text-decoration: none;
-    border-bottom: 3px solid ${linkBg};
-    :hover {
-      padding: 0;
-      color: ${linkColor};
-      background: ${linkBg};
-      border: 3px solid ${linkBg};
-      border-radius: 2px;
-    }
-  }
-
-  .link.active {
-    padding: 0;
-    border-bottom: 3px solid ${primary};
-    :hover {
-      background: #f2f2f2;
-      border-color: #f2f2f2;
-      border-top: none;
-      border-right: none;
-      border-left: none;
-    }
-  }
-`;
-
-export const GlobalStyle = createGlobalStyle`
-
-
-  ${anchorStyles}
-
-  .button,
-  button,
-  input[type='reset'],
-  input[type='button'],
-  input[type='submit'] {
-    ${buttonStyles}
-  }
-
-  .light-mode {
-    background-color: #fff;
-  }
-
-  .dark-mode {
-    background-color: #0f121b;
-  }
-
-  html {
-    /* font-size: var(--typography__fontSize); */
-  }
-
-  body {
-    color: ${text};
-    /* line-height: var(--spacing__vertical--1); */
-    /* background: ${bg}; */
-    --bg-color: ${({ theme: { mode } }) => (mode === 'light' ? darken(0.1, '#fff') : darken(0.1, '#0f121b'))};
-  /* height: calc(100vh - ${navbarHeight}); */
-  color: ${base.dark};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(-45deg, transparent 49%, var(--bg-color) 50%, var(--bg-color) 50%, transparent 51%, transparent);
-  background-color: ${({ theme: { mode } }) => (mode === 'dark' ? purple : yellow)};
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-  border: 1px var(--bg-color) solid;
-  border-radius: 4px;
-  }
-
-
-.svg-item{
-  overflow: visible;
-  stroke: #fff;
-  stroke-width: 2;
-  /* stroke-linejoin: round;
-  stroke-linecap: round; */
+export interface Theme extends SystemTheme {
+  toggle: () => void;
+  isDarkMode: boolean;
+  colors: ColorObject;
 }
 
-  section {
-    margin: ${rhythm(1)} 0;
-  }
+export default function useCreateTheme(): DefaultTheme {
+  const { value: isDarkMode, toggle } = useDarkMode();
+  const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light';
 
+  const colors = isDarkMode ? darkmode : lightMode;
+  // Default Breakpoints
 
-  footer {
-    width: 100%;
-    margin: 0;
-    padding: ${rhythm(1)} 0;
-  }
+  // default space for margin and padding
+  const obj = {
+    toggle,
+    fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+    breakpoints: ['40em', '52em', '64em'],
+    space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+    mode,
+    colors,
+    isDarkMode,
+    fontWeights: [500, 600, 700, 800]
+  };
 
+  return obj;
+}
 
-  hr {
-    height: 2px;
-    background: ${theme('mode', { light: `#c6c7c6`, dark: '#000102' })}
-  }
-  .hashtag {
-    color: ${bg};
-  }
+export const GlobalStyle = createGlobalStyle`
+ :root {
+   ${(props) => {
+     let obj = {};
 
+     Object.entries(props.theme.colors).forEach(([key, value]) => (obj[`--color-${key}`] = value));
 
-
-  .social-icon {
-    color:#333333;
-    fill:#333333;
-    * {
-      color: #333333;
-      fill: #333333;
-      }
-    &:hover {
-      color: ${blue};
-      fill: ${blue};
-      * {
-        color: ${blue};
-        fill: ${blue};
-      }
-    }
-  }
-
-
-  #disqus_thread {
-    padding: 1em;
-    background: ${bg};
-    border-radius: ${borderRadius};
-  }
-  .react-github-calendar {
-    grid-column: full;
-    align-self: end;
-    width: 100%;
-    min-height: 7em;
-    margin: 0;
-    padding: 0;
-    padding-top: 1em;
-    text-align: center;
-  }
-
-  .react-github-calendar__title {
-    display: none;
-  }
-  .react-github-calendar__chart {
-    width: 100%;
-    margin: 0;
-    padding: 0;
-  }
-  .react-github-calendar__meta {
-    display: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  #resume {
-    max-width: 720px;
-    margin: 0 auto;
-  }
-
+     return obj;
+   }}
+ }
 `;
-
-const sameSyntax = css`
-  pre[class*='language-'] {
-    margin: 0.5em 0;
-    padding: 1em;
-    overflow: auto;
-  }
-
-  code[class*='language-'],
-  pre[class*='language-'] {
-    color: #afa0fe;
-    font-size: 14px;
-    font-family: Consolas, Menlo, Monaco, 'Andale Mono WT', 'Andale Mono', 'Lucida Console', 'Lucida Sans Typewriter',
-      'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Liberation Mono', 'Nimbus Mono L', 'Courier New', Courier,
-      monospace;
-    line-height: 1.375;
-    direction: ltr;
-    white-space: pre;
-    text-align: left;
-    word-break: normal;
-    word-spacing: normal;
-    tab-size: 4;
-    hyphens: none;
-    background: #2a2734;
-  }
-`;
-
-const darkModeSyntax = css`
-  ${sameSyntax};
-  /* stylelint-disable */
-  pre[class*='language-']::selection,
-  code[class*='language-'] ::selection {
-    text-shadow: none;
-    background: #6a51e6;
-  }
-
-  :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
-    border-radius: 0.3em;
-  }
-
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: #6c6783;
-  }
-
-  .token.punctuation {
-    color: #6c6783;
-  }
-
-  .token.namespace {
-    opacity: 0.7;
-  }
-
-  .token.tag,
-  .token.operator,
-  .token.number {
-    color: #e09142;
-  }
-
-  .token.property,
-  .token.function {
-    color: #c4b9fe;
-  }
-
-  .token.tag-id,
-  .token.selector,
-  .token.atrule-id {
-    color: #eeebff;
-  }
-
-  code.language-javascript,
-  .token.attr-name {
-    color: #c4b9fe;
-  }
-
-  code.language-css,
-  code.language-scss,
-  .token.boolean,
-  .token.string,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .language-scss .token.string,
-  .style .token.string,
-  .token.attr-value,
-  .token.keyword,
-  .token.control,
-  .token.directive,
-  .token.unit,
-  .token.statement,
-  .token.regex,
-  .token.atrule {
-    color: #fc9;
-  }
-
-  .token.placeholder,
-  .token.variable {
-    color: #fc9;
-  }
-
-  .token.deleted {
-    text-decoration: line-through;
-  }
-
-  .token.inserted {
-    text-decoration: none;
-    border-bottom: 1px dotted #eeebff;
-  }
-
-  .token.italic {
-    font-style: italic;
-  }
-
-  .token.important,
-  .token.bold {
-    font-weight: bold;
-  }
-
-  .token.important {
-    color: #8a75f5;
-  }
-
-  .token.entity {
-    cursor: help;
-  }
-
-  pre > code.highlight {
-    outline: 0.4em solid #c4b9fe;
-    outline-offset: 0.4em;
-  }
-
-  .line-numbers .line-numbers-rows {
-    border-right-color: #2c2937;
-  }
-
-  .line-numbers-rows > span:before {
-    color: #3c3949;
-  }
-
-  .line-highlight {
-    background: rgba(224, 145, 66, 0.2);
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      color-stop(70%, rgba(224, 145, 66, 0.2)),
-      to(rgba(224, 145, 66, 0))
-    );
-    background: linear-gradient(to right, rgba(224, 145, 66, 0.2) 70%, rgba(224, 145, 66, 0));
-  }
-`;
-const lightModeSyntax = css`
-  ${sameSyntax}
-  pre[class*='language-'],
-  code[class*='language-'] {
-    background: #fbfaf9;
-  }
-  pre[class*='language-'] {
-    margin: 0.5em 0;
-    padding: 1em;
-    overflow: auto;
-  }
-
-  code[class*='language-'] ::selection,
-  pre[class*='language-'] ::selection {
-    text-shadow: none;
-    background: #fbfaf9;
-  }
-
-  :not(pre) > code[class*='language-'] {
-    padding: 0.1em;
-    border-radius: 0.3em;
-  }
-
-  .token.comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: #c3bdb6;
-  }
-
-  .token.punctuation {
-    color: #c3bdb6;
-  }
-
-  .token.namespace {
-    opacity: 0.7;
-  }
-
-  .token.tag,
-  .token.operator,
-  .token.number {
-    color: #6a51e6;
-  }
-
-  .token.property,
-  .token.function {
-    color: #e09142;
-  }
-
-  .token.tag-id,
-  .token.selector,
-  .token.atrule-id {
-    color: #b37537;
-  }
-
-  code.language-javascript,
-  .token.attr-name {
-    color: #e09142;
-  }
-
-  code.language-css,
-  code.language-scss,
-  .token.boolean,
-  .token.entity,
-  .token.url,
-  .language-css .token.string,
-  .language-scss .token.string,
-  .style .token.string,
-  .token.attr-value,
-  .token.keyword,
-  .token.control,
-  .token.directive,
-  .token.unit,
-  .token.statement,
-  .token.regex,
-  .token.atrule {
-    color: #8a75f5;
-  }
-
-  .token.placeholder,
-  .token.variable {
-    color: #c4b9fe;
-  }
-
-  .token.deleted {
-    text-decoration: line-through;
-  }
-
-  .token.inserted {
-    text-decoration: none;
-    border-bottom: 1px dotted #b37537;
-  }
-
-  .token.italic {
-    font-style: italic;
-  }
-
-  .token.important,
-  .token.bold {
-    font-weight: bold;
-  }
-
-  .token.important {
-    color: #e09142;
-  }
-
-  .token.entity {
-    cursor: help;
-  }
-
-  pre > code.highlight {
-    outline: 0.4em solid #e09142;
-    outline-offset: 0.4em;
-  }
-
-  .line-numbers .line-numbers-rows {
-    border-right-color: #f5f3f0;
-  }
-
-  .line-numbers-rows > span:before {
-    color: #d8d1ca;
-  }
-
-  .line-highlight {
-    background: rgba(179, 117, 55, 0.2);
-    background: -webkit-gradient(
-      linear,
-      left top,
-      right top,
-      color-stop(70%, rgba(179, 117, 55, 0.2)),
-      to(rgba(179, 117, 55, 0))
-    );
-    background: linear-gradient(to right, rgba(179, 117, 55, 0.2) 70%, rgba(179, 117, 55, 0));
-  }
-`;
-
-export const codeSyntax = theme('mode', { light: lightModeSyntax, dark: darkModeSyntax });
