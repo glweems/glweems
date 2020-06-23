@@ -30,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
 export const Content: React.FC<{ elements: object }> = ({ elements }) =>
   new RehypeReact({
     createElement: React.createElement,
-    components: { em: ImgDetail, blockquote: Blockquote, a: Link }
+    components: { em: ImgDetail, blockquote: Blockquote }
   }).Compiler(elements).props.children;
 
 export { ShareButtons } from './ShareButtons';

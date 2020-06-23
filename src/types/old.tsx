@@ -1,4 +1,4 @@
-import loadable from '@loadable/component';
+/* import loadable from '@loadable/component';
 import React from 'react';
 import styled from 'styled-components';
 import BlogPosts from '../components/BlogPosts';
@@ -12,7 +12,7 @@ import { rhythm } from '../utils/typography';
 
 const Heatmap = loadable(() => import('../components/Heatmap'), { fallback: <LoadingSpinner /> });
 
-const IndexPage = () => {
+const IndexPagePrev = () => {
   const posts = useIndexPageQuery();
   return [
     <Container key="Blog" justifyContent="">
@@ -45,7 +45,7 @@ const IndexPage = () => {
     <Heatmap key="heatmap" />
   ];
 };
-IndexPage.pathContext = { idk: 'true' };
+IndexPagePrev.pathContext = { idk: 'true' };
 
 const FadedTitle = styled.h2`
   color: ${primary};
@@ -62,4 +62,5 @@ export const IndexMain = styled.main`
     gap: ${rhythm(3)} 0;
   }
 `;
-export default IndexPage;
+export default IndexPagePrev;
+ */

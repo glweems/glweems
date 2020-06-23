@@ -11,6 +11,7 @@ import { rhythm } from '../utils/typography';
 import { Button, Link, SocialIcon } from './Common';
 import Box from './Common/Box';
 import { LandingGhostsQuery } from '../types/generated';
+import { GhostSVG } from './Icons';
 
 const garrettWeems = theme('mode', { light: blue, dark: red });
 
@@ -67,11 +68,16 @@ export default function Landing() {
   return (
     <Box padding={3} height="100vh" position="relative">
       <AnimatedWrapper container height="100%">
-        <Box as={motion.div}>
+        <Box display="flex">
+          <GhostSVG />
+          <GhostSVG />
+          <GhostSVG />
+        </Box>
+        {/*     <Box as={motion.div}>
           {ghosts.nodes.map((node) => (
             <Img key={node.name} fixed={node.childImageSharp.fixed as FixedObject} draggable={false} />
           ))}
-        </Box>
+        </Box> */}
         <motion.div className="container" variants={container} initial="hidden" animate="visible">
           <motion.h1 variants={item}>
             Hello, I&apos;m <span>Garrett Weems</span>.

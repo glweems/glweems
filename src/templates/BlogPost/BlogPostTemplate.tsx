@@ -27,9 +27,11 @@ export default function BlogTemplate({ data: { post, prev, next, site } }: BlogP
   const seoConfig = { title, path, tags, description, article: true, image: thumbnail };
   const shareConfig = { url, twitterHandle, title, tags };
 
+  const theme = useTheme();
+
   return [
     <SEO {...seoConfig} />,
-    <Article className={mode}>
+    <Article className={`${mode} ${mode}-mode`}>
       <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
       <Content elements={post.htmlAst} />
     </Article>,

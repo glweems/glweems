@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Container } from '../components/Common';
 import SEO from '../components/SEO';
 import { TagBar } from '../components/TagBar';
-import { remainingHeight, Main } from '../theme';
+import { remainingHeight } from '../theme';
 
 interface Props {
   data: {
@@ -23,7 +23,7 @@ const TagsPage: React.FC<Props> = () => {
   );
 };
 
-export const TagsMain = styled(Main)`
+export const TagsMain = styled.main`
   display: grid;
   grid-template-areas: 'tagbar content' 'tagbar footer';
   grid-template-rows: 1fr 1fr;
