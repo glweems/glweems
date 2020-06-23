@@ -1,0 +1,6 @@
+.grid-layout {
+  display: grid;
+}
+.sideMenu {
+  background-color: var(--color-primary);
+}
