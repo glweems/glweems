@@ -1,11 +1,9 @@
-import useDarkMode from 'use-dark-mode';
-import React, { createContext } from 'react';
-import { DefaultTheme } from 'styled-components';
-import useTheme from '../hooks/useTheme';
-import useNav from '../hooks/useNav';
+import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
+import useDarkMode from 'use-dark-mode';
 import Layout from '../components/Layout';
-import { GlobalStyle } from '../theme';
+import useCreateTheme, { GlobalStyle } from '../theme';
+// import { GlobalStyle } from '../theme';
 
 interface PCP {
   contexts: any[];
@@ -18,23 +16,6 @@ const ProviderComposer = ({ contexts, children }: PCP): JSX.Element =>
     });
   }, children);
 
-type NavContext = {
-  isNavOpen: boolean | null;
-  setNav: React.Dispatch<React.SetStateAction<boolean>> | null;
-  toggleNav: () => void | null;
-};
-
-export const NavContext = createContext<NavContext>({
-  isNavOpen: null,
-  setNav: () => null,
-  toggleNav: () => null
-});
-
-export const NavProvider = ({ children }: any) => {
-  const { isNavOpen, setNav, toggleNav } = useNav();
-  return <NavContext.Provider value={{ isNavOpen, setNav, toggleNav }}>{children}</NavContext.Provider>;
-};
-
 interface Props {
   element: React.ReactNode | React.ReactFragment;
   props?: any;
@@ -42,18 +23,16 @@ interface Props {
 
 export const wrapRootElement: React.FC<Props> = ({ element }) => {
   return (
-    <ProviderComposer contexts={[<StylesProvider key="theme" />, <NavProvider key="nav" />]}>
+    <ProviderComposer contexts={[<StylesProvider key="theme" />]}>
       <>{element}</>
     </ProviderComposer>
   );
 };
 
 const StylesProvider: React.FC = ({ children }) => {
-  const { value, toggle, enable, disable } = useDarkMode();
-  const mode = value ? 'dark' : 'light';
-
+  const theme = useCreateTheme();
   return (
-    <StyledThemeProvider theme={{ isDarkMode: value, isLightMode: !value, mode, toggle, enable, disable }}>
+    <StyledThemeProvider theme={theme}>
       <>
         <GlobalStyle />
         {children}
