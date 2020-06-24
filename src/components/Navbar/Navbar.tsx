@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
       file(relativePath: { eq: "ghost.png" }) {
         childImageSharp {
           fixed(height: 25) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFixed_tracedSVG
           }
         }
       }

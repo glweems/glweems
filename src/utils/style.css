@@ -1,11 +1,31 @@
 html,
 body {
   color: var(--color-text);
-  background-color: var(--color-root-bg);
+  background-color: var(--color-bg);
   transition: color 0.25s ease-in-out;
   transition: background-color 0.25s ease-in-out;
 }
 
+@keyframes spTexture {
+  from {
+    background-position: 0px 0px;
+  }
+  to {
+    background-position: -16px 0px;
+  }
+}
+
 main {
   min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+.dark-mode a {
+  color: var(--color-yellow);
+}
+.dark-mode a:hover {
+  text-decoration: underline;
 }

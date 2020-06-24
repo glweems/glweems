@@ -4,10 +4,13 @@ import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
 dotenv.config();
 import config from './config';
+
+const GENERATE_QL_TYPES = false;
+
 const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>> = ({
   projectRoot
 }) => {
-  return {
+  const gatsbyConfig = {
     siteMetadata: {
       title: `Garrett Weems`,
       titleTemplate: `%s · Glweems`,
@@ -28,12 +31,6 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       'use-dark-mode',
       'gatsby-plugin-purgecss',
       {
-        resolve: `gatsby-plugin-graphql-codegen`,
-        options: {
-          fileName: `./src/types/generated.ts`
-        }
-      },
-      {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
           fonts: [
@@ -45,7 +42,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         }
       },
       'gatsby-transformer-yaml',
-      {
+      /* {
         resolve: 'gatsby-source-graphql',
         options: {
           typeName: 'GitHub',
@@ -53,7 +50,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
           url: 'https://api.github.com/graphql',
           headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
         }
-      },
+      }, */
       {
         resolve: 'gatsby-plugin-typography',
         options: {
@@ -122,33 +119,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
           ]
         }
       },
-      /*  {
-        resolve: 'gatsby-transformer-remark',
-        options: {
-          plugins: [
-            // Optional: Remove the paragraph tag wrapping images
-            'gatsby-remark-unwrap-images',
-            'gatsby-remark-responsive-iframe',
-            // Wrap images by pictures
-            {
-              resolve: 'gatsby-remark-images',
-              options: {
-                maxWidth: 720
-                // linkImagesToOriginal: true
-              }
-            },
-            {
-              resolve: 'gatsby-remark-tree-sitter',
-              options: {
-                grammarPackages: ['@atom-languages/language-typescript']
-              }
-            },
-            'gatsby-remark-copy-linked-files',
-            'gatsby-remark-autolink-headers',
-            'gatsby-remark-smartypants'
-          ]
-        }
-      }, */
+
       {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
@@ -198,6 +169,44 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       // 'gatsby-plugin-offline'
     ]
   };
+
+  GENERATE_QL_TYPES &&
+    gatsbyConfig.plugins.push({
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        fileName: `./src/types/generated.ts`
+      }
+    } as any);
+
+  return gatsbyConfig;
 };
 
 export default gatsbyConfig;
+
+/*  {
+        resolve: 'gatsby-transformer-remark',
+        options: {
+          plugins: [
+            // Optional: Remove the paragraph tag wrapping images
+            'gatsby-remark-unwrap-images',
+            'gatsby-remark-responsive-iframe',
+            // Wrap images by pictures
+            {
+              resolve: 'gatsby-remark-images',
+              options: {
+                maxWidth: 720
+                // linkImagesToOriginal: true
+              }
+            },
+            {
+              resolve: 'gatsby-remark-tree-sitter',
+              options: {
+                grammarPackages: ['@atom-languages/language-typescript']
+              }
+            },
+            'gatsby-remark-copy-linked-files',
+            'gatsby-remark-autolink-headers',
+            'gatsby-remark-smartypants'
+          ]
+        }
+      }, */

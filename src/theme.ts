@@ -101,6 +101,7 @@ export interface Theme extends SystemTheme {
   toggle: () => void;
   isDarkMode: boolean;
   colors: ColorObject;
+  mode: 'light' | 'dark';
 }
 
 export default function useCreateTheme(): DefaultTheme {
@@ -131,7 +132,7 @@ export const GlobalStyle = createGlobalStyle`
      let obj = {};
 
      Object.entries(props.theme.colors).forEach(([key, value]) => (obj[`--color-${key}`] = value));
-
+     obj[`--color-bg-pattern`] = `var(--color-blue)`;
      return obj;
    }}
  }

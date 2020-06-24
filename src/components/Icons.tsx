@@ -6,6 +6,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { GhostImageQuery } from '../types/generated';
 import Box from './Common/Box';
+import { Theme } from '../theme';
 
 const icon = {
   hidden: {
@@ -17,16 +18,24 @@ const icon = {
     fill: 'rgba(255, 255, 255, 1)'
   }
 };
-export const Moon = () => {
+
+type IconProps = {
+  size: number;
+};
+
+export const Moon: React.FC<IconProps> = ({ size: iconSize = 2 }) => {
+  console.log('iconSize: ', iconSize);
   return (
-    <Box
-      as={motion.svg}
+    <motion.svg
       className="svg-item"
-      width="2em"
-      height="2em"
       viewBox="0 0 16 16"
-      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
+      css={`
+        line-height: 1.5;
+        fill: var(--color-primary);
+        height: ${({ theme }) => theme.fontSizes[4]}px;
+        width: ${({ theme }) => theme.fontSizes[4]}px;
+      `}
     >
       <motion.path
         fill-rule="evenodd"
@@ -35,22 +44,33 @@ export const Moon = () => {
         animate="visible"
         d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z"
       />
-    </Box>
+    </motion.svg>
   );
 };
 
-export const Sun = () => {
+const defaultIconProps = {
+  size: 2
+};
+
+Moon.defaultProps = defaultIconProps;
+
+export const Sun: React.FC = () => {
   return (
-    <Box
-      as={motion.svg}
+    <motion.svg
       className="bi bi-sun"
-      width="1em"
-      height="1em"
+      width="1.25em"
+      height="1.25em"
       viewBox="0 0 16 16"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <motion.path variants={icon} initial="hidden" animate="visible" d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z" />
+      <motion.path
+        variants={icon}
+        initial="hidden"
+        fill="var(--color-primary)"
+        animate="visible"
+        d="M3.5 8a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0z"
+      />
       <motion.path
         variants={icon}
         initial="hidden"
@@ -58,7 +78,7 @@ export const Sun = () => {
         fill-rule="evenodd"
         d="M8.202.28a.25.25 0 0 0-.404 0l-.91 1.255a.25.25 0 0 1-.334.067L5.232.79a.25.25 0 0 0-.374.155l-.36 1.508a.25.25 0 0 1-.282.19l-1.532-.245a.25.25 0 0 0-.286.286l.244 1.532a.25.25 0 0 1-.189.282l-1.509.36a.25.25 0 0 0-.154.374l.812 1.322a.25.25 0 0 1-.067.333l-1.256.91a.25.25 0 0 0 0 .405l1.256.91a.25.25 0 0 1 .067.334L.79 10.768a.25.25 0 0 0 .154.374l1.51.36a.25.25 0 0 1 .188.282l-.244 1.532a.25.25 0 0 0 .286.286l1.532-.244a.25.25 0 0 1 .282.189l.36 1.508a.25.25 0 0 0 .374.155l1.322-.812a.25.25 0 0 1 .333.067l.91 1.256a.25.25 0 0 0 .405 0l.91-1.256a.25.25 0 0 1 .334-.067l1.322.812a.25.25 0 0 0 .374-.155l.36-1.508a.25.25 0 0 1 .282-.19l1.532.245a.25.25 0 0 0 .286-.286l-.244-1.532a.25.25 0 0 1 .189-.282l1.508-.36a.25.25 0 0 0 .155-.374l-.812-1.322a.25.25 0 0 1 .067-.333l1.256-.91a.25.25 0 0 0 0-.405l-1.256-.91a.25.25 0 0 1-.067-.334l.812-1.322a.25.25 0 0 0-.155-.374l-1.508-.36a.25.25 0 0 1-.19-.282l.245-1.532a.25.25 0 0 0-.286-.286l-1.532.244a.25.25 0 0 1-.282-.189l-.36-1.508a.25.25 0 0 0-.374-.155l-1.322.812a.25.25 0 0 1-.333-.067L8.203.28zM8 2.5a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11z"
       />
-    </Box>
+    </motion.svg>
   );
 };
 

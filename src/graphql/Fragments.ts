@@ -55,7 +55,7 @@ export const Frontmatter = graphql`
         publicURL
         childImageSharp {
           fluid {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }

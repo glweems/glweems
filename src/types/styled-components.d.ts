@@ -1,4 +1,4 @@
-import { CSSObject, CSSProp } from 'styled-components';
+import { CSSProp } from 'styled-components';
 import { Theme } from '../theme';
 
 declare module 'styled-components' {
@@ -6,6 +6,6 @@ declare module 'styled-components' {
 }
 declare module 'react' {
   interface Attributes {
-    css?: CSSProp<Theme> | CSSObject;
+    css?: CSSProp<Theme>;
   }
 }

@@ -1,5 +1,13 @@
 import packageJson from '../package.json';
-
+import {
+  faBehanceSquare,
+  faGithubSquare,
+  faInstagramSquare,
+  faLinkedin,
+  faMedium,
+  faReadme
+} from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faPenNib, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
@@ -26,7 +34,50 @@ const config = {
   },
   pathPrefix: '/',
   copyright: '© All rights reserved.',
-  postsPerPage: 4,
+  itemsPerPage: 4,
+  links: [
+    { path: '/', name: 'Articles' },
+    { path: '/designs', name: 'Designs' },
+    { path: '/projects', name: 'Projects' }
+  ],
+  accounts: {
+    email: {
+      name: 'Email',
+      username: 'gwgraphicdesign@gmail.com',
+      link: 'mailto:gwgraphicdesign@gmail.com',
+      icon: faEnvelope
+    },
+    github: {
+      name: 'Github',
+      username: 'glweems',
+      link: 'https://github.com/glweems',
+      icon: faGithubSquare
+    },
+    linkedin: {
+      name: 'LinkedIn',
+      username: 'glweems',
+      link: 'https://www.linkedin.com/in/glweems',
+      icon: faLinkedin
+    },
+    medium: {
+      name: 'Medium',
+      username: 'glweems',
+      link: 'https://medium.com/@glweems',
+      icon: faMedium
+    },
+    behance: {
+      name: 'Behance',
+      username: 'glweems',
+      link: 'https://www.behance.net/glweems',
+      icon: faBehanceSquare
+    },
+    instagram: {
+      name: 'Instagram',
+      username: 'glweems',
+      link: 'https://instagram.com/glweems',
+      icon: faInstagramSquare
+    }
+  },
   contacts: {
     email: '',
     facebook: '#',

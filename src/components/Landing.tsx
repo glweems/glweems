@@ -57,7 +57,7 @@ export default function Landing() {
           name
           childImageSharp {
             fixed(height: 90) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              ...GatsbyImageSharpFixed_tracedSVG
             }
           }
         }

@@ -1,34 +1,30 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
 import config from '../config';
+import { BlogPostCountQuery } from '../../src/types/generated';
+import { paginate } from 'gatsby-awesome-pagination';
 
 export default async function createPostPages({ graphql, actions }: CreatePagesArgs) {
   const { createPage } = actions;
 
-  const result = await graphql<any>(`
+  const result = await graphql<BlogPostCountQuery>(`
     query BlogPostCount {
       allMarkdownRemark {
         totalCount
+        nodes {
+          id
+        }
       }
     }
   `);
 
-  const { postsPerPage } = config;
-  const numPages = Math.ceil(result.data.allMarkdownRemark.totalCount / postsPerPage);
+  const { itemsPerPage } = config;
 
-  for (let i = 0; i < numPages; i += 1) {
-    createPage({
-      path: i === 0 ? '/' : `/page/${i}`,
-      component: path.resolve('src/templates/BlogListTemplate.tsx'),
-      context: {
-        currentPage: i,
-        limit: postsPerPage,
-        skip: i * postsPerPage,
-        prevPagePath: i <= 1 ? '/' : `/page/${i - 1}`,
-        nextPagePath: `/page/${i + 1}`,
-        hasPrevPage: i !== 0,
-        hasNextPage: i !== numPages - 1
-      }
-    });
-  }
+  paginate({
+    createPage,
+    items: result.data.allMarkdownRemark.nodes,
+    itemsPerPage,
+    pathPrefix: '/',
+    component: path.resolve('src/templates/BlogListTemplate.tsx')
+  });
 }

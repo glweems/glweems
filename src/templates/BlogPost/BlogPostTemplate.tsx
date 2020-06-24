@@ -20,18 +20,16 @@ interface BlogPostTemplateProps {
 }
 
 export default function BlogTemplate({ data: { post, prev, next, site } }: BlogPostTemplateProps) {
-  const { mode } = useTheme();
+  const { isDarkMode } = useTheme();
   const { twitterHandle, disqusShortName } = site.siteMetadata;
   const { url, disqusIdentifier } = post;
   const { title, path, tags, subtitle: description, thumbnail } = post.frontmatter;
   const seoConfig = { title, path, tags, description, article: true, image: thumbnail };
   const shareConfig = { url, twitterHandle, title, tags };
 
-  const theme = useTheme();
-
   return [
     <SEO {...seoConfig} />,
-    <Article className={`${mode} ${mode}-mode`}>
+    <Article className={isDarkMode ? 'dark-mode' : 'light-mode'}>
       <Header frontmatter={post.frontmatter} timeToRead={post.timeToRead} />
       <Content elements={post.htmlAst} />
     </Article>,

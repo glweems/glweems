@@ -19,7 +19,7 @@ export default function useDesignsQuery() {
           relativeDirectory
           childImageSharp {
             fluid {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }

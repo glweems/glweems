@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
-    "types": ["node"],
-    "target": "esnext",
-    "module": "commonjs",
+    "target": "ES2018" /* or at least ES2015 */,
+    "module": "ESNext" /* or at least ES2015 */,
+    "lib": ["dom"] /* <-- required! */,
+    "jsx": "preserve" /* <-- required! */,
     "moduleResolution": "node",
-    "jsx": "react",
+    "types": ["node"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,

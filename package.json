@@ -29,7 +29,9 @@
     "lint:style": "stylelint --ignore-path .gitignore \"src/**/*.{ts,tsx}\"",
     "lint": "npm run lint:es && npm run lint:style",
     "lint:fix": "npm run format && npm run lint:es --fix && npm run lint:style",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "gen": "graphql-codegen --config codegen.yml",
+    "gen:watch": "graphql-codegen --config codegen.yml -w"
   },
   "dependencies": {
     "@fortawesome/fontawesome-common-types": "^0.2.29",
@@ -44,6 +46,7 @@
     "dotenv": "^8.2.0",
     "framer-motion": "^1.11.1",
     "gatsby": "^2.23.10",
+    "gatsby-awesome-pagination": "^0.3.6",
     "gatsby-cli": "^2.12.50",
     "gatsby-image": "^2.4.8",
     "gatsby-plugin-favicon": "^3.1.6",
@@ -105,9 +108,15 @@
     "styled-theming": "^2.2.0",
     "typography": "^0.16.19",
     "typography-plugin-code": "^0.16.19",
+    "typography-theme-github": "^0.16.19",
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.15.4",
+    "@graphql-codegen/introspection": "1.15.4",
+    "@graphql-codegen/typescript": "1.15.4",
+    "@graphql-codegen/typescript-operations": "1.15.4",
+    "@graphql-codegen/typescript-react-apollo": "^1.15.4",
     "@types/loadable__component": "^5.10.0",
     "@types/lodash": "^4.14.156",
     "@types/query-string": "^6.3.0",

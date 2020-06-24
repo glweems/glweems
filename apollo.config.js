@@ -1,7 +1,8 @@
-export const client = {
+module.exports = {
   addTypename: false,
   excludes: [],
   includes: [
+    './.gatsby/**/*/.ts',
     './src/**/*.tsx',
     './src/**/*.ts',
     './plugins/**/*.js',
