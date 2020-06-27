@@ -4,6 +4,7 @@ import React from 'react';
 import Article from '../components/Article';
 import { DesignListQuery } from '../types/generated';
 import { PageContext } from './BlogListTemplate';
+import { motion } from 'framer-motion';
 
 export default function ArticleListTemplate(props: PageProps<DesignListQuery, PageContext>) {
   const handleClick: React.MouseEventHandler<{ name: string }> = (event) => {
@@ -15,14 +16,16 @@ export default function ArticleListTemplate(props: PageProps<DesignListQuery, Pa
     <div>
       {props.data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
         return (
-          <div key={name}>
+          <div key={post.slug}>
             <Article
+              path={'/' + post.slug}
+              excerpt={post.description}
               title={name}
               Image={
                 <Img
                   draggable={false}
                   alt={`${name} thumbnail image`}
-                  fluid={props.data.allFile.nodes[index].childImageSharp.fluid}
+                  fixed={props.data.allFile.nodes[index].childImageSharp.fixed}
                 />
               }
             />
@@ -47,10 +50,12 @@ export default function ArticleListTemplate(props: PageProps<DesignListQuery, Pa
 }
 
 export const DesignList = graphql`
-  query DesignLit($skip: Int!, $limit: Int!) {
+  query DesignList($skip: Int!, $limit: Int!) {
     allDesignsYaml(skip: $skip, limit: $limit, sort: { fields: slug, order: ASC }) {
       nodes {
         name
+        description
+        slug
       }
     }
     allFile(
@@ -63,8 +68,8 @@ export const DesignList = graphql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid
+          fixed(height: 200, width: 275, traceSVG: { color: "#d0c1fa", background: "transparent" }, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }

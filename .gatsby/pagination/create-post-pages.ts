@@ -19,12 +19,12 @@ export default async function createPostPages({ graphql, actions }: CreatePagesA
   `);
 
   const { itemsPerPage } = config;
-
+  const pathPrefix = ({ pageNumber, numberOfPages }) => (pageNumber === 0 ? '/' : '/page');
   paginate({
     createPage,
     items: result.data.allMarkdownRemark.nodes,
     itemsPerPage,
-    pathPrefix: '/',
+    pathPrefix,
     component: path.resolve('src/templates/BlogListTemplate.tsx')
   });
 }

@@ -19,11 +19,9 @@ export default function DesignTemplate({ data }: { data: DesignsTemplateQuery })
       <div>tags</div>
       {tags && <Tags tags={tags as string[]} />}
       <div>tools</div>
-      {tools?.map((tool) => (
-        <div>{tool?.title}</div>
-      ))}
-      {images.nodes.map((image) => (
-        <Img fluid={image?.childImageSharp?.fluid as any} draggable={false} />
+
+      {images.nodes.map((image, index) => (
+        <Img key={`${name}-image-${index}`} fluid={image?.childImageSharp?.fluid as any} draggable={false} />
       ))}
     </Container>
   ];

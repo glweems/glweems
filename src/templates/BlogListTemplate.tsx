@@ -33,7 +33,7 @@ export default function ArticleListTemplate(props: PageProps<BlogListQuery, Page
                 <Img
                   draggable={false}
                   alt={`${frontmatter.title} thumbnail image`}
-                  fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                  fixed={frontmatter.thumbnail.childImageSharp.fixed}
                 />
               }
             />
@@ -74,8 +74,13 @@ export const BlogList = graphql`
             relativePath
             publicURL
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid_tracedSVG
+              fixed(
+                height: 200
+                width: 275
+                traceSVG: { color: "#d0c1fa", background: "transparent" }
+                cropFocus: CENTER
+              ) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
               }
             }
           }

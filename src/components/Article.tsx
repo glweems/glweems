@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import React from 'react';
 import { Theme } from '../theme';
@@ -33,7 +34,13 @@ export default function Article({ title, excerpt, date, path, Image, linkText }:
         {date && <div>{date}</div>}
         {path && <Link to={path}>{linkText}</Link>}
       </div>
-      <div>{Image && Image}</div>
+      <div>
+        {Image && (
+          <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.975 }}>
+            {Image}
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }

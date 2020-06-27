@@ -5,8 +5,10 @@ import React from 'react';
 import { useTheme } from 'styled-components';
 import media from 'styled-media-query';
 import config from '../../.gatsby/config';
-import { GhostSVG } from '../components/Icons';
+import { GhostSVG } from './Icons';
 import Box from './Common/Box';
+import { Container } from './Common';
+import ToggleThemeSwitch from './ToogleThemeSwitch';
 
 function SideMenu() {
   return (
@@ -46,7 +48,7 @@ function SideMenu() {
 
         <Box>
           <SocialIcons />
-          <ToggleSwitch />
+          <ToggleThemeSwitch />
         </Box>
       </Box>
     </div>
@@ -54,6 +56,7 @@ function SideMenu() {
 }
 
 function SocialIcons() {
+  const theme = useTheme();
   return (
     <motion.ul
       initial="hidden"
@@ -109,56 +112,35 @@ function SocialIcons() {
   );
 }
 
-function ToggleSwitch() {
-  const { toggle } = useTheme();
-
-  return (
-    <motion.button onClick={toggle}>
-      <svg
-        className="bi bi-circle-half"
-        width="1em"
-        height="1em"
-        viewBox="0 0 16 16"
-        fill="currentColor"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path fill-rule="evenodd" d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
-      </svg>
-    </motion.button>
-  );
-}
-
 export default function Layout({ children }) {
+  const theme = useTheme();
   return (
-    <div
-      css={`
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        ${media.greaterThan('medium')`
-          flex-direction: row;
-
-          #main-menu {
-            flex-basis: 25em;
-            position: sticky;
-            height: 100vh;
-            top: 0;
-            left: 0;
-            }
-        `};
-      `}
-    >
+    <Container>
       <div
-        id="main-menu"
+        className="grid-container"
         css={`
-          width: 33em;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr;
+          gap: 0em 2em;
+          grid-template-areas: 'menu content content';
+
+          .content {
+            grid-area: content;
+          }
+          .menu {
+            grid-area: menu;
+          }
         `}
       >
-        <SideMenu />
-      </div>
+        <div className="menu">
+          <SideMenu />
+        </div>
 
-      <main>{children}</main>
-    </div>
+        <div className="content">
+          <main>{children}</main>
+        </div>
+      </div>
+    </Container>
   );
 }

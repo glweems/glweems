@@ -42,7 +42,7 @@ export const navbarHeight = `4em`;
 export const remainingHeight = `calc(100vh - 64px)`;
 export const borderRadius = `0.3em`;
 
-const baseColors = {
+export const baseColors = {
   blue: '#1769ff',
   green: '#4caf50',
   mint: '#a7e3cc',
