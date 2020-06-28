@@ -29,7 +29,6 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       'gatsby-plugin-netlify',
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
-      'gatsby-plugin-purgecss',
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
@@ -42,15 +41,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         }
       },
       'gatsby-transformer-yaml',
-      /* {
-        resolve: 'gatsby-source-graphql',
-        options: {
-          typeName: 'GitHub',
-          fieldName: 'github',
-          url: 'https://api.github.com/graphql',
-          headers: { Authorization: `bearer ${process.env.GITHUB_TOKEN}` }
-        }
-      }, */
+
       {
         resolve: 'gatsby-plugin-typography',
         options: {
@@ -93,12 +84,6 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         options: {
           plugins: [
             'gatsby-remark-relative-images',
-            /*  {
-              resolve: 'gatsby-remark-katex',
-              options: {
-                strict: 'ignore'
-              }
-            }, */
             {
               resolve: 'gatsby-remark-images',
               options: {
@@ -170,43 +155,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
     ]
   };
 
-  GENERATE_QL_TYPES &&
-    gatsbyConfig.plugins.push({
-      resolve: `gatsby-plugin-graphql-codegen`,
-      options: {
-        fileName: `./src/types/generated.ts`
-      }
-    } as any);
-
   return gatsbyConfig;
 };
 
 export default gatsbyConfig;
-
-/*  {
-        resolve: 'gatsby-transformer-remark',
-        options: {
-          plugins: [
-            // Optional: Remove the paragraph tag wrapping images
-            'gatsby-remark-unwrap-images',
-            'gatsby-remark-responsive-iframe',
-            // Wrap images by pictures
-            {
-              resolve: 'gatsby-remark-images',
-              options: {
-                maxWidth: 720
-                // linkImagesToOriginal: true
-              }
-            },
-            {
-              resolve: 'gatsby-remark-tree-sitter',
-              options: {
-                grammarPackages: ['@atom-languages/language-typescript']
-              }
-            },
-            'gatsby-remark-copy-linked-files',
-            'gatsby-remark-autolink-headers',
-            'gatsby-remark-smartypants'
-          ]
-        }
-      }, */

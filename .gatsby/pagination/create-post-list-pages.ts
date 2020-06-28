@@ -3,10 +3,9 @@ import path from 'path';
 import config from '../config';
 import { BlogPostCountQuery } from '../../src/types/generated';
 import { paginate } from 'gatsby-awesome-pagination';
+const { itemsPerPage } = config;
 
-export default async function createPostPages({ graphql, actions }: CreatePagesArgs) {
-  const { createPage } = actions;
-
+export default async function createPostPages({ graphql, actions: { createPage }, reporter }: CreatePagesArgs) {
   const result = await graphql<BlogPostCountQuery>(`
     query BlogPostCount {
       allMarkdownRemark {
@@ -18,13 +17,21 @@ export default async function createPostPages({ graphql, actions }: CreatePagesA
     }
   `);
 
-  const { itemsPerPage } = config;
-  const pathPrefix = ({ pageNumber, numberOfPages }) => (pageNumber === 0 ? '/' : '/page');
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  reporter.activityTimer('Creating Blog List Pages').start();
+
   paginate({
     createPage,
     items: result.data.allMarkdownRemark.nodes,
     itemsPerPage,
-    pathPrefix,
+    pathPrefix: ({ pageNumber, numberOfPages }) => (pageNumber === 0 ? '/' : '/page'),
     component: path.resolve('src/templates/BlogListTemplate.tsx')
   });
+
+  reporter.activityTimer(`Created ${result.data.allMarkdownRemark.totalCount} Blog List Pagese`).end();
 }

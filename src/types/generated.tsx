@@ -65,11 +65,9 @@ export type ContentYamlConnection = {
   group: Array<ContentYamlGroupConnection>;
 };
 
-
 export type ContentYamlConnectionDistinctArgs = {
   field: ContentYamlFieldsEnum;
 };
-
 
 export type ContentYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -300,7 +298,6 @@ export type ContentYamlSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-
 export type DateQueryOperatorInput = {
   eq?: Maybe<Scalars['Date']>;
   ne?: Maybe<Scalars['Date']>;
@@ -337,11 +334,9 @@ export type DesignsYamlConnection = {
   group: Array<DesignsYamlGroupConnection>;
 };
 
-
 export type DesignsYamlConnectionDistinctArgs = {
   field: DesignsYamlFieldsEnum;
 };
-
 
 export type DesignsYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -557,14 +552,12 @@ export type Directory = Node & {
   internal: Internal;
 };
 
-
 export type DirectoryModifiedTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryAccessTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -573,14 +566,12 @@ export type DirectoryAccessTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryChangeTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryBirthTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -589,7 +580,6 @@ export type DirectoryBirthTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryAtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
@@ -597,14 +587,12 @@ export type DirectoryAtimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryMtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryCtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -623,11 +611,9 @@ export type DirectoryConnection = {
   group: Array<DirectoryGroupConnection>;
 };
 
-
 export type DirectoryConnectionDistinctArgs = {
   field: DirectoryFieldsEnum;
 };
-
 
 export type DirectoryConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -875,14 +861,12 @@ export type File = Node & {
   childrenDesignsYaml?: Maybe<Array<Maybe<DesignsYaml>>>;
 };
 
-
 export type FileModifiedTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileAccessTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -891,14 +875,12 @@ export type FileAccessTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileChangeTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileBirthTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -907,7 +889,6 @@ export type FileBirthTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileAtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
@@ -915,14 +896,12 @@ export type FileAtimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileMtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileCtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -941,11 +920,9 @@ export type FileConnection = {
   group: Array<FileGroupConnection>;
 };
 
-
 export type FileConnectionDistinctArgs = {
   field: FileFieldsEnum;
 };
-
 
 export type FileConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -1630,7 +1607,6 @@ export type ImageSharp = Node & {
   internal: Internal;
 };
 
-
 export type ImageSharpFixedArgs = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -1653,7 +1629,6 @@ export type ImageSharpFixedArgs = {
   trim?: Maybe<Scalars['Float']>;
 };
 
-
 export type ImageSharpResolutionsArgs = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -1675,7 +1650,6 @@ export type ImageSharpResolutionsArgs = {
   rotate?: Maybe<Scalars['Int']>;
   trim?: Maybe<Scalars['Float']>;
 };
-
 
 export type ImageSharpFluidArgs = {
   maxWidth?: Maybe<Scalars['Int']>;
@@ -1701,7 +1675,6 @@ export type ImageSharpFluidArgs = {
   srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
-
 export type ImageSharpSizesArgs = {
   maxWidth?: Maybe<Scalars['Int']>;
   maxHeight?: Maybe<Scalars['Int']>;
@@ -1725,7 +1698,6 @@ export type ImageSharpSizesArgs = {
   sizes?: Maybe<Scalars['String']>;
   srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
-
 
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>;
@@ -1759,11 +1731,9 @@ export type ImageSharpConnection = {
   group: Array<ImageSharpGroupConnection>;
 };
 
-
 export type ImageSharpConnectionDistinctArgs = {
   field: ImageSharpFieldsEnum;
 };
-
 
 export type ImageSharpConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2130,7 +2100,6 @@ export type IntQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
-
 export type JsonQueryOperatorInput = {
   eq?: Maybe<Scalars['JSON']>;
   ne?: Maybe<Scalars['JSON']>;
@@ -2193,24 +2162,20 @@ export type MarkdownRemark = Node & {
   internal: Internal;
 };
 
-
 export type MarkdownRemarkExcerptArgs = {
   pruneLength?: Maybe<Scalars['Int']>;
   truncate?: Maybe<Scalars['Boolean']>;
   format?: Maybe<MarkdownExcerptFormats>;
 };
 
-
 export type MarkdownRemarkExcerptAstArgs = {
   pruneLength?: Maybe<Scalars['Int']>;
   truncate?: Maybe<Scalars['Boolean']>;
 };
 
-
 export type MarkdownRemarkHeadingsArgs = {
   depth?: Maybe<MarkdownHeadingLevels>;
 };
-
 
 export type MarkdownRemarkTableOfContentsArgs = {
   absolute?: Maybe<Scalars['Boolean']>;
@@ -2229,11 +2194,9 @@ export type MarkdownRemarkConnection = {
   group: Array<MarkdownRemarkGroupConnection>;
 };
 
-
 export type MarkdownRemarkConnectionDistinctArgs = {
   field: MarkdownRemarkFieldsEnum;
 };
-
 
 export type MarkdownRemarkConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2478,7 +2441,6 @@ export type MarkdownRemarkFrontmatter = {
   popular?: Maybe<Scalars['Boolean']>;
 };
 
-
 export type MarkdownRemarkFrontmatterDateArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
@@ -2603,7 +2565,6 @@ export type Query = {
   allSitePlugin: SitePluginConnection;
 };
 
-
 export type QueryFileArgs = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
   absolutePath?: Maybe<StringQueryOperatorInput>;
@@ -2650,14 +2611,12 @@ export type QueryFileArgs = {
   childrenDesignsYaml?: Maybe<DesignsYamlFilterListInput>;
 };
 
-
 export type QueryAllFileArgs = {
   filter?: Maybe<FileFilterInput>;
   sort?: Maybe<FileSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryDirectoryArgs = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
@@ -2699,14 +2658,12 @@ export type QueryDirectoryArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllDirectoryArgs = {
   filter?: Maybe<DirectoryFilterInput>;
   sort?: Maybe<DirectorySortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySitePageArgs = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -2725,14 +2682,12 @@ export type QuerySitePageArgs = {
   componentPath?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllSitePageArgs = {
   filter?: Maybe<SitePageFilterInput>;
   sort?: Maybe<SitePageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
@@ -2747,14 +2702,12 @@ export type QuerySiteArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllSiteArgs = {
   filter?: Maybe<SiteFilterInput>;
   sort?: Maybe<SiteSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryImageSharpArgs = {
   fixed?: Maybe<ImageSharpFixedFilterInput>;
@@ -2769,14 +2722,12 @@ export type QueryImageSharpArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>;
   sort?: Maybe<ImageSharpSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryMarkdownRemarkArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2798,14 +2749,12 @@ export type QueryMarkdownRemarkArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllMarkdownRemarkArgs = {
   filter?: Maybe<MarkdownRemarkFilterInput>;
   sort?: Maybe<MarkdownRemarkSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryDesignsYamlArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2821,14 +2770,12 @@ export type QueryDesignsYamlArgs = {
   tools?: Maybe<DesignsYamlToolsFilterListInput>;
 };
 
-
 export type QueryAllDesignsYamlArgs = {
   filter?: Maybe<DesignsYamlFilterInput>;
   sort?: Maybe<DesignsYamlSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySideprojectsYamlArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2843,14 +2790,12 @@ export type QuerySideprojectsYamlArgs = {
   tags?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllSideprojectsYamlArgs = {
   filter?: Maybe<SideprojectsYamlFilterInput>;
   sort?: Maybe<SideprojectsYamlSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryContentYamlArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2865,14 +2810,12 @@ export type QueryContentYamlArgs = {
   email?: Maybe<ContentYamlEmailFilterInput>;
 };
 
-
 export type QueryAllContentYamlArgs = {
   filter?: Maybe<ContentYamlFilterInput>;
   sort?: Maybe<ContentYamlSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySiteBuildMetadataArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2882,14 +2825,12 @@ export type QuerySiteBuildMetadataArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
 };
 
-
 export type QueryAllSiteBuildMetadataArgs = {
   filter?: Maybe<SiteBuildMetadataFilterInput>;
   sort?: Maybe<SiteBuildMetadataSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySitePluginArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2906,7 +2847,6 @@ export type QuerySitePluginArgs = {
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
 };
-
 
 export type QueryAllSitePluginArgs = {
   filter?: Maybe<SitePluginFilterInput>;
@@ -2939,11 +2879,9 @@ export type SideprojectsYamlConnection = {
   group: Array<SideprojectsYamlGroupConnection>;
 };
 
-
 export type SideprojectsYamlConnectionDistinctArgs = {
   field: SideprojectsYamlFieldsEnum;
 };
-
 
 export type SideprojectsYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3395,14 +3333,12 @@ export type Site = Node & {
   internal: Internal;
 };
 
-
 export type SiteBuildTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -3419,7 +3355,6 @@ export type SiteBuildMetadata = Node & {
   internal: Internal;
   buildTime?: Maybe<Scalars['Date']>;
 };
-
 
 export type SiteBuildMetadataBuildTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -3438,11 +3373,9 @@ export type SiteBuildMetadataConnection = {
   group: Array<SiteBuildMetadataGroupConnection>;
 };
 
-
 export type SiteBuildMetadataConnectionDistinctArgs = {
   field: SiteBuildMetadataFieldsEnum;
 };
-
 
 export type SiteBuildMetadataConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3580,11 +3513,9 @@ export type SiteConnection = {
   group: Array<SiteGroupConnection>;
 };
 
-
 export type SiteConnectionDistinctArgs = {
   field: SiteFieldsEnum;
 };
-
 
 export type SiteConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3753,11 +3684,9 @@ export type SitePageConnection = {
   group: Array<SitePageGroupConnection>;
 };
 
-
 export type SitePageConnectionDistinctArgs = {
   field: SitePageFieldsEnum;
 };
-
 
 export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -4072,11 +4001,9 @@ export type SitePluginConnection = {
   group: Array<SitePluginGroupConnection>;
 };
 
-
 export type SitePluginConnectionDistinctArgs = {
   field: SitePluginFieldsEnum;
 };
-
 
 export type SitePluginConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -4535,441 +4462,400 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type CreatePagesQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CreatePagesQueryQuery = (
-  { __typename?: 'Query' }
-  & { posts: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & { frontmatter?: Maybe<(
-        { __typename?: 'MarkdownRemarkFrontmatter' }
-        & Pick<MarkdownRemarkFrontmatter, 'path'>
-      )> }
-    )> }
-  ), designs: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug'>
-    )> }
-  ) }
-);
-
-export type DesignCountQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DesignCountQuery = (
-  { __typename?: 'Query' }
-  & { allDesignsYaml: (
-    { __typename?: 'DesignsYamlConnection' }
-    & Pick<DesignsYamlConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'id'>
-    )> }
-  ) }
-);
-
-export type BlogPostCountQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type BlogPostCountQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'id'>
-    )> }
-  ) }
-);
-
-export type GatsbyImageSharpFixedFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_WithWebpFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFixed_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFluidFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluidLimitPresentationSizeFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] }
-);
-
-export type GatsbyImageSharpFluid_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebpFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpResolutionsFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_TracedSvgFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebpFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpResolutions_NoBase64Fragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpSizesFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_TracedSvgFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebpFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_NoBase64Fragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GhostImageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GhostImageQuery = (
-  { __typename?: 'Query' }
-  & { file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
-  )> }
-);
-
-export type LandingGhostsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type LandingGhostsQuery = (
-  { __typename?: 'Query' }
-  & { ghosts: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'name'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fixed?: Maybe<(
-          { __typename?: 'ImageSharpFixed' }
-          & GatsbyImageSharpFixed_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type NavbarGhostQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type NavbarGhostQuery = (
-  { __typename?: 'Query' }
-  & { file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixed_TracedSvgFragment
-      )> }
-    )> }
-  )> }
-);
-
-export type DesignsPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DesignsPageQuery = (
-  { __typename?: 'Query' }
-  & { allBehanceProjects: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>
-    )> }
-  ), behanceImages: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'relativeDirectory'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluidFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type FixedImageFragment = (
-  { __typename?: 'ImageSharp' }
-  & { fixed?: Maybe<(
-    { __typename?: 'ImageSharpFixed' }
-    & Pick<ImageSharpFixed, 'originalName' | 'base64' | 'tracedSVG' | 'aspectRatio' | 'srcWebp' | 'srcSetWebp' | 'width' | 'height' | 'srcSet'>
-  )> }
-);
-
-export type FluidImageFragment = (
-  { __typename?: 'ImageSharp' }
-  & { fluid?: Maybe<(
-    { __typename?: 'ImageSharpFluid' }
-    & Pick<ImageSharpFluid, 'base64' | 'tracedSVG' | 'srcWebp' | 'srcSetWebp' | 'originalImg' | 'originalName' | 'aspectRatio' | 'sizes' | 'presentationWidth' | 'presentationHeight' | 'src' | 'srcSet'>
-  )> }
-);
-
-export type FrontmatterFragment = (
-  { __typename?: 'MarkdownRemark' }
-  & { frontmatter?: Maybe<(
-    { __typename?: 'MarkdownRemarkFrontmatter' }
-    & Pick<MarkdownRemarkFrontmatter, 'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags' | 'next'>
-    & { thumbnail?: Maybe<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'relativePath' | 'publicURL'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluid_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  )> }
-);
-
-export type BlogPostFragment = (
-  { __typename?: 'MarkdownRemark' }
-  & Pick<MarkdownRemark, 'id' | 'excerpt' | 'timeToRead'>
-  & FrontmatterFragment
-);
-
-export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PostsQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & BlogPostFragment
-    )> }
-  ) }
-);
-
-export type SeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SeoQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'titleTemplate'>
-      & { defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'], url: SiteSiteMetadata['siteUrl'], defaultImage: SiteSiteMetadata['image'] }
-    )> }
-  )> }
-);
-
-export type SideProjectsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SideProjectsQuery = (
-  { __typename?: 'Query' }
-  & { allSideprojectsYaml: (
-    { __typename?: 'SideprojectsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'SideprojectsYaml' }
-      & Pick<SideprojectsYaml, 'id' | 'title' | 'link' | 'github' | 'description' | 'tags'>
-      & { image?: Maybe<(
-        { __typename?: 'File' }
-        & { childImageSharp?: Maybe<(
-          { __typename?: 'ImageSharp' }
-          & FluidImageFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type UseDesignsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type UseDesignsQuery = (
-  { __typename?: 'Query' }
-  & { projects: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>
-    )> }
-  ), images: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'name' | 'relativeDirectory'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluid_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type AllSiteTagsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AllSiteTagsQuery = (
-  { __typename?: 'Query' }
-  & { blogTags: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { group: Array<(
-      { __typename?: 'MarkdownRemarkGroupConnection' }
-      & { tag: MarkdownRemarkGroupConnection['fieldValue'], qty: MarkdownRemarkGroupConnection['totalCount'] }
-    )> }
-  ), designTags: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { group: Array<(
-      { __typename?: 'DesignsYamlGroupConnection' }
-      & { tag: DesignsYamlGroupConnection['fieldValue'], qty: DesignsYamlGroupConnection['totalCount'] }
-    )> }
-  ), sideProjectTags: (
-    { __typename?: 'SideprojectsYamlConnection' }
-    & { group: Array<(
-      { __typename?: 'SideprojectsYamlGroupConnection' }
-      & { tag: SideprojectsYamlGroupConnection['fieldValue'], qty: SideprojectsYamlGroupConnection['totalCount'] }
-    )> }
-  ) }
-);
+export type CreatePagesQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CreatePagesQueryQuery = { __typename?: 'Query' } & {
+  posts: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<
+      { __typename?: 'MarkdownRemark' } & {
+        frontmatter?: Maybe<{ __typename?: 'MarkdownRemarkFrontmatter' } & Pick<MarkdownRemarkFrontmatter, 'path'>>;
+      }
+    >;
+  };
+  designs: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'slug'>>;
+  };
+};
+
+export type DesignCountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type DesignCountQuery = { __typename?: 'Query' } & {
+  allDesignsYaml: { __typename?: 'DesignsYamlConnection' } & Pick<DesignsYamlConnection, 'totalCount'> & {
+      nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'id'>>;
+    };
+};
+
+export type BlogPostCountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type BlogPostCountQuery = { __typename?: 'Query' } & {
+  allMarkdownRemark: { __typename?: 'MarkdownRemarkConnection' } & Pick<MarkdownRemarkConnection, 'totalCount'> & {
+      nodes: Array<{ __typename?: 'MarkdownRemark' } & Pick<MarkdownRemark, 'id'>>;
+    };
+};
+
+export type GatsbyImageSharpFixedFragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpFixed_TracedSvgFragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpFixed_WithWebpFragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFixed_NoBase64Fragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = { __typename?: 'ImageSharpFixed' } & Pick<
+  ImageSharpFixed,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFluidFragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = { __typename?: 'ImageSharpFluid' } & {
+  maxHeight: ImageSharpFluid['presentationHeight'];
+  maxWidth: ImageSharpFluid['presentationWidth'];
+};
+
+export type GatsbyImageSharpFluid_TracedSvgFragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_WithWebpFragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_NoBase64Fragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = { __typename?: 'ImageSharpFluid' } & Pick<
+  ImageSharpFluid,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpResolutionsFragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpResolutions_TracedSvgFragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpResolutions_WithWebpFragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpResolutions_NoBase64Fragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = { __typename?: 'ImageSharpResolutions' } & Pick<
+  ImageSharpResolutions,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpSizesFragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_TracedSvgFragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_WithWebpFragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_NoBase64Fragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = { __typename?: 'ImageSharpSizes' } & Pick<
+  ImageSharpSizes,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GhostImageQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GhostImageQuery = { __typename?: 'Query' } & {
+  file?: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp?: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fixed?: Maybe<{ __typename?: 'ImageSharpFixed' } & GatsbyImageSharpFixedFragment>;
+        }
+      >;
+    }
+  >;
+};
+
+export type LandingGhostsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type LandingGhostsQuery = { __typename?: 'Query' } & {
+  ghosts: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<File, 'name'> & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fixed?: Maybe<{ __typename?: 'ImageSharpFixed' } & GatsbyImageSharpFixed_TracedSvgFragment>;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type NavbarGhostQueryVariables = Exact<{ [key: string]: never }>;
+
+export type NavbarGhostQuery = { __typename?: 'Query' } & {
+  file?: Maybe<
+    { __typename?: 'File' } & {
+      childImageSharp?: Maybe<
+        { __typename?: 'ImageSharp' } & {
+          fixed?: Maybe<{ __typename?: 'ImageSharpFixed' } & GatsbyImageSharpFixed_TracedSvgFragment>;
+        }
+      >;
+    }
+  >;
+};
+
+export type DesignsPageQueryVariables = Exact<{ [key: string]: never }>;
+
+export type DesignsPageQuery = { __typename?: 'Query' } & {
+  allBehanceProjects: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>>;
+  };
+  behanceImages: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<File, 'relativeDirectory'> & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fluid?: Maybe<{ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluidFragment>;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type FixedImageFragment = { __typename?: 'ImageSharp' } & {
+  fixed?: Maybe<
+    { __typename?: 'ImageSharpFixed' } & Pick<
+      ImageSharpFixed,
+      'originalName' | 'base64' | 'tracedSVG' | 'aspectRatio' | 'srcWebp' | 'srcSetWebp' | 'width' | 'height' | 'srcSet'
+    >
+  >;
+};
+
+export type FluidImageFragment = { __typename?: 'ImageSharp' } & {
+  fluid?: Maybe<
+    { __typename?: 'ImageSharpFluid' } & Pick<
+      ImageSharpFluid,
+      | 'base64'
+      | 'tracedSVG'
+      | 'srcWebp'
+      | 'srcSetWebp'
+      | 'originalImg'
+      | 'originalName'
+      | 'aspectRatio'
+      | 'sizes'
+      | 'presentationWidth'
+      | 'presentationHeight'
+      | 'src'
+      | 'srcSet'
+    >
+  >;
+};
+
+export type FrontmatterFragment = { __typename?: 'MarkdownRemark' } & {
+  frontmatter?: Maybe<
+    { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
+      MarkdownRemarkFrontmatter,
+      'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags' | 'next'
+    > & {
+        thumbnail?: Maybe<
+          { __typename?: 'File' } & Pick<File, 'id' | 'relativePath' | 'publicURL'> & {
+              childImageSharp?: Maybe<
+                { __typename?: 'ImageSharp' } & {
+                  fluid?: Maybe<{ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluid_TracedSvgFragment>;
+                }
+              >;
+            }
+        >;
+      }
+  >;
+};
+
+export type BlogPostFragment = { __typename?: 'MarkdownRemark' } & Pick<
+  MarkdownRemark,
+  'id' | 'excerpt' | 'timeToRead'
+> &
+  FrontmatterFragment;
+
+export type PostsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type PostsQuery = { __typename?: 'Query' } & {
+  allMarkdownRemark: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostFragment>;
+  };
+};
+
+export type SeoQueryQueryVariables = Exact<{ [key: string]: never }>;
+
+export type SeoQueryQuery = { __typename?: 'Query' } & {
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'titleTemplate'> & {
+            defaultTitle: SiteSiteMetadata['title'];
+            defaultDescription: SiteSiteMetadata['description'];
+            url: SiteSiteMetadata['siteUrl'];
+            defaultImage: SiteSiteMetadata['image'];
+          }
+      >;
+    }
+  >;
+};
+
+export type SideProjectsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type SideProjectsQuery = { __typename?: 'Query' } & {
+  allSideprojectsYaml: { __typename?: 'SideprojectsYamlConnection' } & {
+    nodes: Array<
+      { __typename?: 'SideprojectsYaml' } & Pick<
+        SideprojectsYaml,
+        'id' | 'title' | 'link' | 'github' | 'description' | 'tags'
+      > & {
+          image?: Maybe<
+            { __typename?: 'File' } & { childImageSharp?: Maybe<{ __typename?: 'ImageSharp' } & FluidImageFragment> }
+          >;
+        }
+    >;
+  };
+};
+
+export type UseDesignsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UseDesignsQuery = { __typename?: 'Query' } & {
+  projects: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>>;
+  };
+  images: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<File, 'id' | 'name' | 'relativeDirectory'> & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fluid?: Maybe<{ __typename?: 'ImageSharpFluid' } & GatsbyImageSharpFluid_TracedSvgFragment>;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type AllSiteTagsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllSiteTagsQuery = { __typename?: 'Query' } & {
+  blogTags: { __typename?: 'MarkdownRemarkConnection' } & {
+    group: Array<
+      { __typename?: 'MarkdownRemarkGroupConnection' } & {
+        tag: MarkdownRemarkGroupConnection['fieldValue'];
+        qty: MarkdownRemarkGroupConnection['totalCount'];
+      }
+    >;
+  };
+  designTags: { __typename?: 'DesignsYamlConnection' } & {
+    group: Array<
+      { __typename?: 'DesignsYamlGroupConnection' } & {
+        tag: DesignsYamlGroupConnection['fieldValue'];
+        qty: DesignsYamlGroupConnection['totalCount'];
+      }
+    >;
+  };
+  sideProjectTags: { __typename?: 'SideprojectsYamlConnection' } & {
+    group: Array<
+      { __typename?: 'SideprojectsYamlGroupConnection' } & {
+        tag: SideprojectsYamlGroupConnection['fieldValue'];
+        qty: SideprojectsYamlGroupConnection['totalCount'];
+      }
+    >;
+  };
+};
 
 export type BlogListQueryVariables = Exact<{
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 }>;
 
-
-export type BlogListQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { posts: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'id' | 'excerpt'>
-      & { frontmatter?: Maybe<(
-        { __typename?: 'MarkdownRemarkFrontmatter' }
-        & Pick<MarkdownRemarkFrontmatter, 'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags'>
-        & { thumbnail?: Maybe<(
-          { __typename?: 'File' }
-          & Pick<File, 'id' | 'relativePath' | 'publicURL'>
-          & { childImageSharp?: Maybe<(
-            { __typename?: 'ImageSharp' }
-            & { fixed?: Maybe<(
-              { __typename?: 'ImageSharpFixed' }
-              & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
-            )> }
-          )> }
-        )> }
-      )> }
-    )> }
-  ) }
-);
+export type BlogListQuery = { __typename?: 'Query' } & {
+  allMarkdownRemark: { __typename?: 'MarkdownRemarkConnection' } & {
+    posts: Array<
+      { __typename?: 'MarkdownRemark' } & Pick<MarkdownRemark, 'id' | 'excerpt'> & {
+          frontmatter?: Maybe<
+            { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
+              MarkdownRemarkFrontmatter,
+              'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags'
+            > & {
+                thumbnail?: Maybe<
+                  { __typename?: 'File' } & Pick<File, 'id' | 'relativePath' | 'publicURL'> & {
+                      childImageSharp?: Maybe<
+                        { __typename?: 'ImageSharp' } & {
+                          fixed?: Maybe<
+                            { __typename?: 'ImageSharpFixed' } & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
+                          >;
+                        }
+                      >;
+                    }
+                >;
+              }
+          >;
+        }
+    >;
+  };
+};
 
 export type BlogTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -4977,1079 +4863,1307 @@ export type BlogTemplateQueryVariables = Exact<{
   next?: Maybe<Scalars['String']>;
 }>;
 
-
-export type BlogTemplateQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & Pick<MarkdownRemark, 'url' | 'disqusIdentifier' | 'timeToRead' | 'htmlAst'>
-    & FrontmatterFragment
-  )>, prev?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'path'>
-      & { title: MarkdownRemarkFrontmatter['subtitle'] }
-    )> }
-  )>, next?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & Pick<MarkdownRemarkFrontmatter, 'path'>
-      & { title: MarkdownRemarkFrontmatter['subtitle'] }
-    )> }
-  )>, site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'twitterHandle' | 'disqusShortName'>
-    )> }
-  )> }
-);
+export type BlogTemplateQuery = { __typename?: 'Query' } & {
+  post?: Maybe<
+    { __typename?: 'MarkdownRemark' } & Pick<MarkdownRemark, 'url' | 'disqusIdentifier' | 'timeToRead' | 'htmlAst'> &
+      FrontmatterFragment
+  >;
+  prev?: Maybe<
+    { __typename?: 'MarkdownRemark' } & {
+      frontmatter?: Maybe<
+        { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<MarkdownRemarkFrontmatter, 'path'> & {
+            title: MarkdownRemarkFrontmatter['subtitle'];
+          }
+      >;
+    }
+  >;
+  next?: Maybe<
+    { __typename?: 'MarkdownRemark' } & {
+      frontmatter?: Maybe<
+        { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<MarkdownRemarkFrontmatter, 'path'> & {
+            title: MarkdownRemarkFrontmatter['subtitle'];
+          }
+      >;
+    }
+  >;
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<SiteSiteMetadata, 'twitterHandle' | 'disqusShortName'>
+      >;
+    }
+  >;
+};
 
 export type DesignsTemplateQueryQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
-
-export type DesignsTemplateQueryQuery = (
-  { __typename?: 'Query' }
-  & { design?: Maybe<(
-    { __typename?: 'DesignsYaml' }
-    & Pick<DesignsYaml, 'id' | 'slug' | 'name' | 'description' | 'tags'>
-    & { tools?: Maybe<Array<Maybe<(
-      { __typename?: 'DesignsYamlTools' }
-      & Pick<DesignsYamlTools, 'title'>
-    )>>> }
-  )>, images: (
-    { __typename?: 'FileConnection' }
-    & Pick<FileConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'name'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & FluidImageFragment
-      )> }
-    )> }
-  ) }
-);
+export type DesignsTemplateQueryQuery = { __typename?: 'Query' } & {
+  design?: Maybe<
+    { __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'id' | 'slug' | 'name' | 'description' | 'tags'> & {
+        tools?: Maybe<Array<Maybe<{ __typename?: 'DesignsYamlTools' } & Pick<DesignsYamlTools, 'title'>>>>;
+      }
+  >;
+  images: { __typename?: 'FileConnection' } & Pick<FileConnection, 'totalCount'> & {
+      nodes: Array<
+        { __typename?: 'File' } & Pick<File, 'id' | 'name'> & {
+            childImageSharp?: Maybe<{ __typename?: 'ImageSharp' } & FluidImageFragment>;
+          }
+      >;
+    };
+};
 
 export type DesignListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
-
-export type DesignListQuery = (
-  { __typename?: 'Query' }
-  & { allDesignsYaml: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'name' | 'description' | 'slug'>
-    )> }
-  ), allFile: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'relativeDirectory' | 'sourceInstanceName'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fixed?: Maybe<(
-          { __typename?: 'ImageSharpFixed' }
-          & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
+export type DesignListQuery = { __typename?: 'Query' } & {
+  allDesignsYaml: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'name' | 'description' | 'slug'>>;
+  };
+  allFile: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<File, 'relativeDirectory' | 'sourceInstanceName'> & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fixed?: Maybe<{ __typename?: 'ImageSharpFixed' } & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment>;
+            }
+          >;
+        }
+    >;
+  };
+};
 
 export type TagPageTemplateQueryVariables = Exact<{
   tag?: Maybe<Scalars['String']>;
 }>;
 
-
-export type TagPageTemplateQuery = (
-  { __typename?: 'Query' }
-  & { matchedPosts: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { qty: MarkdownRemarkConnection['totalCount'] }
-    & { posts: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'excerpt'>
-      & FrontmatterFragment
-    )> }
-  ), matchedDesigns: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { qty: DesignsYamlConnection['totalCount'] }
-    & { designs: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'description'>
-    )> }
-  ), matchedSideProjects: (
-    { __typename?: 'SideprojectsYamlConnection' }
-    & { qty: SideprojectsYamlConnection['totalCount'] }
-    & { projects: Array<(
-      { __typename?: 'SideprojectsYaml' }
-      & Pick<SideprojectsYaml, 'link' | 'title' | 'github' | 'description'>
-    )> }
-  ) }
-);
+export type TagPageTemplateQuery = { __typename?: 'Query' } & {
+  matchedPosts: { __typename?: 'MarkdownRemarkConnection' } & { qty: MarkdownRemarkConnection['totalCount'] } & {
+    posts: Array<{ __typename?: 'MarkdownRemark' } & Pick<MarkdownRemark, 'excerpt'> & FrontmatterFragment>;
+  };
+  matchedDesigns: { __typename?: 'DesignsYamlConnection' } & { qty: DesignsYamlConnection['totalCount'] } & {
+    designs: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'description'>>;
+  };
+  matchedSideProjects: { __typename?: 'SideprojectsYamlConnection' } & {
+    qty: SideprojectsYamlConnection['totalCount'];
+  } & {
+    projects: Array<
+      { __typename?: 'SideprojectsYaml' } & Pick<SideprojectsYaml, 'link' | 'title' | 'github' | 'description'>
+    >;
+  };
+};
 
 export const GatsbyImageSharpFixedFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed on ImageSharpFixed {
-  base64
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
-  base64
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFixed_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_noBase64 on ImageSharpFixed {
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFluidFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid on ImageSharpFluid {
-  base64
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluidLimitPresentationSizeFragmentDoc = gql`
-    fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
-  maxHeight: presentationHeight
-  maxWidth: presentationWidth
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_noBase64 on ImageSharpFluid {
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp_noBase64 on ImageSharpFluid {
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpResolutionsFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions on ImageSharpResolutions {
-  base64
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_tracedSVG on ImageSharpResolutions {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp on ImageSharpResolutions {
-  base64
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp_tracedSVG on ImageSharpResolutions {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpResolutions_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_noBase64 on ImageSharpResolutions {
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp_noBase64 on ImageSharpResolutions {
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpSizesFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes on ImageSharpSizes {
-  base64
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_tracedSVG on ImageSharpSizes {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp on ImageSharpSizes {
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp_tracedSVG on ImageSharpSizes {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_noBase64 on ImageSharpSizes {
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp_noBase64 on ImageSharpSizes {
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const FixedImageFragmentDoc = gql`
-    fragment FixedImage on ImageSharp {
-  fixed(width: $width, height: $height) {
-    originalName
+  fragment GatsbyImageSharpFixed on ImageSharpFixed {
     base64
-    tracedSVG
-    aspectRatio
-    srcWebp
-    srcSetWebp
-    originalName
     width
     height
-    srcSet
-    srcSetWebp
-    base64
-    aspectRatio
-  }
-}
-    `;
-export const FluidImageFragmentDoc = gql`
-    fragment FluidImage on ImageSharp {
-  fluid(maxWidth: 630, traceSVG: {background: "transparent", color: "#d0c1fa", threshold: 6}) {
-    base64
-    tracedSVG
-    srcWebp
-    srcSetWebp
-    originalImg
-    originalName
-    aspectRatio
-    sizes
-    presentationWidth
-    presentationHeight
     src
     srcSet
   }
-}
-    `;
+`;
+export const GatsbyImageSharpFixed_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
+    base64
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFixed_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_noBase64 on ImageSharpFixed {
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFluidFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid on ImageSharpFluid {
+    base64
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluidLimitPresentationSizeFragmentDoc = gql`
+  fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
+    maxHeight: presentationHeight
+    maxWidth: presentationWidth
+  }
+`;
+export const GatsbyImageSharpFluid_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluid_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_noBase64 on ImageSharpFluid {
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluid_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp_noBase64 on ImageSharpFluid {
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpResolutionsFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions on ImageSharpResolutions {
+    base64
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_tracedSVG on ImageSharpResolutions {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp on ImageSharpResolutions {
+    base64
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp_tracedSVG on ImageSharpResolutions {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpResolutions_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_noBase64 on ImageSharpResolutions {
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp_noBase64 on ImageSharpResolutions {
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpSizesFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes on ImageSharpSizes {
+    base64
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_tracedSVG on ImageSharpSizes {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp on ImageSharpSizes {
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp_tracedSVG on ImageSharpSizes {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_noBase64 on ImageSharpSizes {
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp_noBase64 on ImageSharpSizes {
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const FixedImageFragmentDoc = gql`
+  fragment FixedImage on ImageSharp {
+    fixed(width: $width, height: $height) {
+      originalName
+      base64
+      tracedSVG
+      aspectRatio
+      srcWebp
+      srcSetWebp
+      originalName
+      width
+      height
+      srcSet
+      srcSetWebp
+      base64
+      aspectRatio
+    }
+  }
+`;
+export const FluidImageFragmentDoc = gql`
+  fragment FluidImage on ImageSharp {
+    fluid(maxWidth: 630, traceSVG: { background: "transparent", color: "#d0c1fa", threshold: 6 }) {
+      base64
+      tracedSVG
+      srcWebp
+      srcSetWebp
+      originalImg
+      originalName
+      aspectRatio
+      sizes
+      presentationWidth
+      presentationHeight
+      src
+      srcSet
+    }
+  }
+`;
 export const GatsbyImageSharpFluid_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
+  fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
 export const FrontmatterFragmentDoc = gql`
-    fragment Frontmatter on MarkdownRemark {
-  frontmatter {
-    id
-    date(formatString: "MMMM DD, YYYY")
-    path
-    title
-    subtitle
-    tags
-    next
-    thumbnail {
+  fragment Frontmatter on MarkdownRemark {
+    frontmatter {
       id
-      relativePath
-      publicURL
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
+      date(formatString: "MMMM DD, YYYY")
+      path
+      title
+      subtitle
+      tags
+      next
+      thumbnail {
+        id
+        relativePath
+        publicURL
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}`;
+  ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}
+`;
 export const BlogPostFragmentDoc = gql`
-    fragment BlogPost on MarkdownRemark {
-  id
-  excerpt(pruneLength: 75)
-  timeToRead
-  ...Frontmatter
-}
-    ${FrontmatterFragmentDoc}`;
+  fragment BlogPost on MarkdownRemark {
+    id
+    excerpt(pruneLength: 75)
+    timeToRead
+    ...Frontmatter
+  }
+  ${FrontmatterFragmentDoc}
+`;
 export const CreatePagesQueryDocument = gql`
-    query CreatePagesQuery {
-  posts: allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
-    nodes {
-      frontmatter {
-        path
+  query CreatePagesQuery {
+    posts: allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      nodes {
+        frontmatter {
+          path
+        }
+      }
+    }
+    designs: allDesignsYaml {
+      nodes {
+        slug
       }
     }
   }
-  designs: allDesignsYaml {
-    nodes {
-      slug
-    }
-  }
-}
-    `;
-export type CreatePagesQueryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>, 'query'>;
+`;
+export type CreatePagesQueryComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>,
+  'query'
+>;
 
-    export const CreatePagesQueryComponent = (props: CreatePagesQueryComponentProps) => (
-      <ApolloReactComponents.Query<CreatePagesQueryQuery, CreatePagesQueryQueryVariables> query={CreatePagesQueryDocument} {...props} />
-    );
-    
+export const CreatePagesQueryComponent = (props: CreatePagesQueryComponentProps) => (
+  <ApolloReactComponents.Query<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>
+    query={CreatePagesQueryDocument}
+    {...props}
+  />
+);
+
 export type CreatePagesQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>
-    } & TChildProps;
-export function withCreatePagesQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  CreatePagesQueryQuery,
-  CreatePagesQueryQueryVariables,
-  CreatePagesQueryProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, CreatePagesQueryQuery, CreatePagesQueryQueryVariables, CreatePagesQueryProps<TChildProps, TDataName>>(CreatePagesQueryDocument, {
-      alias: 'createPagesQuery',
-      ...operationOptions
-    });
-};
-export type CreatePagesQueryQueryResult = ApolloReactCommon.QueryResult<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>;
-export const DesignCountDocument = gql`
-    query DesignCount {
-  allDesignsYaml {
-    nodes {
-      id
-    }
-    totalCount
-  }
+  [key in TDataName]: ApolloReactHoc.DataValue<CreatePagesQueryQuery, CreatePagesQueryQueryVariables>;
+} &
+  TChildProps;
+export function withCreatePagesQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    CreatePagesQueryQuery,
+    CreatePagesQueryQueryVariables,
+    CreatePagesQueryProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    CreatePagesQueryQuery,
+    CreatePagesQueryQueryVariables,
+    CreatePagesQueryProps<TChildProps, TDataName>
+  >(CreatePagesQueryDocument, {
+    alias: 'createPagesQuery',
+    ...operationOptions
+  });
 }
-    `;
-export type DesignCountComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignCountQuery, DesignCountQueryVariables>, 'query'>;
+export type CreatePagesQueryQueryResult = ApolloReactCommon.QueryResult<
+  CreatePagesQueryQuery,
+  CreatePagesQueryQueryVariables
+>;
+export const DesignCountDocument = gql`
+  query DesignCount {
+    allDesignsYaml {
+      nodes {
+        id
+      }
+      totalCount
+    }
+  }
+`;
+export type DesignCountComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<DesignCountQuery, DesignCountQueryVariables>,
+  'query'
+>;
 
-    export const DesignCountComponent = (props: DesignCountComponentProps) => (
-      <ApolloReactComponents.Query<DesignCountQuery, DesignCountQueryVariables> query={DesignCountDocument} {...props} />
-    );
-    
+export const DesignCountComponent = (props: DesignCountComponentProps) => (
+  <ApolloReactComponents.Query<DesignCountQuery, DesignCountQueryVariables> query={DesignCountDocument} {...props} />
+);
+
 export type DesignCountProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignCountQuery, DesignCountQueryVariables>
-    } & TChildProps;
-export function withDesignCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignCountQuery,
-  DesignCountQueryVariables,
-  DesignCountProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignCountQuery, DesignCountQueryVariables, DesignCountProps<TChildProps, TDataName>>(DesignCountDocument, {
-      alias: 'designCount',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<DesignCountQuery, DesignCountQueryVariables>;
+} &
+  TChildProps;
+export function withDesignCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignCountQuery,
+    DesignCountQueryVariables,
+    DesignCountProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignCountQuery,
+    DesignCountQueryVariables,
+    DesignCountProps<TChildProps, TDataName>
+  >(DesignCountDocument, {
+    alias: 'designCount',
+    ...operationOptions
+  });
+}
 export type DesignCountQueryResult = ApolloReactCommon.QueryResult<DesignCountQuery, DesignCountQueryVariables>;
 export const BlogPostCountDocument = gql`
-    query BlogPostCount {
-  allMarkdownRemark {
-    totalCount
-    nodes {
-      id
-    }
-  }
-}
-    `;
-export type BlogPostCountComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogPostCountQuery, BlogPostCountQueryVariables>, 'query'>;
-
-    export const BlogPostCountComponent = (props: BlogPostCountComponentProps) => (
-      <ApolloReactComponents.Query<BlogPostCountQuery, BlogPostCountQueryVariables> query={BlogPostCountDocument} {...props} />
-    );
-    
-export type BlogPostCountProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogPostCountQuery, BlogPostCountQueryVariables>
-    } & TChildProps;
-export function withBlogPostCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogPostCountQuery,
-  BlogPostCountQueryVariables,
-  BlogPostCountProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogPostCountQuery, BlogPostCountQueryVariables, BlogPostCountProps<TChildProps, TDataName>>(BlogPostCountDocument, {
-      alias: 'blogPostCount',
-      ...operationOptions
-    });
-};
-export type BlogPostCountQueryResult = ApolloReactCommon.QueryResult<BlogPostCountQuery, BlogPostCountQueryVariables>;
-export const GhostImageDocument = gql`
-    query GhostImage {
-  file(relativePath: {eq: "ghost.png"}) {
-    childImageSharp {
-      fixed(width: 30, height: 30) {
-        ...GatsbyImageSharpFixed
+  query BlogPostCount {
+    allMarkdownRemark {
+      totalCount
+      nodes {
+        id
       }
     }
   }
-}
-    ${GatsbyImageSharpFixedFragmentDoc}`;
-export type GhostImageComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GhostImageQuery, GhostImageQueryVariables>, 'query'>;
+`;
+export type BlogPostCountComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<BlogPostCountQuery, BlogPostCountQueryVariables>,
+  'query'
+>;
 
-    export const GhostImageComponent = (props: GhostImageComponentProps) => (
-      <ApolloReactComponents.Query<GhostImageQuery, GhostImageQueryVariables> query={GhostImageDocument} {...props} />
-    );
-    
+export const BlogPostCountComponent = (props: BlogPostCountComponentProps) => (
+  <ApolloReactComponents.Query<BlogPostCountQuery, BlogPostCountQueryVariables>
+    query={BlogPostCountDocument}
+    {...props}
+  />
+);
+
+export type BlogPostCountProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<BlogPostCountQuery, BlogPostCountQueryVariables>;
+} &
+  TChildProps;
+export function withBlogPostCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables,
+    BlogPostCountProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables,
+    BlogPostCountProps<TChildProps, TDataName>
+  >(BlogPostCountDocument, {
+    alias: 'blogPostCount',
+    ...operationOptions
+  });
+}
+export type BlogPostCountQueryResult = ApolloReactCommon.QueryResult<BlogPostCountQuery, BlogPostCountQueryVariables>;
+export const GhostImageDocument = gql`
+  query GhostImage {
+    file(relativePath: { eq: "ghost.png" }) {
+      childImageSharp {
+        fixed(width: 30, height: 30) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+  }
+  ${GatsbyImageSharpFixedFragmentDoc}
+`;
+export type GhostImageComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<GhostImageQuery, GhostImageQueryVariables>,
+  'query'
+>;
+
+export const GhostImageComponent = (props: GhostImageComponentProps) => (
+  <ApolloReactComponents.Query<GhostImageQuery, GhostImageQueryVariables> query={GhostImageDocument} {...props} />
+);
+
 export type GhostImageProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<GhostImageQuery, GhostImageQueryVariables>
-    } & TChildProps;
-export function withGhostImage<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  GhostImageQuery,
-  GhostImageQueryVariables,
-  GhostImageProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, GhostImageQuery, GhostImageQueryVariables, GhostImageProps<TChildProps, TDataName>>(GhostImageDocument, {
-      alias: 'ghostImage',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<GhostImageQuery, GhostImageQueryVariables>;
+} &
+  TChildProps;
+export function withGhostImage<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    GhostImageQuery,
+    GhostImageQueryVariables,
+    GhostImageProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    GhostImageQuery,
+    GhostImageQueryVariables,
+    GhostImageProps<TChildProps, TDataName>
+  >(GhostImageDocument, {
+    alias: 'ghostImage',
+    ...operationOptions
+  });
+}
 export type GhostImageQueryResult = ApolloReactCommon.QueryResult<GhostImageQuery, GhostImageQueryVariables>;
 export const LandingGhostsDocument = gql`
-    query LandingGhosts {
-  ghosts: allFile(filter: {relativeDirectory: {eq: "ghost"}, name: {nin: ["ghost-yellow", "ghost-purple"]}}) {
-    nodes {
-      name
+  query LandingGhosts {
+    ghosts: allFile(filter: { relativeDirectory: { eq: "ghost" }, name: { nin: ["ghost-yellow", "ghost-purple"] } }) {
+      nodes {
+        name
+        childImageSharp {
+          fixed(height: 90) {
+            ...GatsbyImageSharpFixed_tracedSVG
+          }
+        }
+      }
+    }
+  }
+  ${GatsbyImageSharpFixed_TracedSvgFragmentDoc}
+`;
+export type LandingGhostsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<LandingGhostsQuery, LandingGhostsQueryVariables>,
+  'query'
+>;
+
+export const LandingGhostsComponent = (props: LandingGhostsComponentProps) => (
+  <ApolloReactComponents.Query<LandingGhostsQuery, LandingGhostsQueryVariables>
+    query={LandingGhostsDocument}
+    {...props}
+  />
+);
+
+export type LandingGhostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<LandingGhostsQuery, LandingGhostsQueryVariables>;
+} &
+  TChildProps;
+export function withLandingGhosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    LandingGhostsQuery,
+    LandingGhostsQueryVariables,
+    LandingGhostsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    LandingGhostsQuery,
+    LandingGhostsQueryVariables,
+    LandingGhostsProps<TChildProps, TDataName>
+  >(LandingGhostsDocument, {
+    alias: 'landingGhosts',
+    ...operationOptions
+  });
+}
+export type LandingGhostsQueryResult = ApolloReactCommon.QueryResult<LandingGhostsQuery, LandingGhostsQueryVariables>;
+export const NavbarGhostDocument = gql`
+  query NavbarGhost {
+    file(relativePath: { eq: "ghost.png" }) {
       childImageSharp {
-        fixed(height: 90) {
+        fixed(height: 25) {
           ...GatsbyImageSharpFixed_tracedSVG
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFixed_TracedSvgFragmentDoc}`;
-export type LandingGhostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<LandingGhostsQuery, LandingGhostsQueryVariables>, 'query'>;
+  ${GatsbyImageSharpFixed_TracedSvgFragmentDoc}
+`;
+export type NavbarGhostComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<NavbarGhostQuery, NavbarGhostQueryVariables>,
+  'query'
+>;
 
-    export const LandingGhostsComponent = (props: LandingGhostsComponentProps) => (
-      <ApolloReactComponents.Query<LandingGhostsQuery, LandingGhostsQueryVariables> query={LandingGhostsDocument} {...props} />
-    );
-    
-export type LandingGhostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<LandingGhostsQuery, LandingGhostsQueryVariables>
-    } & TChildProps;
-export function withLandingGhosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  LandingGhostsQuery,
-  LandingGhostsQueryVariables,
-  LandingGhostsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, LandingGhostsQuery, LandingGhostsQueryVariables, LandingGhostsProps<TChildProps, TDataName>>(LandingGhostsDocument, {
-      alias: 'landingGhosts',
-      ...operationOptions
-    });
-};
-export type LandingGhostsQueryResult = ApolloReactCommon.QueryResult<LandingGhostsQuery, LandingGhostsQueryVariables>;
-export const NavbarGhostDocument = gql`
-    query NavbarGhost {
-  file(relativePath: {eq: "ghost.png"}) {
-    childImageSharp {
-      fixed(height: 25) {
-        ...GatsbyImageSharpFixed_tracedSVG
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFixed_TracedSvgFragmentDoc}`;
-export type NavbarGhostComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<NavbarGhostQuery, NavbarGhostQueryVariables>, 'query'>;
+export const NavbarGhostComponent = (props: NavbarGhostComponentProps) => (
+  <ApolloReactComponents.Query<NavbarGhostQuery, NavbarGhostQueryVariables> query={NavbarGhostDocument} {...props} />
+);
 
-    export const NavbarGhostComponent = (props: NavbarGhostComponentProps) => (
-      <ApolloReactComponents.Query<NavbarGhostQuery, NavbarGhostQueryVariables> query={NavbarGhostDocument} {...props} />
-    );
-    
 export type NavbarGhostProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<NavbarGhostQuery, NavbarGhostQueryVariables>
-    } & TChildProps;
-export function withNavbarGhost<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  NavbarGhostQuery,
-  NavbarGhostQueryVariables,
-  NavbarGhostProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, NavbarGhostQuery, NavbarGhostQueryVariables, NavbarGhostProps<TChildProps, TDataName>>(NavbarGhostDocument, {
-      alias: 'navbarGhost',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<NavbarGhostQuery, NavbarGhostQueryVariables>;
+} &
+  TChildProps;
+export function withNavbarGhost<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    NavbarGhostQuery,
+    NavbarGhostQueryVariables,
+    NavbarGhostProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    NavbarGhostQuery,
+    NavbarGhostQueryVariables,
+    NavbarGhostProps<TChildProps, TDataName>
+  >(NavbarGhostDocument, {
+    alias: 'navbarGhost',
+    ...operationOptions
+  });
+}
 export type NavbarGhostQueryResult = ApolloReactCommon.QueryResult<NavbarGhostQuery, NavbarGhostQueryVariables>;
 export const DesignsPageDocument = gql`
-    query DesignsPage {
-  allBehanceProjects: allDesignsYaml {
-    nodes {
-      slug
-      name
-      description
-      tags
+  query DesignsPage {
+    allBehanceProjects: allDesignsYaml {
+      nodes {
+        slug
+        name
+        description
+        tags
+      }
     }
-  }
-  behanceImages: allFile(filter: {relativeDirectory: {regex: "/gatsby-source-behance-images/"}, name: {eq: "cover"}}) {
-    nodes {
-      relativeDirectory
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
+    behanceImages: allFile(
+      filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }
+    ) {
+      nodes {
+        relativeDirectory
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFluidFragmentDoc}`;
-export type DesignsPageComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsPageQuery, DesignsPageQueryVariables>, 'query'>;
+  ${GatsbyImageSharpFluidFragmentDoc}
+`;
+export type DesignsPageComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<DesignsPageQuery, DesignsPageQueryVariables>,
+  'query'
+>;
 
-    export const DesignsPageComponent = (props: DesignsPageComponentProps) => (
-      <ApolloReactComponents.Query<DesignsPageQuery, DesignsPageQueryVariables> query={DesignsPageDocument} {...props} />
-    );
-    
+export const DesignsPageComponent = (props: DesignsPageComponentProps) => (
+  <ApolloReactComponents.Query<DesignsPageQuery, DesignsPageQueryVariables> query={DesignsPageDocument} {...props} />
+);
+
 export type DesignsPageProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignsPageQuery, DesignsPageQueryVariables>
-    } & TChildProps;
-export function withDesignsPage<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignsPageQuery,
-  DesignsPageQueryVariables,
-  DesignsPageProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignsPageQuery, DesignsPageQueryVariables, DesignsPageProps<TChildProps, TDataName>>(DesignsPageDocument, {
-      alias: 'designsPage',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<DesignsPageQuery, DesignsPageQueryVariables>;
+} &
+  TChildProps;
+export function withDesignsPage<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignsPageQuery,
+    DesignsPageQueryVariables,
+    DesignsPageProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignsPageQuery,
+    DesignsPageQueryVariables,
+    DesignsPageProps<TChildProps, TDataName>
+  >(DesignsPageDocument, {
+    alias: 'designsPage',
+    ...operationOptions
+  });
+}
 export type DesignsPageQueryResult = ApolloReactCommon.QueryResult<DesignsPageQuery, DesignsPageQueryVariables>;
 export const PostsDocument = gql`
-    query Posts {
-  allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
-    nodes {
-      ...BlogPost
+  query Posts {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      nodes {
+        ...BlogPost
+      }
     }
   }
-}
-    ${BlogPostFragmentDoc}`;
-export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>;
+  ${BlogPostFragmentDoc}
+`;
+export type PostsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>,
+  'query'
+>;
 
-    export const PostsComponent = (props: PostsComponentProps) => (
-      <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
-    );
-    
+export const PostsComponent = (props: PostsComponentProps) => (
+  <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
+);
+
 export type PostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<PostsQuery, PostsQueryVariables>
-    } & TChildProps;
-export function withPosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  PostsQuery,
-  PostsQueryVariables,
-  PostsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, PostsQuery, PostsQueryVariables, PostsProps<TChildProps, TDataName>>(PostsDocument, {
+  [key in TDataName]: ApolloReactHoc.DataValue<PostsQuery, PostsQueryVariables>;
+} &
+  TChildProps;
+export function withPosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    PostsQuery,
+    PostsQueryVariables,
+    PostsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<TProps, PostsQuery, PostsQueryVariables, PostsProps<TChildProps, TDataName>>(
+    PostsDocument,
+    {
       alias: 'posts',
       ...operationOptions
-    });
-};
+    }
+  );
+}
 export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
 export const SeoQueryDocument = gql`
-    query SEOQuery {
-  site {
-    siteMetadata {
-      defaultTitle: title
-      titleTemplate
-      defaultDescription: description
-      url: siteUrl
-      defaultImage: image
+  query SEOQuery {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        url: siteUrl
+        defaultImage: image
+      }
     }
   }
-}
-    `;
-export type SeoQueryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SeoQueryQuery, SeoQueryQueryVariables>, 'query'>;
+`;
+export type SeoQueryComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<SeoQueryQuery, SeoQueryQueryVariables>,
+  'query'
+>;
 
-    export const SeoQueryComponent = (props: SeoQueryComponentProps) => (
-      <ApolloReactComponents.Query<SeoQueryQuery, SeoQueryQueryVariables> query={SeoQueryDocument} {...props} />
-    );
-    
+export const SeoQueryComponent = (props: SeoQueryComponentProps) => (
+  <ApolloReactComponents.Query<SeoQueryQuery, SeoQueryQueryVariables> query={SeoQueryDocument} {...props} />
+);
+
 export type SeoQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SeoQueryQuery, SeoQueryQueryVariables>
-    } & TChildProps;
-export function withSeoQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SeoQueryQuery,
-  SeoQueryQueryVariables,
-  SeoQueryProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SeoQueryQuery, SeoQueryQueryVariables, SeoQueryProps<TChildProps, TDataName>>(SeoQueryDocument, {
+  [key in TDataName]: ApolloReactHoc.DataValue<SeoQueryQuery, SeoQueryQueryVariables>;
+} &
+  TChildProps;
+export function withSeoQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    SeoQueryQuery,
+    SeoQueryQueryVariables,
+    SeoQueryProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<TProps, SeoQueryQuery, SeoQueryQueryVariables, SeoQueryProps<TChildProps, TDataName>>(
+    SeoQueryDocument,
+    {
       alias: 'seoQuery',
       ...operationOptions
-    });
-};
+    }
+  );
+}
 export type SeoQueryQueryResult = ApolloReactCommon.QueryResult<SeoQueryQuery, SeoQueryQueryVariables>;
 export const SideProjectsDocument = gql`
-    query SideProjects {
-  allSideprojectsYaml {
-    nodes {
-      id
-      title
-      link
-      github
-      description
-      image {
-        childImageSharp {
-          ...FluidImage
+  query SideProjects {
+    allSideprojectsYaml {
+      nodes {
+        id
+        title
+        link
+        github
+        description
+        image {
+          childImageSharp {
+            ...FluidImage
+          }
         }
+        tags
       }
-      tags
     }
   }
-}
-    ${FluidImageFragmentDoc}`;
-export type SideProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SideProjectsQuery, SideProjectsQueryVariables>, 'query'>;
+  ${FluidImageFragmentDoc}
+`;
+export type SideProjectsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<SideProjectsQuery, SideProjectsQueryVariables>,
+  'query'
+>;
 
-    export const SideProjectsComponent = (props: SideProjectsComponentProps) => (
-      <ApolloReactComponents.Query<SideProjectsQuery, SideProjectsQueryVariables> query={SideProjectsDocument} {...props} />
-    );
-    
+export const SideProjectsComponent = (props: SideProjectsComponentProps) => (
+  <ApolloReactComponents.Query<SideProjectsQuery, SideProjectsQueryVariables> query={SideProjectsDocument} {...props} />
+);
+
 export type SideProjectsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SideProjectsQuery, SideProjectsQueryVariables>
-    } & TChildProps;
-export function withSideProjects<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SideProjectsQuery,
-  SideProjectsQueryVariables,
-  SideProjectsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SideProjectsQuery, SideProjectsQueryVariables, SideProjectsProps<TChildProps, TDataName>>(SideProjectsDocument, {
-      alias: 'sideProjects',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<SideProjectsQuery, SideProjectsQueryVariables>;
+} &
+  TChildProps;
+export function withSideProjects<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    SideProjectsQuery,
+    SideProjectsQueryVariables,
+    SideProjectsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    SideProjectsQuery,
+    SideProjectsQueryVariables,
+    SideProjectsProps<TChildProps, TDataName>
+  >(SideProjectsDocument, {
+    alias: 'sideProjects',
+    ...operationOptions
+  });
+}
 export type SideProjectsQueryResult = ApolloReactCommon.QueryResult<SideProjectsQuery, SideProjectsQueryVariables>;
 export const UseDesignsDocument = gql`
-    query UseDesigns {
-  projects: allDesignsYaml {
-    nodes {
-      slug
-      name
-      description
-      tags
+  query UseDesigns {
+    projects: allDesignsYaml {
+      nodes {
+        slug
+        name
+        description
+        tags
+      }
     }
-  }
-  images: allFile(filter: {sourceInstanceName: {eq: "designs"}, name: {eq: "cover"}}) {
-    nodes {
-      id
-      name
-      relativeDirectory
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
+    images: allFile(filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }) {
+      nodes {
+        id
+        name
+        relativeDirectory
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}`;
-export type UseDesignsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UseDesignsQuery, UseDesignsQueryVariables>, 'query'>;
+  ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}
+`;
+export type UseDesignsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<UseDesignsQuery, UseDesignsQueryVariables>,
+  'query'
+>;
 
-    export const UseDesignsComponent = (props: UseDesignsComponentProps) => (
-      <ApolloReactComponents.Query<UseDesignsQuery, UseDesignsQueryVariables> query={UseDesignsDocument} {...props} />
-    );
-    
+export const UseDesignsComponent = (props: UseDesignsComponentProps) => (
+  <ApolloReactComponents.Query<UseDesignsQuery, UseDesignsQueryVariables> query={UseDesignsDocument} {...props} />
+);
+
 export type UseDesignsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<UseDesignsQuery, UseDesignsQueryVariables>
-    } & TChildProps;
-export function withUseDesigns<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  UseDesignsQuery,
-  UseDesignsQueryVariables,
-  UseDesignsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, UseDesignsQuery, UseDesignsQueryVariables, UseDesignsProps<TChildProps, TDataName>>(UseDesignsDocument, {
-      alias: 'useDesigns',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<UseDesignsQuery, UseDesignsQueryVariables>;
+} &
+  TChildProps;
+export function withUseDesigns<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UseDesignsQuery,
+    UseDesignsQueryVariables,
+    UseDesignsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    UseDesignsQuery,
+    UseDesignsQueryVariables,
+    UseDesignsProps<TChildProps, TDataName>
+  >(UseDesignsDocument, {
+    alias: 'useDesigns',
+    ...operationOptions
+  });
+}
 export type UseDesignsQueryResult = ApolloReactCommon.QueryResult<UseDesignsQuery, UseDesignsQueryVariables>;
 export const AllSiteTagsDocument = gql`
-    query AllSiteTags {
-  blogTags: allMarkdownRemark(limit: 2000, sort: {fields: frontmatter___tags}) {
-    group(field: frontmatter___tags) {
-      tag: fieldValue
-      qty: totalCount
+  query AllSiteTags {
+    blogTags: allMarkdownRemark(limit: 2000, sort: { fields: frontmatter___tags }) {
+      group(field: frontmatter___tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
+    }
+    designTags: allDesignsYaml(limit: 2000, sort: { fields: tags, order: ASC }) {
+      group(field: tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
+    }
+    sideProjectTags: allSideprojectsYaml(limit: 2000, sort: { order: ASC, fields: tags }) {
+      group(field: tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
     }
   }
-  designTags: allDesignsYaml(limit: 2000, sort: {fields: tags, order: ASC}) {
-    group(field: tags) {
-      tag: fieldValue
-      qty: totalCount
-    }
-  }
-  sideProjectTags: allSideprojectsYaml(limit: 2000, sort: {order: ASC, fields: tags}) {
-    group(field: tags) {
-      tag: fieldValue
-      qty: totalCount
-    }
-  }
-}
-    `;
-export type AllSiteTagsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllSiteTagsQuery, AllSiteTagsQueryVariables>, 'query'>;
+`;
+export type AllSiteTagsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<AllSiteTagsQuery, AllSiteTagsQueryVariables>,
+  'query'
+>;
 
-    export const AllSiteTagsComponent = (props: AllSiteTagsComponentProps) => (
-      <ApolloReactComponents.Query<AllSiteTagsQuery, AllSiteTagsQueryVariables> query={AllSiteTagsDocument} {...props} />
-    );
-    
+export const AllSiteTagsComponent = (props: AllSiteTagsComponentProps) => (
+  <ApolloReactComponents.Query<AllSiteTagsQuery, AllSiteTagsQueryVariables> query={AllSiteTagsDocument} {...props} />
+);
+
 export type AllSiteTagsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<AllSiteTagsQuery, AllSiteTagsQueryVariables>
-    } & TChildProps;
-export function withAllSiteTags<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  AllSiteTagsQuery,
-  AllSiteTagsQueryVariables,
-  AllSiteTagsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, AllSiteTagsQuery, AllSiteTagsQueryVariables, AllSiteTagsProps<TChildProps, TDataName>>(AllSiteTagsDocument, {
-      alias: 'allSiteTags',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<AllSiteTagsQuery, AllSiteTagsQueryVariables>;
+} &
+  TChildProps;
+export function withAllSiteTags<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables,
+    AllSiteTagsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables,
+    AllSiteTagsProps<TChildProps, TDataName>
+  >(AllSiteTagsDocument, {
+    alias: 'allSiteTags',
+    ...operationOptions
+  });
+}
 export type AllSiteTagsQueryResult = ApolloReactCommon.QueryResult<AllSiteTagsQuery, AllSiteTagsQueryVariables>;
 export const BlogListDocument = gql`
-    query BlogList($skip: Int, $limit: Int) {
-  allMarkdownRemark(skip: $skip, limit: $limit, sort: {fields: [frontmatter___date], order: DESC}) {
-    posts: nodes {
-      id
-      excerpt(pruneLength: 75)
-      frontmatter {
+  query BlogList($skip: Int, $limit: Int) {
+    allMarkdownRemark(skip: $skip, limit: $limit, sort: { fields: [frontmatter___date], order: DESC }) {
+      posts: nodes {
         id
-        date(formatString: "MMMM DD, YYYY")
-        path
-        title
-        subtitle
-        tags
-        thumbnail {
+        excerpt(pruneLength: 75)
+        frontmatter {
           id
-          relativePath
-          publicURL
-          childImageSharp {
-            fixed(height: 200, width: 275, traceSVG: {color: "#d0c1fa", background: "transparent"}, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          date(formatString: "MMMM DD, YYYY")
+          path
+          title
+          subtitle
+          tags
+          thumbnail {
+            id
+            relativePath
+            publicURL
+            childImageSharp {
+              fixed(
+                height: 200
+                width: 275
+                traceSVG: { color: "#d0c1fa", background: "transparent" }
+                cropFocus: CENTER
+              ) {
+                ...GatsbyImageSharpFixed_withWebp_tracedSVG
+              }
             }
           }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}`;
-export type BlogListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogListQuery, BlogListQueryVariables>, 'query'>;
+  ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}
+`;
+export type BlogListComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<BlogListQuery, BlogListQueryVariables>,
+  'query'
+>;
 
-    export const BlogListComponent = (props: BlogListComponentProps) => (
-      <ApolloReactComponents.Query<BlogListQuery, BlogListQueryVariables> query={BlogListDocument} {...props} />
-    );
-    
+export const BlogListComponent = (props: BlogListComponentProps) => (
+  <ApolloReactComponents.Query<BlogListQuery, BlogListQueryVariables> query={BlogListDocument} {...props} />
+);
+
 export type BlogListProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogListQuery, BlogListQueryVariables>
-    } & TChildProps;
-export function withBlogList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogListQuery,
-  BlogListQueryVariables,
-  BlogListProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogListQuery, BlogListQueryVariables, BlogListProps<TChildProps, TDataName>>(BlogListDocument, {
+  [key in TDataName]: ApolloReactHoc.DataValue<BlogListQuery, BlogListQueryVariables>;
+} &
+  TChildProps;
+export function withBlogList<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogListQuery,
+    BlogListQueryVariables,
+    BlogListProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<TProps, BlogListQuery, BlogListQueryVariables, BlogListProps<TChildProps, TDataName>>(
+    BlogListDocument,
+    {
       alias: 'blogList',
       ...operationOptions
-    });
-};
+    }
+  );
+}
 export type BlogListQueryResult = ApolloReactCommon.QueryResult<BlogListQuery, BlogListQueryVariables>;
 export const BlogTemplateDocument = gql`
-    query BlogTemplate($slug: String!, $prev: String, $next: String) {
-  post: markdownRemark(frontmatter: {path: {eq: $slug}}) {
-    url
-    disqusIdentifier
-    timeToRead
-    htmlAst
-    ...Frontmatter
-  }
-  prev: markdownRemark(frontmatter: {path: {eq: $prev}}) {
-    frontmatter {
-      title: subtitle
-      path
+  query BlogTemplate($slug: String!, $prev: String, $next: String) {
+    post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
+      url
+      disqusIdentifier
+      timeToRead
+      htmlAst
+      ...Frontmatter
     }
-  }
-  next: markdownRemark(frontmatter: {path: {eq: $next}}) {
-    frontmatter {
-      title: subtitle
-      path
-    }
-  }
-  site {
-    siteMetadata {
-      twitterHandle
-      disqusShortName
-    }
-  }
-}
-    ${FrontmatterFragmentDoc}`;
-export type BlogTemplateComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogTemplateQuery, BlogTemplateQueryVariables>, 'query'> & ({ variables: BlogTemplateQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const BlogTemplateComponent = (props: BlogTemplateComponentProps) => (
-      <ApolloReactComponents.Query<BlogTemplateQuery, BlogTemplateQueryVariables> query={BlogTemplateDocument} {...props} />
-    );
-    
-export type BlogTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogTemplateQuery, BlogTemplateQueryVariables>
-    } & TChildProps;
-export function withBlogTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogTemplateQuery,
-  BlogTemplateQueryVariables,
-  BlogTemplateProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogTemplateQuery, BlogTemplateQueryVariables, BlogTemplateProps<TChildProps, TDataName>>(BlogTemplateDocument, {
-      alias: 'blogTemplate',
-      ...operationOptions
-    });
-};
-export type BlogTemplateQueryResult = ApolloReactCommon.QueryResult<BlogTemplateQuery, BlogTemplateQueryVariables>;
-export const DesignsTemplateQueryDocument = gql`
-    query DesignsTemplateQuery($slug: String!) {
-  design: designsYaml(slug: {regex: $slug}) {
-    id
-    slug
-    name
-    description
-    tags
-    tools {
-      title
-    }
-  }
-  images: allFile(filter: {relativePath: {regex: $slug}, sourceInstanceName: {eq: "designs"}}) {
-    nodes {
-      id
-      name
-      childImageSharp {
-        ...FluidImage
+    prev: markdownRemark(frontmatter: { path: { eq: $prev } }) {
+      frontmatter {
+        title: subtitle
+        path
       }
     }
-    totalCount
-  }
-}
-    ${FluidImageFragmentDoc}`;
-export type DesignsTemplateQueryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>, 'query'> & ({ variables: DesignsTemplateQueryQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const DesignsTemplateQueryComponent = (props: DesignsTemplateQueryComponentProps) => (
-      <ApolloReactComponents.Query<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables> query={DesignsTemplateQueryDocument} {...props} />
-    );
-    
-export type DesignsTemplateQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>
-    } & TChildProps;
-export function withDesignsTemplateQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignsTemplateQueryQuery,
-  DesignsTemplateQueryQueryVariables,
-  DesignsTemplateQueryProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables, DesignsTemplateQueryProps<TChildProps, TDataName>>(DesignsTemplateQueryDocument, {
-      alias: 'designsTemplateQuery',
-      ...operationOptions
-    });
-};
-export type DesignsTemplateQueryQueryResult = ApolloReactCommon.QueryResult<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>;
-export const DesignListDocument = gql`
-    query DesignList($skip: Int!, $limit: Int!) {
-  allDesignsYaml(skip: $skip, limit: $limit, sort: {fields: slug, order: ASC}) {
-    nodes {
-      name
-      description
-      slug
+    next: markdownRemark(frontmatter: { path: { eq: $next } }) {
+      frontmatter {
+        title: subtitle
+        path
+      }
+    }
+    site {
+      siteMetadata {
+        twitterHandle
+        disqusShortName
+      }
     }
   }
-  allFile(skip: $skip, limit: $limit, filter: {sourceInstanceName: {eq: "designs"}, name: {eq: "cover"}}, sort: {fields: relativeDirectory, order: ASC}) {
-    nodes {
-      relativeDirectory
-      sourceInstanceName
-      childImageSharp {
-        fixed(height: 200, width: 275, traceSVG: {color: "#d0c1fa", background: "transparent"}, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed_withWebp_tracedSVG
+  ${FrontmatterFragmentDoc}
+`;
+export type BlogTemplateComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<BlogTemplateQuery, BlogTemplateQueryVariables>,
+  'query'
+> &
+  ({ variables: BlogTemplateQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const BlogTemplateComponent = (props: BlogTemplateComponentProps) => (
+  <ApolloReactComponents.Query<BlogTemplateQuery, BlogTemplateQueryVariables> query={BlogTemplateDocument} {...props} />
+);
+
+export type BlogTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<BlogTemplateQuery, BlogTemplateQueryVariables>;
+} &
+  TChildProps;
+export function withBlogTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables,
+    BlogTemplateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables,
+    BlogTemplateProps<TChildProps, TDataName>
+  >(BlogTemplateDocument, {
+    alias: 'blogTemplate',
+    ...operationOptions
+  });
+}
+export type BlogTemplateQueryResult = ApolloReactCommon.QueryResult<BlogTemplateQuery, BlogTemplateQueryVariables>;
+export const DesignsTemplateQueryDocument = gql`
+  query DesignsTemplateQuery($slug: String!) {
+    design: designsYaml(slug: { regex: $slug }) {
+      id
+      slug
+      name
+      description
+      tags
+      tools {
+        title
+      }
+    }
+    images: allFile(filter: { relativePath: { regex: $slug }, sourceInstanceName: { eq: "designs" } }) {
+      nodes {
+        id
+        name
+        childImageSharp {
+          ...FluidImage
+        }
+      }
+      totalCount
+    }
+  }
+  ${FluidImageFragmentDoc}
+`;
+export type DesignsTemplateQueryComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>,
+  'query'
+> &
+  ({ variables: DesignsTemplateQueryQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const DesignsTemplateQueryComponent = (props: DesignsTemplateQueryComponentProps) => (
+  <ApolloReactComponents.Query<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>
+    query={DesignsTemplateQueryDocument}
+    {...props}
+  />
+);
+
+export type DesignsTemplateQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>;
+} &
+  TChildProps;
+export function withDesignsTemplateQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignsTemplateQueryQuery,
+    DesignsTemplateQueryQueryVariables,
+    DesignsTemplateQueryProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignsTemplateQueryQuery,
+    DesignsTemplateQueryQueryVariables,
+    DesignsTemplateQueryProps<TChildProps, TDataName>
+  >(DesignsTemplateQueryDocument, {
+    alias: 'designsTemplateQuery',
+    ...operationOptions
+  });
+}
+export type DesignsTemplateQueryQueryResult = ApolloReactCommon.QueryResult<
+  DesignsTemplateQueryQuery,
+  DesignsTemplateQueryQueryVariables
+>;
+export const DesignListDocument = gql`
+  query DesignList($skip: Int!, $limit: Int!) {
+    allDesignsYaml(skip: $skip, limit: $limit, sort: { fields: slug, order: ASC }) {
+      nodes {
+        name
+        description
+        slug
+      }
+    }
+    allFile(
+      skip: $skip
+      limit: $limit
+      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+      sort: { fields: relativeDirectory, order: ASC }
+    ) {
+      nodes {
+        relativeDirectory
+        sourceInstanceName
+        childImageSharp {
+          fixed(height: 200, width: 275, traceSVG: { color: "#d0c1fa", background: "transparent" }, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}`;
-export type DesignListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignListQuery, DesignListQueryVariables>, 'query'> & ({ variables: DesignListQueryVariables; skip?: boolean; } | { skip: boolean; });
+  ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}
+`;
+export type DesignListComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<DesignListQuery, DesignListQueryVariables>,
+  'query'
+> &
+  ({ variables: DesignListQueryVariables; skip?: boolean } | { skip: boolean });
 
-    export const DesignListComponent = (props: DesignListComponentProps) => (
-      <ApolloReactComponents.Query<DesignListQuery, DesignListQueryVariables> query={DesignListDocument} {...props} />
-    );
-    
+export const DesignListComponent = (props: DesignListComponentProps) => (
+  <ApolloReactComponents.Query<DesignListQuery, DesignListQueryVariables> query={DesignListDocument} {...props} />
+);
+
 export type DesignListProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignListQuery, DesignListQueryVariables>
-    } & TChildProps;
-export function withDesignList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignListQuery,
-  DesignListQueryVariables,
-  DesignListProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignListQuery, DesignListQueryVariables, DesignListProps<TChildProps, TDataName>>(DesignListDocument, {
-      alias: 'designList',
-      ...operationOptions
-    });
-};
+  [key in TDataName]: ApolloReactHoc.DataValue<DesignListQuery, DesignListQueryVariables>;
+} &
+  TChildProps;
+export function withDesignList<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignListQuery,
+    DesignListQueryVariables,
+    DesignListProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignListQuery,
+    DesignListQueryVariables,
+    DesignListProps<TChildProps, TDataName>
+  >(DesignListDocument, {
+    alias: 'designList',
+    ...operationOptions
+  });
+}
 export type DesignListQueryResult = ApolloReactCommon.QueryResult<DesignListQuery, DesignListQueryVariables>;
 export const TagPageTemplateDocument = gql`
-    query TagPageTemplate($tag: String) {
-  matchedPosts: allMarkdownRemark(limit: 2000, sort: {fields: [frontmatter___date], order: DESC}, filter: {frontmatter: {tags: {in: [$tag]}}}) {
-    qty: totalCount
-    posts: nodes {
-      excerpt
-      ...Frontmatter
+  query TagPageTemplate($tag: String) {
+    matchedPosts: allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
+    ) {
+      qty: totalCount
+      posts: nodes {
+        excerpt
+        ...Frontmatter
+      }
+    }
+    matchedDesigns: allDesignsYaml(limit: 2000, filter: { tags: { in: [$tag] } }) {
+      qty: totalCount
+      designs: nodes {
+        description
+      }
+    }
+    matchedSideProjects: allSideprojectsYaml(filter: { tags: { in: [$tag] } }) {
+      qty: totalCount
+      projects: nodes {
+        link
+        title
+        github
+        description
+      }
     }
   }
-  matchedDesigns: allDesignsYaml(limit: 2000, filter: {tags: {in: [$tag]}}) {
-    qty: totalCount
-    designs: nodes {
-      description
-    }
-  }
-  matchedSideProjects: allSideprojectsYaml(filter: {tags: {in: [$tag]}}) {
-    qty: totalCount
-    projects: nodes {
-      link
-      title
-      github
-      description
-    }
-  }
-}
-    ${FrontmatterFragmentDoc}`;
-export type TagPageTemplateComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TagPageTemplateQuery, TagPageTemplateQueryVariables>, 'query'>;
+  ${FrontmatterFragmentDoc}
+`;
+export type TagPageTemplateComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<TagPageTemplateQuery, TagPageTemplateQueryVariables>,
+  'query'
+>;
 
-    export const TagPageTemplateComponent = (props: TagPageTemplateComponentProps) => (
-      <ApolloReactComponents.Query<TagPageTemplateQuery, TagPageTemplateQueryVariables> query={TagPageTemplateDocument} {...props} />
-    );
-    
+export const TagPageTemplateComponent = (props: TagPageTemplateComponentProps) => (
+  <ApolloReactComponents.Query<TagPageTemplateQuery, TagPageTemplateQueryVariables>
+    query={TagPageTemplateDocument}
+    {...props}
+  />
+);
+
 export type TagPageTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<TagPageTemplateQuery, TagPageTemplateQueryVariables>
-    } & TChildProps;
-export function withTagPageTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
+  [key in TDataName]: ApolloReactHoc.DataValue<TagPageTemplateQuery, TagPageTemplateQueryVariables>;
+} &
+  TChildProps;
+export function withTagPageTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    TagPageTemplateQuery,
+    TagPageTemplateQueryVariables,
+    TagPageTemplateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    TagPageTemplateQuery,
+    TagPageTemplateQueryVariables,
+    TagPageTemplateProps<TChildProps, TDataName>
+  >(TagPageTemplateDocument, {
+    alias: 'tagPageTemplate',
+    ...operationOptions
+  });
+}
+export type TagPageTemplateQueryResult = ApolloReactCommon.QueryResult<
   TagPageTemplateQuery,
-  TagPageTemplateQueryVariables,
-  TagPageTemplateProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, TagPageTemplateQuery, TagPageTemplateQueryVariables, TagPageTemplateProps<TChildProps, TDataName>>(TagPageTemplateDocument, {
-      alias: 'tagPageTemplate',
-      ...operationOptions
-    });
-};
-export type TagPageTemplateQueryResult = ApolloReactCommon.QueryResult<TagPageTemplateQuery, TagPageTemplateQueryVariables>;
+  TagPageTemplateQueryVariables
+>;

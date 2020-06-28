@@ -76,7 +76,7 @@ export const BlogList = graphql`
             childImageSharp {
               fixed(
                 height: 200
-                width: 275
+                width: 200
                 traceSVG: { color: "#d0c1fa", background: "transparent" }
                 cropFocus: CENTER
               ) {

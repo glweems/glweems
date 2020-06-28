@@ -68,7 +68,7 @@ export const DesignList = graphql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fixed(height: 200, width: 275, traceSVG: { color: "#d0c1fa", background: "transparent" }, cropFocus: CENTER) {
+          fixed(height: 200, width: 200, traceSVG: { color: "#d0c1fa", background: "transparent" }, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }

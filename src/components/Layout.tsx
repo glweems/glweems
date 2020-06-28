@@ -2,61 +2,54 @@ import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import React from 'react';
-import { useTheme } from 'styled-components';
+import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from '../../.gatsby/config';
-import { GhostSVG } from './Icons';
-import Box from './Common/Box';
 import { Container } from './Common';
+import Box from './Common/Box';
+import { GhostSVG } from './Icons';
 import ToggleThemeSwitch from './ToogleThemeSwitch';
 
 function SideMenu() {
   return (
-    <div
-      css={`
-        height: 100%;
-      `}
-    >
-      <Box display="flex" flexDirection="column" paddingX={4} paddingY={6}>
-        <GhostSVG />
-        <Link to="/">Garrett Weems</Link>
-        <p>I'm a full-stack web developer.</p>
-        <p>I specialize in javascript / react.js web developement.</p>
+    <Box display="flex" flexDirection="column" paddingX={4} paddingY={6}>
+      <GhostSVG />
+      <Link to="/">Garrett Weems</Link>
+      <p>I'm a full-stack web developer.</p>
+      <p>I specialize in javascript / react.js web developement.</p>
 
-        <nav
-          css={`
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            align-content: flex-start;
-          `}
-        >
-          {config.links.map((link) => (
-            <Link key={link.name} to={link.path}>
-              <motion.div
-                css={`
-                  margin-bottom: ${(props) => props.theme.space[2]}px;
-                `}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                {link.name}
-              </motion.div>
-            </Link>
-          ))}
-        </nav>
+      <nav
+        css={`
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          align-content: flex-start;
+        `}
+      >
+        {config.links.map((link) => (
+          <Link key={link.name} to={link.path}>
+            <motion.div
+              css={`
+                margin-bottom: ${(props) => props.theme.space[2]}px;
+              `}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {link.name}
+            </motion.div>
+          </Link>
+        ))}
+      </nav>
 
-        <Box>
-          <SocialIcons />
-          <ToggleThemeSwitch />
-        </Box>
+      <Box>
+        <SocialIcons />
+        <ToggleThemeSwitch />
       </Box>
-    </div>
+    </Box>
   );
 }
 
 function SocialIcons() {
-  const theme = useTheme();
   return (
     <motion.ul
       initial="hidden"
@@ -113,34 +106,40 @@ function SocialIcons() {
 }
 
 export default function Layout({ children }) {
-  const theme = useTheme();
   return (
     <Container>
-      <div
-        className="grid-container"
-        css={`
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          grid-template-rows: 1fr;
-          gap: 0em 2em;
-          grid-template-areas: 'menu content content';
-
-          .content {
-            grid-area: content;
-          }
-          .menu {
-            grid-area: menu;
-          }
-        `}
-      >
+      <GridContainer>
         <div className="menu">
           <SideMenu />
         </div>
 
-        <div className="content">
-          <main>{children}</main>
-        </div>
-      </div>
+        <main className="content">{children}</main>
+      </GridContainer>
     </Container>
   );
 }
+
+const GridContainer = styled.div`
+  display: grid;
+  grid-template-areas:
+    'menu'
+    'content';
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  gap: 0em 2em;
+
+  .content {
+    grid-area: content;
+    padding: 0 ${({ theme }) => theme.space[3]}px;
+  }
+  .menu {
+    grid-area: menu;
+  }
+
+  ${media.greaterThan('medium')`
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 'menu content content';
+
+  `}
+`;

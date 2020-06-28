@@ -3,10 +3,9 @@ import path from 'path';
 import config from '../config';
 import { paginate } from 'gatsby-awesome-pagination';
 import { DesignCountQuery } from '../../src/types/generated';
+const { itemsPerPage } = config;
 
-export default async function createDesignListPages({ graphql, actions }: CreatePagesArgs) {
-  const { createPage } = actions;
-
+export default async function createDesignListPages({ graphql, actions: { createPage }, reporter }: CreatePagesArgs) {
   const result = await graphql<DesignCountQuery>(`
     query DesignCount {
       allDesignsYaml {
@@ -18,16 +17,21 @@ export default async function createDesignListPages({ graphql, actions }: Create
     }
   `);
 
-  const { itemsPerPage } = config;
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`);
+    return;
+  }
+
+  reporter.activityTimer('Creating design list pages').start();
 
   paginate({
     createPage,
     items: result.data.allDesignsYaml.nodes,
     itemsPerPage,
     pathPrefix: '/designs',
-    component: path.resolve('src/templates/DesignListTemplate.tsx'),
-    context: {
-      hi: 'hi'
-    }
+    component: path.resolve('src/templates/DesignListTemplate.tsx')
   });
+
+  reporter.activityTimer(`Created ${result.data.allDesignsYaml.totalCount} design list pages`);
 }
