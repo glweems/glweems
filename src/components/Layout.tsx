@@ -1,7 +1,7 @@
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from '../../.gatsby/config';
@@ -9,43 +9,47 @@ import Box from './Common/Box';
 import { GhostSVG } from './Icons';
 import ToggleThemeSwitch from './ToggleThemeSwitch';
 import Container from './Common/Container';
+import SEO from './SEO';
 
 function SideMenu() {
   return (
-    <Box display="flex" flexDirection="column" paddingX={4} paddingY={6}>
-      <GhostSVG />
-      <Link to="/">Garrett Weems</Link>
-      <p>I'm a full-stack web developer.</p>
-      <p>I specialize in javascript / react.js web developement.</p>
+    <Fragment>
+      <SEO />
+      <Box display="flex" flexDirection="column" paddingX={4} paddingY={6}>
+        <GhostSVG />
+        <Link to="/">Garrett Weems</Link>
+        <p>I'm a full-stack web developer.</p>
+        <p>I specialize in javascript / react.js web developement.</p>
 
-      <nav
-        css={`
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          align-content: flex-start;
-        `}
-      >
-        {config.links.map((link) => (
-          <Link key={link.name} to={link.path}>
-            <motion.div
-              css={`
-                margin-bottom: ${(props) => props.theme.space[2]}px;
-              `}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {link.name}
-            </motion.div>
-          </Link>
-        ))}
-      </nav>
+        <nav
+          css={`
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            align-content: flex-start;
+          `}
+        >
+          {config.links.map((link) => (
+            <Link key={link.name} to={link.path}>
+              <motion.div
+                css={`
+                  margin-bottom: ${(props) => props.theme.space[2]}px;
+                `}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                {link.name}
+              </motion.div>
+            </Link>
+          ))}
+        </nav>
 
-      <Box>
-        <SocialIcons />
-        <ToggleThemeSwitch />
+        <Box>
+          <SocialIcons />
+          <ToggleThemeSwitch />
+        </Box>
       </Box>
-    </Box>
+    </Fragment>
   );
 }
 

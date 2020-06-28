@@ -8,7 +8,7 @@ import config from './config';
 const GENERATE_QL_TYPES = false;
 
 const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>> = ({
-  projectRoot
+  projectRoot,
 }) => {
   const gatsbyConfig = {
     siteMetadata: {
@@ -20,7 +20,7 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       countryCode: `US`,
       siteUrl: config.url,
       twitterHandle: config.contact.twitter,
-      disqusShortName: config.disqusShortName
+      disqusShortName: config.disqusShortName,
     },
     plugins: [
       'gatsby-plugin-typescript',
@@ -29,52 +29,53 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
       'gatsby-plugin-netlify',
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
+      'gatsby-plugin-sitemap',
       {
         resolve: 'gatsby-plugin-prefetch-google-fonts',
         options: {
           fonts: [
             {
               family: 'Montserrat',
-              variants: ['400', '500', '600', '700', '800']
-            }
-          ]
-        }
+              variants: ['400', '500', '600', '700', '800'],
+            },
+          ],
+        },
       },
       'gatsby-transformer-yaml',
 
       {
         resolve: 'gatsby-plugin-typography',
         options: {
-          pathToConfigModule: `${projectRoot}/src/utils/typography.ts`
-        }
+          pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
+        },
       },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: `${projectRoot}/content`,
-          name: 'content'
-        }
+          name: 'content',
+        },
       },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: `${projectRoot}/posts`,
-          name: `posts`
-        }
+          name: `posts`,
+        },
       },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: `${projectRoot}/designs`,
-          name: 'designs'
-        }
+          name: 'designs',
+        },
       },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'images',
-          path: `${projectRoot}/src/assets/`
-        }
+          path: `${projectRoot}/src/assets/`,
+        },
       },
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
@@ -89,28 +90,28 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
               options: {
                 maxWidth: 960,
                 withWebp: true,
-                ignoreFileExtensions: []
-              }
+                ignoreFileExtensions: [],
+              },
             },
             {
               resolve: 'gatsby-remark-responsive-iframe',
-              options: { wrapperStyle: 'margin-bottom: 1.0725rem' }
+              options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
             },
             'gatsby-remark-autolink-headers',
             'gatsby-remark-prismjs',
             'gatsby-remark-copy-linked-files',
             'gatsby-remark-smartypants',
-            'gatsby-remark-external-links'
-          ]
-        }
+            'gatsby-remark-external-links',
+          ],
+        },
       },
 
       {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
           trackingId: config.googleAnalyticsID,
-          head: true
-        }
+          head: true,
+        },
       },
       {
         resolve: 'gatsby-plugin-favicon',
@@ -126,17 +127,17 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
             firefox: true,
             twitter: false,
             yandex: false,
-            windows: false
-          }
-        }
+            windows: false,
+          },
+        },
       },
       {
         resolve: 'gatsby-plugin-react-svg',
         options: {
           rule: {
-            include: /assets/
-          }
-        }
+            include: /assets/,
+          },
+        },
       },
       {
         resolve: 'gatsby-plugin-manifest',
@@ -147,12 +148,12 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
           background_color: config.backgroundColor,
           theme_color: config.themeColor,
           display: 'minimal-ui',
-          icon: `${projectRoot}/src/assets/ghost.png`
-        }
+          icon: `${projectRoot}/src/assets/ghost.png`,
+        },
       },
-      'gatsby-plugin-robots-txt'
+      'gatsby-plugin-robots-txt',
       // 'gatsby-plugin-offline'
-    ]
+    ],
   };
 
   return gatsbyConfig;
