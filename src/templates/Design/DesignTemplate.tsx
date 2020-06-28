@@ -3,13 +3,13 @@ import Img from 'gatsby-image';
 import React from 'react';
 import SEO from '../../components/SEO';
 import Tags from '../../components/Tags';
-import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery';
 import Container from '../../components/Common/Container';
 import Text from '../../components/Common/Text';
+import { DesignsTemplateQuery } from '../../types/generated';
 
 export default function DesignTemplate({ data }: PageProps<DesignsTemplateQuery>) {
   const { design, images } = data;
-  const { name, description } = design as Required<DesignsTemplateQuery_design>;
+  const { name, description } = design as Required<DesignsTemplateQuery['design']>;
 
   const tags = design?.tags ?? [];
 
@@ -29,12 +29,12 @@ export default function DesignTemplate({ data }: PageProps<DesignsTemplateQuery>
       {images.nodes.map((image, index) => (
         <Img key={`${name}-image-${index}`} fluid={image?.childImageSharp?.fluid as any} draggable={false} />
       ))}
-    </Container>
+    </Container>,
   ];
 }
 
 export const Query = graphql`
-  query DesignsTemplateQuery($slug: String!) {
+  query DesignsTemplate($slug: String!) {
     design: designsYaml(slug: { regex: $slug }) {
       id
       slug

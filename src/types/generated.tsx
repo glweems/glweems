@@ -5044,12 +5044,12 @@ export type BlogTemplateQuery = (
   )> }
 );
 
-export type DesignsTemplateQueryQueryVariables = Exact<{
+export type DesignsTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
 
-export type DesignsTemplateQueryQuery = (
+export type DesignsTemplateQuery = (
   { __typename?: 'Query' }
   & { design?: Maybe<(
     { __typename?: 'DesignsYaml' }
@@ -5885,8 +5885,8 @@ export function withBlogTemplate<TProps, TChildProps = {}, TDataName extends str
     });
 };
 export type BlogTemplateQueryResult = ApolloReactCommon.QueryResult<BlogTemplateQuery, BlogTemplateQueryVariables>;
-export const DesignsTemplateQueryDocument = gql`
-    query DesignsTemplateQuery($slug: String!) {
+export const DesignsTemplateDocument = gql`
+    query DesignsTemplate($slug: String!) {
   design: designsYaml(slug: {regex: $slug}) {
     id
     slug
@@ -5909,26 +5909,26 @@ export const DesignsTemplateQueryDocument = gql`
   }
 }
     ${FluidImageFragmentDoc}`;
-export type DesignsTemplateQueryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>, 'query'> & ({ variables: DesignsTemplateQueryQueryVariables; skip?: boolean; } | { skip: boolean; });
+export type DesignsTemplateComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsTemplateQuery, DesignsTemplateQueryVariables>, 'query'> & ({ variables: DesignsTemplateQueryVariables; skip?: boolean; } | { skip: boolean; });
 
-    export const DesignsTemplateQueryComponent = (props: DesignsTemplateQueryComponentProps) => (
-      <ApolloReactComponents.Query<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables> query={DesignsTemplateQueryDocument} {...props} />
+    export const DesignsTemplateComponent = (props: DesignsTemplateComponentProps) => (
+      <ApolloReactComponents.Query<DesignsTemplateQuery, DesignsTemplateQueryVariables> query={DesignsTemplateDocument} {...props} />
     );
     
-export type DesignsTemplateQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>
+export type DesignsTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
+      [key in TDataName]: ApolloReactHoc.DataValue<DesignsTemplateQuery, DesignsTemplateQueryVariables>
     } & TChildProps;
-export function withDesignsTemplateQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export function withDesignsTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
   TProps,
-  DesignsTemplateQueryQuery,
-  DesignsTemplateQueryQueryVariables,
-  DesignsTemplateQueryProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables, DesignsTemplateQueryProps<TChildProps, TDataName>>(DesignsTemplateQueryDocument, {
-      alias: 'designsTemplateQuery',
+  DesignsTemplateQuery,
+  DesignsTemplateQueryVariables,
+  DesignsTemplateProps<TChildProps, TDataName>>) {
+    return ApolloReactHoc.withQuery<TProps, DesignsTemplateQuery, DesignsTemplateQueryVariables, DesignsTemplateProps<TChildProps, TDataName>>(DesignsTemplateDocument, {
+      alias: 'designsTemplate',
       ...operationOptions
     });
 };
-export type DesignsTemplateQueryQueryResult = ApolloReactCommon.QueryResult<DesignsTemplateQueryQuery, DesignsTemplateQueryQueryVariables>;
+export type DesignsTemplateQueryResult = ApolloReactCommon.QueryResult<DesignsTemplateQuery, DesignsTemplateQueryVariables>;
 export const DesignListDocument = gql`
     query DesignList($skip: Int!, $limit: Int!) {
   allDesignsYaml(skip: $skip, limit: $limit, sort: {fields: slug, order: ASC}) {
