@@ -10,14 +10,13 @@ import {
   TwitterShareButton,
 } from 'react-share';
 import Box from './Common/Box';
+import { graphql, useStaticQuery } from 'gatsby';
+import { TwitterHandleQuery } from '../types/generated';
 
 interface ShareButtonsProps {
-  config: {
-    url: string;
-    twitterHandle: string;
-    title: string;
-    tags: string[];
-  };
+  url: string;
+  title: string;
+  tags: string[];
 }
 
 const iconConfig = {
@@ -27,14 +26,20 @@ const iconConfig = {
   iconBgStyle: { fill: 'transparent' },
 };
 
-export default function ShareButtons({ config: { twitterHandle, url, title, tags } }: ShareButtonsProps) {
+export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
+  const { site } = useStaticQuery<TwitterHandleQuery>(query);
   return (
     <Box display="flex" justifyContent="space-evenly" marginY={4}>
       <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
         <FacebookIcon {...iconConfig} />
       </FacebookShareButton>
 
-      <TwitterShareButton url={url} title={title} via={twitterHandle} hashtags={tags}>
+      <TwitterShareButton
+        url={url}
+        title={title}
+        via={site.siteMetadata.twitterHandle}
+        hashtags={tags}
+      >
         <TwitterIcon {...iconConfig} />
       </TwitterShareButton>
 
@@ -48,3 +53,13 @@ export default function ShareButtons({ config: { twitterHandle, url, title, tags
     </Box>
   );
 }
+
+const query = graphql`
+  query TwitterHandle {
+    site {
+      siteMetadata {
+        twitterHandle
+      }
+    }
+  }
+`;

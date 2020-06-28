@@ -9,7 +9,11 @@ export default function ToggleThemeSwitch() {
   return (
     <motion.button
       onClick={toggle}
-      style={{ font: 'icon', padding: '0.25rem 0.5rem 0.125rem 0.5rem', fontSize: '125%' }}
+      style={{
+        font: 'icon',
+        padding: '0.25rem 0.5rem 0.125rem 0.5rem',
+        fontSize: '125%',
+      }}
     >
       <motion.svg
         width="1em"
@@ -18,7 +22,10 @@ export default function ToggleThemeSwitch() {
         animate={{ rotate: isDarkMode ? 180 : 0 }}
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path fillRule="evenodd" d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+        <path
+          fillRule="evenodd"
+          d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
+        />
       </motion.svg>
     </motion.button>
   );

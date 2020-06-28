@@ -49,7 +49,10 @@ export interface IDisqus {
 
 declare class CommentCount extends React.Component<CommentCountProps, {}> {}
 declare class CommentEmbed extends React.Component<CommentEmbedProps, {}> {}
-declare class DiscussionEmbed extends React.Component<DiscussionEmbedProps, {}> {}
+declare class DiscussionEmbed extends React.Component<
+  DiscussionEmbedProps,
+  {}
+> {}
 declare const Disqus: {
   CommentCount: React.ComponentType<CommentCountProps>;
   CommentEmbed: React.ComponentType<CommentEmbedProps>;

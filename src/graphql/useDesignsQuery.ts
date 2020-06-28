@@ -12,7 +12,9 @@ export default function useDesignsQuery() {
           tags
         }
       }
-      images: allFile(filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }) {
+      images: allFile(
+        filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+      ) {
         nodes {
           id
           name
@@ -28,6 +30,9 @@ export default function useDesignsQuery() {
   `);
 
   return projects.nodes.map((project) => {
-    return { ...images.nodes.find((image) => image.relativeDirectory === project.slug), ...project };
+    return {
+      ...images.nodes.find((image) => image.relativeDirectory === project.slug),
+      ...project,
+    };
   });
 }

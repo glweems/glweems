@@ -1,56 +1,50 @@
-import { graphql, navigate, PageProps } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Article from '../components/Article';
+import Pager from '../components/Pager';
+import SEO from '../components/SEO';
 import { DesignListQuery } from '../types/generated';
 import { PageContext } from './BlogListTemplate';
 
-export default function ArticleListTemplate(props: PageProps<DesignListQuery, PageContext>) {
-  const handleClick: React.MouseEventHandler<{ name: string }> = (event) => {
-    navigate(event.currentTarget.name);
-  };
-
-  const { previousPagePath, nextPagePath } = props.pageContext;
+export default function ArticleListTemplate({
+  data,
+  pageContext,
+}: PageProps<DesignListQuery, PageContext>) {
   return (
-    <div>
-      {props.data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
+    <React.Fragment>
+      <SEO
+        title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
+      />
+      {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
         return (
-          <div key={post.slug}>
-            <Article
-              path={'/' + post.slug}
-              excerpt={post.description}
-              title={name}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${name} thumbnail image`}
-                  fixed={props.data.allFile.nodes[index].childImageSharp.fixed}
-                />
-              }
-            />
-          </div>
+          <Article
+            key={post.slug}
+            path={`/design/${post.slug}`}
+            excerpt={post.description}
+            title={name}
+            Image={
+              <Img
+                draggable={false}
+                alt={`${name} thumbnail image`}
+                fixed={data.allFile.nodes[index].childImageSharp.fixed}
+              />
+            }
+          />
         );
       })}
-
-      <div
-        css={`
-          display: flex;
-        `}
-      >
-        <button name={previousPagePath} disabled={previousPagePath === ''} onClick={handleClick}>
-          Prev
-        </button>
-        <button name={nextPagePath} disabled={nextPagePath === ''} onClick={handleClick}>
-          Next
-        </button>
-      </div>
-    </div>
+      <Pager {...pageContext} />
+    </React.Fragment>
   );
 }
 
 export const DesignList = graphql`
   query DesignList($skip: Int!, $limit: Int!) {
-    allDesignsYaml(skip: $skip, limit: $limit, sort: { fields: slug, order: ASC }) {
+    allDesignsYaml(
+      skip: $skip
+      limit: $limit
+      sort: { fields: slug, order: ASC }
+    ) {
       nodes {
         name
         description
@@ -67,7 +61,12 @@ export const DesignList = graphql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fixed(height: 200, width: 200, traceSVG: { color: "#d0c1fa", background: "transparent" }, cropFocus: CENTER) {
+          fixed(
+            height: 200
+            width: 200
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
             ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }

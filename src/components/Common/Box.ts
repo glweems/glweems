@@ -13,7 +13,11 @@ import {
 } from 'styled-system';
 import { containerCss } from './Container';
 
-export type BoxProps = SpaceProps & LayoutProps & PositionProps & FlexboxProps & ColorProps & { container?: boolean };
+export type BoxProps = SpaceProps &
+  LayoutProps &
+  PositionProps &
+  FlexboxProps &
+  ColorProps & { container?: boolean };
 
 const Box = styled.div<BoxProps>`
   ${color};

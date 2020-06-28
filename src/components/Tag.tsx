@@ -9,7 +9,11 @@ interface TagProps {
   prefix?: string;
 }
 
-export default function Tag({ tag, prefix = '/tags/', ...props }: TagProps): ReactElement {
+export default function Tag({
+  tag,
+  prefix = '/tags/',
+  ...props
+}: TagProps): ReactElement {
   return (
     <Wrapper to={`${prefix}${kebabCase(tag)}`} {...props}>
       {tag}
@@ -24,8 +28,8 @@ const Wrapper = styled(Link)`
   padding: 5px 10px;
   color: inherit;
   font-size: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 22px;
   white-space: nowrap;
   text-transform: lowercase;

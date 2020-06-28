@@ -13,7 +13,14 @@ type ArticleProps = {
   linkText?: string;
 };
 
-export default function Article({ title, excerpt, date, path, Image, linkText }: ArticleProps) {
+export default function Article({
+  title,
+  excerpt,
+  date,
+  path,
+  Image,
+  linkText,
+}: ArticleProps) {
   return (
     <div
       css={`
@@ -22,16 +29,15 @@ export default function Article({ title, excerpt, date, path, Image, linkText }:
         grid-template-rows: 200px;
         gap: ${(props: { theme: Theme }) => props.theme.space[2]}px;
         padding: ${(props: { theme: Theme }) => props.theme.space[2]}px;
+        h2 {
+          margin: 0;
+        }
       `}
     >
       <div>
-        {title && (
-          <h2>
-            <Link to={path}>{title}</Link>
-          </h2>
-        )}
+        {date && <small className="date"> {date}</small>}
+        {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
         {excerpt && <div>{excerpt}</div>}
-        {date && <div>{date}</div>}
         {path && <Link to={path}>{linkText}</Link>}
       </div>
       <div>

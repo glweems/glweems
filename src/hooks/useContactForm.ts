@@ -9,7 +9,9 @@ interface InitialState {
 const useSignUpForm = () => {
   const [inputs, setInputs] = React.useState({ email: '', msg: '' });
 
-  const handleChange = (e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.FormEvent<HTMLInputElement> | React.FormEvent<HTMLTextAreaElement>
+  ) => {
     e.persist();
     const { name, value } = e.currentTarget;
     setInputs(

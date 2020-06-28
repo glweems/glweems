@@ -1,7 +1,12 @@
 import styled, { css } from 'styled-components';
 import { media } from '../../theme';
 
-export type FlexProperty = 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-evenly';
+export type FlexProperty =
+  | 'flex-start'
+  | 'flex-end'
+  | 'center'
+  | 'space-between'
+  | 'space-evenly';
 
 export interface FlexCssProps {
   alignContent?: FlexProperty;

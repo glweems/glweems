@@ -1,56 +1,94 @@
-import * as React from 'react';
+import { useLocation } from '@reach/router';
+import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import useSEOQuery from '../graphql/SEOQuery';
+import packageJson from '../../package.json';
+import { SeoQuery } from '../types/generated';
 
-interface SEOProps {
+export type SEOProps = {
   title?: string;
   description?: string;
   image?: string;
-  path?: string;
   article?: boolean;
-  tags?: string[];
-  config: {
-    title?: string;
-    description?: string;
-    image?: string;
-    path?: string;
-    article?: boolean;
-    tags?: string[];
-  };
-}
+  keywords?: string[];
+};
+const SEO = ({ title, description, image, article, keywords }: SEOProps) => {
+  const { pathname } = useLocation();
+  const { site } = useStaticQuery<SeoQuery>(query);
 
-export default function SEO({ title, description, image, article, path, tags }: SEOProps) {
-  const { defaultTitle, titleTemplate, defaultDescription, url, defaultImage } = useSEOQuery();
+  const {
+    defaultTitle,
+    titleTemplate,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    twitterUsername,
+  } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${url}${image || defaultImage}`,
-    url: `${url}${path || '/'}`,
+    image: `${siteUrl}${image || defaultImage}`,
+    url: `${siteUrl}${pathname}`,
   };
 
   return (
-    <Helmet title={seo.title as any} titleTemplate={titleTemplate as any}>
-      <meta name="description" content={seo?.description as any} />
+    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
+
       {seo.url && <meta property="og:url" content={seo.url} />}
+
       {(article ? true : null) && <meta property="og:type" content="article" />}
+
       {seo.title && <meta property="og:title" content={seo.title} />}
-      {seo.title && <meta name="twitter:title" content={seo.title} />}
-      {tags && <meta name="keywords" content={tags.toString()} />}
-      {seo.description && <meta property="og:description" content={seo.description} />}
+
+      {seo.description && (
+        <meta property="og:description" content={seo.description} />
+      )}
+
       {seo.image && <meta property="og:image" content={seo.image} />}
-      {seo.description && <meta name="twitter:description" content={seo.description} />}
+
+      <meta name="twitter:card" content="summary_large_image" />
+
+      {twitterUsername && (
+        <meta name="twitter:creator" content={twitterUsername} />
+      )}
+
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+
+      {seo.description && (
+        <meta name="twitter:description" content={seo.description} />
+      )}
+
       {seo.image && <meta name="twitter:image" content={seo.image} />}
+
+      {keywords && <meta name="keywords" content={keywords.toString()} />}
     </Helmet>
   );
-}
-
-const defaultConfig = {
-  article: false,
-  tags: ['designer', 'developer', 'react', 'gatsby'],
 };
+
+export default SEO;
 
 SEO.defaultProps = {
-  config: defaultConfig,
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+  keywords: packageJson.keywords,
 };
+
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl
+        defaultImage: image
+        twitterUsername: twitterHandle
+      }
+    }
+  }
+`;

@@ -1,7 +1,11 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
 
-export default async function createDesignPages({ graphql, actions: { createPage }, reporter }: CreatePagesArgs) {
+export default async function createDesignPages({
+  graphql,
+  actions: { createPage },
+  reporter,
+}: CreatePagesArgs) {
   const result = await graphql<any>(`
     query CreateDesignPages {
       designs: allDesignsYaml {
@@ -22,13 +26,13 @@ export default async function createDesignPages({ graphql, actions: { createPage
 
   designs?.forEach(({ slug }, index) => {
     createPage({
-      path: `/${slug}`,
-      component: path.resolve(`src/templates/Design/DesignTemplate.tsx`),
+      path: `/design/${slug}`,
+      component: path.resolve(`src/templates/DesignTemplate.tsx`),
       context: {
         slug: `/${slug}/`,
         prev: designs[index - 1] && designs[index - 1].slug,
-        next: designs[index + 1] && designs[index + 1].slug
-      }
+        next: designs[index + 1] && designs[index + 1].slug,
+      },
     });
   });
 }

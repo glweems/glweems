@@ -12,7 +12,10 @@ const UseDesignsPageQuery = () =>
         }
       }
       behanceImages: allFile(
-        filter: { relativeDirectory: { regex: "/gatsby-source-behance-images/" }, name: { eq: "cover" } }
+        filter: {
+          relativeDirectory: { regex: "/gatsby-source-behance-images/" }
+          name: { eq: "cover" }
+        }
       ) {
         nodes {
           relativeDirectory

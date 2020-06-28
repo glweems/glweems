@@ -47,7 +47,12 @@ export default function Link({
       {children}
     </GatsbyLink>
   ) : (
-    <GoogleLink href={to} target="_blank" className={displayedClassName} {...other}>
+    <GoogleLink
+      href={to}
+      target="_blank"
+      className={displayedClassName}
+      {...other}
+    >
       {children}
     </GoogleLink>
   );

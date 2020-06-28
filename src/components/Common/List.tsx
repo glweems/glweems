@@ -19,6 +19,7 @@ const Li = styled.li`
 `;
 
 export const List: React.FC<Props> = ({ listStyleNone, children }) => {
-  const ListItems = () => React.Children.map(children, (child, i) => <Li key={i}>{child}</Li>);
+  const ListItems = () =>
+    React.Children.map(children, (child, i) => <Li key={i}>{child}</Li>);
   return <Ul listStyleNone={listStyleNone}>{ListItems()}</Ul>;
 };

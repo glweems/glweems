@@ -16,13 +16,22 @@ export interface CardProps {
   Image?: any;
 }
 
-export default function Card({ title, subtitle, link, tags, children, Image }: CardProps) {
+export default function Card({
+  title,
+  subtitle,
+  link,
+  tags,
+  children,
+  Image,
+}: CardProps) {
   const go = () => (link ? navigate(link) : null);
 
   return (
     <Wrapper>
       <div className="header">
-        <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
+        <h4 className="title">
+          {link ? <Link to={link}>{title}</Link> : title}
+        </h4>
       </div>
 
       {Image || <Box onClick={go}>{Image}</Box>}

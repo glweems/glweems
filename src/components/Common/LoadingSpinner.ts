@@ -5,7 +5,8 @@ import { space, SpaceProps } from 'styled-system';
 export type LoadingSpinnerProps = SpaceProps;
 
 const LoadingSpinner = styled.div<LoadingSpinnerProps>`
-  --spinner-color: ${(props) => (props.theme.mode === 'dark' ? purple : yellow)};
+  --spinner-color: ${(props) =>
+    props.theme.mode === 'dark' ? purple : yellow};
 
   position: relative;
   background: linear-gradient(45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent), linear-gradient(-45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent);

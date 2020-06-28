@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { FlexProperty } from 'csstype';
-import { media, containerWidths, gridGap, text, bg as background } from '../../theme';
+import { media, containerWidths, text, bg as background } from '../../theme';
 
 const { sm, md, lg, xl } = containerWidths;
 export interface ContainerProps {
@@ -64,7 +64,7 @@ export const containerCss = css`
 
 const Container = styled.div<ContainerProps>`
   ${containerCss};
-  gap: ${(props: ContainerProps) => (props.gap ? gridGap(props.gap) : 0)};
+  gap: ${(props) => (props.gap ? props.theme.rhythm(props.gap) : 0)}px;
   justify-content: ${(props) => props.justifyContent};
   ${({ smFlush }) =>
     smFlush &&

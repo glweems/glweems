@@ -8,8 +8,8 @@ const Tag = styled(Link)`
   padding: 5px 10px;
   color: inherit;
   font-size: 15px;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-    'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 22px;
   text-decoration: none;
   border-radius: 3px;

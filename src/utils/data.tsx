@@ -6,7 +6,11 @@ import {
   faMedium,
   faReadme,
 } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faPenNib, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import {
+  faEnvelope,
+  faPenNib,
+  IconDefinition,
+} from '@fortawesome/free-solid-svg-icons';
 // import 'bootstrap-icons';
 
 export const menuItems = [

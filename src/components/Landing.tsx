@@ -62,12 +62,21 @@ export default function Landing() {
             <Img key={node.name} fixed={node.childImageSharp.fixed as FixedObject} draggable={false} />
           ))}
         </Box> */}
-        <motion.div className="container" variants={container} initial="hidden" animate="visible">
+        <motion.div
+          className="container"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
           <motion.h1 variants={item}>
             Hello, I&apos;m <span>Garrett Weems</span>.
           </motion.h1>
-          <motion.h2 variants={item}>I&apos;m a full-stack web developer.</motion.h2>
-          <motion.p>I specialize in javascript / react.js web developement.</motion.p>
+          <motion.h2 variants={item}>
+            I&apos;m a full-stack web developer.
+          </motion.h2>
+          <motion.p>
+            I specialize in javascript / react.js web developement.
+          </motion.p>
           <motion.div>
             <Link to="/resume">
               <Button>Resume</Button>
@@ -94,7 +103,8 @@ export default function Landing() {
 }
 
 const Wrapper = styled(Box)`
-  --bg-color: ${(props) => (props.theme.mode === 'dark' ? darken(0.1, purple) : darken(0.3, yellow))};
+  --bg-color: ${(props) =>
+    props.theme.mode === 'dark' ? darken(0.1, purple) : darken(0.3, yellow)};
 
   position: relative;
   color: ${base.dark};
@@ -106,8 +116,16 @@ const Wrapper = styled(Box)`
       transparent 51%,
       transparent
     ),
-    linear-gradient(-45deg, transparent 49%, var(--bg-color) 50%, var(--bg-color) 50%, transparent 51%, transparent);
-  background-color: ${({ theme: { mode } }) => (mode === 'dark' ? purple : yellow)};
+    linear-gradient(
+      -45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    );
+  background-color: ${({ theme: { mode } }) =>
+    mode === 'dark' ? purple : yellow};
   background-position: 0% 0%;
   background-size: 16px 16px;
   border: 1px var(--bg-color) solid;

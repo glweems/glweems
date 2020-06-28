@@ -7,7 +7,10 @@ interface SocialIconProps {
   account: Account;
   size?: SizeProp;
 }
-const icon = { hidden: { x: -100, opacity: 0, scale: 0 }, visible: { x: 0, opacity: 1, scale: 1 } };
+const icon = {
+  hidden: { x: -100, opacity: 0, scale: 0 },
+  visible: { x: 0, opacity: 1, scale: 1 },
+};
 
 export default function SocialIcon({ account, size }: SocialIconProps) {
   return (

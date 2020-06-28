@@ -97,7 +97,13 @@ export const Ghost = () => {
     }
   `);
 
-  return <Img fixed={file.childImageSharp.fixed as FixedObject} alt="red-pacman-ghost" draggable={false} />;
+  return (
+    <Img
+      fixed={file.childImageSharp.fixed as FixedObject}
+      alt="red-pacman-ghost"
+      draggable={false}
+    />
+  );
 };
 
 export const Logo = () => (
@@ -139,8 +145,14 @@ export const GhostSVG = ({ width = 75, height = 75 }) => (
 	0,54 0,117 9,117 9,108 18,108 18,99 27,99 27,108 36,108 36,117 45,117 54,117 54,99 63,99 63,117 81,117 81,108 90,108 90,99
 	99,99 99,108 108,108 108,117 117,117 117,54 "
     />
-    <polygon className="white-fill" points="36,27 18,27 18,36 9,36 9,63 18,63 18,72 36,72 36,63 45,63 45,36 36,36 	" />
-    <polygon className="white-fill" points="99,36 90,36 90,27 72,27 72,36 63,36 63,63 72,63 72,72 90,72 90,63 99,63 	" />
+    <polygon
+      className="white-fill"
+      points="36,27 18,27 18,36 9,36 9,63 18,63 18,72 36,72 36,63 45,63 45,36 36,36 	"
+    />
+    <polygon
+      className="white-fill"
+      points="99,36 90,36 90,27 72,27 72,36 63,36 63,63 72,63 72,72 90,72 90,63 99,63 	"
+    />
     <rect x="9" y="45" width="18" height="18" />
     <rect x="63" y="45" width="18" height="18" />
   </motion.svg>
