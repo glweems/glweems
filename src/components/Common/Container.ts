@@ -3,7 +3,7 @@ import { FlexProperty } from 'csstype';
 import { media, containerWidths, gridGap, text, bg as background } from '../../theme';
 
 const { sm, md, lg, xl } = containerWidths;
-interface Props {
+export interface ContainerProps {
   gap?: 1 | 2 | 3;
   smFlush?: boolean;
   bg?: boolean;
@@ -62,9 +62,9 @@ export const containerCss = css`
     `}
 `;
 
-export const Container = styled.div<Props>`
+const Container = styled.div<ContainerProps>`
   ${containerCss};
-  gap: ${(props: Props) => (props.gap ? gridGap(props.gap) : 0)};
+  gap: ${(props: ContainerProps) => (props.gap ? gridGap(props.gap) : 0)};
   justify-content: ${(props) => props.justifyContent};
   ${({ smFlush }) =>
     smFlush &&
@@ -87,3 +87,6 @@ export const Container = styled.div<Props>`
         background: ${text};
       `}
 `;
+
+Container.displayName = 'Container';
+export default Container;

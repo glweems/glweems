@@ -6,11 +6,11 @@ const Title = styled.h1`
   color: ${primary};
 `;
 
-interface Props {
+interface TextProps {
   variant?: 'title';
   children: any;
 }
-export const Text = ({ variant, children, theme }: Props): JSX.Element => {
+export default function Text({ variant, children, theme }: TextProps) {
   if (variant === 'title') return <Title theme={theme}>{children}</Title>;
   return <p>{children}</p>;
-};
+}

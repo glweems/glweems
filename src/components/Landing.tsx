@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { graphql, useStaticQuery } from 'gatsby';
-import Img, { FixedObject } from 'gatsby-image';
+import { Link } from 'gatsby';
 import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
@@ -8,9 +7,9 @@ import theme from 'styled-theming';
 import { base, blue, purple, red, yellow } from '../theme';
 import { accounts } from '../utils/data';
 import { rhythm } from '../utils/typography';
-import { Button, Link, SocialIcon } from './Common';
 import Box from './Common/Box';
-import { LandingGhostsQuery } from '../types/generated';
+import Button from './Common/Button';
+import SocialIcon from './Common/SocialIcon';
 import { GhostSVG } from './Icons';
 
 const garrettWeems = theme('mode', { light: blue, dark: red });
@@ -49,21 +48,6 @@ export default function Landing() {
       opacity: 1
     }
   };
-
-  const { ghosts } = useStaticQuery<LandingGhostsQuery>(graphql`
-    query LandingGhosts {
-      ghosts: allFile(filter: { relativeDirectory: { eq: "ghost" }, name: { nin: ["ghost-yellow", "ghost-purple"] } }) {
-        nodes {
-          name
-          childImageSharp {
-            fixed(height: 90) {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
-          }
-        }
-      }
-    }
-  `);
 
   return (
     <Box padding={3} height="100vh" position="relative">

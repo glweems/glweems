@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { bg, rootBg } from '../../theme';
 
-export const Button = styled.button`
+const Button = styled.button`
   display: inline-block;
   padding: 5px 10px;
   text-transform: uppercase;
@@ -25,3 +25,6 @@ export const Button = styled.button`
     transition: none;
   }
 `;
+
+Button.displayName = 'Button';
+export default Button;

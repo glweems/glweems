@@ -23,8 +23,6 @@ export default async function createDesignListPages({ graphql, actions: { create
     return;
   }
 
-  reporter.activityTimer('Creating design list pages').start();
-
   paginate({
     createPage,
     items: result.data.allDesignsYaml.nodes,
@@ -32,6 +30,4 @@ export default async function createDesignListPages({ graphql, actions: { create
     pathPrefix: '/designs',
     component: path.resolve('src/templates/DesignListTemplate.tsx')
   });
-
-  reporter.activityTimer(`Created ${result.data.allDesignsYaml.totalCount} design list pages`);
 }

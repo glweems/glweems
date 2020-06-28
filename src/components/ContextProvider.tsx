@@ -1,9 +1,7 @@
 import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import useDarkMode from 'use-dark-mode';
 import Layout from '../components/Layout';
 import useCreateTheme, { GlobalStyle } from '../theme';
-// import { GlobalStyle } from '../theme';
 
 interface PCP {
   contexts: any[];

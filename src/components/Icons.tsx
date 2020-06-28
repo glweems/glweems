@@ -5,8 +5,6 @@ import Img, { FixedObject } from 'gatsby-image';
 import React from 'react';
 import styled from 'styled-components';
 import { GhostImageQuery } from '../types/generated';
-import Box from './Common/Box';
-import { Theme } from '../theme';
 
 const icon = {
   hidden: {

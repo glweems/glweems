@@ -1,13 +1,15 @@
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import * as React from 'react';
-import { Container, Text } from '../../components/Common';
+import React from 'react';
 import SEO from '../../components/SEO';
-import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery';
 import Tags from '../../components/Tags';
-export default function DesignTemplate({ data }: { data: DesignsTemplateQuery }) {
+import { DesignsTemplateQuery, DesignsTemplateQuery_design } from './_types/DesignsTemplateQuery';
+import Container from '../../components/Common/Container';
+import Text from '../../components/Common/Text';
+
+export default function DesignTemplate({ data }: PageProps<DesignsTemplateQuery>) {
   const { design, images } = data;
-  const { name, description, tools } = design as Required<DesignsTemplateQuery_design>;
+  const { name, description } = design as Required<DesignsTemplateQuery_design>;
 
   const tags = design?.tags ?? [];
 
@@ -16,9 +18,13 @@ export default function DesignTemplate({ data }: { data: DesignsTemplateQuery })
     <Container smFlush>
       <Text variant="title">{name}</Text>
       <Text>{description}</Text>
-      <div>tags</div>
-      {tags && <Tags tags={tags as string[]} />}
-      <div>tools</div>
+
+      {tags && (
+        <div>
+          <div>tags</div>
+          <Tags tags={tags as string[]} />
+        </div>
+      )}
 
       {images.nodes.map((image, index) => (
         <Img key={`${name}-image-${index}`} fluid={image?.childImageSharp?.fluid as any} draggable={false} />
@@ -27,7 +33,7 @@ export default function DesignTemplate({ data }: { data: DesignsTemplateQuery })
   ];
 }
 
-export const designQuery = graphql`
+export const Query = graphql`
   query DesignsTemplateQuery($slug: String!) {
     design: designsYaml(slug: { regex: $slug }) {
       id

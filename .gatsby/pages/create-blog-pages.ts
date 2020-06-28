@@ -20,9 +20,6 @@ export default async function createBlogPostPages({ graphql, actions, reporter }
     return;
   }
 
-  // Create Blog Posts
-  reporter.activityTimer('Creating Blog Post Pages').start();
-
   const blogPosts = result?.data?.posts.nodes;
 
   blogPosts?.forEach(({ frontmatter }, index) => {
@@ -36,6 +33,4 @@ export default async function createBlogPostPages({ graphql, actions, reporter }
       }
     });
   });
-
-  reporter.activityTimer(`Created ${result.data.posts.nodes.length} blog post pages`).end();
 }

@@ -4,7 +4,6 @@ import React from 'react';
 import Article from '../components/Article';
 import { DesignListQuery } from '../types/generated';
 import { PageContext } from './BlogListTemplate';
-import { motion } from 'framer-motion';
 
 export default function ArticleListTemplate(props: PageProps<DesignListQuery, PageContext>) {
   const handleClick: React.MouseEventHandler<{ name: string }> = (event) => {

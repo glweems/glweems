@@ -23,8 +23,6 @@ export default async function createPostPages({ graphql, actions: { createPage }
     return;
   }
 
-  reporter.activityTimer('Creating Blog List Pages').start();
-
   paginate({
     createPage,
     items: result.data.allMarkdownRemark.nodes,
@@ -33,5 +31,5 @@ export default async function createPostPages({ graphql, actions: { createPage }
     component: path.resolve('src/templates/BlogListTemplate.tsx')
   });
 
-  reporter.activityTimer(`Created ${result.data.allMarkdownRemark.totalCount} Blog List Pagese`).end();
+  return;
 }

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { navbarHeight, media, gridGap, rhythm } from '../../theme';
-import { Container } from '../../components/Common';
+import Container from '../../components/Common/Container';
 
 export const Header = styled(Container)`
   position: fixed;

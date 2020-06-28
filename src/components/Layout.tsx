@@ -5,10 +5,10 @@ import React from 'react';
 import styled from 'styled-components';
 import media from 'styled-media-query';
 import config from '../../.gatsby/config';
-import { Container } from './Common';
 import Box from './Common/Box';
 import { GhostSVG } from './Icons';
-import ToggleThemeSwitch from './ToogleThemeSwitch';
+import ToggleThemeSwitch from './ToggleThemeSwitch';
+import Container from './Common/Container';
 
 function SideMenu() {
   return (

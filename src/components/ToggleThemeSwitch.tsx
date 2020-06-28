@@ -7,7 +7,10 @@ export default function ToggleThemeSwitch() {
   const { toggle, isDarkMode } = useTheme();
 
   return (
-    <motion.button onClick={toggle} style={{ font: 'icon', padding: '0.25rem 0.5rem 0.125rem 0.5rem' }}>
+    <motion.button
+      onClick={toggle}
+      style={{ font: 'icon', padding: '0.25rem 0.5rem 0.125rem 0.5rem', fontSize: '125%' }}
+    >
       <motion.svg
         width="1em"
         height="1em"
@@ -20,3 +23,5 @@ export default function ToggleThemeSwitch() {
     </motion.button>
   );
 }
+
+ToggleThemeSwitch.displayName = 'ToggleThemeSwitch';

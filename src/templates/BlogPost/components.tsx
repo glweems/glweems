@@ -1,10 +1,12 @@
 import Img from 'gatsby-image';
 import * as React from 'react';
 import RehypeReact from 'rehype-react';
-import { Blockquote, Date, Subtitle, Title, Link } from '../../components/Common';
+import { Blockquote, Subtitle, Title } from '../../components/Common/Typography';
 import Tags from '../../components/Tags';
 import { BlogTemplateQuery } from '../../types/generated';
 import { ImgDetail, StyledHeader } from './styles';
+let rehypeReact: any;
+rehypeReact = RehypeReact;
 
 interface HeaderProps {
   frontmatter: BlogTemplateQuery['post']['frontmatter'];
@@ -17,9 +19,9 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
       <Title>{frontmatter.title}</Title>
       <Subtitle>{frontmatter.subtitle}</Subtitle>
       <div className="info">
-        <Date>
+        <small className="date">
           {frontmatter.date} - {timeToRead} min read
-        </Date>
+        </small>
         <Tags tags={frontmatter.tags} />
       </div>
       <Img className="thumbnail" fluid={frontmatter.thumbnail.childImageSharp.fluid} />
@@ -27,10 +29,11 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
   </StyledHeader>
 );
 
-export const Content: React.FC<{ elements: object }> = ({ elements }) =>
-  new RehypeReact({
+export const Content: React.FC<{ elements: object }> = ({ elements }) => {
+  const html = new rehypeReact({
     createElement: React.createElement,
     components: { em: ImgDetail, blockquote: Blockquote }
-  }).Compiler(elements).props.children;
+  });
 
-export { ShareButtons } from './ShareButtons';
+  return html.Compiler(elements).props.children;
+};

@@ -27,4 +27,7 @@ const Box = styled.div<BoxProps>`
       ${containerCss}
     `};
 `;
+
+Box.displayName = 'Box';
+
 export default Box;

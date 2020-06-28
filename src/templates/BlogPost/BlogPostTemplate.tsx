@@ -1,25 +1,22 @@
 import loadable from '@loadable/component';
-import { graphql } from 'gatsby';
+import { graphql, PageProps } from 'gatsby';
 import * as React from 'react';
 import { useTheme } from 'styled-components';
-import { Container } from '../../components/Common';
+import Box from '../../components/Common/Box';
 import SEO from '../../components/SEO';
 import { base, borderRadius, media } from '../../theme';
+import { DiscussionEmbedProps } from '../../types/disqus-react';
 import { BlogTemplateQuery } from '../../types/generated';
-import { Content, Header, ShareButtons } from './components';
+import { Content, Header } from './components';
 import { Article } from './styles';
 import { SwitchPages } from './SwitchPages';
-import { DiscussionEmbedProps } from '../../types/disqus-react';
-import Box from '../../components/Common/Box';
+import ShareButtons from '../../components/ShareButtons';
 
 const DiscussionEmbed = loadable<DiscussionEmbedProps>(() =>
   import('disqus-react').then((module) => module.DiscussionEmbed)
 );
-interface BlogPostTemplateProps {
-  data: BlogTemplateQuery;
-}
 
-export default function BlogTemplate({ data: { post, prev, next, site } }: BlogPostTemplateProps) {
+export default function BlogTemplate({ data: { post, prev, next, site } }: PageProps<BlogTemplateQuery>) {
   const { isDarkMode } = useTheme();
   const { twitterHandle, disqusShortName } = site.siteMetadata;
   const { url, disqusIdentifier } = post;

@@ -40,6 +40,9 @@ export const flexStyles = css<FlexProps>`
     `};
 `;
 
-export const Flex = styled.div<FlexProps>`
+const Flex = styled.div<FlexProps>`
   ${flexStyles}
 `;
+
+Flex.displayName = 'Flex';
+export default Flex;

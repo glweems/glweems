@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import { secondaryTheme } from '../../theme';
 
-export const Tag = styled(Link)`
+const Tag = styled(Link)`
   ${secondaryTheme};
   display: block;
   padding: 5px 10px;
@@ -14,3 +14,6 @@ export const Tag = styled(Link)`
   text-decoration: none;
   border-radius: 3px;
 `;
+
+Tag.displayName = 'Tag';
+export default Tag;

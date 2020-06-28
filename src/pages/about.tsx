@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container } from '../components/Common';
+import Container from '../components/Common/Container';
 
-export const AboutPage: React.FC = () => {
+export default function AboutPage() {
   return (
     <Container>
       <h1>Hello, I&apos;m Garrett Weems</h1>
@@ -25,6 +25,4 @@ export const AboutPage: React.FC = () => {
       </p>
     </Container>
   );
-};
-
-export default AboutPage;
+}

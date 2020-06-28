@@ -1,14 +1,11 @@
 import React from 'react';
-import { Container } from '../components/Common';
-import Layout from '../components/Layout';
+import Container from '../components/Common/Container';
 
-const NotFoundPage = () => (
-  <Layout>
+export default function NotFoundPage() {
+  return (
     <Container>
       <h1>Page not found</h1>
       <p>The requested page is unavailable.</p>
     </Container>
-  </Layout>
-);
-
-export default NotFoundPage;
+  );
+}

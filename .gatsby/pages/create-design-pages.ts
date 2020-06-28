@@ -18,9 +18,6 @@ export default async function createDesignPages({ graphql, actions: { createPage
     return;
   }
 
-  // Create Design Pages
-  reporter.activityTimer('Creating Design Pages').start();
-
   const designs = result?.data?.designs?.nodes;
 
   designs?.forEach(({ slug }, index) => {
@@ -34,6 +31,4 @@ export default async function createDesignPages({ graphql, actions: { createPage
       }
     });
   });
-
-  reporter.activityTimer(`Created ${result.data.designs.nodes.length} designs post pages`).end();
 }

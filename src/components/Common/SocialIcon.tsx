@@ -8,19 +8,22 @@ interface SocialIconProps {
   size?: SizeProp;
 }
 const icon = { hidden: { x: -100, opacity: 0, scale: 0 }, visible: { x: 0, opacity: 1, scale: 1 } };
-export const SocialIcon = ({ account, size }: SocialIconProps) => (
-  <motion.div
-    variants={icon}
-    transition={{
-      type: 'spring',
-      stiffness: 260,
-      damping: 20
-    }}
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
-  >
-    <motion.a href={account.link} target="_blank" rel="noreferrer">
-      <FaIcon icon={account.icon} size={size} />
-    </motion.a>
-  </motion.div>
-);
+
+export default function SocialIcon({ account, size }: SocialIconProps) {
+  return (
+    <motion.div
+      variants={icon}
+      transition={{
+        type: 'spring',
+        stiffness: 260,
+        damping: 20
+      }}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.9 }}
+    >
+      <motion.a href={account.link} target="_blank" rel="noreferrer">
+        <FaIcon icon={account.icon} size={size} />
+      </motion.a>
+    </motion.div>
+  );
+}

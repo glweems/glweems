@@ -2,10 +2,11 @@ import * as React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { IconDefinition, faHandPointLeft, faHandPointRight } from '@fortawesome/free-solid-svg-icons';
-import { Link, Container } from '../../components/Common';
+import Container from '../../components/Common/Container';
 import { muted } from '../../theme';
 import { rhythm } from '../../utils/typography';
 import { BlogTemplateQuery } from '../../types/generated';
+import { Link } from 'gatsby';
 
 interface Props {
   config: {
