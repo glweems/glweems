@@ -9,12 +9,12 @@ import { GhostImageQuery } from '../types/generated';
 const icon = {
   hidden: {
     pathLength: 0,
-    fill: 'rgba(255, 255, 255, 0)'
+    fill: 'rgba(255, 255, 255, 0)',
   },
   visible: {
     pathLength: 1,
-    fill: 'rgba(255, 255, 255, 1)'
-  }
+    fill: 'rgba(255, 255, 255, 1)',
+  },
 };
 
 type IconProps = {
@@ -47,7 +47,7 @@ export const Moon: React.FC<IconProps> = ({ size: iconSize = 2 }) => {
 };
 
 const defaultIconProps = {
-  size: 2
+  size: 2,
 };
 
 Moon.defaultProps = defaultIconProps;

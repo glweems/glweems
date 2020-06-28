@@ -48,7 +48,7 @@ export const baseColors = {
   mint: '#a7e3cc',
   purple: '#d0c1fa',
   red: '#e44932',
-  yellow: '#f8d58c'
+  yellow: '#f8d58c',
 };
 
 type ColorObject = typeof baseColors & {
@@ -69,7 +69,7 @@ const lightMode: ColorObject = {
   bg: '#fff',
   rootBg: '#f8f8f8',
   borderColor: '#c6c7c6',
-  secondaryText: 'rgba(0, 0, 0, 0.54)'
+  secondaryText: 'rgba(0, 0, 0, 0.54)',
 };
 
 const darkmode: ColorObject = {
@@ -80,21 +80,21 @@ const darkmode: ColorObject = {
   bg: '#0f121b',
   rootBg: '#181D2B',
   borderColor: '#1b2027',
-  secondaryText: 'rgba(255, 255, 255, 0.54)'
+  secondaryText: 'rgba(255, 255, 255, 0.54)',
 };
 
 export const containerWidths = {
   sm: `540px`,
   md: `720px`,
   lg: `960px`,
-  xl: `1200px`
+  xl: `1200px`,
 };
 
 export const media = generateMedia({
   sm: containerWidths.sm,
   md: containerWidths.md,
   lg: containerWidths.lg,
-  xl: containerWidths.xl
+  xl: containerWidths.xl,
 });
 
 export interface Theme extends SystemTheme {
@@ -120,7 +120,7 @@ export default function useCreateTheme(): DefaultTheme {
     mode,
     colors,
     isDarkMode,
-    fontWeights: [500, 600, 700, 800]
+    fontWeights: [500, 600, 700, 800],
   };
 
   return obj;

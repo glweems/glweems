@@ -4,14 +4,14 @@ import {
   faInstagramSquare,
   faLinkedin,
   faMedium,
-  faReadme
+  faReadme,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faPenNib, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 // import 'bootstrap-icons';
 
 export const menuItems = [
   { text: 'Graphic Design', path: '/designs', icon: faPenNib },
-  { text: 'Code Tutorials', path: '/blog', icon: faReadme }
+  { text: 'Code Tutorials', path: '/blog', icon: faReadme },
 ];
 
 export const accounts: Record<string, Account> = {
@@ -19,38 +19,38 @@ export const accounts: Record<string, Account> = {
     name: 'Email',
     username: 'gwgraphicdesign@gmail.com',
     link: 'mailto:gwgraphicdesign@gmail.com',
-    icon: faEnvelope
+    icon: faEnvelope,
   },
   github: {
     name: 'Github',
     username: 'glweems',
     link: 'https://github.com/glweems',
-    icon: faGithubSquare
+    icon: faGithubSquare,
   },
   linkedin: {
     name: 'LinkedIn',
     username: 'glweems',
     link: 'https://www.linkedin.com/in/glweems',
-    icon: faLinkedin
+    icon: faLinkedin,
   },
   medium: {
     name: 'Medium',
     username: 'glweems',
     link: 'https://medium.com/@glweems',
-    icon: faMedium
+    icon: faMedium,
   },
   behance: {
     name: 'Behance',
     username: 'glweems',
     link: 'https://www.behance.net/glweems',
-    icon: faBehanceSquare
+    icon: faBehanceSquare,
   },
   instagram: {
     name: 'Instagram',
     username: 'glweems',
     link: 'https://instagram.com/glweems',
-    icon: faInstagramSquare
-  }
+    icon: faInstagramSquare,
+  },
 };
 
 export default { menuItems, accounts };

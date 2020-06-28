@@ -46,5 +46,5 @@ export default function Article({ title, excerpt, date, path, Image, linkText }:
 }
 
 Article.defaultProps = {
-  linkText: 'Read'
+  linkText: 'Read',
 };

@@ -23,9 +23,9 @@ export default function Landing() {
       transition: {
         delay: 1,
         when: 'beforeChildren',
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const container = {
@@ -36,17 +36,17 @@ export default function Landing() {
       transition: {
         delay: 0.3,
         when: 'beforeChildren',
-        staggerChildren: 0.1
-      }
-    }
+        staggerChildren: 0.1,
+      },
+    },
   };
 
   const item = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
-    }
+      opacity: 1,
+    },
   };
 
   return (

@@ -16,7 +16,7 @@ const useSignUpForm = () => {
       (state) =>
         ({
           ...state,
-          [name]: value
+          [name]: value,
         } as Pick<InitialState, keyof InitialState>)
     );
   };
@@ -28,18 +28,18 @@ const useSignUpForm = () => {
       url: '/',
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      data: qs.stringify({ 'form-name': 'contact', ...inputs })
+      data: qs.stringify({ 'form-name': 'contact', ...inputs }),
     })
       .then(() => {
         setInputs((state) => ({
           ...state,
-          success: 'Form submitted successfully!'
+          success: 'Form submitted successfully!',
         }));
       })
       .catch(() =>
         setInputs((state) => ({
           ...state,
-          error: 'Form could not be submitted.'
+          error: 'Form could not be submitted.',
         }))
       );
   };
@@ -47,7 +47,7 @@ const useSignUpForm = () => {
   return {
     handleSubmit,
     handleChange,
-    inputs
+    inputs,
   };
 };
 

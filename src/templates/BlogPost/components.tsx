@@ -32,7 +32,7 @@ export const Header: React.FC<HeaderProps> = ({ frontmatter, timeToRead }) => (
 export const Content: React.FC<{ elements: object }> = ({ elements }) => {
   const html = new rehypeReact({
     createElement: React.createElement,
-    components: { em: ImgDetail, blockquote: Blockquote }
+    components: { em: ImgDetail, blockquote: Blockquote },
   });
 
   return html.Compiler(elements).props.children;

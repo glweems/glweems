@@ -48,7 +48,7 @@ export default function BlogTemplate({ data: { post, prev, next, site } }: PageP
       <SwitchPages config={{ prev, next }} />
       <ShareButtons config={shareConfig} />
       <DiscussionEmbed shortname={disqusShortName} config={{ url, identifier: disqusIdentifier, title }} />
-    </Box>
+    </Box>,
   ];
 }
 

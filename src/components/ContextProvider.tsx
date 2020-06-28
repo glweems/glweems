@@ -10,7 +10,7 @@ interface PCP {
 const ProviderComposer = ({ contexts, children }: PCP): JSX.Element =>
   contexts.reduceRight((kids, parent) => {
     return React.cloneElement(parent, {
-      children: kids
+      children: kids,
     });
   }, children);
 

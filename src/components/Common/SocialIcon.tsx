@@ -16,7 +16,7 @@ export default function SocialIcon({ account, size }: SocialIconProps) {
       transition={{
         type: 'spring',
         stiffness: 260,
-        damping: 20
+        damping: 20,
       }}
       whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}

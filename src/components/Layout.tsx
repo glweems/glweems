@@ -62,9 +62,9 @@ function SocialIcons() {
           transition: {
             delay: 1,
             when: 'beforeChildren',
-            staggerChildren: 0.1
-          }
-        }
+            staggerChildren: 0.1,
+          },
+        },
       }}
       css={`
         display: flex;
@@ -82,12 +82,12 @@ function SocialIcons() {
           key={key}
           variants={{
             hidden: { x: -100, opacity: 0, scale: 0 },
-            visible: { x: 0, opacity: 1, scale: 1 }
+            visible: { x: 0, opacity: 1, scale: 1 },
           }}
           transition={{
             type: 'spring',
             stiffness: 260,
-            damping: 20
+            damping: 20,
           }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}

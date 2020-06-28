@@ -20,7 +20,7 @@ export const createFlexProps = ({
   alignItems = 'center',
   justifyContent = 'center',
   justifyItems = 'center',
-  flexDirection = 'row'
+  flexDirection = 'row',
 }: FlexCssProps) => css`
   flex-direction: ${flexDirection};
   align-content: ${alignContent || alignContent};

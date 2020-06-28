@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 `;
 
 Tags.defaultProps = {
-  limit: 3
+  limit: 3,
 };
 
 export default Tags;

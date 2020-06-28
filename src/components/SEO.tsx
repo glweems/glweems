@@ -26,7 +26,7 @@ export default function SEO({ title, description, image, article, path, tags }: 
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: `${url}${image || defaultImage}`,
-    url: `${url}${path || '/'}`
+    url: `${url}${path || '/'}`,
   };
 
   return (
@@ -48,9 +48,9 @@ export default function SEO({ title, description, image, article, path, tags }: 
 
 const defaultConfig = {
   article: false,
-  tags: ['designer', 'developer', 'react', 'gatsby']
+  tags: ['designer', 'developer', 'react', 'gatsby'],
 };
 
 SEO.defaultProps = {
-  config: defaultConfig
+  config: defaultConfig,
 };

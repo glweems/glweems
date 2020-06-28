@@ -7,7 +7,7 @@ import {
   RedditIcon,
   RedditShareButton,
   TwitterIcon,
-  TwitterShareButton
+  TwitterShareButton,
 } from 'react-share';
 import Box from './Common/Box';
 
@@ -24,7 +24,7 @@ const iconConfig = {
   size: 40,
   round: false,
   borderRadius: 2,
-  iconBgStyle: { fill: 'transparent' }
+  iconBgStyle: { fill: 'transparent' },
 };
 
 export default function ShareButtons({ config: { twitterHandle, url, title, tags } }: ShareButtonsProps) {
