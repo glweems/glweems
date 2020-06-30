@@ -1,15 +1,17 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
-dotenv.config();
 import config from './config';
+import { linkedHeaderIcon } from '../src/components/Icons';
 
 const GENERATE_QL_TYPES = false;
 
-const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>> = ({
-  projectRoot,
-}) => {
+const gatsbyConfig: ITSConfigFn<
+  'config',
+  IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>
+> = ({ projectRoot }) => {
   const gatsbyConfig = {
     siteMetadata: {
       title: `Garrett Weems`,
@@ -42,7 +44,6 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
         },
       },
       'gatsby-transformer-yaml',
-
       {
         resolve: 'gatsby-plugin-typography',
         options: {
@@ -88,16 +89,19 @@ const gatsbyConfig: ITSConfigFn<'config', IMergePluginOptions<'gatsby-source-fil
             {
               resolve: 'gatsby-remark-images',
               options: {
-                maxWidth: 960,
-                withWebp: true,
-                ignoreFileExtensions: [],
+                backgroundColor: '#fafafa',
+                maxWidth: 1035,
               },
             },
             {
               resolve: 'gatsby-remark-responsive-iframe',
               options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
             },
-            'gatsby-remark-autolink-headers',
+            {
+              resolve: 'gatsby-remark-autolink-headers',
+              icon: linkedHeaderIcon,
+              enableCustomId: true,
+            },
             'gatsby-remark-prismjs',
             'gatsby-remark-copy-linked-files',
             'gatsby-remark-smartypants',

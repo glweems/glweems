@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { Link } from 'gatsby';
+import { Link, navigateTo } from 'gatsby';
 import React from 'react';
-import { Theme } from '../theme';
+import styled from 'styled-components';
 import '../utils/index.module.css';
 
 type ArticleProps = {
@@ -21,35 +21,48 @@ export default function Article({
   Image,
   linkText,
 }: ArticleProps) {
+  function handleImgClick(event: React.MouseEvent) {
+    navigateTo(event.currentTarget.id);
+  }
+
   return (
-    <div
-      css={`
-        display: grid;
-        grid-template-columns: 1fr 200px;
-        grid-template-rows: 200px;
-        gap: ${(props: { theme: Theme }) => props.theme.space[2]}px;
-        padding: ${(props: { theme: Theme }) => props.theme.space[2]}px;
-        h2 {
-          margin: 0;
-        }
-      `}
-    >
+    <Styled>
       <div>
         {date && <small className="date"> {date}</small>}
         {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
         {excerpt && <div>{excerpt}</div>}
         {path && <Link to={path}>{linkText}</Link>}
       </div>
-      <div>
-        {Image && (
-          <motion.div whileHover={{ scale: 1.015 }} whileTap={{ scale: 0.975 }}>
-            {Image}
-          </motion.div>
-        )}
-      </div>
-    </div>
+
+      {Image && (
+        <motion.div
+          id={path}
+          onClick={handleImgClick}
+          className="article--container--image"
+          whileHover={{ scale: 1.015 }}
+          whileTap={{ scale: 0.975 }}
+        >
+          {Image}
+        </motion.div>
+      )}
+    </Styled>
   );
 }
+
+const Styled = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: ${({ theme }) => theme.space[2]};
+
+  margin-bottom: ${({ theme }) => theme.space[4]};
+
+  .article--container--image {
+    cursor: pointer;
+  }
+  h2 {
+    margin: 0;
+  }
+`;
 
 Article.defaultProps = {
   linkText: 'Read',

@@ -1,12 +1,17 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['react-app', 'prettier/@typescript-eslint', 'prettier/react', 'plugin:prettier/recommended'],
+  extends: [
+    'react-app',
+    'prettier/@typescript-eslint',
+    'prettier/react',
+    'plugin:prettier/recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
+      jsx: true,
+    },
   },
   settings: {
     'import/resolver': {
@@ -14,16 +19,17 @@ module.exports = {
         map: [
           ['hooks', 'src/hooks'],
           ['types', 'src/index.ts'],
-          ['common', 'src/components/Common/index.ts']
+          ['common', 'src/components/Common/index.ts'],
         ],
-        extensions: ['.ts', '.js', '.jsx', '.json']
-      }
+        extensions: ['.ts', '.js', '.jsx', '.json'],
+      },
     },
     react: {
-      version: 'detect'
-    }
+      version: 'detect',
+    },
   },
   rules: {
+    'react/prop-types': 'off',
     'react/no-array-index-key': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'react/jsx-props-no-spreading': 'off',
@@ -38,8 +44,8 @@ module.exports = {
       'off',
       {
         code: 140,
-        ignoreUrls: true
-      }
-    ]
-  }
-}
+        ignoreUrls: true,
+      },
+    ],
+  },
+};

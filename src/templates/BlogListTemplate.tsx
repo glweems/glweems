@@ -5,6 +5,8 @@ import Article from '../components/Article';
 import Pager, { PagerProps } from '../components/Pager';
 import SEO from '../components/SEO';
 import { BlogListQuery } from '../types/generated';
+import Layout from '../layout/Layout';
+import SideMenu from '../layout/SideMenu';
 export interface PageContext extends PagerProps {
   pageNumber: number;
   humanPageNumber: number;
@@ -18,35 +20,41 @@ export default function ArticleListTemplate({
   pageContext,
 }: PageProps<BlogListQuery, PageContext>) {
   return (
-    <React.Fragment>
+    <Layout>
       <SEO
         title={`Blog Posts Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
 
-      {data.allMarkdownRemark.posts.map(({ frontmatter, ...post }) => {
-        return (
-          <Article
-            key={post.id}
-            title={frontmatter.title}
-            excerpt={post.excerpt}
-            date={frontmatter.date}
-            path={`/blog${frontmatter.path}`}
-            Image={
-              <Img
-                draggable={false}
-                alt={`${frontmatter.title} thumbnail image`}
-                fixed={frontmatter.thumbnail.childImageSharp.fixed}
-              />
-            }
-          />
-        );
-      })}
+      <aside className="left">
+        <SideMenu />
+      </aside>
 
-      <Pager
-        previousPagePath={pageContext.previousPagePath}
-        nextPagePath={pageContext.nextPagePath}
-      />
-    </React.Fragment>
+      <main>
+        {data.allMarkdownRemark.posts.map(({ frontmatter, ...post }) => {
+          return (
+            <Article
+              key={post.id}
+              title={frontmatter.title}
+              excerpt={post.excerpt}
+              date={frontmatter.date}
+              path={`/blog${frontmatter.path}`}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${frontmatter.title} thumbnail image`}
+                  fixed={frontmatter.thumbnail.childImageSharp.fixed}
+                />
+              }
+            />
+          );
+        })}
+
+        <Pager
+          previousPagePath={pageContext.previousPagePath}
+          nextPagePath={pageContext.nextPagePath}
+        />
+      </main>
+    </Layout>
   );
 }
 

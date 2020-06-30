@@ -6,35 +6,38 @@ import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import { DesignListQuery } from '../types/generated';
 import { PageContext } from './BlogListTemplate';
+import Layout from '../layout/Layout';
 
 export default function ArticleListTemplate({
   data,
   pageContext,
 }: PageProps<DesignListQuery, PageContext>) {
   return (
-    <React.Fragment>
+    <Layout>
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
-      {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
-        return (
-          <Article
-            key={post.slug}
-            path={`/design/${post.slug}`}
-            excerpt={post.description}
-            title={name}
-            Image={
-              <Img
-                draggable={false}
-                alt={`${name} thumbnail image`}
-                fixed={data.allFile.nodes[index].childImageSharp.fixed}
-              />
-            }
-          />
-        );
-      })}
-      <Pager {...pageContext} />
-    </React.Fragment>
+      <main>
+        {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
+          return (
+            <Article
+              key={post.slug}
+              path={`/design/${post.slug}`}
+              excerpt={post.description}
+              title={name}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${name} thumbnail image`}
+                  fixed={data.allFile.nodes[index].childImageSharp.fixed}
+                />
+              }
+            />
+          );
+        })}
+        <Pager {...pageContext} />
+      </main>
+    </Layout>
   );
 }
 

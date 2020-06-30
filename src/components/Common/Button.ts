@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { bg, rootBg } from '../../theme';
 
 const Button = styled.button`
   display: inline-block;
@@ -15,9 +14,9 @@ const Button = styled.button`
     transition: all 0.4s ease 0s;
   }
   :disabled {
-    color: ${bg};
-    background: ${rootBg};
-    border-color: ${rootBg};
+    color: ${({ theme }) => theme.colors.bg};
+    background: ${({ theme }) => theme.colors.rootBg};
+    border-color: ${({ theme }) => theme.colors.rootBg};
     border-radius: 6px;
     cursor: not-allowed;
   }

@@ -5,7 +5,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { navigate } from 'gatsby';
 import React from 'react';
-import Button from './Common/Button';
 
 export interface PagerProps {
   previousPagePath?: string;
@@ -37,7 +36,7 @@ export default function Pager({
         margin: ${({ theme }) => theme.space[2]}px;
       `}
     >
-      <Button
+      <button
         name={previousPagePath}
         disabled={
           typeof previousPagePath !== 'string' || previousPagePath === ''
@@ -46,15 +45,15 @@ export default function Pager({
       >
         <FontAwesomeIcon icon={faHandPointLeft} />
         <span> {previousPageText || defaults.prevPageText}</span>
-      </Button>
-      <Button
+      </button>
+      <button
         name={nextPagePath}
         disabled={typeof nextPagePath !== 'string' || nextPagePath === ''}
         onClick={handleClick}
       >
         <span>{nextPageText || defaults.nextPageText} </span>
         <FontAwesomeIcon icon={faHandPointRight} />
-      </Button>
+      </button>
     </div>
   );
 }

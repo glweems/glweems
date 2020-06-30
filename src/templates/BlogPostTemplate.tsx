@@ -12,6 +12,8 @@ import Tags from '../components/Tags';
 import { media } from '../theme';
 import { DiscussionEmbedProps } from '../types/disqus-react';
 import { BlogTemplateQuery } from '../types/generated';
+import Layout from '../layout/Layout';
+import Navbar from '../layout/Navbar';
 let rehypeReact: any;
 rehypeReact = RehypeReact;
 export interface PageContext {
@@ -33,7 +35,7 @@ export default function BlogTemplate({
   const { frontmatter } = data.post;
   const { mode } = useTheme();
   return (
-    <React.Fragment>
+    <Layout>
       <SEO
         article
         title={frontmatter.title}
@@ -41,49 +43,55 @@ export default function BlogTemplate({
         keywords={frontmatter.tags}
         image={frontmatter.thumbnail.publicURL}
       />
-      <Article className={`${mode}-mode`}>
-        <header>
-          <h1 className="blog-title">{frontmatter.title}</h1>
 
-          <p className="blog-subtitle">{frontmatter.subtitle}</p>
+      <Navbar />
 
-          <small className="date">
-            {frontmatter.date} - {post.timeToRead} min read
-          </small>
+      <main>
+        <Article className={`${mode}-mode`}>
+          <header>
+            <h1 className="blog-title">{frontmatter.title}</h1>
 
-          <Tags tags={frontmatter.tags} />
+            <p className="blog-subtitle">{frontmatter.subtitle}</p>
 
-          <Img
-            draggable={false}
-            fluid={frontmatter.thumbnail.childImageSharp.fluid}
-            alt={`${frontmatter.title} thumbnail`}
-          />
-        </header>
+            <small className="date">
+              {frontmatter.date} - {post.timeToRead} min read
+            </small>
 
-        <Content elements={post.htmlAst} />
-      </Article>
+            <Tags tags={frontmatter.tags} />
 
-      <ShareButtons
-        title={frontmatter.title}
-        url={post.url}
-        tags={frontmatter.tags}
-      />
-      <DiscussionEmbed
-        shortname={site.siteMetadata.disqusShortName}
-        config={{
-          url: post.url,
-          identifier: post.disqusIdentifier,
-          title: frontmatter.title,
-        }}
-      />
+            <Img
+              draggable={false}
+              fluid={frontmatter.thumbnail.childImageSharp.fluid}
+              alt={`${frontmatter.title} thumbnail`}
+            />
+          </header>
 
-      <Pager
-        previousPagePath={pageContext.prev}
-        previousPageText={data.prev?.frontmatter?.previousPageText}
-        nextPagePath={pageContext?.next}
-        nextPageText={data.next?.frontmatter?.nextPageText}
-      />
-    </React.Fragment>
+          <Content elements={post.htmlAst} />
+        </Article>
+
+        <ShareButtons
+          title={frontmatter.title}
+          url={post.url}
+          tags={frontmatter.tags}
+        />
+
+        <DiscussionEmbed
+          shortname={site.siteMetadata.disqusShortName}
+          config={{
+            url: post.url,
+            identifier: post.disqusIdentifier,
+            title: frontmatter.title,
+          }}
+        />
+
+        <Pager
+          previousPagePath={pageContext.prev}
+          previousPageText={data.prev?.frontmatter?.previousPageText}
+          nextPagePath={pageContext?.next}
+          nextPageText={data.next?.frontmatter?.nextPageText}
+        />
+      </main>
+    </Layout>
   );
 }
 
@@ -124,7 +132,7 @@ const Article = styled.article`
     minmax(1em, 1fr)
     [main-start] minmax(300px, 720px) [main-end]
     minmax(1em, 1fr);
-  gap: ${({ theme }) => theme.rhythm(1.5)} 0;
+  gap: ${({ theme }) => theme.space[2]} 0;
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.bg};
 
