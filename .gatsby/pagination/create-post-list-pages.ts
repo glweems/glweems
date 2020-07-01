@@ -32,8 +32,8 @@ export default async function createPostPages({
     items: result.data.allMarkdownRemark.nodes,
     itemsPerPage,
     pathPrefix: ({ pageNumber, numberOfPages }) =>
-      pageNumber === 0 ? '/' : '/blog/page',
-    component: path.resolve('src/templates/BlogListTemplate.tsx'),
+      pageNumber === 0 ? '/blog' : '/blog/page',
+    component: path.resolve('src/templates/BlogPostListTemplate.tsx'),
   });
 
   return;

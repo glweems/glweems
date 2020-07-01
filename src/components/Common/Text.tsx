@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import * as React from 'react';
-import { primary } from '../../theme';
 
 const Title = styled.h1`
-  color: ${primary};
+  color: ${({ theme }) => theme.colors.primary};
 `;
 
 interface TextProps {

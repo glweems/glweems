@@ -7,15 +7,7 @@ export default function ToggleThemeSwitch() {
   const { toggle, mode, isDarkMode } = useTheme();
 
   return (
-    <motion.button
-      onClick={toggle}
-      css={`
-        svg {
-          fill: var(--color-text);
-          scale: 1.25;
-        }
-      `}
-    >
+    <motion.button className={`toggle-theme-button ${mode}`} onClick={toggle}>
       <motion.svg
         width="1em"
         height="1em"
@@ -28,8 +20,7 @@ export default function ToggleThemeSwitch() {
           fillRule="evenodd"
           d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"
         />
-      </motion.svg>{' '}
-      <span>{mode} mode</span>
+      </motion.svg>
     </motion.button>
   );
 }

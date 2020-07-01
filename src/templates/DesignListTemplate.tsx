@@ -5,39 +5,36 @@ import Article from '../components/Article';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import { DesignListQuery } from '../types/generated';
-import { PageContext } from './BlogListTemplate';
-import Layout from '../layout/Layout';
+import { PageContext } from './BlogPostListTemplate';
 
 export default function ArticleListTemplate({
   data,
   pageContext,
 }: PageProps<DesignListQuery, PageContext>) {
   return (
-    <Layout>
+    <React.Fragment>
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
-      <main>
-        {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
-          return (
-            <Article
-              key={post.slug}
-              path={`/design/${post.slug}`}
-              excerpt={post.description}
-              title={name}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${name} thumbnail image`}
-                  fixed={data.allFile.nodes[index].childImageSharp.fixed}
-                />
-              }
-            />
-          );
-        })}
-        <Pager {...pageContext} />
-      </main>
-    </Layout>
+      {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
+        return (
+          <Article
+            key={post.slug}
+            path={`/design/${post.slug}`}
+            excerpt={post.description}
+            title={name}
+            Image={
+              <Img
+                draggable={false}
+                alt={`${name} thumbnail image`}
+                fixed={data.allFile.nodes[index].childImageSharp.fixed}
+              />
+            }
+          />
+        );
+      })}
+      <Pager {...pageContext} />
+    </React.Fragment>
   );
 }
 
@@ -49,9 +46,7 @@ export const DesignList = graphql`
       sort: { fields: slug, order: ASC }
     ) {
       nodes {
-        name
-        description
-        slug
+        ...DesignArticle
       }
     }
     allFile(

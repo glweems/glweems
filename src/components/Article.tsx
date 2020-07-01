@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link, navigateTo } from 'gatsby';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import '../utils/index.module.css';
 
@@ -20,7 +20,8 @@ export default function Article({
   path,
   Image,
   linkText,
-}: ArticleProps) {
+  children,
+}: PropsWithChildren<ArticleProps>) {
   function handleImgClick(event: React.MouseEvent) {
     navigateTo(event.currentTarget.id);
   }
@@ -32,6 +33,7 @@ export default function Article({
         {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
         {excerpt && <div>{excerpt}</div>}
         {path && <Link to={path}>{linkText}</Link>}
+        {children}
       </div>
 
       {Image && (

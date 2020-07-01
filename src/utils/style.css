@@ -82,3 +82,8 @@ iframe {
 .anchor.before svg {
   fill: var(--color-primary);
 }
+
+.toggle-theme-button {
+  text-align: center;
+  fill: var(--color-text);
+}

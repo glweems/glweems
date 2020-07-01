@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import { purple, yellow } from '../../theme';
 import { space, SpaceProps } from 'styled-system';
 
 export type LoadingSpinnerProps = SpaceProps;
 
 const LoadingSpinner = styled.div<LoadingSpinnerProps>`
-  --spinner-color: ${(props) =>
-    props.theme.mode === 'dark' ? purple : yellow};
+  --spinner-color: ${({ theme }) =>
+    theme.isDarkMode ? theme.colors.purple : theme.colors.yellow};
 
   position: relative;
   background: linear-gradient(45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent), linear-gradient(-45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent);

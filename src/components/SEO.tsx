@@ -12,7 +12,14 @@ export type SEOProps = {
   article?: boolean;
   keywords?: string[];
 };
-const SEO = ({ title, description, image, article, keywords }: SEOProps) => {
+
+export default function SEO({
+  title,
+  description,
+  image,
+  article,
+  keywords,
+}: SEOProps) {
   const { pathname } = useLocation();
   const { site } = useStaticQuery<SeoQuery>(query);
 
@@ -34,6 +41,7 @@ const SEO = ({ title, description, image, article, keywords }: SEOProps) => {
 
   return (
     <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      {title && <title>{seo.title}</title>}
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 
@@ -46,6 +54,8 @@ const SEO = ({ title, description, image, article, keywords }: SEOProps) => {
       {seo.description && (
         <meta property="og:description" content={seo.description} />
       )}
+
+      {keywords && <meta name="keywords" content={keywords.toString()} />}
 
       {seo.image && <meta property="og:image" content={seo.image} />}
 
@@ -62,13 +72,9 @@ const SEO = ({ title, description, image, article, keywords }: SEOProps) => {
       )}
 
       {seo.image && <meta name="twitter:image" content={seo.image} />}
-
-      {keywords && <meta name="keywords" content={keywords.toString()} />}
     </Helmet>
   );
-};
-
-export default SEO;
+}
 
 SEO.defaultProps = {
   title: null,

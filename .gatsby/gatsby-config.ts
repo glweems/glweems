@@ -5,8 +5,7 @@ import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
 import config from './config';
 import { linkedHeaderIcon } from '../src/components/Icons';
-
-const GENERATE_QL_TYPES = false;
+import { graphql } from 'graphql';
 
 const gatsbyConfig: ITSConfigFn<
   'config',
@@ -32,24 +31,7 @@ const gatsbyConfig: ITSConfigFn<
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
       'gatsby-plugin-sitemap',
-      {
-        resolve: 'gatsby-plugin-prefetch-google-fonts',
-        options: {
-          fonts: [
-            {
-              family: 'Montserrat',
-              variants: ['400', '500', '600', '700', '800'],
-            },
-          ],
-        },
-      },
       'gatsby-transformer-yaml',
-      {
-        resolve: 'gatsby-plugin-typography',
-        options: {
-          pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
-        },
-      },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -72,6 +54,24 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: 'gatsby-plugin-prefetch-google-fonts',
+        options: {
+          fonts: [
+            {
+              family: 'Montserrat',
+              variants: ['400', '500', '600', '700', '800'],
+            },
+          ],
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-typography',
+        options: {
+          pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
+        },
+      },
+
+      {
         resolve: 'gatsby-source-filesystem',
         options: {
           name: 'images',
@@ -80,7 +80,6 @@ const gatsbyConfig: ITSConfigFn<
       },
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
-      'gatsby-transformer-remark',
       {
         resolve: 'gatsby-transformer-remark',
         options: {
@@ -109,7 +108,16 @@ const gatsbyConfig: ITSConfigFn<
           ],
         },
       },
-
+      {
+        resolve: 'gatsby-source-github',
+        options: {
+          headers: {
+            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
+            // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+          },
+          queries: [githubPinnedItems],
+        },
+      },
       {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
@@ -156,11 +164,38 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       'gatsby-plugin-robots-txt',
-      // 'gatsby-plugin-offline'
+      // 'gatsby-plugin-offline',
     ],
   };
 
   return gatsbyConfig;
 };
+
+const githubPinnedItems = `
+query TopPinnedItems {
+    user(login: "glweems") {
+      pinnedItems(first: 3) {
+        edges {
+          node {
+            ... on Repository {
+              id
+              name
+              homepageUrl
+              url
+              createdAt
+              description
+              openGraphImageUrl
+              primaryLanguage {
+                color
+                id
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default gatsbyConfig;

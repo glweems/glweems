@@ -40,7 +40,7 @@ const config = {
   copyright: '© All rights reserved.',
   itemsPerPage: 4,
   links: [
-    { path: '/', name: 'Articles' },
+    { path: '/blog', name: 'Articles' },
     { path: '/designs', name: 'Designs' },
     { path: '/projects', name: 'Projects' },
     { path: '/about', name: 'About' },

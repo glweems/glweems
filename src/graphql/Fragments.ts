@@ -46,7 +46,7 @@ export const Frontmatter = graphql`
   fragment Frontmatter on MarkdownRemark {
     frontmatter {
       id
-      date(formatString: "MMMM DD, YYYY")
+      date(formatString: "MMMM YYYY")
       path
       title
       subtitle
@@ -72,5 +72,36 @@ export const BlogPost = graphql`
     excerpt(pruneLength: 75)
     timeToRead
     ...Frontmatter
+  }
+`;
+
+export const DesignArticle = graphql`
+  fragment DesignArticle on DesignsYaml {
+    name
+    description
+    slug
+  }
+`;
+
+export const BlogPostArticle = graphql`
+  fragment BlogPostArticle on MarkdownRemark {
+    id
+    excerpt(pruneLength: 200)
+    frontmatter {
+      id
+      title
+      path
+      date(formatString: "MMMM YYYY")
+      thumbnail {
+        childImageSharp {
+          fluid(
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
   }
 `;

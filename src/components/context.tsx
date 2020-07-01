@@ -21,10 +21,10 @@ export function wrapPageElement({
   props,
 }: WrapPageElementBrowserArgs) {
   return (
-    <Layout>
+    <React.Fragment>
       <SEO />
       <GlobalStyle />
-      {element}
-    </Layout>
+      <Layout>{element}</Layout>
+    </React.Fragment>
   );
 }

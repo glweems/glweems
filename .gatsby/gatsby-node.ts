@@ -1,4 +1,8 @@
-import { GatsbyNode, PluginOptions, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
+import {
+  GatsbyNode,
+  PluginOptions,
+  SetFieldsOnGraphQLNodeTypeArgs,
+} from 'gatsby';
 import { GraphQLString } from 'graphql';
 import createBlogPostPages from './pages/create-blog-pages';
 import createDesignPages from './pages/create-design-pages';
@@ -13,12 +17,13 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
     return {
       url: {
         type: GraphQLString,
-        resolve: (source: any) => `https://glweems.com${source.frontmatter.path}`
+        resolve: (source: any) =>
+          `https://glweems.com${source.frontmatter.path}`,
       },
       disqusIdentifier: {
         type: GraphQLString,
-        resolve: (source: any) => String(source.frontmatter.id)
-      }
+        resolve: (source: any) => String(source.frontmatter.id),
+      },
     };
   }
 

@@ -2,10 +2,9 @@ overwrite: true
 schema: 'http://localhost:8000/___graphql'
 documents:
   [
-    './.gatsby/**/*.ts',
     './src/**/*.tsx',
     './src/**/*.ts',
-    './plugins/**/*.js',
+    './.gatsby/**/*.ts',
     './node_modules/gatsby-transformer-sharp/src/*.js',
     './node_modules/gatsby-image/src/*.js',
   ]
@@ -15,6 +14,6 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-react-apollo'
-  ./graphql.schema.json:
+  ./schema.json:
     plugins:
       - 'introspection'

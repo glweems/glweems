@@ -65,11 +65,9 @@ export type ContentYamlConnection = {
   group: Array<ContentYamlGroupConnection>;
 };
 
-
 export type ContentYamlConnectionDistinctArgs = {
   field: ContentYamlFieldsEnum;
 };
-
 
 export type ContentYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -209,7 +207,7 @@ export enum ContentYamlFieldsEnum {
   EmailName = 'email___name',
   EmailUsername = 'email___username',
   EmailLink = 'email___link',
-  EmailIcon = 'email___icon'
+  EmailIcon = 'email___icon',
 }
 
 export type ContentYamlFilterInput = {
@@ -300,7 +298,6 @@ export type ContentYamlSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>;
 };
 
-
 export type DateQueryOperatorInput = {
   eq?: Maybe<Scalars['Date']>;
   ne?: Maybe<Scalars['Date']>;
@@ -337,11 +334,9 @@ export type DesignsYamlConnection = {
   group: Array<DesignsYamlGroupConnection>;
 };
 
-
 export type DesignsYamlConnectionDistinctArgs = {
   field: DesignsYamlFieldsEnum;
 };
-
 
 export type DesignsYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -452,7 +447,7 @@ export enum DesignsYamlFieldsEnum {
   Tools = 'tools',
   ToolsTitle = 'tools___title',
   ToolsSynonymIconUrl = 'tools___synonym___icon_url',
-  ToolsSynonymName = 'tools___synonym___name'
+  ToolsSynonymName = 'tools___synonym___name',
 }
 
 export type DesignsYamlFilterInput = {
@@ -557,14 +552,12 @@ export type Directory = Node & {
   internal: Internal;
 };
 
-
 export type DirectoryModifiedTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryAccessTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -573,14 +566,12 @@ export type DirectoryAccessTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryChangeTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryBirthTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -589,7 +580,6 @@ export type DirectoryBirthTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryAtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
@@ -597,14 +587,12 @@ export type DirectoryAtimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type DirectoryMtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type DirectoryCtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -623,11 +611,9 @@ export type DirectoryConnection = {
   group: Array<DirectoryGroupConnection>;
 };
 
-
 export type DirectoryConnectionDistinctArgs = {
   field: DirectoryFieldsEnum;
 };
-
 
 export type DirectoryConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -761,7 +747,7 @@ export enum DirectoryFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export type DirectoryFilterInput = {
@@ -869,12 +855,11 @@ export type File = Node & {
   parent?: Maybe<Node>;
   children: Array<Node>;
   internal: Internal;
-  childrenSideprojectsYaml?: Maybe<Array<Maybe<SideprojectsYaml>>>;
   childContentYaml?: Maybe<ContentYaml>;
+  childrenSideprojectsYaml?: Maybe<Array<Maybe<SideprojectsYaml>>>;
   childMarkdownRemark?: Maybe<MarkdownRemark>;
   childrenDesignsYaml?: Maybe<Array<Maybe<DesignsYaml>>>;
 };
-
 
 export type FileModifiedTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -883,14 +868,12 @@ export type FileModifiedTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileAccessTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileChangeTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -899,14 +882,12 @@ export type FileChangeTimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileBirthTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileAtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -915,14 +896,12 @@ export type FileAtimeArgs = {
   locale?: Maybe<Scalars['String']>;
 };
 
-
 export type FileMtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type FileCtimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -941,11 +920,9 @@ export type FileConnection = {
   group: Array<FileGroupConnection>;
 };
 
-
 export type FileConnectionDistinctArgs = {
   field: FileFieldsEnum;
 };
-
 
 export type FileConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -1172,6 +1149,68 @@ export enum FileFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
+  ChildContentYamlId = 'childContentYaml___id',
+  ChildContentYamlParentId = 'childContentYaml___parent___id',
+  ChildContentYamlParentParentId = 'childContentYaml___parent___parent___id',
+  ChildContentYamlParentParentChildren = 'childContentYaml___parent___parent___children',
+  ChildContentYamlParentChildren = 'childContentYaml___parent___children',
+  ChildContentYamlParentChildrenId = 'childContentYaml___parent___children___id',
+  ChildContentYamlParentChildrenChildren = 'childContentYaml___parent___children___children',
+  ChildContentYamlParentInternalContent = 'childContentYaml___parent___internal___content',
+  ChildContentYamlParentInternalContentDigest = 'childContentYaml___parent___internal___contentDigest',
+  ChildContentYamlParentInternalDescription = 'childContentYaml___parent___internal___description',
+  ChildContentYamlParentInternalFieldOwners = 'childContentYaml___parent___internal___fieldOwners',
+  ChildContentYamlParentInternalIgnoreType = 'childContentYaml___parent___internal___ignoreType',
+  ChildContentYamlParentInternalMediaType = 'childContentYaml___parent___internal___mediaType',
+  ChildContentYamlParentInternalOwner = 'childContentYaml___parent___internal___owner',
+  ChildContentYamlParentInternalType = 'childContentYaml___parent___internal___type',
+  ChildContentYamlChildren = 'childContentYaml___children',
+  ChildContentYamlChildrenId = 'childContentYaml___children___id',
+  ChildContentYamlChildrenParentId = 'childContentYaml___children___parent___id',
+  ChildContentYamlChildrenParentChildren = 'childContentYaml___children___parent___children',
+  ChildContentYamlChildrenChildren = 'childContentYaml___children___children',
+  ChildContentYamlChildrenChildrenId = 'childContentYaml___children___children___id',
+  ChildContentYamlChildrenChildrenChildren = 'childContentYaml___children___children___children',
+  ChildContentYamlChildrenInternalContent = 'childContentYaml___children___internal___content',
+  ChildContentYamlChildrenInternalContentDigest = 'childContentYaml___children___internal___contentDigest',
+  ChildContentYamlChildrenInternalDescription = 'childContentYaml___children___internal___description',
+  ChildContentYamlChildrenInternalFieldOwners = 'childContentYaml___children___internal___fieldOwners',
+  ChildContentYamlChildrenInternalIgnoreType = 'childContentYaml___children___internal___ignoreType',
+  ChildContentYamlChildrenInternalMediaType = 'childContentYaml___children___internal___mediaType',
+  ChildContentYamlChildrenInternalOwner = 'childContentYaml___children___internal___owner',
+  ChildContentYamlChildrenInternalType = 'childContentYaml___children___internal___type',
+  ChildContentYamlInternalContent = 'childContentYaml___internal___content',
+  ChildContentYamlInternalContentDigest = 'childContentYaml___internal___contentDigest',
+  ChildContentYamlInternalDescription = 'childContentYaml___internal___description',
+  ChildContentYamlInternalFieldOwners = 'childContentYaml___internal___fieldOwners',
+  ChildContentYamlInternalIgnoreType = 'childContentYaml___internal___ignoreType',
+  ChildContentYamlInternalMediaType = 'childContentYaml___internal___mediaType',
+  ChildContentYamlInternalOwner = 'childContentYaml___internal___owner',
+  ChildContentYamlInternalType = 'childContentYaml___internal___type',
+  ChildContentYamlGithubName = 'childContentYaml___github___name',
+  ChildContentYamlGithubUsername = 'childContentYaml___github___username',
+  ChildContentYamlGithubLink = 'childContentYaml___github___link',
+  ChildContentYamlGithubIcon = 'childContentYaml___github___icon',
+  ChildContentYamlLinkedinName = 'childContentYaml___linkedin___name',
+  ChildContentYamlLinkedinUsername = 'childContentYaml___linkedin___username',
+  ChildContentYamlLinkedinLink = 'childContentYaml___linkedin___link',
+  ChildContentYamlLinkedinIcon = 'childContentYaml___linkedin___icon',
+  ChildContentYamlMediumName = 'childContentYaml___medium___name',
+  ChildContentYamlMediumUsername = 'childContentYaml___medium___username',
+  ChildContentYamlMediumLink = 'childContentYaml___medium___link',
+  ChildContentYamlMediumIcon = 'childContentYaml___medium___icon',
+  ChildContentYamlBehanceName = 'childContentYaml___behance___name',
+  ChildContentYamlBehanceUsername = 'childContentYaml___behance___username',
+  ChildContentYamlBehanceLink = 'childContentYaml___behance___link',
+  ChildContentYamlBehanceIcon = 'childContentYaml___behance___icon',
+  ChildContentYamlInstagramName = 'childContentYaml___instagram___name',
+  ChildContentYamlInstagramUsername = 'childContentYaml___instagram___username',
+  ChildContentYamlInstagramLink = 'childContentYaml___instagram___link',
+  ChildContentYamlInstagramIcon = 'childContentYaml___instagram___icon',
+  ChildContentYamlEmailName = 'childContentYaml___email___name',
+  ChildContentYamlEmailUsername = 'childContentYaml___email___username',
+  ChildContentYamlEmailLink = 'childContentYaml___email___link',
+  ChildContentYamlEmailIcon = 'childContentYaml___email___icon',
   ChildrenSideprojectsYaml = 'childrenSideprojectsYaml',
   ChildrenSideprojectsYamlId = 'childrenSideprojectsYaml___id',
   ChildrenSideprojectsYamlParentId = 'childrenSideprojectsYaml___parent___id',
@@ -1262,6 +1301,8 @@ export enum FileFieldsEnum {
   ChildrenSideprojectsYamlImageInternalMediaType = 'childrenSideprojectsYaml___image___internal___mediaType',
   ChildrenSideprojectsYamlImageInternalOwner = 'childrenSideprojectsYaml___image___internal___owner',
   ChildrenSideprojectsYamlImageInternalType = 'childrenSideprojectsYaml___image___internal___type',
+  ChildrenSideprojectsYamlImageChildContentYamlId = 'childrenSideprojectsYaml___image___childContentYaml___id',
+  ChildrenSideprojectsYamlImageChildContentYamlChildren = 'childrenSideprojectsYaml___image___childContentYaml___children',
   ChildrenSideprojectsYamlImageChildrenSideprojectsYaml = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml',
   ChildrenSideprojectsYamlImageChildrenSideprojectsYamlId = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml___id',
   ChildrenSideprojectsYamlImageChildrenSideprojectsYamlChildren = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml___children',
@@ -1270,8 +1311,6 @@ export enum FileFieldsEnum {
   ChildrenSideprojectsYamlImageChildrenSideprojectsYamlDescription = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml___description',
   ChildrenSideprojectsYamlImageChildrenSideprojectsYamlGithub = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml___github',
   ChildrenSideprojectsYamlImageChildrenSideprojectsYamlTags = 'childrenSideprojectsYaml___image___childrenSideprojectsYaml___tags',
-  ChildrenSideprojectsYamlImageChildContentYamlId = 'childrenSideprojectsYaml___image___childContentYaml___id',
-  ChildrenSideprojectsYamlImageChildContentYamlChildren = 'childrenSideprojectsYaml___image___childContentYaml___children',
   ChildrenSideprojectsYamlImageChildMarkdownRemarkId = 'childrenSideprojectsYaml___image___childMarkdownRemark___id',
   ChildrenSideprojectsYamlImageChildMarkdownRemarkExcerpt = 'childrenSideprojectsYaml___image___childMarkdownRemark___excerpt',
   ChildrenSideprojectsYamlImageChildMarkdownRemarkRawMarkdownBody = 'childrenSideprojectsYaml___image___childMarkdownRemark___rawMarkdownBody',
@@ -1299,68 +1338,6 @@ export enum FileFieldsEnum {
   ChildrenSideprojectsYamlDescription = 'childrenSideprojectsYaml___description',
   ChildrenSideprojectsYamlGithub = 'childrenSideprojectsYaml___github',
   ChildrenSideprojectsYamlTags = 'childrenSideprojectsYaml___tags',
-  ChildContentYamlId = 'childContentYaml___id',
-  ChildContentYamlParentId = 'childContentYaml___parent___id',
-  ChildContentYamlParentParentId = 'childContentYaml___parent___parent___id',
-  ChildContentYamlParentParentChildren = 'childContentYaml___parent___parent___children',
-  ChildContentYamlParentChildren = 'childContentYaml___parent___children',
-  ChildContentYamlParentChildrenId = 'childContentYaml___parent___children___id',
-  ChildContentYamlParentChildrenChildren = 'childContentYaml___parent___children___children',
-  ChildContentYamlParentInternalContent = 'childContentYaml___parent___internal___content',
-  ChildContentYamlParentInternalContentDigest = 'childContentYaml___parent___internal___contentDigest',
-  ChildContentYamlParentInternalDescription = 'childContentYaml___parent___internal___description',
-  ChildContentYamlParentInternalFieldOwners = 'childContentYaml___parent___internal___fieldOwners',
-  ChildContentYamlParentInternalIgnoreType = 'childContentYaml___parent___internal___ignoreType',
-  ChildContentYamlParentInternalMediaType = 'childContentYaml___parent___internal___mediaType',
-  ChildContentYamlParentInternalOwner = 'childContentYaml___parent___internal___owner',
-  ChildContentYamlParentInternalType = 'childContentYaml___parent___internal___type',
-  ChildContentYamlChildren = 'childContentYaml___children',
-  ChildContentYamlChildrenId = 'childContentYaml___children___id',
-  ChildContentYamlChildrenParentId = 'childContentYaml___children___parent___id',
-  ChildContentYamlChildrenParentChildren = 'childContentYaml___children___parent___children',
-  ChildContentYamlChildrenChildren = 'childContentYaml___children___children',
-  ChildContentYamlChildrenChildrenId = 'childContentYaml___children___children___id',
-  ChildContentYamlChildrenChildrenChildren = 'childContentYaml___children___children___children',
-  ChildContentYamlChildrenInternalContent = 'childContentYaml___children___internal___content',
-  ChildContentYamlChildrenInternalContentDigest = 'childContentYaml___children___internal___contentDigest',
-  ChildContentYamlChildrenInternalDescription = 'childContentYaml___children___internal___description',
-  ChildContentYamlChildrenInternalFieldOwners = 'childContentYaml___children___internal___fieldOwners',
-  ChildContentYamlChildrenInternalIgnoreType = 'childContentYaml___children___internal___ignoreType',
-  ChildContentYamlChildrenInternalMediaType = 'childContentYaml___children___internal___mediaType',
-  ChildContentYamlChildrenInternalOwner = 'childContentYaml___children___internal___owner',
-  ChildContentYamlChildrenInternalType = 'childContentYaml___children___internal___type',
-  ChildContentYamlInternalContent = 'childContentYaml___internal___content',
-  ChildContentYamlInternalContentDigest = 'childContentYaml___internal___contentDigest',
-  ChildContentYamlInternalDescription = 'childContentYaml___internal___description',
-  ChildContentYamlInternalFieldOwners = 'childContentYaml___internal___fieldOwners',
-  ChildContentYamlInternalIgnoreType = 'childContentYaml___internal___ignoreType',
-  ChildContentYamlInternalMediaType = 'childContentYaml___internal___mediaType',
-  ChildContentYamlInternalOwner = 'childContentYaml___internal___owner',
-  ChildContentYamlInternalType = 'childContentYaml___internal___type',
-  ChildContentYamlGithubName = 'childContentYaml___github___name',
-  ChildContentYamlGithubUsername = 'childContentYaml___github___username',
-  ChildContentYamlGithubLink = 'childContentYaml___github___link',
-  ChildContentYamlGithubIcon = 'childContentYaml___github___icon',
-  ChildContentYamlLinkedinName = 'childContentYaml___linkedin___name',
-  ChildContentYamlLinkedinUsername = 'childContentYaml___linkedin___username',
-  ChildContentYamlLinkedinLink = 'childContentYaml___linkedin___link',
-  ChildContentYamlLinkedinIcon = 'childContentYaml___linkedin___icon',
-  ChildContentYamlMediumName = 'childContentYaml___medium___name',
-  ChildContentYamlMediumUsername = 'childContentYaml___medium___username',
-  ChildContentYamlMediumLink = 'childContentYaml___medium___link',
-  ChildContentYamlMediumIcon = 'childContentYaml___medium___icon',
-  ChildContentYamlBehanceName = 'childContentYaml___behance___name',
-  ChildContentYamlBehanceUsername = 'childContentYaml___behance___username',
-  ChildContentYamlBehanceLink = 'childContentYaml___behance___link',
-  ChildContentYamlBehanceIcon = 'childContentYaml___behance___icon',
-  ChildContentYamlInstagramName = 'childContentYaml___instagram___name',
-  ChildContentYamlInstagramUsername = 'childContentYaml___instagram___username',
-  ChildContentYamlInstagramLink = 'childContentYaml___instagram___link',
-  ChildContentYamlInstagramIcon = 'childContentYaml___instagram___icon',
-  ChildContentYamlEmailName = 'childContentYaml___email___name',
-  ChildContentYamlEmailUsername = 'childContentYaml___email___username',
-  ChildContentYamlEmailLink = 'childContentYaml___email___link',
-  ChildContentYamlEmailIcon = 'childContentYaml___email___icon',
   ChildMarkdownRemarkId = 'childMarkdownRemark___id',
   ChildMarkdownRemarkFrontmatterTitle = 'childMarkdownRemark___frontmatter___title',
   ChildMarkdownRemarkFrontmatterId = 'childMarkdownRemark___frontmatter___id',
@@ -1510,7 +1487,7 @@ export enum FileFieldsEnum {
   ChildrenDesignsYamlTools = 'childrenDesignsYaml___tools',
   ChildrenDesignsYamlToolsTitle = 'childrenDesignsYaml___tools___title',
   ChildrenDesignsYamlToolsSynonymIconUrl = 'childrenDesignsYaml___tools___synonym___icon_url',
-  ChildrenDesignsYamlToolsSynonymName = 'childrenDesignsYaml___tools___synonym___name'
+  ChildrenDesignsYamlToolsSynonymName = 'childrenDesignsYaml___tools___synonym___name',
 }
 
 export type FileFilterInput = {
@@ -1553,8 +1530,8 @@ export type FileFilterInput = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childrenSideprojectsYaml?: Maybe<SideprojectsYamlFilterListInput>;
   childContentYaml?: Maybe<ContentYamlFilterInput>;
+  childrenSideprojectsYaml?: Maybe<SideprojectsYamlFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
   childrenDesignsYaml?: Maybe<DesignsYamlFilterListInput>;
 };
@@ -1585,6 +1562,195 @@ export type FloatQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Float']>>>;
 };
 
+export type GithubPinneditems = Node & {
+  __typename?: 'GithubPinneditems';
+  id: Scalars['ID'];
+  parent?: Maybe<Node>;
+  children: Array<Node>;
+  internal: Internal;
+  name?: Maybe<Scalars['String']>;
+  homepageUrl?: Maybe<Scalars['String']>;
+  url?: Maybe<Scalars['String']>;
+  createdAt?: Maybe<Scalars['Date']>;
+  description?: Maybe<Scalars['String']>;
+  openGraphImageUrl?: Maybe<Scalars['String']>;
+  primaryLanguage?: Maybe<GithubPinneditemsPrimaryLanguage>;
+};
+
+export type GithubPinneditemsCreatedAtArgs = {
+  formatString?: Maybe<Scalars['String']>;
+  fromNow?: Maybe<Scalars['Boolean']>;
+  difference?: Maybe<Scalars['String']>;
+  locale?: Maybe<Scalars['String']>;
+};
+
+export type GithubPinneditemsConnection = {
+  __typename?: 'GithubPinneditemsConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<GithubPinneditemsEdge>;
+  nodes: Array<GithubPinneditems>;
+  pageInfo: PageInfo;
+  distinct: Array<Scalars['String']>;
+  group: Array<GithubPinneditemsGroupConnection>;
+};
+
+export type GithubPinneditemsConnectionDistinctArgs = {
+  field: GithubPinneditemsFieldsEnum;
+};
+
+export type GithubPinneditemsConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+  field: GithubPinneditemsFieldsEnum;
+};
+
+export type GithubPinneditemsEdge = {
+  __typename?: 'GithubPinneditemsEdge';
+  next?: Maybe<GithubPinneditems>;
+  node: GithubPinneditems;
+  previous?: Maybe<GithubPinneditems>;
+};
+
+export enum GithubPinneditemsFieldsEnum {
+  Id = 'id',
+  ParentId = 'parent___id',
+  ParentParentId = 'parent___parent___id',
+  ParentParentParentId = 'parent___parent___parent___id',
+  ParentParentParentChildren = 'parent___parent___parent___children',
+  ParentParentChildren = 'parent___parent___children',
+  ParentParentChildrenId = 'parent___parent___children___id',
+  ParentParentChildrenChildren = 'parent___parent___children___children',
+  ParentParentInternalContent = 'parent___parent___internal___content',
+  ParentParentInternalContentDigest = 'parent___parent___internal___contentDigest',
+  ParentParentInternalDescription = 'parent___parent___internal___description',
+  ParentParentInternalFieldOwners = 'parent___parent___internal___fieldOwners',
+  ParentParentInternalIgnoreType = 'parent___parent___internal___ignoreType',
+  ParentParentInternalMediaType = 'parent___parent___internal___mediaType',
+  ParentParentInternalOwner = 'parent___parent___internal___owner',
+  ParentParentInternalType = 'parent___parent___internal___type',
+  ParentChildren = 'parent___children',
+  ParentChildrenId = 'parent___children___id',
+  ParentChildrenParentId = 'parent___children___parent___id',
+  ParentChildrenParentChildren = 'parent___children___parent___children',
+  ParentChildrenChildren = 'parent___children___children',
+  ParentChildrenChildrenId = 'parent___children___children___id',
+  ParentChildrenChildrenChildren = 'parent___children___children___children',
+  ParentChildrenInternalContent = 'parent___children___internal___content',
+  ParentChildrenInternalContentDigest = 'parent___children___internal___contentDigest',
+  ParentChildrenInternalDescription = 'parent___children___internal___description',
+  ParentChildrenInternalFieldOwners = 'parent___children___internal___fieldOwners',
+  ParentChildrenInternalIgnoreType = 'parent___children___internal___ignoreType',
+  ParentChildrenInternalMediaType = 'parent___children___internal___mediaType',
+  ParentChildrenInternalOwner = 'parent___children___internal___owner',
+  ParentChildrenInternalType = 'parent___children___internal___type',
+  ParentInternalContent = 'parent___internal___content',
+  ParentInternalContentDigest = 'parent___internal___contentDigest',
+  ParentInternalDescription = 'parent___internal___description',
+  ParentInternalFieldOwners = 'parent___internal___fieldOwners',
+  ParentInternalIgnoreType = 'parent___internal___ignoreType',
+  ParentInternalMediaType = 'parent___internal___mediaType',
+  ParentInternalOwner = 'parent___internal___owner',
+  ParentInternalType = 'parent___internal___type',
+  Children = 'children',
+  ChildrenId = 'children___id',
+  ChildrenParentId = 'children___parent___id',
+  ChildrenParentParentId = 'children___parent___parent___id',
+  ChildrenParentParentChildren = 'children___parent___parent___children',
+  ChildrenParentChildren = 'children___parent___children',
+  ChildrenParentChildrenId = 'children___parent___children___id',
+  ChildrenParentChildrenChildren = 'children___parent___children___children',
+  ChildrenParentInternalContent = 'children___parent___internal___content',
+  ChildrenParentInternalContentDigest = 'children___parent___internal___contentDigest',
+  ChildrenParentInternalDescription = 'children___parent___internal___description',
+  ChildrenParentInternalFieldOwners = 'children___parent___internal___fieldOwners',
+  ChildrenParentInternalIgnoreType = 'children___parent___internal___ignoreType',
+  ChildrenParentInternalMediaType = 'children___parent___internal___mediaType',
+  ChildrenParentInternalOwner = 'children___parent___internal___owner',
+  ChildrenParentInternalType = 'children___parent___internal___type',
+  ChildrenChildren = 'children___children',
+  ChildrenChildrenId = 'children___children___id',
+  ChildrenChildrenParentId = 'children___children___parent___id',
+  ChildrenChildrenParentChildren = 'children___children___parent___children',
+  ChildrenChildrenChildren = 'children___children___children',
+  ChildrenChildrenChildrenId = 'children___children___children___id',
+  ChildrenChildrenChildrenChildren = 'children___children___children___children',
+  ChildrenChildrenInternalContent = 'children___children___internal___content',
+  ChildrenChildrenInternalContentDigest = 'children___children___internal___contentDigest',
+  ChildrenChildrenInternalDescription = 'children___children___internal___description',
+  ChildrenChildrenInternalFieldOwners = 'children___children___internal___fieldOwners',
+  ChildrenChildrenInternalIgnoreType = 'children___children___internal___ignoreType',
+  ChildrenChildrenInternalMediaType = 'children___children___internal___mediaType',
+  ChildrenChildrenInternalOwner = 'children___children___internal___owner',
+  ChildrenChildrenInternalType = 'children___children___internal___type',
+  ChildrenInternalContent = 'children___internal___content',
+  ChildrenInternalContentDigest = 'children___internal___contentDigest',
+  ChildrenInternalDescription = 'children___internal___description',
+  ChildrenInternalFieldOwners = 'children___internal___fieldOwners',
+  ChildrenInternalIgnoreType = 'children___internal___ignoreType',
+  ChildrenInternalMediaType = 'children___internal___mediaType',
+  ChildrenInternalOwner = 'children___internal___owner',
+  ChildrenInternalType = 'children___internal___type',
+  InternalContent = 'internal___content',
+  InternalContentDigest = 'internal___contentDigest',
+  InternalDescription = 'internal___description',
+  InternalFieldOwners = 'internal___fieldOwners',
+  InternalIgnoreType = 'internal___ignoreType',
+  InternalMediaType = 'internal___mediaType',
+  InternalOwner = 'internal___owner',
+  InternalType = 'internal___type',
+  Name = 'name',
+  HomepageUrl = 'homepageUrl',
+  Url = 'url',
+  CreatedAt = 'createdAt',
+  Description = 'description',
+  OpenGraphImageUrl = 'openGraphImageUrl',
+  PrimaryLanguageColor = 'primaryLanguage___color',
+  PrimaryLanguageId = 'primaryLanguage___id',
+  PrimaryLanguageName = 'primaryLanguage___name',
+}
+
+export type GithubPinneditemsFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  homepageUrl?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  openGraphImageUrl?: Maybe<StringQueryOperatorInput>;
+  primaryLanguage?: Maybe<GithubPinneditemsPrimaryLanguageFilterInput>;
+};
+
+export type GithubPinneditemsGroupConnection = {
+  __typename?: 'GithubPinneditemsGroupConnection';
+  totalCount: Scalars['Int'];
+  edges: Array<GithubPinneditemsEdge>;
+  nodes: Array<GithubPinneditems>;
+  pageInfo: PageInfo;
+  field: Scalars['String'];
+  fieldValue?: Maybe<Scalars['String']>;
+};
+
+export type GithubPinneditemsPrimaryLanguage = {
+  __typename?: 'GithubPinneditemsPrimaryLanguage';
+  color?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+export type GithubPinneditemsPrimaryLanguageFilterInput = {
+  color?: Maybe<StringQueryOperatorInput>;
+  id?: Maybe<StringQueryOperatorInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+};
+
+export type GithubPinneditemsSortInput = {
+  fields?: Maybe<Array<Maybe<GithubPinneditemsFieldsEnum>>>;
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>;
+};
+
 export enum ImageCropFocus {
   Center = 'CENTER',
   North = 'NORTH',
@@ -1596,7 +1762,7 @@ export enum ImageCropFocus {
   West = 'WEST',
   Northwest = 'NORTHWEST',
   Entropy = 'ENTROPY',
-  Attention = 'ATTENTION'
+  Attention = 'ATTENTION',
 }
 
 export enum ImageFit {
@@ -1604,14 +1770,14 @@ export enum ImageFit {
   Contain = 'CONTAIN',
   Fill = 'FILL',
   Inside = 'INSIDE',
-  Outside = 'OUTSIDE'
+  Outside = 'OUTSIDE',
 }
 
 export enum ImageFormat {
   NoChange = 'NO_CHANGE',
   Jpg = 'JPG',
   Png = 'PNG',
-  Webp = 'WEBP'
+  Webp = 'WEBP',
 }
 
 export type ImageSharp = Node & {
@@ -1629,7 +1795,6 @@ export type ImageSharp = Node & {
   children: Array<Node>;
   internal: Internal;
 };
-
 
 export type ImageSharpFixedArgs = {
   width?: Maybe<Scalars['Int']>;
@@ -1653,7 +1818,6 @@ export type ImageSharpFixedArgs = {
   trim?: Maybe<Scalars['Float']>;
 };
 
-
 export type ImageSharpResolutionsArgs = {
   width?: Maybe<Scalars['Int']>;
   height?: Maybe<Scalars['Int']>;
@@ -1675,7 +1839,6 @@ export type ImageSharpResolutionsArgs = {
   rotate?: Maybe<Scalars['Int']>;
   trim?: Maybe<Scalars['Float']>;
 };
-
 
 export type ImageSharpFluidArgs = {
   maxWidth?: Maybe<Scalars['Int']>;
@@ -1701,7 +1864,6 @@ export type ImageSharpFluidArgs = {
   srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
-
 export type ImageSharpSizesArgs = {
   maxWidth?: Maybe<Scalars['Int']>;
   maxHeight?: Maybe<Scalars['Int']>;
@@ -1725,7 +1887,6 @@ export type ImageSharpSizesArgs = {
   sizes?: Maybe<Scalars['String']>;
   srcSetBreakpoints?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
-
 
 export type ImageSharpResizeArgs = {
   width?: Maybe<Scalars['Int']>;
@@ -1759,11 +1920,9 @@ export type ImageSharpConnection = {
   group: Array<ImageSharpGroupConnection>;
 };
 
-
 export type ImageSharpConnectionDistinctArgs = {
   field: ImageSharpFieldsEnum;
 };
-
 
 export type ImageSharpConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -1917,7 +2076,7 @@ export enum ImageSharpFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export type ImageSharpFilterInput = {
@@ -2130,7 +2289,6 @@ export type IntQueryOperatorInput = {
   nin?: Maybe<Array<Maybe<Scalars['Int']>>>;
 };
 
-
 export type JsonQueryOperatorInput = {
   eq?: Maybe<Scalars['JSON']>;
   ne?: Maybe<Scalars['JSON']>;
@@ -2143,7 +2301,7 @@ export type JsonQueryOperatorInput = {
 export enum MarkdownExcerptFormats {
   Plain = 'PLAIN',
   Html = 'HTML',
-  Markdown = 'MARKDOWN'
+  Markdown = 'MARKDOWN',
 }
 
 export type MarkdownHeading = {
@@ -2169,7 +2327,7 @@ export enum MarkdownHeadingLevels {
   H3 = 'h3',
   H4 = 'h4',
   H5 = 'h5',
-  H6 = 'h6'
+  H6 = 'h6',
 }
 
 export type MarkdownRemark = Node & {
@@ -2193,24 +2351,20 @@ export type MarkdownRemark = Node & {
   internal: Internal;
 };
 
-
 export type MarkdownRemarkExcerptArgs = {
   pruneLength?: Maybe<Scalars['Int']>;
   truncate?: Maybe<Scalars['Boolean']>;
   format?: Maybe<MarkdownExcerptFormats>;
 };
 
-
 export type MarkdownRemarkExcerptAstArgs = {
   pruneLength?: Maybe<Scalars['Int']>;
   truncate?: Maybe<Scalars['Boolean']>;
 };
 
-
 export type MarkdownRemarkHeadingsArgs = {
   depth?: Maybe<MarkdownHeadingLevels>;
 };
-
 
 export type MarkdownRemarkTableOfContentsArgs = {
   absolute?: Maybe<Scalars['Boolean']>;
@@ -2229,11 +2383,9 @@ export type MarkdownRemarkConnection = {
   group: Array<MarkdownRemarkGroupConnection>;
 };
 
-
 export type MarkdownRemarkConnectionDistinctArgs = {
   field: MarkdownRemarkFieldsEnum;
 };
-
 
 export type MarkdownRemarkConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -2303,6 +2455,8 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterThumbnailInternalMediaType = 'frontmatter___thumbnail___internal___mediaType',
   FrontmatterThumbnailInternalOwner = 'frontmatter___thumbnail___internal___owner',
   FrontmatterThumbnailInternalType = 'frontmatter___thumbnail___internal___type',
+  FrontmatterThumbnailChildContentYamlId = 'frontmatter___thumbnail___childContentYaml___id',
+  FrontmatterThumbnailChildContentYamlChildren = 'frontmatter___thumbnail___childContentYaml___children',
   FrontmatterThumbnailChildrenSideprojectsYaml = 'frontmatter___thumbnail___childrenSideprojectsYaml',
   FrontmatterThumbnailChildrenSideprojectsYamlId = 'frontmatter___thumbnail___childrenSideprojectsYaml___id',
   FrontmatterThumbnailChildrenSideprojectsYamlChildren = 'frontmatter___thumbnail___childrenSideprojectsYaml___children',
@@ -2311,8 +2465,6 @@ export enum MarkdownRemarkFieldsEnum {
   FrontmatterThumbnailChildrenSideprojectsYamlDescription = 'frontmatter___thumbnail___childrenSideprojectsYaml___description',
   FrontmatterThumbnailChildrenSideprojectsYamlGithub = 'frontmatter___thumbnail___childrenSideprojectsYaml___github',
   FrontmatterThumbnailChildrenSideprojectsYamlTags = 'frontmatter___thumbnail___childrenSideprojectsYaml___tags',
-  FrontmatterThumbnailChildContentYamlId = 'frontmatter___thumbnail___childContentYaml___id',
-  FrontmatterThumbnailChildContentYamlChildren = 'frontmatter___thumbnail___childContentYaml___children',
   FrontmatterThumbnailChildMarkdownRemarkId = 'frontmatter___thumbnail___childMarkdownRemark___id',
   FrontmatterThumbnailChildMarkdownRemarkExcerpt = 'frontmatter___thumbnail___childMarkdownRemark___excerpt',
   FrontmatterThumbnailChildMarkdownRemarkRawMarkdownBody = 'frontmatter___thumbnail___childMarkdownRemark___rawMarkdownBody',
@@ -2442,7 +2594,7 @@ export enum MarkdownRemarkFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export type MarkdownRemarkFilterInput = {
@@ -2477,7 +2629,6 @@ export type MarkdownRemarkFrontmatter = {
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   popular?: Maybe<Scalars['Boolean']>;
 };
-
 
 export type MarkdownRemarkFrontmatterDateArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -2574,7 +2725,7 @@ export enum PotraceTurnPolicy {
   TurnpolicyLeft = 'TURNPOLICY_LEFT',
   TurnpolicyRight = 'TURNPOLICY_RIGHT',
   TurnpolicyMinority = 'TURNPOLICY_MINORITY',
-  TurnpolicyMajority = 'TURNPOLICY_MAJORITY'
+  TurnpolicyMajority = 'TURNPOLICY_MAJORITY',
 }
 
 export type Query = {
@@ -2591,18 +2742,19 @@ export type Query = {
   allImageSharp: ImageSharpConnection;
   markdownRemark?: Maybe<MarkdownRemark>;
   allMarkdownRemark: MarkdownRemarkConnection;
+  githubPinneditems?: Maybe<GithubPinneditems>;
+  allGithubPinneditems: GithubPinneditemsConnection;
   designsYaml?: Maybe<DesignsYaml>;
   allDesignsYaml: DesignsYamlConnection;
-  contentYaml?: Maybe<ContentYaml>;
-  allContentYaml: ContentYamlConnection;
   sideprojectsYaml?: Maybe<SideprojectsYaml>;
   allSideprojectsYaml: SideprojectsYamlConnection;
+  contentYaml?: Maybe<ContentYaml>;
+  allContentYaml: ContentYamlConnection;
   siteBuildMetadata?: Maybe<SiteBuildMetadata>;
   allSiteBuildMetadata: SiteBuildMetadataConnection;
   sitePlugin?: Maybe<SitePlugin>;
   allSitePlugin: SitePluginConnection;
 };
-
 
 export type QueryFileArgs = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
@@ -2644,12 +2796,11 @@ export type QueryFileArgs = {
   parent?: Maybe<NodeFilterInput>;
   children?: Maybe<NodeFilterListInput>;
   internal?: Maybe<InternalFilterInput>;
-  childrenSideprojectsYaml?: Maybe<SideprojectsYamlFilterListInput>;
   childContentYaml?: Maybe<ContentYamlFilterInput>;
+  childrenSideprojectsYaml?: Maybe<SideprojectsYamlFilterListInput>;
   childMarkdownRemark?: Maybe<MarkdownRemarkFilterInput>;
   childrenDesignsYaml?: Maybe<DesignsYamlFilterListInput>;
 };
-
 
 export type QueryAllFileArgs = {
   filter?: Maybe<FileFilterInput>;
@@ -2657,7 +2808,6 @@ export type QueryAllFileArgs = {
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryDirectoryArgs = {
   sourceInstanceName?: Maybe<StringQueryOperatorInput>;
@@ -2699,14 +2849,12 @@ export type QueryDirectoryArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllDirectoryArgs = {
   filter?: Maybe<DirectoryFilterInput>;
   sort?: Maybe<DirectorySortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySitePageArgs = {
   path?: Maybe<StringQueryOperatorInput>;
@@ -2725,14 +2873,12 @@ export type QuerySitePageArgs = {
   componentPath?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllSitePageArgs = {
   filter?: Maybe<SitePageFilterInput>;
   sort?: Maybe<SitePageSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
@@ -2747,14 +2893,12 @@ export type QuerySiteArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllSiteArgs = {
   filter?: Maybe<SiteFilterInput>;
   sort?: Maybe<SiteSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryImageSharpArgs = {
   fixed?: Maybe<ImageSharpFixedFilterInput>;
@@ -2769,14 +2913,12 @@ export type QueryImageSharpArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllImageSharpArgs = {
   filter?: Maybe<ImageSharpFilterInput>;
   sort?: Maybe<ImageSharpSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QueryMarkdownRemarkArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2798,7 +2940,6 @@ export type QueryMarkdownRemarkArgs = {
   internal?: Maybe<InternalFilterInput>;
 };
 
-
 export type QueryAllMarkdownRemarkArgs = {
   filter?: Maybe<MarkdownRemarkFilterInput>;
   sort?: Maybe<MarkdownRemarkSortInput>;
@@ -2806,6 +2947,26 @@ export type QueryAllMarkdownRemarkArgs = {
   limit?: Maybe<Scalars['Int']>;
 };
 
+export type QueryGithubPinneditemsArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  name?: Maybe<StringQueryOperatorInput>;
+  homepageUrl?: Maybe<StringQueryOperatorInput>;
+  url?: Maybe<StringQueryOperatorInput>;
+  createdAt?: Maybe<DateQueryOperatorInput>;
+  description?: Maybe<StringQueryOperatorInput>;
+  openGraphImageUrl?: Maybe<StringQueryOperatorInput>;
+  primaryLanguage?: Maybe<GithubPinneditemsPrimaryLanguageFilterInput>;
+};
+
+export type QueryAllGithubPinneditemsArgs = {
+  filter?: Maybe<GithubPinneditemsFilterInput>;
+  sort?: Maybe<GithubPinneditemsSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
 
 export type QueryDesignsYamlArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2821,36 +2982,12 @@ export type QueryDesignsYamlArgs = {
   tools?: Maybe<DesignsYamlToolsFilterListInput>;
 };
 
-
 export type QueryAllDesignsYamlArgs = {
   filter?: Maybe<DesignsYamlFilterInput>;
   sort?: Maybe<DesignsYamlSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
-
-export type QueryContentYamlArgs = {
-  id?: Maybe<StringQueryOperatorInput>;
-  parent?: Maybe<NodeFilterInput>;
-  children?: Maybe<NodeFilterListInput>;
-  internal?: Maybe<InternalFilterInput>;
-  github?: Maybe<ContentYamlGithubFilterInput>;
-  linkedin?: Maybe<ContentYamlLinkedinFilterInput>;
-  medium?: Maybe<ContentYamlMediumFilterInput>;
-  behance?: Maybe<ContentYamlBehanceFilterInput>;
-  instagram?: Maybe<ContentYamlInstagramFilterInput>;
-  email?: Maybe<ContentYamlEmailFilterInput>;
-};
-
-
-export type QueryAllContentYamlArgs = {
-  filter?: Maybe<ContentYamlFilterInput>;
-  sort?: Maybe<ContentYamlSortInput>;
-  skip?: Maybe<Scalars['Int']>;
-  limit?: Maybe<Scalars['Int']>;
-};
-
 
 export type QuerySideprojectsYamlArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2865,7 +3002,6 @@ export type QuerySideprojectsYamlArgs = {
   tags?: Maybe<StringQueryOperatorInput>;
 };
 
-
 export type QueryAllSideprojectsYamlArgs = {
   filter?: Maybe<SideprojectsYamlFilterInput>;
   sort?: Maybe<SideprojectsYamlSortInput>;
@@ -2873,6 +3009,25 @@ export type QueryAllSideprojectsYamlArgs = {
   limit?: Maybe<Scalars['Int']>;
 };
 
+export type QueryContentYamlArgs = {
+  id?: Maybe<StringQueryOperatorInput>;
+  parent?: Maybe<NodeFilterInput>;
+  children?: Maybe<NodeFilterListInput>;
+  internal?: Maybe<InternalFilterInput>;
+  github?: Maybe<ContentYamlGithubFilterInput>;
+  linkedin?: Maybe<ContentYamlLinkedinFilterInput>;
+  medium?: Maybe<ContentYamlMediumFilterInput>;
+  behance?: Maybe<ContentYamlBehanceFilterInput>;
+  instagram?: Maybe<ContentYamlInstagramFilterInput>;
+  email?: Maybe<ContentYamlEmailFilterInput>;
+};
+
+export type QueryAllContentYamlArgs = {
+  filter?: Maybe<ContentYamlFilterInput>;
+  sort?: Maybe<ContentYamlSortInput>;
+  skip?: Maybe<Scalars['Int']>;
+  limit?: Maybe<Scalars['Int']>;
+};
 
 export type QuerySiteBuildMetadataArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2882,14 +3037,12 @@ export type QuerySiteBuildMetadataArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>;
 };
 
-
 export type QueryAllSiteBuildMetadataArgs = {
   filter?: Maybe<SiteBuildMetadataFilterInput>;
   sort?: Maybe<SiteBuildMetadataSortInput>;
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 };
-
 
 export type QuerySitePluginArgs = {
   id?: Maybe<StringQueryOperatorInput>;
@@ -2906,7 +3059,6 @@ export type QuerySitePluginArgs = {
   pluginFilepath?: Maybe<StringQueryOperatorInput>;
   packageJson?: Maybe<SitePluginPackageJsonFilterInput>;
 };
-
 
 export type QueryAllSitePluginArgs = {
   filter?: Maybe<SitePluginFilterInput>;
@@ -2939,11 +3091,9 @@ export type SideprojectsYamlConnection = {
   group: Array<SideprojectsYamlGroupConnection>;
 };
 
-
 export type SideprojectsYamlConnectionDistinctArgs = {
   field: SideprojectsYamlFieldsEnum;
 };
-
 
 export type SideprojectsYamlConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3185,6 +3335,44 @@ export enum SideprojectsYamlFieldsEnum {
   ImageInternalMediaType = 'image___internal___mediaType',
   ImageInternalOwner = 'image___internal___owner',
   ImageInternalType = 'image___internal___type',
+  ImageChildContentYamlId = 'image___childContentYaml___id',
+  ImageChildContentYamlParentId = 'image___childContentYaml___parent___id',
+  ImageChildContentYamlParentChildren = 'image___childContentYaml___parent___children',
+  ImageChildContentYamlChildren = 'image___childContentYaml___children',
+  ImageChildContentYamlChildrenId = 'image___childContentYaml___children___id',
+  ImageChildContentYamlChildrenChildren = 'image___childContentYaml___children___children',
+  ImageChildContentYamlInternalContent = 'image___childContentYaml___internal___content',
+  ImageChildContentYamlInternalContentDigest = 'image___childContentYaml___internal___contentDigest',
+  ImageChildContentYamlInternalDescription = 'image___childContentYaml___internal___description',
+  ImageChildContentYamlInternalFieldOwners = 'image___childContentYaml___internal___fieldOwners',
+  ImageChildContentYamlInternalIgnoreType = 'image___childContentYaml___internal___ignoreType',
+  ImageChildContentYamlInternalMediaType = 'image___childContentYaml___internal___mediaType',
+  ImageChildContentYamlInternalOwner = 'image___childContentYaml___internal___owner',
+  ImageChildContentYamlInternalType = 'image___childContentYaml___internal___type',
+  ImageChildContentYamlGithubName = 'image___childContentYaml___github___name',
+  ImageChildContentYamlGithubUsername = 'image___childContentYaml___github___username',
+  ImageChildContentYamlGithubLink = 'image___childContentYaml___github___link',
+  ImageChildContentYamlGithubIcon = 'image___childContentYaml___github___icon',
+  ImageChildContentYamlLinkedinName = 'image___childContentYaml___linkedin___name',
+  ImageChildContentYamlLinkedinUsername = 'image___childContentYaml___linkedin___username',
+  ImageChildContentYamlLinkedinLink = 'image___childContentYaml___linkedin___link',
+  ImageChildContentYamlLinkedinIcon = 'image___childContentYaml___linkedin___icon',
+  ImageChildContentYamlMediumName = 'image___childContentYaml___medium___name',
+  ImageChildContentYamlMediumUsername = 'image___childContentYaml___medium___username',
+  ImageChildContentYamlMediumLink = 'image___childContentYaml___medium___link',
+  ImageChildContentYamlMediumIcon = 'image___childContentYaml___medium___icon',
+  ImageChildContentYamlBehanceName = 'image___childContentYaml___behance___name',
+  ImageChildContentYamlBehanceUsername = 'image___childContentYaml___behance___username',
+  ImageChildContentYamlBehanceLink = 'image___childContentYaml___behance___link',
+  ImageChildContentYamlBehanceIcon = 'image___childContentYaml___behance___icon',
+  ImageChildContentYamlInstagramName = 'image___childContentYaml___instagram___name',
+  ImageChildContentYamlInstagramUsername = 'image___childContentYaml___instagram___username',
+  ImageChildContentYamlInstagramLink = 'image___childContentYaml___instagram___link',
+  ImageChildContentYamlInstagramIcon = 'image___childContentYaml___instagram___icon',
+  ImageChildContentYamlEmailName = 'image___childContentYaml___email___name',
+  ImageChildContentYamlEmailUsername = 'image___childContentYaml___email___username',
+  ImageChildContentYamlEmailLink = 'image___childContentYaml___email___link',
+  ImageChildContentYamlEmailIcon = 'image___childContentYaml___email___icon',
   ImageChildrenSideprojectsYaml = 'image___childrenSideprojectsYaml',
   ImageChildrenSideprojectsYamlId = 'image___childrenSideprojectsYaml___id',
   ImageChildrenSideprojectsYamlParentId = 'image___childrenSideprojectsYaml___parent___id',
@@ -3243,44 +3431,6 @@ export enum SideprojectsYamlFieldsEnum {
   ImageChildrenSideprojectsYamlDescription = 'image___childrenSideprojectsYaml___description',
   ImageChildrenSideprojectsYamlGithub = 'image___childrenSideprojectsYaml___github',
   ImageChildrenSideprojectsYamlTags = 'image___childrenSideprojectsYaml___tags',
-  ImageChildContentYamlId = 'image___childContentYaml___id',
-  ImageChildContentYamlParentId = 'image___childContentYaml___parent___id',
-  ImageChildContentYamlParentChildren = 'image___childContentYaml___parent___children',
-  ImageChildContentYamlChildren = 'image___childContentYaml___children',
-  ImageChildContentYamlChildrenId = 'image___childContentYaml___children___id',
-  ImageChildContentYamlChildrenChildren = 'image___childContentYaml___children___children',
-  ImageChildContentYamlInternalContent = 'image___childContentYaml___internal___content',
-  ImageChildContentYamlInternalContentDigest = 'image___childContentYaml___internal___contentDigest',
-  ImageChildContentYamlInternalDescription = 'image___childContentYaml___internal___description',
-  ImageChildContentYamlInternalFieldOwners = 'image___childContentYaml___internal___fieldOwners',
-  ImageChildContentYamlInternalIgnoreType = 'image___childContentYaml___internal___ignoreType',
-  ImageChildContentYamlInternalMediaType = 'image___childContentYaml___internal___mediaType',
-  ImageChildContentYamlInternalOwner = 'image___childContentYaml___internal___owner',
-  ImageChildContentYamlInternalType = 'image___childContentYaml___internal___type',
-  ImageChildContentYamlGithubName = 'image___childContentYaml___github___name',
-  ImageChildContentYamlGithubUsername = 'image___childContentYaml___github___username',
-  ImageChildContentYamlGithubLink = 'image___childContentYaml___github___link',
-  ImageChildContentYamlGithubIcon = 'image___childContentYaml___github___icon',
-  ImageChildContentYamlLinkedinName = 'image___childContentYaml___linkedin___name',
-  ImageChildContentYamlLinkedinUsername = 'image___childContentYaml___linkedin___username',
-  ImageChildContentYamlLinkedinLink = 'image___childContentYaml___linkedin___link',
-  ImageChildContentYamlLinkedinIcon = 'image___childContentYaml___linkedin___icon',
-  ImageChildContentYamlMediumName = 'image___childContentYaml___medium___name',
-  ImageChildContentYamlMediumUsername = 'image___childContentYaml___medium___username',
-  ImageChildContentYamlMediumLink = 'image___childContentYaml___medium___link',
-  ImageChildContentYamlMediumIcon = 'image___childContentYaml___medium___icon',
-  ImageChildContentYamlBehanceName = 'image___childContentYaml___behance___name',
-  ImageChildContentYamlBehanceUsername = 'image___childContentYaml___behance___username',
-  ImageChildContentYamlBehanceLink = 'image___childContentYaml___behance___link',
-  ImageChildContentYamlBehanceIcon = 'image___childContentYaml___behance___icon',
-  ImageChildContentYamlInstagramName = 'image___childContentYaml___instagram___name',
-  ImageChildContentYamlInstagramUsername = 'image___childContentYaml___instagram___username',
-  ImageChildContentYamlInstagramLink = 'image___childContentYaml___instagram___link',
-  ImageChildContentYamlInstagramIcon = 'image___childContentYaml___instagram___icon',
-  ImageChildContentYamlEmailName = 'image___childContentYaml___email___name',
-  ImageChildContentYamlEmailUsername = 'image___childContentYaml___email___username',
-  ImageChildContentYamlEmailLink = 'image___childContentYaml___email___link',
-  ImageChildContentYamlEmailIcon = 'image___childContentYaml___email___icon',
   ImageChildMarkdownRemarkId = 'image___childMarkdownRemark___id',
   ImageChildMarkdownRemarkFrontmatterTitle = 'image___childMarkdownRemark___frontmatter___title',
   ImageChildMarkdownRemarkFrontmatterId = 'image___childMarkdownRemark___frontmatter___id',
@@ -3346,7 +3496,7 @@ export enum SideprojectsYamlFieldsEnum {
   Link = 'link',
   Description = 'description',
   Github = 'github',
-  Tags = 'tags'
+  Tags = 'tags',
 }
 
 export type SideprojectsYamlFilterInput = {
@@ -3395,14 +3545,12 @@ export type Site = Node & {
   internal: Internal;
 };
 
-
 export type SiteBuildTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
   fromNow?: Maybe<Scalars['Boolean']>;
   difference?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
 };
-
 
 export type SitePortArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -3419,7 +3567,6 @@ export type SiteBuildMetadata = Node & {
   internal: Internal;
   buildTime?: Maybe<Scalars['Date']>;
 };
-
 
 export type SiteBuildMetadataBuildTimeArgs = {
   formatString?: Maybe<Scalars['String']>;
@@ -3438,11 +3585,9 @@ export type SiteBuildMetadataConnection = {
   group: Array<SiteBuildMetadataGroupConnection>;
 };
 
-
 export type SiteBuildMetadataConnectionDistinctArgs = {
   field: SiteBuildMetadataFieldsEnum;
 };
-
 
 export type SiteBuildMetadataConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3544,7 +3689,7 @@ export enum SiteBuildMetadataFieldsEnum {
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
   InternalType = 'internal___type',
-  BuildTime = 'buildTime'
+  BuildTime = 'buildTime',
 }
 
 export type SiteBuildMetadataFilterInput = {
@@ -3580,11 +3725,9 @@ export type SiteConnection = {
   group: Array<SiteGroupConnection>;
 };
 
-
 export type SiteConnectionDistinctArgs = {
   field: SiteFieldsEnum;
 };
-
 
 export type SiteConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3699,7 +3842,7 @@ export enum SiteFieldsEnum {
   InternalIgnoreType = 'internal___ignoreType',
   InternalMediaType = 'internal___mediaType',
   InternalOwner = 'internal___owner',
-  InternalType = 'internal___type'
+  InternalType = 'internal___type',
 }
 
 export type SiteFilterInput = {
@@ -3753,11 +3896,9 @@ export type SitePageConnection = {
   group: Array<SitePageGroupConnection>;
 };
 
-
 export type SitePageConnectionDistinctArgs = {
   field: SitePageFieldsEnum;
 };
-
 
 export type SitePageConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -3951,25 +4092,27 @@ export enum SitePageFieldsEnum {
   PluginCreatorPluginOptionsPluginsBrowserApIs = 'pluginCreator___pluginOptions___plugins___browserAPIs',
   PluginCreatorPluginOptionsPluginsSsrApIs = 'pluginCreator___pluginOptions___plugins___ssrAPIs',
   PluginCreatorPluginOptionsPluginsPluginFilepath = 'pluginCreator___pluginOptions___plugins___pluginFilepath',
+  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
+  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
   PluginCreatorPluginOptionsFonts = 'pluginCreator___pluginOptions___fonts',
   PluginCreatorPluginOptionsFontsFamily = 'pluginCreator___pluginOptions___fonts___family',
   PluginCreatorPluginOptionsFontsVariants = 'pluginCreator___pluginOptions___fonts___variants',
   PluginCreatorPluginOptionsPathToConfigModule = 'pluginCreator___pluginOptions___pathToConfigModule',
-  PluginCreatorPluginOptionsPath = 'pluginCreator___pluginOptions___path',
-  PluginCreatorPluginOptionsName = 'pluginCreator___pluginOptions___name',
+  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
   PluginCreatorPluginOptionsMaxWidth = 'pluginCreator___pluginOptions___maxWidth',
-  PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
-  PluginCreatorPluginOptionsIgnoreFileExtensions = 'pluginCreator___pluginOptions___ignoreFileExtensions',
   PluginCreatorPluginOptionsPathPrefix = 'pluginCreator___pluginOptions___pathPrefix',
   PluginCreatorPluginOptionsWrapperStyle = 'pluginCreator___pluginOptions___wrapperStyle',
-  PluginCreatorPluginOptionsBackgroundColor = 'pluginCreator___pluginOptions___backgroundColor',
   PluginCreatorPluginOptionsLinkImagesToOriginal = 'pluginCreator___pluginOptions___linkImagesToOriginal',
   PluginCreatorPluginOptionsShowCaptions = 'pluginCreator___pluginOptions___showCaptions',
   PluginCreatorPluginOptionsMarkdownCaptions = 'pluginCreator___pluginOptions___markdownCaptions',
+  PluginCreatorPluginOptionsWithWebp = 'pluginCreator___pluginOptions___withWebp',
   PluginCreatorPluginOptionsTracedSvg = 'pluginCreator___pluginOptions___tracedSVG',
   PluginCreatorPluginOptionsLoading = 'pluginCreator___pluginOptions___loading',
   PluginCreatorPluginOptionsDisableBgImageOnAlpha = 'pluginCreator___pluginOptions___disableBgImageOnAlpha',
   PluginCreatorPluginOptionsDisableBgImage = 'pluginCreator___pluginOptions___disableBgImage',
+  PluginCreatorPluginOptionsIgnoreFileExtensions = 'pluginCreator___pluginOptions___ignoreFileExtensions',
+  PluginCreatorPluginOptionsHeadersAuthorization = 'pluginCreator___pluginOptions___headers___Authorization',
+  PluginCreatorPluginOptionsQueries = 'pluginCreator___pluginOptions___queries',
   PluginCreatorPluginOptionsTrackingId = 'pluginCreator___pluginOptions___trackingId',
   PluginCreatorPluginOptionsHead = 'pluginCreator___pluginOptions___head',
   PluginCreatorPluginOptionsLogo = 'pluginCreator___pluginOptions___logo',
@@ -4017,7 +4160,7 @@ export enum SitePageFieldsEnum {
   PluginCreatorPackageJsonPeerDependenciesVersion = 'pluginCreator___packageJson___peerDependencies___version',
   PluginCreatorPackageJsonKeywords = 'pluginCreator___packageJson___keywords',
   PluginCreatorId = 'pluginCreatorId',
-  ComponentPath = 'componentPath'
+  ComponentPath = 'componentPath',
 }
 
 export type SitePageFilterInput = {
@@ -4079,11 +4222,9 @@ export type SitePluginConnection = {
   group: Array<SitePluginGroupConnection>;
 };
 
-
 export type SitePluginConnectionDistinctArgs = {
   field: SitePluginFieldsEnum;
 };
-
 
 export type SitePluginConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>;
@@ -4193,41 +4334,43 @@ export enum SitePluginFieldsEnum {
   PluginOptionsPluginsId = 'pluginOptions___plugins___id',
   PluginOptionsPluginsName = 'pluginOptions___plugins___name',
   PluginOptionsPluginsVersion = 'pluginOptions___plugins___version',
+  PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
   PluginOptionsPluginsPluginOptionsMaxWidth = 'pluginOptions___plugins___pluginOptions___maxWidth',
-  PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
-  PluginOptionsPluginsPluginOptionsIgnoreFileExtensions = 'pluginOptions___plugins___pluginOptions___ignoreFileExtensions',
   PluginOptionsPluginsPluginOptionsPathPrefix = 'pluginOptions___plugins___pluginOptions___pathPrefix',
   PluginOptionsPluginsPluginOptionsWrapperStyle = 'pluginOptions___plugins___pluginOptions___wrapperStyle',
-  PluginOptionsPluginsPluginOptionsBackgroundColor = 'pluginOptions___plugins___pluginOptions___backgroundColor',
   PluginOptionsPluginsPluginOptionsLinkImagesToOriginal = 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal',
   PluginOptionsPluginsPluginOptionsShowCaptions = 'pluginOptions___plugins___pluginOptions___showCaptions',
   PluginOptionsPluginsPluginOptionsMarkdownCaptions = 'pluginOptions___plugins___pluginOptions___markdownCaptions',
+  PluginOptionsPluginsPluginOptionsWithWebp = 'pluginOptions___plugins___pluginOptions___withWebp',
   PluginOptionsPluginsPluginOptionsTracedSvg = 'pluginOptions___plugins___pluginOptions___tracedSVG',
   PluginOptionsPluginsPluginOptionsLoading = 'pluginOptions___plugins___pluginOptions___loading',
   PluginOptionsPluginsPluginOptionsDisableBgImageOnAlpha = 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha',
   PluginOptionsPluginsPluginOptionsDisableBgImage = 'pluginOptions___plugins___pluginOptions___disableBgImage',
+  PluginOptionsPluginsPluginOptionsIgnoreFileExtensions = 'pluginOptions___plugins___pluginOptions___ignoreFileExtensions',
   PluginOptionsPluginsBrowserApIs = 'pluginOptions___plugins___browserAPIs',
   PluginOptionsPluginsSsrApIs = 'pluginOptions___plugins___ssrAPIs',
   PluginOptionsPluginsPluginFilepath = 'pluginOptions___plugins___pluginFilepath',
+  PluginOptionsPath = 'pluginOptions___path',
+  PluginOptionsName = 'pluginOptions___name',
   PluginOptionsFonts = 'pluginOptions___fonts',
   PluginOptionsFontsFamily = 'pluginOptions___fonts___family',
   PluginOptionsFontsVariants = 'pluginOptions___fonts___variants',
   PluginOptionsPathToConfigModule = 'pluginOptions___pathToConfigModule',
-  PluginOptionsPath = 'pluginOptions___path',
-  PluginOptionsName = 'pluginOptions___name',
+  PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
   PluginOptionsMaxWidth = 'pluginOptions___maxWidth',
-  PluginOptionsWithWebp = 'pluginOptions___withWebp',
-  PluginOptionsIgnoreFileExtensions = 'pluginOptions___ignoreFileExtensions',
   PluginOptionsPathPrefix = 'pluginOptions___pathPrefix',
   PluginOptionsWrapperStyle = 'pluginOptions___wrapperStyle',
-  PluginOptionsBackgroundColor = 'pluginOptions___backgroundColor',
   PluginOptionsLinkImagesToOriginal = 'pluginOptions___linkImagesToOriginal',
   PluginOptionsShowCaptions = 'pluginOptions___showCaptions',
   PluginOptionsMarkdownCaptions = 'pluginOptions___markdownCaptions',
+  PluginOptionsWithWebp = 'pluginOptions___withWebp',
   PluginOptionsTracedSvg = 'pluginOptions___tracedSVG',
   PluginOptionsLoading = 'pluginOptions___loading',
   PluginOptionsDisableBgImageOnAlpha = 'pluginOptions___disableBgImageOnAlpha',
   PluginOptionsDisableBgImage = 'pluginOptions___disableBgImage',
+  PluginOptionsIgnoreFileExtensions = 'pluginOptions___ignoreFileExtensions',
+  PluginOptionsHeadersAuthorization = 'pluginOptions___headers___Authorization',
+  PluginOptionsQueries = 'pluginOptions___queries',
   PluginOptionsTrackingId = 'pluginOptions___trackingId',
   PluginOptionsHead = 'pluginOptions___head',
   PluginOptionsLogo = 'pluginOptions___logo',
@@ -4273,7 +4416,7 @@ export enum SitePluginFieldsEnum {
   PackageJsonPeerDependencies = 'packageJson___peerDependencies',
   PackageJsonPeerDependenciesName = 'packageJson___peerDependencies___name',
   PackageJsonPeerDependenciesVersion = 'packageJson___peerDependencies___version',
-  PackageJsonKeywords = 'packageJson___keywords'
+  PackageJsonKeywords = 'packageJson___keywords',
 }
 
 export type SitePluginFilterInput = {
@@ -4353,7 +4496,9 @@ export type SitePluginPackageJsonFilterInput = {
   license?: Maybe<StringQueryOperatorInput>;
   dependencies?: Maybe<SitePluginPackageJsonDependenciesFilterListInput>;
   devDependencies?: Maybe<SitePluginPackageJsonDevDependenciesFilterListInput>;
-  peerDependencies?: Maybe<SitePluginPackageJsonPeerDependenciesFilterListInput>;
+  peerDependencies?: Maybe<
+    SitePluginPackageJsonPeerDependenciesFilterListInput
+  >;
   keywords?: Maybe<StringQueryOperatorInput>;
 };
 
@@ -4375,23 +4520,25 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   __typename?: 'SitePluginPluginOptions';
   plugins?: Maybe<Array<Maybe<SitePluginPluginOptionsPlugins>>>;
-  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
-  pathToConfigModule?: Maybe<Scalars['String']>;
   path?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  fonts?: Maybe<Array<Maybe<SitePluginPluginOptionsFonts>>>;
+  pathToConfigModule?: Maybe<Scalars['String']>;
+  backgroundColor?: Maybe<Scalars['String']>;
   maxWidth?: Maybe<Scalars['Int']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathPrefix?: Maybe<Scalars['String']>;
   wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   showCaptions?: Maybe<Scalars['Boolean']>;
   markdownCaptions?: Maybe<Scalars['Boolean']>;
+  withWebp?: Maybe<Scalars['Boolean']>;
   tracedSVG?: Maybe<Scalars['Boolean']>;
   loading?: Maybe<Scalars['String']>;
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
   disableBgImage?: Maybe<Scalars['Boolean']>;
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
+  headers?: Maybe<SitePluginPluginOptionsHeaders>;
+  queries?: Maybe<Array<Maybe<Scalars['String']>>>;
   trackingId?: Maybe<Scalars['String']>;
   head?: Maybe<Scalars['Boolean']>;
   logo?: Maybe<Scalars['String']>;
@@ -4415,23 +4562,25 @@ export type SitePluginPluginOptions = {
 
 export type SitePluginPluginOptionsFilterInput = {
   plugins?: Maybe<SitePluginPluginOptionsPluginsFilterListInput>;
-  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
-  pathToConfigModule?: Maybe<StringQueryOperatorInput>;
   path?: Maybe<StringQueryOperatorInput>;
   name?: Maybe<StringQueryOperatorInput>;
+  fonts?: Maybe<SitePluginPluginOptionsFontsFilterListInput>;
+  pathToConfigModule?: Maybe<StringQueryOperatorInput>;
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
   maxWidth?: Maybe<IntQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   showCaptions?: Maybe<BooleanQueryOperatorInput>;
   markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
   tracedSVG?: Maybe<BooleanQueryOperatorInput>;
   loading?: Maybe<StringQueryOperatorInput>;
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
   disableBgImage?: Maybe<BooleanQueryOperatorInput>;
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
+  headers?: Maybe<SitePluginPluginOptionsHeadersFilterInput>;
+  queries?: Maybe<StringQueryOperatorInput>;
   trackingId?: Maybe<StringQueryOperatorInput>;
   head?: Maybe<BooleanQueryOperatorInput>;
   logo?: Maybe<StringQueryOperatorInput>;
@@ -4466,6 +4615,15 @@ export type SitePluginPluginOptionsFontsFilterInput = {
 
 export type SitePluginPluginOptionsFontsFilterListInput = {
   elemMatch?: Maybe<SitePluginPluginOptionsFontsFilterInput>;
+};
+
+export type SitePluginPluginOptionsHeaders = {
+  __typename?: 'SitePluginPluginOptionsHeaders';
+  Authorization?: Maybe<Scalars['String']>;
+};
+
+export type SitePluginPluginOptionsHeadersFilterInput = {
+  Authorization?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginPluginOptionsIcons = {
@@ -4522,35 +4680,35 @@ export type SitePluginPluginOptionsPluginsFilterListInput = {
 
 export type SitePluginPluginOptionsPluginsPluginOptions = {
   __typename?: 'SitePluginPluginOptionsPluginsPluginOptions';
+  backgroundColor?: Maybe<Scalars['String']>;
   maxWidth?: Maybe<Scalars['Int']>;
-  withWebp?: Maybe<Scalars['Boolean']>;
-  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
   pathPrefix?: Maybe<Scalars['String']>;
   wrapperStyle?: Maybe<Scalars['String']>;
-  backgroundColor?: Maybe<Scalars['String']>;
   linkImagesToOriginal?: Maybe<Scalars['Boolean']>;
   showCaptions?: Maybe<Scalars['Boolean']>;
   markdownCaptions?: Maybe<Scalars['Boolean']>;
+  withWebp?: Maybe<Scalars['Boolean']>;
   tracedSVG?: Maybe<Scalars['Boolean']>;
   loading?: Maybe<Scalars['String']>;
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>;
   disableBgImage?: Maybe<Scalars['Boolean']>;
+  ignoreFileExtensions?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
 export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
+  backgroundColor?: Maybe<StringQueryOperatorInput>;
   maxWidth?: Maybe<IntQueryOperatorInput>;
-  withWebp?: Maybe<BooleanQueryOperatorInput>;
-  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
   pathPrefix?: Maybe<StringQueryOperatorInput>;
   wrapperStyle?: Maybe<StringQueryOperatorInput>;
-  backgroundColor?: Maybe<StringQueryOperatorInput>;
   linkImagesToOriginal?: Maybe<BooleanQueryOperatorInput>;
   showCaptions?: Maybe<BooleanQueryOperatorInput>;
   markdownCaptions?: Maybe<BooleanQueryOperatorInput>;
+  withWebp?: Maybe<BooleanQueryOperatorInput>;
   tracedSVG?: Maybe<BooleanQueryOperatorInput>;
   loading?: Maybe<StringQueryOperatorInput>;
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>;
   disableBgImage?: Maybe<BooleanQueryOperatorInput>;
+  ignoreFileExtensions?: Maybe<StringQueryOperatorInput>;
 };
 
 export type SitePluginSortInput = {
@@ -4590,7 +4748,7 @@ export type SiteSortInput = {
 
 export enum SortOrderEnum {
   Asc = 'ASC',
-  Desc = 'DESC'
+  Desc = 'DESC',
 }
 
 export type StringQueryOperatorInput = {
@@ -4602,440 +4760,547 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>;
 };
 
-export type CreateBlogPostPagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CreateBlogPostPagesQuery = (
-  { __typename?: 'Query' }
-  & { posts: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & { frontmatter?: Maybe<(
-        { __typename?: 'MarkdownRemarkFrontmatter' }
-        & Pick<MarkdownRemarkFrontmatter, 'path'>
-      )> }
-    )> }
-  ) }
-);
-
-export type CreateDesignPagesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type CreateDesignPagesQuery = (
-  { __typename?: 'Query' }
-  & { designs: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug'>
-    )> }
-  ) }
-);
-
-export type DesignCountQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DesignCountQuery = (
-  { __typename?: 'Query' }
-  & { allDesignsYaml: (
-    { __typename?: 'DesignsYamlConnection' }
-    & Pick<DesignsYamlConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'id'>
-    )> }
-  ) }
-);
-
-export type BlogPostCountQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type BlogPostCountQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & Pick<MarkdownRemarkConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'id'>
-    )> }
-  ) }
-);
-
-export type GatsbyImageSharpFixedFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_WithWebpFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFixed_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFixed' }
-  & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpFluidFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluidLimitPresentationSizeFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & { maxHeight: ImageSharpFluid['presentationHeight'], maxWidth: ImageSharpFluid['presentationWidth'] }
-);
-
-export type GatsbyImageSharpFluid_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebpFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpFluid' }
-  & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpResolutionsFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_TracedSvgFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebpFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpResolutions_NoBase64Fragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>
-);
-
-export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpResolutions' }
-  & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'>
-);
-
-export type GatsbyImageSharpSizesFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_TracedSvgFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebpFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_NoBase64Fragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-);
-
-export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = (
-  { __typename?: 'ImageSharpSizes' }
-  & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'>
-);
-
-export type GhostImageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GhostImageQuery = (
-  { __typename?: 'Query' }
-  & { file?: Maybe<(
-    { __typename?: 'File' }
-    & { childImageSharp?: Maybe<(
-      { __typename?: 'ImageSharp' }
-      & { fixed?: Maybe<(
-        { __typename?: 'ImageSharpFixed' }
-        & GatsbyImageSharpFixedFragment
-      )> }
-    )> }
-  )> }
-);
-
-export type SeoQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SeoQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'titleTemplate' | 'siteUrl'>
-      & { defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'], defaultImage: SiteSiteMetadata['image'], twitterUsername: SiteSiteMetadata['twitterHandle'] }
-    )> }
-  )> }
-);
-
-export type TwitterHandleQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type TwitterHandleQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'twitterHandle'>
-    )> }
-  )> }
-);
-
-export type DesignsPageQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type DesignsPageQuery = (
-  { __typename?: 'Query' }
-  & { allBehanceProjects: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>
-    )> }
-  ), behanceImages: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'relativeDirectory'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluidFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type FixedImageFragment = (
-  { __typename?: 'ImageSharp' }
-  & { fixed?: Maybe<(
-    { __typename?: 'ImageSharpFixed' }
-    & Pick<ImageSharpFixed, 'originalName' | 'base64' | 'tracedSVG' | 'aspectRatio' | 'srcWebp' | 'srcSetWebp' | 'width' | 'height' | 'srcSet'>
-  )> }
-);
-
-export type FluidImageFragment = (
-  { __typename?: 'ImageSharp' }
-  & { fluid?: Maybe<(
-    { __typename?: 'ImageSharpFluid' }
-    & Pick<ImageSharpFluid, 'base64' | 'tracedSVG' | 'srcWebp' | 'srcSetWebp' | 'originalImg' | 'originalName' | 'aspectRatio' | 'sizes' | 'presentationWidth' | 'presentationHeight' | 'src' | 'srcSet'>
-  )> }
-);
-
-export type FrontmatterFragment = (
-  { __typename?: 'MarkdownRemark' }
-  & { frontmatter?: Maybe<(
-    { __typename?: 'MarkdownRemarkFrontmatter' }
-    & Pick<MarkdownRemarkFrontmatter, 'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags' | 'next'>
-    & { thumbnail?: Maybe<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'relativePath' | 'publicURL'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluid_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  )> }
-);
-
-export type BlogPostFragment = (
-  { __typename?: 'MarkdownRemark' }
-  & Pick<MarkdownRemark, 'id' | 'excerpt' | 'timeToRead'>
-  & FrontmatterFragment
-);
-
-export type PostsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type PostsQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { nodes: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & BlogPostFragment
-    )> }
-  ) }
-);
-
-export type SeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SeoQueryQuery = (
-  { __typename?: 'Query' }
-  & { site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'titleTemplate'>
-      & { defaultTitle: SiteSiteMetadata['title'], defaultDescription: SiteSiteMetadata['description'], url: SiteSiteMetadata['siteUrl'], defaultImage: SiteSiteMetadata['image'] }
-    )> }
-  )> }
-);
-
-export type SideProjectsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SideProjectsQuery = (
-  { __typename?: 'Query' }
-  & { allSideprojectsYaml: (
-    { __typename?: 'SideprojectsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'SideprojectsYaml' }
-      & Pick<SideprojectsYaml, 'id' | 'title' | 'link' | 'github' | 'description' | 'tags'>
-      & { image?: Maybe<(
-        { __typename?: 'File' }
-        & { childImageSharp?: Maybe<(
-          { __typename?: 'ImageSharp' }
-          & FluidImageFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type UseDesignsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type UseDesignsQuery = (
-  { __typename?: 'Query' }
-  & { projects: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'slug' | 'name' | 'description' | 'tags'>
-    )> }
-  ), images: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'name' | 'relativeDirectory'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluid_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
-
-export type AllSiteTagsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type AllSiteTagsQuery = (
-  { __typename?: 'Query' }
-  & { blogTags: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { group: Array<(
-      { __typename?: 'MarkdownRemarkGroupConnection' }
-      & { tag: MarkdownRemarkGroupConnection['fieldValue'], qty: MarkdownRemarkGroupConnection['totalCount'] }
-    )> }
-  ), designTags: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { group: Array<(
-      { __typename?: 'DesignsYamlGroupConnection' }
-      & { tag: DesignsYamlGroupConnection['fieldValue'], qty: DesignsYamlGroupConnection['totalCount'] }
-    )> }
-  ), sideProjectTags: (
-    { __typename?: 'SideprojectsYamlConnection' }
-    & { group: Array<(
-      { __typename?: 'SideprojectsYamlGroupConnection' }
-      & { tag: SideprojectsYamlGroupConnection['fieldValue'], qty: SideprojectsYamlGroupConnection['totalCount'] }
-    )> }
-  ) }
-);
+export type CreateBlogPostPagesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CreateBlogPostPagesQuery = { __typename?: 'Query' } & {
+  posts: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<
+      { __typename?: 'MarkdownRemark' } & {
+        frontmatter?: Maybe<
+          { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
+            MarkdownRemarkFrontmatter,
+            'path'
+          >
+        >;
+      }
+    >;
+  };
+};
+
+export type CreateDesignPagesQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CreateDesignPagesQuery = { __typename?: 'Query' } & {
+  designs: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'slug'>>;
+  };
+};
+
+export type DesignCountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type DesignCountQuery = { __typename?: 'Query' } & {
+  allDesignsYaml: { __typename?: 'DesignsYamlConnection' } & Pick<
+    DesignsYamlConnection,
+    'totalCount'
+  > & {
+      nodes: Array<{ __typename?: 'DesignsYaml' } & Pick<DesignsYaml, 'id'>>;
+    };
+};
+
+export type BlogPostCountQueryVariables = Exact<{ [key: string]: never }>;
+
+export type BlogPostCountQuery = { __typename?: 'Query' } & {
+  allMarkdownRemark: { __typename?: 'MarkdownRemarkConnection' } & Pick<
+    MarkdownRemarkConnection,
+    'totalCount'
+  > & {
+      nodes: Array<
+        { __typename?: 'MarkdownRemark' } & Pick<MarkdownRemark, 'id'>
+      >;
+    };
+};
+
+export type GatsbyImageSharpFixedFragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+export type GatsbyImageSharpFixed_TracedSvgFragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<ImageSharpFixed, 'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'>;
+
+export type GatsbyImageSharpFixed_WithWebpFragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<
+  ImageSharpFixed,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<
+  ImageSharpFixed,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFixed_NoBase64Fragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>;
+
+export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpFixed';
+} & Pick<
+  ImageSharpFixed,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpFluidFragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<
+  ImageSharpFluid,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluidLimitPresentationSizeFragment = {
+  __typename?: 'ImageSharpFluid';
+} & {
+  maxHeight: ImageSharpFluid['presentationHeight'];
+  maxWidth: ImageSharpFluid['presentationWidth'];
+};
+
+export type GatsbyImageSharpFluid_TracedSvgFragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<
+  ImageSharpFluid,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_WithWebpFragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<
+  ImageSharpFluid,
+  | 'base64'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<
+  ImageSharpFluid,
+  | 'tracedSVG'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>;
+
+export type GatsbyImageSharpFluid_NoBase64Fragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpFluid';
+} & Pick<
+  ImageSharpFluid,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type GatsbyImageSharpResolutionsFragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpResolutions_TracedSvgFragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
+>;
+
+export type GatsbyImageSharpResolutions_WithWebpFragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<
+  ImageSharpResolutions,
+  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpResolutions_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<
+  ImageSharpResolutions,
+  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpResolutions_NoBase64Fragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<ImageSharpResolutions, 'width' | 'height' | 'src' | 'srcSet'>;
+
+export type GatsbyImageSharpResolutions_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpResolutions';
+} & Pick<
+  ImageSharpResolutions,
+  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
+>;
+
+export type GatsbyImageSharpSizesFragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<
+  ImageSharpSizes,
+  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_TracedSvgFragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<
+  ImageSharpSizes,
+  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_WithWebpFragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<
+  ImageSharpSizes,
+  | 'base64'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_WithWebp_TracedSvgFragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<
+  ImageSharpSizes,
+  | 'tracedSVG'
+  | 'aspectRatio'
+  | 'src'
+  | 'srcSet'
+  | 'srcWebp'
+  | 'srcSetWebp'
+  | 'sizes'
+>;
+
+export type GatsbyImageSharpSizes_NoBase64Fragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<ImageSharpSizes, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>;
+
+export type GatsbyImageSharpSizes_WithWebp_NoBase64Fragment = {
+  __typename?: 'ImageSharpSizes';
+} & Pick<
+  ImageSharpSizes,
+  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
+>;
+
+export type SeoQueryVariables = Exact<{ [key: string]: never }>;
+
+export type SeoQuery = { __typename?: 'Query' } & {
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<
+          SiteSiteMetadata,
+          'titleTemplate' | 'siteUrl'
+        > & {
+            defaultTitle: SiteSiteMetadata['title'];
+            defaultDescription: SiteSiteMetadata['description'];
+            defaultImage: SiteSiteMetadata['image'];
+            twitterUsername: SiteSiteMetadata['twitterHandle'];
+          }
+      >;
+    }
+  >;
+};
+
+export type TwitterHandleQueryVariables = Exact<{ [key: string]: never }>;
+
+export type TwitterHandleQuery = { __typename?: 'Query' } & {
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<
+          SiteSiteMetadata,
+          'twitterHandle'
+        >
+      >;
+    }
+  >;
+};
+
+export type DesignsPageQueryVariables = Exact<{ [key: string]: never }>;
+
+export type DesignsPageQuery = { __typename?: 'Query' } & {
+  allBehanceProjects: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<
+      { __typename?: 'DesignsYaml' } & Pick<
+        DesignsYaml,
+        'slug' | 'name' | 'description' | 'tags'
+      >
+    >;
+  };
+  behanceImages: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<File, 'relativeDirectory'> & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fluid?: Maybe<
+                {
+                  __typename?: 'ImageSharpFluid';
+                } & GatsbyImageSharpFluidFragment
+              >;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type FixedImageFragment = { __typename?: 'ImageSharp' } & {
+  fixed?: Maybe<
+    { __typename?: 'ImageSharpFixed' } & Pick<
+      ImageSharpFixed,
+      | 'originalName'
+      | 'base64'
+      | 'tracedSVG'
+      | 'aspectRatio'
+      | 'srcWebp'
+      | 'srcSetWebp'
+      | 'width'
+      | 'height'
+      | 'srcSet'
+    >
+  >;
+};
+
+export type FluidImageFragment = { __typename?: 'ImageSharp' } & {
+  fluid?: Maybe<
+    { __typename?: 'ImageSharpFluid' } & Pick<
+      ImageSharpFluid,
+      | 'base64'
+      | 'tracedSVG'
+      | 'srcWebp'
+      | 'srcSetWebp'
+      | 'originalImg'
+      | 'originalName'
+      | 'aspectRatio'
+      | 'sizes'
+      | 'presentationWidth'
+      | 'presentationHeight'
+      | 'src'
+      | 'srcSet'
+    >
+  >;
+};
+
+export type FrontmatterFragment = { __typename?: 'MarkdownRemark' } & {
+  frontmatter?: Maybe<
+    { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
+      MarkdownRemarkFrontmatter,
+      'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags' | 'next'
+    > & {
+        thumbnail?: Maybe<
+          { __typename?: 'File' } & Pick<
+            File,
+            'id' | 'relativePath' | 'publicURL'
+          > & {
+              childImageSharp?: Maybe<
+                { __typename?: 'ImageSharp' } & {
+                  fluid?: Maybe<
+                    {
+                      __typename?: 'ImageSharpFluid';
+                    } & GatsbyImageSharpFluid_TracedSvgFragment
+                  >;
+                }
+              >;
+            }
+        >;
+      }
+  >;
+};
+
+export type BlogPostFragment = { __typename?: 'MarkdownRemark' } & Pick<
+  MarkdownRemark,
+  'id' | 'excerpt' | 'timeToRead'
+> &
+  FrontmatterFragment;
+
+export type DesignArticleFragment = { __typename?: 'DesignsYaml' } & Pick<
+  DesignsYaml,
+  'name' | 'description' | 'slug'
+>;
+
+export type BlogPostArticleFragment = { __typename?: 'MarkdownRemark' } & Pick<
+  MarkdownRemark,
+  'id' | 'excerpt'
+> & {
+    frontmatter?: Maybe<
+      { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
+        MarkdownRemarkFrontmatter,
+        'id' | 'title' | 'path' | 'date'
+      > & {
+          thumbnail?: Maybe<
+            { __typename?: 'File' } & {
+              childImageSharp?: Maybe<
+                { __typename?: 'ImageSharp' } & {
+                  fluid?: Maybe<
+                    {
+                      __typename?: 'ImageSharpFluid';
+                    } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
+                  >;
+                }
+              >;
+            }
+          >;
+        }
+    >;
+  };
+
+export type PostsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type PostsQuery = { __typename?: 'Query' } & {
+  allMarkdownRemark: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostFragment>;
+  };
+};
+
+export type SideProjectsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type SideProjectsQuery = { __typename?: 'Query' } & {
+  allSideprojectsYaml: { __typename?: 'SideprojectsYamlConnection' } & {
+    nodes: Array<
+      { __typename?: 'SideprojectsYaml' } & Pick<
+        SideprojectsYaml,
+        'id' | 'title' | 'link' | 'github' | 'description' | 'tags'
+      > & {
+          image?: Maybe<
+            { __typename?: 'File' } & {
+              childImageSharp?: Maybe<
+                { __typename?: 'ImageSharp' } & FluidImageFragment
+              >;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type UseDesignsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type UseDesignsQuery = { __typename?: 'Query' } & {
+  projects: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<
+      { __typename?: 'DesignsYaml' } & Pick<
+        DesignsYaml,
+        'slug' | 'name' | 'description' | 'tags'
+      >
+    >;
+  };
+  images: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<
+        File,
+        'id' | 'name' | 'relativeDirectory'
+      > & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fluid?: Maybe<
+                {
+                  __typename?: 'ImageSharpFluid';
+                } & GatsbyImageSharpFluid_TracedSvgFragment
+              >;
+            }
+          >;
+        }
+    >;
+  };
+};
+
+export type AllSiteTagsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type AllSiteTagsQuery = { __typename?: 'Query' } & {
+  blogTags: { __typename?: 'MarkdownRemarkConnection' } & {
+    group: Array<
+      { __typename?: 'MarkdownRemarkGroupConnection' } & {
+        tag: MarkdownRemarkGroupConnection['fieldValue'];
+        qty: MarkdownRemarkGroupConnection['totalCount'];
+      }
+    >;
+  };
+  designTags: { __typename?: 'DesignsYamlConnection' } & {
+    group: Array<
+      { __typename?: 'DesignsYamlGroupConnection' } & {
+        tag: DesignsYamlGroupConnection['fieldValue'];
+        qty: DesignsYamlGroupConnection['totalCount'];
+      }
+    >;
+  };
+  sideProjectTags: { __typename?: 'SideprojectsYamlConnection' } & {
+    group: Array<
+      { __typename?: 'SideprojectsYamlGroupConnection' } & {
+        tag: SideprojectsYamlGroupConnection['fieldValue'];
+        qty: SideprojectsYamlGroupConnection['totalCount'];
+      }
+    >;
+  };
+};
+
+export type IndexPageQueryVariables = Exact<{
+  limit?: Maybe<Scalars['Int']>;
+}>;
+
+export type IndexPageQuery = { __typename?: 'Query' } & {
+  posts: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostArticleFragment>;
+  };
+  designs: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignArticleFragment>;
+  };
+  designCovers: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & {
+        childImageSharp?: Maybe<
+          { __typename?: 'ImageSharp' } & {
+            fluid?: Maybe<
+              {
+                __typename?: 'ImageSharpFluid';
+              } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
+            >;
+          }
+        >;
+      }
+    >;
+  };
+  allGithubPinneditems: { __typename?: 'GithubPinneditemsConnection' } & {
+    nodes: Array<
+      { __typename?: 'GithubPinneditems' } & Pick<
+        GithubPinneditems,
+        | 'openGraphImageUrl'
+        | 'name'
+        | 'url'
+        | 'createdAt'
+        | 'description'
+        | 'homepageUrl'
+        | 'id'
+      > & {
+          primaryLanguage?: Maybe<
+            { __typename?: 'GithubPinneditemsPrimaryLanguage' } & Pick<
+              GithubPinneditemsPrimaryLanguage,
+              'name' | 'color'
+            >
+          >;
+        }
+    >;
+  };
+};
 
 export type BlogListQueryVariables = Exact<{
   skip?: Maybe<Scalars['Int']>;
   limit?: Maybe<Scalars['Int']>;
 }>;
 
-
-export type BlogListQuery = (
-  { __typename?: 'Query' }
-  & { allMarkdownRemark: (
-    { __typename?: 'MarkdownRemarkConnection' }
-    & { posts: Array<(
-      { __typename?: 'MarkdownRemark' }
-      & Pick<MarkdownRemark, 'id' | 'excerpt'>
-      & { frontmatter?: Maybe<(
-        { __typename?: 'MarkdownRemarkFrontmatter' }
-        & Pick<MarkdownRemarkFrontmatter, 'id' | 'date' | 'path' | 'title' | 'subtitle' | 'tags'>
-        & { thumbnail?: Maybe<(
-          { __typename?: 'File' }
-          & Pick<File, 'id' | 'relativePath' | 'publicURL'>
-          & { childImageSharp?: Maybe<(
-            { __typename?: 'ImageSharp' }
-            & { fixed?: Maybe<(
-              { __typename?: 'ImageSharpFixed' }
-              & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
-            )> }
-          )> }
-        )> }
-      )> }
-    )> }
-  ) }
-);
+export type BlogListQuery = { __typename?: 'Query' } & {
+  posts: { __typename?: 'MarkdownRemarkConnection' } & {
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostArticleFragment>;
+  };
+};
 
 export type BlogTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
@@ -5043,1033 +5308,1630 @@ export type BlogTemplateQueryVariables = Exact<{
   next?: Maybe<Scalars['String']>;
 }>;
 
-
-export type BlogTemplateQuery = (
-  { __typename?: 'Query' }
-  & { post?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & Pick<MarkdownRemark, 'url' | 'disqusIdentifier' | 'timeToRead' | 'htmlAst'>
-    & FrontmatterFragment
-  )>, prev?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & { previousPagePath: MarkdownRemarkFrontmatter['path'], previousPageText: MarkdownRemarkFrontmatter['title'] }
-    )> }
-  )>, next?: Maybe<(
-    { __typename?: 'MarkdownRemark' }
-    & { frontmatter?: Maybe<(
-      { __typename?: 'MarkdownRemarkFrontmatter' }
-      & { nextPagePath: MarkdownRemarkFrontmatter['path'], nextPageText: MarkdownRemarkFrontmatter['title'] }
-    )> }
-  )>, site?: Maybe<(
-    { __typename?: 'Site' }
-    & { siteMetadata?: Maybe<(
-      { __typename?: 'SiteSiteMetadata' }
-      & Pick<SiteSiteMetadata, 'twitterHandle' | 'disqusShortName'>
-    )> }
-  )> }
-);
+export type BlogTemplateQuery = { __typename?: 'Query' } & {
+  post?: Maybe<
+    { __typename?: 'MarkdownRemark' } & Pick<
+      MarkdownRemark,
+      'url' | 'disqusIdentifier' | 'timeToRead' | 'htmlAst'
+    > &
+      FrontmatterFragment
+  >;
+  prev?: Maybe<
+    { __typename?: 'MarkdownRemark' } & {
+      frontmatter?: Maybe<
+        { __typename?: 'MarkdownRemarkFrontmatter' } & {
+          previousPagePath: MarkdownRemarkFrontmatter['path'];
+          previousPageText: MarkdownRemarkFrontmatter['title'];
+        }
+      >;
+    }
+  >;
+  next?: Maybe<
+    { __typename?: 'MarkdownRemark' } & {
+      frontmatter?: Maybe<
+        { __typename?: 'MarkdownRemarkFrontmatter' } & {
+          nextPagePath: MarkdownRemarkFrontmatter['path'];
+          nextPageText: MarkdownRemarkFrontmatter['title'];
+        }
+      >;
+    }
+  >;
+  site?: Maybe<
+    { __typename?: 'Site' } & {
+      siteMetadata?: Maybe<
+        { __typename?: 'SiteSiteMetadata' } & Pick<
+          SiteSiteMetadata,
+          'twitterHandle' | 'disqusShortName'
+        >
+      >;
+    }
+  >;
+};
 
 export type DesignListQueryVariables = Exact<{
   skip: Scalars['Int'];
   limit: Scalars['Int'];
 }>;
 
-
-export type DesignListQuery = (
-  { __typename?: 'Query' }
-  & { allDesignsYaml: (
-    { __typename?: 'DesignsYamlConnection' }
-    & { nodes: Array<(
-      { __typename?: 'DesignsYaml' }
-      & Pick<DesignsYaml, 'name' | 'description' | 'slug'>
-    )> }
-  ), allFile: (
-    { __typename?: 'FileConnection' }
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'relativeDirectory' | 'sourceInstanceName'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fixed?: Maybe<(
-          { __typename?: 'ImageSharpFixed' }
-          & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ) }
-);
+export type DesignListQuery = { __typename?: 'Query' } & {
+  allDesignsYaml: { __typename?: 'DesignsYamlConnection' } & {
+    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignArticleFragment>;
+  };
+  allFile: { __typename?: 'FileConnection' } & {
+    nodes: Array<
+      { __typename?: 'File' } & Pick<
+        File,
+        'relativeDirectory' | 'sourceInstanceName'
+      > & {
+          childImageSharp?: Maybe<
+            { __typename?: 'ImageSharp' } & {
+              fixed?: Maybe<
+                {
+                  __typename?: 'ImageSharpFixed';
+                } & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
+              >;
+            }
+          >;
+        }
+    >;
+  };
+};
 
 export type DesignsTemplateQueryVariables = Exact<{
   slug: Scalars['String'];
 }>;
 
-
-export type DesignsTemplateQuery = (
-  { __typename?: 'Query' }
-  & { design?: Maybe<(
-    { __typename?: 'DesignsYaml' }
-    & Pick<DesignsYaml, 'id' | 'slug' | 'name' | 'description' | 'tags'>
-    & { tools?: Maybe<Array<Maybe<(
-      { __typename?: 'DesignsYamlTools' }
-      & Pick<DesignsYamlTools, 'title'>
-    )>>> }
-  )>, images: (
-    { __typename?: 'FileConnection' }
-    & Pick<FileConnection, 'totalCount'>
-    & { nodes: Array<(
-      { __typename?: 'File' }
-      & Pick<File, 'id' | 'name' | 'publicURL'>
-      & { childImageSharp?: Maybe<(
-        { __typename?: 'ImageSharp' }
-        & { fluid?: Maybe<(
-          { __typename?: 'ImageSharpFluid' }
-          & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
-        )> }
-      )> }
-    )> }
-  ), seoImagePath?: Maybe<(
-    { __typename?: 'File' }
-    & Pick<File, 'publicURL'>
-  )> }
-);
+export type DesignsTemplateQuery = { __typename?: 'Query' } & {
+  design?: Maybe<
+    { __typename?: 'DesignsYaml' } & Pick<
+      DesignsYaml,
+      'id' | 'slug' | 'name' | 'description' | 'tags'
+    > & {
+        tools?: Maybe<
+          Array<
+            Maybe<
+              { __typename?: 'DesignsYamlTools' } & Pick<
+                DesignsYamlTools,
+                'title'
+              >
+            >
+          >
+        >;
+      }
+  >;
+  images: { __typename?: 'FileConnection' } & Pick<
+    FileConnection,
+    'totalCount'
+  > & {
+      nodes: Array<
+        { __typename?: 'File' } & Pick<File, 'id' | 'name' | 'publicURL'> & {
+            childImageSharp?: Maybe<
+              { __typename?: 'ImageSharp' } & {
+                fluid?: Maybe<
+                  {
+                    __typename?: 'ImageSharpFluid';
+                  } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
+                >;
+              }
+            >;
+          }
+      >;
+    };
+  seoImagePath?: Maybe<{ __typename?: 'File' } & Pick<File, 'publicURL'>>;
+};
 
 export const GatsbyImageSharpFixedFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed on ImageSharpFixed {
-  base64
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
-  base64
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFixed_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_noBase64 on ImageSharpFixed {
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpFixed_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpFluidFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid on ImageSharpFluid {
-  base64
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluidLimitPresentationSizeFragmentDoc = gql`
-    fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
-  maxHeight: presentationHeight
-  maxWidth: presentationWidth
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_noBase64 on ImageSharpFluid {
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpFluid_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_withWebp_noBase64 on ImageSharpFluid {
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpResolutionsFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions on ImageSharpResolutions {
-  base64
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_tracedSVG on ImageSharpResolutions {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp on ImageSharpResolutions {
-  base64
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp_tracedSVG on ImageSharpResolutions {
-  tracedSVG
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpResolutions_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_noBase64 on ImageSharpResolutions {
-  width
-  height
-  src
-  srcSet
-}
-    `;
-export const GatsbyImageSharpResolutions_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpResolutions_withWebp_noBase64 on ImageSharpResolutions {
-  width
-  height
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-}
-    `;
-export const GatsbyImageSharpSizesFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes on ImageSharpSizes {
-  base64
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_tracedSVG on ImageSharpSizes {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebpFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp on ImageSharpSizes {
-  base64
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebp_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp_tracedSVG on ImageSharpSizes {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_noBase64 on ImageSharpSizes {
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
-export const GatsbyImageSharpSizes_WithWebp_NoBase64FragmentDoc = gql`
-    fragment GatsbyImageSharpSizes_withWebp_noBase64 on ImageSharpSizes {
-  aspectRatio
-  src
-  srcSet
-  srcWebp
-  srcSetWebp
-  sizes
-}
-    `;
-export const FixedImageFragmentDoc = gql`
-    fragment FixedImage on ImageSharp {
-  fixed(width: $width, height: $height) {
-    originalName
+  fragment GatsbyImageSharpFixed on ImageSharpFixed {
     base64
-    tracedSVG
-    aspectRatio
-    srcWebp
-    srcSetWebp
-    originalName
     width
     height
-    srcSet
-    srcSetWebp
-    base64
-    aspectRatio
-  }
-}
-    `;
-export const FluidImageFragmentDoc = gql`
-    fragment FluidImage on ImageSharp {
-  fluid(maxWidth: 630, traceSVG: {background: "transparent", color: "#d0c1fa", threshold: 6}) {
-    base64
-    tracedSVG
-    srcWebp
-    srcSetWebp
-    originalImg
-    originalName
-    aspectRatio
-    sizes
-    presentationWidth
-    presentationHeight
     src
     srcSet
   }
-}
-    `;
+`;
+export const GatsbyImageSharpFixed_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_tracedSVG on ImageSharpFixed {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
+    base64
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFixed_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_noBase64 on ImageSharpFixed {
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpFixed_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp_noBase64 on ImageSharpFixed {
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpFluidFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid on ImageSharpFluid {
+    base64
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluidLimitPresentationSizeFragmentDoc = gql`
+  fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
+    maxHeight: presentationHeight
+    maxWidth: presentationWidth
+  }
+`;
+export const GatsbyImageSharpFluid_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp on ImageSharpFluid {
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluid_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_noBase64 on ImageSharpFluid {
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpFluid_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp_noBase64 on ImageSharpFluid {
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpResolutionsFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions on ImageSharpResolutions {
+    base64
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_tracedSVG on ImageSharpResolutions {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp on ImageSharpResolutions {
+    base64
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp_tracedSVG on ImageSharpResolutions {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpResolutions_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_noBase64 on ImageSharpResolutions {
+    width
+    height
+    src
+    srcSet
+  }
+`;
+export const GatsbyImageSharpResolutions_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpResolutions_withWebp_noBase64 on ImageSharpResolutions {
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
+export const GatsbyImageSharpSizesFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes on ImageSharpSizes {
+    base64
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_tracedSVG on ImageSharpSizes {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebpFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp on ImageSharpSizes {
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp_tracedSVG on ImageSharpSizes {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_noBase64 on ImageSharpSizes {
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
+export const GatsbyImageSharpSizes_WithWebp_NoBase64FragmentDoc = gql`
+  fragment GatsbyImageSharpSizes_withWebp_noBase64 on ImageSharpSizes {
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const FixedImageFragmentDoc = gql`
+  fragment FixedImage on ImageSharp {
+    fixed(width: $width, height: $height) {
+      originalName
+      base64
+      tracedSVG
+      aspectRatio
+      srcWebp
+      srcSetWebp
+      originalName
+      width
+      height
+      srcSet
+      srcSetWebp
+      base64
+      aspectRatio
+    }
+  }
+`;
+export const FluidImageFragmentDoc = gql`
+  fragment FluidImage on ImageSharp {
+    fluid(
+      maxWidth: 630
+      traceSVG: { background: "transparent", color: "#d0c1fa", threshold: 6 }
+    ) {
+      base64
+      tracedSVG
+      srcWebp
+      srcSetWebp
+      originalImg
+      originalName
+      aspectRatio
+      sizes
+      presentationWidth
+      presentationHeight
+      src
+      srcSet
+    }
+  }
+`;
 export const GatsbyImageSharpFluid_TracedSvgFragmentDoc = gql`
-    fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
-  tracedSVG
-  aspectRatio
-  src
-  srcSet
-  sizes
-}
-    `;
+  fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    sizes
+  }
+`;
 export const FrontmatterFragmentDoc = gql`
-    fragment Frontmatter on MarkdownRemark {
-  frontmatter {
-    id
-    date(formatString: "MMMM DD, YYYY")
-    path
-    title
-    subtitle
-    tags
-    next
-    thumbnail {
+  fragment Frontmatter on MarkdownRemark {
+    frontmatter {
       id
-      relativePath
-      publicURL
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}`;
-export const BlogPostFragmentDoc = gql`
-    fragment BlogPost on MarkdownRemark {
-  id
-  excerpt(pruneLength: 75)
-  timeToRead
-  ...Frontmatter
-}
-    ${FrontmatterFragmentDoc}`;
-export const CreateBlogPostPagesDocument = gql`
-    query CreateBlogPostPages {
-  posts: allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
-    nodes {
-      frontmatter {
-        path
-      }
-    }
-  }
-}
-    `;
-export type CreateBlogPostPagesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CreateBlogPostPagesQuery, CreateBlogPostPagesQueryVariables>, 'query'>;
-
-    export const CreateBlogPostPagesComponent = (props: CreateBlogPostPagesComponentProps) => (
-      <ApolloReactComponents.Query<CreateBlogPostPagesQuery, CreateBlogPostPagesQueryVariables> query={CreateBlogPostPagesDocument} {...props} />
-    );
-    
-export type CreateBlogPostPagesProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<CreateBlogPostPagesQuery, CreateBlogPostPagesQueryVariables>
-    } & TChildProps;
-export function withCreateBlogPostPages<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  CreateBlogPostPagesQuery,
-  CreateBlogPostPagesQueryVariables,
-  CreateBlogPostPagesProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, CreateBlogPostPagesQuery, CreateBlogPostPagesQueryVariables, CreateBlogPostPagesProps<TChildProps, TDataName>>(CreateBlogPostPagesDocument, {
-      alias: 'createBlogPostPages',
-      ...operationOptions
-    });
-};
-export type CreateBlogPostPagesQueryResult = ApolloReactCommon.QueryResult<CreateBlogPostPagesQuery, CreateBlogPostPagesQueryVariables>;
-export const CreateDesignPagesDocument = gql`
-    query CreateDesignPages {
-  designs: allDesignsYaml {
-    nodes {
-      slug
-    }
-  }
-}
-    `;
-export type CreateDesignPagesComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<CreateDesignPagesQuery, CreateDesignPagesQueryVariables>, 'query'>;
-
-    export const CreateDesignPagesComponent = (props: CreateDesignPagesComponentProps) => (
-      <ApolloReactComponents.Query<CreateDesignPagesQuery, CreateDesignPagesQueryVariables> query={CreateDesignPagesDocument} {...props} />
-    );
-    
-export type CreateDesignPagesProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<CreateDesignPagesQuery, CreateDesignPagesQueryVariables>
-    } & TChildProps;
-export function withCreateDesignPages<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  CreateDesignPagesQuery,
-  CreateDesignPagesQueryVariables,
-  CreateDesignPagesProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, CreateDesignPagesQuery, CreateDesignPagesQueryVariables, CreateDesignPagesProps<TChildProps, TDataName>>(CreateDesignPagesDocument, {
-      alias: 'createDesignPages',
-      ...operationOptions
-    });
-};
-export type CreateDesignPagesQueryResult = ApolloReactCommon.QueryResult<CreateDesignPagesQuery, CreateDesignPagesQueryVariables>;
-export const DesignCountDocument = gql`
-    query DesignCount {
-  allDesignsYaml {
-    nodes {
-      id
-    }
-    totalCount
-  }
-}
-    `;
-export type DesignCountComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignCountQuery, DesignCountQueryVariables>, 'query'>;
-
-    export const DesignCountComponent = (props: DesignCountComponentProps) => (
-      <ApolloReactComponents.Query<DesignCountQuery, DesignCountQueryVariables> query={DesignCountDocument} {...props} />
-    );
-    
-export type DesignCountProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignCountQuery, DesignCountQueryVariables>
-    } & TChildProps;
-export function withDesignCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignCountQuery,
-  DesignCountQueryVariables,
-  DesignCountProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignCountQuery, DesignCountQueryVariables, DesignCountProps<TChildProps, TDataName>>(DesignCountDocument, {
-      alias: 'designCount',
-      ...operationOptions
-    });
-};
-export type DesignCountQueryResult = ApolloReactCommon.QueryResult<DesignCountQuery, DesignCountQueryVariables>;
-export const BlogPostCountDocument = gql`
-    query BlogPostCount {
-  allMarkdownRemark {
-    totalCount
-    nodes {
-      id
-    }
-  }
-}
-    `;
-export type BlogPostCountComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogPostCountQuery, BlogPostCountQueryVariables>, 'query'>;
-
-    export const BlogPostCountComponent = (props: BlogPostCountComponentProps) => (
-      <ApolloReactComponents.Query<BlogPostCountQuery, BlogPostCountQueryVariables> query={BlogPostCountDocument} {...props} />
-    );
-    
-export type BlogPostCountProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogPostCountQuery, BlogPostCountQueryVariables>
-    } & TChildProps;
-export function withBlogPostCount<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogPostCountQuery,
-  BlogPostCountQueryVariables,
-  BlogPostCountProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogPostCountQuery, BlogPostCountQueryVariables, BlogPostCountProps<TChildProps, TDataName>>(BlogPostCountDocument, {
-      alias: 'blogPostCount',
-      ...operationOptions
-    });
-};
-export type BlogPostCountQueryResult = ApolloReactCommon.QueryResult<BlogPostCountQuery, BlogPostCountQueryVariables>;
-export const GhostImageDocument = gql`
-    query GhostImage {
-  file(relativePath: {eq: "ghost.png"}) {
-    childImageSharp {
-      fixed(width: 30, height: 30) {
-        ...GatsbyImageSharpFixed
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFixedFragmentDoc}`;
-export type GhostImageComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<GhostImageQuery, GhostImageQueryVariables>, 'query'>;
-
-    export const GhostImageComponent = (props: GhostImageComponentProps) => (
-      <ApolloReactComponents.Query<GhostImageQuery, GhostImageQueryVariables> query={GhostImageDocument} {...props} />
-    );
-    
-export type GhostImageProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<GhostImageQuery, GhostImageQueryVariables>
-    } & TChildProps;
-export function withGhostImage<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  GhostImageQuery,
-  GhostImageQueryVariables,
-  GhostImageProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, GhostImageQuery, GhostImageQueryVariables, GhostImageProps<TChildProps, TDataName>>(GhostImageDocument, {
-      alias: 'ghostImage',
-      ...operationOptions
-    });
-};
-export type GhostImageQueryResult = ApolloReactCommon.QueryResult<GhostImageQuery, GhostImageQueryVariables>;
-export const SeoDocument = gql`
-    query SEO {
-  site {
-    siteMetadata {
-      defaultTitle: title
-      titleTemplate
-      defaultDescription: description
-      siteUrl
-      defaultImage: image
-      twitterUsername: twitterHandle
-    }
-  }
-}
-    `;
-export type SeoComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SeoQuery, SeoQueryVariables>, 'query'>;
-
-    export const SeoComponent = (props: SeoComponentProps) => (
-      <ApolloReactComponents.Query<SeoQuery, SeoQueryVariables> query={SeoDocument} {...props} />
-    );
-    
-export type SeoProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SeoQuery, SeoQueryVariables>
-    } & TChildProps;
-export function withSeo<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SeoQuery,
-  SeoQueryVariables,
-  SeoProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SeoQuery, SeoQueryVariables, SeoProps<TChildProps, TDataName>>(SeoDocument, {
-      alias: 'seo',
-      ...operationOptions
-    });
-};
-export type SeoQueryResult = ApolloReactCommon.QueryResult<SeoQuery, SeoQueryVariables>;
-export const TwitterHandleDocument = gql`
-    query TwitterHandle {
-  site {
-    siteMetadata {
-      twitterHandle
-    }
-  }
-}
-    `;
-export type TwitterHandleComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<TwitterHandleQuery, TwitterHandleQueryVariables>, 'query'>;
-
-    export const TwitterHandleComponent = (props: TwitterHandleComponentProps) => (
-      <ApolloReactComponents.Query<TwitterHandleQuery, TwitterHandleQueryVariables> query={TwitterHandleDocument} {...props} />
-    );
-    
-export type TwitterHandleProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<TwitterHandleQuery, TwitterHandleQueryVariables>
-    } & TChildProps;
-export function withTwitterHandle<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  TwitterHandleQuery,
-  TwitterHandleQueryVariables,
-  TwitterHandleProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, TwitterHandleQuery, TwitterHandleQueryVariables, TwitterHandleProps<TChildProps, TDataName>>(TwitterHandleDocument, {
-      alias: 'twitterHandle',
-      ...operationOptions
-    });
-};
-export type TwitterHandleQueryResult = ApolloReactCommon.QueryResult<TwitterHandleQuery, TwitterHandleQueryVariables>;
-export const DesignsPageDocument = gql`
-    query DesignsPage {
-  allBehanceProjects: allDesignsYaml {
-    nodes {
-      slug
-      name
-      description
-      tags
-    }
-  }
-  behanceImages: allFile(filter: {relativeDirectory: {regex: "/gatsby-source-behance-images/"}, name: {eq: "cover"}}) {
-    nodes {
-      relativeDirectory
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFluidFragmentDoc}`;
-export type DesignsPageComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsPageQuery, DesignsPageQueryVariables>, 'query'>;
-
-    export const DesignsPageComponent = (props: DesignsPageComponentProps) => (
-      <ApolloReactComponents.Query<DesignsPageQuery, DesignsPageQueryVariables> query={DesignsPageDocument} {...props} />
-    );
-    
-export type DesignsPageProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignsPageQuery, DesignsPageQueryVariables>
-    } & TChildProps;
-export function withDesignsPage<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignsPageQuery,
-  DesignsPageQueryVariables,
-  DesignsPageProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignsPageQuery, DesignsPageQueryVariables, DesignsPageProps<TChildProps, TDataName>>(DesignsPageDocument, {
-      alias: 'designsPage',
-      ...operationOptions
-    });
-};
-export type DesignsPageQueryResult = ApolloReactCommon.QueryResult<DesignsPageQuery, DesignsPageQueryVariables>;
-export const PostsDocument = gql`
-    query Posts {
-  allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
-    nodes {
-      ...BlogPost
-    }
-  }
-}
-    ${BlogPostFragmentDoc}`;
-export type PostsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>, 'query'>;
-
-    export const PostsComponent = (props: PostsComponentProps) => (
-      <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables> query={PostsDocument} {...props} />
-    );
-    
-export type PostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<PostsQuery, PostsQueryVariables>
-    } & TChildProps;
-export function withPosts<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  PostsQuery,
-  PostsQueryVariables,
-  PostsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, PostsQuery, PostsQueryVariables, PostsProps<TChildProps, TDataName>>(PostsDocument, {
-      alias: 'posts',
-      ...operationOptions
-    });
-};
-export type PostsQueryResult = ApolloReactCommon.QueryResult<PostsQuery, PostsQueryVariables>;
-export const SeoQueryDocument = gql`
-    query SEOQuery {
-  site {
-    siteMetadata {
-      defaultTitle: title
-      titleTemplate
-      defaultDescription: description
-      url: siteUrl
-      defaultImage: image
-    }
-  }
-}
-    `;
-export type SeoQueryComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SeoQueryQuery, SeoQueryQueryVariables>, 'query'>;
-
-    export const SeoQueryComponent = (props: SeoQueryComponentProps) => (
-      <ApolloReactComponents.Query<SeoQueryQuery, SeoQueryQueryVariables> query={SeoQueryDocument} {...props} />
-    );
-    
-export type SeoQueryProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SeoQueryQuery, SeoQueryQueryVariables>
-    } & TChildProps;
-export function withSeoQuery<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SeoQueryQuery,
-  SeoQueryQueryVariables,
-  SeoQueryProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SeoQueryQuery, SeoQueryQueryVariables, SeoQueryProps<TChildProps, TDataName>>(SeoQueryDocument, {
-      alias: 'seoQuery',
-      ...operationOptions
-    });
-};
-export type SeoQueryQueryResult = ApolloReactCommon.QueryResult<SeoQueryQuery, SeoQueryQueryVariables>;
-export const SideProjectsDocument = gql`
-    query SideProjects {
-  allSideprojectsYaml {
-    nodes {
-      id
+      date(formatString: "MMMM YYYY")
+      path
       title
-      link
-      github
-      description
-      image {
-        childImageSharp {
-          ...FluidImage
-        }
-      }
+      subtitle
       tags
-    }
-  }
-}
-    ${FluidImageFragmentDoc}`;
-export type SideProjectsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<SideProjectsQuery, SideProjectsQueryVariables>, 'query'>;
-
-    export const SideProjectsComponent = (props: SideProjectsComponentProps) => (
-      <ApolloReactComponents.Query<SideProjectsQuery, SideProjectsQueryVariables> query={SideProjectsDocument} {...props} />
-    );
-    
-export type SideProjectsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<SideProjectsQuery, SideProjectsQueryVariables>
-    } & TChildProps;
-export function withSideProjects<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  SideProjectsQuery,
-  SideProjectsQueryVariables,
-  SideProjectsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, SideProjectsQuery, SideProjectsQueryVariables, SideProjectsProps<TChildProps, TDataName>>(SideProjectsDocument, {
-      alias: 'sideProjects',
-      ...operationOptions
-    });
-};
-export type SideProjectsQueryResult = ApolloReactCommon.QueryResult<SideProjectsQuery, SideProjectsQueryVariables>;
-export const UseDesignsDocument = gql`
-    query UseDesigns {
-  projects: allDesignsYaml {
-    nodes {
-      slug
-      name
-      description
-      tags
-    }
-  }
-  images: allFile(filter: {sourceInstanceName: {eq: "designs"}, name: {eq: "cover"}}) {
-    nodes {
-      id
-      name
-      relativeDirectory
-      childImageSharp {
-        fluid {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}`;
-export type UseDesignsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<UseDesignsQuery, UseDesignsQueryVariables>, 'query'>;
-
-    export const UseDesignsComponent = (props: UseDesignsComponentProps) => (
-      <ApolloReactComponents.Query<UseDesignsQuery, UseDesignsQueryVariables> query={UseDesignsDocument} {...props} />
-    );
-    
-export type UseDesignsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<UseDesignsQuery, UseDesignsQueryVariables>
-    } & TChildProps;
-export function withUseDesigns<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  UseDesignsQuery,
-  UseDesignsQueryVariables,
-  UseDesignsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, UseDesignsQuery, UseDesignsQueryVariables, UseDesignsProps<TChildProps, TDataName>>(UseDesignsDocument, {
-      alias: 'useDesigns',
-      ...operationOptions
-    });
-};
-export type UseDesignsQueryResult = ApolloReactCommon.QueryResult<UseDesignsQuery, UseDesignsQueryVariables>;
-export const AllSiteTagsDocument = gql`
-    query AllSiteTags {
-  blogTags: allMarkdownRemark(limit: 2000, sort: {fields: frontmatter___tags}) {
-    group(field: frontmatter___tags) {
-      tag: fieldValue
-      qty: totalCount
-    }
-  }
-  designTags: allDesignsYaml(limit: 2000, sort: {fields: tags, order: ASC}) {
-    group(field: tags) {
-      tag: fieldValue
-      qty: totalCount
-    }
-  }
-  sideProjectTags: allSideprojectsYaml(limit: 2000, sort: {order: ASC, fields: tags}) {
-    group(field: tags) {
-      tag: fieldValue
-      qty: totalCount
-    }
-  }
-}
-    `;
-export type AllSiteTagsComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<AllSiteTagsQuery, AllSiteTagsQueryVariables>, 'query'>;
-
-    export const AllSiteTagsComponent = (props: AllSiteTagsComponentProps) => (
-      <ApolloReactComponents.Query<AllSiteTagsQuery, AllSiteTagsQueryVariables> query={AllSiteTagsDocument} {...props} />
-    );
-    
-export type AllSiteTagsProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<AllSiteTagsQuery, AllSiteTagsQueryVariables>
-    } & TChildProps;
-export function withAllSiteTags<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  AllSiteTagsQuery,
-  AllSiteTagsQueryVariables,
-  AllSiteTagsProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, AllSiteTagsQuery, AllSiteTagsQueryVariables, AllSiteTagsProps<TChildProps, TDataName>>(AllSiteTagsDocument, {
-      alias: 'allSiteTags',
-      ...operationOptions
-    });
-};
-export type AllSiteTagsQueryResult = ApolloReactCommon.QueryResult<AllSiteTagsQuery, AllSiteTagsQueryVariables>;
-export const BlogListDocument = gql`
-    query BlogList($skip: Int, $limit: Int) {
-  allMarkdownRemark(skip: $skip, limit: $limit, sort: {fields: [frontmatter___date], order: DESC}) {
-    posts: nodes {
-      id
-      excerpt(pruneLength: 200)
-      frontmatter {
+      next
+      thumbnail {
         id
-        date(formatString: "MMMM DD, YYYY")
-        path
-        title
-        subtitle
-        tags
-        thumbnail {
-          id
-          relativePath
-          publicURL
-          childImageSharp {
-            fixed(height: 200, width: 200, traceSVG: {color: "#d0c1fa", background: "transparent"}, cropFocus: CENTER) {
-              ...GatsbyImageSharpFixed_withWebp_tracedSVG
-            }
+        relativePath
+        publicURL
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
           }
         }
       }
     }
   }
-}
-    ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}`;
-export type BlogListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogListQuery, BlogListQueryVariables>, 'query'>;
-
-    export const BlogListComponent = (props: BlogListComponentProps) => (
-      <ApolloReactComponents.Query<BlogListQuery, BlogListQueryVariables> query={BlogListDocument} {...props} />
-    );
-    
-export type BlogListProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogListQuery, BlogListQueryVariables>
-    } & TChildProps;
-export function withBlogList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogListQuery,
-  BlogListQueryVariables,
-  BlogListProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogListQuery, BlogListQueryVariables, BlogListProps<TChildProps, TDataName>>(BlogListDocument, {
-      alias: 'blogList',
-      ...operationOptions
-    });
-};
-export type BlogListQueryResult = ApolloReactCommon.QueryResult<BlogListQuery, BlogListQueryVariables>;
-export const BlogTemplateDocument = gql`
-    query BlogTemplate($slug: String!, $prev: String, $next: String) {
-  post: markdownRemark(frontmatter: {path: {eq: $slug}}) {
-    url
-    disqusIdentifier
+  ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}
+`;
+export const BlogPostFragmentDoc = gql`
+  fragment BlogPost on MarkdownRemark {
+    id
+    excerpt(pruneLength: 75)
     timeToRead
-    htmlAst
     ...Frontmatter
   }
-  prev: markdownRemark(frontmatter: {path: {eq: $prev}}) {
-    frontmatter {
-      previousPagePath: path
-      previousPageText: title
-    }
-  }
-  next: markdownRemark(frontmatter: {path: {eq: $next}}) {
-    frontmatter {
-      nextPagePath: path
-      nextPageText: title
-    }
-  }
-  site {
-    siteMetadata {
-      twitterHandle
-      disqusShortName
-    }
-  }
-}
-    ${FrontmatterFragmentDoc}`;
-export type BlogTemplateComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<BlogTemplateQuery, BlogTemplateQueryVariables>, 'query'> & ({ variables: BlogTemplateQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const BlogTemplateComponent = (props: BlogTemplateComponentProps) => (
-      <ApolloReactComponents.Query<BlogTemplateQuery, BlogTemplateQueryVariables> query={BlogTemplateDocument} {...props} />
-    );
-    
-export type BlogTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<BlogTemplateQuery, BlogTemplateQueryVariables>
-    } & TChildProps;
-export function withBlogTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  BlogTemplateQuery,
-  BlogTemplateQueryVariables,
-  BlogTemplateProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, BlogTemplateQuery, BlogTemplateQueryVariables, BlogTemplateProps<TChildProps, TDataName>>(BlogTemplateDocument, {
-      alias: 'blogTemplate',
-      ...operationOptions
-    });
-};
-export type BlogTemplateQueryResult = ApolloReactCommon.QueryResult<BlogTemplateQuery, BlogTemplateQueryVariables>;
-export const DesignListDocument = gql`
-    query DesignList($skip: Int!, $limit: Int!) {
-  allDesignsYaml(skip: $skip, limit: $limit, sort: {fields: slug, order: ASC}) {
-    nodes {
-      name
-      description
-      slug
-    }
-  }
-  allFile(skip: $skip, limit: $limit, filter: {sourceInstanceName: {eq: "designs"}, name: {eq: "cover"}}, sort: {fields: relativeDirectory, order: ASC}) {
-    nodes {
-      relativeDirectory
-      sourceInstanceName
-      childImageSharp {
-        fixed(height: 200, width: 200, traceSVG: {color: "#d0c1fa", background: "transparent"}, cropFocus: CENTER) {
-          ...GatsbyImageSharpFixed_withWebp_tracedSVG
-        }
-      }
-    }
-  }
-}
-    ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}`;
-export type DesignListComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignListQuery, DesignListQueryVariables>, 'query'> & ({ variables: DesignListQueryVariables; skip?: boolean; } | { skip: boolean; });
-
-    export const DesignListComponent = (props: DesignListComponentProps) => (
-      <ApolloReactComponents.Query<DesignListQuery, DesignListQueryVariables> query={DesignListDocument} {...props} />
-    );
-    
-export type DesignListProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignListQuery, DesignListQueryVariables>
-    } & TChildProps;
-export function withDesignList<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
-  TProps,
-  DesignListQuery,
-  DesignListQueryVariables,
-  DesignListProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignListQuery, DesignListQueryVariables, DesignListProps<TChildProps, TDataName>>(DesignListDocument, {
-      alias: 'designList',
-      ...operationOptions
-    });
-};
-export type DesignListQueryResult = ApolloReactCommon.QueryResult<DesignListQuery, DesignListQueryVariables>;
-export const DesignsTemplateDocument = gql`
-    query DesignsTemplate($slug: String!) {
-  design: designsYaml(slug: {regex: $slug}) {
-    id
-    slug
+  ${FrontmatterFragmentDoc}
+`;
+export const DesignArticleFragmentDoc = gql`
+  fragment DesignArticle on DesignsYaml {
     name
     description
-    tags
-    tools {
-      title
-    }
+    slug
   }
-  images: allFile(filter: {relativePath: {regex: $slug}, sourceInstanceName: {eq: "designs"}}) {
-    nodes {
+`;
+export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`;
+export const BlogPostArticleFragmentDoc = gql`
+  fragment BlogPostArticle on MarkdownRemark {
+    id
+    excerpt(pruneLength: 200)
+    frontmatter {
       id
-      name
-      publicURL
-      childImageSharp {
-        fluid(traceSVG: {color: "#d0c1fa", background: "transparent"}, cropFocus: CENTER) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      title
+      path
+      date(formatString: "MMMM YYYY")
+      thumbnail {
+        childImageSharp {
+          fluid(
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
         }
       }
     }
-    totalCount
   }
-  seoImagePath: file(relativePath: {regex: $slug}, sourceInstanceName: {eq: "designs"}, name: {eq: "cover"}) {
-    publicURL
+  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
+`;
+export const CreateBlogPostPagesDocument = gql`
+  query CreateBlogPostPages {
+    posts: allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        frontmatter {
+          path
+        }
+      }
+    }
   }
-}
-    ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}`;
-export type DesignsTemplateComponentProps = Omit<ApolloReactComponents.QueryComponentOptions<DesignsTemplateQuery, DesignsTemplateQueryVariables>, 'query'> & ({ variables: DesignsTemplateQueryVariables; skip?: boolean; } | { skip: boolean; });
+`;
+export type CreateBlogPostPagesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    CreateBlogPostPagesQuery,
+    CreateBlogPostPagesQueryVariables
+  >,
+  'query'
+>;
 
-    export const DesignsTemplateComponent = (props: DesignsTemplateComponentProps) => (
-      <ApolloReactComponents.Query<DesignsTemplateQuery, DesignsTemplateQueryVariables> query={DesignsTemplateDocument} {...props} />
-    );
-    
-export type DesignsTemplateProps<TChildProps = {}, TDataName extends string = 'data'> = {
-      [key in TDataName]: ApolloReactHoc.DataValue<DesignsTemplateQuery, DesignsTemplateQueryVariables>
-    } & TChildProps;
-export function withDesignsTemplate<TProps, TChildProps = {}, TDataName extends string = 'data'>(operationOptions?: ApolloReactHoc.OperationOption<
+export const CreateBlogPostPagesComponent = (
+  props: CreateBlogPostPagesComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    CreateBlogPostPagesQuery,
+    CreateBlogPostPagesQueryVariables
+  >
+    query={CreateBlogPostPagesDocument}
+    {...props}
+  />
+);
+
+export type CreateBlogPostPagesProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    CreateBlogPostPagesQuery,
+    CreateBlogPostPagesQueryVariables
+  >;
+} &
+  TChildProps;
+export function withCreateBlogPostPages<
   TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    CreateBlogPostPagesQuery,
+    CreateBlogPostPagesQueryVariables,
+    CreateBlogPostPagesProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    CreateBlogPostPagesQuery,
+    CreateBlogPostPagesQueryVariables,
+    CreateBlogPostPagesProps<TChildProps, TDataName>
+  >(CreateBlogPostPagesDocument, {
+    alias: 'createBlogPostPages',
+    ...operationOptions,
+  });
+}
+export type CreateBlogPostPagesQueryResult = ApolloReactCommon.QueryResult<
+  CreateBlogPostPagesQuery,
+  CreateBlogPostPagesQueryVariables
+>;
+export const CreateDesignPagesDocument = gql`
+  query CreateDesignPages {
+    designs: allDesignsYaml {
+      nodes {
+        slug
+      }
+    }
+  }
+`;
+export type CreateDesignPagesComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    CreateDesignPagesQuery,
+    CreateDesignPagesQueryVariables
+  >,
+  'query'
+>;
+
+export const CreateDesignPagesComponent = (
+  props: CreateDesignPagesComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    CreateDesignPagesQuery,
+    CreateDesignPagesQueryVariables
+  >
+    query={CreateDesignPagesDocument}
+    {...props}
+  />
+);
+
+export type CreateDesignPagesProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    CreateDesignPagesQuery,
+    CreateDesignPagesQueryVariables
+  >;
+} &
+  TChildProps;
+export function withCreateDesignPages<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    CreateDesignPagesQuery,
+    CreateDesignPagesQueryVariables,
+    CreateDesignPagesProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    CreateDesignPagesQuery,
+    CreateDesignPagesQueryVariables,
+    CreateDesignPagesProps<TChildProps, TDataName>
+  >(CreateDesignPagesDocument, {
+    alias: 'createDesignPages',
+    ...operationOptions,
+  });
+}
+export type CreateDesignPagesQueryResult = ApolloReactCommon.QueryResult<
+  CreateDesignPagesQuery,
+  CreateDesignPagesQueryVariables
+>;
+export const DesignCountDocument = gql`
+  query DesignCount {
+    allDesignsYaml {
+      nodes {
+        id
+      }
+      totalCount
+    }
+  }
+`;
+export type DesignCountComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    DesignCountQuery,
+    DesignCountQueryVariables
+  >,
+  'query'
+>;
+
+export const DesignCountComponent = (props: DesignCountComponentProps) => (
+  <ApolloReactComponents.Query<DesignCountQuery, DesignCountQueryVariables>
+    query={DesignCountDocument}
+    {...props}
+  />
+);
+
+export type DesignCountProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    DesignCountQuery,
+    DesignCountQueryVariables
+  >;
+} &
+  TChildProps;
+export function withDesignCount<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignCountQuery,
+    DesignCountQueryVariables,
+    DesignCountProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignCountQuery,
+    DesignCountQueryVariables,
+    DesignCountProps<TChildProps, TDataName>
+  >(DesignCountDocument, {
+    alias: 'designCount',
+    ...operationOptions,
+  });
+}
+export type DesignCountQueryResult = ApolloReactCommon.QueryResult<
+  DesignCountQuery,
+  DesignCountQueryVariables
+>;
+export const BlogPostCountDocument = gql`
+  query BlogPostCount {
+    allMarkdownRemark {
+      totalCount
+      nodes {
+        id
+      }
+    }
+  }
+`;
+export type BlogPostCountComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables
+  >,
+  'query'
+>;
+
+export const BlogPostCountComponent = (props: BlogPostCountComponentProps) => (
+  <ApolloReactComponents.Query<BlogPostCountQuery, BlogPostCountQueryVariables>
+    query={BlogPostCountDocument}
+    {...props}
+  />
+);
+
+export type BlogPostCountProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables
+  >;
+} &
+  TChildProps;
+export function withBlogPostCount<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables,
+    BlogPostCountProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    BlogPostCountQuery,
+    BlogPostCountQueryVariables,
+    BlogPostCountProps<TChildProps, TDataName>
+  >(BlogPostCountDocument, {
+    alias: 'blogPostCount',
+    ...operationOptions,
+  });
+}
+export type BlogPostCountQueryResult = ApolloReactCommon.QueryResult<
+  BlogPostCountQuery,
+  BlogPostCountQueryVariables
+>;
+export const SeoDocument = gql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl
+        defaultImage: image
+        twitterUsername: twitterHandle
+      }
+    }
+  }
+`;
+export type SeoComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<SeoQuery, SeoQueryVariables>,
+  'query'
+>;
+
+export const SeoComponent = (props: SeoComponentProps) => (
+  <ApolloReactComponents.Query<SeoQuery, SeoQueryVariables>
+    query={SeoDocument}
+    {...props}
+  />
+);
+
+export type SeoProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<SeoQuery, SeoQueryVariables>;
+} &
+  TChildProps;
+export function withSeo<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    SeoQuery,
+    SeoQueryVariables,
+    SeoProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    SeoQuery,
+    SeoQueryVariables,
+    SeoProps<TChildProps, TDataName>
+  >(SeoDocument, {
+    alias: 'seo',
+    ...operationOptions,
+  });
+}
+export type SeoQueryResult = ApolloReactCommon.QueryResult<
+  SeoQuery,
+  SeoQueryVariables
+>;
+export const TwitterHandleDocument = gql`
+  query TwitterHandle {
+    site {
+      siteMetadata {
+        twitterHandle
+      }
+    }
+  }
+`;
+export type TwitterHandleComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    TwitterHandleQuery,
+    TwitterHandleQueryVariables
+  >,
+  'query'
+>;
+
+export const TwitterHandleComponent = (props: TwitterHandleComponentProps) => (
+  <ApolloReactComponents.Query<TwitterHandleQuery, TwitterHandleQueryVariables>
+    query={TwitterHandleDocument}
+    {...props}
+  />
+);
+
+export type TwitterHandleProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    TwitterHandleQuery,
+    TwitterHandleQueryVariables
+  >;
+} &
+  TChildProps;
+export function withTwitterHandle<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    TwitterHandleQuery,
+    TwitterHandleQueryVariables,
+    TwitterHandleProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    TwitterHandleQuery,
+    TwitterHandleQueryVariables,
+    TwitterHandleProps<TChildProps, TDataName>
+  >(TwitterHandleDocument, {
+    alias: 'twitterHandle',
+    ...operationOptions,
+  });
+}
+export type TwitterHandleQueryResult = ApolloReactCommon.QueryResult<
+  TwitterHandleQuery,
+  TwitterHandleQueryVariables
+>;
+export const DesignsPageDocument = gql`
+  query DesignsPage {
+    allBehanceProjects: allDesignsYaml {
+      nodes {
+        slug
+        name
+        description
+        tags
+      }
+    }
+    behanceImages: allFile(
+      filter: {
+        relativeDirectory: { regex: "/gatsby-source-behance-images/" }
+        name: { eq: "cover" }
+      }
+    ) {
+      nodes {
+        relativeDirectory
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  }
+  ${GatsbyImageSharpFluidFragmentDoc}
+`;
+export type DesignsPageComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    DesignsPageQuery,
+    DesignsPageQueryVariables
+  >,
+  'query'
+>;
+
+export const DesignsPageComponent = (props: DesignsPageComponentProps) => (
+  <ApolloReactComponents.Query<DesignsPageQuery, DesignsPageQueryVariables>
+    query={DesignsPageDocument}
+    {...props}
+  />
+);
+
+export type DesignsPageProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    DesignsPageQuery,
+    DesignsPageQueryVariables
+  >;
+} &
+  TChildProps;
+export function withDesignsPage<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignsPageQuery,
+    DesignsPageQueryVariables,
+    DesignsPageProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignsPageQuery,
+    DesignsPageQueryVariables,
+    DesignsPageProps<TChildProps, TDataName>
+  >(DesignsPageDocument, {
+    alias: 'designsPage',
+    ...operationOptions,
+  });
+}
+export type DesignsPageQueryResult = ApolloReactCommon.QueryResult<
+  DesignsPageQuery,
+  DesignsPageQueryVariables
+>;
+export const PostsDocument = gql`
+  query Posts {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
+      nodes {
+        ...BlogPost
+      }
+    }
+  }
+  ${BlogPostFragmentDoc}
+`;
+export type PostsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<PostsQuery, PostsQueryVariables>,
+  'query'
+>;
+
+export const PostsComponent = (props: PostsComponentProps) => (
+  <ApolloReactComponents.Query<PostsQuery, PostsQueryVariables>
+    query={PostsDocument}
+    {...props}
+  />
+);
+
+export type PostsProps<TChildProps = {}, TDataName extends string = 'data'> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<PostsQuery, PostsQueryVariables>;
+} &
+  TChildProps;
+export function withPosts<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    PostsQuery,
+    PostsQueryVariables,
+    PostsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    PostsQuery,
+    PostsQueryVariables,
+    PostsProps<TChildProps, TDataName>
+  >(PostsDocument, {
+    alias: 'posts',
+    ...operationOptions,
+  });
+}
+export type PostsQueryResult = ApolloReactCommon.QueryResult<
+  PostsQuery,
+  PostsQueryVariables
+>;
+export const SideProjectsDocument = gql`
+  query SideProjects {
+    allSideprojectsYaml {
+      nodes {
+        id
+        title
+        link
+        github
+        description
+        image {
+          childImageSharp {
+            ...FluidImage
+          }
+        }
+        tags
+      }
+    }
+  }
+  ${FluidImageFragmentDoc}
+`;
+export type SideProjectsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    SideProjectsQuery,
+    SideProjectsQueryVariables
+  >,
+  'query'
+>;
+
+export const SideProjectsComponent = (props: SideProjectsComponentProps) => (
+  <ApolloReactComponents.Query<SideProjectsQuery, SideProjectsQueryVariables>
+    query={SideProjectsDocument}
+    {...props}
+  />
+);
+
+export type SideProjectsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    SideProjectsQuery,
+    SideProjectsQueryVariables
+  >;
+} &
+  TChildProps;
+export function withSideProjects<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    SideProjectsQuery,
+    SideProjectsQueryVariables,
+    SideProjectsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    SideProjectsQuery,
+    SideProjectsQueryVariables,
+    SideProjectsProps<TChildProps, TDataName>
+  >(SideProjectsDocument, {
+    alias: 'sideProjects',
+    ...operationOptions,
+  });
+}
+export type SideProjectsQueryResult = ApolloReactCommon.QueryResult<
+  SideProjectsQuery,
+  SideProjectsQueryVariables
+>;
+export const UseDesignsDocument = gql`
+  query UseDesigns {
+    projects: allDesignsYaml {
+      nodes {
+        slug
+        name
+        description
+        tags
+      }
+    }
+    images: allFile(
+      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+    ) {
+      nodes {
+        id
+        name
+        relativeDirectory
+        childImageSharp {
+          fluid {
+            ...GatsbyImageSharpFluid_tracedSVG
+          }
+        }
+      }
+    }
+  }
+  ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}
+`;
+export type UseDesignsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    UseDesignsQuery,
+    UseDesignsQueryVariables
+  >,
+  'query'
+>;
+
+export const UseDesignsComponent = (props: UseDesignsComponentProps) => (
+  <ApolloReactComponents.Query<UseDesignsQuery, UseDesignsQueryVariables>
+    query={UseDesignsDocument}
+    {...props}
+  />
+);
+
+export type UseDesignsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    UseDesignsQuery,
+    UseDesignsQueryVariables
+  >;
+} &
+  TChildProps;
+export function withUseDesigns<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    UseDesignsQuery,
+    UseDesignsQueryVariables,
+    UseDesignsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    UseDesignsQuery,
+    UseDesignsQueryVariables,
+    UseDesignsProps<TChildProps, TDataName>
+  >(UseDesignsDocument, {
+    alias: 'useDesigns',
+    ...operationOptions,
+  });
+}
+export type UseDesignsQueryResult = ApolloReactCommon.QueryResult<
+  UseDesignsQuery,
+  UseDesignsQueryVariables
+>;
+export const AllSiteTagsDocument = gql`
+  query AllSiteTags {
+    blogTags: allMarkdownRemark(
+      limit: 2000
+      sort: { fields: frontmatter___tags }
+    ) {
+      group(field: frontmatter___tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
+    }
+    designTags: allDesignsYaml(
+      limit: 2000
+      sort: { fields: tags, order: ASC }
+    ) {
+      group(field: tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
+    }
+    sideProjectTags: allSideprojectsYaml(
+      limit: 2000
+      sort: { order: ASC, fields: tags }
+    ) {
+      group(field: tags) {
+        tag: fieldValue
+        qty: totalCount
+      }
+    }
+  }
+`;
+export type AllSiteTagsComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables
+  >,
+  'query'
+>;
+
+export const AllSiteTagsComponent = (props: AllSiteTagsComponentProps) => (
+  <ApolloReactComponents.Query<AllSiteTagsQuery, AllSiteTagsQueryVariables>
+    query={AllSiteTagsDocument}
+    {...props}
+  />
+);
+
+export type AllSiteTagsProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables
+  >;
+} &
+  TChildProps;
+export function withAllSiteTags<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables,
+    AllSiteTagsProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    AllSiteTagsQuery,
+    AllSiteTagsQueryVariables,
+    AllSiteTagsProps<TChildProps, TDataName>
+  >(AllSiteTagsDocument, {
+    alias: 'allSiteTags',
+    ...operationOptions,
+  });
+}
+export type AllSiteTagsQueryResult = ApolloReactCommon.QueryResult<
+  AllSiteTagsQuery,
+  AllSiteTagsQueryVariables
+>;
+export const IndexPageDocument = gql`
+  query IndexPage($limit: Int = 3) {
+    posts: allMarkdownRemark(limit: $limit) {
+      nodes {
+        ...BlogPostArticle
+      }
+    }
+    designs: allDesignsYaml(limit: $limit, sort: { fields: slug, order: ASC }) {
+      nodes {
+        ...DesignArticle
+      }
+    }
+    designCovers: allFile(
+      limit: $limit
+      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+      sort: { fields: relativeDirectory, order: ASC }
+    ) {
+      nodes {
+        childImageSharp {
+          fluid(
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+    allGithubPinneditems(limit: $limit) {
+      nodes {
+        primaryLanguage {
+          name
+          color
+        }
+        openGraphImageUrl
+        name
+        url
+        createdAt(formatString: "MMMM YYYY")
+        description
+        homepageUrl
+        id
+      }
+    }
+  }
+  ${BlogPostArticleFragmentDoc}
+  ${DesignArticleFragmentDoc}
+  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
+`;
+export type IndexPageComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    IndexPageQuery,
+    IndexPageQueryVariables
+  >,
+  'query'
+>;
+
+export const IndexPageComponent = (props: IndexPageComponentProps) => (
+  <ApolloReactComponents.Query<IndexPageQuery, IndexPageQueryVariables>
+    query={IndexPageDocument}
+    {...props}
+  />
+);
+
+export type IndexPageProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    IndexPageQuery,
+    IndexPageQueryVariables
+  >;
+} &
+  TChildProps;
+export function withIndexPage<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    IndexPageQuery,
+    IndexPageQueryVariables,
+    IndexPageProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    IndexPageQuery,
+    IndexPageQueryVariables,
+    IndexPageProps<TChildProps, TDataName>
+  >(IndexPageDocument, {
+    alias: 'indexPage',
+    ...operationOptions,
+  });
+}
+export type IndexPageQueryResult = ApolloReactCommon.QueryResult<
+  IndexPageQuery,
+  IndexPageQueryVariables
+>;
+export const BlogListDocument = gql`
+  query BlogList($skip: Int, $limit: Int) {
+    posts: allMarkdownRemark(
+      skip: $skip
+      limit: $limit
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      nodes {
+        ...BlogPostArticle
+      }
+    }
+  }
+  ${BlogPostArticleFragmentDoc}
+`;
+export type BlogListComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    BlogListQuery,
+    BlogListQueryVariables
+  >,
+  'query'
+>;
+
+export const BlogListComponent = (props: BlogListComponentProps) => (
+  <ApolloReactComponents.Query<BlogListQuery, BlogListQueryVariables>
+    query={BlogListDocument}
+    {...props}
+  />
+);
+
+export type BlogListProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    BlogListQuery,
+    BlogListQueryVariables
+  >;
+} &
+  TChildProps;
+export function withBlogList<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogListQuery,
+    BlogListQueryVariables,
+    BlogListProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    BlogListQuery,
+    BlogListQueryVariables,
+    BlogListProps<TChildProps, TDataName>
+  >(BlogListDocument, {
+    alias: 'blogList',
+    ...operationOptions,
+  });
+}
+export type BlogListQueryResult = ApolloReactCommon.QueryResult<
+  BlogListQuery,
+  BlogListQueryVariables
+>;
+export const BlogTemplateDocument = gql`
+  query BlogTemplate($slug: String!, $prev: String, $next: String) {
+    post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
+      url
+      disqusIdentifier
+      timeToRead
+      htmlAst
+      ...Frontmatter
+    }
+    prev: markdownRemark(frontmatter: { path: { eq: $prev } }) {
+      frontmatter {
+        previousPagePath: path
+        previousPageText: title
+      }
+    }
+    next: markdownRemark(frontmatter: { path: { eq: $next } }) {
+      frontmatter {
+        nextPagePath: path
+        nextPageText: title
+      }
+    }
+    site {
+      siteMetadata {
+        twitterHandle
+        disqusShortName
+      }
+    }
+  }
+  ${FrontmatterFragmentDoc}
+`;
+export type BlogTemplateComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: BlogTemplateQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const BlogTemplateComponent = (props: BlogTemplateComponentProps) => (
+  <ApolloReactComponents.Query<BlogTemplateQuery, BlogTemplateQueryVariables>
+    query={BlogTemplateDocument}
+    {...props}
+  />
+);
+
+export type BlogTemplateProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables
+  >;
+} &
+  TChildProps;
+export function withBlogTemplate<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables,
+    BlogTemplateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    BlogTemplateQuery,
+    BlogTemplateQueryVariables,
+    BlogTemplateProps<TChildProps, TDataName>
+  >(BlogTemplateDocument, {
+    alias: 'blogTemplate',
+    ...operationOptions,
+  });
+}
+export type BlogTemplateQueryResult = ApolloReactCommon.QueryResult<
+  BlogTemplateQuery,
+  BlogTemplateQueryVariables
+>;
+export const DesignListDocument = gql`
+  query DesignList($skip: Int!, $limit: Int!) {
+    allDesignsYaml(
+      skip: $skip
+      limit: $limit
+      sort: { fields: slug, order: ASC }
+    ) {
+      nodes {
+        ...DesignArticle
+      }
+    }
+    allFile(
+      skip: $skip
+      limit: $limit
+      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+      sort: { fields: relativeDirectory, order: ASC }
+    ) {
+      nodes {
+        relativeDirectory
+        sourceInstanceName
+        childImageSharp {
+          fixed(
+            height: 200
+            width: 200
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+  }
+  ${DesignArticleFragmentDoc}
+  ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}
+`;
+export type DesignListComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    DesignListQuery,
+    DesignListQueryVariables
+  >,
+  'query'
+> &
+  ({ variables: DesignListQueryVariables; skip?: boolean } | { skip: boolean });
+
+export const DesignListComponent = (props: DesignListComponentProps) => (
+  <ApolloReactComponents.Query<DesignListQuery, DesignListQueryVariables>
+    query={DesignListDocument}
+    {...props}
+  />
+);
+
+export type DesignListProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    DesignListQuery,
+    DesignListQueryVariables
+  >;
+} &
+  TChildProps;
+export function withDesignList<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignListQuery,
+    DesignListQueryVariables,
+    DesignListProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignListQuery,
+    DesignListQueryVariables,
+    DesignListProps<TChildProps, TDataName>
+  >(DesignListDocument, {
+    alias: 'designList',
+    ...operationOptions,
+  });
+}
+export type DesignListQueryResult = ApolloReactCommon.QueryResult<
+  DesignListQuery,
+  DesignListQueryVariables
+>;
+export const DesignsTemplateDocument = gql`
+  query DesignsTemplate($slug: String!) {
+    design: designsYaml(slug: { regex: $slug }) {
+      id
+      slug
+      name
+      description
+      tags
+      tools {
+        title
+      }
+    }
+    images: allFile(
+      filter: {
+        relativePath: { regex: $slug }
+        sourceInstanceName: { eq: "designs" }
+      }
+    ) {
+      nodes {
+        id
+        name
+        publicURL
+        childImageSharp {
+          fluid(
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+      totalCount
+    }
+    seoImagePath: file(
+      relativePath: { regex: $slug }
+      sourceInstanceName: { eq: "designs" }
+      name: { eq: "cover" }
+    ) {
+      publicURL
+    }
+  }
+  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
+`;
+export type DesignsTemplateComponentProps = Omit<
+  ApolloReactComponents.QueryComponentOptions<
+    DesignsTemplateQuery,
+    DesignsTemplateQueryVariables
+  >,
+  'query'
+> &
+  (
+    | { variables: DesignsTemplateQueryVariables; skip?: boolean }
+    | { skip: boolean }
+  );
+
+export const DesignsTemplateComponent = (
+  props: DesignsTemplateComponentProps
+) => (
+  <ApolloReactComponents.Query<
+    DesignsTemplateQuery,
+    DesignsTemplateQueryVariables
+  >
+    query={DesignsTemplateDocument}
+    {...props}
+  />
+);
+
+export type DesignsTemplateProps<
+  TChildProps = {},
+  TDataName extends string = 'data'
+> = {
+  [key in TDataName]: ApolloReactHoc.DataValue<
+    DesignsTemplateQuery,
+    DesignsTemplateQueryVariables
+  >;
+} &
+  TChildProps;
+export function withDesignsTemplate<
+  TProps,
+  TChildProps = {},
+  TDataName extends string = 'data'
+>(
+  operationOptions?: ApolloReactHoc.OperationOption<
+    TProps,
+    DesignsTemplateQuery,
+    DesignsTemplateQueryVariables,
+    DesignsTemplateProps<TChildProps, TDataName>
+  >
+) {
+  return ApolloReactHoc.withQuery<
+    TProps,
+    DesignsTemplateQuery,
+    DesignsTemplateQueryVariables,
+    DesignsTemplateProps<TChildProps, TDataName>
+  >(DesignsTemplateDocument, {
+    alias: 'designsTemplate',
+    ...operationOptions,
+  });
+}
+export type DesignsTemplateQueryResult = ApolloReactCommon.QueryResult<
   DesignsTemplateQuery,
-  DesignsTemplateQueryVariables,
-  DesignsTemplateProps<TChildProps, TDataName>>) {
-    return ApolloReactHoc.withQuery<TProps, DesignsTemplateQuery, DesignsTemplateQueryVariables, DesignsTemplateProps<TChildProps, TDataName>>(DesignsTemplateDocument, {
-      alias: 'designsTemplate',
-      ...operationOptions
-    });
-};
-export type DesignsTemplateQueryResult = ApolloReactCommon.QueryResult<DesignsTemplateQuery, DesignsTemplateQueryVariables>;
+  DesignsTemplateQueryVariables
+>;

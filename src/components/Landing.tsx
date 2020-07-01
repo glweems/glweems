@@ -3,16 +3,12 @@ import { Link } from 'gatsby';
 import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
-import theme from 'styled-theming';
-import { base, blue, purple, red, yellow } from '../theme';
 import { accounts } from '../utils/data';
 import { rhythm } from '../utils/typography';
 import Box from './Common/Box';
 import Button from './Common/Button';
 import SocialIcon from './Common/SocialIcon';
 import { GhostSVG } from './Icons';
-
-const garrettWeems = theme('mode', { light: blue, dark: red });
 
 export default function Landing() {
   const icons = {
@@ -104,10 +100,12 @@ export default function Landing() {
 
 const Wrapper = styled(Box)`
   --bg-color: ${(props) =>
-    props.theme.mode === 'dark' ? darken(0.1, purple) : darken(0.3, yellow)};
+    props.theme.mode === 'dark'
+      ? darken(0.1, props.theme.colors.purple)
+      : darken(0.3, props.theme.colors.yellow)};
 
   position: relative;
-  color: ${base.dark};
+  color: ${(props) => props.theme.colors.dark};
   background: linear-gradient(
       45deg,
       transparent 49%,
@@ -124,8 +122,8 @@ const Wrapper = styled(Box)`
       transparent 51%,
       transparent
     );
-  background-color: ${({ theme: { mode } }) =>
-    mode === 'dark' ? purple : yellow};
+  background-color: ${({ theme: { mode, colors } }) =>
+    mode === 'dark' ? colors.purple : colors.yellow};
   background-position: 0% 0%;
   background-size: 16px 16px;
   border: 1px var(--bg-color) solid;
@@ -141,14 +139,17 @@ const Wrapper = styled(Box)`
   }
 
   span {
-    color: ${garrettWeems};
+    color: ${(props) =>
+      props.theme.isDarkMode
+        ? props.theme.colors.red
+        : props.theme.colors.blue};
   }
 
   .icons {
     display: flex;
-    margin-bottom: ${rhythm(1)};
+    margin-bottom: ${(props) => props.theme.space[3]};
     > div {
-      margin-right: ${rhythm(1)};
+      margin-right: ${(props) => props.theme.space[3]};
       color: black !important;
       border: none;
 
@@ -163,10 +164,10 @@ const Wrapper = styled(Box)`
   }
 
   button {
-    margin-bottom: ${rhythm(1)};
-    color: ${base.light};
-    background: ${blue};
-    border-color: ${darken(0.05, blue)};
+    margin-bottom: ${(props) => props.theme.space[3]};
+    color: ${(props) => props.theme.colors.light};
+    background: ${(props) => props.theme.colors.blue};
+    border-color: ${(props) => darken(0.05, props.theme.colors.blue)};
   }
 `;
 

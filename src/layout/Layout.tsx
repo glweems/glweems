@@ -1,41 +1,54 @@
 import React from 'react';
 import styled from 'styled-components';
-import Container from '../components//Common/Container';
+import Container from '../components/Common/Container';
+import Navigation from './Navigation';
+import { media } from '../theme';
 
 export default function Layout({ children }) {
   return (
-    <LayoutContainer>
-      <div className="grid-container">{children}</div>
-    </LayoutContainer>
+    // <React.StrictMode>
+    <Container smFlush>
+      <LayoutContainer>
+        <Navigation className="navigation" />
+        <main>
+          <React.StrictMode>{children}</React.StrictMode>
+        </main>
+      </LayoutContainer>
+    </Container>
+    // </React.StrictMode>
   );
 }
 
-const LayoutContainer = styled(Container)`
-  .grid-container {
-    display: grid;
+const LayoutContainer = styled.div`
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: ${({ theme }) => theme.space[2]};
+  margin: 0 auto;
 
-    grid-template-areas: 'left content right';
-    grid-template-columns: minmax(0, auto) 1fr minmax(0, auto);
-    gap: ${({ theme }) => theme.space[2]};
-    margin: 0 auto;
-
-    > * {
-      grid-column: 1/-1;
-    }
-    header {
-      grid-row: 1/2;
-    }
-    .content,
-    main {
-      grid-area: content;
-      padding: ${({ theme }) => theme.space[6]} 0;
-    }
-
-    .left {
-      position: sticky;
-      top: 0;
-      grid-area: left;
-      max-height: 100vh;
-    }
+  main {
+    grid-column: 1/-1;
   }
+
+  .navigation {
+    grid-column: 1 / -1;
+  }
+
+  ${media.greaterThan('sm')`
+  main {
+    grid-column: 2 / -1;
+  }
+
+  .navigation {
+    grid-column: 1 / 2;
+    position: sticky;
+    top: 0;
+    max-height: 100vh;
+  }
+
+  /* main, */
+  .navigation {
+    padding-top: ${({ theme }) => theme.space[6]};
+  }
+
+  `};
 `;
