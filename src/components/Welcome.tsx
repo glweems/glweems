@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import { darken } from 'polished';
 import { motion } from 'framer-motion';
-import Container from './common/Container';
+import Container from './Common/Container';
 import config from '../../.gatsby/config';
 import Link from './Common/Link';
 
