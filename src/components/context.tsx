@@ -18,13 +18,13 @@ export function wrapRootElement({ element }: WrapRootElementBrowserArgs) {
 
 export function wrapPageElement({
   element,
-  props,
+  props: { path },
 }: WrapPageElementBrowserArgs) {
   return (
     <React.Fragment>
       <SEO />
       <GlobalStyle />
-      <Layout>{element}</Layout>
+      <Layout path={path}>{element}</Layout>
     </React.Fragment>
   );
 }

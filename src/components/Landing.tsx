@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
 import { Link } from 'gatsby';
+import { shuffle } from 'lodash';
 import { darken } from 'polished';
 import React from 'react';
 import styled from 'styled-components';
+import { baseColors } from '../theme';
 import { accounts } from '../utils/data';
+import { pick } from '../utils/helpers';
 import { rhythm } from '../utils/typography';
 import Box from './Common/Box';
 import Button from './Common/Button';
@@ -11,53 +14,13 @@ import SocialIcon from './Common/SocialIcon';
 import { GhostSVG } from './Icons';
 
 export default function Landing() {
-  const icons = {
-    hidden: { opacity: 1, scale: 0, justifyContent: 'space-between' },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: 1,
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const container = {
-    hidden: { opacity: 1, scale: 0 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delay: 0.3,
-        when: 'beforeChildren',
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const item = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  };
-
   return (
     <Box padding={3} height="100vh" position="relative">
       <AnimatedWrapper container height="100%">
         <Box display="flex">
-          <GhostSVG />
-          <GhostSVG />
-          <GhostSVG />
+          <Ghosts />
         </Box>
-        {/*     <Box as={motion.div}>
-          {ghosts.nodes.map((node) => (
-            <Img key={node.name} fixed={node.childImageSharp.fixed as FixedObject} draggable={false} />
-          ))}
-        </Box> */}
+
         <motion.div
           className="container"
           variants={container}
@@ -170,5 +133,53 @@ const Wrapper = styled(Box)`
     border-color: ${(props) => darken(0.05, props.theme.colors.blue)};
   }
 `;
+
+const icons = {
+  hidden: { opacity: 1, scale: 0, justifyContent: 'space-between' },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 1,
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const container = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 0.3,
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const item = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+  },
+};
+
+const ghostColors = pick(baseColors, 'blue', 'mint', 'green', 'red');
+
+function Ghosts() {
+  return (
+    <div>
+      {shuffle(Object.entries(ghostColors).map(([key, value]) => key)).map(
+        (color) => (
+          <GhostSVG color={color} />
+        )
+      )}
+    </div>
+  );
+}
 
 const AnimatedWrapper = motion.custom(Wrapper);

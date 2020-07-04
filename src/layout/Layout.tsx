@@ -1,21 +1,27 @@
-import React from 'react';
+import { PageProps } from 'gatsby';
+import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import Container from '../components/Common/Container';
-import Navigation from './Navigation';
+import Welcome from '../components/Welcome';
 import { media } from '../theme';
+import Navigation from './Navigation';
+export type LayoutProps = PropsWithChildren<Pick<PageProps, 'path'>>;
 
-export default function Layout({ children }) {
+export default function Layout({ children, path }: LayoutProps) {
   return (
-    // <React.StrictMode>
-    <Container smFlush>
-      <LayoutContainer>
-        <Navigation className="navigation" />
-        <main>
-          <React.StrictMode>{children}</React.StrictMode>
-        </main>
-      </LayoutContainer>
-    </Container>
-    // </React.StrictMode>
+    <React.StrictMode>
+      <React.Fragment>
+        {path === '/' && <Welcome />}
+        <Container>
+          <LayoutContainer>
+            <Navigation className="navigation" />
+            <main>
+              <React.StrictMode>{children}</React.StrictMode>
+            </main>
+          </LayoutContainer>
+        </Container>
+      </React.Fragment>
+    </React.StrictMode>
   );
 }
 

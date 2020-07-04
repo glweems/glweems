@@ -1,17 +1,13 @@
-import packageJson from '../package.json';
 import {
   faBehanceSquare,
   faGithubSquare,
   faInstagramSquare,
   faLinkedin,
   faMedium,
-  faReadme,
 } from '@fortawesome/free-brands-svg-icons';
-import {
-  faEnvelope,
-  faPenNib,
-  IconDefinition,
-} from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import packageJson from '../package.json';
+
 const config = {
   defaultTitle: 'Glweems',
   logo: 'https://glweems.com/favicon/logo-48.png',
@@ -42,7 +38,7 @@ const config = {
   links: [
     { path: '/blog', name: 'Articles' },
     { path: '/designs', name: 'Designs' },
-    { path: '/projects', name: 'Projects' },
+    // { path: '/projects', name: 'Projects' },
     { path: '/about', name: 'About' },
     { path: '/resume', name: 'Resume' },
   ],

@@ -1,49 +1,52 @@
+import { motion } from 'framer-motion';
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-import SEO from '../components/SEO';
-import Tags from '../components/Tags';
+import styled from 'styled-components';
 import Container from '../components/Common/Container';
 import Text from '../components/Common/Text';
+import SEO from '../components/SEO';
+import Tags from '../components/Tags';
 import { DesignsTemplateQuery } from '../types/generated';
-
 export default function DesignTemplate({
   data,
 }: PageProps<DesignsTemplateQuery>) {
-  const { design, images } = data;
-  const { name, description } = design as Required<
-    DesignsTemplateQuery['design']
-  >;
-
-  const tags = design?.tags ?? [];
-
   return (
     <React.Fragment>
       <SEO
-        title={name}
+        title={data.design.name}
         article
-        keywords={tags}
-        description={description}
+        keywords={data.design.tags}
+        description={data.design.description}
         image={data.seoImagePath.publicURL}
       />
 
-      <Container smFlush>
-        <Text variant="title">{name}</Text>
-        <Text>{description}</Text>
+      <Container>
+        <Text variant="title">{data.design.name}</Text>
+        <Text>{data.design.description}</Text>
 
-        {tags && <Tags tags={design.tags} />}
-
-        {images.nodes.map((image, index) => (
-          <Img
-            key={`${name}-image-${index}`}
-            fluid={image?.childImageSharp?.fluid}
-            draggable={false}
-          />
-        ))}
+        <Tags tags={data.design.tags} />
       </Container>
+      <ImagesWrapper>
+        {data.images.nodes.map((image, index) => (
+          <motion.div key={`${data.design.name}-image-${index}`}>
+            <Img
+              fluid={image?.childImageSharp?.fluid}
+              draggable={false}
+              fadeIn
+            />
+          </motion.div>
+        ))}
+      </ImagesWrapper>
     </React.Fragment>
   );
 }
+
+const ImagesWrapper = styled.div`
+  div {
+    margin: ${({ theme }) => theme.space[3]} 0;
+  }
+`;
 
 export const Query = graphql`
   query DesignsTemplate($slug: String!) {
@@ -68,12 +71,7 @@ export const Query = graphql`
         name
         publicURL
         childImageSharp {
-          fluid(
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          ...FluidImage
         }
       }
       totalCount

@@ -5055,38 +5055,17 @@ export type DesignsPageQuery = { __typename?: 'Query' } & {
 
 export type FixedImageFragment = { __typename?: 'ImageSharp' } & {
   fixed?: Maybe<
-    { __typename?: 'ImageSharpFixed' } & Pick<
-      ImageSharpFixed,
-      | 'originalName'
-      | 'base64'
-      | 'tracedSVG'
-      | 'aspectRatio'
-      | 'srcWebp'
-      | 'srcSetWebp'
-      | 'width'
-      | 'height'
-      | 'srcSet'
-    >
+    {
+      __typename?: 'ImageSharpFixed';
+    } & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
   >;
 };
 
 export type FluidImageFragment = { __typename?: 'ImageSharp' } & {
   fluid?: Maybe<
-    { __typename?: 'ImageSharpFluid' } & Pick<
-      ImageSharpFluid,
-      | 'base64'
-      | 'tracedSVG'
-      | 'srcWebp'
-      | 'srcSetWebp'
-      | 'originalImg'
-      | 'originalName'
-      | 'aspectRatio'
-      | 'sizes'
-      | 'presentationWidth'
-      | 'presentationHeight'
-      | 'src'
-      | 'srcSet'
-    >
+    {
+      __typename?: 'ImageSharpFluid';
+    } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
   >;
 };
 
@@ -5102,13 +5081,7 @@ export type FrontmatterFragment = { __typename?: 'MarkdownRemark' } & {
             'id' | 'relativePath' | 'publicURL'
           > & {
               childImageSharp?: Maybe<
-                { __typename?: 'ImageSharp' } & {
-                  fluid?: Maybe<
-                    {
-                      __typename?: 'ImageSharpFluid';
-                    } & GatsbyImageSharpFluid_TracedSvgFragment
-                  >;
-                }
+                { __typename?: 'ImageSharp' } & FluidImageFragment
               >;
             }
         >;
@@ -5122,30 +5095,24 @@ export type BlogPostFragment = { __typename?: 'MarkdownRemark' } & Pick<
 > &
   FrontmatterFragment;
 
-export type DesignArticleFragment = { __typename?: 'DesignsYaml' } & Pick<
+export type DesignCardFragment = { __typename?: 'DesignsYaml' } & Pick<
   DesignsYaml,
   'name' | 'description' | 'slug'
 >;
 
-export type BlogPostArticleFragment = { __typename?: 'MarkdownRemark' } & Pick<
+export type BlogPostCardFragment = { __typename?: 'MarkdownRemark' } & Pick<
   MarkdownRemark,
   'id' | 'excerpt'
 > & {
     frontmatter?: Maybe<
       { __typename?: 'MarkdownRemarkFrontmatter' } & Pick<
         MarkdownRemarkFrontmatter,
-        'id' | 'title' | 'path' | 'date'
+        'id' | 'title' | 'path' | 'subtitle' | 'date'
       > & {
           thumbnail?: Maybe<
             { __typename?: 'File' } & {
               childImageSharp?: Maybe<
-                { __typename?: 'ImageSharp' } & {
-                  fluid?: Maybe<
-                    {
-                      __typename?: 'ImageSharpFluid';
-                    } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
-                  >;
-                }
+                { __typename?: 'ImageSharp' } & FluidImageFragment
               >;
             }
           >;
@@ -5248,10 +5215,10 @@ export type IndexPageQueryVariables = Exact<{
 
 export type IndexPageQuery = { __typename?: 'Query' } & {
   posts: { __typename?: 'MarkdownRemarkConnection' } & {
-    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostArticleFragment>;
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostCardFragment>;
   };
   designs: { __typename?: 'DesignsYamlConnection' } & {
-    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignArticleFragment>;
+    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignCardFragment>;
   };
   designCovers: { __typename?: 'FileConnection' } & {
     nodes: Array<
@@ -5298,7 +5265,7 @@ export type BlogListQueryVariables = Exact<{
 
 export type BlogListQuery = { __typename?: 'Query' } & {
   posts: { __typename?: 'MarkdownRemarkConnection' } & {
-    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostArticleFragment>;
+    nodes: Array<{ __typename?: 'MarkdownRemark' } & BlogPostCardFragment>;
   };
 };
 
@@ -5355,7 +5322,7 @@ export type DesignListQueryVariables = Exact<{
 
 export type DesignListQuery = { __typename?: 'Query' } & {
   allDesignsYaml: { __typename?: 'DesignsYamlConnection' } & {
-    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignArticleFragment>;
+    nodes: Array<{ __typename?: 'DesignsYaml' } & DesignCardFragment>;
   };
   allFile: { __typename?: 'FileConnection' } & {
     nodes: Array<
@@ -5365,10 +5332,10 @@ export type DesignListQuery = { __typename?: 'Query' } & {
       > & {
           childImageSharp?: Maybe<
             { __typename?: 'ImageSharp' } & {
-              fixed?: Maybe<
+              fluid?: Maybe<
                 {
-                  __typename?: 'ImageSharpFixed';
-                } & GatsbyImageSharpFixed_WithWebp_TracedSvgFragment
+                  __typename?: 'ImageSharpFluid';
+                } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
               >;
             }
           >;
@@ -5406,13 +5373,7 @@ export type DesignsTemplateQuery = { __typename?: 'Query' } & {
       nodes: Array<
         { __typename?: 'File' } & Pick<File, 'id' | 'name' | 'publicURL'> & {
             childImageSharp?: Maybe<
-              { __typename?: 'ImageSharp' } & {
-                fluid?: Maybe<
-                  {
-                    __typename?: 'ImageSharpFluid';
-                  } & GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
-                >;
-              }
+              { __typename?: 'ImageSharp' } & FluidImageFragment
             >;
           }
       >;
@@ -5441,17 +5402,6 @@ export const GatsbyImageSharpFixed_TracedSvgFragmentDoc = gql`
 export const GatsbyImageSharpFixed_WithWebpFragmentDoc = gql`
   fragment GatsbyImageSharpFixed_withWebp on ImageSharpFixed {
     base64
-    width
-    height
-    src
-    srcSet
-    srcWebp
-    srcSetWebp
-  }
-`;
-export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
-  fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
-    tracedSVG
     width
     height
     src
@@ -5491,6 +5441,15 @@ export const GatsbyImageSharpFluidLimitPresentationSizeFragmentDoc = gql`
   fragment GatsbyImageSharpFluidLimitPresentationSize on ImageSharpFluid {
     maxHeight: presentationHeight
     maxWidth: presentationWidth
+  }
+`;
+export const GatsbyImageSharpFluid_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    sizes
   }
 `;
 export const GatsbyImageSharpFluid_WithWebpFragmentDoc = gql`
@@ -5638,54 +5597,51 @@ export const GatsbyImageSharpSizes_WithWebp_NoBase64FragmentDoc = gql`
     sizes
   }
 `;
+export const GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFixed_withWebp_tracedSVG on ImageSharpFixed {
+    tracedSVG
+    width
+    height
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+  }
+`;
 export const FixedImageFragmentDoc = gql`
   fragment FixedImage on ImageSharp {
-    fixed(width: $width, height: $height) {
-      originalName
-      base64
-      tracedSVG
-      aspectRatio
-      srcWebp
-      srcSetWebp
-      originalName
-      width
-      height
-      srcSet
-      srcSetWebp
-      base64
-      aspectRatio
+    fixed(
+      width: $width
+      height: $height
+      traceSVG: { color: "#d0c1fa", background: "transparent" }
+      cropFocus: CENTER
+    ) {
+      ...GatsbyImageSharpFixed_withWebp_tracedSVG
     }
+  }
+  ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}
+`;
+export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
+  fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
+    tracedSVG
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
   }
 `;
 export const FluidImageFragmentDoc = gql`
   fragment FluidImage on ImageSharp {
     fluid(
-      maxWidth: 630
-      traceSVG: { background: "transparent", color: "#d0c1fa", threshold: 6 }
+      traceSVG: { color: "#d0c1fa", background: "transparent", threshold: 2 }
+      cropFocus: CENTER
     ) {
-      base64
-      tracedSVG
-      srcWebp
-      srcSetWebp
-      originalImg
-      originalName
-      aspectRatio
-      sizes
-      presentationWidth
-      presentationHeight
-      src
-      srcSet
+      ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }
-`;
-export const GatsbyImageSharpFluid_TracedSvgFragmentDoc = gql`
-  fragment GatsbyImageSharpFluid_tracedSVG on ImageSharpFluid {
-    tracedSVG
-    aspectRatio
-    src
-    srcSet
-    sizes
-  }
+  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
 `;
 export const FrontmatterFragmentDoc = gql`
   fragment Frontmatter on MarkdownRemark {
@@ -5702,14 +5658,12 @@ export const FrontmatterFragmentDoc = gql`
         relativePath
         publicURL
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
+          ...FluidImage
         }
       }
     }
   }
-  ${GatsbyImageSharpFluid_TracedSvgFragmentDoc}
+  ${FluidImageFragmentDoc}
 `;
 export const BlogPostFragmentDoc = gql`
   fragment BlogPost on MarkdownRemark {
@@ -5720,46 +5674,31 @@ export const BlogPostFragmentDoc = gql`
   }
   ${FrontmatterFragmentDoc}
 `;
-export const DesignArticleFragmentDoc = gql`
-  fragment DesignArticle on DesignsYaml {
+export const DesignCardFragmentDoc = gql`
+  fragment DesignCard on DesignsYaml {
     name
     description
     slug
   }
 `;
-export const GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc = gql`
-  fragment GatsbyImageSharpFluid_withWebp_tracedSVG on ImageSharpFluid {
-    tracedSVG
-    aspectRatio
-    src
-    srcSet
-    srcWebp
-    srcSetWebp
-    sizes
-  }
-`;
-export const BlogPostArticleFragmentDoc = gql`
-  fragment BlogPostArticle on MarkdownRemark {
+export const BlogPostCardFragmentDoc = gql`
+  fragment BlogPostCard on MarkdownRemark {
     id
     excerpt(pruneLength: 200)
     frontmatter {
       id
       title
       path
+      subtitle
       date(formatString: "MMMM YYYY")
       thumbnail {
         childImageSharp {
-          fluid(
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          ...FluidImage
         }
       }
     }
   }
-  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
+  ${FluidImageFragmentDoc}
 `;
 export const CreateBlogPostPagesDocument = gql`
   query CreateBlogPostPages {
@@ -6499,12 +6438,12 @@ export const IndexPageDocument = gql`
   query IndexPage($limit: Int = 3) {
     posts: allMarkdownRemark(limit: $limit) {
       nodes {
-        ...BlogPostArticle
+        ...BlogPostCard
       }
     }
     designs: allDesignsYaml(limit: $limit, sort: { fields: slug, order: ASC }) {
       nodes {
-        ...DesignArticle
+        ...DesignCard
       }
     }
     designCovers: allFile(
@@ -6539,8 +6478,8 @@ export const IndexPageDocument = gql`
       }
     }
   }
-  ${BlogPostArticleFragmentDoc}
-  ${DesignArticleFragmentDoc}
+  ${BlogPostCardFragmentDoc}
+  ${DesignCardFragmentDoc}
   ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
 `;
 export type IndexPageComponentProps = Omit<
@@ -6602,11 +6541,11 @@ export const BlogListDocument = gql`
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
-        ...BlogPostArticle
+        ...BlogPostCard
       }
     }
   }
-  ${BlogPostArticleFragmentDoc}
+  ${BlogPostCardFragmentDoc}
 `;
 export type BlogListComponentProps = Omit<
   ApolloReactComponents.QueryComponentOptions<
@@ -6752,7 +6691,7 @@ export const DesignListDocument = gql`
       sort: { fields: slug, order: ASC }
     ) {
       nodes {
-        ...DesignArticle
+        ...DesignCard
       }
     }
     allFile(
@@ -6765,20 +6704,22 @@ export const DesignListDocument = gql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fixed(
-            height: 200
-            width: 200
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
+          fluid(
+            traceSVG: {
+              color: "#d0c1fa"
+              background: "transparent"
+              threshold: 10
+            }
             cropFocus: CENTER
           ) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }
     }
   }
-  ${DesignArticleFragmentDoc}
-  ${GatsbyImageSharpFixed_WithWebp_TracedSvgFragmentDoc}
+  ${DesignCardFragmentDoc}
+  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
 `;
 export type DesignListComponentProps = Omit<
   ApolloReactComponents.QueryComponentOptions<
@@ -6855,12 +6796,7 @@ export const DesignsTemplateDocument = gql`
         name
         publicURL
         childImageSharp {
-          fluid(
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          ...FluidImage
         }
       }
       totalCount
@@ -6873,7 +6809,7 @@ export const DesignsTemplateDocument = gql`
       publicURL
     }
   }
-  ${GatsbyImageSharpFluid_WithWebp_TracedSvgFragmentDoc}
+  ${FluidImageFragmentDoc}
 `;
 export type DesignsTemplateComponentProps = Omit<
   ApolloReactComponents.QueryComponentOptions<

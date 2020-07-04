@@ -3,8 +3,9 @@ import { Link, navigateTo } from 'gatsby';
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import '../utils/index.module.css';
+import { media } from '../theme';
 
-type ArticleProps = {
+type CardProps = {
   title?: string;
   excerpt?: string;
   date?: string;
@@ -13,7 +14,7 @@ type ArticleProps = {
   linkText?: string;
 };
 
-export default function Article({
+export default function Card({
   title,
   excerpt,
   date,
@@ -21,14 +22,14 @@ export default function Article({
   Image,
   linkText,
   children,
-}: PropsWithChildren<ArticleProps>) {
+}: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
     navigateTo(event.currentTarget.id);
   }
 
   return (
     <Styled>
-      <div>
+      <div className="Card--container--body">
         {date && <small className="date"> {date}</small>}
         {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
         {excerpt && <div>{excerpt}</div>}
@@ -40,7 +41,7 @@ export default function Article({
         <motion.div
           id={path}
           onClick={handleImgClick}
-          className="article--container--image"
+          className="Card--container--image"
           whileHover={{ scale: 1.015 }}
           whileTap={{ scale: 0.975 }}
         >
@@ -53,19 +54,27 @@ export default function Article({
 
 const Styled = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 3fr 1fr;
   gap: ${({ theme }) => theme.space[2]};
 
   margin-bottom: ${({ theme }) => theme.space[4]};
 
-  .article--container--image {
+  ${media.greaterThan('sm')``};
+
+  .Card--container--body {
+    /* grid-column: 2 / -1; */
+  }
+  .Card--container--image {
+    /* grid-column: 1 / 2; */
+    /* height: 100%; */
     cursor: pointer;
   }
+
   h2 {
     margin: 0;
   }
 `;
 
-Article.defaultProps = {
+Card.defaultProps = {
   linkText: 'Read',
 };

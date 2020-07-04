@@ -1,5 +1,7 @@
 html {
   scroll-behavior: smooth;
+  max-height: 100vh;
+  overflow-y: hidden;
 }
 html,
 body {
@@ -7,6 +9,8 @@ body {
   background-color: var(--color-bg);
   transition: color 0.25s linear;
   transition: background-color 0.25s ease-in-out;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 a {

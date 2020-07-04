@@ -2,20 +2,13 @@ import { graphql } from 'gatsby';
 
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
-    fixed(width: $width, height: $height) {
-      originalName
-      base64
-      tracedSVG
-      aspectRatio
-      srcWebp
-      srcSetWebp
-      originalName
-      width
-      height
-      srcSet
-      srcSetWebp
-      base64
-      aspectRatio
+    fixed(
+      width: $width
+      height: $height
+      traceSVG: { color: "#d0c1fa", background: "transparent" }
+      cropFocus: CENTER
+    ) {
+      ...GatsbyImageSharpFixed_withWebp_tracedSVG
     }
   }
 `;
@@ -23,21 +16,10 @@ export const FixedImage = graphql`
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
     fluid(
-      maxWidth: 630
-      traceSVG: { background: "transparent", color: "#d0c1fa", threshold: 6 }
+      traceSVG: { color: "#d0c1fa", background: "transparent", threshold: 2 }
+      cropFocus: CENTER
     ) {
-      base64
-      tracedSVG
-      srcWebp
-      srcSetWebp
-      originalImg
-      originalName
-      aspectRatio
-      sizes
-      presentationWidth
-      presentationHeight
-      src
-      srcSet
+      ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }
 `;
@@ -57,9 +39,7 @@ export const Frontmatter = graphql`
         relativePath
         publicURL
         childImageSharp {
-          fluid {
-            ...GatsbyImageSharpFluid_tracedSVG
-          }
+          ...FluidImage
         }
       }
     }
@@ -75,31 +55,27 @@ export const BlogPost = graphql`
   }
 `;
 
-export const DesignArticle = graphql`
-  fragment DesignArticle on DesignsYaml {
+export const DesignCard = graphql`
+  fragment DesignCard on DesignsYaml {
     name
     description
     slug
   }
 `;
 
-export const BlogPostArticle = graphql`
-  fragment BlogPostArticle on MarkdownRemark {
+export const BlogPostCard = graphql`
+  fragment BlogPostCard on MarkdownRemark {
     id
     excerpt(pruneLength: 200)
     frontmatter {
       id
       title
       path
+      subtitle
       date(formatString: "MMMM YYYY")
       thumbnail {
         childImageSharp {
-          fluid(
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
+          ...FluidImage
         }
       }
     }

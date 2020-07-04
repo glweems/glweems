@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-import Article from '../components/Article';
+import Card from '../components/Card';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import { DesignListQuery } from '../types/generated';
@@ -18,7 +18,7 @@ export default function ArticleListTemplate({
       />
       {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
         return (
-          <Article
+          <Card
             key={post.slug}
             path={`/design/${post.slug}`}
             excerpt={post.description}
@@ -27,7 +27,7 @@ export default function ArticleListTemplate({
               <Img
                 draggable={false}
                 alt={`${name} thumbnail image`}
-                fixed={data.allFile.nodes[index].childImageSharp.fixed}
+                fluid={data.allFile.nodes[index].childImageSharp.fluid}
               />
             }
           />
@@ -46,7 +46,7 @@ export const DesignList = graphql`
       sort: { fields: slug, order: ASC }
     ) {
       nodes {
-        ...DesignArticle
+        ...DesignCard
       }
     }
     allFile(
@@ -59,13 +59,15 @@ export const DesignList = graphql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fixed(
-            height: 200
-            width: 200
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
+          fluid(
+            traceSVG: {
+              color: "#d0c1fa"
+              background: "transparent"
+              threshold: 10
+            }
             cropFocus: CENTER
           ) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
           }
         }
       }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
 import { IndexPageQuery } from '../types/generated';
-import Article from '../components/Article';
+import Card from '../components/Card';
 import Img from 'gatsby-image';
+import Heatmap from '../components/Heatmap';
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
@@ -11,7 +12,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
         <h2>Blog Posts</h2>
         {data.posts.nodes.map(({ frontmatter, ...post }) => {
           return (
-            <Article
+            <Card
               key={post.id}
               title={frontmatter.title}
               excerpt={post.excerpt}
@@ -34,7 +35,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
 
         {data.designs.nodes.map(({ name, ...design }, index) => {
           return (
-            <Article
+            <Card
               key={design.slug}
               path={`/design/${design.slug}`}
               excerpt={design.description}
@@ -53,13 +54,17 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
 
       <section>
         {data.allGithubPinneditems.nodes.map((pinned) => (
-          <Article
+          <Card
             title={pinned.name}
             excerpt={pinned.description}
             date={pinned.createdAt}
             Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
           />
         ))}
+      </section>
+
+      <section>
+        <Heatmap />
       </section>
     </React.Fragment>
   );
@@ -69,13 +74,13 @@ export const Query = graphql`
   query IndexPage($limit: Int = 3) {
     posts: allMarkdownRemark(limit: $limit) {
       nodes {
-        ...BlogPostArticle
+        ...BlogPostCard
       }
     }
 
     designs: allDesignsYaml(limit: $limit, sort: { fields: slug, order: ASC }) {
       nodes {
-        ...DesignArticle
+        ...DesignCard
       }
     }
 

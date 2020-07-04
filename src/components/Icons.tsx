@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import config from '../../.gatsby/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Box from './common/Box';
+import Box, { BoxProps } from './Common/Box';
+import { baseColors } from '../theme';
 
 const icon = {
   hidden: {
@@ -16,10 +17,16 @@ const icon = {
   },
 };
 export interface GhostSVGProps extends BoxProps {
-  size: number;
+  size?: number;
+  color?: keyof typeof baseColors;
 }
 
-export function GhostSVG({ size = 75, ...props }: GhostSVGProps) {
+export function GhostSVG({
+  size = 75,
+  color = 'blue',
+  ...props
+}: GhostSVGProps) {
+  const cssColor = `var(--color-${color})`;
   return (
     <Box
       as={motion.svg}
@@ -33,7 +40,7 @@ export function GhostSVG({ size = 75, ...props }: GhostSVGProps) {
       variants={icon}
       css={`
         .svg-ghost-bg {
-          fill: var(--color-primary);
+          fill: ${cssColor};
         }
         .white-fill {
           fill: white;

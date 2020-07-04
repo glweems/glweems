@@ -1,7 +1,7 @@
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-import Article from '../components/Article';
+import Card from '../components/Card';
 import Pager, { PagerProps } from '../components/Pager';
 import SEO from '../components/SEO';
 import { BlogListQuery } from '../types/generated';
@@ -26,10 +26,10 @@ export default function ArticleListTemplate({
 
       {data.posts.nodes.map(({ frontmatter, ...post }) => {
         return (
-          <Article
+          <Card
             key={post.id}
             title={frontmatter.title}
-            excerpt={post.excerpt}
+            excerpt={frontmatter.subtitle}
             date={frontmatter.date}
             path={`/blog${frontmatter.path}`}
             Image={
@@ -59,7 +59,7 @@ export const Query = graphql`
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       nodes {
-        ...BlogPostArticle
+        ...BlogPostCard
       }
     }
   }
