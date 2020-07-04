@@ -5,12 +5,44 @@ html {
 }
 html,
 body {
-  color: var(--color-text);
-  background-color: var(--color-bg);
   transition: color 0.25s linear;
   transition: background-color 0.25s ease-in-out;
   height: 100vh;
   overflow-y: auto;
+}
+
+html,
+body,
+main,
+header {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+body {
+  --spinner-color: var(--color-secondary-bg);
+
+  position: relative;
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--spinner-color) 50%,
+      var(--spinner-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49%,
+      var(--spinner-color) 50%,
+      var(--spinner-color) 50%,
+      transparent 51%,
+      transparent
+    );
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+  border: 1px var(--spinner-color) solid;
+  border-radius: 4px;
 }
 
 a {
@@ -32,7 +64,11 @@ button:hover,
 }
 button:focus,
 .button:focus {
-  outline: none;
+  outline: var(--color-primary);
+}
+
+button:disabled {
+  color: var(--color-root-bg);
 }
 
 .dark-mode a {
@@ -90,4 +126,8 @@ iframe {
 .toggle-theme-button {
   text-align: center;
   fill: var(--color-text);
+}
+
+.flex {
+  display: flex;
 }

@@ -5352,7 +5352,7 @@ export type DesignsTemplateQuery = { __typename?: 'Query' } & {
   design?: Maybe<
     { __typename?: 'DesignsYaml' } & Pick<
       DesignsYaml,
-      'id' | 'slug' | 'name' | 'description' | 'tags'
+      'id' | 'slug' | 'name' | 'description' | 'tags' | 'url'
     > & {
         tools?: Maybe<
           Array<
@@ -6781,6 +6781,7 @@ export const DesignsTemplateDocument = gql`
       name
       description
       tags
+      url
       tools {
         title
       }

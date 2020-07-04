@@ -13,7 +13,6 @@ const LoadingSpinner = styled.div<LoadingSpinnerProps>`
   background-size: 16px 16px;
   border: 1px var(--spinner-color) solid;
   border-radius: 4px;
-  /* -webkit-animation: spTexture 1s infinite linear; */
   animation: spTexture 1s infinite linear;
 }
 

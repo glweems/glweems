@@ -51,9 +51,8 @@ const LayoutContainer = styled.div`
     max-height: 100vh;
   }
 
-  /* main, */
-  .navigation {
-    padding-top: ${({ theme }) => theme.space[6]};
+  .navigation, main {
+    padding-top: ${({ theme }) => theme.space[3]};
   }
 
   `};

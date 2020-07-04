@@ -55,6 +55,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
       <section>
         {data.allGithubPinneditems.nodes.map((pinned) => (
           <Card
+            key={pinned.name}
             title={pinned.name}
             excerpt={pinned.description}
             date={pinned.createdAt}

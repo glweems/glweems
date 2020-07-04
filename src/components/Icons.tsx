@@ -18,7 +18,7 @@ const icon = {
 };
 export interface GhostSVGProps extends BoxProps {
   size?: number;
-  color?: keyof typeof baseColors;
+  color?: keyof typeof baseColors | string;
 }
 
 export function GhostSVG({
@@ -28,8 +28,7 @@ export function GhostSVG({
 }: GhostSVGProps) {
   const cssColor = `var(--color-${color})`;
   return (
-    <Box
-      as={motion.svg}
+    <motion.svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
@@ -39,6 +38,7 @@ export function GhostSVG({
       viewBox="0 0 117 117"
       variants={icon}
       css={`
+        fill: black;
         .svg-ghost-bg {
           fill: ${cssColor};
         }
@@ -61,9 +61,9 @@ export function GhostSVG({
         className="white-fill"
         points="99,36 90,36 90,27 72,27 72,36 63,36 63,63 72,63 72,72 90,72 90,63 99,63 	"
       />
-      <rect x="9" y="45" width="18" height="18" />
+      <rect x="9" y="45" width="18" height="18" color="black" />
       <rect x="63" y="45" width="18" height="18" />
-    </Box>
+    </motion.svg>
   );
 }
 

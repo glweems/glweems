@@ -56,8 +56,8 @@ const Styled = styled.div`
   display: grid;
   grid-template-columns: 3fr 1fr;
   gap: ${({ theme }) => theme.space[2]};
-
   margin-bottom: ${({ theme }) => theme.space[4]};
+  background-color: ${({ theme }) => theme.colors.bg};
 
   ${media.greaterThan('sm')``};
 

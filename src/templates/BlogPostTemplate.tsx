@@ -32,6 +32,14 @@ export default function BlogTemplate({
   const { post, site } = data;
   const { frontmatter } = data.post;
   const { mode } = useTheme();
+
+  const previousPagePath = data.prev?.frontmatter?.previousPageText
+    ? `/blog${pageContext.prev}`
+    : null;
+
+  const nextPagePath = data.next?.frontmatter?.nextPageText
+    ? `/blog${pageContext.next}`
+    : null;
   return (
     <React.Fragment>
       <SEO
@@ -70,6 +78,13 @@ export default function BlogTemplate({
         tags={frontmatter.tags}
       />
 
+      <Pager
+        previousPagePath={previousPagePath}
+        previousPageText={data.prev?.frontmatter?.previousPageText}
+        nextPagePath={nextPagePath}
+        nextPageText={data.next?.frontmatter?.nextPageText}
+      />
+
       <DiscussionEmbed
         shortname={site.siteMetadata.disqusShortName}
         config={{
@@ -77,13 +92,6 @@ export default function BlogTemplate({
           identifier: post.disqusIdentifier,
           title: frontmatter.title,
         }}
-      />
-
-      <Pager
-        previousPagePath={pageContext.prev}
-        previousPageText={data.prev?.frontmatter?.previousPageText}
-        nextPagePath={pageContext?.next}
-        nextPageText={data.next?.frontmatter?.nextPageText}
       />
     </React.Fragment>
   );

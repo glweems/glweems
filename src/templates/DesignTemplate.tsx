@@ -8,6 +8,7 @@ import Text from '../components/Common/Text';
 import SEO from '../components/SEO';
 import Tags from '../components/Tags';
 import { DesignsTemplateQuery } from '../types/generated';
+import ShareButtons from '../components/ShareButtons';
 export default function DesignTemplate({
   data,
 }: PageProps<DesignsTemplateQuery>) {
@@ -26,6 +27,12 @@ export default function DesignTemplate({
         <Text>{data.design.description}</Text>
 
         <Tags tags={data.design.tags} />
+
+        <ShareButtons
+          url={data.design.url}
+          title={data.design.name}
+          tags={data.design.tags}
+        />
       </Container>
       <ImagesWrapper>
         {data.images.nodes.map((image, index) => (
@@ -56,6 +63,7 @@ export const Query = graphql`
       name
       description
       tags
+      url
       tools {
         title
       }
