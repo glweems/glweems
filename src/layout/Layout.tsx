@@ -39,21 +39,20 @@ const LayoutContainer = styled.div`
     grid-column: 1 / -1;
   }
 
-  ${media.greaterThan('sm')`
-  main {
-    grid-column: 2 / -1;
-  }
+  ${media.greaterThan('md')`
+      main {
+        grid-column: 2 / -1;
+      }
 
-  .navigation {
-    grid-column: 1 / 2;
-    position: sticky;
-    top: 0;
-    max-height: 100vh;
-  }
+      .navigation {
+        grid-column: 1 / 2;
+        position: sticky;
+        top: 0;
+        max-height: 100vh;
+      }
 
-  .navigation, main {
-    padding-top: ${({ theme }) => theme.space[3]};
-  }
-
+      .navigation, main {
+        padding-top: ${({ theme }) => theme.space[3]};
+      }
   `};
 `;

@@ -120,8 +120,7 @@ const checkered = css`
       transparent 51%,
       transparent
     );
-  background-color: ${({ theme: { isDarkMode, colors } }) =>
-    isDarkMode ? colors.purple : colors.yellow};
+  background-color: var(--color-welcome-bg);
   background-position: 0% 0%;
   background-size: 16px 16px;
   border: 1px var(--bg-color) solid;
@@ -140,6 +139,7 @@ const checkered = css`
 const Styled = styled.div`
   padding: ${({ theme }) => theme.space[3]};
   color: ${({ theme }) => theme.colors.dark};
+
   .Landing__inner {
     height: 100%;
     padding: ${({ theme }) => theme.space[4]} 0;

@@ -12,6 +12,7 @@ import {
 import Box from './Common/Box';
 import { graphql, useStaticQuery } from 'gatsby';
 import { TwitterHandleQuery } from '../types/generated';
+import { icon } from '@fortawesome/fontawesome-svg-core';
 
 interface ShareButtonsProps {
   url: string;
@@ -20,37 +21,45 @@ interface ShareButtonsProps {
 }
 
 const iconConfig = {
-  size: 40,
+  size: 35,
   round: false,
   borderRadius: 2,
-  iconBgStyle: { fill: 'transparent' },
+  className: 'social-share-button',
 };
 
 export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
   const { site } = useStaticQuery<TwitterHandleQuery>(query);
   return (
-    <Box display="flex" justifyContent="space-evenly" marginY={4}>
-      <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
-        <FacebookIcon {...iconConfig} />
-      </FacebookShareButton>
+    <React.Fragment>
+      <div>
+        <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
+          <FacebookIcon {...iconConfig} />
+        </FacebookShareButton>
+      </div>
 
-      <TwitterShareButton
-        url={url}
-        title={title}
-        via={site.siteMetadata.twitterHandle}
-        hashtags={tags}
-      >
-        <TwitterIcon {...iconConfig} />
-      </TwitterShareButton>
+      <div>
+        <TwitterShareButton
+          url={url}
+          title={title}
+          via={site.siteMetadata.twitterHandle}
+          hashtags={tags}
+        >
+          <TwitterIcon {...iconConfig} />
+        </TwitterShareButton>
+      </div>
 
-      <LinkedinShareButton url={url}>
-        <LinkedinIcon {...iconConfig} />
-      </LinkedinShareButton>
+      <div>
+        <LinkedinShareButton url={url}>
+          <LinkedinIcon {...iconConfig} />
+        </LinkedinShareButton>
+      </div>
 
-      <RedditShareButton url={url} title={title}>
-        <RedditIcon {...iconConfig} />
-      </RedditShareButton>
-    </Box>
+      <div>
+        <RedditShareButton url={url} title={title}>
+          <RedditIcon {...iconConfig} />
+        </RedditShareButton>
+      </div>
+    </React.Fragment>
   );
 }
 

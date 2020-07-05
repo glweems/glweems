@@ -62,6 +62,12 @@ export default function BlogTemplate({
 
           <Tags tags={frontmatter.tags} />
 
+          <ShareButtons
+            title={frontmatter.title}
+            url={post.url}
+            tags={frontmatter.tags}
+          />
+
           <Img
             draggable={false}
             fluid={frontmatter.thumbnail.childImageSharp.fluid}
@@ -71,12 +77,6 @@ export default function BlogTemplate({
 
         <Content elements={post.htmlAst} />
       </Article>
-
-      <ShareButtons
-        title={frontmatter.title}
-        url={post.url}
-        tags={frontmatter.tags}
-      />
 
       <Pager
         previousPagePath={previousPagePath}

@@ -131,3 +131,23 @@ iframe {
 .flex {
   display: flex;
 }
+
+.react-share__ShareButton {
+  margin: 0;
+  padding: 0;
+}
+.react-share__ShareButton * {
+  margin: 0;
+  padding: 0;
+}
+
+.react-share__ShareButton * {
+  fill: var(--color-primary);
+  color: var(--color-primary);
+}
+.react-share__ShareButton svg {
+  fill: var(--color-primary);
+}
+.react-share__ShareButton rect {
+  fill: none;
+}

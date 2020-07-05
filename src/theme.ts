@@ -94,8 +94,11 @@ export default function useCreateTheme(): DefaultTheme {
   return completeTheme;
 }
 
-function createColorVars(colorsObj: typeof baseColors) {
-  let obj = {};
+function createColorVars(colorsObj: typeof baseColors, isDarkMode: boolean) {
+  let obj = {
+    '--color-welcome-bg': isDarkMode ? colorsObj.purple : colorsObj.yellow,
+  };
+
   Object.entries(colorsObj).forEach(
     ([key, value]) => (obj[`--color-${key}`] = value)
   );
@@ -120,8 +123,8 @@ function createSpaceVars(spaces: string[]) {
 
 export const GlobalStyle = createGlobalStyle`
  :root {
-   ${(props) => createColorVars(props.theme.colors)};
-   ${(props) => createBreakpointVars(props.theme.breakpoints)};
-   ${(props) => createSpaceVars(props.theme.space)};
+   ${({ theme }) => createColorVars(theme.colors, theme.isDarkMode)};
+   ${({ theme }) => createBreakpointVars(theme.breakpoints)};
+   ${({ theme }) => createSpaceVars(theme.space)};
  }
 `;
