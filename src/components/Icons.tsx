@@ -5,6 +5,7 @@ import config from '../../.gatsby/config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Box, { BoxProps } from './Common/Box';
 import { baseColors } from '../theme';
+import { css } from 'styled-components';
 
 const icon = {
   hidden: {
@@ -16,16 +17,12 @@ const icon = {
     fill: 'rgba(255, 255, 255, 1)',
   },
 };
-export interface GhostSVGProps extends BoxProps {
+export interface SVGIconProps extends BoxProps {
   size?: number;
   color?: keyof typeof baseColors | string;
 }
 
-export function GhostSVG({
-  size = 75,
-  color = 'blue',
-  ...props
-}: GhostSVGProps) {
+export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
   const cssColor = `var(--color-${color})`;
   return (
     <motion.svg
@@ -64,6 +61,47 @@ export function GhostSVG({
       <rect x="9" y="45" width="18" height="18" color="black" />
       <rect x="63" y="45" width="18" height="18" />
     </motion.svg>
+  );
+}
+
+export function MenuIcon({ size = 30, color }: SVGIconProps) {
+  const cssColor = `var(--color-${color})`;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      color={cssColor}
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+      />
+    </svg>
+  );
+}
+export function SlashCircleIcon({ size = 30, color }: SVGIconProps) {
+  const cssColor = `var(--color-${color})`;
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 16 16"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      color={cssColor}
+    >
+      <path
+        fill-rule="evenodd"
+        d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
+      />
+      <path
+        fill-rule="evenodd"
+        d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
+      />
+    </svg>
   );
 }
 

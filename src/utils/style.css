@@ -12,17 +12,13 @@ body {
 }
 
 html,
-body,
-main,
-header {
+body {
   color: var(--color-text);
   background-color: var(--color-bg);
 }
 
 body {
   --spinner-color: var(--color-secondary-bg);
-
-  position: relative;
   background: linear-gradient(
       45deg,
       transparent 49%,

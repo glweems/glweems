@@ -4,6 +4,8 @@ import { Theme as SystemTheme } from 'styled-system';
 import { TypographyOptions } from 'typography';
 import useDarkMode from 'use-dark-mode';
 import typography from './utils/typography';
+import { useMedia } from 'react-use';
+import { useState } from 'react';
 
 export const baseColors = {
   blue: '#1769ff',
@@ -57,7 +59,9 @@ export const breakpoints = {
   lg: `64em`,
 };
 
-export const media = generateMedia(breakpoints);
+export const media = generateMedia<typeof breakpoints, DefaultTheme>(
+  breakpoints
+);
 
 const partialTheme = {
   ...typography,
@@ -76,18 +80,32 @@ export interface Theme extends TypographyOptions, SystemTheme {
   breakpoints: typeof breakpoints;
   space: string[];
   media: typeof media;
+  isNavOpen: boolean;
+  setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  toggleNav(): void;
+  mobile: boolean;
 }
 
 export default function useCreateTheme(): DefaultTheme {
   const { value: isDarkMode, toggle } = useDarkMode();
   const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light';
-
   const colors = isDarkMode ? darkmode : lightMode;
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const mobile = useMedia(`(max-width: ${breakpoints.sm})`);
+
+  function toggleNav() {
+    setIsNavOpen((state) => !state);
+  }
+
   const completeTheme = {
     colors,
     isDarkMode,
     mode,
     toggle,
+    isNavOpen,
+    setIsNavOpen,
+    toggleNav,
+    mobile,
     ...partialTheme,
   };
 
@@ -128,3 +146,15 @@ export const GlobalStyle = createGlobalStyle`
    ${({ theme }) => createSpaceVars(theme.space)};
  }
 `;
+
+export function useMediaQuery() {
+  const sm = useMedia(`(min-width: ${breakpoints.sm})`);
+  const md = useMedia(`(min-width: ${breakpoints.md})`);
+  const lg = useMedia(`(min-width: ${breakpoints.lg})`);
+  const mobile = useMedia(`(max-width: ${breakpoints.sm})`);
+  const tablet = useMedia(
+    `(min-width: ${breakpoints.md}, max-width: ${breakpoints.lg})`
+  );
+  const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
+  return { sm, md, lg, mobile, tablet, desktop };
+}

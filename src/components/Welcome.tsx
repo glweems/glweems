@@ -160,7 +160,8 @@ const Styled = styled.div`
     justify-content: flex-start;
     margin-top: ${({ theme }) => theme.space[5]};
     a {
-      color: ${({ theme }) => theme.colors.dark};
+      color: ${({ theme }) =>
+        theme.isDarkMode ? theme.colors.blue : theme.colors.blue};
     }
   }
 `;

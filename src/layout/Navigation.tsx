@@ -1,78 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
+import styled, { useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
 import Link from '../components/Common/Link';
-import { containerCss } from '../components/Common/Container';
-import styled from 'styled-components';
-import { GhostSVG } from '../components/Icons';
-import { media } from '../theme';
+import { GhostSVG, MenuIcon, SlashCircleIcon } from '../components/Icons';
 import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
+import { media, useMediaQuery } from '../theme';
+import Container from '../components/Common/Container';
 
 export type NavigationProps = {
   className?: string;
 };
 
 export default function Navigation({ className }: NavigationProps) {
+  const { mobile, toggleNav, isNavOpen } = useTheme();
   return (
-    <Header className={className}>
-      <div className={`${className}__inner`}>
-        <div>
-          <Link
-            to="/"
-            css={`
-              padding: ${({ theme }) => theme.space[2]};
-            `}
-          >
-            <GhostSVG size={35} />
-          </Link>
-        </div>
-        <nav>
-          {config.links.map((link) => (
-            <Link key={link.name} to={link.path} className="button">
-              {link.name}
-            </Link>
-          ))}
-        </nav>
+    <Container as="header" className={className}>
+      <Nav>
+        <Link
+          to="/"
+          css={`
+            padding: ${({ theme }) => theme.space[2]};
+          `}
+        >
+          <GhostSVG size={30} />
+        </Link>
+        {mobile ? (
+          <button onClick={toggleNav}>
+            {isNavOpen ? (
+              <SlashCircleIcon color="text" />
+            ) : (
+              <MenuIcon color="text" />
+            )}
+          </button>
+        ) : (
+          config.links.map((link) => (
+            <div key={link.name}>
+              <Link to={link.path} className="button">
+                {link.name}
+              </Link>
+            </div>
+          ))
+        )}
 
-        <div className="toggle-switch-container">
+        <div
+          css={`
+            margin-left: auto;
+          `}
+        >
           <ToggleThemeSwitch />
         </div>
-      </div>
-    </Header>
+      </Nav>
+
+      {mobile && isNavOpen && (
+        <OpenedNav>
+          {config.links.map((link) => (
+            <div key={link.name}>
+              <Link to={link.path} className="button">
+                {link.name}
+              </Link>
+            </div>
+          ))}
+        </OpenedNav>
+      )}
+    </Container>
   );
 }
 
+const OpenedNav = styled.div`
+  flex-basis: 100%;
+  width: 100%;
+  color: var(--color-bg);
+  background-color: var(--color-text);
+  a {
+    color: var(--color-bg);
+  }
+`;
+
 Navigation.defaultProps = { className: 'navigation' };
 
-const Header = styled.header<NavigationProps>`
-  ${containerCss};
-
-  nav {
-    display: flex;
-  }
-
-  ${media.greaterThan('sm')`
-    nav {
-      flex-direction: column;
-    }
-  `};
-
-  .toggle-switch-container {
-    justify-self: flex-end;
-  }
-
-  .${({ className }) => className}__inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: ${({ theme }) => theme.space[2]};
-    justify-content: space-between;
-    ${media.greaterThan('sm')`
-    grid-template-columns: 1fr;
-    grid-template-rows: max-content max-content 1fr;
-      /* flex-direction: column; */
-    `};
-
-    .toggle-switch-container {
-      justify-self: flex-start;
-    }
-  }
+const Nav = styled.nav`
+  display: flex;
+  /* align-content: center; */
+  align-items: center;
+  /* justify-items: flex-start; */
+  width: 100%;
 `;
