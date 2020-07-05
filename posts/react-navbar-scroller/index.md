@@ -78,15 +78,15 @@ NavbarScrollerDemo/
 Open your `App.tsx` file and delete all the junk so it looks like this
 
 ```tsx
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class App extends Component {
   render() {
-    return <div className="App" />
+    return <div className="App" />;
   }
 }
 
-export default App
+export default App;
 ```
 
 Now we’re going to install another dependency to reset our browsers css.
@@ -99,8 +99,8 @@ Now add the package to your `App.tsx`
 
 ```tsx
 // App.tsx
-import React, { Component } from 'react'
-import 'reset-css'
+import React, { Component } from 'react';
+import 'reset-css';
 ```
 
 _if you get an error saying module cannot be found you may need to add the package postcss-import_ `npm install postcss-import --save`
@@ -112,13 +112,13 @@ Create a new `components/` directory in `./src/components/` and create a new `Na
 ```tsx
 // ./src/components/NavbarScroller.tsx
 
-import * as React from 'react'
+import * as React from 'react';
 
 const NavbarScroller = () => {
-  return <div />
-}
+  return <div />;
+};
 
-export default NavbarScroller
+export default NavbarScroller;
 ```
 
 Import the component in your `App.tsx`
@@ -126,7 +126,7 @@ Import the component in your `App.tsx`
 ```tsx
 // App.tsx
 
-import NavbarScroller from './components/NavbarScroller'
+import NavbarScroller from './components/NavbarScroller';
 
 // ...
 
@@ -134,7 +134,7 @@ return (
   <div className="App">
     <NavbarScroller />
   </div>
-)
+);
 ```
 
 Now create a `navigation` object in your `App.tsx`. This will be the data we use that gets sent to the component and rendered.
@@ -148,9 +148,9 @@ const navigation = {
     { name: 'Blog', to: '/blog' },
     { name: 'Developement', to: '/dev' },
     { name: 'Graphic Design', to: '/design' },
-    { name: 'Contact', to: '/contact' }
-  ]
-}
+    { name: 'Contact', to: '/contact' },
+  ],
+};
 ```
 
 Now pass the object into our component as props.
@@ -161,13 +161,13 @@ export default class App extends Component {
   // the 'public' is a typescript feature.
   public render() {
     // Descructured object for cleaner code :-)
-    const { brand, links } = navigation
+    const { brand, links } = navigation;
 
     return (
       <div className="App">
         <NavbarScroller brand={brand} links={links} />
       </div>
-    )
+    );
   }
 }
 ```
@@ -188,10 +188,10 @@ const NavbarScroller = (props: any) => {
     <div>
       <p>NavbarScroller</p>
     </div>
-  )
-}
+  );
+};
 
-export default NavbarScroller
+export default NavbarScroller;
 ```
 
 I’m not saying that you might not ever need to use `any` to defend you type of for our situation we know we’re going to be sending two different props.
@@ -249,14 +249,14 @@ Now lets add our Brand element
 
 ```tsx
 // NavbarScroller.tsx
-const { brand } = props
+const { brand } = props;
 // descructure object to avoid 'props.brand.to'
 
 return (
   <div>
     <a href={brand.to}>{brand.name}</a>
   </div>
-)
+);
 ```
 
 Mapping our links.
@@ -268,14 +268,14 @@ const NavLinks: any = () =>
     <li key={link.name}>
       <a href={link.to}>{link.name}</a>
     </li>
-  ))
+  ));
 
 return (
   <div>
     <a href={brand.to}>{brand.name}</a>
     <NavLinks />
   </div>
-)
+);
 ```
 
 Finally.
@@ -287,26 +287,29 @@ npm install styled-components --save
 ```
 
 ```tsx
-import * as React from 'react'
-import styled from 'styled-components'
+import * as React from 'react';
+import styled from 'styled-components';
 
-const NavbarScroller = (props: { brand: { name: string; to: string }; links: Array<{ name: string; to: string }> }) => {
-  const { brand, links } = props
+const NavbarScroller = (props: {
+  brand: { name: string; to: string };
+  links: Array<{ name: string; to: string }>;
+}) => {
+  const { brand, links } = props;
   const NavLinks: any = () =>
     links.map((link: { name: string; to: string }) => (
       <li key={link.name}>
         <a href={link.to}>{link.name}</a>
       </li>
-    ))
+    ));
   return (
     <div>
       <a href={brand.to}>{brand.name}</a>
       <NavLinks />
     </div>
-  )
-}
+  );
+};
 
-export default NavbarScroller
+export default NavbarScroller;
 ```
 
 ---
@@ -383,14 +386,17 @@ const Li = styled.li`
 After you create the styled-components you can go back and update your component to use them like so.
 
 ```tsx
-const NavbarScroller = (props: { brand: { name: string; to: string }; links: Array<{ name: string; to: string }> }) => {
-  const { brand, links } = props
+const NavbarScroller = (props: {
+  brand: { name: string; to: string };
+  links: Array<{ name: string; to: string }>;
+}) => {
+  const { brand, links } = props;
   const NavLinks: any = () =>
     links.map((link: { name: string; to: string }) => (
       <Li key={link.name}>
         <a href={link.to}>{link.name}</a>
       </Li>
-    ))
+    ));
   return (
     <Navbar>
       <Brand href={brand.to}>{brand.name}</Brand>
@@ -398,8 +404,8 @@ const NavbarScroller = (props: { brand: { name: string; to: string }; links: Arr
         <NavLinks />
       </Ul>
     </Navbar>
-  )
-}
+  );
+};
 ```
 
 ---

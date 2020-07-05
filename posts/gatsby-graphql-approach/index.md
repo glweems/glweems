@@ -59,7 +59,7 @@ All you need to do is pass your graphql query into useStaticQuery
 
 ```tsx
 // src/queries/PostsQuery.js
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby';
 
 const usePostsQuery = () => {
   const { allMarkdownRemark } = useStaticQuery(graphql`
@@ -79,11 +79,11 @@ const usePostsQuery = () => {
         }
       }
     }
-  `)
-  return allMarkdownRemark.nodes
-}
+  `);
+  return allMarkdownRemark.nodes;
+};
 
-export default usePostsQuery
+export default usePostsQuery;
 ```
 
 Now we can create a new `blog` page and import the query
@@ -127,7 +127,7 @@ Create a new file `src/queries/fragments.js`
 
 ```javascript
 // src/queries/fragments.js
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 const Frontmatter = graphql`
   fragment Frontmatter on File {
@@ -143,9 +143,9 @@ const Frontmatter = graphql`
       }
     }
   }
-`
+`;
 
-export default { Frontmatter }
+export default { Frontmatter };
 ```
 
 ### Refactoring
@@ -250,10 +250,10 @@ const usePostsQuery = () => {
         }
       }
     }
-  `)
+  `);
 
-  return allMarkdownRemark.nodes
-}
+  return allMarkdownRemark.nodes;
+};
 ```
 
 Using queries like this and ever need to update a field you only need to do so in your original fragment, not every single use case of the query.

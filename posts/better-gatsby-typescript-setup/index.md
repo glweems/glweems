@@ -1,5 +1,5 @@
 ---
-id: 5
+id: 9
 path: /better-gatsby-typescript-setup
 thumbnail: gatsby-with-typescript.png
 date: 2020-07-01T01:00:01.889Z

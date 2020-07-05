@@ -42,7 +42,7 @@ Create a new file in your `src/components/` directory called `ShareButtons.js`
 ### Creating the component
 
 ```js
-import React from 'react'
+import React from 'react';
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -53,8 +53,8 @@ import {
   WhatsappShareButton,
   WhatsappIcon,
   RedditShareButton,
-  RedditIcon
-} from 'react-share'
+  RedditIcon,
+} from 'react-share';
 
 export const ShareButtons = ({ twitterHandle, url, title, tags }) => (
   <div>
@@ -62,7 +62,12 @@ export const ShareButtons = ({ twitterHandle, url, title, tags }) => (
       <FacebookIcon />
     </FacebookShareButton>
 
-    <TwitterShareButton url={url} title={title} via={twitterHandle} hashtags={tags}>
+    <TwitterShareButton
+      url={url}
+      title={title}
+      via={twitterHandle}
+      hashtags={tags}
+    >
       <TwitterIcon />
     </TwitterShareButton>
 
@@ -78,9 +83,9 @@ export const ShareButtons = ({ twitterHandle, url, title, tags }) => (
       <WhatsappIcon />
     </WhatsappShareButton>
   </div>
-)
+);
 
-export default ShareButtons
+export default ShareButtons;
 ```
 
 ### Adding the component to our blog template
@@ -96,10 +101,10 @@ Add the following to your `gatsby-config.js` file.
 module.exports = {
   siteMetadata: {
     // ....
-    siteUrl: `https://glweems.com`
-  }
+    siteUrl: `https://glweems.com`,
+  },
   // ....
-}
+};
 ```
 
 now we can query for the domain through graphql

@@ -66,7 +66,9 @@ export const Breakpoints = {
 ```javascript
 export const MQ = {};
 for (const key in ScreenSizes) {
-  if (key) MQ[key] = styles => `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`;
+  if (key)
+    MQ[key] = (styles) =>
+      `@media screen and (min-width: ${ScreenSizes[key]}px) { ${styles} }`;
 }
 export default Theme;
 ```
