@@ -18,7 +18,7 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
       url: {
         type: GraphQLString,
         resolve: (source: any) =>
-          `https://glweems.com/blog/${source.frontmatter.path}`,
+          `https://glweems.com/blog${source.frontmatter.path}`,
       },
       disqusIdentifier: {
         type: GraphQLString,
@@ -31,7 +31,7 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
     return {
       url: {
         type: GraphQLString,
-        resolve: (source: any) => `https://glweems.com/designs/${source.slug}`,
+        resolve: (source: any) => `https://glweems.com/design/${source.slug}`,
       },
     };
   }

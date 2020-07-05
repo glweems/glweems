@@ -1,12 +1,13 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
+import { CreateDesignPagesQuery } from '../../src/types/generated';
 
 export default async function createDesignPages({
   graphql,
   actions: { createPage },
   reporter,
 }: CreatePagesArgs) {
-  const result = await graphql<any>(`
+  const result = await graphql<CreateDesignPagesQuery>(`
     query CreateDesignPages {
       designs: allDesignsYaml {
         nodes {

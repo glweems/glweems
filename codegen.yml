@@ -17,3 +17,6 @@ generates:
   ./schema.json:
     plugins:
       - 'introspection'
+hooks:
+  afterOneFileWrite:
+    - prettier --write

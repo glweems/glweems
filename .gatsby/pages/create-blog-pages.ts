@@ -1,12 +1,13 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
+import { CreateBlogPostPagesQuery } from '../../src/types/generated';
 
 export default async function createBlogPostPages({
   graphql,
   actions,
   reporter,
 }: CreatePagesArgs) {
-  const result = await graphql<any>(`
+  const result = await graphql<CreateBlogPostPagesQuery>(`
     query CreateBlogPostPages {
       posts: allMarkdownRemark(
         sort: { fields: frontmatter___date, order: DESC }
@@ -34,8 +35,6 @@ export default async function createBlogPostPages({
       component: path.resolve(`src/templates/BlogPostTemplate.tsx`),
       context: {
         slug: frontmatter.path,
-        prev: blogPosts?.[index - 1]?.frontmatter?.path ?? null,
-        next: blogPosts?.[index + 1]?.frontmatter?.path ?? null,
       },
     });
   });
