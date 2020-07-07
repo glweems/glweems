@@ -1,13 +1,20 @@
 import styled from 'styled-components';
-import { space, SpaceProps } from 'styled-system';
+import {
+  layout,
+  LayoutProps,
+  size,
+  SizeProps,
+  space,
+  SpaceProps,
+} from 'styled-system';
 
-export type LoadingSpinnerProps = SpaceProps;
+export type LoadingSpinnerProps = SpaceProps & LayoutProps & SizeProps;
 
 const LoadingSpinner = styled.div<LoadingSpinnerProps>`
+  height: ${({ height }) => height};
   --spinner-color: ${({ theme }) =>
     theme.isDarkMode ? theme.colors.purple : theme.colors.yellow};
 
-  position: relative;
   background: linear-gradient(45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent), linear-gradient(-45deg, transparent 49%, var(--spinner-color) 50%, var(--spinner-color) 50%, transparent 51%, transparent);
   background-position: 0% 0%;
   background-size: 16px 16px;
@@ -24,7 +31,11 @@ const LoadingSpinner = styled.div<LoadingSpinnerProps>`
     background-position: -16px 0px;
   }
 
-  ${space};
+   ${space};
+   ${layout};
+   ${size};
 `;
+
+LoadingSpinner.defaultProps = { height: 20 };
 
 export default LoadingSpinner;

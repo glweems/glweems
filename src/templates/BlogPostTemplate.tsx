@@ -4,14 +4,18 @@ import Img from 'gatsby-image';
 import React from 'react';
 import RehypeReact from 'rehype-react';
 import styled, { useTheme } from 'styled-components';
+import Box from '../components/Common/Box';
+import Container from '../components/Common/Container';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
+import { BlogTemplateQuery } from '../queries';
 import { media } from '../theme';
 import { DiscussionEmbedProps } from '../types/disqus-react';
-import { BlogTemplateQuery } from '../types/generated';
+import '../utils/syntax.css';
+
 let rehypeReact: any;
 rehypeReact = RehypeReact;
 export interface PageContext {
@@ -50,7 +54,7 @@ export default function BlogTemplate({
         image={frontmatter.thumbnail.publicURL}
       />
 
-      <Article className={`${mode}-mode`}>
+      <Container as="article" className={`${mode}-mode`}>
         <header>
           <h1 className="blog-title">{frontmatter.title}</h1>
 
@@ -60,13 +64,15 @@ export default function BlogTemplate({
             {frontmatter.date} - {post.timeToRead} min read
           </small>
 
-          <Tags tags={frontmatter.tags} />
+          <Box display="flex" justifyContent="space-between">
+            <Tags tags={frontmatter.tags} />
 
-          <ShareButtons
-            title={frontmatter.title}
-            url={post.url}
-            tags={frontmatter.tags}
-          />
+            <ShareButtons
+              title={frontmatter.title}
+              url={post.url}
+              tags={frontmatter.tags}
+            />
+          </Box>
 
           <Img
             draggable={false}
@@ -76,23 +82,23 @@ export default function BlogTemplate({
         </header>
 
         <Content elements={post.htmlAst} />
-      </Article>
 
-      <Pager
-        previousPagePath={previousPagePath}
-        previousPageText={data.prev?.frontmatter?.previousPageText}
-        nextPagePath={nextPagePath}
-        nextPageText={data.next?.frontmatter?.nextPageText}
-      />
+        <Pager
+          previousPagePath={previousPagePath}
+          previousPageText={data.prev?.frontmatter?.previousPageText}
+          nextPagePath={nextPagePath}
+          nextPageText={data.next?.frontmatter?.nextPageText}
+        />
 
-      <DiscussionEmbed
-        shortname={site.siteMetadata.disqusShortName}
-        config={{
-          url: post.url,
-          identifier: post.disqusIdentifier,
-          title: frontmatter.title,
-        }}
-      />
+        <DiscussionEmbed
+          shortname={site.siteMetadata.disqusShortName}
+          config={{
+            url: post.url,
+            identifier: post.disqusIdentifier,
+            title: frontmatter.title,
+          }}
+        />
+      </Container>
     </React.Fragment>
   );
 }
@@ -134,22 +140,22 @@ const Article = styled.article`
     minmax(1em, 1fr)
     [main-start] minmax(300px, 720px) [main-end]
     minmax(1em, 1fr);
-  gap: ${({ theme }) => theme.space[2]} 0;
+  gap: ${({ theme }) => theme.space[4]} 0;
   color: ${({ theme }) => theme.colors.text};
   background: ${({ theme }) => theme.colors.bg};
 
   > * {
     grid-column: main;
     width: 100%;
-    margin: 0;
+    /* margin: 0; */
   }
 
   ${media.greaterThan('sm')`
     img {
-      border-radius: ${({ theme }) => theme.borderRadius};
+      border-radius: ${({ theme }) => theme.borderWidths[1]};
     }
     iframe {
-      border-radius: ${({ theme }) => theme.borderRadius};
+      border-radius: ${({ theme }) => theme.borderWidths[1]};
     }
   `};
 
@@ -177,6 +183,9 @@ export const Content: React.FC<{ elements: object }> = ({ elements }) => {
         font-style: italic;
         background-color: ${({ theme }) => theme.colors.rootBg};
         border-left: 4px solid ${({ theme }) => theme.colors.primary};
+      `,
+      ul: styled.ul`
+        list-style-position: inside;
       `,
     },
   });

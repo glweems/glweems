@@ -1,12 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import React from 'react';
 import config from '../../.gatsby/config';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Box, { BoxProps } from './Common/Box';
 import { baseColors } from '../theme';
-import { css } from 'styled-components';
-
+import { BoxProps } from './Common/Box';
 const icon = {
   hidden: {
     pathLength: 0,

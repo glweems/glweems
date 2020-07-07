@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
+import Container from '../components/Common/Container';
 import Link from '../components/Common/Link';
 import { GhostSVG, MenuIcon, SlashCircleIcon } from '../components/Icons';
 import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
-import { media, useMediaQuery } from '../theme';
-import Container from '../components/Common/Container';
 
 export type NavigationProps = {
   className?: string;
 };
 
 export default function Navigation({ className }: NavigationProps) {
-  const { mobile, toggleNav, isNavOpen } = useTheme();
+  const { mobile, desktop, toggleNav, isNavOpen } = useTheme();
   return (
     <Container as="header" className={className}>
       <Nav>
@@ -24,30 +23,30 @@ export default function Navigation({ className }: NavigationProps) {
         >
           <GhostSVG size={30} />
         </Link>
-        {mobile ? (
-          <button onClick={toggleNav}>
-            {isNavOpen ? (
-              <SlashCircleIcon color="text" />
-            ) : (
-              <MenuIcon color="text" />
-            )}
-          </button>
-        ) : (
+        {desktop &&
           config.links.map((link) => (
             <div key={link.name}>
               <Link to={link.path} className="button">
                 {link.name}
               </Link>
             </div>
-          ))
-        )}
-
+          ))}
         <div
           css={`
             margin-left: auto;
           `}
         >
-          <ToggleThemeSwitch />
+          {mobile ? (
+            <button onClick={toggleNav}>
+              {isNavOpen ? (
+                <SlashCircleIcon color="text" />
+              ) : (
+                <MenuIcon color="text" />
+              )}
+            </button>
+          ) : (
+            <ToggleThemeSwitch />
+          )}
         </div>
       </Nav>
 

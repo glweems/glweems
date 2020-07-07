@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
     fixed(
-      width: $width
-      height: $height
+      # width: $width
+      # height: $height
       traceSVG: { color: "#d0c1fa", background: "transparent" }
       cropFocus: CENTER
     ) {
@@ -16,7 +16,7 @@ export const FixedImage = graphql`
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
     fluid(
-      traceSVG: { color: "#d0c1fa", background: "transparent", threshold: 2 }
+      traceSVG: { color: "#d0c1fa", background: "transparent" }
       cropFocus: CENTER
     ) {
       ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -75,7 +75,14 @@ export const BlogPostCard = graphql`
       date(formatString: "MMMM YYYY")
       thumbnail {
         childImageSharp {
-          ...FluidImage
+          fixed(
+            width: 200
+            height: 200
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
         }
       }
     }

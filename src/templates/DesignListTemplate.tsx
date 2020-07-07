@@ -2,9 +2,10 @@ import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Card from '../components/Card';
+import Container from '../components/Common/Container';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
-import { DesignListQuery } from '../types/generated';
+import { DesignListQuery } from '../queries';
 import { PageContext } from './BlogPostListTemplate';
 
 export default function ArticleListTemplate({
@@ -16,23 +17,25 @@ export default function ArticleListTemplate({
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
-      {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
-        return (
-          <Card
-            key={post.slug}
-            path={`/design/${post.slug}`}
-            excerpt={post.description}
-            title={name}
-            Image={
-              <Img
-                draggable={false}
-                alt={`${name} thumbnail image`}
-                fluid={data.allFile.nodes[index].childImageSharp.fluid}
-              />
-            }
-          />
-        );
-      })}
+      <Container>
+        {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
+          return (
+            <Card
+              key={post.slug}
+              path={`/design/${post.slug}`}
+              excerpt={post.description}
+              title={name}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${name} thumbnail image`}
+                  {...data.allFile.nodes[index].childImageSharp}
+                />
+              }
+            />
+          );
+        })}
+      </Container>
       <Pager {...pageContext} />
     </React.Fragment>
   );
@@ -59,15 +62,13 @@ export const DesignList = graphql`
         relativeDirectory
         sourceInstanceName
         childImageSharp {
-          fluid(
-            traceSVG: {
-              color: "#d0c1fa"
-              background: "transparent"
-              threshold: 10
-            }
+          fixed(
+            width: 200
+            height: 200
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
             cropFocus: CENTER
           ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
           }
         }
       }

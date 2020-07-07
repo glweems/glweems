@@ -1,31 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
+import Box from './Common/Box';
 import Tag from './Tag';
 
-interface TagsProps {
+export interface TagsProps {
   tags?: string[];
-  className?: string;
   limit?: number;
 }
 
-const Tags: React.FC<TagsProps> = ({ tags, className, limit }) => {
+const Tags: React.FC<TagsProps> = ({ tags, limit }) => {
   if (!tags) return null;
   return (
-    <Wrapper className={`tags keen-slider ${className}`}>
+    <Box
+      className="tags"
+      display="flex"
+      alignContent="center"
+      alignItems="center"
+    >
       {tags.slice(0, limit || tags.length).map((tag) => (
-        <Tag key={tag} tag={tag} />
+        <Tag
+          key={tag}
+          css={`
+            margin-right: ${({ theme }) => theme.space[2]};
+          `}
+        >
+          {tag}
+        </Tag>
       ))}
-    </Wrapper>
+    </Box>
   );
 };
-
-const Wrapper = styled.div`
-  display: flex;
-  > *:not(:last-child) {
-    margin-right: 0.75em;
-  }
-  margin-bottom: 0.5em;
-`;
 
 Tags.defaultProps = {
   limit: 3,

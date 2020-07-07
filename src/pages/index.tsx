@@ -1,14 +1,16 @@
 import React from 'react';
 import { PageProps, graphql } from 'gatsby';
-import { IndexPageQuery } from '../types/generated';
 import Card from '../components/Card';
 import Img from 'gatsby-image';
 import Heatmap from '../components/Heatmap';
+import styled from 'styled-components';
+import { IndexPageQuery } from '../queries';
+import Container from '../components/Common/Container';
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
     <React.Fragment>
-      <section>
+      <Section>
         <h2>Blog Posts</h2>
         {data.posts.nodes.map(({ frontmatter, ...post }) => {
           return (
@@ -22,15 +24,15 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                 <Img
                   draggable={false}
                   alt={frontmatter.title}
-                  fluid={frontmatter.thumbnail.childImageSharp.fluid}
+                  {...frontmatter.thumbnail.childImageSharp}
                 />
               }
             />
           );
         })}
-      </section>
+      </Section>
 
-      <section>
+      <Section>
         <h2>Designs</h2>
 
         {data.designs.nodes.map(({ name, ...design }, index) => {
@@ -50,9 +52,9 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
             />
           );
         })}
-      </section>
+      </Section>
 
-      <section>
+      <Section>
         {data.allGithubPinneditems.nodes.map((pinned) => (
           <Card
             key={pinned.name}
@@ -62,14 +64,20 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
             Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
           />
         ))}
-      </section>
+      </Section>
 
-      <section>
+      <Section>
         <Heatmap />
-      </section>
+      </Section>
     </React.Fragment>
   );
 }
+
+const Section = styled(Container)`
+  padding: ${({ theme }) => theme.space[2]};
+`;
+
+(Section as any).defaultProps = { as: 'section' };
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
@@ -115,6 +123,22 @@ export const Query = graphql`
         description
         homepageUrl
         id
+      }
+    }
+
+    sideProjects: allSideprojectsYaml {
+      nodes {
+        id
+        title
+        link
+        github
+        description
+        image {
+          childImageSharp {
+            ...FluidImage
+          }
+        }
+        tags
       }
     }
   }

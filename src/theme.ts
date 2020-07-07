@@ -1,11 +1,11 @@
+import { useState } from 'react';
+import { useMedia } from 'react-use';
 import { createGlobalStyle, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { Theme as SystemTheme } from 'styled-system';
 import { TypographyOptions } from 'typography';
 import useDarkMode from 'use-dark-mode';
 import typography from './utils/typography';
-import { useMedia } from 'react-use';
-import { useState } from 'react';
 
 export const baseColors = {
   blue: '#1769ff',
@@ -66,9 +66,10 @@ export const media = generateMedia<typeof breakpoints, DefaultTheme>(
 const partialTheme = {
   ...typography,
   breakpoints,
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72].map((num) => `${num}px`),
   space: [0, 4, 8, 16, 32, 64, 128, 256, 512].map((num) => `${num}px`),
   fontWeights: [500, 600, 700, 800],
+  borderWidths: [0.125, 0.25, 0.5, 1].map((num) => `${num}em`),
   media,
 };
 
@@ -84,6 +85,8 @@ export interface Theme extends TypographyOptions, SystemTheme {
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleNav(): void;
   mobile: boolean;
+  tablet: boolean;
+  desktop: boolean;
 }
 
 export default function useCreateTheme(): DefaultTheme {
@@ -92,6 +95,10 @@ export default function useCreateTheme(): DefaultTheme {
   const colors = isDarkMode ? darkmode : lightMode;
   const [isNavOpen, setIsNavOpen] = useState(false);
   const mobile = useMedia(`(max-width: ${breakpoints.sm})`);
+  const tablet = useMedia(
+    `(min-width: ${breakpoints.md}, max-width: ${breakpoints.lg})`
+  );
+  const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
 
   function toggleNav() {
     setIsNavOpen((state) => !state);
@@ -106,6 +113,8 @@ export default function useCreateTheme(): DefaultTheme {
     setIsNavOpen,
     toggleNav,
     mobile,
+    tablet,
+    desktop,
     ...partialTheme,
   };
 
@@ -145,6 +154,157 @@ export const GlobalStyle = createGlobalStyle`
    ${({ theme }) => createBreakpointVars(theme.breakpoints)};
    ${({ theme }) => createSpaceVars(theme.space)};
  }
+
+  @media (min-width: 480px) {
+    html {
+      font-size: 112.5%; /* --> 18px base size */
+    }
+  }
+  @media (min-width: 600px) {
+    html {
+      font-size: 125%; /* --> 20px base size */
+    }
+  }
+
+
+
+ html {
+  scroll-behavior: smooth;
+  max-height: 100vh;
+  overflow-y: hidden;
+}
+html,
+body {
+  height: 100vh;
+  overflow-y: auto;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  transition: color 0.25s linear;
+  transition: background-color 0.25s ease-in-out;
+}
+
+
+body {
+  --spinner-color: var(--color-secondary-bg);
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--spinner-color) 50%,
+      var(--spinner-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49%,
+      var(--spinner-color) 50%,
+      var(--spinner-color) 50%,
+      transparent 51%,
+      transparent
+    );
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+  border: 1px var(--spinner-color) solid;
+  border-radius: 4px;
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+.button {
+  padding: 8px 10px;
+  color: var(--color-text);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  border-radius: 3px;
+}
+button:hover,
+.button:hover {
+  background: var(--color-secondary-bg);
+}
+button:focus,
+.button:focus {
+  outline: var(--color-primary);
+}
+
+button:disabled {
+  color: var(--color-root-bg);
+}
+
+.dark-mode a {
+  color: var(--color-yellow);
+}
+.dark-mode a:hover {
+  text-decoration: underline;
+}
+
+svg {
+  font: unset;
+  vertical-align: text-top;
+}
+
+img {
+  border-radius: 0.125rem;
+}
+
+.date *,
+.date :before,
+.date :after {
+  box-sizing: inherit;
+}
+
+.date {
+  display: block;
+  color: var(--color-text-secondary);
+  font-size: 15px;
+  font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    sans-serif;
+  line-height: 22px;
+  text-decoration: none;
+  border-radius: 3px;
+  opacity: 0.75;
+}
+
+#disqus_thread {
+  padding: 1rem;
+  background-color: var(--color-light);
+  border-radius: 0.5rem;
+}
+
+iframe {
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.anchor.before svg {
+  fill: var(--color-primary);
+}
+
+.toggle-theme-button {
+  text-align: center;
+  fill: var(--color-text);
+}
+
+.flex {
+  display: flex;
+}
+
+
+
+.react-share__ShareButton {
+  margin: 0;
+  padding: 0;
+  * {
+    color: var(--color-red);
+    fill: var(--color-red);}
+    rect {fill: none;
+  }
+}
+
 `;
 
 export function useMediaQuery() {

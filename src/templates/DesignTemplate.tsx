@@ -2,14 +2,13 @@ import { motion } from 'framer-motion';
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
-import styled from 'styled-components';
-import Container from '../components/Common/Container';
-import Text from '../components/Common/Text';
-import SEO from '../components/SEO';
-import Tags from '../components/Tags';
-import { DesignsTemplateQuery } from '../types/generated';
-import ShareButtons from '../components/ShareButtons';
 import Box from '../components/Common/Box';
+import Container from '../components/Common/Container';
+import SEO from '../components/SEO';
+import ShareButtons from '../components/ShareButtons';
+import Tags from '../components/Tags';
+import { DesignsTemplateQuery } from '../queries';
+
 export default function DesignTemplate({
   data,
 }: PageProps<DesignsTemplateQuery>) {
@@ -24,8 +23,8 @@ export default function DesignTemplate({
       />
 
       <Container>
-        <Text variant="title">{data.design.name}</Text>
-        <Text>{data.design.description}</Text>
+        <h1>{data.design.name}</h1>
+        <p>{data.design.description}</p>
 
         <Box
           display="flex"
@@ -40,8 +39,6 @@ export default function DesignTemplate({
             tags={data.design.tags}
           />
         </Box>
-      </Container>
-      <ImagesWrapper>
         {data.images.nodes.map((image, index) => (
           <motion.div key={`${data.design.name}-image-${index}`}>
             <Img
@@ -51,16 +48,10 @@ export default function DesignTemplate({
             />
           </motion.div>
         ))}
-      </ImagesWrapper>
+      </Container>
     </React.Fragment>
   );
 }
-
-const ImagesWrapper = styled.div`
-  div {
-    margin: ${({ theme }) => theme.space[3]} 0;
-  }
-`;
 
 export const Query = graphql`
   query DesignsTemplate($slug: String!) {

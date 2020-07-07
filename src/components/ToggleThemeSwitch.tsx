@@ -1,4 +1,3 @@
-/* eslint-disable import/no-named-default */
 import { motion } from 'framer-motion';
 import React from 'react';
 import { useTheme } from 'styled-components';

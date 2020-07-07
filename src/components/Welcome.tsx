@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { darken, lighten } from 'polished';
 import { motion } from 'framer-motion';
-import Container from './Common/Container';
+import { darken } from 'polished';
+import React from 'react';
+import styled, { css } from 'styled-components';
 import config from '../../.gatsby/config';
+import Container from './Common/Container';
 import Link from './Common/Link';
-import { GhostSVG } from './Icons';
-import { baseColors } from '../theme';
-import { shuffle } from 'lodash';
 import SocialIcon from './Common/SocialIcon';
+import { GhostSVG } from './Icons';
+
 export default function Welcome() {
   return (
     <Styled>

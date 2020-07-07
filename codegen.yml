@@ -9,11 +9,10 @@ documents:
     './node_modules/gatsby-image/src/*.js',
   ]
 generates:
-  src/types/generated.tsx:
+  src/queries.ts:
     plugins:
       - 'typescript'
       - 'typescript-operations'
-      - 'typescript-react-apollo'
   ./schema.json:
     plugins:
       - 'introspection'

@@ -66,4 +66,6 @@ test_results
 content/posts/.Ulysses-Group.plist
 schema.json
 _types
-src/types/generated.tsx
+
+# Generated GraphQL Interfaces
+src/queries.ts

@@ -2,7 +2,6 @@ import { motion } from 'framer-motion';
 import { Link, navigateTo } from 'gatsby';
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import '../utils/index.module.css';
 import { media } from '../theme';
 
 type CardProps = {
@@ -12,6 +11,7 @@ type CardProps = {
   path?: string;
   Image?: any;
   linkText?: string;
+  tags?: string[];
 };
 
 export default function Card({
@@ -22,6 +22,7 @@ export default function Card({
   Image,
   linkText,
   children,
+  tags,
 }: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
     navigateTo(event.currentTarget.id);
@@ -31,8 +32,13 @@ export default function Card({
     <Styled>
       <div className="Card--container--body">
         {date && <small className="date"> {date}</small>}
+        {tags && <div></div>}
         {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
-        {excerpt && <div>{excerpt}</div>}
+        {excerpt && (
+          <div className="Card--excerpt">
+            <p>{excerpt}</p>
+          </div>
+        )}
         {path && <Link to={path}>{linkText}</Link>}
         {children}
       </div>
@@ -54,22 +60,15 @@ export default function Card({
 
 const Styled = styled.div`
   display: grid;
+  grid-template-rows: 1fr;
   grid-template-columns: 3fr 1fr;
   gap: ${({ theme }) => theme.space[2]};
   margin-bottom: ${({ theme }) => theme.space[4]};
-  background-color: ${({ theme }) => theme.colors.bg};
-
   ${media.greaterThan('sm')``};
 
-  .Card--container--body {
-    /* grid-column: 2 / -1; */
+  .Card--excerpt {
+    font-size: ${({ theme }) => theme.fontSizes[0]};
   }
-  .Card--container--image {
-    /* grid-column: 1 / 2; */
-    /* height: 100%; */
-    cursor: pointer;
-  }
-
   h2 {
     margin: 0;
   }

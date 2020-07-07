@@ -1,26 +1,52 @@
 import styled, { css } from 'styled-components';
-import { FlexProperty } from 'csstype';
-import { media, breakpoints } from '../../theme';
+import {
+  color,
+  ColorProps,
+  layout,
+  LayoutProps,
+  margin,
+  size,
+  SizeProps,
+  SpaceProps,
+} from 'styled-system';
+import { media } from '../../theme';
 
-const { sm, md, lg } = breakpoints;
-export interface ContainerProps {
-  gap?: 1 | 2 | 3;
-  smFlush?: boolean;
-  bg?: boolean;
-  inverted?: boolean;
-  justifyContent?: FlexProperty<'show'>;
+export interface ContainerProps
+  extends ColorProps,
+    LayoutProps,
+    SizeProps,
+    SpaceProps {
+  fluid?: boolean;
 }
-
-const Container = styled.div`
-  width: 100%;
+const maxWidthCss = css`
   max-width: ${({ theme }) => theme.breakpoints.sm};
-  margin: 0 auto;
+  margin: auto;
+
   ${media.greaterThan('sm')`
-      max-width: ${({ theme }) => theme.breakpoints.md};
-  `}
+  max-width: ${({ theme }) => theme.breakpoints.md};
+`};
+
   ${media.greaterThan('md')`
-      max-width: ${({ theme }) => theme.breakpoints.lg};
-  `}
+  max-width: ${({ theme }) => theme.breakpoints.lg};
+`};
 `;
 
+const Container = styled.div<ContainerProps>`
+  ${color};
+  ${layout};
+  ${size};
+  ${margin};
+
+  ${({ fluid }) =>
+    !fluid
+      ? maxWidthCss
+      : css`
+          max-width: 100vw;
+          .item {
+            ${maxWidthCss};
+          }
+        `};
+`;
+
+Container.defaultProps = { width: '100%' };
 export default Container;

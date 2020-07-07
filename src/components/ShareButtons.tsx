@@ -1,3 +1,4 @@
+import { graphql, useStaticQuery } from 'gatsby';
 import * as React from 'react';
 import {
   FacebookIcon,
@@ -9,10 +10,8 @@ import {
   TwitterIcon,
   TwitterShareButton,
 } from 'react-share';
+import { TwitterHandleQuery } from '../queries';
 import Box from './Common/Box';
-import { graphql, useStaticQuery } from 'gatsby';
-import { TwitterHandleQuery } from '../types/generated';
-import { icon } from '@fortawesome/fontawesome-svg-core';
 
 interface ShareButtonsProps {
   url: string;
@@ -30,7 +29,17 @@ const iconConfig = {
 export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
   const { site } = useStaticQuery<TwitterHandleQuery>(query);
   return (
-    <React.Fragment>
+    <Box display="flex" alignContent="center" alignItems="center">
+      <div
+        css={`
+          font-weight: bold;
+          color: ${({ theme }) => theme.colors.muted};
+          margin-right: ${({ theme }) => theme.space[3]};
+        `}
+      >
+        Share
+      </div>
+
       <div>
         <FacebookShareButton url={url} quote={title} hashtag={`#${tags[0]}`}>
           <FacebookIcon {...iconConfig} />
@@ -59,7 +68,7 @@ export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
           <RedditIcon {...iconConfig} />
         </RedditShareButton>
       </div>
-    </React.Fragment>
+    </Box>
   );
 }
 

@@ -1,26 +1,23 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import {
+  color,
+  ColorProps,
+  flexbox,
   FlexboxProps,
   layout,
   LayoutProps,
   position,
   PositionProps,
   space,
-  color,
-  ColorProps,
   SpaceProps,
-  flexbox,
 } from 'styled-system';
-import { containerCss } from './Container';
 
 export interface BoxProps
   extends SpaceProps,
     LayoutProps,
     PositionProps,
     FlexboxProps,
-    ColorProps {
-  container?: boolean;
-}
+    ColorProps {}
 
 const Box = styled.div<BoxProps>`
   ${color};
@@ -28,11 +25,6 @@ const Box = styled.div<BoxProps>`
   ${space};
   ${layout};
   ${position};
-  ${(props) =>
-    props.container &&
-    css`
-      ${containerCss}
-    `};
 `;
 
 Box.displayName = 'Box';

@@ -2,9 +2,10 @@ import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Card from '../components/Card';
+import Container from '../components/Common/Container';
 import Pager, { PagerProps } from '../components/Pager';
 import SEO from '../components/SEO';
-import { BlogListQuery } from '../types/generated';
+import { BlogListQuery } from '../queries';
 
 export interface PageContext extends PagerProps {
   pageNumber: number;
@@ -24,24 +25,26 @@ export default function ArticleListTemplate({
         title={`Blog Posts Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
 
-      {data.posts.nodes.map(({ frontmatter, ...post }) => {
-        return (
-          <Card
-            key={post.id}
-            title={frontmatter.title}
-            excerpt={frontmatter.subtitle}
-            date={frontmatter.date}
-            path={`/blog${frontmatter.path}`}
-            Image={
-              <Img
-                draggable={false}
-                alt={`${frontmatter.title} thumbnail image`}
-                fluid={frontmatter.thumbnail.childImageSharp.fluid}
-              />
-            }
-          />
-        );
-      })}
+      <Container>
+        {data.posts.nodes.map(({ frontmatter, ...post }) => {
+          return (
+            <Card
+              key={post.id}
+              title={frontmatter.title}
+              excerpt={frontmatter.subtitle}
+              date={frontmatter.date}
+              path={`/blog${frontmatter.path}`}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${frontmatter.title} thumbnail image`}
+                  {...frontmatter.thumbnail.childImageSharp}
+                />
+              }
+            />
+          );
+        })}
+      </Container>
 
       <Pager
         previousPagePath={pageContext.previousPagePath}

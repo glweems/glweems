@@ -163,8 +163,13 @@ const gatsbyConfig: ITSConfigFn<
           icon: `${projectRoot}/src/assets/ghost.png`,
         },
       },
+      {
+        resolve: `gatsby-plugin-postcss`,
+        options: {
+          postCssPlugins: [require(`postcss-typography`)],
+        },
+      },
       'gatsby-plugin-robots-txt',
-      // 'gatsby-plugin-offline',
     ],
   };
 
