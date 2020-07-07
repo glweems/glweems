@@ -5,6 +5,7 @@ import React from 'react';
 import config from '../../.gatsby/config';
 import { baseColors } from '../theme';
 import { BoxProps } from './Common/Box';
+import { useTheme } from 'styled-components';
 const icon = {
   hidden: {
     pathLength: 0,
@@ -21,7 +22,8 @@ export interface SVGIconProps extends BoxProps {
 }
 
 export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
-  const cssColor = `var(--color-${color})`;
+  const { colors } = useTheme();
+  const cssColor = colors[color];
   return (
     <motion.svg
       version="1.1"
@@ -62,8 +64,9 @@ export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
   );
 }
 
-export function MenuIcon({ size = 30, color }: SVGIconProps) {
-  const cssColor = `var(--color-${color})`;
+export function MenuIcon({ size = 30, color = 'text' }: SVGIconProps) {
+  const { colors } = useTheme();
+  const cssColor = colors[color];
   return (
     <svg
       width={size}
@@ -80,8 +83,14 @@ export function MenuIcon({ size = 30, color }: SVGIconProps) {
     </svg>
   );
 }
-export function SlashCircleIcon({ size = 30, color }: SVGIconProps) {
-  const cssColor = `var(--color-${color})`;
+
+MenuIcon.defaultProps = {
+  color: 'text',
+};
+
+export function SlashCircleIcon({ size = 30, color = 'text' }: SVGIconProps) {
+  const { colors } = useTheme();
+  const cssColor = colors[color];
   return (
     <svg
       width={size}

@@ -119,7 +119,8 @@ const checkered = css`
       transparent 51%,
       transparent
     );
-  background-color: var(--color-welcome-bg);
+  background-color: ${({ theme }) =>
+    theme.isDarkMode ? theme.colors.purple : theme.colors.yellow};
   background-position: 0% 0%;
   background-size: 16px 16px;
   border: 1px var(--bg-color) solid;

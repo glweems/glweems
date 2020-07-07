@@ -1,9 +1,10 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import useCreateTheme, { GlobalStyle } from '../theme';
+import useCreateTheme from '../theme';
 import SEO from './SEO';
 import { WrapRootElementBrowserArgs, WrapPageElementBrowserArgs } from 'gatsby';
 import Layout from '../layout/Layout';
+import GlobalCss from '../utils/GlobalCss';
 
 function ContextProvider(props: {
   children: WrapRootElementBrowserArgs['element'];
@@ -23,7 +24,7 @@ export function wrapPageElement({
   return (
     <React.Fragment>
       <SEO />
-      <GlobalStyle />
+      <GlobalCss />
       <Layout path={path}>{element}</Layout>
     </React.Fragment>
   );

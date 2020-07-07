@@ -68,10 +68,10 @@ export default function Navigation({ className }: NavigationProps) {
 const OpenedNav = styled.div`
   flex-basis: 100%;
   width: 100%;
-  color: var(--color-bg);
-  background-color: var(--color-text);
+  color: ${({ theme }) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.colors.text};
   a {
-    color: var(--color-bg);
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

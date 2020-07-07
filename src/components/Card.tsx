@@ -67,7 +67,7 @@ const Styled = styled.div`
   ${media.greaterThan('sm')``};
 
   .Card--excerpt {
-    font-size: ${({ theme }) => theme.fontSizes[0]};
+    /* font-size: ${({ theme }) => theme.fontSizes[1]}; */
   }
   h2 {
     margin: 0;

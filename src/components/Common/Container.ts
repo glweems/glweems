@@ -18,7 +18,8 @@ export interface ContainerProps
     SpaceProps {
   fluid?: boolean;
 }
-const maxWidthCss = css`
+
+export const maxWidthCss = css`
   max-width: ${({ theme }) => theme.breakpoints.sm};
   margin: auto;
 
