@@ -3,14 +3,10 @@ import { createGlobalStyle } from 'styled-components';
 export default createGlobalStyle`
  html {
   scroll-behavior: smooth;
-  max-height: 100vh;
-  overflow-y: hidden;
 }
 
 html,
 body {
-  height: 100vh;
-  overflow-y: auto;
   color: ${({ theme }) => theme.colors.text};
   background-color: ${({ theme }) => theme.colors.bg};
   transition: color 0.25s linear;
@@ -42,6 +38,11 @@ body {
   border-radius: 4px;
 }
 
+
+h1, h2, h3, h4, h5, h6 {
+  border-color: var(--spinner-color);
+}
+
 a {
   text-decoration: none;
 }
@@ -54,9 +55,12 @@ button,
   background: transparent;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
 }
 button:hover,
-.button:hover {
+.button:hover,
+a.active {
   background: ${({ theme }) => theme.colors.secondaryBg};
 }
 button:focus,
@@ -68,12 +72,23 @@ button:disabled {
   color: ${({ theme }) => theme.colors.rootBg};
 }
 
-.dark-mode a {
-  color: ${({ theme }) => theme.colors.primary};
+.active-nav-link {
+  background: ${({ theme }) => theme.colors.secondaryBg};
 }
-.dark-mode a:hover {
-  text-decoration: underline;
+
+.nav-link-wrapper {
+  position: relative;
+  margin-right: ${({ theme }) => theme.space[3]};
+  font-size: ${({ theme }) => theme.fontSizes[1]};
+  cursor: pointer;
 }
+
+
+.nav-link-wrapper.selected{
+  font-size: ${({ theme }) => theme.fontSizes[2]};
+}
+
+
 
 svg {
   font: unset;
@@ -106,22 +121,18 @@ img {
 #disqus_thread {
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.light};
-  border-radius: ${({ theme }) => theme.borderWidths[1]};
+  border-radius: ${({ theme }) => theme.space[1]};
 }
 
 iframe {
   border: none;
-  border-radius: ${({ theme }) => theme.borderWidths[1]};
+  border-radius: ${({ theme }) => theme.space[1]};
 }
 
 .anchor.before svg {
   fill: ${({ theme }) => theme.colors.primary};
 }
 
-.toggle-theme-button {
-  text-align: center;
-  fill: ${({ theme }) => theme.colors.text};
-}
 
 .flex {
   display: flex;

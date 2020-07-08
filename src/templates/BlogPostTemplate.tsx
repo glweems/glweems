@@ -5,16 +5,15 @@ import React from 'react';
 import RehypeReact from 'rehype-react';
 import styled, { useTheme } from 'styled-components';
 import Box from '../components/Common/Box';
-import Container from '../components/Common/Container';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { BlogTemplateQuery } from '../queries';
-import { media } from '../theme';
 import { DiscussionEmbedProps } from '../types/disqus-react';
 import '../utils/syntax.css';
+import Link from '../components/Common/Link';
 
 let rehypeReact: any;
 rehypeReact = RehypeReact;
@@ -54,7 +53,7 @@ export default function BlogTemplate({
         image={frontmatter.thumbnail.publicURL}
       />
 
-      <Container as="article" className={`${mode}-mode`}>
+      <Article as="article" className={`${mode}-mode`}>
         <header>
           <h1 className="blog-title">{frontmatter.title}</h1>
 
@@ -82,23 +81,23 @@ export default function BlogTemplate({
         </header>
 
         <Content elements={post.htmlAst} />
+      </Article>
 
-        <Pager
-          previousPagePath={previousPagePath}
-          previousPageText={data.prev?.frontmatter?.previousPageText}
-          nextPagePath={nextPagePath}
-          nextPageText={data.next?.frontmatter?.nextPageText}
-        />
+      <Pager
+        previousPagePath={previousPagePath}
+        previousPageText={data.prev?.frontmatter?.previousPageText}
+        nextPagePath={nextPagePath}
+        nextPageText={data.next?.frontmatter?.nextPageText}
+      />
 
-        <DiscussionEmbed
-          shortname={site.siteMetadata.disqusShortName}
-          config={{
-            url: post.url,
-            identifier: post.disqusIdentifier,
-            title: frontmatter.title,
-          }}
-        />
-      </Container>
+      <DiscussionEmbed
+        shortname={site.siteMetadata.disqusShortName}
+        config={{
+          url: post.url,
+          identifier: post.disqusIdentifier,
+          title: frontmatter.title,
+        }}
+      />
     </React.Fragment>
   );
 }
@@ -150,44 +149,37 @@ const Article = styled.article`
     /* margin: 0; */
   }
 
-  ${media.greaterThan('sm')`
-    img {
-      border-radius: ${({ theme }) => theme.borderWidths[1]};
-    }
-    iframe {
-      border-radius: ${({ theme }) => theme.borderWidths[1]};
-    }
-  `};
-
   header {
     .blog-title,
     .blog-subtitle,
     .date,
     .tags {
-      margin-bottom: ${({ theme }) => theme.space[4]}px;
+      margin-bottom: ${({ theme }) => theme.space[4]};
     }
   }
 `;
+const artileComponents = {
+  em: styled.em`
+    width: 100%;
+    text-align: center;
+  `,
+  blockquote: styled.blockquote`
+    padding: 0.25em 0 0.25em 1em;
+    color: ${({ theme }) => theme.colors.muted};
+    font-style: italic;
+    background-color: ${({ theme }) => theme.colors.rootBg};
+    border-left: 4px solid ${({ theme }) => theme.colors.primary};
+  `,
+  ul: styled.ul`
+    list-style-position: inside;
+  `,
+  a: Link,
+};
 
 export const Content: React.FC<{ elements: object }> = ({ elements }) => {
   const html = new rehypeReact({
     createElement: React.createElement,
-    components: {
-      em: styled.em`
-        width: 100%;
-        text-align: center;
-      `,
-      blockquote: styled.blockquote`
-        padding: 0.25em 0 0.25em 1em;
-        color: ${({ theme }) => theme.colors.muted};
-        font-style: italic;
-        background-color: ${({ theme }) => theme.colors.rootBg};
-        border-left: 4px solid ${({ theme }) => theme.colors.primary};
-      `,
-      ul: styled.ul`
-        list-style-position: inside;
-      `,
-    },
+    components: artileComponents,
   });
 
   return html.Compiler(elements).props.children;

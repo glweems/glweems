@@ -1,18 +1,22 @@
 import styled, { css } from 'styled-components';
 import {
+  border,
+  BorderProps,
   color,
   ColorProps,
   layout,
   LayoutProps,
   margin,
+  padding,
   size,
   SizeProps,
   SpaceProps,
 } from 'styled-system';
-import { media } from '../../theme';
+import { media, Theme } from '../../theme';
 
 export interface ContainerProps
-  extends ColorProps,
+  extends BorderProps,
+    ColorProps<Theme>,
     LayoutProps,
     SizeProps,
     SpaceProps {
@@ -37,6 +41,8 @@ const Container = styled.div<ContainerProps>`
   ${layout};
   ${size};
   ${margin};
+  ${padding};
+  ${border};
 
   ${({ fluid }) =>
     !fluid

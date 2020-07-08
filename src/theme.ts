@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useMedia } from 'react-use';
-import { DefaultTheme } from 'styled-components';
+import { css, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { Theme as SystemTheme } from 'styled-system';
 import { TypographyOptions } from 'typography';
 import useDarkMode from 'use-dark-mode';
 import typography from './utils/typography';
@@ -27,6 +26,7 @@ type ColorObject = typeof baseColors & {
   borderColor: string;
   secondaryText: string;
   secondaryBg: string;
+  welcome: string;
 };
 
 const lightMode: ColorObject = {
@@ -39,6 +39,7 @@ const lightMode: ColorObject = {
   borderColor: '#c6c7c6',
   secondaryText: 'rgba(0, 0, 0, 0.54)',
   secondaryBg: 'rgba(0, 0, 0, 0.05)',
+  welcome: baseColors.yellow,
 };
 
 const darkmode: ColorObject = {
@@ -51,6 +52,7 @@ const darkmode: ColorObject = {
   borderColor: '#1b2027',
   secondaryText: 'rgba(255, 255, 255, 0.54)',
   secondaryBg: 'rgba(255, 255, 255, 0.05)',
+  welcome: baseColors.purple,
 };
 
 export const breakpoints = {
@@ -73,7 +75,7 @@ const partialTheme = {
   media,
 };
 
-export interface Theme extends TypographyOptions, SystemTheme {
+export interface Theme extends TypographyOptions {
   toggle: () => void;
   isDarkMode: boolean;
   colors: ColorObject;
@@ -87,6 +89,11 @@ export interface Theme extends TypographyOptions, SystemTheme {
   mobile: boolean;
   tablet: boolean;
   desktop: boolean;
+  sm: boolean;
+  md: boolean;
+  lg: boolean;
+  isNavDisplayable: boolean;
+  fontSizes: string[];
 }
 
 export default function useCreateTheme(): DefaultTheme {
@@ -99,6 +106,10 @@ export default function useCreateTheme(): DefaultTheme {
     `(min-width: ${breakpoints.md}, max-width: ${breakpoints.lg})`
   );
   const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
+  const sm = useMedia(`(min-width: ${breakpoints.sm})`);
+  const md = useMedia(`(min-width: ${breakpoints.md})`);
+  const lg = useMedia(`(min-width: ${breakpoints.lg})`);
+  const isNavDisplayable = useMedia(`(min-width: 400px)`) && sm;
 
   function toggleNav() {
     setIsNavOpen((state) => !state);
@@ -115,6 +126,10 @@ export default function useCreateTheme(): DefaultTheme {
     mobile,
     tablet,
     desktop,
+    sm,
+    md,
+    lg,
+    isNavDisplayable,
     ...partialTheme,
   };
 
@@ -132,3 +147,25 @@ export function useMediaQuery() {
   const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
   return { sm, md, lg, mobile, tablet, desktop };
 }
+
+export const checkeredBg = (lineColor: string) => css`
+  --bg-color: ${lineColor};
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    );
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+`;

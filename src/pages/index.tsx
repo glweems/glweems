@@ -81,7 +81,10 @@ const Section = styled(Container)`
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
-    posts: allMarkdownRemark(limit: $limit) {
+    posts: allMarkdownRemark(
+      limit: $limit
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
       nodes {
         ...BlogPostCard
       }

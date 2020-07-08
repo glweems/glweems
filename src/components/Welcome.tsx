@@ -12,13 +12,8 @@ export default function Welcome() {
   return (
     <Styled>
       <motion.div className="Landing__inner">
-        <Container>
-          <motion.div
-            className="container"
-            variants={container}
-            initial="hidden"
-            animate="visible"
-          >
+        <Container padding={2}>
+          <motion.div variants={container} initial="hidden" animate="visible">
             <motion.div
               variants={container}
               css={`
@@ -65,7 +60,7 @@ export default function Welcome() {
 }
 
 const icons = {
-  hidden: { opacity: 1, scale: 0, justifyContent: 'space-between' },
+  hidden: { opacity: 1, scale: 0 },
   visible: {
     opacity: 1,
     scale: 1,
@@ -119,8 +114,7 @@ const checkered = css`
       transparent 51%,
       transparent
     );
-  background-color: ${({ theme }) =>
-    theme.isDarkMode ? theme.colors.purple : theme.colors.yellow};
+  background-color: ${({ theme }) => theme.colors.welcome};
   background-position: 0% 0%;
   background-size: 16px 16px;
   border: 1px var(--bg-color) solid;
@@ -139,11 +133,13 @@ const checkered = css`
 const Styled = styled.div`
   padding: ${({ theme }) => theme.space[3]};
   color: ${({ theme }) => theme.colors.dark};
-
+  .ghost-wrapper {
+    margin-right: ${({ theme }) => theme.space[2]};
+  }
   .Landing__inner {
     height: 100%;
     padding: ${({ theme }) => theme.space[4]} 0;
-    ${checkered}
+    ${checkered};
   }
   * {
     border-bottom: unset;
@@ -159,6 +155,10 @@ const Styled = styled.div`
     display: flex;
     justify-content: flex-start;
     margin-top: ${({ theme }) => theme.space[5]};
+    div {
+      margin-right: ${({ theme }) => theme.space[2]};
+    }
+
     a {
       color: ${({ theme }) =>
         theme.isDarkMode ? theme.colors.blue : theme.colors.blue};
