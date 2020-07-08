@@ -1,54 +1,100 @@
-import * as React from 'react'
-import { Helmet } from 'react-helmet'
-import useSEOQuery from '../graphql/SEOQuery'
+import { useLocation } from '@reach/router';
+import { graphql, useStaticQuery } from 'gatsby';
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import packageJson from '../../package.json';
+import { SeoQuery } from '../types/generated';
 
-interface Props {
-  config: {
-    title?: string
-    description?: string
-    image?: string
-    path?: string
-    article?: boolean
-    tags?: string[]
-  }
-}
+export type SEOProps = {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  keywords?: string[];
+};
 
-const SEO: React.FC<Props> = ({ config: { title, description, image, article, path, tags } }) => {
-  const { defaultTitle, titleTemplate, defaultDescription, url, defaultImage } = useSEOQuery()
+export default function SEO({
+  title,
+  description,
+  image,
+  article,
+  keywords,
+}: SEOProps) {
+  const { pathname } = useLocation();
+  const { site } = useStaticQuery<SeoQuery>(query);
+
+  const {
+    defaultTitle,
+    titleTemplate,
+    defaultDescription,
+    siteUrl,
+    defaultImage,
+    twitterUsername,
+  } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${url}${image || defaultImage}`,
-    url: `${url}${path || '/'}`
-  }
+    image: `${siteUrl}${image || defaultImage}`,
+    url: `${siteUrl}${pathname}`,
+  };
 
   return (
-    <>
-      <Helmet title={seo.title} titleTemplate={titleTemplate}>
-        <meta name="description" content={seo.description} />
-        <meta name="image" content={seo.image} />
-        {seo.url && <meta property="og:url" content={seo.url} />}
-        {(article ? true : null) && <meta property="og:type" content="article" />}
-        {seo.title && <meta property="og:title" content={seo.title} />}
-        {tags ? <meta name="keywords" content={tags.toString()} /> : null}
-        {seo.description && <meta property="og:description" content={seo.description} />}
-        {seo.image && <meta property="og:image" content={seo.image} />}
-        {seo.title && <meta name="twitter:title" content={seo.title} />}
-        {seo.description && <meta name="twitter:description" content={seo.description} />}
-        {seo.image && <meta name="twitter:image" content={seo.image} />}
-      </Helmet>
-    </>
-  )
-}
+    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+      {title && <title>{seo.title}</title>}
+      <meta name="description" content={seo.description} />
+      <meta name="image" content={seo.image} />
 
-const defaultConfig = {
-  article: false,
-  tags: ['designer', 'developer', 'react', 'gatsby']
+      {seo.url && <meta property="og:url" content={seo.url} />}
+
+      {(article ? true : null) && <meta property="og:type" content="article" />}
+
+      {seo.title && <meta property="og:title" content={seo.title} />}
+
+      {seo.description && (
+        <meta property="og:description" content={seo.description} />
+      )}
+
+      {keywords && <meta name="keywords" content={keywords.toString()} />}
+
+      {seo.image && <meta property="og:image" content={seo.image} />}
+
+      <meta name="twitter:card" content="summary_large_image" />
+
+      {twitterUsername && (
+        <meta name="twitter:creator" content={twitterUsername} />
+      )}
+
+      {seo.title && <meta name="twitter:title" content={seo.title} />}
+
+      {seo.description && (
+        <meta name="twitter:description" content={seo.description} />
+      )}
+
+      {seo.image && <meta name="twitter:image" content={seo.image} />}
+    </Helmet>
+  );
 }
 
 SEO.defaultProps = {
-  config: defaultConfig
-}
+  title: null,
+  description: null,
+  image: null,
+  article: false,
+  keywords: packageJson.keywords,
+};
 
-export default SEO
+const query = graphql`
+  query SEO {
+    site {
+      siteMetadata {
+        defaultTitle: title
+        titleTemplate
+        defaultDescription: description
+        siteUrl
+        defaultImage: image
+        twitterUsername: twitterHandle
+      }
+    }
+  }
+`;

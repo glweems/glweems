@@ -1,103 +1,79 @@
-/* eslint-disable no-nested-ternary */
-import React from 'react'
-import { navigate } from 'gatsby'
-import styled from 'styled-components'
-import Tags from './Tags'
-import { rootBg, borderRadius, text, media } from '../theme'
-import { Link } from './Common'
+import { motion } from 'framer-motion';
+import { Link, navigateTo } from 'gatsby';
+import React, { PropsWithChildren } from 'react';
+import styled from 'styled-components';
+import { media } from '../theme';
 
-export const Wrapper = styled.div`
-  display: grid;
-  grid-template-rows: auto 12em 1fr auto;
-  grid-template-columns: 1fr;
-  align-content: flex-start;
-  color: ${text};
-  border-radius: ${borderRadius};
-  cursor: pointer;
-  :hover {
-    background: ${rootBg};
-    .gatsby-image-wrapper {
-      transform: scale(1.01);
-    }
-  }
-  transition: all 0.25s ease 0s;
-`
+type CardProps = {
+  title?: string;
+  excerpt?: string;
+  date?: string;
+  path?: string;
+  Image?: any;
+  linkText?: string;
+  tags?: string[];
+};
 
-export const Header = styled.div`
-  padding: 0 0.5em;
-  overflow: hidden;
-  .title {
-    margin-bottom: 0.5em;
-    padding: 0.5em 0.25em;
-    overflow: hidden;
-    font-size: 1.25em;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    cursor: pointer;
-  }
-`
-
-export const Body = styled.div`
-  padding: 1em 0.5em;
-
-  p {
-    margin-bottom: 0;
-  }
-`
-
-export const Footer = styled.div`
-  margin: 0;
-  padding: 0 0.5em 0.25em 0.5em;
-  overflow: hidden;
-  color: ${text};
-`
-
-interface Card {
-  title: string
-  subtitle: string
-  link?: string
-  tags: string[]
-  children?: React.ReactNode
-  Image?: React.ReactElement
-}
-
-const Card = ({
-  title = 'Card Title',
-  subtitle = 'This is the cards subtitle',
-  link,
-  tags = ['one', 'two', 'three'],
+export default function Card({
+  title,
+  excerpt,
+  date,
+  path,
+  Image,
+  linkText,
   children,
-  Image
-}: Card) => {
-  const go = () => (link ? navigate(link) : null)
+  tags,
+}: PropsWithChildren<CardProps>) {
+  function handleImgClick(event: React.MouseEvent) {
+    navigateTo(event.currentTarget.id);
+  }
 
   return (
-    <Wrapper onClick={go}>
-      <Header>
-        <h4 className="title">{link ? <Link to={link}>{title}</Link> : title}</h4>
-      </Header>
-
-      {Image || Image}
-
-      <Body>
-        <p>{subtitle}</p>
+    <Styled>
+      <div className="Card--container--body">
+        {date && <small className="date"> {date}</small>}
+        {tags && <div></div>}
+        {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
+        {excerpt && (
+          <div className="Card--excerpt">
+            <p>{excerpt}</p>
+          </div>
+        )}
+        {path && <Link to={path}>{linkText}</Link>}
         {children}
-      </Body>
-      <Footer>
-        <Tags items={tags} />
-      </Footer>
-    </Wrapper>
-  )
+      </div>
+
+      {Image && (
+        <motion.div
+          id={path}
+          onClick={handleImgClick}
+          className="Card--container--image"
+          whileHover={{ scale: 1.015 }}
+          whileTap={{ scale: 0.975 }}
+        >
+          {Image}
+        </motion.div>
+      )}
+    </Styled>
+  );
 }
 
-export default Card
-
-export const Cards = styled.div`
+const Styled = styled.div`
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr;
-  gap: 1.5em;
-  ${media.greaterThan('md')`
-    grid-template-columns: repeat(2, minmax(300px, 1fr));
-`}
-`
+  grid-template-columns: 3fr 1fr;
+  gap: ${({ theme }) => theme.space[2]};
+  margin-bottom: ${({ theme }) => theme.space[4]};
+  ${media.greaterThan('sm')``};
+
+  .Card--excerpt {
+    /* font-size: ${({ theme }) => theme.fontSizes[1]}; */
+  }
+  h2 {
+    margin: 0;
+  }
+`;
+
+Card.defaultProps = {
+  linkText: 'Read',
+};

@@ -1,86 +1,148 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
-import React from 'react'
-import ReactTooltip from 'react-tooltip'
-import GithubCalendar from 'react-github-calendar'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import { Link, Container } from '../components/Common'
-import SideProjects from '../components/SideProjects'
-import Designs from '../components/Designs'
-import { BlogPosts } from '../components/BlogPosts'
-import { primary } from '../theme'
-import { BlogPost } from '..'
-import { rhythm } from '../utils/typography'
+import React from 'react';
+import { PageProps, graphql } from 'gatsby';
+import Card from '../components/Card';
+import Img from 'gatsby-image';
+import Heatmap from '../components/Heatmap';
+import styled from 'styled-components';
+import { IndexPageQuery } from '../queries';
+import Container from '../components/Common/Container';
 
-const FadedTitle = styled.h2`
-  color: ${primary};
-  font-size: 2em;
-  opacity: 0.5;
-`
-interface Props {
-  data: {
-    allMarkdownRemark: {
-      posts: BlogPost[]
-    }
-  }
-}
-
-export const IndexMain = styled.main`
-  .blog {
-    display: grid;
-    grid-auto-rows: 1fr;
-    grid-template-rows: max-content;
-    grid-template-columns: 1fr;
-    gap: ${rhythm(3)} 0;
-  }
-`
-
-const IndexPage: React.FC<Props> = ({ data }) => {
-  const { posts } = data.allMarkdownRemark
+export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
-    <>
-      <Container justifyContent="">
-        <section className="blog">
-          <FadedTitle>Blog Posts</FadedTitle>
-          <BlogPosts posts={posts} />
-        </section>
-        <div>
-          <Link to="/blog">View All Blog Posts</Link>
-        </div>
-      </Container>
+    <React.Fragment>
+      <Section>
+        <h2>Blog Posts</h2>
+        {data.posts.nodes.map(({ frontmatter, ...post }) => {
+          return (
+            <Card
+              key={post.id}
+              title={frontmatter.title}
+              excerpt={post.excerpt}
+              date={frontmatter.date}
+              path={`/blog${frontmatter.path}`}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={frontmatter.title}
+                  {...frontmatter.thumbnail.childImageSharp}
+                />
+              }
+            />
+          );
+        })}
+      </Section>
 
-      <Container key="Design">
-        <section>
-          <FadedTitle>Design Projects</FadedTitle>
-          <Designs limit={3} />
-        </section>
-        <div>
-          <Link to="/designs">View All Designs</Link>
-        </div>
-      </Container>
+      <Section>
+        <h2>Designs</h2>
 
-      <Container key="Projects">
-        <section>
-          <FadedTitle>Side Projects</FadedTitle>
-          <SideProjects limit={2} />
-        </section>
-      </Container>
+        {data.designs.nodes.map(({ name, ...design }, index) => {
+          return (
+            <Card
+              key={design.slug}
+              path={`/design/${design.slug}`}
+              excerpt={design.description}
+              title={name}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${name} thumbnail image`}
+                  fluid={data.designCovers.nodes[index].childImageSharp.fluid}
+                />
+              }
+            />
+          );
+        })}
+      </Section>
 
-      <GithubCalendar username="glweems" years={[2019]}>
-        <ReactTooltip delayShow={35} html />
-      </GithubCalendar>
-    </>
-  )
+      <Section>
+        {data.allGithubPinneditems.nodes.map((pinned) => (
+          <Card
+            key={pinned.name}
+            title={pinned.name}
+            excerpt={pinned.description}
+            date={pinned.createdAt}
+            Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
+          />
+        ))}
+      </Section>
+
+      <Section>
+        <Heatmap />
+      </Section>
+    </React.Fragment>
+  );
 }
 
-export default IndexPage
+const Section = styled(Container)`
+  padding: ${({ theme }) => theme.space[2]};
+`;
 
-export const IndexPageQuery = graphql`
-  query IndexPageQuery {
-    allMarkdownRemark(limit: 3, sort: { fields: [frontmatter___date], order: DESC }) {
-      posts: nodes {
-        ...BlogPost
+(Section as any).defaultProps = { as: 'section' };
+
+export const Query = graphql`
+  query IndexPage($limit: Int = 3) {
+    posts: allMarkdownRemark(
+      limit: $limit
+      sort: { fields: frontmatter___date, order: DESC }
+    ) {
+      nodes {
+        ...BlogPostCard
+      }
+    }
+
+    designs: allDesignsYaml(limit: $limit, sort: { fields: slug, order: ASC }) {
+      nodes {
+        ...DesignCard
+      }
+    }
+
+    designCovers: allFile(
+      limit: $limit
+      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
+      sort: { fields: relativeDirectory, order: ASC }
+    ) {
+      nodes {
+        childImageSharp {
+          fluid(
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          }
+        }
+      }
+    }
+
+    allGithubPinneditems(limit: $limit) {
+      nodes {
+        primaryLanguage {
+          name
+          color
+        }
+        openGraphImageUrl
+        name
+        url
+        createdAt(formatString: "MMMM YYYY")
+        description
+        homepageUrl
+        id
+      }
+    }
+
+    sideProjects: allSideprojectsYaml {
+      nodes {
+        id
+        title
+        link
+        github
+        description
+        image {
+          childImageSharp {
+            ...FluidImage
+          }
+        }
+        tags
       }
     }
   }
-`
+`;

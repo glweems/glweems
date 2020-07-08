@@ -1,21 +1,18 @@
 {
   "compilerOptions": {
-    "strict": true,
-    "target": "esnext",
-    "module": "commonjs",
+    "target": "ES2018" /* or at least ES2015 */,
+    "module": "ESNext" /* or at least ES2015 */,
+    "lib": ["dom"] /* <-- required! */,
+    "jsx": "preserve" /* <-- required! */,
     "moduleResolution": "node",
-    "jsx": "react",
+    "types": ["node"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
     "isolatedModules": true,
-    "plugins": []
+    "pretty": true,
+    "noEmit": true
   },
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts",
-    "src/**/*.svg"
-  ],
-  "exclude": [
-    "node_modules/"
-  ]
+  "include": ["src/**/*", ".gatsby/gatsby-awesome-pagination.d.ts"],
+  "exclude": ["node_modules", "src/queries.ts"]
 }

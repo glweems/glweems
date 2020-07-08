@@ -1,1 +1,1 @@
-declare module 'typography-plugin-code'
+declare module 'typography-plugin-code';

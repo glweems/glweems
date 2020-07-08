@@ -1,7 +1,6 @@
-import styled from 'styled-components'
-import { bg, rootBg } from '../../theme'
+import styled from 'styled-components';
 
-export const Button = styled.button`
+const Button = styled.button`
   display: inline-block;
   padding: 5px 10px;
   text-transform: uppercase;
@@ -15,13 +14,16 @@ export const Button = styled.button`
     transition: all 0.4s ease 0s;
   }
   :disabled {
-    color: ${bg};
-    background: ${rootBg};
-    border-color: ${rootBg};
+    color: ${({ theme }) => theme.colors.bg};
+    background: ${({ theme }) => theme.colors.rootBg};
+    border-color: ${({ theme }) => theme.colors.rootBg};
     border-radius: 6px;
     cursor: not-allowed;
   }
   :disabled:hover {
     transition: none;
   }
-`
+`;
+
+Button.displayName = 'Button';
+export default Button;

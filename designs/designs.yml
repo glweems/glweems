@@ -1,0 +1,240 @@
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Fox Vapor Branding
+  slug: fox-vapor-branding
+  description: 'Company Branding for Fox Vapor Company and the project we have worked on. '
+
+  tags:
+    - logo
+    - design
+    - Company Branding
+    - shirt design
+    - identity
+    - vapor store
+  behanceUrl: 'https://www.behance.net/gallery/47323047/Fox-Vapor-Branding'
+  short_url: 'http://be.net/gallery/47323047/Fox-Vapor-Branding'
+  tools: []
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Peace Run Design
+  slug: peace-run-design
+  description: >-
+    This is a piece I put together for a local middle school fun run. Looking
+    forward to printing these
+  tags:
+    - Tshirt Design
+    - Logo Design
+    - Event Branding
+    - Fun Run TShirt
+    - Vintage Design
+  behanceUrl: 'https://www.behance.net/gallery/47274017/Peace-Run-Design'
+  short_url: 'http://be.net/gallery/47274017/Peace-Run-Design'
+  tools:
+    - title: Behance Mobile
+      synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Misc T-Shirt Designs
+  slug: misc-t-shirt-designs
+  description: 'Random T-Shirt Designs I have created over the years.'
+  tags:
+    - tshirt
+    - Screenprinting
+    - design
+    - Illustrator
+    - photoshop
+    - shirt
+  behanceUrl: 'https://www.behance.net/gallery/59400397/Misc-T-Shirt-Designs'
+  short_url: 'http://be.net/gallery/59400397/Misc-T-Shirt-Designs'
+  tools:
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe Photoshop
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+        name: photoshop
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: EntTex Logo Design
+  slug: enttex-logo-design
+  description: >-
+    A clean and simple logo design for Enttex. Here is my work process and also
+    how I displayed my work to the client.
+  tags:
+    - Logo Design
+    - logo process
+    - Logo presentation
+    - revisions
+    - 'branding '
+    - work process
+    - design process
+  behanceUrl: 'https://www.behance.net/gallery/47273271/EntTex-Logo-Design'
+  short_url: 'http://be.net/gallery/47273271/EntTex-Logo-Design'
+  tools:
+    - title: Adobe Photoshop
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+        name: photoshop
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe Photoshop Lightroom
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
+        name: lightroom
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Company Branding
+  slug: company-branding
+  description: >-
+    This is branding for my screen printing company Prism Designs. Business
+    Cards and Flyers.
+  tags:
+    - Business Cards
+    - flyers
+    - design
+    - 'print design '
+    - 'branding '
+    - logo
+  behanceUrl: 'https://www.behance.net/gallery/47274523/Company-Branding'
+  short_url: 'http://be.net/gallery/47274523/Company-Branding'
+  tools:
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe Photoshop
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+        name: photoshop
+    - title: Adobe Photoshop Lightroom
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
+        name: lightroom
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Pokédex Dashboard
+  slug: pokdex-dashboard
+  description: Lambda School Build Week 1 Project
+  tags:
+    - UI
+    - ux
+    - Pokemon
+    - dashboard
+    - Pokedex
+  behanceUrl: 'https://www.behance.net/gallery/78099109/Pokdex-Dashboard'
+  short_url: 'http://be.net/gallery/78099109/Pokdex-Dashboard'
+  tools:
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe XD
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/xd.png
+        name: xd
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: No rhyme or reason
+  slug: no-rhyme-or-reason
+  description: |
+    Random collection of digital art i have for no real rhyme or reason
+  tags:
+    - photoshop
+    - iPad
+    - Procreate
+    - abstract
+  behanceUrl: 'https://www.behance.net/gallery/50768561/No-rhyme-or-reason'
+  short_url: 'http://be.net/gallery/50768561/No-rhyme-or-reason'
+  tools:
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe Photoshop
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+        name: photoshop
+    - title: IPad Pro
+      synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Poker Night T-Shirt Design
+  slug: poker-night-t-shirt-design
+  description: >-
+    This is a personal project I put together as a T-Shirt Design for our poker
+    club
+  tags:
+    - T-Shirt Design
+    - 'ILLUSTRATION '
+    - Poker
+    - Poker Artwork
+    - Poker T-Shirts
+    - textures
+  behanceUrl: 'https://www.behance.net/gallery/50760181/Poker-Night-T-Shirt-Design'
+  short_url: 'http://be.net/gallery/50760181/Poker-Night-T-Shirt-Design'
+  tools:
+    - title: Adobe Photoshop
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+        name: photoshop
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Procreate
+      synonym: null
+    - title: IPad Pro + Apple Pencil
+      synonym: null
+- name: McMath Middle School T-Shirt Designs
+  slug: mcmath-middle-school-t-shirt-designs
+  description: Here is a quick time laps of my process and workflow for T-Shirt Design.
+  tags:
+    - design
+    - Tshirt Design
+    - texture
+  behanceUrl: >-
+    https://www.behance.net/gallery/48973673/McMath-Middle-School-T-Shirt-Designs
+  short_url: 'http://be.net/gallery/48973673/McMath-Middle-School-T-Shirt-Designs'
+  tools:
+    - title: Behance Mobile
+      synonym: null
+
+# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
+- name: Prepress UI
+  slug: prepress-ui
+  description: 'Website I created to calculate cost of getting a t-shirt printed. '
+  tags:
+    - UI
+    - 'web development '
+    - screen printing
+    - ux
+  behanceUrl: 'https://www.behance.net/gallery/78304651/Prepress-UI'
+  short_url: 'http://be.net/gallery/78304651/Prepress-UI'
+  tools:
+    - title: Adobe Illustrator
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+        name: illustrator
+    - title: Adobe XD
+      synonym:
+        icon_url: >-
+          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/xd.png
+        name: xd

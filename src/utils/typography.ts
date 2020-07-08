@@ -1,45 +1,13 @@
-import Typography, { TypographyOptions } from 'typography'
-import CodePlugin from 'typography-plugin-code'
+import Typography, { TypographyOptions } from 'typography';
+import CodePlugin from 'typography-plugin-code';
+import githubTheme from 'typography-theme-github';
 
-const theme: TypographyOptions = {
-  baseFontSize: '16px',
-  baseLineHeight: 1.5,
-  headerFontFamily: [
-    'Montserrat',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Helvetica',
-    'Arial',
-    'Roboto',
-    'sans-serif',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol'
-  ],
-  bodyFontFamily: [
-    'Montserrat',
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Roboto',
-    'Helvetica',
-    'Arial',
-    'sans-serif',
-    'Apple Color Emoji',
-    'Segoe UI Emoji',
-    'Segoe UI Symbol'
-  ],
-  scaleRatio: 2,
-  headerWeight: 800,
-  bodyWeight: 'normal',
-  boldWeight: 500
-}
+let theme: TypographyOptions & { plugins: [] };
+theme = githubTheme;
 
-theme.plugins = [new CodePlugin()]
-
-const typography = new Typography(theme)
+const typography = new Typography(theme);
+(typography as any).plugins = [new CodePlugin()];
 
 // Export helper functions
-export const { scale, rhythm, options } = typography
-export default typography
+export const { scale, rhythm, options } = typography;
+export default typography;
