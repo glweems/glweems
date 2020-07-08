@@ -8,6 +8,7 @@ import createBlogPostPages from './pages/create-blog-pages';
 import createDesignPages from './pages/create-design-pages';
 import createDesignListPages from './pagination/create-design-list-pages';
 import createPostsPages from './pagination/create-post-list-pages';
+import { MarkdownRemark, DesignsYaml } from '../src/queries';
 
 export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'] = async (
   args: SetFieldsOnGraphQLNodeTypeArgs,
@@ -17,12 +18,12 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
     return {
       url: {
         type: GraphQLString,
-        resolve: (source: any) =>
+        resolve: (source: MarkdownRemark) =>
           `https://glweems.com/blog${source.frontmatter.path}`,
       },
       disqusIdentifier: {
         type: GraphQLString,
-        resolve: (source: any) => String(source.frontmatter.id),
+        resolve: (source: MarkdownRemark) => String(source.frontmatter.id),
       },
     };
   }
@@ -31,7 +32,8 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
     return {
       url: {
         type: GraphQLString,
-        resolve: (source: any) => `https://glweems.com/design/${source.slug}`,
+        resolve: (source: DesignsYaml) =>
+          `https://glweems.com/design/${source.slug}`,
       },
     };
   }

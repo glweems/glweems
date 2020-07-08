@@ -1,7 +1,7 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
 import config from '../config';
-import { BlogPostCountQuery } from '../../src/types/generated';
+import { BlogPostCountQuery } from '../../src/queries';
 import { paginate } from 'gatsby-awesome-pagination';
 const { itemsPerPage } = config;
 
@@ -31,8 +31,7 @@ export default async function createPostPages({
     createPage,
     items: result.data.allMarkdownRemark.nodes,
     itemsPerPage,
-    pathPrefix: ({ pageNumber, numberOfPages }) =>
-      pageNumber === 0 ? '/blog' : '/blog/page',
+    pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? '/blog' : '/blog/page'),
     component: path.resolve('src/templates/BlogPostListTemplate.tsx'),
   });
 

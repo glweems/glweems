@@ -1,6 +1,6 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
-import { CreateBlogPostPagesQuery } from '../../src/types/generated';
+import { CreateBlogPostPagesQuery } from '../../src/queries';
 
 export default async function createBlogPostPages({
   graphql,

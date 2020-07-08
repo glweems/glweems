@@ -13,6 +13,6 @@
     "pretty": true,
     "noEmit": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "src/types/generated.tsx"]
+  "include": ["src/**/*", ".gatsby/gatsby-awesome-pagination.d.ts"],
+  "exclude": ["node_modules", "src/queries.ts"]
 }

@@ -1,6 +1,6 @@
 import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
-import { CreateDesignPagesQuery } from '../../src/types/generated';
+import { CreateDesignPagesQuery } from '../../src/queries';
 
 export default async function createDesignPages({
   graphql,

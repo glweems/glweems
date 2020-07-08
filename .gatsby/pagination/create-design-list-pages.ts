@@ -2,7 +2,7 @@ import { CreatePagesArgs } from 'gatsby';
 import path from 'path';
 import config from '../config';
 import { paginate } from 'gatsby-awesome-pagination';
-import { DesignCountQuery } from '../../src/types/generated';
+import { DesignCountQuery } from '../../src/queries';
 const { itemsPerPage } = config;
 
 export default async function createDesignListPages({
