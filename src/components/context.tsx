@@ -5,6 +5,7 @@ import SEO from './SEO';
 import { WrapRootElementBrowserArgs, WrapPageElementBrowserArgs } from 'gatsby';
 import Layout from '../layout/Layout';
 import GlobalCss from '../utils/GlobalCss';
+import ErrorBoundary from './ErrorBoundary';
 
 function ContextProvider(props: {
   children: WrapRootElementBrowserArgs['element'];
@@ -25,7 +26,9 @@ export function wrapPageElement({
     <React.Fragment>
       <SEO />
       <GlobalCss />
-      <Layout path={path}>{element}</Layout>
+      <Layout path={path}>
+        <ErrorBoundary>{element}</ErrorBoundary>
+      </Layout>
     </React.Fragment>
   );
 }

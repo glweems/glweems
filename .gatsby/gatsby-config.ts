@@ -1,11 +1,12 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
-import config from './config';
 import { linkedHeaderIcon } from '../src/components/Icons';
-import { graphql } from 'graphql';
+import config from './config';
+dotenv.config();
+
+const { GITHUB_TOKEN, SENTRY_TOKEN } = process.env;
 
 const gatsbyConfig: ITSConfigFn<
   'config',
@@ -32,6 +33,13 @@ const gatsbyConfig: ITSConfigFn<
       'use-dark-mode',
       'gatsby-plugin-sitemap',
       'gatsby-transformer-yaml',
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          name: 'images',
+          path: `${projectRoot}/src/assets`,
+        },
+      },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -65,19 +73,21 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: 'gatsby-plugin-sentry',
+        options: {
+          dsn: SENTRY_TOKEN,
+          environment: process.env.NODE_ENV,
+          enabled: (() =>
+            ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+        },
+      },
+      {
         resolve: 'gatsby-plugin-typography',
         options: {
           pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
         },
       },
 
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          name: 'images',
-          path: `${projectRoot}/src/assets/`,
-        },
-      },
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
       {
@@ -112,8 +122,7 @@ const gatsbyConfig: ITSConfigFn<
         resolve: 'gatsby-source-github',
         options: {
           headers: {
-            Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
-            // https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
+            Authorization: `Bearer ${GITHUB_TOKEN}`,
           },
           queries: [githubPinnedItems],
         },
@@ -170,6 +179,7 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       'gatsby-plugin-robots-txt',
+      'gatsby-plugin-remove-trailing-slashes',
     ],
   };
 
