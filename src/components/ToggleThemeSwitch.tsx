@@ -4,9 +4,11 @@ import styled, { useTheme } from 'styled-components';
 import { transparentize } from 'polished';
 
 export default function ToggleThemeSwitch() {
-  const { toggle, mode } = useTheme();
+  const { toggle, mode, isDarkMode } = useTheme();
+
+  const buttonTitle = `Activate ${isDarkMode ? 'light' : 'dark'} mode`;
   return (
-    <ToggleButton onClick={toggle}>
+    <ToggleButton aria-label={buttonTitle} title={buttonTitle} onClick={toggle}>
       <motion.svg
         width="1em"
         height="1em"

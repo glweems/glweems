@@ -11,7 +11,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "pretty": true,
-    "noEmit": true
+    "noEmit": true,
+    "typeRoots": ["src/declaration.d.ts"]
   },
   "include": ["src/**/*", ".gatsby/gatsby-awesome-pagination.d.ts"],
   "exclude": ["node_modules", "src/queries.ts"]

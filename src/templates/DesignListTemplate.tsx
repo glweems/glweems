@@ -12,24 +12,25 @@ export default function ArticleListTemplate({
   data,
   pageContext,
 }: PageProps<DesignListQuery, PageContext>) {
+  const { designs } = data;
   return (
     <React.Fragment>
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
       <Container>
-        {data.allDesignsYaml.nodes.map(({ name, ...post }, index) => {
+        {designs.nodes.map(({ name, ...design }, index) => {
           return (
             <Card
-              key={post.slug}
-              path={`/design/${post.slug}`}
-              excerpt={post.description}
+              key={design.slug}
+              path={`/design/${design.slug}`}
+              excerpt={design.description}
               title={name}
               Image={
                 <Img
                   draggable={false}
                   alt={`${name} thumbnail image`}
-                  {...data.allFile.nodes[index].childImageSharp}
+                  {...design.fields.thumbnail.childImageSharp}
                 />
               }
             />
@@ -43,34 +44,13 @@ export default function ArticleListTemplate({
 
 export const DesignList = graphql`
   query DesignList($skip: Int!, $limit: Int!) {
-    allDesignsYaml(
+    designs: allDesignsYaml(
       skip: $skip
       limit: $limit
       sort: { fields: slug, order: ASC }
     ) {
       nodes {
         ...DesignCard
-      }
-    }
-    allFile(
-      skip: $skip
-      limit: $limit
-      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
-      sort: { fields: relativeDirectory, order: ASC }
-    ) {
-      nodes {
-        relativeDirectory
-        sourceInstanceName
-        childImageSharp {
-          fixed(
-            width: 200
-            height: 200
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
       }
     }
   }

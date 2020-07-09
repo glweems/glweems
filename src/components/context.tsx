@@ -32,3 +32,5 @@ export function wrapPageElement({
     </React.Fragment>
   );
 }
+
+const idk = React.createElement('svg');

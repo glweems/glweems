@@ -1,14 +1,15 @@
 import {
+  CreateNodeArgs,
   GatsbyNode,
   PluginOptions,
   SetFieldsOnGraphQLNodeTypeArgs,
 } from 'gatsby';
 import { GraphQLString } from 'graphql';
+import { DesignsYaml, MarkdownRemark } from '../src/queries';
 import createBlogPostPages from './pages/create-blog-pages';
 import createDesignPages from './pages/create-design-pages';
 import createDesignListPages from './pagination/create-design-list-pages';
 import createPostsPages from './pagination/create-post-list-pages';
-import { MarkdownRemark, DesignsYaml } from '../src/queries';
 
 export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'] = async (
   args: SetFieldsOnGraphQLNodeTypeArgs,
@@ -25,6 +26,11 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
         type: GraphQLString,
         resolve: (source: MarkdownRemark) => String(source.frontmatter.id),
       },
+      editOnGithub: {
+        type: GraphQLString,
+        resolve: (source: MarkdownRemark) =>
+          `https://github.com/glweems/glweems/blob/master/posts${source.frontmatter.path}/index.md`,
+      },
     };
   }
 
@@ -35,10 +41,33 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
         resolve: (source: DesignsYaml) =>
           `https://glweems.com/design/${source.slug}`,
       },
+      tbn: {
+        type: GraphQLString,
+        resolve: (source: DesignsYaml) => `./${source.slug}/cover.jpg`,
+      },
     };
   }
   // by default return empty object
   return {};
+};
+
+export const onCreateNode = ({
+  node,
+  getNode,
+  actions,
+}: CreateNodeArgs<DesignsYaml>) => {
+  const { createNodeField } = actions;
+  // Ensures we are processing only markdown files
+  if (node.internal.type === 'DesignsYaml') {
+    // Use `createFilePath` to turn markdown files in our `data/faqs` directory into `/faqs/slug`
+
+    // Creates new query'able field with name of 'slug'
+    createNodeField({
+      node,
+      name: 'thumbnail',
+      value: `./${node.slug}/cover.jpg`,
+    });
+  }
 };
 
 // Create Pages
