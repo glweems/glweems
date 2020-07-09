@@ -77,21 +77,6 @@ button:disabled {
   color: ${({ theme }) => theme.colors.rootBg};
 }
 
-.active-nav-link {
-  background: ${({ theme }) => theme.colors.secondaryBg};
-}
-
-.nav-link-wrapper {
-  position: relative;
-  margin-right: ${({ theme }) => theme.space[3]};
-  font-size: ${({ theme }) => theme.fontSizes[1]};
-  cursor: pointer;
-}
-
-
-.nav-link-wrapper.selected{
-  font-size: ${({ theme }) => theme.fontSizes[2]};
-}
 
 
 .icon {

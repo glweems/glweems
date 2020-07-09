@@ -49,7 +49,6 @@ export default function Navigation({ path }: NavigationProps) {
                   to={link.path}
                   className="button"
                   activeClassName="active-nav-link"
-                  style={{ color: colors.primary }}
                 >
                   {link.name}
                 </Link>
@@ -128,6 +127,22 @@ const Styled = styled(Container)`
     background: transparent;
     background-color: ${({ theme }) => theme.colors.primary};
     border-radius: 4px;
+  }
+
+  .active-nav-link {
+    color: ${({ theme }) => theme.colors.primary};
+    background: ${({ theme }) => theme.colors.secondaryBg};
+  }
+
+  .nav-link-wrapper {
+    position: relative;
+    margin-right: ${({ theme }) => theme.space[3]};
+    color: ${({ theme }) => theme.colors.text};
+    cursor: pointer;
+  }
+
+  .nav-link-wrapper.selected {
+    color: ${({ theme }) => theme.colors.text};
   }
 `;
 
