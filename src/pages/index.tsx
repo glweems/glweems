@@ -46,7 +46,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                 <Img
                   draggable={false}
                   alt={`${name} thumbnail image`}
-                  fluid={data.designCovers.nodes[index].childImageSharp.fluid}
+                  {...design.fields.thumbnail.childImageSharp}
                 />
               }
             />
@@ -96,23 +96,6 @@ export const Query = graphql`
       }
     }
 
-    designCovers: allFile(
-      limit: $limit
-      filter: { sourceInstanceName: { eq: "designs" }, name: { eq: "cover" } }
-      sort: { fields: relativeDirectory, order: ASC }
-    ) {
-      nodes {
-        childImageSharp {
-          fluid(
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFluid_withWebp_tracedSVG
-          }
-        }
-      }
-    }
-
     allGithubPinneditems(limit: $limit) {
       nodes {
         primaryLanguage {
@@ -126,22 +109,6 @@ export const Query = graphql`
         description
         homepageUrl
         id
-      }
-    }
-
-    sideProjects: allSideprojectsYaml {
-      nodes {
-        id
-        title
-        link
-        github
-        description
-        image {
-          childImageSharp {
-            ...FluidImage
-          }
-        }
-        tags
       }
     }
   }

@@ -43,13 +43,6 @@ const gatsbyConfig: ITSConfigFn<
       {
         resolve: 'gatsby-source-filesystem',
         options: {
-          path: `${projectRoot}/content`,
-          name: 'content',
-        },
-      },
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
           path: `${projectRoot}/posts`,
           name: `posts`,
         },
@@ -59,17 +52,6 @@ const gatsbyConfig: ITSConfigFn<
         options: {
           path: `${projectRoot}/designs`,
           name: 'designs',
-        },
-      },
-      {
-        resolve: 'gatsby-plugin-prefetch-google-fonts',
-        options: {
-          fonts: [
-            {
-              family: 'Montserrat',
-              variants: ['400', '500', '600', '700', '800'],
-            },
-          ],
         },
       },
       {
@@ -137,7 +119,7 @@ const gatsbyConfig: ITSConfigFn<
       {
         resolve: 'gatsby-plugin-favicon',
         options: {
-          logo: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
+          logo: `${projectRoot}/src/assets/ghost/ghost-purple.png`,
           injectHTML: true,
           icons: {
             android: true,
@@ -157,9 +139,19 @@ const gatsbyConfig: ITSConfigFn<
         options: {
           rule: {
             include: /assets/,
+            options: {
+              tag: 'svg',
+              name: 'SvgIcon',
+              props: {
+                className: 'icon',
+                title: 'example',
+                fill: 'currentcolor',
+              },
+            },
           },
         },
       },
+
       {
         resolve: 'gatsby-plugin-manifest',
         options: {

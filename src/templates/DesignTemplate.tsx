@@ -12,19 +12,20 @@ import { DesignsTemplateQuery } from '../queries';
 export default function DesignTemplate({
   data,
 }: PageProps<DesignsTemplateQuery>) {
+  const { design } = data;
   return (
     <React.Fragment>
       <SEO
-        title={data.design.name}
+        title={design.name}
         article
-        keywords={data.design.tags}
-        description={data.design.description}
-        image={data.seoImagePath.publicURL}
+        keywords={design.tags}
+        description={design.description}
+        image={design.fields.thumbnail.publicURL}
       />
 
       <Container>
-        <h1>{data.design.name}</h1>
-        <p>{data.design.description}</p>
+        <h1>{design.name}</h1>
+        <p>{design.description}</p>
 
         <Box
           display="flex"
@@ -32,14 +33,14 @@ export default function DesignTemplate({
           alignContent="center"
           alignItems="center"
         >
-          <Tags tags={data.design.tags} />
+          <Tags tags={design.tags} />
           <ShareButtons
-            url={data.design.url}
-            title={data.design.name}
-            tags={data.design.tags}
+            url={design.url}
+            title={design.name}
+            tags={design.tags}
           />
         </Box>
-        {data.images.nodes.map((image, index) => (
+        {design.images.map((image, index) => (
           <motion.div key={`${data.design.name}-image-${index}`}>
             <Img
               fluid={image?.childImageSharp?.fluid}
@@ -62,32 +63,19 @@ export const Query = graphql`
       description
       tags
       url
-      tools {
-        title
+      fields {
+        thumbnail {
+          publicURL
+        }
       }
-    }
-    images: allFile(
-      filter: {
-        relativePath: { regex: $slug }
-        sourceInstanceName: { eq: "designs" }
-      }
-    ) {
-      nodes {
-        id
-        name
-        publicURL
+      images {
         childImageSharp {
           ...FluidImage
         }
       }
-      totalCount
-    }
-    seoImagePath: file(
-      relativePath: { regex: $slug }
-      sourceInstanceName: { eq: "designs" }
-      name: { eq: "cover" }
-    ) {
-      publicURL
+      tools {
+        title
+      }
     }
   }
 `;

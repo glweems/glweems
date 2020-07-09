@@ -1,8 +1,20 @@
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Fox Vapor Branding
   slug: fox-vapor-branding
+  images:
+    - ./fox-vapor-branding/cover.jpg
+    - ./fox-vapor-branding/1.jpg
+    - ./fox-vapor-branding/2.jpg
+    - ./fox-vapor-branding/3.jpg
+    - ./fox-vapor-branding/4.jpg
+    - ./fox-vapor-branding/5.jpg
+    - ./fox-vapor-branding/6.jpg
+    - ./fox-vapor-branding/7.jpg
+    - ./fox-vapor-branding/8.jpg
+    - ./fox-vapor-branding/9.jpg
+    - ./fox-vapor-branding/10.jpg
+    - ./fox-vapor-branding/11.jpg
+    - ./fox-vapor-branding/12.jpg
   description: 'Company Branding for Fox Vapor Company and the project we have worked on. '
-
   tags:
     - logo
     - design
@@ -13,13 +25,20 @@
   behanceUrl: 'https://www.behance.net/gallery/47323047/Fox-Vapor-Branding'
   short_url: 'http://be.net/gallery/47323047/Fox-Vapor-Branding'
   tools: []
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Peace Run Design
   slug: peace-run-design
+  images:
+    - ./peace-run-design/cover.jpg
+    - ./peace-run-design/1.jpg
+    - ./peace-run-design/2.jpg
+    - ./peace-run-design/3.jpg
+    - ./peace-run-design/4.jpg
+    - ./peace-run-design/5.jpg
+    - ./peace-run-design/6.jpg
+    - ./peace-run-design/7.jpg
   description: >-
-    This is a piece I put together for a local middle school fun run. Looking
-    forward to printing these
+    "This is a piece I put together for a local middle school fun run. Looking
+    forward to printing these"
   tags:
     - Tshirt Design
     - Logo Design
@@ -31,11 +50,13 @@
   tools:
     - title: Behance Mobile
       synonym: null
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Misc T-Shirt Designs
   slug: misc-t-shirt-designs
-  description: 'Random T-Shirt Designs I have created over the years.'
+  images:
+    - ./misc-t-shirt-designs/cover.jpg
+    - ./misc-t-shirt-designs/1.jpg
+    - ./misc-t-shirt-designs/2.jpg
+  description: Random T-Shirt Designs I have created over the years.
   tags:
     - tshirt
     - Screenprinting
@@ -49,26 +70,29 @@
     - title: Adobe Illustrator
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png"
         name: illustrator
     - title: Adobe Photoshop
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png"
         name: photoshop
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: EntTex Logo Design
   slug: enttex-logo-design
+  images:
+    - ./enttex-logo-design/cover.jpg
+    - ./enttex-logo-design/1.jpg
+    - ./enttex-logo-design/2.jpg
+    - ./enttex-logo-design/3.jpg
   description: >-
-    A clean and simple logo design for Enttex. Here is my work process and also
-    how I displayed my work to the client.
+    "A clean and simple logo design for Enttex. Here is my work process and also
+    how I displayed my work to the client."
   tags:
     - Logo Design
     - logo process
     - Logo presentation
     - revisions
-    - 'branding '
+    - branding
     - work process
     - design process
   behanceUrl: 'https://www.behance.net/gallery/47273271/EntTex-Logo-Design'
@@ -77,25 +101,31 @@
     - title: Adobe Photoshop
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/photoshop.png"
         name: photoshop
     - title: Adobe Illustrator
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png"
         name: illustrator
     - title: Adobe Photoshop Lightroom
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png"
         name: lightroom
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Company Branding
   slug: company-branding
+  images:
+    - ./company-branding/cover.jpg
+    - ./company-branding/1.jpg
+    - ./company-branding/2.jpg
+    - ./company-branding/3.jpg
+    - ./company-branding/4.jpg
+    - ./company-branding/5.jpg
+    - ./company-branding/6.jpg
   description: >-
-    This is branding for my screen printing company Prism Designs. Business
-    Cards and Flyers.
+    "This is branding for my screen printing company Prism Designs. Business
+    Cards and Flyers."
   tags:
     - Business Cards
     - flyers
@@ -109,7 +139,7 @@
     - title: Adobe Illustrator
       synonym:
         icon_url: >-
-          https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png
+          "https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/illustrator.png"
         name: illustrator
     - title: Adobe Photoshop
       synonym:
@@ -121,10 +151,12 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/lightroom.png
         name: lightroom
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Pokédex Dashboard
   slug: pokdex-dashboard
+  images:
+    - ./pokdex-dashboard/cover.jpg
+    - ./pokdex-dashboard/1.jpg
+    - ./pokdex-dashboard/2.jpg
   description: Lambda School Build Week 1 Project
   tags:
     - UI
@@ -145,10 +177,14 @@
         icon_url: >-
           https://a5.behance.net/cdf7048c3f31c0808a1e6cc64d58bbb0ed3df389/img/project/tools/1x/xd.png
         name: xd
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: No rhyme or reason
   slug: no-rhyme-or-reason
+  images:
+    - ./no-rhyme-or-reason/cover.jpg
+    - ./no-rhyme-or-reason/1.jpg
+    - ./no-rhyme-or-reason/2.jpg
+    - ./no-rhyme-or-reason/3.jpg
+    - ./no-rhyme-or-reason/4.jpg
   description: |
     Random collection of digital art i have for no real rhyme or reason
   tags:
@@ -171,10 +207,11 @@
         name: photoshop
     - title: IPad Pro
       synonym: null
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Poker Night T-Shirt Design
   slug: poker-night-t-shirt-design
+  images:
+    - ./poker-night-t-shirt-design/cover.jpg
+    - ./poker-night-t-shirt-design/1.jpg
   description: >-
     This is a personal project I put together as a T-Shirt Design for our poker
     club
@@ -204,6 +241,10 @@
       synonym: null
 - name: McMath Middle School T-Shirt Designs
   slug: mcmath-middle-school-t-shirt-designs
+  images:
+    - ./mcmath-middle-school-t-shirt-designs/cover.jpg
+    - ./mcmath-middle-school-t-shirt-designs/1.jpg
+    - ./mcmath-middle-school-t-shirt-designs/2.jpg
   description: Here is a quick time laps of my process and workflow for T-Shirt Design.
   tags:
     - design
@@ -215,10 +256,14 @@
   tools:
     - title: Behance Mobile
       synonym: null
-
-# ! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ! #
 - name: Prepress UI
   slug: prepress-ui
+  images:
+    - ./prepress-ui/cover.jpg
+    - ./prepress-ui/1.jpg
+    - ./prepress-ui/2.jpg
+    - ./prepress-ui/3.jpg
+    - ./prepress-ui/4.jpg
   description: 'Website I created to calculate cost of getting a t-shirt printed. '
   tags:
     - UI

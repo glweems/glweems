@@ -60,6 +60,20 @@ export const DesignCard = graphql`
     name
     description
     slug
+    fields {
+      thumbnail {
+        childImageSharp {
+          fixed(
+            width: 200
+            height: 200
+            traceSVG: { color: "#d0c1fa", background: "transparent" }
+            cropFocus: CENTER
+          ) {
+            ...GatsbyImageSharpFixed_withWebp_tracedSVG
+          }
+        }
+      }
+    }
   }
 `;
 
