@@ -3,7 +3,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import packageJson from '../../package.json';
-import { SeoQuery } from '../types/generated';
+import config from '../../.gatsby/config';
+import { SeoQuery } from '../queries';
 
 export type SEOProps = {
   title?: string;
@@ -40,7 +41,11 @@ export default function SEO({
   };
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <Helmet
+      title={seo.title}
+      titleTemplate={titleTemplate}
+      htmlAttributes={{ lang: site.siteMetadata.languageCode }}
+    >
       {title && <title>{seo.title}</title>}
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
@@ -88,6 +93,7 @@ const query = graphql`
   query SEO {
     site {
       siteMetadata {
+        languageCode
         defaultTitle: title
         titleTemplate
         defaultDescription: description

@@ -20,6 +20,7 @@ export default function Navigation({ path }: NavigationProps) {
       <nav>
         <Link
           to="/"
+          aria-label="go to homepage"
           css={`
             padding: ${({ theme }) => theme.space[2]};
           `}

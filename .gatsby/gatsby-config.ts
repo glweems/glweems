@@ -3,7 +3,7 @@ import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
 import { FileSystemNode } from 'gatsby-source-filesystem';
 import packageJson from '../package.json';
 import { linkedHeaderIcon } from '../src/components/Icons';
-import config from './config';
+import config, { siteMetadata } from './config';
 dotenv.config();
 
 const { GITHUB_TOKEN, SENTRY_TOKEN } = process.env;
@@ -13,17 +13,7 @@ const gatsbyConfig: ITSConfigFn<
   IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>
 > = ({ projectRoot }) => {
   const gatsbyConfig = {
-    siteMetadata: {
-      title: `Garrett Weems`,
-      titleTemplate: `%s · Glweems`,
-      description: `Full stack web developer / graphic designer.`,
-      image: `${projectRoot}/src/assets/ghost.png`,
-      languageCode: `en`,
-      countryCode: `US`,
-      siteUrl: config.url,
-      twitterHandle: config.contact.twitter,
-      disqusShortName: config.disqusShortName,
-    },
+    siteMetadata,
     plugins: [
       'gatsby-plugin-typescript',
       'gatsby-plugin-react-helmet',

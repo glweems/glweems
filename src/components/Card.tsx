@@ -45,7 +45,11 @@ export default function Card({
         <div className="Card--body">
           {excerpt && <p className="Card--excerpt">{excerpt}</p>}
           {path && (
-            <Link to={path} className="Card--link button">
+            <Link
+              to={path}
+              className="Card--link button"
+              aria-label={`View ${title}`}
+            >
               {linkText} <Icon />
             </Link>
           )}

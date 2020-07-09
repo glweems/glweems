@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import packageJson from '../package.json';
+import path from 'path';
 
 const config = {
   defaultTitle: 'Glweems',
@@ -15,6 +16,7 @@ const config = {
   url: packageJson.homepage,
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
+
   socialLinks: {
     github: 'https://github.com/glweeems',
     linkedin: 'https://www.linkedin.com/in/glweems',
@@ -80,23 +82,18 @@ const config = {
       icon: faInstagramSquare,
     },
   },
-  contacts: {
-    email: '',
-    facebook: '#',
-    telegram: '#',
-    twitter: '#',
-    github: '#',
-    rss: '',
-    vkontakte: '',
-    linkedin: '#',
-    instagram: '#',
-    line: '',
-    gitlab: '',
-    weibo: '',
-    codepen: '',
-    youtube: '',
-    soundcloud: '',
-  },
+};
+
+export const siteMetadata = {
+  title: `Garrett Weems`,
+  titleTemplate: `%s · Glweems`,
+  description: `Full stack web developer / graphic designer.`,
+  image: path.resolve(`../src/assets/ghost.png`),
+  languageCode: `en`,
+  countryCode: `US`,
+  siteUrl: config.url,
+  twitterHandle: config.contact.twitter,
+  disqusShortName: config.disqusShortName,
 };
 
 export default config;
