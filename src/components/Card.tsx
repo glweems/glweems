@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion';
-import { Link, navigateTo } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { media } from '../theme';
+import Box from './Common/Box';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHandPointRight } from '@fortawesome/free-solid-svg-icons';
+import Icon from '../assets/book.svg';
+import { transparentize } from 'polished';
 
 type CardProps = {
   title?: string;
@@ -25,23 +29,29 @@ export default function Card({
   tags,
 }: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
-    navigateTo(event.currentTarget.id);
+    navigate(event.currentTarget.id);
   }
 
   return (
     <Styled>
-      <div className="Card--container--body">
-        {date && <small className="date"> {date}</small>}
+      <Box className="Card--content" pl={2}>
         {tags && <div></div>}
-        {title && <h2>{path ? <Link to={path}>{title}</Link> : title}</h2>}
-        {excerpt && (
-          <div className="Card--excerpt">
-            <p>{excerpt}</p>
-          </div>
+        {title && (
+          <h2 className="Card--title">
+            {path ? <Link to={path}>{title}</Link> : title}
+          </h2>
         )}
-        {path && <Link to={path}>{linkText}</Link>}
-        {children}
-      </div>
+        {date && <small className="date"> {date}</small>}
+        <div className="Card--body">
+          {excerpt && <p className="Card--excerpt">{excerpt}</p>}
+          {path && (
+            <Link to={path} className="Card--link button">
+              {linkText} <Icon />
+            </Link>
+          )}
+          {children}
+        </div>
+      </Box>
 
       {Image && (
         <motion.div
@@ -60,17 +70,28 @@ export default function Card({
 
 const Styled = styled.div`
   display: grid;
+  grid-template-areas: 'image content';
   grid-template-rows: 1fr;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 250px minmax(0, 500px);
   gap: ${({ theme }) => theme.space[2]};
+  width: 100%;
   margin-bottom: ${({ theme }) => theme.space[4]};
-  ${media.greaterThan('sm')``};
 
-  .Card--excerpt {
-    /* font-size: ${({ theme }) => theme.fontSizes[1]}; */
+  .Card--body {
+    margin: ${({ theme }) => theme.space[3]} 0;
   }
-  h2 {
-    margin: 0;
+  .Card--link {
+    color: ${({ theme }) => theme.colors.link};
+  }
+
+  .Card--title {
+    color: ${({ theme }) => theme.colors.text};
+  }
+  .Card--excerpt {
+    color: ${({ theme }) => transparentize(0.2, theme.colors.text)};
+  }
+  .Card--container--image {
+    grid-area: image;
   }
 `;
 

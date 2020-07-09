@@ -27,6 +27,7 @@ type ColorObject = typeof baseColors & {
   secondaryText: string;
   secondaryBg: string;
   welcome: string;
+  link: string;
 };
 
 const lightMode: ColorObject = {
@@ -40,6 +41,7 @@ const lightMode: ColorObject = {
   secondaryText: 'rgba(0, 0, 0, 0.54)',
   secondaryBg: 'rgba(0, 0, 0, 0.05)',
   welcome: baseColors.yellow,
+  link: baseColors.blue,
 };
 
 const darkmode: ColorObject = {
@@ -53,6 +55,7 @@ const darkmode: ColorObject = {
   secondaryText: 'rgba(255, 255, 255, 0.54)',
   secondaryBg: 'rgba(255, 255, 255, 0.05)',
   welcome: baseColors.purple,
+  link: baseColors.yellow,
 };
 
 export const breakpoints = {

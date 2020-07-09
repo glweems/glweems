@@ -44,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
@@ -51,13 +52,17 @@ button,
 .button {
   padding: 8px 10px;
   color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+  letter-spacing: 0.5px;
   text-decoration: none;
   background: transparent;
   border: none;
   border-radius: 3px;
   cursor: pointer;
   transition: all 0.5s ease-in-out;
+  text-anchor: middle;
 }
+
 button:hover,
 .button:hover,
 a.active {
@@ -89,6 +94,9 @@ button:disabled {
 }
 
 
+.icon {
+  /* color: ${({ theme }) => theme.colors.text}; */
+}
 
 svg {
   font: unset;
