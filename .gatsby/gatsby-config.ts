@@ -134,8 +134,10 @@ const gatsbyConfig: ITSConfigFn<
               name: 'SvgIcon',
               props: {
                 className: 'icon',
-                title: 'example',
                 fill: 'currentcolor',
+                width: '1em',
+                height: '1em',
+                viewBox: '0 0 16 16',
               },
             },
           },

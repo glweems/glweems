@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link, navigate } from 'gatsby';
+import { transparentize } from 'polished';
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import Box from './Common/Box';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointRight } from '@fortawesome/free-solid-svg-icons';
 import Icon from '../assets/book.svg';
-import { transparentize } from 'polished';
+import Box from './Common/Box';
+import Button from './Common/Button';
 
 type CardProps = {
   title?: string;
@@ -45,13 +44,14 @@ export default function Card({
         <div className="Card--body">
           {excerpt && <p className="Card--excerpt">{excerpt}</p>}
           {path && (
-            <Link
+            <Button
+              as={Link}
               to={path}
               className="Card--link button"
               aria-label={`View ${title}`}
             >
               {linkText} <Icon />
-            </Link>
+            </Button>
           )}
           {children}
         </div>

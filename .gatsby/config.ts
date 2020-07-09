@@ -4,6 +4,11 @@ import {
   faInstagramSquare,
   faLinkedin,
   faMedium,
+  faGithub,
+  faLinkedinIn,
+  faMediumM,
+  faBehance,
+  faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import packageJson from '../package.json';
@@ -55,7 +60,7 @@ const config = {
       name: 'Github',
       username: 'glweems',
       link: 'https://github.com/glweems',
-      icon: faGithubSquare,
+      icon: faGithub,
     },
     linkedin: {
       name: 'LinkedIn',
@@ -67,19 +72,19 @@ const config = {
       name: 'Medium',
       username: 'glweems',
       link: 'https://medium.com/@glweems',
-      icon: faMedium,
+      icon: faMediumM,
     },
     behance: {
       name: 'Behance',
       username: 'glweems',
       link: 'https://www.behance.net/glweems',
-      icon: faBehanceSquare,
+      icon: faBehance,
     },
     instagram: {
       name: 'Instagram',
       username: 'glweems',
       link: 'https://instagram.com/glweems',
-      icon: faInstagramSquare,
+      icon: faInstagram,
     },
   },
 };

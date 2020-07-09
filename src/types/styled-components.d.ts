@@ -1,11 +1,11 @@
 import { CSSProp } from 'styled-components';
-import { Theme } from '../theme';
+import { GlweemsTheme } from '../theme';
 
 declare module 'styled-components' {
-  export interface DefaultTheme extends Theme {}
+  export interface DefaultTheme extends GlweemsTheme {}
 }
 declare module 'react' {
   interface Attributes {
-    css?: CSSProp<Theme>;
+    css?: CSSProp<GlweemsTheme>;
   }
 }

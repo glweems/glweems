@@ -1,9 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
+import { transparentize } from 'polished';
+import { buttonCss } from '../theme';
 
 export default createGlobalStyle`
  html {
   scroll-behavior: smooth;
-}
+  }
+
 
 html,
 body {
@@ -15,28 +18,35 @@ body {
 
 
 body {
+    min-height: 100vh;
   --spinner-color: ${({ theme }) => theme.colors.secondaryBg};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--spinner-color) 50%,
-      var(--spinner-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49%,
-      var(--spinner-color) 50%,
-      var(--spinner-color) 50%,
-      transparent 51%,
-      transparent
-    );
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-  border: 1px var(--spinner-color) solid;
-  border-radius: 4px;
-}
+    overflow: hidden;
+    font-weight: normal;
+    font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    word-wrap: break-word;
+    font-kerning: normal;
+    font-feature-settings: "kern", "liga", "clig", "calt";
+    background: linear-gradient(
+        45deg,
+        transparent 49%,
+        var(--spinner-color) 50%,
+        var(--spinner-color) 50%,
+        transparent 51%,
+        transparent
+      ),
+      linear-gradient(
+        -45deg,
+        transparent 49%,
+        var(--spinner-color) 50%,
+        var(--spinner-color) 50%,
+        transparent 51%,
+        transparent
+      );
+    background-position: 0% 0%;
+    background-size: 16px 16px;
+    border: 1px var(--spinner-color) solid;
+    border-radius: 4px;
+  }
 
 
 h1, h2, h3, h4, h5, h6 {
@@ -50,17 +60,7 @@ a {
 
 button,
 .button {
-  padding: 8px 10px;
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  text-anchor: middle;
+
 }
 
 button:hover,
@@ -143,13 +143,3 @@ iframe {
   }
 }
 `;
-// @media (min-width: 480px) {
-//     html {
-//       font-size: 112.5%; /* --> 18px base size */
-//     }
-//   }
-//   @media (min-width: 600px) {
-//     html {
-//       font-size: 125%; /* --> 20px base size */
-//     }
-//   }

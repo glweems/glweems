@@ -1,12 +1,13 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { Link } from 'gatsby';
 import React from 'react';
-import styled, { useTheme } from 'styled-components';
+import styled, { css, useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
 import Box from '../components/Common/Box';
 import Container from '../components/Common/Container';
-import { GhostSVG, MenuIcon, SlashCircleIcon } from '../components/Icons';
+import { GhostSVG } from '../components/Icons';
 import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
+import ToggleNavButton from '../components/ToggleNavButton';
 
 export type NavigationProps = {
   path: string;
@@ -58,11 +59,7 @@ export default function Navigation({ path }: NavigationProps) {
         </AnimateSharedLayout>
 
         <Box marginLeft="auto">
-          {mobile ? (
-            <HamburgerMenu onClick={toggleNav} />
-          ) : (
-            <ToggleThemeSwitch />
-          )}
+          {mobile ? <ToggleNavButton /> : <ToggleThemeSwitch />}
         </Box>
       </nav>
       <AnimatePresence>
@@ -146,20 +143,5 @@ const Styled = styled(Container)`
     color: ${({ theme }) => theme.colors.text};
   }
 `;
-
-function HamburgerMenu(props: React.HTMLAttributes<HTMLButtonElement>) {
-  const { isNavOpen } = useTheme();
-  return (
-    <button {...props} style={{ zIndex: 10 }}>
-      <AnimatePresence>
-        {isNavOpen ? (
-          <SlashCircleIcon color="text" />
-        ) : (
-          <MenuIcon color="text" />
-        )}
-      </AnimatePresence>
-    </button>
-  );
-}
 
 Navigation.defaultProps = { className: 'navigation' };

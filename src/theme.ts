@@ -5,6 +5,10 @@ import { generateMedia } from 'styled-media-query';
 import { TypographyOptions } from 'typography';
 import useDarkMode from 'use-dark-mode';
 import typography from './utils/typography';
+import * as System from 'styled-system';
+import systemCss from '@styled-system/css';
+import { variant } from 'styled-system';
+import { transparentize } from 'polished';
 
 export const baseColors = {
   blue: '#1769ff',
@@ -57,62 +61,119 @@ const darkmode: ColorObject = {
   welcome: baseColors.purple,
   link: baseColors.yellow,
 };
+export const breakpoints = ['360px', '550px', '750px', '1000px', '1300px'];
 
-export const breakpoints = {
+export const containerWidths = {
   sm: `40em`,
   md: `52em`,
   lg: `64em`,
 };
 
-export const media = generateMedia<typeof breakpoints, DefaultTheme>(
-  breakpoints
+export const media = generateMedia<typeof containerWidths, DefaultTheme>(
+  containerWidths
 );
+export const borders = [0, '1px solid', '2px solid'];
 
-const partialTheme = {
-  ...typography,
-  breakpoints,
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72].map((num) => `${num}px`),
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512].map((num) => `${num}px`),
-  fontWeights: [500, 600, 700, 800],
-  borderWidths: [0.125, 0.25, 0.5, 1].map((num) => `${num}em`),
-  media,
+export const fontWeights = {
+  body: 400,
+  bold: 700,
+  extraBold: 800,
+  heading: 700,
 };
 
-export interface Theme extends TypographyOptions {
+export const fonts = {
+  body:
+    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+  system:
+    '-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+  sans:
+    'Inter, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+  heading:
+    'Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+  brand:
+    'Montserrat, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji',
+  monospace:
+    'SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
+  serif: 'Georgia, Times New Roman, Times, serif',
+};
+
+export const fontSizes = [
+  '0.75rem',
+  '0.875rem',
+  '1rem',
+  '1.125rem',
+  '1.25rem',
+  '1.5rem',
+  '1.75rem',
+  '2rem',
+  '2.25rem',
+  '2.625rem',
+  '3rem',
+  '3.375rem',
+  '3.75rem',
+  '4.25rem',
+  '4.75rem',
+  '5.25rem',
+  '5.75rem',
+];
+
+export const space = [
+  '0rem',
+  '0.25rem',
+  '0.5rem',
+  '0.75rem',
+  '1rem',
+  '1.25rem',
+  '1.5rem',
+  '2rem',
+  '2.5rem',
+  '3rem',
+  '3.5rem',
+  '4rem',
+  '4.5rem',
+];
+
+export const buttons = {
+  primary: {
+    p: 3,
+    fontWeight: 'bold',
+    color: 'white',
+    bg: 'primary',
+    borderRadius: 2,
+  },
+};
+
+export const radii = [0, '2px', '4px', '8px', '16px', '9999px', '100%'];
+
+const partialTheme = {
+  breakpoints,
+  borders,
+  fontWeights,
+  fonts,
+  fontSizes,
+  space,
+  radii,
+  media,
+  buttons,
+};
+
+export type GlweemsTheme = typeof partialTheme & {
   toggle: () => void;
   isDarkMode: boolean;
   colors: ColorObject;
   mode: 'light' | 'dark';
-  breakpoints: typeof breakpoints;
-  space: string[];
-  media: typeof media;
   isNavOpen: boolean;
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleNav(): void;
   mobile: boolean;
-  tablet: boolean;
-  desktop: boolean;
-  sm: boolean;
-  md: boolean;
-  lg: boolean;
-  isNavDisplayable: boolean;
-  fontSizes: string[];
-}
+};
 
 export default function useCreateTheme(): DefaultTheme {
   const { value: isDarkMode, toggle } = useDarkMode();
   const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light';
   const colors = isDarkMode ? darkmode : lightMode;
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const mobile = useMedia(`(max-width: ${breakpoints.sm})`);
-  const tablet = useMedia(
-    `(min-width: ${breakpoints.md}, max-width: ${breakpoints.lg})`
-  );
-  const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
-  const sm = useMedia(`(min-width: ${breakpoints.sm})`);
-  const md = useMedia(`(min-width: ${breakpoints.md})`);
-  const lg = useMedia(`(min-width: ${breakpoints.lg})`);
-  const isNavDisplayable = useMedia(`(min-width: 400px)`) && sm;
+  const mobile = useMedia(`(max-width: ${breakpoints[0]})`);
 
   function toggleNav() {
     setIsNavOpen((state) => !state);
@@ -127,28 +188,10 @@ export default function useCreateTheme(): DefaultTheme {
     setIsNavOpen,
     toggleNav,
     mobile,
-    tablet,
-    desktop,
-    sm,
-    md,
-    lg,
-    isNavDisplayable,
     ...partialTheme,
   };
 
   return completeTheme;
-}
-
-export function useMediaQuery() {
-  const sm = useMedia(`(min-width: ${breakpoints.sm})`);
-  const md = useMedia(`(min-width: ${breakpoints.md})`);
-  const lg = useMedia(`(min-width: ${breakpoints.lg})`);
-  const mobile = useMedia(`(max-width: ${breakpoints.sm})`);
-  const tablet = useMedia(
-    `(min-width: ${breakpoints.md}, max-width: ${breakpoints.lg})`
-  );
-  const desktop = useMedia(`(min-width: ${breakpoints.lg})`);
-  return { sm, md, lg, mobile, tablet, desktop };
 }
 
 export const checkeredBg = (lineColor: string) => css`
@@ -172,3 +215,36 @@ export const checkeredBg = (lineColor: string) => css`
   background-position: 0% 0%;
   background-size: 16px 16px;
 `;
+
+export const buttonCss = css`
+  padding: 8px 10px;
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  background-color: ${({ theme }) => transparentize(0.95, theme.colors.text)};
+  border: none;
+  border: ${({ theme }) =>
+    `${theme.borders[1]} ${transparentize(0.85, theme.colors.text)}`};
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  fill: ${({ theme }) => theme.colors.text};
+  text-anchor: middle
+    ${variant({
+      scale: 'buttons',
+      variants: {
+        primary: {
+          color: 'white',
+          bg: 'primary',
+        },
+        secondary: {
+          color: 'white',
+          bg: 'secondary',
+        },
+      },
+    })};
+`;
+/* export const buttonCss = */
