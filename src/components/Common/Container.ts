@@ -12,11 +12,11 @@ import {
   SizeProps,
   SpaceProps,
 } from 'styled-system';
-import { media, Theme } from '../../theme';
+import { media, GlweemsTheme } from '../../theme';
 
 export interface ContainerProps
   extends BorderProps,
-    ColorProps<Theme>,
+    ColorProps<GlweemsTheme>,
     LayoutProps,
     SizeProps,
     SpaceProps {
@@ -24,15 +24,15 @@ export interface ContainerProps
 }
 
 export const maxWidthCss = css`
-  max-width: ${({ theme }) => theme.breakpoints.sm};
+  max-width: ${({ theme }) => theme.breakpoints[1]};
   margin: auto;
 
   ${media.greaterThan('sm')`
-  max-width: ${({ theme }) => theme.breakpoints.md};
+  max-width: ${({ theme }) => theme.containerWidths.md};
 `};
 
   ${media.greaterThan('md')`
-  max-width: ${({ theme }) => theme.breakpoints.lg};
+  max-width: ${({ theme }) => theme.containerWidths.lg};
 `};
 `;
 

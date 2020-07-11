@@ -5,15 +5,15 @@ import React from 'react';
 import RehypeReact from 'rehype-react';
 import styled, { useTheme } from 'styled-components';
 import Box from '../components/Common/Box';
+import Link from '../components/Common/Link';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
-import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { BlogTemplateQuery } from '../queries';
 import { DiscussionEmbedProps } from '../types/disqus-react';
 import '../utils/syntax.css';
-import Link from '../components/Common/Link';
+import Container from '../components/Common/Container';
 
 let rehypeReact: any;
 rehypeReact = RehypeReact;
@@ -36,15 +36,8 @@ export default function BlogTemplate({
   const { frontmatter } = data.post;
   const { mode } = useTheme();
 
-  const previousPagePath = data.prev?.frontmatter?.previousPageText
-    ? `/blog${pageContext.prev}`
-    : null;
-
-  const nextPagePath = data.next?.frontmatter?.nextPageText
-    ? `/blog${pageContext.next}`
-    : null;
   return (
-    <React.Fragment>
+    <Container>
       <SEO
         article
         title={frontmatter.title}
@@ -63,7 +56,7 @@ export default function BlogTemplate({
             {frontmatter.date} - {post.timeToRead} min read
           </small>
 
-          <Box display="flex" justifyContent="space-between">
+          <Box display="flex" justifyContent="space-between" flexWrap="wrap">
             <Tags tags={frontmatter.tags} />
 
             <ShareButtons
@@ -83,13 +76,6 @@ export default function BlogTemplate({
         <Content elements={post.htmlAst} />
       </Article>
 
-      <Pager
-        previousPagePath={previousPagePath}
-        previousPageText={data.prev?.frontmatter?.previousPageText}
-        nextPagePath={nextPagePath}
-        nextPageText={data.next?.frontmatter?.nextPageText}
-      />
-
       <DiscussionEmbed
         shortname={site.siteMetadata.disqusShortName}
         config={{
@@ -98,12 +84,12 @@ export default function BlogTemplate({
           title: frontmatter.title,
         }}
       />
-    </React.Fragment>
+    </Container>
   );
 }
 
 export const Query = graphql`
-  query BlogTemplate($slug: String!, $prev: String, $next: String) {
+  query BlogTemplate($slug: String!) {
     post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       url
       disqusIdentifier
@@ -111,18 +97,7 @@ export const Query = graphql`
       htmlAst
       ...Frontmatter
     }
-    prev: markdownRemark(frontmatter: { path: { eq: $prev } }) {
-      frontmatter {
-        previousPagePath: path
-        previousPageText: title
-      }
-    }
-    next: markdownRemark(frontmatter: { path: { eq: $next } }) {
-      frontmatter {
-        nextPagePath: path
-        nextPageText: title
-      }
-    }
+
     site {
       siteMetadata {
         twitterHandle

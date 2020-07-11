@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { themeGet } from '@styled-system/theme-get';
-
 const Tag = styled.span`
   display: block;
   padding: ${({ theme }) => `${theme.space[0]} ${theme.space[1]}`};

@@ -1,14 +1,10 @@
+import { transparentize } from 'polished';
 import { useState } from 'react';
 import { useMedia } from 'react-use';
 import { css, DefaultTheme } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
-import { TypographyOptions } from 'typography';
-import useDarkMode from 'use-dark-mode';
-import typography from './utils/typography';
-import * as System from 'styled-system';
-import systemCss from '@styled-system/css';
 import { variant } from 'styled-system';
-import { transparentize } from 'polished';
+import useDarkMode from 'use-dark-mode';
 
 export const baseColors = {
   blue: '#1769ff',
@@ -20,6 +16,8 @@ export const baseColors = {
   light: '#f8f8f8',
   dark: '#0f121b',
 };
+
+export type ThemeColorVariant = keyof typeof baseColors;
 
 type ColorObject = typeof baseColors & {
   primary: string;
@@ -134,12 +132,9 @@ export const space = [
 ];
 
 export const buttons = {
-  primary: {
-    p: 3,
-    fontWeight: 'bold',
+  secondary: {
     color: 'white',
-    bg: 'primary',
-    borderRadius: 2,
+    bg: 'tomato',
   },
 };
 
@@ -147,6 +142,7 @@ export const radii = [0, '2px', '4px', '8px', '16px', '9999px', '100%'];
 
 const partialTheme = {
   breakpoints,
+  containerWidths,
   borders,
   fontWeights,
   fonts,

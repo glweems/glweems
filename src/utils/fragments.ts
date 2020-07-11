@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
     fixed(
-      # width: $width
-      # height: $height
+      width: $width
+      height: $height
       traceSVG: { color: "#d0c1fa", background: "transparent" }
       cropFocus: CENTER
     ) {
@@ -64,7 +64,7 @@ export const DesignCard = graphql`
       thumbnail {
         childImageSharp {
           fixed(
-            width: 200
+            width: 250
             height: 200
             traceSVG: { color: "#d0c1fa", background: "transparent" }
             cropFocus: CENTER
@@ -90,7 +90,7 @@ export const BlogPostCard = graphql`
       thumbnail {
         childImageSharp {
           fixed(
-            width: 200
+            width: 250
             height: 200
             traceSVG: { color: "#d0c1fa", background: "transparent" }
             cropFocus: CENTER

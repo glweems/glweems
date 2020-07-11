@@ -13,6 +13,7 @@ import {
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import packageJson from '../package.json';
 import path from 'path';
+import { GhostSVG } from '../src/components/Icons';
 
 const config = {
   defaultTitle: 'Glweems',
@@ -43,9 +44,8 @@ const config = {
   copyright: '© All rights reserved.',
   itemsPerPage: 4,
   links: [
-    { path: '/blog', name: 'Articles' },
+    { path: '/blog', name: 'Blog' },
     { path: '/designs', name: 'Designs' },
-    // { path: '/projects', name: 'Projects' },
     { path: '/about', name: 'About' },
     { path: '/resume', name: 'Resume' },
   ],

@@ -14,31 +14,29 @@ export default function ArticleListTemplate({
 }: PageProps<DesignListQuery, PageContext>) {
   const { designs } = data;
   return (
-    <React.Fragment>
+    <Container>
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
-      <Container>
-        {designs.nodes.map(({ name, ...design }, index) => {
-          return (
-            <Card
-              key={design.slug}
-              path={`/design/${design.slug}`}
-              excerpt={design.description}
-              title={name}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${name} thumbnail image`}
-                  {...design.fields.thumbnail.childImageSharp}
-                />
-              }
-            />
-          );
-        })}
-      </Container>
+      {designs.nodes.map(({ name, ...design }, index) => {
+        return (
+          <Card
+            key={design.slug}
+            path={`/design/${design.slug}`}
+            excerpt={design.description}
+            title={name}
+            Image={
+              <Img
+                draggable={false}
+                alt={`${name} thumbnail image`}
+                {...design.fields.thumbnail.childImageSharp}
+              />
+            }
+          />
+        );
+      })}
       <Pager {...pageContext} />
-    </React.Fragment>
+    </Container>
   );
 }
 

@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
-import { variant, VariantArgs } from 'styled-system';
-import { GlweemsTheme } from '../../theme';
+import { css } from '@styled-system/css';
 
-export type ButtonProps = VariantArgs<GlweemsTheme, 'buttons'>;
+import { GlweemsTheme, ThemeColorVariant } from '../../theme';
+type ButtonVariant = 'primary';
+export type ButtonProps = {
+  variant?: ButtonVariant;
+};
 
 const Button = styled.button<ButtonProps>`
   padding: 8px 10px;
@@ -21,19 +24,14 @@ const Button = styled.button<ButtonProps>`
   cursor: pointer;
   transition: all 0.5s ease-in-out;
   fill: ${({ theme }) => theme.colors.text};
-  text-anchor: middle
-    ${variant({
-      scale: 'buttons',
-      variants: {
-        primary: {
-          color: 'white',
-          bg: 'primary',
-        },
-        secondary: {
-          color: 'white',
-          bg: 'secondary',
-        },
-      },
+  text-anchor: middle;
+
+  ${(props) =>
+    props &&
+    props?.variant === 'primary' &&
+    css({
+      bg: 'blue',
+      color: 'light',
     })};
 `;
 

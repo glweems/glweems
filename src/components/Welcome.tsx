@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
-import { darken } from 'polished';
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import config from '../../.gatsby/config';
 import Container from './Common/Container';
 import Link from './Common/Link';
 import SocialIcon from './Common/SocialIcon';
 import { GhostSVG } from './Icons';
+import Box from './Common/Box';
 
 export default function Welcome() {
   return (
@@ -14,12 +14,7 @@ export default function Welcome() {
       <motion.div className="Landing__inner">
         <Container padding={2}>
           <motion.div variants={container} initial="hidden" animate="visible">
-            <motion.div
-              variants={container}
-              css={`
-                display: flex;
-              `}
-            >
+            <Box as={motion.div} variants={container} display="flex">
               {['green', 'blue', 'red'].map((color) => (
                 <motion.div
                   key={color}
@@ -29,7 +24,7 @@ export default function Welcome() {
                   <GhostSVG color={color} size={50} />
                 </motion.div>
               ))}
-            </motion.div>
+            </Box>
 
             <motion.h1 variants={item}>
               Hello, I&apos;m <span>Garrett Weems</span>.
@@ -91,44 +86,6 @@ const item = {
     opacity: 1,
   },
 };
-const checkered = css`
-  --bg-color: ${({ theme }) =>
-    theme.isDarkMode
-      ? darken(0.1, theme.colors.purple)
-      : darken(0.3, theme.colors.yellow)};
-
-  color: ${(props) => props.theme.colors.dark};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    );
-  background-color: ${({ theme }) => theme.colors.welcome};
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-  border: 1px var(--bg-color) solid;
-  border-radius: 4px;
-  animation: spTexture 2s infinite linear;
-  @keyframes spTexture {
-    from {
-      background-position: 0px 0px;
-    }
-    to {
-      background-position: -16px 0px;
-    }
-  }
-`;
 
 const Styled = styled.div`
   padding: ${({ theme }) => theme.space[3]};
@@ -139,7 +96,6 @@ const Styled = styled.div`
   .Landing__inner {
     height: 100%;
     padding: ${({ theme }) => theme.space[4]} 0;
-    ${checkered};
   }
   * {
     border-bottom: unset;

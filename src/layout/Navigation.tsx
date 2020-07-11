@@ -1,89 +1,99 @@
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { Link } from 'gatsby';
-import React from 'react';
+import { darken } from 'polished';
+import React, { PropsWithChildren } from 'react';
 import styled, { css, useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
 import Box from '../components/Common/Box';
 import Container from '../components/Common/Container';
 import { GhostSVG } from '../components/Icons';
-import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
 import ToggleNavButton from '../components/ToggleNavButton';
+import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
+import NavLink from './NavLink';
 
-export type NavigationProps = {
+export default function Navigation({
+  path,
+  children,
+}: PropsWithChildren<{
   path: string;
-};
-
-export default function Navigation({ path }: NavigationProps) {
-  const { mobile, toggleNav, isNavOpen, colors } = useTheme();
+}>) {
+  console.log('path: ', path);
+  const { mobile, isNavOpen, colors } = useTheme();
 
   return (
-    <Styled as="header" padding={3}>
-      <nav>
-        <Link
-          to="/"
-          aria-label="go to homepage"
-          css={`
-            padding: ${({ theme }) => theme.space[2]};
-          `}
-          activeClassName={null}
-        >
-          <GhostSVG size={30} />
-        </Link>
+    <Styled>
+      <Container>
+        {children}
+        <nav>
+          <NavLink to="/" aria-label="go to homepage">
+            <GhostSVG size={30} />
+          </NavLink>
 
-        <AnimateSharedLayout>
           {!mobile &&
             config.links.map((link) => (
-              <motion.div
-                key={link.name}
-                className={`nav-link-wrapper ${
-                  link.path === path && 'selected'
-                }`}
-              >
-                {link.path === path && (
-                  <motion.div
-                    layoutId="underline"
-                    className="underline"
-                    style={{ backgroundColor: colors.primary }}
-                  />
-                )}
-
-                <Link
-                  to={link.path}
-                  className="button"
-                  activeClassName="active-nav-link"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+              <NavLink to={link.path}>{link.name}</NavLink>
             ))}
-        </AnimateSharedLayout>
 
-        <Box marginLeft="auto">
-          {mobile ? <ToggleNavButton /> : <ToggleThemeSwitch />}
-        </Box>
-      </nav>
-      <AnimatePresence>
-        {mobile && isNavOpen && (
-          <Container
-            className="open-nav"
-            as={motion.nav}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0, zIndex: 0 }}
-          >
-            {config.links.map((link) => (
-              <div className="mobile-link" key={link.name}>
-                <Link to={link.path}>{link.name}</Link>
-              </div>
-            ))}
-          </Container>
-        )}
-      </AnimatePresence>
+          <Box marginLeft="auto">
+            {mobile ? <ToggleNavButton /> : <ToggleThemeSwitch />}
+          </Box>
+        </nav>
+
+        <AnimatePresence>
+          {mobile && isNavOpen && (
+            <Container
+              className="open-nav"
+              as={motion.nav}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0, zIndex: 0 }}
+            >
+              {config.links.map((link) => (
+                <div className="mobile-link" key={link.name}>
+                  <Link to={link.path}>{link.name}</Link>
+                </div>
+              ))}
+            </Container>
+          )}
+        </AnimatePresence>
+      </Container>
     </Styled>
   );
 }
 
-const Styled = styled(Container)`
+const checkered = css`
+  --bg-color: ${({ theme }) =>
+    theme.isDarkMode
+      ? darken(0.1, theme.colors.purple)
+      : darken(0.3, theme.colors.yellow)};
+
+  color: ${(props) => props.theme.colors.dark};
+  background: linear-gradient(
+      45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 49%,
+      var(--bg-color) 50%,
+      var(--bg-color) 50%,
+      transparent 51%,
+      transparent
+    );
+  background-color: ${({ theme }) => theme.colors.welcome};
+  background-position: 0% 0%;
+  background-size: 16px 16px;
+  border: 1px var(--bg-color) solid;
+  border-radius: 4px;
+`;
+
+const Styled = styled.header`
+  ${checkered};
+  padding: ${({ theme }) => theme.space[1]};
   nav {
     display: flex;
     align-items: center;
@@ -115,32 +125,6 @@ const Styled = styled(Container)`
     padding: 0;
     list-style: none;
     user-select: none;
-  }
-
-  .underline {
-    position: absolute;
-    bottom: -${({ theme }) => theme.space[3]};
-    width: 100%;
-    height: ${({ theme }) => theme.space[1]};
-    background: transparent;
-    background-color: ${({ theme }) => theme.colors.primary};
-    border-radius: 4px;
-  }
-
-  .active-nav-link {
-    color: ${({ theme }) => theme.colors.primary};
-    background: ${({ theme }) => theme.colors.secondaryBg};
-  }
-
-  .nav-link-wrapper {
-    position: relative;
-    margin-right: ${({ theme }) => theme.space[3]};
-    color: ${({ theme }) => theme.colors.text};
-    cursor: pointer;
-  }
-
-  .nav-link-wrapper.selected {
-    color: ${({ theme }) => theme.colors.text};
   }
 `;
 

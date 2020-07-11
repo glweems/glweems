@@ -1,6 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { transparentize } from 'polished';
-import { buttonCss } from '../theme';
 
 export default createGlobalStyle`
  html {
@@ -58,11 +56,6 @@ a {
   text-decoration: none;
 }
 
-button,
-.button {
-
-}
-
 button:hover,
 .button:hover,
 a.active {
@@ -76,8 +69,6 @@ button:focus,
 button:disabled {
   color: ${({ theme }) => theme.colors.rootBg};
 }
-
-
 
 .icon {
   /* color: ${({ theme }) => theme.colors.text}; */

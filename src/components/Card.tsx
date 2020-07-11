@@ -47,10 +47,11 @@ export default function Card({
             <Button
               as={Link}
               to={path}
-              className="Card--link button"
+              className="Card--link"
               aria-label={`View ${title}`}
+              variant="primary"
             >
-              {linkText} <Icon />
+              {linkText}
             </Button>
           )}
           {children}
@@ -76,16 +77,14 @@ const Styled = styled.div`
   display: grid;
   grid-template-areas: 'image content';
   grid-template-rows: 1fr;
-  grid-template-columns: 250px minmax(0, 500px);
-  gap: ${({ theme }) => theme.space[2]};
+  grid-template-columns: 1fr 3fr;
   width: 100%;
   margin-bottom: ${({ theme }) => theme.space[4]};
 
   .Card--body {
-    margin: ${({ theme }) => theme.space[3]} 0;
+    padding: ${({ theme }) => theme.space[1]};
   }
   .Card--link {
-    color: ${({ theme }) => theme.colors.link};
   }
 
   .Card--title {
