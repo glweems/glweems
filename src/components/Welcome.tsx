@@ -26,15 +26,12 @@ export default function Welcome() {
               ))}
             </Box>
 
-            <motion.h1 variants={item}>
-              Hello, I&apos;m <span>Garrett Weems</span>.
-            </motion.h1>
-
-            <motion.h2 variants={item}>
-              I&apos;m a full-stack web developer.
-            </motion.h2>
-
-            <motion.p variants={item}>{config.defaultDescription}</motion.p>
+            <hgroup>
+              <h1>
+                Hello, I&apos;m <mark>Garrett Weems</mark>.
+              </h1>
+              <h2>{config.defaultDescription}</h2>
+            </hgroup>
 
             <motion.div variants={item}>
               <Link to="/resume">Resume</Link>

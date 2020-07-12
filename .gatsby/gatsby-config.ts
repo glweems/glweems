@@ -109,7 +109,7 @@ const gatsbyConfig: ITSConfigFn<
       {
         resolve: 'gatsby-plugin-favicon',
         options: {
-          logo: `${projectRoot}/src/assets/ghost/ghost-purple.png`,
+          logo: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
           injectHTML: true,
           icons: {
             android: true,
@@ -153,7 +153,7 @@ const gatsbyConfig: ITSConfigFn<
           background_color: config.backgroundColor,
           theme_color: config.themeColor,
           display: 'minimal-ui',
-          icon: `${projectRoot}/src/assets/ghost.png`,
+          icon: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
         },
       },
       {
@@ -164,6 +164,7 @@ const gatsbyConfig: ITSConfigFn<
       },
       'gatsby-plugin-robots-txt',
       'gatsby-plugin-remove-trailing-slashes',
+      `gatsby-plugin-remove-serviceworker`,
     ],
   };
 

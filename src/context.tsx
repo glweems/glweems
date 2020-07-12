@@ -1,15 +1,17 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import useCreateTheme from '../theme';
-import SEO from './SEO';
+import useCreateTheme from './theme';
+import SEO from './components/SEO';
 import { WrapRootElementBrowserArgs, WrapPageElementBrowserArgs } from 'gatsby';
-import Layout from '../layout/Layout';
-import GlobalCss from '../utils/GlobalCss';
-import ErrorBoundary from './ErrorBoundary';
+import Layout from './layout/Layout';
+import GlobalCss from './utils/GlobalCss';
+import ErrorBoundary from './components/ErrorBoundary';
 
-function ContextProvider(props: {
+export type ContextProviderProps = {
   children: WrapRootElementBrowserArgs['element'];
-}) {
+};
+
+function ContextProvider(props: ContextProviderProps) {
   const theme = useCreateTheme();
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
 }
@@ -32,5 +34,3 @@ export function wrapPageElement({
     </React.Fragment>
   );
 }
-
-const idk = React.createElement('svg');

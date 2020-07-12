@@ -1,46 +1,48 @@
-import * as React from 'react';
-import { GatsbyLinkProps, Link } from 'gatsby';
 import { motion } from 'framer-motion';
-import { GhostSVG } from '../components/Icons';
-import { useMatch, useLocation } from '@reach/router';
-import styled, { css } from 'styled-components';
-import { transparentize, darken } from 'polished';
-import { buttonCss } from '../theme';
+import { GatsbyLinkProps, Link } from 'gatsby';
+import { transparentize } from 'polished';
+import * as React from 'react';
+import styled from 'styled-components';
 
-export type NavLinkProps = Omit<GatsbyLinkProps<{}>, 'ref'>;
+export type NavLinkProps = Omit<
+  GatsbyLinkProps<{
+    isMatch: boolean;
+  }>,
+  'ref'
+>;
 
 export default function NavLink(props: NavLinkProps) {
-  const location = useLocation();
-  console.log('location: ', location);
-  const match = useMatch(props.to);
-  const isMatch =
-    match !== null || props.to === '/' + location.pathname.split('/')[1];
-
   return (
-    <StyledNavLink isMatch={isMatch}>
-      <Link {...props} />
-      {isMatch && <motion.span layoutId="underline" className="underline" />}
+    <StyledNavLink>
+      <Link
+        {...props}
+        getProps={({ isCurrent, isPartiallyCurrent, href }) => {
+          if (isCurrent) return { className: 'active' };
+          if (isPartiallyCurrent && href !== '/')
+            return { className: 'active' };
+        }}
+      />
     </StyledNavLink>
   );
 }
 
-const StyledNavLink = styled(motion.div)<{ isMatch: boolean }>`
+const StyledNavLink = styled(motion.div)`
   position: relative;
-  margin-right: ${({ theme }) => theme.space[2]};
+  margin-right: ${({ theme }) => theme.space[1]};
   color: ${({ theme }) => theme.colors.text};
   cursor: pointer;
 
   a {
     padding: ${({ theme }) => theme.space[2]};
     color: ${({ theme }) => theme.colors.dark};
-    font: ${({ theme }) => theme.fonts.sans};
+    /* font: ${({ theme }) => theme.fonts.sans}; */
     font-size: ${({ theme }) => theme.fontSizes[3]};
-    border-radius: ${({ theme }) => theme.radii[3]};
+    border-radius: ${({ theme }) => theme.radii[2]};
     :hover {
       background-color: ${({ theme }) =>
         theme.isDarkMode
-          ? 'rgba(172, 146, 246, 0.1)'
-          : 'rgba(217, 151, 12, 0.1)'};
+          ? 'rgba(172, 146, 246, 0.25)'
+          : 'rgba(217, 151, 12, 0.25)'};
     }
   }
 
@@ -56,13 +58,12 @@ const StyledNavLink = styled(motion.div)<{ isMatch: boolean }>`
     border-radius: ${({ theme }) => theme.radii[2]};
   }
 
-  .active-nav-link {
+  .active {
     color: ${({ theme }) => theme.colors.primary};
     background: ${({ theme }) => theme.colors.secondaryBg};
   }
 
-  .nav-link-wrapper {
-  }
+
 
   .nav-link-wrapper.selected {
     color: ${({ theme }) => theme.colors.text};

@@ -4,15 +4,13 @@ export default createGlobalStyle`
  html {
   scroll-behavior: smooth;
   }
-
-
-html,
-body {
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.bg};
-  transition: color 0.25s linear;
-  transition: background-color 0.25s ease-in-out;
-}
+  html,
+  body {
+    color: ${({ theme }) => theme.colors.text};
+    background-color: ${({ theme }) => theme.colors.bg};
+    transition: color 0.25s linear;
+    transition: background-color 0.25s ease-in-out;
+  }
 
 
 body {
@@ -46,10 +44,10 @@ body {
     border-radius: 4px;
   }
 
-
-h1, h2, h3, h4, h5, h6 {
-  border-color: var(--spinner-color);
-}
+  main {
+    margin-top: ${({ theme }) => theme.space[10]};
+    margin-bottom: ${({ theme }) => theme.space[10]};
+  }
 
 a {
   color: inherit;
@@ -57,10 +55,10 @@ a {
 }
 
 button:hover,
-.button:hover,
-a.active {
+.button:hover {
   background: ${({ theme }) => theme.colors.secondaryBg};
 }
+
 button:focus,
 .button:focus {
   outline: ${({ theme }) => theme.colors.primary};
@@ -83,29 +81,14 @@ img {
   border-radius: 0.125rem;
 }
 
-.date *,
-.date :before,
-.date :after {
-  box-sizing: inherit;
-}
-
-.date {
+time {
   display: block;
   color: ${({ theme }) => theme.colors.secondaryText};
-  font-size: 15px;
-  font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    sans-serif;
+  font: ${({ theme }) => theme.fonts.monospace};
+  font-size: 90%;
   line-height: 22px;
   text-decoration: none;
   border-radius: 3px;
-  opacity: 0.75;
-}
-
-#disqus_thread {
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.light};
-  border-radius: ${({ theme }) => theme.space[1]};
 }
 
 iframe {
@@ -117,20 +100,7 @@ iframe {
   fill: ${({ theme }) => theme.colors.primary};
 }
 
-
 .flex {
   display: flex;
-}
-
-
-
-.react-share__ShareButton {
-  margin: 0;
-  padding: 0;
-  * {
-    color: ${({ theme }) => theme.colors.red};
-    fill: ${({ theme }) => theme.colors.red};
-    rect { fill: none; }
-  }
 }
 `;

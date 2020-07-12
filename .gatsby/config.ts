@@ -1,19 +1,13 @@
 import {
-  faBehanceSquare,
-  faGithubSquare,
-  faInstagramSquare,
-  faLinkedin,
-  faMedium,
-  faGithub,
-  faLinkedinIn,
-  faMediumM,
   faBehance,
+  faGithub,
   faInstagram,
+  faLinkedin,
+  faMediumM,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import packageJson from '../package.json';
 import path from 'path';
-import { GhostSVG } from '../src/components/Icons';
+import packageJson from '../package.json';
 
 const config = {
   defaultTitle: 'Glweems',
@@ -42,7 +36,7 @@ const config = {
   },
   pathPrefix: '/',
   copyright: '© All rights reserved.',
-  itemsPerPage: 4,
+  itemsPerPage: 8,
   links: [
     { path: '/blog', name: 'Blog' },
     { path: '/designs', name: 'Designs' },

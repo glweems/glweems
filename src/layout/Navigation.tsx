@@ -1,38 +1,58 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { Link } from 'gatsby';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { darken } from 'polished';
 import React, { PropsWithChildren } from 'react';
 import styled, { css, useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
 import Box from '../components/Common/Box';
 import Container from '../components/Common/Container';
+import Link from '../components/Common/Link';
 import { GhostSVG } from '../components/Icons';
 import ToggleNavButton from '../components/ToggleNavButton';
 import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
-import NavLink from './NavLink';
 
-export default function Navigation({
-  path,
-  children,
-}: PropsWithChildren<{
+/**
+ *Is Active Link
+ *
+ * @param {string} path path the link takes you
+ * @param {string} location current path location
+ * @returns {string} true if active false if not active
+ */
+function isActiveLink(path: string, location: string): boolean {
+  const isActive = path === '/' + location.split('/')[1];
+  return isActive;
+}
+
+export type NavigationProps = PropsWithChildren<{
   path: string;
-}>) {
-  console.log('path: ', path);
-  const { mobile, isNavOpen, colors } = useTheme();
+}>;
+
+/**
+ *
+ *
+ * @export
+ * @param {NavigationProps} { path, children }
+ * @returns
+ */
+export default function Navigation({ path, children }: NavigationProps) {
+  const { mobile, isNavOpen } = useTheme();
 
   return (
     <Styled>
       <Container>
         {children}
         <nav>
-          <NavLink to="/" aria-label="go to homepage">
+          <Link to="/" aria-label="go to homepage">
             <GhostSVG size={30} />
-          </NavLink>
+          </Link>
 
-          {!mobile &&
-            config.links.map((link) => (
-              <NavLink to={link.path}>{link.name}</NavLink>
-            ))}
+          <AnimateSharedLayout>
+            {!mobile &&
+              config.links.map((link) => (
+                <Link key={link.path} to={link.path}>
+                  {link.name}
+                </Link>
+              ))}
+          </AnimateSharedLayout>
 
           <Box marginLeft="auto">
             {mobile ? <ToggleNavButton /> : <ToggleThemeSwitch />}

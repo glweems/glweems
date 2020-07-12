@@ -6,6 +6,7 @@ import Heatmap from '../components/Heatmap';
 import styled from 'styled-components';
 import { IndexPageQuery } from '../queries';
 import Container from '../components/Common/Container';
+import { breakpoints } from '../theme';
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
@@ -13,18 +14,29 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
       <Section>
         <h2>Blog Posts</h2>
         {data.posts.nodes.map(({ frontmatter, ...post }) => {
+          const blogSources = [
+            frontmatter.thumbnail.sm.fixed,
+            {
+              ...frontmatter.thumbnail.md.fixed,
+              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+            },
+            {
+              ...frontmatter.thumbnail.lg.fixed,
+              media: `(min-width: ${breakpoints[2]})`,
+            },
+          ];
           return (
             <Card
               key={post.id}
               title={frontmatter.title}
-              excerpt={post.excerpt}
+              subtitle={frontmatter.subtitle}
               date={frontmatter.date}
               path={`/blog${frontmatter.path}`}
               Image={
                 <Img
                   draggable={false}
                   alt={frontmatter.title}
-                  {...frontmatter.thumbnail.childImageSharp}
+                  fixed={blogSources}
                 />
               }
             />
@@ -36,17 +48,28 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
         <h2>Designs</h2>
 
         {data.designs.nodes.map(({ name, ...design }, index) => {
+          const designSources = [
+            design.fields.thumbnail.sm.fixed,
+            {
+              ...design.fields.thumbnail.md.fixed,
+              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+            },
+            {
+              ...design.fields.thumbnail.lg.fixed,
+              media: `(min-width: ${breakpoints[2]})`,
+            },
+          ];
           return (
             <Card
               key={design.slug}
               path={`/design/${design.slug}`}
-              excerpt={design.description}
+              subtitle={design.description}
               title={name}
               Image={
                 <Img
                   draggable={false}
                   alt={`${name} thumbnail image`}
-                  {...design.fields.thumbnail.childImageSharp}
+                  fixed={designSources}
                 />
               }
             />
@@ -59,7 +82,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
           <Card
             key={pinned.name}
             title={pinned.name}
-            excerpt={pinned.description}
+            subtitle={pinned.description}
             date={pinned.createdAt}
             Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
           />

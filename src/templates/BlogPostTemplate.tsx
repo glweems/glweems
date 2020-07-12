@@ -1,19 +1,18 @@
 import loadable from '@loadable/component';
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import React from 'react';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import React, { Fragment } from 'react';
 import RehypeReact from 'rehype-react';
-import styled, { useTheme } from 'styled-components';
-import Box from '../components/Common/Box';
-import Link from '../components/Common/Link';
+import styled from 'styled-components';
 import LoadingSpinner from '../components/Common/LoadingSpinner';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { BlogTemplateQuery } from '../queries';
+import { media } from '../theme';
 import { DiscussionEmbedProps } from '../types/disqus-react';
 import '../utils/syntax.css';
-import Container from '../components/Common/Container';
 
 let rehypeReact: any;
 rehypeReact = RehypeReact;
@@ -34,10 +33,9 @@ export default function BlogTemplate({
 }: PageProps<BlogTemplateQuery, PageContext>) {
   const { post, site } = data;
   const { frontmatter } = data.post;
-  const { mode } = useTheme();
 
   return (
-    <Container>
+    <Fragment>
       <SEO
         article
         title={frontmatter.title}
@@ -46,9 +44,16 @@ export default function BlogTemplate({
         image={frontmatter.thumbnail.publicURL}
       />
 
-      <Article as="article" className={`${mode}-mode`}>
+      <Styled>
         <header>
           <h1 className="blog-title">{frontmatter.title}</h1>
+
+          <Img
+            className="tbn"
+            draggable={false}
+            fluid={frontmatter.thumbnail.childImageSharp.fluid}
+            alt={`${frontmatter.title} thumbnail`}
+          />
 
           <p className="blog-subtitle">{frontmatter.subtitle}</p>
 
@@ -56,37 +61,61 @@ export default function BlogTemplate({
             {frontmatter.date} - {post.timeToRead} min read
           </small>
 
-          <Box display="flex" justifyContent="space-between" flexWrap="wrap">
-            <Tags tags={frontmatter.tags} />
-
-            <ShareButtons
-              title={frontmatter.title}
-              url={post.url}
-              tags={frontmatter.tags}
-            />
-          </Box>
-
-          <Img
-            draggable={false}
-            fluid={frontmatter.thumbnail.childImageSharp.fluid}
-            alt={`${frontmatter.title} thumbnail`}
-          />
+          <Tags tags={frontmatter.tags} />
         </header>
+        <article>
+          <Content elements={post.htmlAst} />
+        </article>
+        <ShareButtons
+          title={frontmatter.title}
+          url={post.url}
+          tags={frontmatter.tags}
+        />
 
-        <Content elements={post.htmlAst} />
-      </Article>
-
-      <DiscussionEmbed
-        shortname={site.siteMetadata.disqusShortName}
-        config={{
-          url: post.url,
-          identifier: post.disqusIdentifier,
-          title: frontmatter.title,
-        }}
-      />
-    </Container>
+        <DiscussionEmbed
+          shortname={site.siteMetadata.disqusShortName}
+          config={{
+            url: post.url,
+            identifier: post.disqusIdentifier,
+            title: frontmatter.title,
+          }}
+        />
+      </Styled>
+    </Fragment>
   );
 }
+
+const Styled = styled.div`
+  header,
+  article,
+  #disqus_thread {
+    max-width: 800px;
+    margin: auto;
+    padding: ${({ theme }) => theme.space[5]};
+  }
+  #disqus_thread {
+    padding: 1rem;
+    background-color: ${({ theme }) => theme.colors.light};
+    border-radius: ${({ theme }) => theme.space[1]};
+  }
+  .tbn {
+    margin-bottom: ${({ theme }) => theme.space[5]};
+  }
+
+  blockquote,
+  iframe {
+    margin-right: -${({ theme }) => theme.space[5]};
+    margin-left: -${({ theme }) => theme.space[5]};
+  }
+
+  ${media.greaterThan('sm')`
+      padding: ${({ theme }) => theme.space[10]};
+
+      blockquote,
+      iframe {
+      }
+  `};
+`;
 
 export const Query = graphql`
   query BlogTemplate($slug: String!) {
@@ -96,6 +125,7 @@ export const Query = graphql`
       timeToRead
       htmlAst
       ...Frontmatter
+      editOnGithub
     }
 
     site {
@@ -107,48 +137,21 @@ export const Query = graphql`
   }
 `;
 
-const Article = styled.article`
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns:
-    minmax(1em, 1fr)
-    [main-start] minmax(300px, 720px) [main-end]
-    minmax(1em, 1fr);
-  gap: ${({ theme }) => theme.space[4]} 0;
-  color: ${({ theme }) => theme.colors.text};
-  background: ${({ theme }) => theme.colors.bg};
-
-  > * {
-    grid-column: main;
-    width: 100%;
-    /* margin: 0; */
-  }
-
-  header {
-    .blog-title,
-    .blog-subtitle,
-    .date,
-    .tags {
-      margin-bottom: ${({ theme }) => theme.space[4]};
-    }
-  }
-`;
 const artileComponents = {
   em: styled.em`
     width: 100%;
     text-align: center;
   `,
   blockquote: styled.blockquote`
-    padding: 0.25em 0 0.25em 1em;
+    padding: ${({ theme }) => theme.space[5]};
     color: ${({ theme }) => theme.colors.muted};
     font-style: italic;
-    background-color: ${({ theme }) => theme.colors.rootBg};
     border-left: 4px solid ${({ theme }) => theme.colors.primary};
   `,
   ul: styled.ul`
     list-style-position: inside;
   `,
-  a: Link,
+  a: (props) => <OutboundLink {...props} />,
 };
 
 export const Content: React.FC<{ elements: object }> = ({ elements }) => {

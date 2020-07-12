@@ -1,10 +1,21 @@
 import { transparentize } from 'polished';
 import { useState } from 'react';
 import { useMedia } from 'react-use';
-import { css, DefaultTheme } from 'styled-components';
+import { css } from 'styled-components';
 import { generateMedia } from 'styled-media-query';
 import { variant } from 'styled-system';
 import useDarkMode from 'use-dark-mode';
+
+export interface BaseColors {
+  blue: string;
+  green: string;
+  mint: string;
+  purple: string;
+  red: string;
+  yellow: string;
+  light: string;
+  dark: string;
+}
 
 export const baseColors = {
   blue: '#1769ff',
@@ -19,7 +30,7 @@ export const baseColors = {
 
 export type ThemeColorVariant = keyof typeof baseColors;
 
-type ColorObject = typeof baseColors & {
+export interface ColorObject extends BaseColors {
   primary: string;
   muted: string;
   text: string;
@@ -30,7 +41,7 @@ type ColorObject = typeof baseColors & {
   secondaryBg: string;
   welcome: string;
   link: string;
-};
+}
 
 const lightMode: ColorObject = {
   ...baseColors,
@@ -60,16 +71,19 @@ const darkmode: ColorObject = {
   link: baseColors.yellow,
 };
 export const breakpoints = ['360px', '550px', '750px', '1000px', '1300px'];
+const [sm, md, lg] = breakpoints;
 
 export const containerWidths = {
-  sm: `40em`,
-  md: `52em`,
-  lg: `64em`,
+  sm,
+  md,
+  lg,
 };
 
-export const media = generateMedia<typeof containerWidths, DefaultTheme>(
-  containerWidths
-);
+export const media = generateMedia<typeof containerWidths, GlweemsTheme>({
+  sm,
+  md,
+  lg,
+});
 export const borders = [0, '1px solid', '2px solid'];
 
 export const fontWeights = {
@@ -153,7 +167,36 @@ const partialTheme = {
   buttons,
 };
 
-export type GlweemsTheme = typeof partialTheme & {
+export interface GlweemsTheme {
+  breakpoints: typeof breakpoints;
+  containerWidths: typeof containerWidths;
+  borders: typeof borders;
+  fontWeights: typeof fontWeights;
+  fonts: typeof fonts;
+  fontSizes: typeof fontSizes;
+  /**
+   * Space
+   *
+   * |  Key 	| Value   	|
+   * | -----	| --------	|
+   * | 0    	| 0       	|
+   * |   1  	| 0.25rem 	|
+   * |   2  	| 0.5rem  	|
+   * |   3  	| 0.75rem 	|
+   * |   4  	| 1rem    	|
+   * |   5  	| 1.25rem 	|
+   * |   6  	| 1.5rem  	|
+   * |   7  	| 2rem    	|
+   * |   8  	| 2.5rem  	|
+   * |   9  	| 3rem    	|
+   * |  10  	| 3.5rem  	|
+   * |  11  	| 4rem    	|
+   * |  12  	| 4.5rem  	|
+   */
+  space: string[];
+  radii: typeof radii;
+  media: typeof media;
+  buttons: typeof buttons;
   toggle: () => void;
   isDarkMode: boolean;
   colors: ColorObject;
@@ -162,9 +205,9 @@ export type GlweemsTheme = typeof partialTheme & {
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleNav(): void;
   mobile: boolean;
-};
+}
 
-export default function useCreateTheme(): DefaultTheme {
+export default function useCreateTheme(): GlweemsTheme {
   const { value: isDarkMode, toggle } = useDarkMode();
   const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light';
   const colors = isDarkMode ? darkmode : lightMode;

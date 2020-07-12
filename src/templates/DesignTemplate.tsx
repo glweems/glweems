@@ -8,6 +8,8 @@ import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { DesignsTemplateQuery } from '../queries';
+import IntersectionObserver from '../ui/IntersectionObserver';
+import { ScaleBox } from '../ui/ScaleBox';
 
 export default function DesignTemplate({
   data,
@@ -27,27 +29,23 @@ export default function DesignTemplate({
         <h1>{design.name}</h1>
         <p>{design.description}</p>
 
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignContent="center"
-          alignItems="center"
-        >
-          <Tags tags={design.tags} />
-          <ShareButtons
-            url={design.url}
-            title={design.name}
-            tags={design.tags}
-          />
-        </Box>
+        <Tags tags={design.tags} />
+        <ShareButtons url={design.url} title={design.name} tags={design.tags} />
+
+        {design.images.map((image) => (
+          <IntersectionObserver key={image.id}>
+            <ScaleBox>
+              <Img
+                fluid={image?.childImageSharp?.fluid}
+                draggable={false}
+                fadeIn
+              />
+            </ScaleBox>
+          </IntersectionObserver>
+        ))}
+
         {design.images.map((image, index) => (
-          <motion.div key={`${data.design.name}-image-${index}`}>
-            <Img
-              fluid={image?.childImageSharp?.fluid}
-              draggable={false}
-              fadeIn
-            />
-          </motion.div>
+          <motion.div key={`${data.design.name}-image-${index}`}></motion.div>
         ))}
       </Container>
     </React.Fragment>
@@ -69,6 +67,7 @@ export const Query = graphql`
         }
       }
       images {
+        id
         childImageSharp {
           ...FluidImage
         }
