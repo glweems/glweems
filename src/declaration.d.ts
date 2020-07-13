@@ -11,16 +11,6 @@ declare module 'styled-components' {
   }
 
   export interface DefaultTheme extends GlweemsTheme {}
-
-  export function createGlobalStyle(
-    first:
-      | TemplateStringsArray
-      | CSSObject
-      | InterpolationFunction<ThemedStyledProps<GlweemsTheme, DefaultTheme>>,
-    ...interpolations: Array<
-      Interpolation<ThemedStyledProps<GlweemsTheme, DefaultTheme>>
-    >
-  ): GlobalStyleComponent<GlweemsTheme, DefaultTheme>;
 }
 declare module 'react' {
   interface Attributes {

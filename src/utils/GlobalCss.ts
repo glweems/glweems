@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+const GlobalCss = createGlobalStyle`
  html {
   scroll-behavior: smooth;
   }
@@ -107,3 +107,5 @@ iframe {
   display: flex;
 }
 `;
+
+export default GlobalCss;

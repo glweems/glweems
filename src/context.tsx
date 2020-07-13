@@ -6,6 +6,7 @@ import { WrapRootElementBrowserArgs, WrapPageElementBrowserArgs } from 'gatsby';
 import Layout from './layout/Layout';
 import GlobalCss from './utils/GlobalCss';
 import ErrorBoundary from './components/ErrorBoundary';
+import { Profiler } from 'react';
 
 export type ContextProviderProps = {
   children: WrapRootElementBrowserArgs['element'];
@@ -29,7 +30,11 @@ export function wrapPageElement({
       <SEO />
       <GlobalCss />
       <Layout path={path}>
-        <ErrorBoundary>{element}</ErrorBoundary>
+        <ErrorBoundary>
+          <Profiler id={path} onRender={console.log}>
+            {element}
+          </Profiler>
+        </ErrorBoundary>
       </Layout>
     </React.Fragment>
   );

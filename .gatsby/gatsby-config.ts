@@ -31,6 +31,12 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: 'gatsby-plugin-google-docs-resume',
+        options: {
+          url: config.googleDocResumeUrl,
+        },
+      },
+      {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: `${projectRoot}/posts`,

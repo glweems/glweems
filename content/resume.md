@@ -6,13 +6,13 @@ Full stack developer & Graphic Designer
 
 469-346-8234
 
-[glweems.com](https://www.google.com/url?q=https://glweems.com&sa=D&ust=1594619076799000&usg=AOvVaw3IELTZEoLAbGJqmFugkFzj) • [github/glweems](https://www.google.com/url?q=https://github.com/glweems&sa=D&ust=1594619076799000&usg=AOvVaw2IKpTG1Hl6iARvkGgbZLlv)
+[glweems.com](https://www.google.com/url?q=https://glweems.com&sa=D&ust=1594648440652000&usg=AOvVaw1OM5T2lNrVSYLTRr5zrPfN) • [github/glweems](https://www.google.com/url?q=https://github.com/glweems&sa=D&ust=1594648440653000&usg=AOvVaw2rAkb1jYDSUDZd8GoUYaIg)
 
 # WORK EXPERIENCE
 
 ## Frontend Developer
 
-## Project URL: [https://lpexchange.org](https://www.google.com/url?q=https://lpexchange.org/&sa=D&ust=1594619076800000&usg=AOvVaw2qxiFhnSdlMeCQzrkR2r2D)
+## Project URL: [https://lpexchange.org](https://www.google.com/url?q=https://lpexchange.org/&sa=D&ust=1594648440654000&usg=AOvVaw1dccG09bJ40qgnAgoFeWUt)
 
 ## Tridius Technologies LLC • Oct 2019 - Current
 
@@ -23,8 +23,8 @@ Full stack developer & Graphic Designer
 - Create different webviews for users depending on the role aligned to the user authentication
 - Created an admin dashboard with a table component capable of lazy loading new columns and rows, filterable, sortable, and implemented search the url query parameters
 - Implemented new features or bug fixes through Microsoft Dev-Ops
-- Wrote a highly re-usable, well-documented React component library with the use of [Storybook.js](https://www.google.com/url?q=https://storybook.js.org/&sa=D&ust=1594619076801000&usg=AOvVaw1_0K1mUFnjJIY9ewUKgtI1)
-- All components were strictly typed with [Typescript](https://www.google.com/url?q=https://www.typescriptlang.org/&sa=D&ust=1594619076802000&usg=AOvVaw2rCiyr92soAW0ueQ_bsrWY)
+- Wrote a highly re-usable, well-documented React component library with the use of [Storybook.js](https://www.google.com/url?q=https://storybook.js.org/&sa=D&ust=1594648440656000&usg=AOvVaw0b_EmPmqwNoieodwXl5Ont)
+- All components were strictly typed with [Typescript](https://www.google.com/url?q=https://www.typescriptlang.org/&sa=D&ust=1594648440656000&usg=AOvVaw3WJShFxH4sFjAdnjGWUxio)
 - Implemented lazy loaded components with the recent React.lazy() function for a faster initial load time
 - Satisfied requirements within banking industry standards
 - Created custom form components with heavy input validation for submitting sensitive info
@@ -45,7 +45,7 @@ UX / UI Developer Intern
 
 ## Copart • 2019 (3 months)
 
-## Project Wireframes: [figma](https://www.google.com/url?q=https://www.figma.com/file/yFRQGTT3s3GyOkhNzQ9Yd8/wom&sa=D&ust=1594619076804000&usg=AOvVaw3EEgFZxU54fCmJ9bdlF_ca)
+## Project Wireframes: [figma](https://www.google.com/url?q=https://www.figma.com/file/yFRQGTT3s3GyOkhNzQ9Yd8/wom&sa=D&ust=1594648440659000&usg=AOvVaw1In7AEDH5MwoQjn4Ae07Xh)
 
 - Worked in an Agile development environment
 - Wireframed pages for a new company project while also having to follow existing corporate branding
@@ -80,7 +80,7 @@ React / Typescript / Redux / Gatsby.js / Python / Java / Node.js / Express / SQL
 
 # CERTIFICATIONS
 
-## [Java Backend Web Developmen](https://www.google.com/url?q=https://www.youracclaim.com/badges/a47b78de-f8fc-4cf5-bac8-6cd112f38386/linked_in_profile&sa=D&ust=1594619076807000&usg=AOvVaw1QlL5-2WBR445RUohbLce3)[t](https://www.google.com/url?q=https://www.youracclaim.com/badges/a47b78de-f8fc-4cf5-bac8-6cd112f38386/linked_in_profile&sa=D&ust=1594619076807000&usg=AOvVaw1QlL5-2WBR445RUohbLce3)
+## [Java Backend Web Developmen](https://www.google.com/url?q=https://www.youracclaim.com/badges/a47b78de-f8fc-4cf5-bac8-6cd112f38386/linked_in_profile&sa=D&ust=1594648440663000&usg=AOvVaw3GeP3UYHqZCQGYy4zetCs6)[t](https://www.google.com/url?q=https://www.youracclaim.com/badges/a47b78de-f8fc-4cf5-bac8-6cd112f38386/linked_in_profile&sa=D&ust=1594648440663000&usg=AOvVaw3GeP3UYHqZCQGYy4zetCs6)
 
 - Java Spring Boot
 
