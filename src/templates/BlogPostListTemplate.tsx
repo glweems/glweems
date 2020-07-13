@@ -27,36 +27,38 @@ export default function ArticleListTemplate({
       />
 
       <Container>
-        {data.posts.nodes.map(({ frontmatter, ...post }) => {
-          const sources = [
-            frontmatter.thumbnail.sm.fixed,
-            {
-              ...frontmatter.thumbnail.md.fixed,
-              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-            },
-            {
-              ...frontmatter.thumbnail.lg.fixed,
-              media: `(min-width: ${breakpoints[2]})`,
-            },
-          ];
+        {data.posts.nodes.map(
+          ({ childMarkdownRemark: { frontmatter, ...post } }) => {
+            const sources = [
+              frontmatter.thumbnail.sm.fixed,
+              {
+                ...frontmatter.thumbnail.md.fixed,
+                media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+              },
+              {
+                ...frontmatter.thumbnail.lg.fixed,
+                media: `(min-width: ${breakpoints[2]})`,
+              },
+            ];
 
-          return (
-            <Card
-              key={post.id}
-              title={frontmatter.title}
-              subtitle={frontmatter.subtitle}
-              date={frontmatter.date}
-              path={`/blog${frontmatter.path}`}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${frontmatter.title} thumbnail image`}
-                  fixed={sources}
-                />
-              }
-            />
-          );
-        })}
+            return (
+              <Card
+                key={post.id}
+                title={frontmatter.title}
+                subtitle={frontmatter.subtitle}
+                date={frontmatter.date}
+                path={`/blog${frontmatter.path}`}
+                Image={
+                  <Img
+                    draggable={false}
+                    alt={`${frontmatter.title} thumbnail image`}
+                    fixed={sources}
+                  />
+                }
+              />
+            );
+          }
+        )}
       </Container>
 
       <Pager
@@ -69,13 +71,16 @@ export default function ArticleListTemplate({
 
 export const Query = graphql`
   query BlogList($skip: Int, $limit: Int) {
-    posts: allMarkdownRemark(
-      skip: $skip
+    posts: allFile(
       limit: $limit
-      sort: { fields: [frontmatter___date], order: DESC }
+      skip: $skip
+      filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
+      sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
     ) {
       nodes {
-        ...BlogPostCard
+        childMarkdownRemark {
+          ...BlogPostCard
+        }
       }
     }
   }

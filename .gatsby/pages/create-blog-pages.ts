@@ -9,12 +9,16 @@ export default async function createBlogPostPages({
 }: CreatePagesArgs) {
   const result = await graphql<CreateBlogPostPagesQuery>(`
     query CreateBlogPostPages {
-      posts: allMarkdownRemark(
-        sort: { fields: frontmatter___date, order: DESC }
+      posts: allFile(
+        filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
+        sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
       ) {
         nodes {
-          frontmatter {
-            path
+          extension
+          childMarkdownRemark {
+            frontmatter {
+              path
+            }
           }
         }
       }
@@ -29,12 +33,12 @@ export default async function createBlogPostPages({
 
   const blogPosts = result?.data?.posts.nodes;
 
-  blogPosts?.forEach(({ frontmatter }, index) => {
+  blogPosts?.forEach(({ childMarkdownRemark: post }) => {
     actions.createPage({
-      path: `/blog${frontmatter.path}`,
+      path: `/blog${post.frontmatter.path}`,
       component: path.resolve(`src/templates/BlogPostTemplate.tsx`),
       context: {
-        slug: frontmatter.path,
+        slug: post.frontmatter.path,
       },
     });
   });

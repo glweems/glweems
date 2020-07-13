@@ -108,11 +108,11 @@ const Styled = styled.div`
   }
 
   ${media.greaterThan('md')`
-    grid-template:
-      'img date' auto
-      'img title'auto
-      'img subtitle' auto
-      'img link' auto;
+    grid-template-areas:
+      'img date'
+      'img title'
+      'img subtitle'
+      'img link';
   `};
 `;
 

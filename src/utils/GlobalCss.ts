@@ -51,7 +51,10 @@ body {
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration-thickness: .125em;
+  text-underline-offset: 1.5px;
+  text-decoration-skip-ink: auto;
+  text-decoration-color: ${({ theme }) => theme.colors.blue};
 }
 
 button:hover,

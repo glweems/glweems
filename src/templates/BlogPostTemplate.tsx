@@ -89,6 +89,7 @@ const Styled = styled.div`
   header,
   article,
   #disqus_thread {
+    width: 100%;
     max-width: 800px;
     margin: auto;
     padding: ${({ theme }) => theme.space[5]};
@@ -109,7 +110,7 @@ const Styled = styled.div`
   }
 
   ${media.greaterThan('sm')`
-      padding: ${({ theme }) => theme.space[10]};
+      padding: ${({ theme }) => theme.space[2]};
 
       blockquote,
       iframe {

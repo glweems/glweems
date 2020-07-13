@@ -13,35 +13,37 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
     <React.Fragment>
       <Section>
         <h2>Blog Posts</h2>
-        {data.posts.nodes.map(({ frontmatter, ...post }) => {
-          const blogSources = [
-            frontmatter.thumbnail.sm.fixed,
-            {
-              ...frontmatter.thumbnail.md.fixed,
-              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-            },
-            {
-              ...frontmatter.thumbnail.lg.fixed,
-              media: `(min-width: ${breakpoints[2]})`,
-            },
-          ];
-          return (
-            <Card
-              key={post.id}
-              title={frontmatter.title}
-              subtitle={frontmatter.subtitle}
-              date={frontmatter.date}
-              path={`/blog${frontmatter.path}`}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={frontmatter.title}
-                  fixed={blogSources}
-                />
-              }
-            />
-          );
-        })}
+        {data.posts.nodes.map(
+          ({ childMarkdownRemark: { frontmatter, ...post } }) => {
+            const blogSources = [
+              frontmatter.thumbnail.sm.fixed,
+              {
+                ...frontmatter.thumbnail.md.fixed,
+                media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+              },
+              {
+                ...frontmatter.thumbnail.lg.fixed,
+                media: `(min-width: ${breakpoints[2]})`,
+              },
+            ];
+            return (
+              <Card
+                key={post.id}
+                title={frontmatter.title}
+                subtitle={frontmatter.subtitle}
+                date={frontmatter.date}
+                path={`/blog${frontmatter.path}`}
+                Image={
+                  <Img
+                    draggable={false}
+                    alt={frontmatter.title}
+                    fixed={blogSources}
+                  />
+                }
+              />
+            );
+          }
+        )}
       </Section>
 
       <Section>
@@ -104,12 +106,14 @@ const Section = styled(Container)`
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
-    posts: allMarkdownRemark(
-      limit: $limit
-      sort: { fields: frontmatter___date, order: DESC }
+    posts: allFile(
+      filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
+      sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
     ) {
       nodes {
-        ...BlogPostCard
+        childMarkdownRemark {
+          ...BlogPostCard
+        }
       }
     }
 

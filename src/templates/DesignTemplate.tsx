@@ -32,8 +32,8 @@ export default function DesignTemplate({
         <Tags tags={design.tags} />
         <ShareButtons url={design.url} title={design.name} tags={design.tags} />
 
-        {design.images.map((image) => (
-          <IntersectionObserver key={image.id}>
+        {design.images.map((image, imgIndex) => (
+          <IntersectionObserver key={`${design.name}--${imgIndex}`}>
             <ScaleBox>
               <Img
                 fluid={image?.childImageSharp?.fluid}
@@ -67,7 +67,6 @@ export const Query = graphql`
         }
       }
       images {
-        id
         childImageSharp {
           ...FluidImage
         }

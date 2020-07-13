@@ -16,7 +16,8 @@ const config = {
   url: packageJson.homepage,
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
-
+  googleDocResumeUrl:
+    'https://docs.google.com/document/d/e/2PACX-1vQeU-cHFCX8Ec1YLAPTLh7RltaGOTtGNmEgkCqbQ6RfnD6rC8BrVN_cjntiYsUXgqq4RWlv_N3ic03P/pub',
   socialLinks: {
     github: 'https://github.com/glweeems',
     linkedin: 'https://www.linkedin.com/in/glweems',

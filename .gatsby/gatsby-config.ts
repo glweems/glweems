@@ -45,6 +45,13 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/content`,
+          name: 'resume',
+        },
+      },
+      {
         resolve: 'gatsby-plugin-sentry',
         options: {
           dsn: SENTRY_TOKEN,

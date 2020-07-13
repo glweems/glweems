@@ -8,6 +8,7 @@ import { GraphQLString } from 'graphql';
 import { DesignsYaml, MarkdownRemark } from '../src/queries';
 import createBlogPostPages from './pages/create-blog-pages';
 import createDesignPages from './pages/create-design-pages';
+import createResumePage from './pages/create-resume-page';
 import createDesignListPages from './pagination/create-design-list-pages';
 import createPostsPages from './pagination/create-post-list-pages';
 
@@ -72,6 +73,8 @@ export const onCreateNode = ({
 
 // Create Pages
 export const createPages: GatsbyNode['createPages'] = async (gatsbyNode) => {
+  await createResumePage().then((res) => console.log('res: ', res));
+
   await createBlogPostPages(gatsbyNode);
   await createPostsPages(gatsbyNode);
   await createDesignPages(gatsbyNode);

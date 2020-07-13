@@ -3,7 +3,7 @@ import styled, { css, useTheme } from 'styled-components';
 import DefaultButton from './Common/Button';
 
 export default function ToggleThemeSwitch() {
-  const { toggle, mode, isDarkMode } = useTheme();
+  const { toggle, isDarkMode } = useTheme();
 
   const buttonTitle = `Activate ${isDarkMode ? 'light' : 'dark'} mode`;
   return (
