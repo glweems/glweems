@@ -31,7 +31,9 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
-        resolve: 'gatsby-plugin-google-docs-resume',
+        resolve: require.resolve(
+          './../plugins/gatsby-plugin-google-docs-resume/'
+        ),
         options: {
           url: config.googleDocResumeUrl,
         },
