@@ -121,3 +121,18 @@ export const BlogPostCard = graphql`
     }
   }
 `;
+
+export const GithubCard = graphql`
+  fragment GithubCard on GithubPinneditems {
+    openGraphImageUrl
+    name
+    url
+    createdAt(formatString: "MMMM YYYY")
+    description
+    homepageUrl
+    id
+    thumbnail {
+      ...ResponsiveCardTbn
+    }
+  }
+`;

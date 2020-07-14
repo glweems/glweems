@@ -80,15 +80,34 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
       </Section>
 
       <Section>
-        {data.allGithubPinneditems.nodes.map((pinned) => (
-          <Card
-            key={pinned.name}
-            title={pinned.name}
-            subtitle={pinned.description}
-            date={pinned.createdAt}
-            Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
-          />
-        ))}
+        {data.allGithubPinneditems.nodes.map((pinned) => {
+          const githubSources = [
+            pinned.thumbnail.sm.fixed,
+            {
+              ...pinned.thumbnail.md.fixed,
+              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+            },
+            {
+              ...pinned.thumbnail.lg.fixed,
+              media: `(min-width: ${breakpoints[2]})`,
+            },
+          ];
+          return (
+            <Card
+              key={pinned.name}
+              title={pinned.name}
+              subtitle={pinned.description}
+              date={pinned.createdAt}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${pinned.name} thumbnail image`}
+                  fixed={githubSources}
+                />
+              }
+            />
+          );
+        })}
       </Section>
 
       <Section>
@@ -107,6 +126,7 @@ const Section = styled(Container)`
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
     posts: allFile(
+      limit: $limit
       filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
       sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
     ) {
@@ -125,17 +145,7 @@ export const Query = graphql`
 
     allGithubPinneditems(limit: $limit) {
       nodes {
-        primaryLanguage {
-          name
-          color
-        }
-        openGraphImageUrl
-        name
-        url
-        createdAt(formatString: "MMMM YYYY")
-        description
-        homepageUrl
-        id
+        ...GithubCard
       }
     }
   }

@@ -54,17 +54,3 @@ exports.sourceNodes = async (
 
   reporter.success('Resume Node Created');
 };
-
-/* import Axios from 'axios';
-import Cheerio from 'cheerio';
-import Fs from 'fs';
-import { GatsbyNode, PluginOptions, SourceNodesArgs } from 'gatsby';
-import TurndownService from 'turndown';
-
-export const sourceNodes: GatsbyNode['sourceNodes'] = async (
-  args: SourceNodesArgs,
-  options: PluginOptions
-) => {
-  console.log('options: ', options);
-};
- */
