@@ -30,6 +30,7 @@ exports.sourceNodes = async (
     strongDelimiter: '__',
   });
 
+  turndownService.remove('style');
   turndownService.remove('script');
 
   const resume = turndownService.turndown(content.html());
