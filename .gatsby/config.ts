@@ -1,13 +1,13 @@
 import {
-  faBehanceSquare,
-  faGithubSquare,
-  faInstagramSquare,
+  faBehance,
+  faGithub,
+  faInstagram,
   faLinkedin,
-  faMedium,
+  faMediumM,
 } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import packageJson from '../package.json';
 import path from 'path';
+import packageJson from '../package.json';
 
 const config = {
   defaultTitle: 'Glweems',
@@ -16,7 +16,8 @@ const config = {
   url: packageJson.homepage,
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
-
+  googleDocResumeUrl:
+    'https://docs.google.com/document/d/e/2PACX-1vQeU-cHFCX8Ec1YLAPTLh7RltaGOTtGNmEgkCqbQ6RfnD6rC8BrVN_cjntiYsUXgqq4RWlv_N3ic03P/pub',
   socialLinks: {
     github: 'https://github.com/glweeems',
     linkedin: 'https://www.linkedin.com/in/glweems',
@@ -29,18 +30,17 @@ const config = {
   themeColor: '#f8d58c',
   backgroundColor: '#f8d58c',
   siteRss: '/rss.xml',
-  disqusShortName: 'https-glweems-com',
+  disqusShortName: 'glweems-dot-com',
   contact: {
     email: 'gwgraphicdeesign@gmail.com',
     twitter: 'garrettlweems',
   },
   pathPrefix: '/',
   copyright: '© All rights reserved.',
-  itemsPerPage: 4,
+  itemsPerPage: 8,
   links: [
-    { path: '/blog', name: 'Articles' },
+    { path: '/blog', name: 'Blog' },
     { path: '/designs', name: 'Designs' },
-    // { path: '/projects', name: 'Projects' },
     { path: '/about', name: 'About' },
     { path: '/resume', name: 'Resume' },
   ],
@@ -55,7 +55,7 @@ const config = {
       name: 'Github',
       username: 'glweems',
       link: 'https://github.com/glweems',
-      icon: faGithubSquare,
+      icon: faGithub,
     },
     linkedin: {
       name: 'LinkedIn',
@@ -67,19 +67,19 @@ const config = {
       name: 'Medium',
       username: 'glweems',
       link: 'https://medium.com/@glweems',
-      icon: faMedium,
+      icon: faMediumM,
     },
     behance: {
       name: 'Behance',
       username: 'glweems',
       link: 'https://www.behance.net/glweems',
-      icon: faBehanceSquare,
+      icon: faBehance,
     },
     instagram: {
       name: 'Instagram',
       username: 'glweems',
       link: 'https://instagram.com/glweems',
-      icon: faInstagramSquare,
+      icon: faInstagram,
     },
   },
 };

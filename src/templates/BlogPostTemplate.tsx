@@ -1,50 +1,32 @@
-import loadable from '@loadable/component';
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import React from 'react';
-import RehypeReact from 'rehype-react';
-import styled, { useTheme } from 'styled-components';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
+import React, { Fragment } from 'react';
+import styled from 'styled-components';
 import Box from '../components/Common/Box';
-import LoadingSpinner from '../components/Common/LoadingSpinner';
-import Pager from '../components/Pager';
+import DisqusComments from '../components/DisqusComments';
+import HtmlAst from '../components/HtmlAst';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { BlogTemplateQuery } from '../queries';
-import { DiscussionEmbedProps } from '../types/disqus-react';
+import { media } from '../theme';
 import '../utils/syntax.css';
-import Link from '../components/Common/Link';
-
-let rehypeReact: any;
-rehypeReact = RehypeReact;
 export interface PageContext {
   slug: string;
   prev: string;
   next: string;
 }
 
-const DiscussionEmbed = loadable<DiscussionEmbedProps>(
-  () => import('disqus-react').then((module) => module.DiscussionEmbed),
-  { fallback: <LoadingSpinner /> }
-);
-
 export default function BlogTemplate({
   data,
   pageContext,
 }: PageProps<BlogTemplateQuery, PageContext>) {
-  const { post, site } = data;
+  const { post } = data;
   const { frontmatter } = data.post;
-  const { mode } = useTheme();
 
-  const previousPagePath = data.prev?.frontmatter?.previousPageText
-    ? `/blog${pageContext.prev}`
-    : null;
-
-  const nextPagePath = data.next?.frontmatter?.nextPageText
-    ? `/blog${pageContext.next}`
-    : null;
   return (
-    <React.Fragment>
+    <Fragment>
       <SEO
         article
         title={frontmatter.title}
@@ -53,9 +35,16 @@ export default function BlogTemplate({
         image={frontmatter.thumbnail.publicURL}
       />
 
-      <Article as="article" className={`${mode}-mode`}>
+      <Styled>
         <header>
           <h1 className="blog-title">{frontmatter.title}</h1>
+
+          <Img
+            className="tbn"
+            draggable={false}
+            fluid={frontmatter.thumbnail.childImageSharp.fluid}
+            alt={`${frontmatter.title} thumbnail`}
+          />
 
           <p className="blog-subtitle">{frontmatter.subtitle}</p>
 
@@ -63,124 +52,79 @@ export default function BlogTemplate({
             {frontmatter.date} - {post.timeToRead} min read
           </small>
 
-          <Box display="flex" justifyContent="space-between">
-            <Tags tags={frontmatter.tags} />
-
-            <ShareButtons
-              title={frontmatter.title}
-              url={post.url}
-              tags={frontmatter.tags}
-            />
-          </Box>
-
-          <Img
-            draggable={false}
-            fluid={frontmatter.thumbnail.childImageSharp.fluid}
-            alt={`${frontmatter.title} thumbnail`}
-          />
+          <Tags tags={frontmatter.tags} />
         </header>
+        <article>
+          <HtmlAst elements={post.htmlAst} components={articleComponents} />
+        </article>
+      </Styled>
 
-        <Content elements={post.htmlAst} />
-      </Article>
-
-      <Pager
-        previousPagePath={previousPagePath}
-        previousPageText={data.prev?.frontmatter?.previousPageText}
-        nextPagePath={nextPagePath}
-        nextPageText={data.next?.frontmatter?.nextPageText}
-      />
-
-      <DiscussionEmbed
-        shortname={site.siteMetadata.disqusShortName}
-        config={{
-          url: post.url,
-          identifier: post.disqusIdentifier,
-          title: frontmatter.title,
-        }}
-      />
-    </React.Fragment>
+      <Box container>
+        <ShareButtons
+          title={frontmatter.title}
+          url={post.url}
+          tags={frontmatter.tags}
+        />
+        <DisqusComments
+          url={post.url}
+          identifier={post.disqusIdentifier}
+          title={frontmatter.title}
+        />
+      </Box>
+    </Fragment>
   );
 }
 
+const Styled = styled.div`
+  header,
+  article {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    padding: ${({ theme }) => theme.space[5]};
+  }
+
+  .tbn {
+    margin-bottom: ${({ theme }) => theme.space[5]};
+  }
+
+  blockquote,
+  iframe,
+  .gatsby-highlight {
+    margin-right: -${({ theme }) => theme.space[5]};
+    margin-left: -${({ theme }) => theme.space[5]};
+  }
+
+  ${media.greaterThan('sm')`
+      padding: ${({ theme }) => theme.space[2]};
+  `};
+`;
+
 export const Query = graphql`
-  query BlogTemplate($slug: String!, $prev: String, $next: String) {
+  query BlogTemplate($slug: String!) {
     post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       url
-      disqusIdentifier
       timeToRead
       htmlAst
       ...Frontmatter
-    }
-    prev: markdownRemark(frontmatter: { path: { eq: $prev } }) {
-      frontmatter {
-        previousPagePath: path
-        previousPageText: title
-      }
-    }
-    next: markdownRemark(frontmatter: { path: { eq: $next } }) {
-      frontmatter {
-        nextPagePath: path
-        nextPageText: title
-      }
-    }
-    site {
-      siteMetadata {
-        twitterHandle
-        disqusShortName
-      }
+      editOnGithub
     }
   }
 `;
 
-const Article = styled.article`
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns:
-    minmax(1em, 1fr)
-    [main-start] minmax(300px, 720px) [main-end]
-    minmax(1em, 1fr);
-  gap: ${({ theme }) => theme.space[4]} 0;
-  color: ${({ theme }) => theme.colors.text};
-  background: ${({ theme }) => theme.colors.bg};
-
-  > * {
-    grid-column: main;
-    width: 100%;
-    /* margin: 0; */
-  }
-
-  header {
-    .blog-title,
-    .blog-subtitle,
-    .date,
-    .tags {
-      margin-bottom: ${({ theme }) => theme.space[4]};
-    }
-  }
-`;
-const artileComponents = {
+const articleComponents = {
   em: styled.em`
     width: 100%;
     text-align: center;
   `,
   blockquote: styled.blockquote`
-    padding: 0.25em 0 0.25em 1em;
+    padding: ${({ theme }) => theme.space[5]};
     color: ${({ theme }) => theme.colors.muted};
     font-style: italic;
-    background-color: ${({ theme }) => theme.colors.rootBg};
     border-left: 4px solid ${({ theme }) => theme.colors.primary};
   `,
   ul: styled.ul`
     list-style-position: inside;
   `,
-  a: Link,
-};
-
-export const Content: React.FC<{ elements: object }> = ({ elements }) => {
-  const html = new rehypeReact({
-    createElement: React.createElement,
-    components: artileComponents,
-  });
-
-  return html.Compiler(elements).props.children;
+  a: (props) => <OutboundLink {...props} />,
 };

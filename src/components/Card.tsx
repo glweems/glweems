@@ -2,15 +2,11 @@ import { motion } from 'framer-motion';
 import { Link, navigate } from 'gatsby';
 import React, { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import Box from './Common/Box';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHandPointRight } from '@fortawesome/free-solid-svg-icons';
-import Icon from '../assets/book.svg';
-import { transparentize } from 'polished';
+import { media } from '../theme';
 
 type CardProps = {
   title?: string;
-  excerpt?: string;
+  subtitle?: string;
   date?: string;
   path?: string;
   Image?: any;
@@ -20,13 +16,12 @@ type CardProps = {
 
 export default function Card({
   title,
-  excerpt,
+  subtitle,
   date,
   path,
   Image,
   linkText,
   children,
-  tags,
 }: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
     navigate(event.currentTarget.id);
@@ -34,34 +29,27 @@ export default function Card({
 
   return (
     <Styled>
-      <Box className="Card--content" pl={2}>
-        {tags && <div></div>}
-        {title && (
-          <h2 className="Card--title">
-            {path ? <Link to={path}>{title}</Link> : title}
-          </h2>
-        )}
-        {date && <small className="date"> {date}</small>}
-        <div className="Card--body">
-          {excerpt && <p className="Card--excerpt">{excerpt}</p>}
-          {path && (
-            <Link
-              to={path}
-              className="Card--link button"
-              aria-label={`View ${title}`}
-            >
-              {linkText} <Icon />
-            </Link>
-          )}
-          {children}
-        </div>
-      </Box>
+      {title && (
+        <h3 className="Card--title">
+          {path ? <Link to={path}>{title}</Link> : title}
+        </h3>
+      )}
+
+      {date && <time className="date Card--date"> {date}</time>}
+
+      {subtitle && <p className="Card--subtitle">{subtitle}</p>}
+
+      {path && (
+        <Link to={path} className="Card--link" aria-label={`View ${title}`}>
+          {linkText}
+        </Link>
+      )}
 
       {Image && (
         <motion.div
           id={path}
           onClick={handleImgClick}
-          className="Card--container--image"
+          className="Card--img"
           whileHover={{ scale: 1.015 }}
           whileTap={{ scale: 0.975 }}
         >
@@ -74,29 +62,58 @@ export default function Card({
 
 const Styled = styled.div`
   display: grid;
-  grid-template-areas: 'image content';
-  grid-template-rows: 1fr;
-  grid-template-columns: 250px minmax(0, 500px);
-  gap: ${({ theme }) => theme.space[2]};
+  grid-auto-rows: min-content;
+  grid-column-gap: ${({ theme }) => theme.space[4]};
+  grid-template:
+    'date date' auto
+    'title title' auto
+    'img subtitle'auto
+    'img link' 1fr;
+  grid-template-columns: auto 1fr;
+  justify-items: flex-start;
   width: 100%;
-  margin-bottom: ${({ theme }) => theme.space[4]};
-
-  .Card--body {
-    margin: ${({ theme }) => theme.space[3]} 0;
-  }
-  .Card--link {
-    color: ${({ theme }) => theme.colors.link};
-  }
+  margin-bottom: ${({ theme }) => theme.space[12]};
 
   .Card--title {
+    grid-area: title;
+    /* margin-left: ${({ theme }) => theme.space[4]}; */
     color: ${({ theme }) => theme.colors.text};
+    ${media.greaterThan('md')`
+      margin-left: unset;
+    `};
   }
-  .Card--excerpt {
-    color: ${({ theme }) => transparentize(0.2, theme.colors.text)};
+
+
+  .Card--date {
+    grid-area: date;
   }
-  .Card--container--image {
-    grid-area: image;
+
+  .Card--subtitle {
+    grid-area: subtitle;
+    opacity: 0.9;
   }
+
+  .Card--img {
+    grid-area: img;
+  }
+  .Card--body {
+    display: flex;
+    flex-direction: column;
+    grid-area: body;
+  }
+  .Card--link {
+    grid-area: link;
+    /* align-self: flex-end; */
+    /* margin-top: auto; */
+  }
+
+  ${media.greaterThan('md')`
+    grid-template-areas:
+      'img date'
+      'img title'
+      'img subtitle'
+      'img link';
+  `};
 `;
 
 Card.defaultProps = {

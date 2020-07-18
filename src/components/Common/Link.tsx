@@ -1,59 +1,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
-import { Link as GatsbyLink } from 'gatsby';
+import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby';
 import { OutboundLink as GoogleLink } from 'gatsby-plugin-google-analytics';
+import React from 'react';
 
-interface LinkProps {
-  children?: React.ReactNode;
-  href?: string;
-  to: string;
-  [key: string]: any;
-  partiallyActive?: boolean;
-  activeClassName?: string;
-  className?: string;
-  unstyled?: boolean;
-}
+export type LinkProps = Omit<GatsbyLinkProps<{}>, 'ref'>;
 
-export default function Link({
-  children,
-  to,
-  href,
-  activeClassName = 'active',
-  partiallyActive,
-  className = '',
-  unstyled = false,
-  ...other
-}: LinkProps) {
-  if (href) {
-    return (
-      <GoogleLink href={href} target="_blank" className="link" {...other}>
-        {children}
-      </GoogleLink>
-    );
-  }
-
+export default function Link({ to, ...props }: LinkProps) {
   const internal = /^\/(?!\/)/.test(to);
-  // Use Gatsby Link for internal links, and <a> for others
-  const displayedClassName = unstyled ? className : `link ${className}`;
 
   return internal ? (
-    <GatsbyLink
-      to={to}
-      activeClassName={activeClassName}
-      partiallyActive={partiallyActive}
-      className={displayedClassName}
-      {...other}
-    >
-      {children}
-    </GatsbyLink>
+    <GatsbyLink to={to} {...props} />
   ) : (
-    <GoogleLink
-      href={to}
-      target="_blank"
-      className={displayedClassName}
-      {...other}
-    >
-      {children}
-    </GoogleLink>
+    <GoogleLink href={to} target={internal ? '_self' : '_blank'} {...props} />
   );
 }
+
+Link.defaultProps = {
+  className: 'link',
+  getProps: ({ isCurrent, isPartiallyCurrent, href }) => {
+    if (isCurrent || (isPartiallyCurrent && href !== '/'))
+      return { className: 'active' };
+  },
+};

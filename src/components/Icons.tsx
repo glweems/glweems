@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import React from 'react';
 import config from '../../.gatsby/config';
 import { baseColors } from '../theme';
-import { BoxProps } from './Common/Box';
+import Box, { BoxProps } from './Common/Box';
 import { useTheme } from 'styled-components';
+import { darken } from 'polished';
 const icon = {
   hidden: {
     pathLength: 0,
@@ -24,8 +25,10 @@ export interface SVGIconProps extends BoxProps {
 export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
   const { colors } = useTheme();
   const cssColor = colors[color];
+  const cssStrokeColor = darken(0.5, colors[color]);
   return (
-    <motion.svg
+    <Box
+      as="svg"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
@@ -33,11 +36,11 @@ export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
       width={size}
       height={size}
       viewBox="0 0 117 117"
-      variants={icon}
       css={`
+        polygon {
+        }
         fill: black;
         .svg-ghost-bg {
-          fill: ${cssColor};
         }
         .white-fill {
           fill: white;
@@ -45,7 +48,15 @@ export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
       `}
     >
       <polygon
-        className="svg-ghost-bg"
+        css={`
+          paint-order: stroke;
+          fill: ${cssColor};
+          stroke: var(--color-dark);
+          stroke-opacity: 0.5;
+          stroke-width: 3px;
+          stoke-linecap: round;
+          scale: 0.9;
+        `}
         points="108,54 108,27 99,27 99,18 90,18 90,9 81,9 72,9 72,0 36,0 36,9 27,9 27,18 18,18 18,27 9,27 9,54
           0,54 0,117 9,117 9,108 18,108 18,99 27,99 27,108 36,108 36,117 45,117 54,117 54,99 63,99 63,117 81,117 81,108 90,108 90,99
           99,99 99,108 108,108 108,117 117,117 117,54 "
@@ -60,7 +71,7 @@ export function GhostSVG({ size = 75, color = 'blue' }: SVGIconProps) {
       />
       <rect x="9" y="45" width="18" height="18" color="black" />
       <rect x="63" y="45" width="18" height="18" />
-    </motion.svg>
+    </Box>
   );
 }
 
@@ -77,7 +88,7 @@ export function MenuIcon({ size = 30, color = 'text' }: SVGIconProps) {
       color={cssColor}
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
       />
     </svg>
@@ -101,11 +112,11 @@ export function SlashCircleIcon({ size = 30, color = 'text' }: SVGIconProps) {
       color={cssColor}
     >
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"
       />
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"
       />
     </svg>

@@ -1,9 +1,9 @@
 import React from 'react';
-import Container from '../components/Common/Container';
+import Paper from '../components/Common/Paper';
 
 export default function AboutPage() {
   return (
-    <Container>
+    <Paper>
       <h1>Hello, I&apos;m Garrett Weems</h1>
       <hr />
       <p>
@@ -26,6 +26,6 @@ export default function AboutPage() {
         of sharing knowledge with others. I also enjoy attending social web
         developer meetups.
       </p>
-    </Container>
+    </Paper>
   );
 }

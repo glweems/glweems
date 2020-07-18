@@ -1,155 +1,100 @@
 import { createGlobalStyle } from 'styled-components';
+import { cssVariables, media } from '../theme';
 
-export default createGlobalStyle`
- html {
-  scroll-behavior: smooth;
+const GlobalCss = createGlobalStyle`
+:root{
+  ${cssVariables};
 }
-
-html,
-body {
-  color: ${({ theme }) => theme.colors.text};
-  background-color: ${({ theme }) => theme.colors.bg};
-  transition: color 0.25s linear;
-  transition: background-color 0.25s ease-in-out;
-}
-
-
-body {
-  --spinner-color: ${({ theme }) => theme.colors.secondaryBg};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--spinner-color) 50%,
-      var(--spinner-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49%,
-      var(--spinner-color) 50%,
-      var(--spinner-color) 50%,
-      transparent 51%,
-      transparent
-    );
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-  border: 1px var(--spinner-color) solid;
-  border-radius: 4px;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  border-color: var(--spinner-color);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button,
-.button {
-  padding: 8px 10px;
-  color: ${({ theme }) => theme.colors.text};
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  background: transparent;
-  border: none;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: all 0.5s ease-in-out;
-  text-anchor: middle;
-}
-
-button:hover,
-.button:hover,
-a.active {
-  background: ${({ theme }) => theme.colors.secondaryBg};
-}
-button:focus,
-.button:focus {
-  outline: ${({ theme }) => theme.colors.primary};
-}
-
-button:disabled {
-  color: ${({ theme }) => theme.colors.rootBg};
-}
-
-
-
-.icon {
-  /* color: ${({ theme }) => theme.colors.text}; */
-}
-
-svg {
-  font: unset;
-  vertical-align: text-top;
-}
-
-img {
-  border-radius: 0.125rem;
-}
-
-.date *,
-.date :before,
-.date :after {
-  box-sizing: inherit;
-}
-
-.date {
-  display: block;
-  color: ${({ theme }) => theme.colors.secondaryText};
-  font-size: 15px;
-  font-family: medium-content-sans-serif-font, -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-    sans-serif;
-  line-height: 22px;
-  text-decoration: none;
-  border-radius: 3px;
-  opacity: 0.75;
-}
-
-#disqus_thread {
-  padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.light};
-  border-radius: ${({ theme }) => theme.space[1]};
-}
-
-iframe {
-  border: none;
-  border-radius: ${({ theme }) => theme.space[1]};
-}
-
-.anchor.before svg {
-  fill: ${({ theme }) => theme.colors.primary};
-}
-
-
-.flex {
-  display: flex;
-}
-
-
-
-.react-share__ShareButton {
-  margin: 0;
-  padding: 0;
-  * {
-    color: ${({ theme }) => theme.colors.red};
-    fill: ${({ theme }) => theme.colors.red};
-    rect { fill: none; }
+  html {
+    scroll-behavior: smooth;
   }
-}
+
+  body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-weight: normal;
+    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
+      'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    word-wrap: break-word;
+    background-color: ${({ theme }) => theme.colors.bg};
+    font-kerning: normal;
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  }
+
+  main {
+    margin-top: ${({ theme }) => theme.space[10]};
+    margin-bottom: ${({ theme }) => theme.space[10]};
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 1.5px;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: ${({ theme }) => theme.colors.blue};
+    &:hover {
+      opacity: 0.75;
+      text-decoration-color: ${({ theme }) => theme.colors.red};
+    }
+  }
+
+  mark {
+    color: ${({ theme }) => theme.colors.red};
+    background-color: transparent;
+  }
+
+  .icon {
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  svg {
+    font: unset;
+    vertical-align: text-top;
+  }
+
+  img {
+    border-radius: 0.125rem;
+  }
+
+  time {
+    display: block;
+    color: ${({ theme }) => theme.colors.secondaryText};
+    font: ${({ theme }) => theme.fonts.monospace};
+    font-size: 90%;
+    line-height: 22px;
+    text-decoration: none;
+    border-radius: 3px;
+  }
+
+  iframe {
+    border: none;
+    border-radius: ${({ theme }) => theme.space[1]};
+  }
+
+  .anchor.before svg {
+    fill: ${({ theme }) => theme.colors.blue};
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  rect {
+    shape-rendering: geometricPrecision;
+    outline: 1px solid rgba(27, 31, 35, 0.04);
+    outline-offset: -1px;
+    rx: 2;
+    ry: 2;
+  }
+
+  #disqus_thread {
+    padding: 0  ${({ theme }) => theme.space[2]};
+    ${media.greaterThan('sm')`
+      padding: 0;
+    `};
+  }
 `;
-// @media (min-width: 480px) {
-//     html {
-//       font-size: 112.5%; /* --> 18px base size */
-//     }
-//   }
-//   @media (min-width: 600px) {
-//     html {
-//       font-size: 125%; /* --> 20px base size */
-//     }
-//   }
+
+export default GlobalCss;

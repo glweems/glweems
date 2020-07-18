@@ -3,11 +3,12 @@ import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Box from '../components/Common/Box';
-import Container from '../components/Common/Container';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { DesignsTemplateQuery } from '../queries';
+import IntersectionObserver from '../ui/IntersectionObserver';
+import { ScaleBox } from '../ui/ScaleBox';
 
 export default function DesignTemplate({
   data,
@@ -23,33 +24,29 @@ export default function DesignTemplate({
         image={design.fields.thumbnail.publicURL}
       />
 
-      <Container>
+      <Box container>
         <h1>{design.name}</h1>
         <p>{design.description}</p>
 
-        <Box
-          display="flex"
-          justifyContent="space-between"
-          alignContent="center"
-          alignItems="center"
-        >
-          <Tags tags={design.tags} />
-          <ShareButtons
-            url={design.url}
-            title={design.name}
-            tags={design.tags}
-          />
-        </Box>
-        {design.images.map((image, index) => (
-          <motion.div key={`${data.design.name}-image-${index}`}>
-            <Img
-              fluid={image?.childImageSharp?.fluid}
-              draggable={false}
-              fadeIn
-            />
-          </motion.div>
+        <Tags tags={design.tags} />
+        <ShareButtons url={design.url} title={design.name} tags={design.tags} />
+
+        {design.images.map((image, imgIndex) => (
+          <IntersectionObserver key={`${design.name}--${imgIndex}`}>
+            <ScaleBox>
+              <Img
+                fluid={image?.childImageSharp?.fluid}
+                draggable={false}
+                fadeIn
+              />
+            </ScaleBox>
+          </IntersectionObserver>
         ))}
-      </Container>
+
+        {design.images.map((image, index) => (
+          <motion.div key={`${data.design.name}-image-${index}`}></motion.div>
+        ))}
+      </Box>
     </React.Fragment>
   );
 }

@@ -31,6 +31,14 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: require.resolve(
+          './../plugins/gatsby-plugin-google-docs-resume/'
+        ),
+        options: {
+          url: config.googleDocResumeUrl,
+        },
+      },
+      {
         resolve: 'gatsby-source-filesystem',
         options: {
           path: `${projectRoot}/posts`,
@@ -42,6 +50,13 @@ const gatsbyConfig: ITSConfigFn<
         options: {
           path: `${projectRoot}/designs`,
           name: 'designs',
+        },
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/content`,
+          name: 'resume',
         },
       },
       {
@@ -78,14 +93,14 @@ const gatsbyConfig: ITSConfigFn<
               resolve: 'gatsby-remark-responsive-iframe',
               options: { wrapperStyle: 'margin-bottom: 1.0725rem' },
             },
+            'gatsby-remark-prismjs',
+            'gatsby-remark-copy-linked-files',
+            'gatsby-remark-smartypants',
             {
               resolve: 'gatsby-remark-autolink-headers',
               icon: linkedHeaderIcon,
               enableCustomId: true,
             },
-            'gatsby-remark-prismjs',
-            'gatsby-remark-copy-linked-files',
-            'gatsby-remark-smartypants',
             'gatsby-remark-external-links',
           ],
         },
@@ -100,6 +115,16 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
+        resolve: `gatsby-plugin-remote-images`,
+        options: {
+          nodeType: 'GithubPinneditems',
+          imagePath: 'openGraphImageUrl',
+          // OPTIONAL: Name you want to give new image field on the node.
+          // Defaults to 'localImage'.
+          name: 'thumbnail',
+        },
+      },
+      {
         resolve: 'gatsby-plugin-google-analytics',
         options: {
           trackingId: config.googleAnalyticsID,
@@ -109,7 +134,7 @@ const gatsbyConfig: ITSConfigFn<
       {
         resolve: 'gatsby-plugin-favicon',
         options: {
-          logo: `${projectRoot}/src/assets/ghost/ghost-purple.png`,
+          logo: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
           injectHTML: true,
           icons: {
             android: true,
@@ -134,8 +159,10 @@ const gatsbyConfig: ITSConfigFn<
               name: 'SvgIcon',
               props: {
                 className: 'icon',
-                title: 'example',
                 fill: 'currentcolor',
+                width: '1em',
+                height: '1em',
+                viewBox: '0 0 16 16',
               },
             },
           },
@@ -151,7 +178,7 @@ const gatsbyConfig: ITSConfigFn<
           background_color: config.backgroundColor,
           theme_color: config.themeColor,
           display: 'minimal-ui',
-          icon: `${projectRoot}/src/assets/ghost.png`,
+          icon: `${projectRoot}/src/assets/ghost/ghost-blue.png`,
         },
       },
       {
@@ -162,6 +189,7 @@ const gatsbyConfig: ITSConfigFn<
       },
       'gatsby-plugin-robots-txt',
       'gatsby-plugin-remove-trailing-slashes',
+      `gatsby-plugin-remove-serviceworker`,
     ],
   };
 

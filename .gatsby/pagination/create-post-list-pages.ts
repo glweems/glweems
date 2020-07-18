@@ -12,11 +12,14 @@ export default async function createPostPages({
 }: CreatePagesArgs) {
   const result = await graphql<BlogPostCountQuery>(`
     query BlogPostCount {
-      allMarkdownRemark {
-        totalCount
+      posts: allFile(
+        filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
+        sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
+      ) {
         nodes {
           id
         }
+        totalCount
       }
     }
   `);
@@ -29,7 +32,7 @@ export default async function createPostPages({
 
   paginate({
     createPage,
-    items: result.data.allMarkdownRemark.nodes,
+    items: result.data.posts.nodes,
     itemsPerPage,
     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? '/blog' : '/blog/page'),
     component: path.resolve('src/templates/BlogPostListTemplate.tsx'),

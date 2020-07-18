@@ -1,73 +1,45 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import { Link } from 'gatsby';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import styled, { useTheme } from 'styled-components';
 import config from '../../.gatsby/config';
 import Box from '../components/Common/Box';
-import Container from '../components/Common/Container';
-import { GhostSVG, MenuIcon, SlashCircleIcon } from '../components/Icons';
+import Link from '../components/Common/Link';
+import { GhostSVG } from '../components/Icons';
+import ToggleNavButton from '../components/ToggleNavButton';
 import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
 
-export type NavigationProps = {
+export type NavigationProps = PropsWithChildren<{
   path: string;
-};
+}>;
 
-export default function Navigation({ path }: NavigationProps) {
-  const { mobile, toggleNav, isNavOpen, colors } = useTheme();
+export default function Navigation({ path, children }: NavigationProps) {
+  const { mobile, isNavOpen } = useTheme();
 
   return (
-    <Styled as="header" padding={3}>
-      <nav>
-        <Link
-          to="/"
-          aria-label="go to homepage"
-          css={`
-            padding: ${({ theme }) => theme.space[2]};
-          `}
-          activeClassName={null}
-        >
-          <GhostSVG size={30} />
+    <Styled>
+      {children}
+      <Box as="nav" p={2}>
+        <Link to="/" aria-label="go to homepage">
+          <GhostSVG size={30} color="red" />
         </Link>
 
         <AnimateSharedLayout>
           {!mobile &&
             config.links.map((link) => (
-              <motion.div
-                key={link.name}
-                className={`nav-link-wrapper ${
-                  link.path === path && 'selected'
-                }`}
-              >
-                {link.path === path && (
-                  <motion.div
-                    layoutId="underline"
-                    className="underline"
-                    style={{ backgroundColor: colors.primary }}
-                  />
-                )}
-
-                <Link
-                  to={link.path}
-                  className="button"
-                  activeClassName="active-nav-link"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
+              <Link key={link.path} to={link.path}>
+                {link.name}
+              </Link>
             ))}
         </AnimateSharedLayout>
 
         <Box marginLeft="auto">
-          {mobile ? (
-            <HamburgerMenu onClick={toggleNav} />
-          ) : (
-            <ToggleThemeSwitch />
-          )}
+          {mobile ? <ToggleNavButton /> : <ToggleThemeSwitch />}
         </Box>
-      </nav>
+      </Box>
+
       <AnimatePresence>
         {mobile && isNavOpen && (
-          <Container
+          <Box
             className="open-nav"
             as={motion.nav}
             initial={{ height: 0, opacity: 0 }}
@@ -76,17 +48,45 @@ export default function Navigation({ path }: NavigationProps) {
           >
             {config.links.map((link) => (
               <div className="mobile-link" key={link.name}>
-                <Link to={link.path}>{link.name}</Link>
+                <Link
+                  to={link.path}
+                  getProps={({ isCurrent, isPartiallyCurrent, href }) => {
+                    if (isCurrent) return { className: 'active' };
+                    if (isPartiallyCurrent && href !== '/')
+                      return { className: 'active' };
+                  }}
+                >
+                  {link.name}
+                </Link>
               </div>
             ))}
-          </Container>
+          </Box>
         )}
       </AnimatePresence>
     </Styled>
   );
 }
 
-const Styled = styled(Container)`
+const Styled = styled.header`
+  width: inherit;
+  height: inherit;
+  padding: ${({ theme }) => theme.space[1]};
+  background-color: ${({ theme }) => theme.colors.blue};
+  ${({ theme }) => theme.dottedBg({ dotColor: 'light', dotBgColor: 'blue' })};
+  transition: all 0.25s ease-in-out;
+  a {
+    margin-right: ${({ theme }) => theme.space[4]};
+    color: ${({ theme }) => theme.colors.light};
+    font-size: ${({ theme }) => theme.fontSizes[4]};
+    transition: all 0.25s ease-in-out;
+  }
+
+  a.active {
+    text-decoration-color: ${({ theme }) => theme.colors.red};
+    text-decoration-thickness: 0.25rem;
+    text-underline-offset: 2px;
+  }
+
   nav {
     display: flex;
     align-items: center;
@@ -119,47 +119,6 @@ const Styled = styled(Container)`
     list-style: none;
     user-select: none;
   }
-
-  .underline {
-    position: absolute;
-    bottom: -${({ theme }) => theme.space[3]};
-    width: 100%;
-    height: ${({ theme }) => theme.space[1]};
-    background: transparent;
-    background-color: ${({ theme }) => theme.colors.primary};
-    border-radius: 4px;
-  }
-
-  .active-nav-link {
-    color: ${({ theme }) => theme.colors.primary};
-    background: ${({ theme }) => theme.colors.secondaryBg};
-  }
-
-  .nav-link-wrapper {
-    position: relative;
-    margin-right: ${({ theme }) => theme.space[3]};
-    color: ${({ theme }) => theme.colors.text};
-    cursor: pointer;
-  }
-
-  .nav-link-wrapper.selected {
-    color: ${({ theme }) => theme.colors.text};
-  }
 `;
-
-function HamburgerMenu(props: React.HTMLAttributes<HTMLButtonElement>) {
-  const { isNavOpen } = useTheme();
-  return (
-    <button {...props} style={{ zIndex: 10 }}>
-      <AnimatePresence>
-        {isNavOpen ? (
-          <SlashCircleIcon color="text" />
-        ) : (
-          <MenuIcon color="text" />
-        )}
-      </AnimatePresence>
-    </button>
-  );
-}
 
 Navigation.defaultProps = { className: 'navigation' };

@@ -1,52 +1,77 @@
-import React from 'react';
-import { PageProps, graphql } from 'gatsby';
-import Card from '../components/Card';
+import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import Heatmap from '../components/Heatmap';
+import React from 'react';
 import styled from 'styled-components';
+import Card from '../components/Card';
+import Box from '../components/Common/Box';
+import Heatmap from '../components/Heatmap';
 import { IndexPageQuery } from '../queries';
-import Container from '../components/Common/Container';
+import { breakpoints } from '../theme';
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
     <React.Fragment>
       <Section>
         <h2>Blog Posts</h2>
-        {data.posts.nodes.map(({ frontmatter, ...post }) => {
-          return (
-            <Card
-              key={post.id}
-              title={frontmatter.title}
-              excerpt={post.excerpt}
-              date={frontmatter.date}
-              path={`/blog${frontmatter.path}`}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={frontmatter.title}
-                  {...frontmatter.thumbnail.childImageSharp}
-                />
-              }
-            />
-          );
-        })}
+        {data.posts.nodes.map(
+          ({ childMarkdownRemark: { frontmatter, ...post } }) => {
+            const blogSources = [
+              frontmatter.thumbnail.sm.fixed,
+              {
+                ...frontmatter.thumbnail.md.fixed,
+                media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+              },
+              {
+                ...frontmatter.thumbnail.lg.fixed,
+                media: `(min-width: ${breakpoints[2]})`,
+              },
+            ];
+            return (
+              <Card
+                key={post.id}
+                title={frontmatter.title}
+                subtitle={frontmatter.subtitle}
+                date={frontmatter.date}
+                path={`/blog${frontmatter.path}`}
+                Image={
+                  <Img
+                    draggable={false}
+                    alt={frontmatter.title}
+                    fixed={blogSources}
+                  />
+                }
+              />
+            );
+          }
+        )}
       </Section>
 
       <Section>
         <h2>Designs</h2>
 
         {data.designs.nodes.map(({ name, ...design }, index) => {
+          const designSources = [
+            design.fields.thumbnail.sm.fixed,
+            {
+              ...design.fields.thumbnail.md.fixed,
+              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+            },
+            {
+              ...design.fields.thumbnail.lg.fixed,
+              media: `(min-width: ${breakpoints[2]})`,
+            },
+          ];
           return (
             <Card
               key={design.slug}
               path={`/design/${design.slug}`}
-              excerpt={design.description}
+              subtitle={design.description}
               title={name}
               Image={
                 <Img
                   draggable={false}
                   alt={`${name} thumbnail image`}
-                  {...design.fields.thumbnail.childImageSharp}
+                  fixed={designSources}
                 />
               }
             />
@@ -55,15 +80,34 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
       </Section>
 
       <Section>
-        {data.allGithubPinneditems.nodes.map((pinned) => (
-          <Card
-            key={pinned.name}
-            title={pinned.name}
-            excerpt={pinned.description}
-            date={pinned.createdAt}
-            Image={<img src={pinned.openGraphImageUrl} alt={pinned.name} />}
-          />
-        ))}
+        {data.allGithubPinneditems.nodes.map((pinned) => {
+          const githubSources = [
+            pinned.thumbnail.sm.fixed,
+            {
+              ...pinned.thumbnail.md.fixed,
+              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
+            },
+            {
+              ...pinned.thumbnail.lg.fixed,
+              media: `(min-width: ${breakpoints[2]})`,
+            },
+          ];
+          return (
+            <Card
+              key={pinned.name}
+              title={pinned.name}
+              subtitle={pinned.description}
+              date={pinned.createdAt}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${pinned.name} thumbnail image`}
+                  fixed={githubSources}
+                />
+              }
+            />
+          );
+        })}
       </Section>
 
       <Section>
@@ -73,20 +117,23 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   );
 }
 
-const Section = styled(Container)`
+const Section = styled(Box)`
   padding: ${({ theme }) => theme.space[2]};
 `;
 
-(Section as any).defaultProps = { as: 'section' };
+(Section as any).defaultProps = { as: 'section', container: true };
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
-    posts: allMarkdownRemark(
+    posts: allFile(
       limit: $limit
-      sort: { fields: frontmatter___date, order: DESC }
+      filter: { sourceInstanceName: { eq: "posts" }, extension: { eq: "md" } }
+      sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
     ) {
       nodes {
-        ...BlogPostCard
+        childMarkdownRemark {
+          ...BlogPostCard
+        }
       }
     }
 
@@ -98,17 +145,7 @@ export const Query = graphql`
 
     allGithubPinneditems(limit: $limit) {
       nodes {
-        primaryLanguage {
-          name
-          color
-        }
-        openGraphImageUrl
-        name
-        url
-        createdAt(formatString: "MMMM YYYY")
-        description
-        homepageUrl
-        id
+        ...GithubCard
       }
     }
   }

@@ -1,76 +1,58 @@
-import { motion } from 'framer-motion';
-import { darken } from 'polished';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import React from 'react';
-import styled, { css } from 'styled-components';
 import config from '../../.gatsby/config';
-import Container from './Common/Container';
+import Box from './Common/Box';
+import Button from './Common/Button';
 import Link from './Common/Link';
-import SocialIcon from './Common/SocialIcon';
 import { GhostSVG } from './Icons';
 
 export default function Welcome() {
+  const { scrollYProgress } = useViewportScroll();
+
+  const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
   return (
-    <Styled>
-      <motion.div className="Landing__inner">
-        <Container padding={2}>
-          <motion.div variants={container} initial="hidden" animate="visible">
-            <motion.div
-              variants={container}
-              css={`
-                display: flex;
-              `}
-            >
-              {['green', 'blue', 'red'].map((color) => (
-                <motion.div
-                  key={color}
-                  variants={item}
-                  className="ghost-wrapper"
-                >
-                  <GhostSVG color={color} size={50} />
-                </motion.div>
-              ))}
-            </motion.div>
+    <Box py={8} color="text" as={motion.div} initial="full" animate="normal">
+      <Box
+        container
+        as={motion.div}
+        style={{ scale }}
+        css={`
+          width: inherit;
+          height: inherit;
+          transform-origin: bottom left;
+        `}
+      >
+        <motion.div variants={container} initial="hidden" animate="visible">
+          <Box as={motion.div} variants={container} display="flex">
+            {['green', 'yellow', 'red'].map((color) => (
+              <motion.div key={color} variants={item} className="ghost-wrapper">
+                <GhostSVG color={color} size={50} />
+              </motion.div>
+            ))}
+          </Box>
 
-            <motion.h1 variants={item}>
-              Hello, I&apos;m <span>Garrett Weems</span>.
-            </motion.h1>
+          <hgroup>
+            <h1>
+              Hello, I&apos;m{' '}
+              <Box as="span" color="bg">
+                Garrett Weems
+              </Box>
+              .
+            </h1>
+            <h2>{config.defaultDescription}</h2>
+          </hgroup>
 
-            <motion.h2 variants={item}>
-              I&apos;m a full-stack web developer.
-            </motion.h2>
-
-            <motion.p variants={item}>{config.defaultDescription}</motion.p>
-
-            <motion.div variants={item}>
-              <Link to="/resume">Resume</Link>
-            </motion.div>
-
-            <motion.div variants={icons} className="icons">
-              {Object.entries(config.accounts).map(([key, value]) => (
-                <motion.div key={key} variants={item}>
-                  <SocialIcon size="2x" account={value} />
-                </motion.div>
-              ))}
-            </motion.div>
+          <motion.div variants={item}>
+            <Button as={Link} to="/resume">
+              Resume
+            </Button>
           </motion.div>
-        </Container>
-      </motion.div>
-    </Styled>
+        </motion.div>
+      </Box>
+    </Box>
   );
 }
 
-const icons = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 1,
-      when: 'beforeChildren',
-      staggerChildren: 0.1,
-    },
-  },
-};
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -91,77 +73,15 @@ const item = {
     opacity: 1,
   },
 };
-const checkered = css`
-  --bg-color: ${({ theme }) =>
-    theme.isDarkMode
-      ? darken(0.1, theme.colors.purple)
-      : darken(0.3, theme.colors.yellow)};
-
-  color: ${(props) => props.theme.colors.dark};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    );
-  background-color: ${({ theme }) => theme.colors.welcome};
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-  border: 1px var(--bg-color) solid;
-  border-radius: 4px;
-  animation: spTexture 2s infinite linear;
-  @keyframes spTexture {
-    from {
-      background-position: 0px 0px;
-    }
-    to {
-      background-position: -16px 0px;
-    }
-  }
-`;
-
-const Styled = styled.div`
-  padding: ${({ theme }) => theme.space[3]};
-  color: ${({ theme }) => theme.colors.dark};
-  .ghost-wrapper {
-    margin-right: ${({ theme }) => theme.space[2]};
-  }
-  .Landing__inner {
-    height: 100%;
-    padding: ${({ theme }) => theme.space[4]} 0;
-    ${checkered};
-  }
-  * {
-    border-bottom: unset;
-  }
-
-  h1 {
-    span {
-      color: ${({ theme }) => theme.colors.blue};
-    }
-  }
-
-  .icons {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: ${({ theme }) => theme.space[5]};
-    div {
-      margin-right: ${({ theme }) => theme.space[2]};
-    }
-
-    a {
-      color: ${({ theme }) =>
-        theme.isDarkMode ? theme.colors.blue : theme.colors.blue};
-    }
-  }
-`;
+/* const icons = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 1,
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+}; */

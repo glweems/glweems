@@ -3,8 +3,8 @@ import { graphql } from 'gatsby';
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
     fixed(
-      # width: $width
-      # height: $height
+      width: $width
+      height: $height
       traceSVG: { color: "#d0c1fa", background: "transparent" }
       cropFocus: CENTER
     ) {
@@ -54,6 +54,44 @@ export const BlogPost = graphql`
     ...Frontmatter
   }
 `;
+export const ResponsiveCardTbn = graphql`
+  fragment ResponsiveCardTbn on File {
+    sm: childImageSharp {
+      fixed(
+        width: 100
+        height: 100
+        quality: 60
+        traceSVG: { color: "#d0c1fa", background: "transparent" }
+        cropFocus: CENTER
+      ) {
+        ...GatsbyImageSharpFixed_withWebp_tracedSVG
+      }
+    }
+
+    md: childImageSharp {
+      fixed(
+        width: 125
+        height: 125
+        quality: 60
+        traceSVG: { color: "#d0c1fa", background: "transparent" }
+        cropFocus: CENTER
+      ) {
+        ...GatsbyImageSharpFixed_withWebp_tracedSVG
+      }
+    }
+    lg: childImageSharp {
+      fixed(
+        width: 200
+        height: 200
+        quality: 60
+        traceSVG: { color: "#d0c1fa", background: "transparent" }
+        cropFocus: CENTER
+      ) {
+        ...GatsbyImageSharpFixed_withWebp_tracedSVG
+      }
+    }
+  }
+`;
 
 export const DesignCard = graphql`
   fragment DesignCard on DesignsYaml {
@@ -62,16 +100,7 @@ export const DesignCard = graphql`
     slug
     fields {
       thumbnail {
-        childImageSharp {
-          fixed(
-            width: 200
-            height: 200
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
+        ...ResponsiveCardTbn
       }
     }
   }
@@ -80,7 +109,6 @@ export const DesignCard = graphql`
 export const BlogPostCard = graphql`
   fragment BlogPostCard on MarkdownRemark {
     id
-    excerpt(pruneLength: 200)
     frontmatter {
       id
       title
@@ -88,17 +116,23 @@ export const BlogPostCard = graphql`
       subtitle
       date(formatString: "MMMM YYYY")
       thumbnail {
-        childImageSharp {
-          fixed(
-            width: 200
-            height: 200
-            traceSVG: { color: "#d0c1fa", background: "transparent" }
-            cropFocus: CENTER
-          ) {
-            ...GatsbyImageSharpFixed_withWebp_tracedSVG
-          }
-        }
+        ...ResponsiveCardTbn
       }
+    }
+  }
+`;
+
+export const GithubCard = graphql`
+  fragment GithubCard on GithubPinneditems {
+    openGraphImageUrl
+    name
+    url
+    createdAt(formatString: "MMMM YYYY")
+    description
+    homepageUrl
+    id
+    thumbnail {
+      ...ResponsiveCardTbn
     }
   }
 `;
