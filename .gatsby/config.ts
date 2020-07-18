@@ -30,7 +30,7 @@ const config = {
   themeColor: '#f8d58c',
   backgroundColor: '#f8d58c',
   siteRss: '/rss.xml',
-  disqusShortName: 'https-glweems-com',
+  disqusShortName: 'glweems-dot-com',
   contact: {
     email: 'gwgraphicdeesign@gmail.com',
     twitter: 'garrettlweems',

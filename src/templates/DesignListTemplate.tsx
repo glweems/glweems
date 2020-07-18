@@ -2,7 +2,7 @@ import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Card from '../components/Card';
-import Container from '../components/Common/Container';
+import Box from '../components/Common/Box';
 import Pager from '../components/Pager';
 import SEO from '../components/SEO';
 import { DesignListQuery } from '../queries';
@@ -15,7 +15,7 @@ export default function ArticleListTemplate({
 }: PageProps<DesignListQuery, PageContext>) {
   const { designs } = data;
   return (
-    <Container>
+    <Box container>
       <SEO
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
@@ -48,7 +48,7 @@ export default function ArticleListTemplate({
         );
       })}
       <Pager {...pageContext} />
-    </Container>
+    </Box>
   );
 }
 

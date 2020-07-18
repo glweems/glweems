@@ -1,20 +1,23 @@
+import { ErrorBoundary } from '@sentry/react';
 import { PageProps } from 'gatsby';
 import React, { PropsWithChildren } from 'react';
-import Welcome from '../components/Welcome';
-import Navigation from './Navigation';
-import { AnimateSharedLayout } from 'framer-motion';
 import Box from '../components/Common/Box';
+import Welcome from '../components/Welcome';
+import Whoops from '../components/Whoops';
+import Navigation from './Navigation';
 
 export type LayoutProps = PropsWithChildren<Pick<PageProps, 'path'>>;
 
 export default function Layout({ children, path }: LayoutProps) {
   return (
-    <AnimateSharedLayout>
-      <Box p={1}>
+    <React.StrictMode>
+      <Box position="relative">
         <Navigation path={path}>{path === '/' && <Welcome />}</Navigation>
-      </Box>
 
-      <main>{children}</main>
-    </AnimateSharedLayout>
+        <main>
+          <ErrorBoundary fallback={Whoops}>{children}</ErrorBoundary>
+        </main>
+      </Box>
+    </React.StrictMode>
   );
 }

@@ -2,7 +2,7 @@ import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import React from 'react';
 import Card from '../components/Card';
-import Container from '../components/Common/Container';
+import Box from '../components/Common/Box';
 import Pager, { PagerProps } from '../components/Pager';
 import SEO from '../components/SEO';
 import { BlogListQuery } from '../queries';
@@ -26,7 +26,7 @@ export default function ArticleListTemplate({
         title={`Blog Posts Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
 
-      <Container>
+      <Box container>
         {data.posts.nodes.map(
           ({ childMarkdownRemark: { frontmatter, ...post } }) => {
             const sources = [
@@ -59,12 +59,11 @@ export default function ArticleListTemplate({
             );
           }
         )}
-      </Container>
-
-      <Pager
-        previousPagePath={pageContext.previousPagePath}
-        nextPagePath={pageContext.nextPagePath}
-      />
+        <Pager
+          previousPagePath={pageContext.previousPagePath}
+          nextPagePath={pageContext.nextPagePath}
+        />
+      </Box>
     </React.Fragment>
   );
 }

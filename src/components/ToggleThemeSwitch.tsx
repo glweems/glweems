@@ -8,7 +8,7 @@ export default function ToggleThemeSwitch() {
   const buttonTitle = `Activate ${isDarkMode ? 'light' : 'dark'} mode`;
   return (
     <Wrapper>
-      <DefaultButton
+      <button
         aria-label={buttonTitle}
         title={buttonTitle}
         onClick={toggle}
@@ -24,14 +24,16 @@ export default function ToggleThemeSwitch() {
             isDarkMode ? 'css-15c58zf edpcenh2' : 'css-rqs3zf edpcenh2'
           }
         ></div>
-      </DefaultButton>
+      </button>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   /*! CSS Used from: Embedded */
+  background: transparent;
   button {
+    background: transparent;
     font: inherit;
     margin: 0;
   }
@@ -98,8 +100,11 @@ const Wrapper = styled.div`
     -webkit-transform: scale(0.75);
     -ms-transform: scale(0.75);
     transform: scale(0.75);
-    -webkit-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+    transition: color 0.3s ease;
     vertical-align: middle;
     width: 40px;
   }
@@ -170,7 +175,7 @@ const Wrapper = styled.div`
   }
   /*! CSS Used from: Embedded */
   .css-rqs3zf {
-    background: ${({ theme }) => theme.colors.welcome};
+    background: ${({ theme }) => theme.colors.blue};
     border-radius: 50%;
     border: 0;
     height: 24px;
@@ -255,8 +260,8 @@ const Wrapper = styled.div`
     -webkit-transform: scale(0.75);
     -ms-transform: scale(0.75);
     transform: scale(0.75);
-    -webkit-transition: opacity 0.3s ease;
-    transition: opacity 0.3s ease;
+    -webkit-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
     vertical-align: middle;
     width: 40px;
   }
@@ -314,7 +319,7 @@ const Wrapper = styled.div`
     }
   }
   .css-15c58zf {
-    background: var(--theme-ui-colors-white, #ffffff);
+    background: transparent;
     border-radius: 50%;
     border: 0px;
     height: 24px;
@@ -357,8 +362,8 @@ const Button = styled(DefaultButton)<{ mode: 'light' | 'dark' }>`
   -webkit-transform: scale(0.75);
   -ms-transform: scale(0.75);
   transform: scale(0.75);
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
   vertical-align: middle;
   width: 40px;
 
@@ -405,8 +410,8 @@ const Button = styled(DefaultButton)<{ mode: 'light' | 'dark' }>`
         -webkit-transform: scale(0.75);
         -ms-transform: scale(0.75);
         transform: scale(0.75);
-        -webkit-transition: opacity 0.3s ease;
-        transition: opacity 0.3s ease;
+        -webkit-transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease;
         vertical-align: middle;
         width: 40px;
     }
@@ -482,8 +487,8 @@ const Button = styled(DefaultButton)<{ mode: 'light' | 'dark' }>`
       -webkit-transform: scale(0.75);
       -ms-transform: scale(0.75);
       transform: scale(0.75);
-      -webkit-transition: opacity 0.3s ease;
-      transition: opacity 0.3s ease;
+      -webkit-transition: opacity 0.5s ease;
+      transition: opacity 0.5s ease;
       vertical-align: middle;
       width: 40px;
       .one {
@@ -532,7 +537,7 @@ const Button = styled(DefaultButton)<{ mode: 'light' | 'dark' }>`
       }
 
       .two {
-        background: ${({ theme }) => theme.colors.welcome};
+        background: ${({ theme }) => theme.colors.blue};
         border-radius: 50%;
         border: 0;
         height: 24px;

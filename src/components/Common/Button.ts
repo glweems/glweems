@@ -1,8 +1,7 @@
-import styled from 'styled-components';
-import { transparentize } from 'polished';
 import { css } from '@styled-system/css';
+import { transparentize } from 'polished';
+import styled from 'styled-components';
 
-import { GlweemsTheme, ThemeColorVariant } from '../../theme';
 type ButtonVariant = 'primary';
 export type ButtonProps = {
   variant?: ButtonVariant;

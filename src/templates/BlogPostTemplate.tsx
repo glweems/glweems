@@ -1,37 +1,28 @@
-import loadable from '@loadable/component';
 import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React, { Fragment } from 'react';
-import RehypeReact from 'rehype-react';
 import styled from 'styled-components';
-import LoadingSpinner from '../components/Common/LoadingSpinner';
+import Box from '../components/Common/Box';
+import DisqusComments from '../components/DisqusComments';
+import HtmlAst from '../components/HtmlAst';
 import SEO from '../components/SEO';
 import ShareButtons from '../components/ShareButtons';
 import Tags from '../components/Tags';
 import { BlogTemplateQuery } from '../queries';
 import { media } from '../theme';
-import { DiscussionEmbedProps } from '../types/disqus-react';
 import '../utils/syntax.css';
-
-let rehypeReact: any;
-rehypeReact = RehypeReact;
 export interface PageContext {
   slug: string;
   prev: string;
   next: string;
 }
 
-const DiscussionEmbed = loadable<DiscussionEmbedProps>(
-  () => import('disqus-react').then((module) => module.DiscussionEmbed),
-  { fallback: <LoadingSpinner /> }
-);
-
 export default function BlogTemplate({
   data,
   pageContext,
 }: PageProps<BlogTemplateQuery, PageContext>) {
-  const { post, site } = data;
+  const { post } = data;
   const { frontmatter } = data.post;
 
   return (
@@ -64,57 +55,48 @@ export default function BlogTemplate({
           <Tags tags={frontmatter.tags} />
         </header>
         <article>
-          <Content elements={post.htmlAst} />
+          <HtmlAst elements={post.htmlAst} components={articleComponents} />
         </article>
+      </Styled>
+
+      <Box container>
         <ShareButtons
           title={frontmatter.title}
           url={post.url}
           tags={frontmatter.tags}
         />
-
-        <DiscussionEmbed
-          shortname={site.siteMetadata.disqusShortName}
-          config={{
-            url: post.url,
-            identifier: post.disqusIdentifier,
-            title: frontmatter.title,
-          }}
+        <DisqusComments
+          url={post.url}
+          identifier={post.disqusIdentifier}
+          title={frontmatter.title}
         />
-      </Styled>
+      </Box>
     </Fragment>
   );
 }
 
 const Styled = styled.div`
   header,
-  article,
-  #disqus_thread {
+  article {
     width: 100%;
     max-width: 800px;
     margin: auto;
     padding: ${({ theme }) => theme.space[5]};
   }
-  #disqus_thread {
-    padding: 1rem;
-    background-color: ${({ theme }) => theme.colors.light};
-    border-radius: ${({ theme }) => theme.space[1]};
-  }
+
   .tbn {
     margin-bottom: ${({ theme }) => theme.space[5]};
   }
 
   blockquote,
-  iframe {
+  iframe,
+  .gatsby-highlight {
     margin-right: -${({ theme }) => theme.space[5]};
     margin-left: -${({ theme }) => theme.space[5]};
   }
 
   ${media.greaterThan('sm')`
       padding: ${({ theme }) => theme.space[2]};
-
-      blockquote,
-      iframe {
-      }
   `};
 `;
 
@@ -122,23 +104,15 @@ export const Query = graphql`
   query BlogTemplate($slug: String!) {
     post: markdownRemark(frontmatter: { path: { eq: $slug } }) {
       url
-      disqusIdentifier
       timeToRead
       htmlAst
       ...Frontmatter
       editOnGithub
     }
-
-    site {
-      siteMetadata {
-        twitterHandle
-        disqusShortName
-      }
-    }
   }
 `;
 
-const artileComponents = {
+const articleComponents = {
   em: styled.em`
     width: 100%;
     text-align: center;
@@ -153,13 +127,4 @@ const artileComponents = {
     list-style-position: inside;
   `,
   a: (props) => <OutboundLink {...props} />,
-};
-
-export const Content: React.FC<{ elements: object }> = ({ elements }) => {
-  const html = new rehypeReact({
-    createElement: React.createElement,
-    components: artileComponents,
-  });
-
-  return html.Compiler(elements).props.children;
 };

@@ -27,10 +27,7 @@ export const baseColors = {
   light: '#f8f8f8',
   dark: '#0f121b',
 };
-
-export type ThemeColorVariant = keyof typeof baseColors;
-
-export interface ColorObject extends BaseColors {
+export type AddedColors = {
   primary: string;
   muted: string;
   text: string;
@@ -41,7 +38,14 @@ export interface ColorObject extends BaseColors {
   secondaryBg: string;
   welcome: string;
   link: string;
-}
+};
+
+export type ThemeColorVariant = keyof typeof baseColors;
+
+export type ColorObject = Record<
+  keyof BaseColors | keyof AddedColors | string,
+  string
+>;
 
 const lightMode: ColorObject = {
   ...baseColors,
@@ -70,6 +74,7 @@ const darkmode: ColorObject = {
   welcome: baseColors.purple,
   link: baseColors.yellow,
 };
+
 export const breakpoints = ['360px', '550px', '750px', '1000px', '1300px'];
 const [sm, md, lg] = breakpoints;
 
@@ -153,6 +158,41 @@ export const buttons = {
 };
 
 export const radii = [0, '2px', '4px', '8px', '16px', '9999px', '100%'];
+export type DottedBgArgs = {
+  dotColor: keyof ColorObject | string;
+  dotBgColor: keyof ColorObject | string;
+  dotSize?: number;
+  dotSpace?: number;
+  transparent?: number;
+  degree?: number;
+};
+
+export const dottedBg = ({
+  dotColor = 'text',
+  dotBgColor = 'bg',
+  dotSize = 1,
+  dotSpace = 22,
+  transparent = 1,
+  degree = 90,
+}: DottedBgArgs) => css`
+  --dot-color: ${({ theme }) => theme.colors[dotColor] || dotColor};
+  --dot-bg-color: ${({ theme }) => theme.colors[dotBgColor] || dotBgColor};
+  background: linear-gradient(
+        ${degree}deg,
+        var(--dot-bg-color),
+        ${dotSpace - dotSize}px,
+        transparent ${transparent}%
+      )
+      center,
+    linear-gradient(
+        var(--dot-bg-color),
+        ${dotSpace - dotSize}px,
+        transparent ${transparent}%
+      )
+      center,
+    var(--dot-color);
+  background-size: ${dotSpace}px ${dotSpace}px;
+`;
 
 const partialTheme = {
   breakpoints,
@@ -165,6 +205,7 @@ const partialTheme = {
   radii,
   media,
   buttons,
+  dottedBg,
 };
 
 export interface GlweemsTheme {
@@ -205,6 +246,7 @@ export interface GlweemsTheme {
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
   toggleNav(): void;
   mobile: boolean;
+  dottedBg: typeof dottedBg;
 }
 
 export default function useCreateTheme(): GlweemsTheme {
@@ -232,28 +274,6 @@ export default function useCreateTheme(): GlweemsTheme {
 
   return completeTheme;
 }
-
-export const checkeredBg = (lineColor: string) => css`
-  --bg-color: ${lineColor};
-  background: linear-gradient(
-      45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    ),
-    linear-gradient(
-      -45deg,
-      transparent 49%,
-      var(--bg-color) 50%,
-      var(--bg-color) 50%,
-      transparent 51%,
-      transparent
-    );
-  background-position: 0% 0%;
-  background-size: 16px 16px;
-`;
 
 export const buttonCss = css`
   padding: 8px 10px;
@@ -286,4 +306,16 @@ export const buttonCss = css`
       },
     })};
 `;
-/* export const buttonCss = */
+
+function createColorVars(colorsObj: ColorObject) {
+  let obj = {};
+
+  Object.entries(colorsObj).forEach(
+    ([key, value]) => (obj[`--color-${key}`] = value)
+  );
+
+  return obj;
+}
+export const cssVariables = css`
+  ${(props) => props && createColorVars(props.theme.colors)}
+`;

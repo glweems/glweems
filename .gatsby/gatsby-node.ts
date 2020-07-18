@@ -24,7 +24,7 @@ export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'
       },
       disqusIdentifier: {
         type: GraphQLString,
-        resolve: (source: MarkdownRemark) => String(source.frontmatter.id),
+        resolve: (source: MarkdownRemark) => String(source.frontmatter.path),
       },
       editOnGithub: {
         type: GraphQLString,

@@ -1,11 +1,11 @@
-import React from 'react';
-import { PageProps, graphql } from 'gatsby';
-import Card from '../components/Card';
+import { graphql, PageProps } from 'gatsby';
 import Img from 'gatsby-image';
-import Heatmap from '../components/Heatmap';
+import React from 'react';
 import styled from 'styled-components';
+import Card from '../components/Card';
+import Box from '../components/Common/Box';
+import Heatmap from '../components/Heatmap';
 import { IndexPageQuery } from '../queries';
-import Container from '../components/Common/Container';
 import { breakpoints } from '../theme';
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
@@ -117,11 +117,11 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   );
 }
 
-const Section = styled(Container)`
+const Section = styled(Box)`
   padding: ${({ theme }) => theme.space[2]};
 `;
 
-(Section as any).defaultProps = { as: 'section' };
+(Section as any).defaultProps = { as: 'section', container: true };
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {

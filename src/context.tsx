@@ -1,12 +1,10 @@
+import { WrapPageElementBrowserArgs, WrapRootElementBrowserArgs } from 'gatsby';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import useCreateTheme from './theme';
 import SEO from './components/SEO';
-import { WrapRootElementBrowserArgs, WrapPageElementBrowserArgs } from 'gatsby';
 import Layout from './layout/Layout';
+import useCreateTheme from './theme';
 import GlobalCss from './utils/GlobalCss';
-import ErrorBoundary from './components/ErrorBoundary';
-import { Profiler } from 'react';
 
 export type ContextProviderProps = {
   children: WrapRootElementBrowserArgs['element'];
@@ -29,13 +27,7 @@ export function wrapPageElement({
     <React.Fragment>
       <SEO />
       <GlobalCss />
-      <Layout path={path}>
-        <ErrorBoundary>
-          <Profiler id={path} onRender={console.log}>
-            {element}
-          </Profiler>
-        </ErrorBoundary>
-      </Layout>
+      <Layout path={path}>{element}</Layout>
     </React.Fragment>
   );
 }

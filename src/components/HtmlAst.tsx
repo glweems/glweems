@@ -1,10 +1,11 @@
-import React, { createElement } from 'react';
-import rehypeReact from 'rehype-react';
+import React from 'react';
+import RehypeReact from 'rehype-react';
 
-export default function HtmlAst({ elements }) {
-  const html = new rehypeReact({
-    createElement,
+export default function HtmlAst({ elements, components }) {
+  const html = new RehypeReact({
+    createElement: React.createElement,
+    fragment: React.Fragment,
+    components,
   });
-
   return html.Compiler(elements);
 }

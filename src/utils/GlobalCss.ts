@@ -1,117 +1,99 @@
 import { createGlobalStyle } from 'styled-components';
-import { ColorObject } from '../theme';
-function createColorVars(colorsObj: ColorObject, isDarkMode: boolean) {
-  let obj = {
-    '--color-welcome-bg': isDarkMode ? colorsObj.purple : colorsObj.yellow,
-  };
+import { cssVariables, media } from '../theme';
 
-  Object.entries(colorsObj).forEach(
-    ([key, value]) => (obj[`--color-${key}`] = value)
-  );
-  return obj;
-}
 const GlobalCss = createGlobalStyle`
-:root {
-   ${({ theme }) => createColorVars(theme.colors, theme.isDarkMode)};
- }
-
-
- html {
-  scroll-behavior: smooth;
+:root{
+  ${cssVariables};
+}
+  html {
+    scroll-behavior: smooth;
   }
-  html,
+
   body {
-    color: ${({ theme }) => theme.colors.text};
-    background-color: ${({ theme }) => theme.colors.rootBg};
-    transition: color 0.25s linear;
-    transition: background-color 0.25s ease-in-out;
-  }
-
-
-body {
     min-height: 100vh;
-  --spinner-color: ${({ theme }) => theme.colors.secondaryBg};
     overflow: hidden;
     font-weight: normal;
-    font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
+      'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'Apple Color Emoji',
+      'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     word-wrap: break-word;
+    background-color: ${({ theme }) => theme.colors.bg};
     font-kerning: normal;
-    font-feature-settings: "kern", "liga", "clig", "calt";
-
-
-    background: linear-gradient(90deg, var(--blue) 21px, transparent 1%) center, linear-gradient(var(--blue) 21px, transparent 1%) center, var(--root-bg);
-    background-size: 22px 22px;
+    font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   }
 
   main {
     margin-top: ${({ theme }) => theme.space[10]};
     margin-bottom: ${({ theme }) => theme.space[10]};
+    color: ${({ theme }) => theme.colors.text};
   }
 
-a {
-  color: inherit;
-  text-decoration-thickness: .125em;
-  text-underline-offset: 1.5px;
-  text-decoration-skip-ink: auto;
-  text-decoration-color: ${({ theme }) => theme.colors.blue};
-}
+  a {
+    color: inherit;
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 1.5px;
+    text-decoration-skip-ink: auto;
+    text-decoration-color: ${({ theme }) => theme.colors.blue};
+    &:hover {
+      opacity: 0.75;
+      text-decoration-color: ${({ theme }) => theme.colors.red};
+    }
+  }
 
-button:hover,
-.button:hover {
-  background: ${({ theme }) => theme.colors.secondaryBg};
-}
+  mark {
+    color: ${({ theme }) => theme.colors.red};
+    background-color: transparent;
+  }
 
-button:focus,
-.button:focus {
-  outline: ${({ theme }) => theme.colors.primary};
-}
+  .icon {
+    color: ${({ theme }) => theme.colors.text};
+  }
 
-button:disabled {
-  color: ${({ theme }) => theme.colors.rootBg};
-}
+  svg {
+    font: unset;
+    vertical-align: text-top;
+  }
 
-.icon {
-  /* color: ${({ theme }) => theme.colors.text}; */
-}
+  img {
+    border-radius: 0.125rem;
+  }
 
-svg {
-  font: unset;
-  vertical-align: text-top;
-}
+  time {
+    display: block;
+    color: ${({ theme }) => theme.colors.secondaryText};
+    font: ${({ theme }) => theme.fonts.monospace};
+    font-size: 90%;
+    line-height: 22px;
+    text-decoration: none;
+    border-radius: 3px;
+  }
 
-img {
-  border-radius: 0.125rem;
-}
+  iframe {
+    border: none;
+    border-radius: ${({ theme }) => theme.space[1]};
+  }
 
-time {
-  display: block;
-  color: ${({ theme }) => theme.colors.secondaryText};
-  font: ${({ theme }) => theme.fonts.monospace};
-  font-size: 90%;
-  line-height: 22px;
-  text-decoration: none;
-  border-radius: 3px;
-}
+  .anchor.before svg {
+    fill: ${({ theme }) => theme.colors.blue};
+  }
 
-iframe {
-  border: none;
-  border-radius: ${({ theme }) => theme.space[1]};
-}
+  .flex {
+    display: flex;
+  }
 
-.anchor.before svg {
-  fill: ${({ theme }) => theme.colors.primary};
-}
-
-.flex {
-  display: flex;
-}
-
- rect {
+  rect {
     shape-rendering: geometricPrecision;
-  outline: 1px solid rgba(27, 31, 35, 0.04);
-  outline-offset: -1px;
-  rx: 2;
-  ry: 2;
+    outline: 1px solid rgba(27, 31, 35, 0.04);
+    outline-offset: -1px;
+    rx: 2;
+    ry: 2;
+  }
+
+  #disqus_thread {
+    padding: 0  ${({ theme }) => theme.space[2]};
+    ${media.greaterThan('sm')`
+      padding: 0;
+    `};
   }
 `;
 

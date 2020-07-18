@@ -1,68 +1,58 @@
-import { motion } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import React from 'react';
-import styled from 'styled-components';
 import config from '../../.gatsby/config';
-import Container from './Common/Container';
-import Link from './Common/Link';
-import SocialIcon from './Common/SocialIcon';
-import { GhostSVG } from './Icons';
 import Box from './Common/Box';
+import Button from './Common/Button';
+import Link from './Common/Link';
+import { GhostSVG } from './Icons';
 
 export default function Welcome() {
+  const { scrollYProgress } = useViewportScroll();
+
+  const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
   return (
-    <Styled>
-      <motion.div className="Landing__inner">
-        <Container padding={2}>
-          <motion.div variants={container} initial="hidden" animate="visible">
-            <Box as={motion.div} variants={container} display="flex">
-              {['green', 'blue', 'red'].map((color) => (
-                <motion.div
-                  key={color}
-                  variants={item}
-                  className="ghost-wrapper"
-                >
-                  <GhostSVG color={color} size={50} />
-                </motion.div>
-              ))}
-            </Box>
+    <Box py={8} color="text" as={motion.div} initial="full" animate="normal">
+      <Box
+        container
+        as={motion.div}
+        style={{ scale }}
+        css={`
+          width: inherit;
+          height: inherit;
+          transform-origin: bottom left;
+        `}
+      >
+        <motion.div variants={container} initial="hidden" animate="visible">
+          <Box as={motion.div} variants={container} display="flex">
+            {['green', 'yellow', 'red'].map((color) => (
+              <motion.div key={color} variants={item} className="ghost-wrapper">
+                <GhostSVG color={color} size={50} />
+              </motion.div>
+            ))}
+          </Box>
 
-            <hgroup>
-              <h1>
-                Hello, I&apos;m <mark>Garrett Weems</mark>.
-              </h1>
-              <h2>{config.defaultDescription}</h2>
-            </hgroup>
+          <hgroup>
+            <h1>
+              Hello, I&apos;m{' '}
+              <Box as="span" color="bg">
+                Garrett Weems
+              </Box>
+              .
+            </h1>
+            <h2>{config.defaultDescription}</h2>
+          </hgroup>
 
-            <motion.div variants={item}>
-              <Link to="/resume">Resume</Link>
-            </motion.div>
-
-            <motion.div variants={icons} className="icons">
-              {Object.entries(config.accounts).map(([key, value]) => (
-                <motion.div key={key} variants={item}>
-                  <SocialIcon size="2x" account={value} />
-                </motion.div>
-              ))}
-            </motion.div>
+          <motion.div variants={item}>
+            <Button as={Link} to="/resume">
+              Resume
+            </Button>
           </motion.div>
-        </Container>
-      </motion.div>
-    </Styled>
+        </motion.div>
+      </Box>
+    </Box>
   );
 }
 
-const icons = {
-  hidden: { opacity: 1, scale: 0 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      delay: 1,
-      when: 'beforeChildren',
-      staggerChildren: 0.1,
-    },
-  },
-};
 const container = {
   hidden: { opacity: 1, scale: 0 },
   visible: {
@@ -83,38 +73,15 @@ const item = {
     opacity: 1,
   },
 };
-
-const Styled = styled.div`
-  padding: ${({ theme }) => theme.space[3]};
-  color: ${({ theme }) => theme.colors.dark};
-  .ghost-wrapper {
-    margin-right: ${({ theme }) => theme.space[2]};
-  }
-  .Landing__inner {
-    height: 100%;
-    padding: ${({ theme }) => theme.space[4]} 0;
-  }
-  * {
-    border-bottom: unset;
-  }
-
-  h1 {
-    span {
-      color: ${({ theme }) => theme.colors.blue};
-    }
-  }
-
-  .icons {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: ${({ theme }) => theme.space[5]};
-    div {
-      margin-right: ${({ theme }) => theme.space[2]};
-    }
-
-    a {
-      color: ${({ theme }) =>
-        theme.isDarkMode ? theme.colors.blue : theme.colors.blue};
-    }
-  }
-`;
+/* const icons = {
+  hidden: { opacity: 1, scale: 0 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      delay: 1,
+      when: 'beforeChildren',
+      staggerChildren: 0.1,
+    },
+  },
+}; */

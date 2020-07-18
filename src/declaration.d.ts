@@ -17,6 +17,15 @@ declare module 'react' {
     css?: CSSProp<GlweemsTheme>;
   }
 }
-declare module 'styled-system' {
-  export interface Theme extends GlweemsTheme {}
+
+declare module 'rehype-react' {
+  interface RehypeOptions {
+    createElement: any;
+    components?: any;
+    fragment: any;
+  }
+  export default class RehypeReact {
+    Compiler: any;
+    constructor(options: RehypeOptions);
+  }
 }

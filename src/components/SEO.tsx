@@ -3,7 +3,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import packageJson from '../../package.json';
-import config from '../../.gatsby/config';
 import { SeoQuery } from '../queries';
 
 export type SEOProps = {
@@ -22,21 +21,20 @@ export default function SEO({
   keywords,
 }: SEOProps) {
   const { pathname } = useLocation();
-  const { site } = useStaticQuery<SeoQuery>(query);
+  const { site, openGraphImg } = useStaticQuery<SeoQuery>(query);
 
   const {
     defaultTitle,
     titleTemplate,
     defaultDescription,
     siteUrl,
-    defaultImage,
     twitterUsername,
   } = site.siteMetadata;
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
+    image: image || openGraphImg.publicURL,
     url: `${siteUrl}${pathname}`,
   };
 
@@ -98,9 +96,11 @@ const query = graphql`
         titleTemplate
         defaultDescription: description
         siteUrl
-        defaultImage: image
         twitterUsername: twitterHandle
       }
+    }
+    openGraphImg: file(name: { eq: "open-graph" }) {
+      publicURL
     }
   }
 `;

@@ -1,11 +1,11 @@
 import React from 'react';
-import Container from '../components/Common/Container';
+import Box from '../components/Common/Box';
 
 export default function NotFoundPage() {
   return (
-    <Container>
+    <Box container>
       <h1>Page not found</h1>
       <p>The requested page is unavailable.</p>
-    </Container>
+    </Box>
   );
 }
