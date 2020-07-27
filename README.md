@@ -8,7 +8,7 @@
   </a>
   <a href="https://www.codacy.com/manual/glweems/glweems?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=glweems/glweems&amp;utm_campaign=Badge_Grade" target="_blank"><img src="https://api.codacy.com/project/badge/Grade/8775db3efa4f46d3a2a33a7c93a98596"/></a>
   <a href="https://twitter.com/garrettlweems">
-    <img alt="Twitter: garrettlweems" src="https://img.shields.io/twitter/follow/devglweems.svg?style=social" target="_blank" />
+    <img alt="Twitter: garrettlweems" src="https://img.shields.io/twitter/follow/garrettlweems.svg?style=social" target="_blank" />
   </a>
 </p>
 
