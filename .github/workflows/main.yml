@@ -1,2 +1,2 @@
-- name: GitHub Contributions Generator
-  uses: KonradLinkowski/ContributionsGenerator@v1
+name: GitHub Contributions Generator
+uses: KonradLinkowski/ContributionsGenerator@v1
