@@ -1,5 +1,9 @@
-![glweems](./src/assets/about-banner.png)
+![github](https://img.shields.io/github/followers/glweems?label=follow&logo=github&style=social)
+![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)
+![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)
+![glweems](https://img.shields.io/badge/website-glweems.com-blue)
 
+![glweems](./src/assets/about-banner.png)
 [![Website](https://img.shields.io/website?label=glweems.com&style=for-the-badge&url=https%3A%2F%2Fglweems.com)](https://glweems.com)
 [![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?color=1DA1F2&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?original_referer=https%3A%2F%2Fgithub.com%2Fglweems.com&screen_name=garrettlweems)
 
@@ -18,9 +22,13 @@
 
 ### Connect with me:
 
-[<img align="left" alt="codeSTACKr.com" width="22px" src="https://raw.githubusercontent.com/iconic/open-iconic/master/svg/globe.svg" />][website]
-[<img align="left" alt="codeSTACKr | LinkedIn" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />][linkedin]
-[<img align="left" alt="codeSTACKr | Instagram" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/instagram.svg" />][instagram]
+![glweems](https://img.shields.io/badge/website-glweems.com-blue)
+
+![github](https://img.shields.io/github/followers/glweems?label=follow&logo=github&style=social)
+
+![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)
+
+![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)
 
 <br />
 <br />
@@ -60,3 +68,4 @@
 [instagram]: https://instagram.com/glweems
 [linkedin]: https://linkedin.com/in/glweems
 [supergrid9k]: https://supergrid9k.dev
+[linkedin]: https://linkedin.com/in/glweems
