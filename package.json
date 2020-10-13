@@ -101,7 +101,7 @@
     "keen-slider": "^5.2.0",
     "lodash": "^4.17.19",
     "normalize.css": "^8.0.1",
-    "polished": "^3.6.5",
+    "polished": "^3.6.7",
     "postcss-typography": "^1.0.0",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.21.0",
