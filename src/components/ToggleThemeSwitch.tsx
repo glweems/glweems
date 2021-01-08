@@ -1,11 +1,11 @@
-import React from 'react';
-import styled, { css, useTheme } from 'styled-components';
-import DefaultButton from './Common/Button';
+/* eslint-disable prettier/prettier */
+import React from 'react'
+import styled, { useTheme } from 'styled-components'
 
 export default function ToggleThemeSwitch() {
-  const { toggle, isDarkMode } = useTheme();
+  const { toggle, isDarkMode } = useTheme() as any
 
-  const buttonTitle = `Activate ${isDarkMode ? 'light' : 'dark'} mode`;
+  const buttonTitle = `Activate ${isDarkMode ? 'light' : 'dark'} mode`
   return (
     <Wrapper>
       <button
@@ -26,7 +26,7 @@ export default function ToggleThemeSwitch() {
         ></div>
       </button>
     </Wrapper>
-  );
+  )
 }
 
 const Wrapper = styled.div`
@@ -331,224 +331,7 @@ const Wrapper = styled.div`
     transition: background 0.25s ease 0s, transform 0.45s ease 0s;
     width: 24px;
   }
-`;
+`
 
-const Button = styled(DefaultButton)<{ mode: 'light' | 'dark' }>`
-  padding: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  background: transparent;
-  border-radius: 5px;
-  border: 0;
-  cursor: pointer;
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 40px;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-right: -11px;
-  opacity: 0.75;
-  overflow: hidden;
-  position: relative;
-  -webkit-transform: scale(0.75);
-  -ms-transform: scale(0.75);
-  transform: scale(0.75);
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-  vertical-align: middle;
-  width: 40px;
 
-  ::-moz-focus-inner {
-    padding: 0;
-    border-style: none;
-  }
-  ::-moz-focusring {
-    outline: 1px dotted ButtonText;
-  }
-
-  /*! CSS Used from: Embedded */
-
-  :hover {
-    opacity: 1;
-  }
-  /*! CSS Used from: Embedded */
-  .one {
-     padding: 0;
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        appearance: none;
-        -webkit-align-items: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        background: transparent;
-        border-radius: 5px;
-        border: 0;
-        cursor: pointer;
-        display: -webkit-inline-box;
-        display: -webkit-inline-flex;
-        display: -ms-inline-flexbox;
-        display: inline-flex;
-        height: 40px;
-        -webkit-box-pack: center;
-        -webkit-justify-content: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        margin-right: -11px;
-        opacity: 0.75;
-        overflow: hidden;
-        position: relative;
-        -webkit-transform: scale(0.75);
-        -ms-transform: scale(0.75);
-        transform: scale(0.75);
-        -webkit-transition: opacity 0.5s ease;
-        transition: opacity 0.5s ease;
-        vertical-align: middle;
-        width: 40px;
-    }
-    ::after {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 8px;
-      height: 8px;
-      margin: -4px 0px 0px -4px;
-      border-radius: 50%;
-      box-shadow: 0 -23px 0 ${({ theme }) => theme.colors.dark},
-        0 23px 0 ${({ theme }) => theme.colors.dark},
-        23px 0 0 ${({ theme }) => theme.colors.dark},
-        -23px 0 0 ${({ theme }) => theme.colors.dark},
-        15px 15px 0 ${({ theme }) => theme.colors.dark},
-        -15px 15px 0 ${({ theme }) => theme.colors.dark},
-        15px -15px 0 ${({ theme }) => theme.colors.dark},
-        -15px -15px 0 ${({ theme }) => theme.colors.dark};
-      transform: scale(1);
-      transition: all 0.35s ease 0s;
-      content: '';
-    }
-  }
-  @media (min-width: 750px) {
-    .one::after {
-      transform: scale(0.92);
-    }
-  }
-  .two {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    width: 24px;
-    height: 24px;
-    background: ${({ theme }) => theme.colors.dark};
-    border: 0px;
-    border-radius: 50%;
-    transform: translate(14px, -14px);
-    opacity: 0;
-    transition: background 0.25s ease 0s, transform 0.45s ease 0s;
-  }
-
-  ${(props) =>
-    props &&
-    props.mode === 'light' &&
-    css`
-      padding: 0;
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      appearance: none;
-      -webkit-align-items: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      align-items: center;
-      background: transparent;
-      border-radius: 5px;
-      border: 0;
-      cursor: pointer;
-      display: -webkit-inline-box;
-      display: -webkit-inline-flex;
-      display: -ms-inline-flexbox;
-      display: inline-flex;
-      height: 40px;
-      -webkit-box-pack: center;
-      -webkit-justify-content: center;
-      -ms-flex-pack: center;
-      justify-content: center;
-      margin-right: -11px;
-      opacity: 0.75;
-      overflow: hidden;
-      position: relative;
-      -webkit-transform: scale(0.75);
-      -ms-transform: scale(0.75);
-      transform: scale(0.75);
-      -webkit-transition: opacity 0.5s ease;
-      transition: opacity 0.5s ease;
-      vertical-align: middle;
-      width: 40px;
-      .one {
-        border: 2px solid ${({ theme }) => theme.colors.dark};
-        background: ${({ theme }) => theme.colors.dark};
-        border-radius: 50%;
-        height: 24px;
-        overflow: hidden;
-        position: relative;
-        transform: scale(1);
-        transition: all 0.45s ease;
-        width: 24px;
-      }
-      ::before {
-        border-radius: 50%;
-        border: 2px solid ${({ theme }) => theme.colors.dark};
-        content: '';
-        height: 24px;
-        opacity: 1;
-        position: absolute;
-        right: -9px;
-        top: -9px;
-        transform: translate(0, 0);
-        transition: transform 0.45s ease;
-        width: 24px;
-      }
-      ::after {
-        border-radius: 50%;
-        box-shadow: 0 -23px 0 ${({ theme }) => theme.colors.dark},
-          0 23px 0 ${({ theme }) => theme.colors.dark},
-          23px 0 0 ${({ theme }) => theme.colors.dark},
-          -23px 0 0 ${({ theme }) => theme.colors.dark},
-          15px 15px 0 ${({ theme }) => theme.colors.dark},
-          -15px 15px 0 ${({ theme }) => theme.colors.dark},
-          15px -15px 0 ${({ theme }) => theme.colors.dark},
-          -15px -15px 0 ${({ theme }) => theme.colors.dark};
-        content: '';
-        height: 8px;
-        left: 50%;
-        margin: -4px 0 0 -4px;
-        position: absolute;
-        top: 50%;
-        width: 8px;
-        transform: scale(0);
-        transition: all 0.35s ease;
-      }
-
-      .two {
-        background: ${({ theme }) => theme.colors.blue};
-        border-radius: 50%;
-        border: 0;
-        height: 24px;
-        opacity: 1;
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: translate(0, 0);
-        transition: background 0.25s ease, transform 0.45s ease;
-        width: 24px;
-      }
-    `};
-`;
-ToggleThemeSwitch.displayName = 'ToggleThemeSwitch';
+ToggleThemeSwitch.displayName = 'ToggleThemeSwitch'

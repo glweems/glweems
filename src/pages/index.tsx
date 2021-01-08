@@ -1,12 +1,12 @@
-import { graphql, PageProps } from 'gatsby';
-import Img from 'gatsby-image';
-import React from 'react';
-import styled from 'styled-components';
-import Card from '../components/Card';
-import Box from '../components/Common/Box';
-import Heatmap from '../components/Heatmap';
-import { IndexPageQuery } from '../queries';
-import { breakpoints } from '../theme';
+import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
+import React from 'react'
+import styled from 'styled-components'
+import Card from '../components/Card'
+import Box from '../components/Common/Box'
+import Heatmap from '../components/Heatmap'
+import { IndexPageQuery } from '../queries'
+import { breakpoints } from '../theme'
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
@@ -25,7 +25,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                 ...frontmatter.thumbnail.lg.fixed,
                 media: `(min-width: ${breakpoints[2]})`,
               },
-            ];
+            ]
             return (
               <Card
                 key={post.id}
@@ -41,7 +41,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                   />
                 }
               />
-            );
+            )
           }
         )}
       </Section>
@@ -60,7 +60,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
               ...design.fields.thumbnail.lg.fixed,
               media: `(min-width: ${breakpoints[2]})`,
             },
-          ];
+          ]
           return (
             <Card
               key={design.slug}
@@ -75,7 +75,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                 />
               }
             />
-          );
+          )
         })}
       </Section>
 
@@ -91,7 +91,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
               ...pinned.thumbnail.lg.fixed,
               media: `(min-width: ${breakpoints[2]})`,
             },
-          ];
+          ]
           return (
             <Card
               key={pinned.name}
@@ -106,7 +106,7 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
                 />
               }
             />
-          );
+          )
         })}
       </Section>
 
@@ -114,14 +114,14 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
         <Heatmap />
       </Section>
     </React.Fragment>
-  );
+  )
 }
 
 const Section = styled(Box)`
   padding: ${({ theme }) => theme.space[2]};
-`;
+`
 
-(Section as any).defaultProps = { as: 'section', container: true };
+;(Section as any).defaultProps = { as: 'section', container: true }
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
@@ -149,4 +149,4 @@ export const Query = graphql`
       }
     }
   }
-`;
+`

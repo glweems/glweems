@@ -1,8 +1,8 @@
-import { graphql, PageProps } from 'gatsby';
-import React from 'react';
-import Box from '../components/Common/Box';
-import HtmlAst from '../components/HtmlAst';
-import { ResumePageQuery } from '../queries';
+import { graphql, PageProps } from 'gatsby'
+import React from 'react'
+import Box from '../components/Common/Box'
+import HtmlAst from '../components/HtmlAst'
+import { ResumePageQuery } from '../queries'
 
 const resume = (props: PageProps<ResumePageQuery>) => {
   return (
@@ -14,11 +14,11 @@ const resume = (props: PageProps<ResumePageQuery>) => {
         by me :-)
       </Box>
     </Box>
-  );
+  )
   // return <div></div>;
-};
+}
 
-export default resume;
+export default resume
 
 export const Query = graphql`
   query ResumePage {
@@ -38,4 +38,4 @@ export const Query = graphql`
       }
     }
   }
-`;
+`

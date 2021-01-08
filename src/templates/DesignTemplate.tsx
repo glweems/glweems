@@ -1,19 +1,19 @@
-import { motion } from 'framer-motion';
-import { graphql, PageProps } from 'gatsby';
-import Img from 'gatsby-image';
-import React from 'react';
-import Box from '../components/Common/Box';
-import SEO from '../components/SEO';
-import ShareButtons from '../components/ShareButtons';
-import Tags from '../components/Tags';
-import { DesignsTemplateQuery } from '../queries';
-import IntersectionObserver from '../ui/IntersectionObserver';
-import { ScaleBox } from '../ui/ScaleBox';
+import { motion } from 'framer-motion'
+import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
+import React from 'react'
+import Box from '../components/Common/Box'
+import SEO from '../components/SEO'
+import ShareButtons from '../components/ShareButtons'
+import Tags from '../components/Tags'
+import { DesignsTemplateQuery } from '../queries'
+import IntersectionObserver from '../ui/IntersectionObserver'
+import { ScaleBox } from '../ui/ScaleBox'
 
 export default function DesignTemplate({
   data,
 }: PageProps<DesignsTemplateQuery>) {
-  const { design } = data;
+  const { design } = data
   return (
     <React.Fragment>
       <SEO
@@ -48,7 +48,7 @@ export default function DesignTemplate({
         ))}
       </Box>
     </React.Fragment>
-  );
+  )
 }
 
 export const Query = graphql`
@@ -75,4 +75,4 @@ export const Query = graphql`
       }
     }
   }
-`;
+`

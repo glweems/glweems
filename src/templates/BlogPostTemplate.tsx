@@ -1,29 +1,29 @@
-import { graphql, PageProps } from 'gatsby';
-import Img from 'gatsby-image';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import React, { Fragment } from 'react';
-import styled from 'styled-components';
-import Box from '../components/Common/Box';
-import DisqusComments from '../components/DisqusComments';
-import HtmlAst from '../components/HtmlAst';
-import SEO from '../components/SEO';
-import ShareButtons from '../components/ShareButtons';
-import Tags from '../components/Tags';
-import { BlogTemplateQuery } from '../queries';
-import { media } from '../theme';
-import '../utils/syntax.css';
+import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
+import { OutboundLink } from 'gatsby-plugin-google-analytics'
+import React, { Fragment } from 'react'
+import styled from 'styled-components'
+import Box from '../components/Common/Box'
+import DisqusComments from '../components/DisqusComments'
+import HtmlAst from '../components/HtmlAst'
+import SEO from '../components/SEO'
+import ShareButtons from '../components/ShareButtons'
+import Tags from '../components/Tags'
+import { BlogTemplateQuery } from '../queries'
+import { media } from '../theme'
+import '../utils/syntax.css'
 export interface PageContext {
-  slug: string;
-  prev: string;
-  next: string;
+  slug: string
+  prev: string
+  next: string
 }
 
 export default function BlogTemplate({
   data,
   pageContext,
 }: PageProps<BlogTemplateQuery, PageContext>) {
-  const { post } = data;
-  const { frontmatter } = data.post;
+  const { post } = data
+  const { frontmatter } = data.post
 
   return (
     <Fragment>
@@ -67,12 +67,12 @@ export default function BlogTemplate({
         />
         <DisqusComments
           url={post.url}
-          identifier={post.disqusIdentifier}
+          identifier={(post as any).disqusIdentifier}
           title={frontmatter.title}
         />
       </Box>
     </Fragment>
-  );
+  )
 }
 
 const Styled = styled.div`
@@ -98,7 +98,7 @@ const Styled = styled.div`
   ${media.greaterThan('sm')`
       padding: ${({ theme }) => theme.space[2]};
   `};
-`;
+`
 
 export const Query = graphql`
   query BlogTemplate($slug: String!) {
@@ -110,7 +110,10 @@ export const Query = graphql`
       editOnGithub
     }
   }
-`;
+`
+
+const A = (props) => <OutboundLink {...props} />
+A.displayName = 'Anchor'
 
 const articleComponents = {
   em: styled.em`
@@ -126,5 +129,5 @@ const articleComponents = {
   ul: styled.ul`
     list-style-position: inside;
   `,
-  a: (props) => <OutboundLink {...props} />,
-};
+  a: A,
+}

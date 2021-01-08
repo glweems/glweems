@@ -6,10 +6,10 @@ export type TypeValue =
   | 'number'
   | 'asyncfunction'
   | 'promise'
-  | 'undefined';
+  | 'undefined'
 
 export const toType = (obj: unknown): TypeValue =>
   ({}.toString
     .call(obj)
     .match(/\s([a-zA-Z]+)/)[1]
-    .toLowerCase());
+    .toLowerCase())

@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql } from 'gatsby'
 
 export const FixedImage = graphql`
   fragment FixedImage on ImageSharp {
@@ -11,7 +11,7 @@ export const FixedImage = graphql`
       ...GatsbyImageSharpFixed_withWebp_tracedSVG
     }
   }
-`;
+`
 
 export const FluidImage = graphql`
   fragment FluidImage on ImageSharp {
@@ -22,7 +22,7 @@ export const FluidImage = graphql`
       ...GatsbyImageSharpFluid_withWebp_tracedSVG
     }
   }
-`;
+`
 
 export const Frontmatter = graphql`
   fragment Frontmatter on MarkdownRemark {
@@ -44,7 +44,7 @@ export const Frontmatter = graphql`
       }
     }
   }
-`;
+`
 
 export const BlogPost = graphql`
   fragment BlogPost on MarkdownRemark {
@@ -53,7 +53,7 @@ export const BlogPost = graphql`
     timeToRead
     ...Frontmatter
   }
-`;
+`
 export const ResponsiveCardTbn = graphql`
   fragment ResponsiveCardTbn on File {
     sm: childImageSharp {
@@ -91,7 +91,7 @@ export const ResponsiveCardTbn = graphql`
       }
     }
   }
-`;
+`
 
 export const DesignCard = graphql`
   fragment DesignCard on DesignsYaml {
@@ -104,7 +104,7 @@ export const DesignCard = graphql`
       }
     }
   }
-`;
+`
 
 export const BlogPostCard = graphql`
   fragment BlogPostCard on MarkdownRemark {
@@ -120,7 +120,7 @@ export const BlogPostCard = graphql`
       }
     }
   }
-`;
+`
 
 export const GithubCard = graphql`
   fragment GithubCard on GithubPinneditems {
@@ -135,4 +135,4 @@ export const GithubCard = graphql`
       ...ResponsiveCardTbn
     }
   }
-`;
+`

@@ -1,19 +1,19 @@
-import { graphql, PageProps } from 'gatsby';
-import Img from 'gatsby-image';
-import React from 'react';
-import Card from '../components/Card';
-import Box from '../components/Common/Box';
-import Pager, { PagerProps } from '../components/Pager';
-import SEO from '../components/SEO';
-import { BlogListQuery } from '../queries';
-import { breakpoints } from '../theme';
+import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
+import React from 'react'
+import Card from '../components/Card'
+import Box from '../components/Common/Box'
+import Pager, { PagerProps } from '../components/Pager'
+import SEO from '../components/SEO'
+import { BlogListQuery } from '../queries'
+import { breakpoints } from '../theme'
 
 export interface PageContext extends PagerProps {
-  pageNumber: number;
-  humanPageNumber: number;
-  skip: number;
-  limit: number;
-  numberOfPages: number;
+  pageNumber: number
+  humanPageNumber: number
+  skip: number
+  limit: number
+  numberOfPages: number
 }
 
 export default function ArticleListTemplate({
@@ -39,7 +39,7 @@ export default function ArticleListTemplate({
                 ...frontmatter.thumbnail.lg.fixed,
                 media: `(min-width: ${breakpoints[2]})`,
               },
-            ];
+            ]
 
             return (
               <Card
@@ -56,7 +56,7 @@ export default function ArticleListTemplate({
                   />
                 }
               />
-            );
+            )
           }
         )}
         <Pager
@@ -65,7 +65,7 @@ export default function ArticleListTemplate({
         />
       </Box>
     </React.Fragment>
-  );
+  )
 }
 
 export const Query = graphql`
@@ -83,4 +83,4 @@ export const Query = graphql`
       }
     }
   }
-`;
+`

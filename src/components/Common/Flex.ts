@@ -1,23 +1,23 @@
-import styled, { css } from 'styled-components';
-import { media } from '../../theme';
+import styled, { css } from 'styled-components'
+import { media } from '../../theme'
 
 export type FlexProperty =
   | 'flex-start'
   | 'flex-end'
   | 'center'
   | 'space-between'
-  | 'space-evenly';
+  | 'space-evenly'
 
 export interface FlexCssProps {
-  alignContent?: FlexProperty;
-  alignItems?: FlexProperty;
-  justifyContent?: FlexProperty;
-  justifyItems?: FlexProperty;
-  flexDirection?: 'row' | 'column';
+  alignContent?: FlexProperty
+  alignItems?: FlexProperty
+  justifyContent?: FlexProperty
+  justifyItems?: FlexProperty
+  flexDirection?: 'row' | 'column'
 }
 
 interface FlexProps extends FlexCssProps {
-  sm?: FlexCssProps;
+  sm?: FlexCssProps
 }
 
 export const createFlexProps = ({
@@ -32,7 +32,7 @@ export const createFlexProps = ({
   align-items: ${alignItems || alignItems};
   justify-content: ${justifyContent || justifyContent};
   justify-items: ${justifyItems || justifyItems};
-`;
+`
 
 export const flexStyles = css<FlexProps>`
   display: flex;
@@ -43,11 +43,11 @@ export const flexStyles = css<FlexProps>`
     media.lessThan('md')`
       ${createFlexProps(sm)}
     `};
-`;
+`
 
 const Flex = styled.div<FlexProps>`
   ${flexStyles}
-`;
+`
 
-Flex.displayName = 'Flex';
-export default Flex;
+Flex.displayName = 'Flex'
+export default Flex

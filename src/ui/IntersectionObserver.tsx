@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useIntersection } from 'react-use';
+import React, { useEffect, useState } from 'react'
+import { useIntersection } from 'react-use'
 
-export const IntersectionContext = React.createContext({ inView: true });
+export const IntersectionContext = React.createContext({ inView: true })
 
 export type IntersectionObserverProps = React.PropsWithChildren<{
   /**
@@ -11,31 +11,31 @@ export type IntersectionObserverProps = React.PropsWithChildren<{
    *
    * @type {boolean}
    */
-  reset?: boolean;
-}>;
+  reset?: boolean
+}>
 
 export default function IntersectionObserver({
   children,
   reset = false,
 }: IntersectionObserverProps) {
-  const [inView, setInView] = useState(false);
-  const intersectionRef = React.useRef(null);
+  const [inView, setInView] = useState(false)
+  const intersectionRef = React.useRef(null)
   const intersection = useIntersection(intersectionRef, {
     threshold: 0,
-  });
+  })
 
   useEffect(() => {
-    const inViewNow = intersection && intersection.intersectionRatio > 0;
+    const inViewNow = intersection && intersection.intersectionRatio > 0
     if (inViewNow) {
-      return setInView(inViewNow);
+      return setInView(inViewNow)
     } else if (reset) {
-      return setInView(false);
+      return setInView(false)
     }
-  }, [intersection, reset]);
+  }, [intersection, reset])
 
   return (
     <IntersectionContext.Provider value={{ inView }}>
       <div ref={intersectionRef}>{children}</div>
     </IntersectionContext.Provider>
-  );
+  )
 }

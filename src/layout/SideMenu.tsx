@@ -1,9 +1,9 @@
-import { Link } from 'gatsby';
-import React from 'react';
-import Box from '../components/Common/Box';
-import { GhostSVG, SocialIcons } from '../components/Icons';
-import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
-import Nav from './Nav';
+import { Link } from 'gatsby'
+import React from 'react'
+import Box from '../components/Common/Box'
+import { GhostSVG, SocialIcons } from '../components/Icons'
+import ToggleThemeSwitch from '../components/ToggleThemeSwitch'
+import Nav from './Nav'
 
 export default function SideMenu() {
   return (
@@ -12,7 +12,7 @@ export default function SideMenu() {
         <GhostSVG />
       </div>
       <Link to="/">Garrett Weems</Link>
-      <p>I'm a full-stack web developer.</p>
+      <p>I&apos;m a full-stack web developer.</p>
       <p>I specialize in javascript / react.js web developement.</p>
 
       <Nav />
@@ -22,5 +22,5 @@ export default function SideMenu() {
         <ToggleThemeSwitch />
       </Box>
     </React.Fragment>
-  );
+  )
 }

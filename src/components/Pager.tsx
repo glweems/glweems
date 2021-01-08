@@ -1,21 +1,21 @@
 import {
   faHandPointLeft,
   faHandPointRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { navigate } from 'gatsby';
-import React from 'react';
+} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { navigate } from 'gatsby'
+import React from 'react'
 
 export interface PagerProps {
-  previousPagePath?: string;
-  previousPageText?: string;
-  nextPagePath?: string;
-  nextPageText?: string;
+  previousPagePath?: string
+  previousPageText?: string
+  nextPagePath?: string
+  nextPageText?: string
 }
 const defaults = {
   prevPageText: 'Prev',
   nextPageText: 'Next',
-};
+}
 
 export default function Pager({
   previousPagePath,
@@ -24,10 +24,10 @@ export default function Pager({
   nextPageText,
 }: PagerProps) {
   const handleClick: React.MouseEventHandler<{
-    name: string;
+    name: string
   }> = (event) => {
-    navigate(event.currentTarget.name);
-  };
+    navigate(event.currentTarget.name)
+  }
   return (
     <div
       css={`
@@ -55,7 +55,7 @@ export default function Pager({
         <FontAwesomeIcon icon={faHandPointRight} />
       </button>
     </div>
-  );
+  )
 }
 
-Pager.defaultProps = defaults;
+Pager.defaultProps = defaults

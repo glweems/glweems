@@ -1,19 +1,19 @@
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
-import React, { PropsWithChildren } from 'react';
-import styled, { useTheme } from 'styled-components';
-import config from '../../.gatsby/config';
-import Box from '../components/Common/Box';
-import Link from '../components/Common/Link';
-import { GhostSVG } from '../components/Icons';
-import ToggleNavButton from '../components/ToggleNavButton';
-import ToggleThemeSwitch from '../components/ToggleThemeSwitch';
+import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
+import React, { PropsWithChildren } from 'react'
+import styled, { useTheme } from 'styled-components'
+import config from '../../.gatsby/config'
+import Box from '../components/Common/Box'
+import Link from '../components/Common/Link'
+import { GhostSVG } from '../components/Icons'
+import ToggleNavButton from '../components/ToggleNavButton'
+import ToggleThemeSwitch from '../components/ToggleThemeSwitch'
 
 export type NavigationProps = PropsWithChildren<{
-  path: string;
-}>;
+  path: string
+}>
 
 export default function Navigation({ path, children }: NavigationProps) {
-  const { mobile, isNavOpen } = useTheme();
+  const { mobile, isNavOpen } = useTheme()
 
   return (
     <Styled>
@@ -51,9 +51,9 @@ export default function Navigation({ path, children }: NavigationProps) {
                 <Link
                   to={link.path}
                   getProps={({ isCurrent, isPartiallyCurrent, href }) => {
-                    if (isCurrent) return { className: 'active' };
+                    if (isCurrent) return { className: 'active' }
                     if (isPartiallyCurrent && href !== '/')
-                      return { className: 'active' };
+                      return { className: 'active' }
                   }}
                 >
                   {link.name}
@@ -64,7 +64,7 @@ export default function Navigation({ path, children }: NavigationProps) {
         )}
       </AnimatePresence>
     </Styled>
-  );
+  )
 }
 
 const Styled = styled.header`
@@ -119,6 +119,6 @@ const Styled = styled.header`
     list-style: none;
     user-select: none;
   }
-`;
+`
 
-Navigation.defaultProps = { className: 'navigation' };
+Navigation.defaultProps = { className: 'navigation' }

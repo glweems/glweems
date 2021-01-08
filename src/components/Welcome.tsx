@@ -1,15 +1,15 @@
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import React from 'react';
-import config from '../../.gatsby/config';
-import Box from './Common/Box';
-import Button from './Common/Button';
-import Link from './Common/Link';
-import { GhostSVG } from './Icons';
+import { motion, useTransform, useViewportScroll } from 'framer-motion'
+import React from 'react'
+import config from '../../.gatsby/config'
+import Box from './Common/Box'
+import Button from './Common/Button'
+import Link from './Common/Link'
+import { GhostSVG } from './Icons'
 
 export default function Welcome() {
-  const { scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useViewportScroll()
 
-  const scale = useTransform(scrollYProgress, [1, 0], [0, 1]);
+  const scale = useTransform(scrollYProgress, [1, 0], [0, 1])
   return (
     <Box py={8} color="text" as={motion.div} initial="full" animate="normal">
       <Box
@@ -50,7 +50,7 @@ export default function Welcome() {
         </motion.div>
       </Box>
     </Box>
-  );
+  )
 }
 
 const container = {
@@ -64,7 +64,7 @@ const container = {
       staggerChildren: 0.1,
     },
   },
-};
+}
 
 const item = {
   hidden: { y: 20, opacity: 0 },
@@ -72,7 +72,7 @@ const item = {
     y: 0,
     opacity: 1,
   },
-};
+}
 /* const icons = {
   hidden: { opacity: 1, scale: 0 },
   visible: {

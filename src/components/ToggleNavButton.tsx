@@ -1,12 +1,12 @@
-import React from 'react';
-import styled, { useTheme, css } from 'styled-components';
-import { motion } from 'framer-motion';
+import React from 'react'
+import styled, { useTheme, css } from 'styled-components'
+import { motion } from 'framer-motion'
 
 export default function ToggleNavButton(
   props: React.HTMLAttributes<HTMLButtonElement>
 ) {
-  const { isNavOpen, toggleNav } = useTheme();
-  const buttonTitle = `${isNavOpen ? 'open' : 'close'} navigation menu`;
+  const { isNavOpen, toggleNav } = useTheme()
+  const buttonTitle = `${isNavOpen ? 'open' : 'close'} navigation menu`
   return (
     <button
       {...props}
@@ -21,7 +21,7 @@ export default function ToggleNavButton(
         whileTap={{ scale: 0.9 }}
       />
     </button>
-  );
+  )
 }
 
 const ToggleNavIcon = styled.div<{ isNavOpen: boolean }>`
@@ -77,4 +77,4 @@ const ToggleNavIcon = styled.div<{ isNavOpen: boolean }>`
         transform: rotate(45deg);
       }
     `};
-`;
+`
