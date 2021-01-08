@@ -1,6 +1,9 @@
-![github](https://img.shields.io/github/followers/glweems?label=follow&logo=github&style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)
+[![Github Follow](https://img.shields.io/github/followers/glweems?label=follow&style=social)](https://github.com/glweems)
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)](https://twitter.com/intent/follow?screen_name=garrettlweems&tw_p=followbutton)
+
 ![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)
+
 ![glweems](https://img.shields.io/badge/website-glweems.com-blue)
 
 ![glweems](./src/assets/about-banner.png)
