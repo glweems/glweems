@@ -1,7 +1,7 @@
-import React from 'react';
-import config from '../../.gatsby/config';
-import Box, { BoxProps } from '../components/Common/Box';
-import Link from '../components/Common/Link';
+import React from 'react'
+import config from '../../.gatsby/config'
+import Box, { BoxProps } from '../components/Common/Box'
+import Link from '../components/Common/Link'
 
 const Nav = (props: Omit<BoxProps, 'as'>) => {
   return (
@@ -12,12 +12,12 @@ const Nav = (props: Omit<BoxProps, 'as'>) => {
         </Link>
       ))}
     </Box>
-  );
-};
+  )
+}
 
 Nav.defaultProps = {
   display: 'flex',
   flexDirection: 'column',
-};
+}
 
-export default Nav;
+export default Nav

@@ -1,22 +1,22 @@
-import { WrapPageElementBrowserArgs, WrapRootElementBrowserArgs } from 'gatsby';
-import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import SEO from './components/SEO';
-import Layout from './layout/Layout';
-import useCreateTheme from './theme';
-import GlobalCss from './utils/GlobalCss';
+import { WrapPageElementBrowserArgs, WrapRootElementBrowserArgs } from 'gatsby'
+import React from 'react'
+import { ThemeProvider } from 'styled-components'
+import SEO from './components/SEO'
+import Layout from './layout/Layout'
+import useCreateTheme from './theme'
+import GlobalCss from './utils/GlobalCss'
 
 export type ContextProviderProps = {
-  children: WrapRootElementBrowserArgs['element'];
-};
+  children: WrapRootElementBrowserArgs['element']
+}
 
 function ContextProvider(props: ContextProviderProps) {
-  const theme = useCreateTheme();
-  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
+  const theme = useCreateTheme()
+  return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 
 export function wrapRootElement({ element }: WrapRootElementBrowserArgs) {
-  return <ContextProvider>{element}</ContextProvider>;
+  return <ContextProvider>{element}</ContextProvider>
 }
 
 export function wrapPageElement({
@@ -29,5 +29,5 @@ export function wrapPageElement({
       <GlobalCss />
       <Layout path={path}>{element}</Layout>
     </React.Fragment>
-  );
+  )
 }

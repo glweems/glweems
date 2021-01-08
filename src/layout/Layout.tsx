@@ -1,12 +1,12 @@
-import { ErrorBoundary } from '@sentry/react';
-import { PageProps } from 'gatsby';
-import React, { PropsWithChildren } from 'react';
-import Box from '../components/Common/Box';
-import Welcome from '../components/Welcome';
-import Whoops from '../components/Whoops';
-import Navigation from './Navigation';
+import { ErrorBoundary } from '@sentry/react'
+import { PageProps } from 'gatsby'
+import React, { PropsWithChildren } from 'react'
+import Box from '../components/Common/Box'
+import Welcome from '../components/Welcome'
+import Whoops from '../components/Whoops'
+import Navigation from './Navigation'
 
-export type LayoutProps = PropsWithChildren<Pick<PageProps, 'path'>>;
+export type LayoutProps = PropsWithChildren<Pick<PageProps, 'path'>>
 
 export default function Layout({ children, path }: LayoutProps) {
   return (
@@ -19,5 +19,5 @@ export default function Layout({ children, path }: LayoutProps) {
         </main>
       </Box>
     </React.StrictMode>
-  );
+  )
 }

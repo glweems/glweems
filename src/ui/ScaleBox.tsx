@@ -1,12 +1,12 @@
-import { motion, Transition, Variant } from 'framer-motion';
-import React, { useMemo, useContext, PropsWithChildren } from 'react';
-import { IntersectionContext } from './IntersectionObserver';
+import { motion, Transition } from 'framer-motion'
+import React, { PropsWithChildren, useContext, useMemo } from 'react'
+import { IntersectionContext } from './IntersectionObserver'
 
 export type ScaleBoxProps = PropsWithChildren<{
-  delay?: number;
-  duration?: number;
-  easing?: Transition;
-}>;
+  delay?: number
+  duration?: number
+  easing?: Transition
+}>
 
 export const ScaleBox = ({
   children,
@@ -14,7 +14,7 @@ export const ScaleBox = ({
   duration = 0.4,
   easing = [0.42, 0, 0.58, 1], // [number, number, number, number] | "linear" | "easeIn" | "easeOut" | "easeInOut" | "circIn" | "circOut" | "circInOut" | "backIn" | "backOut" | "backInOut" | "anticipate" | EasingFunction;
 }: ScaleBoxProps) => {
-  const { inView } = useContext(IntersectionContext);
+  const { inView } = useContext(IntersectionContext)
   const transition = useMemo(
     () => ({
       duration,
@@ -22,7 +22,7 @@ export const ScaleBox = ({
       ease: easing,
     }),
     [delay, duration, easing]
-  );
+  )
 
   const variants = {
     hidden: {
@@ -35,7 +35,7 @@ export const ScaleBox = ({
       opacity: 1,
       transition,
     },
-  };
+  }
 
   return (
     <motion.div
@@ -46,5 +46,5 @@ export const ScaleBox = ({
     >
       {children}
     </motion.div>
-  );
-};
+  )
+}

@@ -1,11 +1,11 @@
-import * as React from 'react';
-import { FacebookShareButton, TwitterShareButton } from 'react-share';
-import styled from 'styled-components';
-import { siteMetadata } from '../../.gatsby/config';
+import * as React from 'react'
+import { FacebookShareButton, TwitterShareButton } from 'react-share'
+import styled from 'styled-components'
+import { siteMetadata } from '../../.gatsby/config'
 interface ShareButtonsProps {
-  url: string;
-  title: string;
-  tags: string[];
+  url: string
+  title: string
+  tags: string[]
 }
 
 export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
@@ -32,7 +32,7 @@ export default function ShareButtons({ url, title, tags }: ShareButtonsProps) {
         Twitter
       </TwitterShareButton>
     </Styled>
-  );
+  )
 }
 
 const Styled = styled.div`
@@ -72,4 +72,4 @@ const Styled = styled.div`
     text-transform: uppercase;
     opacity: 0.7;
   }
-`;
+`

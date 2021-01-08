@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Box from './Box';
+import styled from 'styled-components'
+import Box from './Box'
 
-const Paper = styled(Box)``;
+const Paper = styled(Box)``
 
 Paper.defaultProps = {
   backgroundColor: 'rgba(256, 256, 256, 0.0125)',
@@ -10,6 +10,6 @@ Paper.defaultProps = {
   borderRadius: 2,
   borderColor: 'rgba(256, 256, 256, 0.05)',
   m: 'auto',
-};
+}
 
-export default Paper;
+export default Paper

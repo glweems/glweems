@@ -1,17 +1,17 @@
-import { useLocation } from '@reach/router';
-import { graphql, useStaticQuery } from 'gatsby';
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import packageJson from '../../package.json';
-import { SeoQuery } from '../queries';
+import { useLocation } from '@reach/router'
+import { graphql, useStaticQuery } from 'gatsby'
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import packageJson from '../../package.json'
+import { SeoQuery } from '../queries'
 
 export type SEOProps = {
-  title?: string;
-  description?: string;
-  image?: string;
-  article?: boolean;
-  keywords?: string[];
-};
+  title?: string
+  description?: string
+  image?: string
+  article?: boolean
+  keywords?: string[]
+}
 
 export default function SEO({
   title,
@@ -20,8 +20,8 @@ export default function SEO({
   article,
   keywords,
 }: SEOProps) {
-  const { pathname } = useLocation();
-  const { site, openGraphImg } = useStaticQuery<SeoQuery>(query);
+  const { pathname } = useLocation()
+  const { site, openGraphImg } = useStaticQuery<SeoQuery>(query)
 
   const {
     defaultTitle,
@@ -29,14 +29,14 @@ export default function SEO({
     defaultDescription,
     siteUrl,
     twitterUsername,
-  } = site.siteMetadata;
+  } = site.siteMetadata
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
     image: image || openGraphImg.publicURL,
     url: `${siteUrl}${pathname}`,
-  };
+  }
 
   return (
     <Helmet
@@ -76,7 +76,7 @@ export default function SEO({
 
       {seo.image && <meta name="twitter:image" content={seo.image} />}
     </Helmet>
-  );
+  )
 }
 
 SEO.defaultProps = {
@@ -85,7 +85,7 @@ SEO.defaultProps = {
   image: null,
   article: false,
   keywords: packageJson.keywords,
-};
+}
 
 const query = graphql`
   query SEO {
@@ -103,4 +103,4 @@ const query = graphql`
       publicURL
     }
   }
-`;
+`

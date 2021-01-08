@@ -1,14 +1,14 @@
-import React from 'react';
-import Box from './Common/Box';
-import Tag from './Tag';
+import React from 'react'
+import Box from './Common/Box'
+import Tag from './Tag'
 
 export interface TagsProps {
-  tags?: string[];
-  limit?: number;
+  tags?: string[]
+  limit?: number
 }
 
 const Tags: React.FC<TagsProps> = ({ tags, limit }) => {
-  if (!tags) return null;
+  if (!tags) return null
   return (
     <Box
       className="tags"
@@ -27,11 +27,11 @@ const Tags: React.FC<TagsProps> = ({ tags, limit }) => {
         </Tag>
       ))}
     </Box>
-  );
-};
+  )
+}
 
 Tags.defaultProps = {
   limit: 3,
-};
+}
 
-export default Tags;
+export default Tags

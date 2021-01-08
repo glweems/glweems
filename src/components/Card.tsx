@@ -1,18 +1,18 @@
-import { motion } from 'framer-motion';
-import { Link, navigate } from 'gatsby';
-import React, { PropsWithChildren } from 'react';
-import styled from 'styled-components';
-import { media } from '../theme';
+import { motion } from 'framer-motion'
+import { Link, navigate } from 'gatsby'
+import React, { PropsWithChildren } from 'react'
+import styled from 'styled-components'
+import { media } from '../theme'
 
 type CardProps = {
-  title?: string;
-  subtitle?: string;
-  date?: string;
-  path?: string;
-  Image?: any;
-  linkText?: string;
-  tags?: string[];
-};
+  title?: string
+  subtitle?: string
+  date?: string
+  path?: string
+  Image?: any
+  linkText?: string
+  tags?: string[]
+}
 
 export default function Card({
   title,
@@ -24,7 +24,7 @@ export default function Card({
   children,
 }: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
-    navigate(event.currentTarget.id);
+    navigate(event.currentTarget.id)
   }
 
   return (
@@ -57,7 +57,7 @@ export default function Card({
         </motion.div>
       )}
     </Styled>
-  );
+  )
 }
 
 const Styled = styled.div`
@@ -67,7 +67,7 @@ const Styled = styled.div`
   grid-template:
     'date date' auto
     'title title' auto
-    'img subtitle'auto
+    'img subtitle' auto
     'img link' 1fr;
   grid-template-columns: auto 1fr;
   justify-items: flex-start;
@@ -82,7 +82,6 @@ const Styled = styled.div`
       margin-left: unset;
     `};
   }
-
 
   .Card--date {
     grid-area: date;
@@ -114,8 +113,8 @@ const Styled = styled.div`
       'img subtitle'
       'img link';
   `};
-`;
+`
 
 Card.defaultProps = {
   linkText: 'Read',
-};
+}

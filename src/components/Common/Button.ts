@@ -1,11 +1,11 @@
-import { css } from '@styled-system/css';
-import { transparentize } from 'polished';
-import styled from 'styled-components';
+import { css } from '@styled-system/css'
+import { transparentize } from 'polished'
+import styled from 'styled-components'
 
-type ButtonVariant = 'primary';
+type ButtonVariant = 'primary'
 export type ButtonProps = {
-  variant?: ButtonVariant;
-};
+  variant?: ButtonVariant
+}
 
 const Button = styled.button<ButtonProps>`
   padding: 8px 10px;
@@ -32,7 +32,7 @@ const Button = styled.button<ButtonProps>`
       bg: 'blue',
       color: 'light',
     })};
-`;
+`
 
-Button.displayName = 'Button';
-export default Button;
+Button.displayName = 'Button'
+export default Button

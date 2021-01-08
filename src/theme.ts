@@ -1,20 +1,20 @@
-import { transparentize } from 'polished';
-import { useState } from 'react';
-import { useMedia } from 'react-use';
-import { css } from 'styled-components';
-import { generateMedia } from 'styled-media-query';
-import { variant } from 'styled-system';
-import useDarkMode from 'use-dark-mode';
+import { transparentize } from 'polished'
+import { useState } from 'react'
+import { useMedia } from 'react-use'
+import { css } from 'styled-components'
+import { generateMedia } from 'styled-media-query'
+import { variant } from 'styled-system'
+import useDarkMode from 'use-dark-mode'
 
 export interface BaseColors {
-  blue: string;
-  green: string;
-  mint: string;
-  purple: string;
-  red: string;
-  yellow: string;
-  light: string;
-  dark: string;
+  blue: string
+  green: string
+  mint: string
+  purple: string
+  red: string
+  yellow: string
+  light: string
+  dark: string
 }
 
 export const baseColors = {
@@ -26,26 +26,26 @@ export const baseColors = {
   yellow: '#f8d58c',
   light: '#f8f8f8',
   dark: '#0f121b',
-};
+}
 export type AddedColors = {
-  primary: string;
-  muted: string;
-  text: string;
-  bg: string;
-  rootBg: string;
-  borderColor: string;
-  secondaryText: string;
-  secondaryBg: string;
-  welcome: string;
-  link: string;
-};
+  primary: string
+  muted: string
+  text: string
+  bg: string
+  rootBg: string
+  borderColor: string
+  secondaryText: string
+  secondaryBg: string
+  welcome: string
+  link: string
+}
 
-export type ThemeColorVariant = keyof typeof baseColors;
+export type ThemeColorVariant = keyof typeof baseColors
 
 export type ColorObject = Record<
   keyof BaseColors | keyof AddedColors | string,
   string
->;
+>
 
 const lightMode: ColorObject = {
   ...baseColors,
@@ -59,7 +59,7 @@ const lightMode: ColorObject = {
   secondaryBg: 'rgba(0, 0, 0, 0.05)',
   welcome: baseColors.yellow,
   link: baseColors.blue,
-};
+}
 
 const darkmode: ColorObject = {
   ...baseColors,
@@ -73,30 +73,30 @@ const darkmode: ColorObject = {
   secondaryBg: 'rgba(255, 255, 255, 0.05)',
   welcome: baseColors.purple,
   link: baseColors.yellow,
-};
+}
 
-export const breakpoints = ['360px', '550px', '750px', '1000px', '1300px'];
-const [sm, md, lg] = breakpoints;
+export const breakpoints = ['360px', '550px', '750px', '1000px', '1300px']
+const [sm, md, lg] = breakpoints
 
 export const containerWidths = {
   sm,
   md,
   lg,
-};
+}
 
 export const media = generateMedia<typeof containerWidths, GlweemsTheme>({
   sm,
   md,
   lg,
-});
-export const borders = [0, '1px solid', '2px solid'];
+})
+export const borders = [0, '1px solid', '2px solid']
 
 export const fontWeights = {
   body: 400,
   bold: 700,
   extraBold: 800,
   heading: 700,
-};
+}
 
 export const fonts = {
   body:
@@ -112,7 +112,7 @@ export const fonts = {
   monospace:
     'SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
   serif: 'Georgia, Times New Roman, Times, serif',
-};
+}
 
 export const fontSizes = [
   '0.75rem',
@@ -132,7 +132,7 @@ export const fontSizes = [
   '4.75rem',
   '5.25rem',
   '5.75rem',
-];
+]
 
 export const space = [
   '0rem',
@@ -148,24 +148,24 @@ export const space = [
   '3.5rem',
   '4rem',
   '4.5rem',
-];
+]
 
 export const buttons = {
   secondary: {
     color: 'white',
     bg: 'tomato',
   },
-};
+}
 
-export const radii = [0, '2px', '4px', '8px', '16px', '9999px', '100%'];
+export const radii = [0, '2px', '4px', '8px', '16px', '9999px', '100%']
 export type DottedBgArgs = {
-  dotColor: keyof ColorObject | string;
-  dotBgColor: keyof ColorObject | string;
-  dotSize?: number;
-  dotSpace?: number;
-  transparent?: number;
-  degree?: number;
-};
+  dotColor: keyof ColorObject | string
+  dotBgColor: keyof ColorObject | string
+  dotSize?: number
+  dotSpace?: number
+  transparent?: number
+  degree?: number
+}
 
 export const dottedBg = ({
   dotColor = 'text',
@@ -192,7 +192,7 @@ export const dottedBg = ({
       center,
     var(--dot-color);
   background-size: ${dotSpace}px ${dotSpace}px;
-`;
+`
 
 const partialTheme = {
   breakpoints,
@@ -206,15 +206,15 @@ const partialTheme = {
   media,
   buttons,
   dottedBg,
-};
+}
 
 export interface GlweemsTheme {
-  breakpoints: typeof breakpoints;
-  containerWidths: typeof containerWidths;
-  borders: typeof borders;
-  fontWeights: typeof fontWeights;
-  fonts: typeof fonts;
-  fontSizes: typeof fontSizes;
+  breakpoints: typeof breakpoints
+  containerWidths: typeof containerWidths
+  borders: typeof borders
+  fontWeights: typeof fontWeights
+  fonts: typeof fonts
+  fontSizes: typeof fontSizes
   /**
    * Space
    *
@@ -234,30 +234,30 @@ export interface GlweemsTheme {
    * |  11  	| 4rem    	|
    * |  12  	| 4.5rem  	|
    */
-  space: string[];
-  radii: typeof radii;
-  media: typeof media;
-  buttons: typeof buttons;
-  toggle: () => void;
-  isDarkMode: boolean;
-  colors: ColorObject;
-  mode: 'light' | 'dark';
-  isNavOpen: boolean;
-  setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  toggleNav(): void;
-  mobile: boolean;
-  dottedBg: typeof dottedBg;
+  space: string[]
+  radii: typeof radii
+  media: typeof media
+  buttons: typeof buttons
+  toggle: () => void
+  isDarkMode: boolean
+  colors: ColorObject
+  mode: 'light' | 'dark'
+  isNavOpen: boolean
+  setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
+  toggleNav(): void
+  mobile: boolean
+  dottedBg: typeof dottedBg
 }
 
 export default function useCreateTheme(): GlweemsTheme {
-  const { value: isDarkMode, toggle } = useDarkMode();
-  const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light';
-  const colors = isDarkMode ? darkmode : lightMode;
-  const [isNavOpen, setIsNavOpen] = useState(false);
-  const mobile = useMedia(`(max-width: ${breakpoints[0]})`);
+  const { value: isDarkMode, toggle } = useDarkMode()
+  const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light'
+  const colors = isDarkMode ? darkmode : lightMode
+  const [isNavOpen, setIsNavOpen] = useState(false)
+  const mobile = useMedia(`(max-width: ${breakpoints[0]})`)
 
   function toggleNav() {
-    setIsNavOpen((state) => !state);
+    setIsNavOpen((state) => !state)
   }
 
   const completeTheme = {
@@ -270,9 +270,9 @@ export default function useCreateTheme(): GlweemsTheme {
     toggleNav,
     mobile,
     ...partialTheme,
-  };
+  }
 
-  return completeTheme;
+  return completeTheme
 }
 
 export const buttonCss = css`
@@ -305,17 +305,17 @@ export const buttonCss = css`
         },
       },
     })};
-`;
+`
 
 function createColorVars(colorsObj: ColorObject) {
-  let obj = {};
+  const obj = {}
 
   Object.entries(colorsObj).forEach(
     ([key, value]) => (obj[`--color-${key}`] = value)
-  );
+  )
 
-  return obj;
+  return obj
 }
 export const cssVariables = css`
   ${(props) => props && createColorVars(props.theme.colors)}
-`;
+`

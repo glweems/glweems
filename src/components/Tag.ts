@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Tag = styled.span`
   display: block;
@@ -11,8 +11,8 @@ const Tag = styled.span`
   text-decoration: none;
   background-color: ${({ theme }) => theme.colors.secondaryBg};
   border-radius: ${({ theme }) => theme.radii[1]};
-`;
+`
 
-Tag.displayName = 'Tag';
+Tag.displayName = 'Tag'
 
-export default Tag;
+export default Tag

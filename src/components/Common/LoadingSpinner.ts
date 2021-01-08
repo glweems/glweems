@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 import {
   layout,
   LayoutProps,
@@ -6,9 +6,9 @@ import {
   SizeProps,
   space,
   SpaceProps,
-} from 'styled-system';
+} from 'styled-system'
 
-export type LoadingSpinnerProps = SpaceProps & LayoutProps & SizeProps;
+export type LoadingSpinnerProps = SpaceProps & LayoutProps & SizeProps
 
 const LoadingSpinner = styled.div<LoadingSpinnerProps>`
   height: ${({ height }) => height};
@@ -34,8 +34,8 @@ const LoadingSpinner = styled.div<LoadingSpinnerProps>`
    ${space};
    ${layout};
    ${size};
-`;
+`
 
-LoadingSpinner.defaultProps = { height: 20 };
+LoadingSpinner.defaultProps = { height: 20 }
 
-export default LoadingSpinner;
+export default LoadingSpinner

@@ -1,19 +1,19 @@
-import { graphql, PageProps } from 'gatsby';
-import Img from 'gatsby-image';
-import React from 'react';
-import Card from '../components/Card';
-import Box from '../components/Common/Box';
-import Pager from '../components/Pager';
-import SEO from '../components/SEO';
-import { DesignListQuery } from '../queries';
-import { breakpoints } from '../theme';
-import { PageContext } from './BlogPostListTemplate';
+import { graphql, PageProps } from 'gatsby'
+import Img from 'gatsby-image'
+import React from 'react'
+import Card from '../components/Card'
+import Box from '../components/Common/Box'
+import Pager from '../components/Pager'
+import SEO from '../components/SEO'
+import { DesignListQuery } from '../queries'
+import { breakpoints } from '../theme'
+import { PageContext } from './BlogPostListTemplate'
 
 export default function ArticleListTemplate({
   data,
   pageContext,
 }: PageProps<DesignListQuery, PageContext>) {
-  const { designs } = data;
+  const { designs } = data
   return (
     <Box container>
       <SEO
@@ -30,7 +30,7 @@ export default function ArticleListTemplate({
             ...design.fields.thumbnail.lg.fixed,
             media: `(min-width: ${breakpoints[2]})`,
           },
-        ];
+        ]
         return (
           <Card
             key={design.slug}
@@ -45,11 +45,11 @@ export default function ArticleListTemplate({
               />
             }
           />
-        );
+        )
       })}
       <Pager {...pageContext} />
     </Box>
-  );
+  )
 }
 
 export const DesignList = graphql`
@@ -64,4 +64,4 @@ export const DesignList = graphql`
       }
     }
   }
-`;
+`

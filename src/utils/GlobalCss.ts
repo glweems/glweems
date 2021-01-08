@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import { cssVariables, media } from '../theme';
+import { createGlobalStyle } from 'styled-components'
+import { cssVariables, media } from '../theme'
 
 const GlobalCss = createGlobalStyle`
 :root{
@@ -95,6 +95,6 @@ const GlobalCss = createGlobalStyle`
       padding: 0;
     `};
   }
-`;
+`
 
-export default GlobalCss;
+export default GlobalCss

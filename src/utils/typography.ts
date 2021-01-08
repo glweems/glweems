@@ -1,6 +1,6 @@
-import Typography, { TypographyOptions } from 'typography';
-import CodePlugin from 'typography-plugin-code';
-import { fonts } from '../theme';
+import Typography, { TypographyOptions } from 'typography'
+import CodePlugin from 'typography-plugin-code'
+import { fonts } from '../theme'
 
 const theme: TypographyOptions = {
   baseFontSize: '16px',
@@ -17,10 +17,10 @@ const theme: TypographyOptions = {
   bodyWeight: 400,
   boldWeight: 700,
   plugins: [new CodePlugin()],
-};
+}
 
-const typography = new Typography(theme);
+const typography = new Typography(theme)
 
 // Export helper functions
-export const { scale, rhythm, options } = typography;
-export default typography;
+export const { scale, rhythm, options } = typography
+export default typography

@@ -1,17 +1,16 @@
-import dotenv from 'dotenv';
-import { IMergePluginOptions, ITSConfigFn } from 'gatsby-plugin-ts-config';
-import { FileSystemNode } from 'gatsby-source-filesystem';
-import packageJson from '../package.json';
-import { linkedHeaderIcon } from '../src/components/Icons';
-import config, { siteMetadata } from './config';
-dotenv.config();
+import dotenv from 'dotenv'
+import { ITSConfigFn } from 'gatsby-plugin-ts-config'
+import { FileSystemNode } from 'gatsby-source-filesystem'
+import packageJson from '../package.json'
+import { linkedHeaderIcon } from '../src/components/Icons'
+import config, { siteMetadata } from './config'
 
-const { GITHUB_TOKEN, SENTRY_TOKEN } = process.env;
+dotenv.config()
 
-const gatsbyConfig: ITSConfigFn<
-  'config',
-  IMergePluginOptions<'gatsby-source-filesystem', FileSystemNode>
-> = ({ projectRoot }) => {
+const { GITHUB_TOKEN, SENTRY_TOKEN } = process.env
+
+const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
+  console.log('projectRoot: ', projectRoot)
   const gatsbyConfig = {
     siteMetadata,
     plugins: [
@@ -31,13 +30,19 @@ const gatsbyConfig: ITSConfigFn<
         },
       },
       {
-        resolve: require.resolve(
-          './../plugins/gatsby-plugin-google-docs-resume/'
-        ),
+        resolve: 'gatsby-source-gh-readme',
         options: {
-          url: config.googleDocResumeUrl,
+          gitHubToken: GITHUB_TOKEN,
         },
       },
+      // {
+      //   resolve: require.resolve(
+      //     './../plugins/gatsby-plugin-google-docs-resume'
+      //   ),
+      //   options: {
+      //     url: config.googleDocResumeUrl,
+      //   },
+      // },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -52,13 +57,7 @@ const gatsbyConfig: ITSConfigFn<
           name: 'designs',
         },
       },
-      {
-        resolve: 'gatsby-source-filesystem',
-        options: {
-          path: `${projectRoot}/content`,
-          name: 'resume',
-        },
-      },
+
       {
         resolve: 'gatsby-plugin-sentry',
         options: {
@@ -81,7 +80,7 @@ const gatsbyConfig: ITSConfigFn<
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
-            'gatsby-remark-relative-images',
+            // 'gatsby-remark-relative-images',
             {
               resolve: 'gatsby-remark-images',
               options: {
@@ -191,10 +190,10 @@ const gatsbyConfig: ITSConfigFn<
       'gatsby-plugin-remove-trailing-slashes',
       `gatsby-plugin-remove-serviceworker`,
     ],
-  };
+  }
 
-  return gatsbyConfig;
-};
+  return gatsbyConfig
+}
 
 const githubPinnedItems = `
 query TopPinnedItems {
@@ -221,6 +220,6 @@ query TopPinnedItems {
       }
     }
   }
-`;
+`
 
-export default gatsbyConfig;
+export default gatsbyConfig

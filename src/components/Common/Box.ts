@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 import {
   color,
   ColorProps,
@@ -12,8 +12,8 @@ import {
   SpaceProps,
   border,
   BorderProps,
-} from 'styled-system';
-import { GlweemsTheme, media } from '../../theme';
+} from 'styled-system'
+import { GlweemsTheme, media } from '../../theme'
 
 export interface BoxProps
   extends SpaceProps,
@@ -22,7 +22,7 @@ export interface BoxProps
     FlexboxProps,
     ColorProps<GlweemsTheme>,
     BorderProps {
-  container?: boolean;
+  container?: boolean
 }
 
 export const maxWidthCss = css`
@@ -36,15 +36,15 @@ export const maxWidthCss = css`
   ${media.greaterThan('md')`
   max-width: ${({ theme }) => theme.containerWidths.lg};
 `};
-`;
+`
 
-const boxComposition = compose(color, layout, space, flexbox, border);
+const boxComposition = compose(color, layout, space, flexbox, border)
 
 const Box = styled.div<BoxProps>`
   ${boxComposition}
   ${(props) => props && props.container && maxWidthCss}
-`;
+`
 
-Box.displayName = 'Box';
+Box.displayName = 'Box'
 
-export default Box;
+export default Box
