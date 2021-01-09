@@ -73,7 +73,7 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
           pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
         },
       },
-
+      'gatsby-plugin-google-docs-resume',
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
       {

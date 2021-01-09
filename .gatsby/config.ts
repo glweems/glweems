@@ -4,10 +4,10 @@ import {
   faInstagram,
   faLinkedin,
   faMediumM,
-} from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import path from 'path';
-import packageJson from '../package.json';
+} from '@fortawesome/free-brands-svg-icons'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import path from 'path'
+import packageJson from '../package.json'
 
 const config = {
   defaultTitle: 'Glweems',
@@ -17,7 +17,7 @@ const config = {
   legalName: 'Garrett Weems',
   defaultDescription: 'I am a Graphic Designer / Full Stack Web Developer.',
   googleDocResumeUrl:
-    'https://docs.google.com/document/d/e/2PACX-1vQeU-cHFCX8Ec1YLAPTLh7RltaGOTtGNmEgkCqbQ6RfnD6rC8BrVN_cjntiYsUXgqq4RWlv_N3ic03P/pub',
+    'https://docs.google.com/document/d/e/2PACX-1vSHaghePnqrnkCLxr8kQhNmYo7IrpktVqEK9_URiuJwln_6_f0kwtjI1IeVKU4yeSKc9YQj1Jace60C/pub',
   socialLinks: {
     github: 'https://github.com/glweeems',
     linkedin: 'https://www.linkedin.com/in/glweems',
@@ -82,7 +82,7 @@ const config = {
       icon: faInstagram,
     },
   },
-};
+}
 
 export const siteMetadata = {
   title: `Garrett Weems`,
@@ -94,6 +94,6 @@ export const siteMetadata = {
   siteUrl: config.url,
   twitterHandle: config.contact.twitter,
   disqusShortName: config.disqusShortName,
-};
+}
 
-export default config;
+export default config
