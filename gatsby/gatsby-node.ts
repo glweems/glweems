@@ -10,10 +10,7 @@ import createBlogPostPages from './pages/create-blog-pages'
 import createDesignPages from './pages/create-design-pages'
 import createDesignListPages from './pagination/create-design-list-pages'
 import createPostsPages from './pagination/create-post-list-pages'
-import Axios from 'axios'
-
-import Cheerio from 'cheerio'
-import TurndownService from 'turndown'
+import { fmImagesToRelative } from 'gatsby-remark-relative-images-v2'
 
 export const setFieldsOnGraphQLNodeType: GatsbyNode['setFieldsOnGraphQLNodeType'] = async (
   args: SetFieldsOnGraphQLNodeTypeArgs,
@@ -72,6 +69,7 @@ export const onCreateNode = ({
       value: `./${node.slug}/cover.jpg`,
     })
   }
+  fmImagesToRelative(node)
 }
 
 // Create Pages

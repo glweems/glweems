@@ -1,7 +1,7 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
 import React, { PropsWithChildren } from 'react'
 import styled, { useTheme } from 'styled-components'
-import config from '../../.gatsby/config'
+import config from '../../gatsby/config'
 import Box from '../components/Common/Box'
 import Link from '../components/Common/Link'
 import { GhostSVG } from '../components/Icons'

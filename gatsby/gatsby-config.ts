@@ -35,14 +35,26 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
           gitHubToken: GITHUB_TOKEN,
         },
       },
-      // {
-      //   resolve: require.resolve(
-      //     './../plugins/gatsby-plugin-google-docs-resume'
-      //   ),
-      //   options: {
-      //     url: config.googleDocResumeUrl,
-      //   },
-      // },
+      {
+        resolve: 'gatsby-plugin-google-docs-resume',
+        options: {
+          url: config.googleDocResumeUrl,
+        },
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/README.md`,
+          name: `readMe`,
+        },
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
+          path: `${projectRoot}/src/assets`,
+          name: `assets`,
+        },
+      },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
@@ -73,14 +85,13 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
           pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
         },
       },
-      'gatsby-plugin-google-docs-resume',
+
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',
       {
         resolve: 'gatsby-transformer-remark',
         options: {
           plugins: [
-            // 'gatsby-remark-relative-images',
             {
               resolve: 'gatsby-remark-images',
               options: {

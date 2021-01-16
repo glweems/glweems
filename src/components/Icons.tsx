@@ -2,7 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { motion } from 'framer-motion'
 import React from 'react'
-import config from '../../.gatsby/config'
+import config from '../../gatsby/config'
 import { baseColors } from '../theme'
 import Box, { BoxProps } from './Common/Box'
 import { useTheme } from 'styled-components'

@@ -41,6 +41,8 @@ export default function ArticleListTemplate({
               },
             ]
 
+            console.log(frontmatter)
+
             return (
               <Card
                 key={post.id}

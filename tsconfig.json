@@ -12,8 +12,12 @@
     "isolatedModules": true,
     "pretty": true,
     "noEmit": true,
-    "typeRoots": ["src/declaration.d.ts"]
+    "typeRoots": ["src/declaration.d.ts", "src/types"]
   },
-  "include": ["src/**/*", ".gatsby/gatsby-awesome-pagination.d.ts"],
+  "include": [
+    "src/**/*",
+    "gatsby/gatsby-awesome-pagination.d.ts",
+    "src/types/styled-components.d.ts"
+  ],
   "exclude": ["node_modules", "src/queries.ts"]
 }

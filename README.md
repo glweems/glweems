@@ -2,7 +2,7 @@
 
 ## I'm a fullstack web developer
 
-![Selfy](./src/assets/selfy.png)
+![Selfy](src/assets/selfy.png)
 
 I'm a web developer and graphic designer from Texas
 
@@ -36,10 +36,17 @@ When I'm not coding I have been learning fabrication and welding to for restorat
 
 ### Give me a shout
 
-![github](https://img.shields.io/github/followers/glweems?label=follow&logo=github&style=social) ![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social) ![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue) ![glweems](https://img.shields.io/badge/website-glweems.com-blue)
+[![Github Follow](https://img.shields.io/github/followers/glweems?label=follow&style=social)][github]
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)](https://twitter.com/intent/follow?screen_name=garrettlweems&tw_p=followbutton)
+
+[![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)][linkedin]
+
+[![glweems](https://img.shields.io/badge/website-glweems.com-blue)][website]
 
 ![Code Stats](https://github-readme-stats.codestackr.vercel.app/api?username=glweems&show_icons=true&hide_border=true)
 
+[github]: https://github.com/glweems
 [website]: https://glweems.com
 [instagram]: https://instagram.com/glweems
 [linkedin]: https://linkedin.com/in/glweems

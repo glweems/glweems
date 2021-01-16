@@ -1,6 +1,6 @@
 import { motion, useTransform, useViewportScroll } from 'framer-motion'
 import React from 'react'
-import config from '../../.gatsby/config'
+import config from '../../gatsby/config'
 import Box from './Common/Box'
 import Button from './Common/Button'
 import Link from './Common/Link'

@@ -8,9 +8,7 @@ exports.sourceNodes = async (
 ) => {
   const { createNode } = actions
 
-  const data = await Axios.get(
-    'https://docs.google.com/document/d/e/2PACX-1vSHaghePnqrnkCLxr8kQhNmYo7IrpktVqEK9_URiuJwln_6_f0kwtjI1IeVKU4yeSKc9YQj1Jace60C/pub'
-  )
+  const data = await Axios.get(options.url)
     .then((res) => res.data)
     .catch(reporter.error)
 

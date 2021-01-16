@@ -1,22 +1,22 @@
 import { graphql, PageProps } from 'gatsby'
 import React from 'react'
 import Box from '../components/Common/Box'
+import Paper from '../components/Common/Paper'
 import HtmlAst from '../components/HtmlAst'
 import { ResumePageQuery } from '../queries'
 
-const resume = (props: PageProps<ResumePageQuery>) => {
-  return (
-    <Box container>
+const resume = (props: PageProps<ResumePageQuery>) => (
+  <Box container>
+    <Paper>
       <HtmlAst elements={props.data.resume.childMarkdownRemark.htmlAst} />
 
       <Box color="muted">
-        (this page was auto-generated from google docs with a npm module created
-        by me :-)
+        his page was auto-generated from google docs with a npm module created
+        by me: -)
       </Box>
-    </Box>
-  )
-  // return <div></div>;
-}
+    </Paper>
+  </Box>
+)
 
 export default resume
 

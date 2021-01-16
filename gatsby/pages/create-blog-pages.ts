@@ -1,6 +1,6 @@
-import { CreatePagesArgs } from 'gatsby';
-import path from 'path';
-import { CreateBlogPostPagesQuery } from '../../src/queries';
+import { CreatePagesArgs } from 'gatsby'
+import path from 'path'
+import { CreateBlogPostPagesQuery } from '../../src/queries'
 
 export default async function createBlogPostPages({
   graphql,
@@ -14,32 +14,27 @@ export default async function createBlogPostPages({
         sort: { fields: childMarkdownRemark___frontmatter___date, order: DESC }
       ) {
         nodes {
-          extension
-          childMarkdownRemark {
-            frontmatter {
-              path
-            }
-          }
+          relativeDirectory
         }
       }
     }
-  `);
+  `)
 
   // Handle errors
   if (result.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query.`);
-    return;
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
   }
 
-  const blogPosts = result?.data?.posts.nodes;
+  const blogPosts = result?.data?.posts.nodes
 
-  blogPosts?.forEach(({ childMarkdownRemark: post }) => {
+  blogPosts?.forEach(({ relativeDirectory }) => {
     actions.createPage({
-      path: `/blog${post.frontmatter.path}`,
+      path: `/blog/${relativeDirectory}`,
       component: path.resolve(`src/templates/BlogPostTemplate.tsx`),
       context: {
-        slug: post.frontmatter.path,
+        slug: relativeDirectory,
       },
-    });
-  });
+    })
+  })
 }

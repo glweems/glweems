@@ -44,7 +44,7 @@ export default function SEO({
       titleTemplate={titleTemplate}
       htmlAttributes={{ lang: site.siteMetadata.languageCode }}
     >
-      {title && <title>{seo.title}</title>}
+      <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
       <meta name="image" content={seo.image} />
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import config from '../../.gatsby/config'
+import config from '../../gatsby/config'
 import Box, { BoxProps } from '../components/Common/Box'
 import Link from '../components/Common/Link'
 

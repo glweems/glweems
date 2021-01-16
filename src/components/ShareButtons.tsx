@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FacebookShareButton, TwitterShareButton } from 'react-share'
 import styled from 'styled-components'
-import { siteMetadata } from '../../.gatsby/config'
+import { siteMetadata } from '../../gatsby/config'
 interface ShareButtonsProps {
   url: string
   title: string
