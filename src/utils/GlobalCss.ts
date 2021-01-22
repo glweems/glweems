@@ -1,10 +1,11 @@
+import { transparentize } from 'polished'
 import { createGlobalStyle } from 'styled-components'
 import { cssVariables, media } from '../theme'
 
 const GlobalCss = createGlobalStyle`
-:root{
-  ${cssVariables};
-}
+  :root {
+    ${cssVariables};
+  }
   html {
     scroll-behavior: smooth;
   }
@@ -17,9 +18,17 @@ const GlobalCss = createGlobalStyle`
       'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     word-wrap: break-word;
-    background-color: ${({ theme }) => theme.colors.bg};
     font-kerning: normal;
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+    background-color: ${({ theme }) => theme.colors.bg};
+    background-image: radial-gradient(
+        ${(props) => transparentize(0.95, props.theme.colors.text)} 20%,
+        transparent 20%
+      ),
+      radial-gradient(${(props) =>
+        props.theme.colors.secondaryBg} 10%, transparent 10%);
+    background-position: 0 0, 5px 3px;
+    background-size: 20px 20px;
   }
 
   main {
@@ -30,6 +39,7 @@ const GlobalCss = createGlobalStyle`
 
   a {
     color: inherit;
+    color: var(--color-text);
     text-decoration-thickness: 0.125em;
     text-underline-offset: 1.5px;
     text-decoration-skip-ink: auto;
@@ -90,7 +100,7 @@ const GlobalCss = createGlobalStyle`
   }
 
   #disqus_thread {
-    padding: 0  ${({ theme }) => theme.space[2]};
+    padding: 0 ${({ theme }) => theme.space[2]};
     ${media.greaterThan('sm')`
       padding: 0;
     `};

@@ -11,7 +11,7 @@ import {
 export type LoadingSpinnerProps = SpaceProps & LayoutProps & SizeProps
 
 const LoadingSpinner = styled.div<LoadingSpinnerProps>`
-  height: ${({ height }) => height};
+  height: ${({ height, theme }) => theme.space[height]};
   --spinner-color: ${({ theme }) =>
     theme.isDarkMode ? theme.colors.purple : theme.colors.yellow};
 
@@ -36,6 +36,6 @@ const LoadingSpinner = styled.div<LoadingSpinnerProps>`
    ${size};
 `
 
-LoadingSpinner.defaultProps = { height: 20 }
+LoadingSpinner.defaultProps = { height: 3 }
 
 export default LoadingSpinner

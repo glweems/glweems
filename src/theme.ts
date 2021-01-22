@@ -42,10 +42,7 @@ export type AddedColors = {
 
 export type ThemeColorVariant = keyof typeof baseColors
 
-export type ColorObject = Record<
-  keyof BaseColors | keyof AddedColors | string,
-  string
->
+export type ColorObject = typeof baseColors & AddedColors
 
 const lightMode: ColorObject = {
   ...baseColors,
@@ -241,7 +238,7 @@ export interface GlweemsTheme {
   toggle: () => void
   isDarkMode: boolean
   colors: ColorObject
-  mode: 'light' | 'dark'
+  mode: string | 'light' | 'dark'
   isNavOpen: boolean
   setIsNavOpen: React.Dispatch<React.SetStateAction<boolean>>
   toggleNav(): void
@@ -251,7 +248,7 @@ export interface GlweemsTheme {
 
 export default function useCreateTheme(): GlweemsTheme {
   const { value: isDarkMode, toggle } = useDarkMode()
-  const mode: 'light' | 'dark' = isDarkMode ? 'dark' : 'light'
+  const mode = isDarkMode ? 'dark' : 'light'
   const colors = isDarkMode ? darkmode : lightMode
   const [isNavOpen, setIsNavOpen] = useState(false)
   const mobile = useMedia(`(max-width: ${breakpoints[0]})`)

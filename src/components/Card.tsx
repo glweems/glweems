@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { media } from '../theme'
+import Link from './Common/Link'
 
 type CardProps = {
   title?: string
@@ -56,6 +57,7 @@ export default function Card({
           {Image}
         </motion.div>
       )}
+      <div className="Card--children">{children}</div>
     </Styled>
   )
 }
@@ -68,11 +70,12 @@ const Styled = styled.div`
     'date date' auto
     'title title' auto
     'img subtitle' auto
-    'img link' 1fr;
+    'img link' auto
+    'img children' auto;
   grid-template-columns: auto 1fr;
   justify-items: flex-start;
   width: 100%;
-  margin-bottom: ${({ theme }) => theme.space[12]};
+  /* margin-bottom: ${({ theme }) => theme.space[12]}; */
 
   .Card--title {
     grid-area: title;
@@ -95,14 +98,13 @@ const Styled = styled.div`
   .Card--img {
     grid-area: img;
   }
-  .Card--body {
+  * {
     display: flex;
     flex-direction: column;
-    grid-area: body;
   }
   .Card--link {
     grid-area: link;
-    /* align-self: flex-end; */
+    align-self: flex-end;
     /* margin-top: auto; */
   }
 

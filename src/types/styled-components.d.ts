@@ -1,9 +1,10 @@
 import { GlweemsTheme } from '../theme'
 
-export interface ThemeProps<T> {
-  theme: T
-}
+declare module 'styled-components' {
+  export interface ThemeProps<T> {
+    theme: T
+  }
 
-export interface DefaultTheme extends GlweemsTheme {
-  hi: 'yes'
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends GlweemsTheme {}
 }

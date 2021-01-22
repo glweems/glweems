@@ -19,12 +19,12 @@ const config = {
   googleDocResumeUrl:
     'https://docs.google.com/document/d/e/2PACX-1vSHaghePnqrnkCLxr8kQhNmYo7IrpktVqEK9_URiuJwln_6_f0kwtjI1IeVKU4yeSKc9YQj1Jace60C/pub',
   socialLinks: {
-    github: 'https://github.com/glweeems',
-    linkedin: 'https://www.linkedin.com/in/glweems',
-    instagram: 'https://instagram.com/glweems',
-    behance: 'https://www.behance.net/glweems',
-    codepen: 'https://codepen.io/glweems',
-    medium: 'https://medium.com/@glweems',
+    Github: 'https://github.com/glweeems',
+    LinkedIn: 'https://www.linkedin.com/in/glweems',
+    Instagram: 'https://instagram.com/glweems',
+    Behance: 'https://www.behance.net/glweems',
+    CodePen: 'https://codepen.io/glweems',
+    Medium: 'https://medium.com/@glweems',
   },
   googleAnalyticsID: 'UA-140456624-1',
   themeColor: '#f8d58c',
@@ -45,12 +45,12 @@ const config = {
     { path: '/resume', name: 'Resume' },
   ],
   accounts: {
-    email: {
-      name: 'Email',
-      username: 'gwgraphicdesign@gmail.com',
-      link: 'mailto:gwgraphicdesign@gmail.com',
-      icon: faEnvelope,
-    },
+    // email: {
+    //   name: 'Email',
+    //   username: 'gwgraphicdesign@gmail.com',
+    //   link: 'mailto:gwgraphicdesign@gmail.com',
+    //   icon: faEnvelope,
+    // },
     github: {
       name: 'Github',
       username: 'glweems',

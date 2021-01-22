@@ -1,9 +1,10 @@
 import React from 'react'
-import GithubCalendar, { GithubCalendarProps } from 'react-github-calendar'
+import GithubCalendar from 'react-github-calendar'
+import { GithubCalendarProps } from 'react-github-calendar'
 import ReactTooltip from 'react-tooltip'
 import { useTheme } from 'styled-components'
 
-export default function Heatmap() {
+export const Heatmap = () => {
   const { colors } = useTheme()
 
   const theme: GithubCalendarProps['theme'] = {
@@ -11,8 +12,10 @@ export default function Heatmap() {
   }
 
   return (
-    <GithubCalendar username="glweems" fullYear years={[2020]} theme={theme}>
+    <GithubCalendar username="glweems" fullYear years={[2020]}>
       <ReactTooltip delayShow={35} html />
     </GithubCalendar>
   )
 }
+
+export default Heatmap

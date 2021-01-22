@@ -25,6 +25,13 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
       {
         resolve: 'gatsby-source-filesystem',
         options: {
+          name: 'readMe',
+          path: `${projectRoot}/README.md`,
+        },
+      },
+      {
+        resolve: 'gatsby-source-filesystem',
+        options: {
           name: 'images',
           path: `${projectRoot}/src/assets`,
         },
@@ -33,6 +40,22 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
         resolve: 'gatsby-source-gh-readme',
         options: {
           gitHubToken: GITHUB_TOKEN,
+        },
+      },
+      {
+        resolve: 'gatsby-plugin-web-vitals',
+        options: {
+          // The Google Analytics property ID; the reporting code won't be generated without it
+          trackingId: config.googleAnalyticsID,
+          // An array with metrics you want to track and send to analytics
+          metrics: [`FID`, `TTFB`, `LCP`, `CLS`, `FCP`],
+          // Event Category (optional) { string }, default 'Web Vitals'
+          eventCategory: 'Performance',
+          // Include Web Vitals tracking in development
+          // Defaults to false meaning Vitals will only be tracked in production.
+          includeInDevelopment: false,
+          // Prints metrics in the console when true
+          debug: false,
         },
       },
       // {

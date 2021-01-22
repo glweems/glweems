@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { flexbox, FlexboxProps } from 'styled-system'
 import { media } from '../../theme'
 
 export type FlexProperty =
@@ -14,6 +15,7 @@ export interface FlexCssProps {
   justifyContent?: FlexProperty
   justifyItems?: FlexProperty
   flexDirection?: 'row' | 'column'
+  flexWrap?: boolean
 }
 
 interface FlexProps extends FlexCssProps {
@@ -45,8 +47,8 @@ export const flexStyles = css<FlexProps>`
     `};
 `
 
-const Flex = styled.div<FlexProps>`
-  ${flexStyles}
+const Flex = styled.div<FlexboxProps>`
+  ${flexbox}
 `
 
 Flex.displayName = 'Flex'

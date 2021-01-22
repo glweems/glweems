@@ -1,12 +1,17 @@
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
+// import React from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
 import Box from '../components/Common/Box'
+import Paper from '../components/Common/Paper'
 import Heatmap from '../components/Heatmap'
 import { IndexPageQuery } from '../queries'
 import { breakpoints } from '../theme'
+// import LoadingSpinner from '../components/LoadingSpinner'
+
+// const Heatmap = React.lazy(() => import('../components/Heatmap'))
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
   return (
@@ -27,20 +32,22 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
               },
             ]
             return (
-              <Card
-                key={post.id}
-                title={frontmatter.title}
-                subtitle={frontmatter.subtitle}
-                date={frontmatter.date}
-                path={`/blog${frontmatter.path}`}
-                Image={
-                  <Img
-                    draggable={false}
-                    alt={frontmatter.title}
-                    fixed={blogSources}
-                  />
-                }
-              />
+              <Paper key={post.id} style={{ marginBottom: '1rem' }}>
+                <Card
+                  key={post.id}
+                  title={frontmatter.title}
+                  subtitle={frontmatter.subtitle}
+                  date={frontmatter.date}
+                  path={`/blog${frontmatter.path}`}
+                  Image={
+                    <Img
+                      draggable={false}
+                      alt={frontmatter.title}
+                      fixed={blogSources}
+                    />
+                  }
+                />
+              </Paper>
             )
           }
         )}
@@ -62,19 +69,21 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
             },
           ]
           return (
-            <Card
-              key={design.slug}
-              path={`/design/${design.slug}`}
-              subtitle={design.description}
-              title={name}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${name} thumbnail image`}
-                  fixed={designSources}
-                />
-              }
-            />
+            <Paper key={design.slug} style={{ marginBottom: '1rem' }}>
+              <Card
+                key={design.slug}
+                path={`/design/${design.slug}`}
+                subtitle={design.description}
+                title={name}
+                Image={
+                  <Img
+                    draggable={false}
+                    alt={`${name} thumbnail image`}
+                    fixed={designSources}
+                  />
+                }
+              />
+            </Paper>
           )
         })}
       </Section>
@@ -93,35 +102,35 @@ export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
             },
           ]
           return (
-            <Card
-              key={pinned.name}
-              title={pinned.name}
-              subtitle={pinned.description}
-              date={pinned.createdAt}
-              Image={
-                <Img
-                  draggable={false}
-                  alt={`${pinned.name} thumbnail image`}
-                  fixed={githubSources}
-                />
-              }
-            />
+            <Paper key={pinned.name} style={{ marginBottom: '1rem' }}>
+              <Card
+                title={pinned.name}
+                subtitle={pinned.description}
+                date={pinned.createdAt}
+                path={pinned.homepageUrl}
+                Image={
+                  <Img
+                    draggable={false}
+                    alt={`${pinned.name} thumbnail image`}
+                    fixed={githubSources}
+                  />
+                }
+              ></Card>
+            </Paper>
           )
         })}
       </Section>
 
-      <Section>
+      <Box container>
         <Heatmap />
-      </Section>
+      </Box>
     </React.Fragment>
   )
 }
 
-const Section = styled(Box)`
-  padding: ${({ theme }) => theme.space[2]};
-`
+const Section = styled(Box)``
 
-;(Section as any).defaultProps = { as: 'section', container: true }
+;(Section as any).defaultProps = { as: 'section', container: true, p: 2, my: 2 }
 
 export const Query = graphql`
   query IndexPage($limit: Int = 3) {
