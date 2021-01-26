@@ -1,8 +1,10 @@
+import LoadablePlugin from '@loadable/webpack-plugin'
 import {
   CreateNodeArgs,
   GatsbyNode,
   PluginOptions,
   SetFieldsOnGraphQLNodeTypeArgs,
+  CreateWebpackConfigArgs,
 } from 'gatsby'
 import { GraphQLString } from 'graphql'
 import { DesignsYaml, MarkdownRemark } from '../src/queries'
@@ -80,4 +82,17 @@ export const createPages: GatsbyNode['createPages'] = async (gatsbyNode) => {
   await createPostsPages(gatsbyNode)
   await createDesignPages(gatsbyNode)
   await createDesignListPages(gatsbyNode)
+}
+
+export const onCreateWebpackConfig = ({
+  stage,
+  getConfig,
+  rules,
+  loaders,
+  plugins,
+  actions,
+}: CreateWebpackConfigArgs) => {
+  actions.setWebpackConfig({
+    plugins: [new LoadablePlugin()],
+  })
 }

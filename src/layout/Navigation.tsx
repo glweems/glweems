@@ -1,5 +1,5 @@
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion'
-import React, { PropsWithChildren } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
 import styled, { useTheme } from 'styled-components'
 import config from '../../.gatsby/config'
 import Box from '../components/Common/Box'
@@ -12,7 +12,7 @@ export type NavigationProps = PropsWithChildren<{
   path: string
 }>
 
-export default function Navigation({ path, children }: NavigationProps) {
+export function Navigation({ path, children }: NavigationProps) {
   const { mobile, isNavOpen } = useTheme()
 
   return (
@@ -66,6 +66,30 @@ export default function Navigation({ path, children }: NavigationProps) {
     </Styled>
   )
 }
+
+const MobileNavigation: FC = (props) => {
+  return (
+    <Nav>
+      {config.links.map((link) => (
+        <Link key={link.path} to={link.path}>
+          {link.name}
+        </Link>
+      ))}
+    </Nav>
+  )
+}
+const Nav = styled.header`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: space-evenly;
+  height: 3rem;
+  place-items: center;
+`
+export default MobileNavigation
 
 const Styled = styled.header`
   width: inherit;

@@ -27,38 +27,24 @@ export default function ArticleListTemplate({
       />
 
       <Box container>
-        {data.posts.nodes.map(
-          ({ childMarkdownRemark: { frontmatter, ...post } }) => {
-            const sources = [
-              frontmatter.thumbnail.sm.fixed,
-              {
-                ...frontmatter.thumbnail.md.fixed,
-                media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-              },
-              {
-                ...frontmatter.thumbnail.lg.fixed,
-                media: `(min-width: ${breakpoints[2]})`,
-              },
-            ]
-
-            return (
-              <Card
-                key={post.id}
-                title={frontmatter.title}
-                subtitle={frontmatter.subtitle}
-                date={frontmatter.date}
-                path={`/blog${frontmatter.path}`}
-                Image={
-                  <Img
-                    draggable={false}
-                    alt={`${frontmatter.title} thumbnail image`}
-                    fixed={sources}
-                  />
-                }
-              />
-            )
-          }
-        )}
+        {data.posts.nodes.map(({ childMarkdownRemark: { info, ...post } }) => {
+          return (
+            <Card
+              key={post.id}
+              title={info.title}
+              subtitle={info.subtitle}
+              date={info.date}
+              path={`/blog${info.path}`}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${info.title} thumbnail image`}
+                  fixed={info.thumbnail.childImageSharp.fixed}
+                />
+              }
+            />
+          )
+        })}
         <Pager
           previousPagePath={pageContext.previousPagePath}
           nextPagePath={pageContext.nextPagePath}

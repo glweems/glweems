@@ -56,38 +56,15 @@ export const BlogPost = graphql`
 `
 export const ResponsiveCardTbn = graphql`
   fragment ResponsiveCardTbn on File {
-    sm: childImageSharp {
+    childImageSharp {
       fixed(
         width: 100
         height: 100
-        quality: 60
-        traceSVG: { color: "#d0c1fa", background: "transparent" }
+        # quality: 60
+        # grayscale: true
         cropFocus: CENTER
       ) {
-        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-      }
-    }
-
-    md: childImageSharp {
-      fixed(
-        width: 125
-        height: 125
-        quality: 60
-        traceSVG: { color: "#d0c1fa", background: "transparent" }
-        cropFocus: CENTER
-      ) {
-        ...GatsbyImageSharpFixed_withWebp_tracedSVG
-      }
-    }
-    lg: childImageSharp {
-      fixed(
-        width: 200
-        height: 200
-        quality: 60
-        traceSVG: { color: "#d0c1fa", background: "transparent" }
-        cropFocus: CENTER
-      ) {
-        ...GatsbyImageSharpFixed_withWebp_tracedSVG
+        ...GatsbyImageSharpFixed_withWebp
       }
     }
   }
@@ -109,7 +86,7 @@ export const DesignCard = graphql`
 export const BlogPostCard = graphql`
   fragment BlogPostCard on MarkdownRemark {
     id
-    frontmatter {
+    info: frontmatter {
       id
       title
       path

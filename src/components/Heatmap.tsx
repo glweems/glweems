@@ -12,7 +12,7 @@ export const Heatmap = () => {
   }
 
   return (
-    <GithubCalendar username="glweems" fullYear years={[2020]}>
+    <GithubCalendar username="glweems" fullYear years={[2020]} theme={theme}>
       <ReactTooltip delayShow={35} html />
     </GithubCalendar>
   )

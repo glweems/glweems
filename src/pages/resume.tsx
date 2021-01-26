@@ -12,7 +12,7 @@ const ResumePage: FC<PageProps<ResumePageQuery>> = (props) => (
 
       <Box color="muted">
         his page was auto-generated from google docs with a npm module created
-        by me: -)
+        by me{': -)'}
       </Box>
     </Paper>
   </Box>

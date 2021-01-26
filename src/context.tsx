@@ -12,6 +12,7 @@ export type ContextProviderProps = {
 
 function ContextProvider(props: ContextProviderProps) {
   const theme = useCreateTheme()
+  if (theme.isDarkMode === undefined) return
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 
@@ -26,7 +27,7 @@ export function wrapPageElement({
   return (
     <React.Fragment>
       <SEO />
-      <GlobalCss />
+      {/* <GlobalCss /> */}
       <Layout path={path}>{element}</Layout>
     </React.Fragment>
   )

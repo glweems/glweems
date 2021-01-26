@@ -7,8 +7,8 @@ import SEO from '../components/SEO'
 import ShareButtons from '../components/ShareButtons'
 import Tags from '../components/Tags'
 import { DesignsTemplateQuery } from '../queries'
-import IntersectionObserver from '../ui/IntersectionObserver'
-import { ScaleBox } from '../ui/ScaleBox'
+import IntersectionObserver from '../components/IntersectionObserver'
+import { ScaleBox } from '../components/ScaleBox'
 
 export default function DesignTemplate({
   data,

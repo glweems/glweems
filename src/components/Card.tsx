@@ -1,9 +1,10 @@
 import { motion } from 'framer-motion'
-import { navigate } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 import { media } from '../theme'
-import Link from './Common/Link'
+// import Link from './Common/Link'
+import Paper from './Common/Paper'
 
 type CardProps = {
   title?: string
@@ -23,13 +24,16 @@ export default function Card({
   Image,
   linkText,
   children,
+  tags,
+
+  ...props
 }: PropsWithChildren<CardProps>) {
   function handleImgClick(event: React.MouseEvent) {
     navigate(event.currentTarget.id)
   }
 
   return (
-    <Styled>
+    <Styled {...props}>
       {title && (
         <h3 className="Card--title">
           {path ? <Link to={path}>{title}</Link> : title}
@@ -62,7 +66,7 @@ export default function Card({
   )
 }
 
-const Styled = styled.div`
+const Styled = styled(Paper)`
   display: grid;
   grid-auto-rows: min-content;
   grid-column-gap: ${({ theme }) => theme.space[4]};
@@ -75,8 +79,7 @@ const Styled = styled.div`
   grid-template-columns: auto 1fr;
   justify-items: flex-start;
   width: 100%;
-  /* margin-bottom: ${({ theme }) => theme.space[12]}; */
-
+  margin-bottom: ${({ theme }) => theme.space[5]};
   .Card--title {
     grid-area: title;
     /* margin-left: ${({ theme }) => theme.space[4]}; */
@@ -104,7 +107,7 @@ const Styled = styled.div`
   }
   .Card--link {
     grid-area: link;
-    align-self: flex-end;
+    /* align-self: flex-end; */
     /* margin-top: auto; */
   }
 

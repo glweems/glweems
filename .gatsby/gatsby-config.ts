@@ -80,22 +80,23 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
           name: 'designs',
         },
       },
-
       {
-        resolve: 'gatsby-plugin-sentry',
+        resolve: '@sentry/gatsby',
         options: {
-          dsn: SENTRY_TOKEN,
-          environment: process.env.NODE_ENV,
-          enabled: (() =>
-            ['production', 'stage'].indexOf(process.env.NODE_ENV) !== -1)(),
+          dsn: SENTRY_TOKEN, // this is the default
+          tracesSampleRate: 1, // or tracesSampler (see above)
+          browserTracingOptions: {
+            // disable creating spans for XHR requests
+            traceXHR: false,
+          },
         },
       },
-      {
+      /*   {
         resolve: 'gatsby-plugin-typography',
         options: {
           pathToConfigModule: `${projectRoot}/src/utils/typography.ts`,
         },
-      },
+      }, */
       'gatsby-plugin-google-docs-resume',
       'gatsby-plugin-sharp',
       'gatsby-transformer-sharp',

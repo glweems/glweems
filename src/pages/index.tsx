@@ -1,4 +1,5 @@
-import { graphql, PageProps } from 'gatsby'
+import loadable from '@loadable/component'
+import { graphql, Link, navigate, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
 // import React from 'react'
@@ -6,122 +7,119 @@ import styled from 'styled-components'
 import Card from '../components/Card'
 import Box from '../components/Common/Box'
 import Paper from '../components/Common/Paper'
-import Heatmap from '../components/Heatmap'
+// import Heatmap from '../components/Heatmap'
 import { IndexPageQuery } from '../queries'
 import { breakpoints } from '../theme'
 // import LoadingSpinner from '../components/LoadingSpinner'
-
+import pMinDelay from 'p-min-delay'
 // const Heatmap = React.lazy(() => import('../components/Heatmap'))
+import IntersectionObserver from '../components/IntersectionObserver'
+import { Article } from '../components/Article'
+const Heatmap = loadable(() => import('../components/Heatmap'))
 
 export default function IndexPage({ data }: PageProps<IndexPageQuery>) {
+  const handleImgClick: React.MouseEventHandler = (event) => {
+    navigate(event.currentTarget.id)
+  }
   return (
     <React.Fragment>
-      <Section>
-        <h2>Blog Posts</h2>
-        {data.posts.nodes.map(
-          ({ childMarkdownRemark: { frontmatter, ...post } }) => {
-            const blogSources = [
-              frontmatter.thumbnail.sm.fixed,
-              {
-                ...frontmatter.thumbnail.md.fixed,
-                media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-              },
-              {
-                ...frontmatter.thumbnail.lg.fixed,
-                media: `(min-width: ${breakpoints[2]})`,
-              },
-            ]
-            return (
-              <Paper key={post.id} style={{ marginBottom: '1rem' }}>
-                <Card
-                  key={post.id}
-                  title={frontmatter.title}
-                  subtitle={frontmatter.subtitle}
-                  date={frontmatter.date}
-                  path={`/blog${frontmatter.path}`}
-                  Image={
-                    <Img
-                      draggable={false}
-                      alt={frontmatter.title}
-                      fixed={blogSources}
-                    />
-                  }
+      <section className="paper">
+        <h2 className="title">Blog Posts</h2>
+        {data.posts.nodes.map(({ childMarkdownRemark: { info, id } }) => {
+          return (
+            <Article key={id}>
+              <Link className="tbn" to={`/blog${info.path}/`}>
+                <Img
+                  draggable={false}
+                  fixed={info.thumbnail.childImageSharp.fixed}
                 />
-              </Paper>
-            )
-          }
-        )}
-      </Section>
-
-      <Section>
-        <h2>Designs</h2>
-
-        {data.designs.nodes.map(({ name, ...design }, index) => {
-          const designSources = [
-            design.fields.thumbnail.sm.fixed,
-            {
-              ...design.fields.thumbnail.md.fixed,
-              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-            },
-            {
-              ...design.fields.thumbnail.lg.fixed,
-              media: `(min-width: ${breakpoints[2]})`,
-            },
-          ]
-          return (
-            <Paper key={design.slug} style={{ marginBottom: '1rem' }}>
-              <Card
-                key={design.slug}
-                path={`/design/${design.slug}`}
-                subtitle={design.description}
-                title={name}
-                Image={
-                  <Img
-                    draggable={false}
-                    alt={`${name} thumbnail image`}
-                    fixed={designSources}
-                  />
-                }
-              />
-            </Paper>
+              </Link>
+              <Link to={`/blog${info.path}/`}>
+                <h3 className="title">{info.title}</h3>
+                <time>{info.date}</time>
+                <p>{info.subtitle}</p>
+              </Link>
+            </Article>
           )
         })}
-      </Section>
+      </section>
 
-      <Section>
+      <section className="paper">
+        <h2 className="title">Design</h2>
+
+        {data.designs.nodes.map((design, index) => {
+          return (
+            <Article key={design.slug}>
+              <Link className="tbn" to={`/design/${design.slug}`}>
+                <Img
+                  draggable={false}
+                  alt={`${design.name} thumbnail image`}
+                  fixed={design.fields.thumbnail.childImageSharp.fixed}
+                />
+              </Link>
+
+              <Link to={`/design/${design.slug}`}>
+                <h3>{design.name}</h3>
+                <p>{design.description}</p>
+              </Link>
+            </Article>
+            /*     <Card
+              key={design.slug}
+              path={`/design/${design.slug}`}
+              subtitle={design.description}
+              title={name}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${name} thumbnail image`}
+                  fixed={design.fields.thumbnail.childImageSharp.fixed}
+                />
+              }
+            /> */
+          )
+        })}
+      </section>
+
+      <section className="paper">
+        <h2 className="title">Side Projects</h2>
         {data.allGithubPinneditems.nodes.map((pinned) => {
-          const githubSources = [
-            pinned.thumbnail.sm.fixed,
-            {
-              ...pinned.thumbnail.md.fixed,
-              media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-            },
-            {
-              ...pinned.thumbnail.lg.fixed,
-              media: `(min-width: ${breakpoints[2]})`,
-            },
-          ]
+          console.log('pinned: ', pinned)
           return (
-            <Paper key={pinned.name} style={{ marginBottom: '1rem' }}>
-              <Card
-                title={pinned.name}
-                subtitle={pinned.description}
-                date={pinned.createdAt}
-                path={pinned.homepageUrl}
-                Image={
-                  <Img
-                    draggable={false}
-                    alt={`${pinned.name} thumbnail image`}
-                    fixed={githubSources}
-                  />
-                }
-              ></Card>
-            </Paper>
+            <Article key={pinned.homepageUrl}>
+              <Link className="tbn" to={pinned.homepageUrl}>
+                <Img
+                  draggable={false}
+                  alt={`${pinned.name} thumbnail image`}
+                  fixed={pinned.thumbnail.childImageSharp.fixed}
+                />
+              </Link>
+
+              <Link to={pinned.url}>
+                <h3>{pinned.name}</h3>
+                <time>{pinned.createdAt}</time>
+                <p>{pinned.description}</p>
+              </Link>
+            </Article>
+            /*  <Card
+              key={pinned.id}
+              title={pinned.name}
+              subtitle={pinned.description}
+              date={pinned.createdAt}
+              path={pinned.homepageUrl}
+              Image={
+                <Img
+                  draggable={false}
+                  alt={`${pinned.name} thumbnail image`}
+                  fixed={pinned.thumbnail.childImageSharp.fixed}
+                  className="tbn"
+                />
+              }
+            ></Card> */
           )
         })}
-      </Section>
+      </section>
 
-      <Box container>
+      <Box container className="profile">
         <Heatmap />
       </Box>
     </React.Fragment>

@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@sentry/react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { PageProps } from 'gatsby'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
 import React, { PropsWithChildren } from 'react'
@@ -10,19 +10,22 @@ import Navigation from './Navigation'
 import config from '../../.gatsby/config'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styled from 'styled-components'
-
+import Link from '../components/Common/Link'
+import Json from 'react-json-view'
+import { GoogleFont, TypographyStyle } from 'react-typography'
+import SEO from '../components/SEO'
+import typography from '../utils/typography'
 export type LayoutProps = PropsWithChildren<Pick<PageProps, 'path'>>
 
 export default function Layout({ children, path }: LayoutProps) {
   return (
-    <React.StrictMode>
-      <Box position="relative">
-        <Navigation path={path}>{path === '/' && <Welcome />}</Navigation>
+    <React.Fragment>
+      <SEO />
+      {/* <Navigation path={path} /> */}
 
-        <main>
-          <ErrorBoundary fallback={Whoops}>{children}</ErrorBoundary>
-        </main>
-      </Box>
+      <main className="container">
+        <ErrorBoundary FallbackComponent={Whoops}>{children}</ErrorBoundary>
+      </main>
 
       <Footer
         sections={{
@@ -50,6 +53,6 @@ export default function Layout({ children, path }: LayoutProps) {
           ),
         }}
       />
-    </React.StrictMode>
+    </React.Fragment>
   )
 }

@@ -13,7 +13,7 @@ import {
   BorderProps,
   color,
 } from 'styled-system'
-import { GlweemsTheme, media } from '../../theme'
+import theme, { containerWidths, GlweemsTheme, media } from '../../theme'
 
 export interface BoxProps
   extends SpaceProps,
@@ -26,20 +26,10 @@ export interface BoxProps
 }
 
 export const maxWidthCss = css`
-  max-width: ${({ theme }) => theme.breakpoints[1]};
+  /* max-width: ${({ theme }) => theme.breakpoints[1]}; */
   margin: auto;
-  padding-right: ${(props) => props.theme.space[1]};
-  padding-left: ${(props) => props.theme.space[1]};
-
-  ${media.greaterThan('sm')`
-  max-width: ${({ theme }) => theme.containerWidths.md};
-  padding:0;
-`};
-
-  ${media.greaterThan('md')`
-  padding:0;
-  max-width: ${({ theme }) => theme.containerWidths.lg};
-`};
+  /* padding-right: ${(props) => props.theme.space[1]}; */
+  /* padding-left: ${(props) => props.theme.space[1]}; */
 `
 
 export const boxComposition = compose(color, layout, space, flexbox, border)

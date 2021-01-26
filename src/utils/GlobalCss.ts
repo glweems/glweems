@@ -3,16 +3,30 @@ import { createGlobalStyle } from 'styled-components'
 import { cssVariables, media } from '../theme'
 
 const GlobalCss = createGlobalStyle`
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@400;600;700&display=swap");
+:root {
+   --color-primary: #000;
+   --color-primary-alt: #ddd;
+   --color-secondary: #fff;
+   --font-family-primary: "Sora", sans-serif;
+   --font-family-secondary: "Inter", "Sora", sans-serif;
+   --font-size-h1: 2.5rem;
+   --font-size-h2: 1.5rem;
+   --font-size-h3: 1.25rem;
+   --font-size-h4: 1.125rem;
+   --font-size-text: 1rem;
+}
   :root {
     ${cssVariables};
   }
   html {
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
   body {
-    min-height: 100vh;
-    overflow: hidden;
+    /* min-height: 100vh; */
+    /* overflow: hidden; */
+    /* color: ${({ theme }) => theme.colors.text}; */
     font-weight: normal;
     font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto',
       'Helvetica Neue', 'Arial', 'Noto Sans', sans-serif, 'Apple Color Emoji',
@@ -20,21 +34,23 @@ const GlobalCss = createGlobalStyle`
     word-wrap: break-word;
     font-kerning: normal;
     font-feature-settings: 'kern', 'liga', 'clig', 'calt';
-    background-color: ${({ theme }) => theme.colors.bg};
-    background-image: radial-gradient(
-        ${(props) => transparentize(0.95, props.theme.colors.text)} 20%,
-        transparent 20%
-      ),
-      radial-gradient(${(props) =>
-        props.theme.colors.secondaryBg} 10%, transparent 10%);
-    background-position: 0 0, 5px 3px;
-    background-size: 20px 20px;
-  }
+  background-image: -webkit-repeating-radial-gradient(
+      center center,
+      var(--color-primary),
+      var(--color-primary) 1px,
+      var(--color-secondary) 1px,
+      var(--color-secondary) 100%
 
+   );
+   background-size: 8px 8px;
+  }
+.title{
+  margin-top:2rem;
+  font-size:3rem;
+}
   main {
     margin-top: ${({ theme }) => theme.space[10]};
     margin-bottom: ${({ theme }) => theme.space[10]};
-    color: ${({ theme }) => theme.colors.text};
   }
 
   a {

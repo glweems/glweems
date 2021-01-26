@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'react-error-boundary'
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import { OutboundLink } from 'gatsby-plugin-google-analytics'
@@ -59,18 +60,22 @@ export default function BlogTemplate({
         </article>
       </Styled>
 
-      <Box container>
-        <ShareButtons
-          title={frontmatter.title}
-          url={post.url}
-          tags={frontmatter.tags}
-        />
-        <DisqusComments
-          url={post.url}
-          identifier={(post as any).disqusIdentifier}
-          title={frontmatter.title}
-        />
-      </Box>
+      <ErrorBoundary
+        FallbackComponent={(props) => <div>error loading comments</div>}
+      >
+        <Box container>
+          <ShareButtons
+            title={frontmatter.title}
+            url={post.url}
+            tags={frontmatter.tags}
+          />
+          <DisqusComments
+            url={post.url}
+            identifier={(post as any).disqusIdentifier}
+            title={frontmatter.title}
+          />
+        </Box>
+      </ErrorBoundary>
     </Fragment>
   )
 }

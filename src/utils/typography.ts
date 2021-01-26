@@ -3,12 +3,14 @@ import CodePlugin from 'typography-plugin-code'
 import { fonts } from '../theme'
 
 const theme: TypographyOptions = {
-  baseFontSize: '16px',
-  baseLineHeight: 1.25,
   googleFonts: [
     {
-      name: 'Montserrat',
-      styles: ['400', '400i', '700', '700i', '800'],
+      name: 'Inter',
+      styles: ['400', '600', '700'],
+    },
+    {
+      name: 'Sora',
+      styles: ['400', '600', '700'],
     },
   ],
   headerFontFamily: fonts.heading.split(','),
