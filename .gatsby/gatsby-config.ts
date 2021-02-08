@@ -1,6 +1,5 @@
 import dotenv from 'dotenv'
 import { ITSConfigFn } from 'gatsby-plugin-ts-config'
-import { FileSystemNode } from 'gatsby-source-filesystem'
 import packageJson from '../package.json'
 import { linkedHeaderIcon } from '../src/components/Icons'
 import config, { siteMetadata } from './config'
@@ -18,6 +17,7 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
       'gatsby-plugin-react-helmet',
       'gatsby-plugin-styled-components',
       'gatsby-plugin-netlify',
+      'gatsby-plugin-varcel',
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
       'gatsby-plugin-sitemap',
@@ -58,14 +58,6 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
           debug: false,
         },
       },
-      // {
-      //   resolve: require.resolve(
-      //     './../plugins/gatsby-plugin-google-docs-resume'
-      //   ),
-      //   options: {
-      //     url: config.googleDocResumeUrl,
-      //   },
-      // },
       {
         resolve: 'gatsby-source-filesystem',
         options: {
