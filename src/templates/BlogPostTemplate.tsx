@@ -13,6 +13,7 @@ import Tags from '../components/Tags'
 import { BlogTemplateQuery } from '../queries'
 import { media } from '../theme'
 import '../utils/syntax.css'
+import Note from '../components/ Note'
 export interface PageContext {
   slug: string
   prev: string
@@ -36,7 +37,7 @@ export default function BlogTemplate({
         image={frontmatter.thumbnail.publicURL}
       />
 
-      <Styled>
+      <Note>
         <header>
           <h1 className="blog-title">{frontmatter.title}</h1>
 
@@ -58,7 +59,7 @@ export default function BlogTemplate({
         <article>
           <HtmlAst elements={post.htmlAst} components={articleComponents} />
         </article>
-      </Styled>
+      </Note>
 
       <ErrorBoundary
         FallbackComponent={(props) => <div>error loading comments</div>}
@@ -80,15 +81,7 @@ export default function BlogTemplate({
   )
 }
 
-const Styled = styled.div`
-  header,
-  article {
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    padding: ${({ theme }) => theme.space[5]};
-  }
-
+const Styled = styled(Note)`
   .tbn {
     margin-bottom: ${({ theme }) => theme.space[5]};
   }
@@ -101,7 +94,7 @@ const Styled = styled.div`
   }
 
   ${media.greaterThan('sm')`
-      padding: ${({ theme }) => theme.space[2]};
+      /* padding: ${({ theme }) => theme.space[2]}; */
   `};
 `
 

@@ -1,6 +1,7 @@
 import { graphql, PageProps } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
+import Note from '../components/ Note'
 import Card from '../components/Card'
 import Box from '../components/Common/Box'
 import Pager, { PagerProps } from '../components/Pager'
@@ -26,7 +27,7 @@ export default function ArticleListTemplate({
         title={`Blog Posts Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
 
-      <Box container>
+      <Note as="section">
         {data.posts.nodes.map(({ childMarkdownRemark: { info, ...post } }) => {
           return (
             <Card
@@ -49,7 +50,7 @@ export default function ArticleListTemplate({
           previousPagePath={pageContext.previousPagePath}
           nextPagePath={pageContext.nextPagePath}
         />
-      </Box>
+      </Note>
     </React.Fragment>
   )
 }

@@ -58,8 +58,8 @@ export const ResponsiveCardTbn = graphql`
   fragment ResponsiveCardTbn on File {
     childImageSharp {
       fixed(
-        width: 100
-        height: 100
+        width: 150
+        height: 150
         # quality: 60
         # grayscale: true
         cropFocus: CENTER

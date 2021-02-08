@@ -18,6 +18,7 @@ const gatsbyConfig: ITSConfigFn<'config'> = ({ projectRoot }) => {
       'gatsby-plugin-react-helmet',
       'gatsby-plugin-styled-components',
       'gatsby-plugin-netlify',
+      'gatsby-plugin-varcel',   
       'gatsby-plugin-use-dark-mode',
       'use-dark-mode',
       'gatsby-plugin-sitemap',

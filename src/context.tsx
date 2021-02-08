@@ -1,5 +1,5 @@
 import { WrapPageElementBrowserArgs, WrapRootElementBrowserArgs } from 'gatsby'
-import React from 'react'
+import React, { memo } from 'react'
 import { ThemeProvider } from 'styled-components'
 import SEO from './components/SEO'
 import Layout from './layout/Layout'
@@ -12,7 +12,6 @@ export type ContextProviderProps = {
 
 function ContextProvider(props: ContextProviderProps) {
   const theme = useCreateTheme()
-  if (theme.isDarkMode === undefined) return
   return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
 }
 
@@ -20,10 +19,10 @@ export function wrapRootElement({ element }: WrapRootElementBrowserArgs) {
   return <ContextProvider>{element}</ContextProvider>
 }
 
-export function wrapPageElement({
+export const wrapPageElement = ({
   element,
   props: { path },
-}: WrapPageElementBrowserArgs) {
+}: WrapPageElementBrowserArgs) => {
   return (
     <React.Fragment>
       <SEO />
@@ -32,3 +31,5 @@ export function wrapPageElement({
     </React.Fragment>
   )
 }
+
+wrapPageElement.displayName = 'wrapPageElement'

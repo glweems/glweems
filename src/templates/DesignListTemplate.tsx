@@ -20,17 +20,6 @@ export default function ArticleListTemplate({
         title={`Designs Results ${pageContext.pageNumber} of ${pageContext.numberOfPages}`}
       />
       {designs.nodes.map(({ name, ...design }, index) => {
-        const designSources = [
-          design.fields.thumbnail.sm.fixed,
-          {
-            ...design.fields.thumbnail.md.fixed,
-            media: `(min-width: ${breakpoints[1]}) and (max-width: ${breakpoints[2]})`,
-          },
-          {
-            ...design.fields.thumbnail.lg.fixed,
-            media: `(min-width: ${breakpoints[2]})`,
-          },
-        ]
         return (
           <Card
             key={design.slug}
@@ -41,7 +30,7 @@ export default function ArticleListTemplate({
               <Img
                 draggable={false}
                 alt={`${name} thumbnail image`}
-                fixed={designSources}
+                fixed={design.fields.thumbnail.childImageSharp.fixed}
               />
             }
           />

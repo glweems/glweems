@@ -1,13 +1,8 @@
-import {
-  ErrorBoundaryProps,
-  FallbackProps,
-  ErrorBoundaryPropsWithComponent,
-} from 'react-error-boundary'
 import { Link } from 'gatsby'
 import React, { FC } from 'react'
+import { FallbackProps } from 'react-error-boundary'
 import Box from './Common/Box'
-import Json from 'react-json-view'
-import { error } from 'console'
+
 const Whoops: FC<FallbackProps> = ({ error, resetErrorBoundary }) => (
   <Box className="paper">
     <h1>We&apos;re sorry</h1>

@@ -15,10 +15,8 @@ const GlobalCss = createGlobalStyle`
    --font-size-h3: 1.25rem;
    --font-size-h4: 1.125rem;
    --font-size-text: 1rem;
+   ${cssVariables};
 }
-  :root {
-    ${cssVariables};
-  }
   html {
     /* scroll-behavior: smooth; */
   }

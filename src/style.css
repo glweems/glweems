@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@400;600;700&display=swap');
 :root {
   --color-primary: #000;
+  --color-alt: #858282;
   --color-shade: #ddd;
   --color-secondary: #fff;
   --font-family-primary: 'Sora', sans-serif;
@@ -176,7 +177,7 @@ body {
 @media all and (min-width: 1300px) {
   #styles > .container,
   article {
-    padding: 8rem 4rem 4rem 4rem;
+    /* padding: 8rem 4rem 4rem 4rem; */
     width: 100%;
   }
 }
@@ -285,11 +286,15 @@ aside:not(#sponsor-footer) {
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
-article > * + *,
-aside .container > * + * {
-  /* margin-top: 1em; */
+
+section {
+  margin-bottom: 3rem;
 }
-article > * + h1,
+/* article > * + *,
+aside .container > * + * {
+  margin-top: 1em;
+} */
+/* article > * + h1,
 article > * + h2,
 article > * + h3,
 article > * + h4,
@@ -297,8 +302,8 @@ aside .container > * + h1,
 aside .container > * + h2,
 aside .container > * + h3,
 aside .container > * + h4 {
-  /* margin-top: 1.5em; */
-}
+  margin-top: 1.5em;
+} */
 article ol,
 aside .container ol {
   padding-left: 20px;
@@ -322,17 +327,6 @@ aside .container ol li + li {
 #guidelines a:hover,
 #contribute ol a:hover,
 #contribute p a:hover,
-.profile a:hover,
-.link-allstyles:hover,
-.page-footer p a:hover {
-  border-bottom-width: 4px;
-}
-#guidelines p:last-of-type {
-  margin-bottom: 1em;
-}
-section + section {
-  margin-top: 2em;
-}
 section > * + * {
   margin-top: 1em;
 }
@@ -373,4 +367,13 @@ blockquote {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+time {
+  display: block;
+  color: var(--color-alt);
+  /* font: ${({ theme }) => theme.fonts.monospace}; */
+  font-size: 90%;
+  line-height: 22px;
+  text-decoration: none;
+  border-radius: 3px;
 }
