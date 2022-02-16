@@ -1,2 +1,13 @@
-- name: @dailydotdev/devcard
-  uses: dailydotdev/action-devcard@2.0.5
+name: Push[Master]
+on:
+  schedule:
+    - cron: "0 7 * * *"
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: devcard
+        uses: dailydotdev/action-devcard@2.0.5
+        with:
+          devcard_id: ${{ secrets.DEVCARD_ID }}
