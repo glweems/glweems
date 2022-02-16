@@ -1,8 +1,16 @@
 # Howdy, I'm Garrett Weems
 
-## I'm a fullstack web developer
+### Give me a shout
 
-![Selfy](./src/assets/selfy.png)
+[![Github Follow](https://img.shields.io/github/followers/glweems?label=follow&style=social)][github]
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/garrett_txt?style=social)](https://twitter.com/intent/follow?screen_name=garrett_txt&tw_p=followbutton)
+
+[![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)][linkedin]
+
+[![glweems](https://img.shields.io/badge/website-glweems.com-blue)][website]
+
+<a href="https://app.daily.dev/DailyDevTips"><img src="https://github.com/glweems/glweems/blob/master/devcard.svg" width="400" alt="Garrett Weems' Dev Card"/></a>
 
 I'm a web developer and graphic designer from Texas
 
@@ -20,6 +28,7 @@ Since I can remember I have always had a natural curiousity for technology wheth
 
 ![Painting](src/assets/painting.jpg)
 
+
 ### When I'm not coding
 
 When I'm not coding I have been learning fabrication and welding to for restoration of a 1991 Honda motorcyle cafe racer build
@@ -34,15 +43,6 @@ When I'm not coding I have been learning fabrication and welding to for restorat
 - 👯 I’m looking to collaborate with other content creators
 - 🥅 2020 Goals: Contribute more to Open Source projects / further fabrication skills
 
-### Give me a shout
-
-[![Github Follow](https://img.shields.io/github/followers/glweems?label=follow&style=social)][github]
-
-[![Twitter Follow](https://img.shields.io/twitter/follow/garrettlweems?style=social)](https://twitter.com/intent/follow?screen_name=garrettlweems&tw_p=followbutton)
-
-[![linkedin](https://img.shields.io/static/v1?logo=linkedin&label=linkedin&style=social&message=glweems&color=blue)][linkedin]
-
-[![glweems](https://img.shields.io/badge/website-glweems.com-blue)][website]
 
 ![Code Stats](https://github-readme-stats.codestackr.vercel.app/api?username=glweems&show_icons=true&hide_border=true)
 
