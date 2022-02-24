@@ -10,7 +10,7 @@
 
 [![glweems](https://img.shields.io/badge/website-glweems.com-blue)][website]
 
-<a href="https://app.daily.dev/DailyDevTips"><img src="https://github.com/glweems/glweems/blob/master/devcard.svg" width="400" alt="Garrett Weems' Dev Card"/></a>
+<a href="https://app.daily.dev/sud0user"><img src="https://github.com/glweems/glweems/blob/master/devcard.svg" width="400" alt="Garrett Weems' Dev Card"/></a>
 
 I'm a web developer and graphic designer from Texas
 
@@ -44,7 +44,7 @@ When I'm not coding I have been learning fabrication and welding to for restorat
 - 🥅 2020 Goals: Contribute more to Open Source projects / further fabrication skills
 
 
-![Code Stats](https://github-readme-stats.codestackr.vercel.app/api?username=glweems&show_icons=true&hide_border=true)
+![Garrett's GitHub stats](https://github-readme-stats.vercel.app/api?username=glweems&show_icons=true)
 
 [github]: https://github.com/glweems
 [website]: https://glweems.com
