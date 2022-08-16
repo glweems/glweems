@@ -57,7 +57,7 @@
     "gatsby-remark-responsive-iframe": "^2.10.0",
     "gatsby-remark-smartypants": "^2.9.0",
     "gatsby-remark-unwrap-images": "^1.0.2",
-    "gatsby-source-filesystem": "^2.10.0",
+    "gatsby-source-filesystem": "^4.21.0",
     "gatsby-source-gh-readme": "^1.0.10",
     "gatsby-source-graphql": "^2.13.0",
     "gatsby-source-rss": "^1.0.0",
