@@ -59,7 +59,7 @@
     "gatsby-remark-unwrap-images": "^1.0.2",
     "gatsby-source-filesystem": "^2.10.0",
     "gatsby-source-gh-readme": "^1.0.10",
-    "gatsby-source-graphql": "^2.13.0",
+    "gatsby-source-graphql": "^4.11.0",
     "gatsby-source-rss": "^1.0.0",
     "gatsby-transformer-remark": "^2.15.0",
     "gatsby-transformer-sharp": "^2.11.0",
