@@ -71,7 +71,7 @@
     "polished": "^4.0.5",
     "postcss-typography": "^1.0.0",
     "prism-react-renderer": "^1.1.1",
-    "prismjs": "^1.23.0",
+    "prismjs": "^1.27.0",
     "react": "^17.0.1",
     "react-codepen-embed": "^1.0.2",
     "react-dom": "^17.0.1",
